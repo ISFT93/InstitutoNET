@@ -75,7 +75,6 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaJunioFinal.Visible = true;
                 dtpFechaJunioInicio.Visible = true;
                 dtpFechaMarzoInicio.Visible = true;
-                btnFechaCierreCicloLectivo.Visible = false;
                 btnGeneraCicloLectivo.Visible = false;
                 dtpFechaCierre.Enabled = false;
                 dtpFechaInicio.Enabled = false;
@@ -92,7 +91,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaDiciembreFinal.Enabled = true;
                 dtpFechaMarzoInicio.Enabled = true;
                 dtpFechaMarzoFinal.Enabled = true;
-                btnFechaCierreCicloLectivo.Enabled = DateTime.Today >= dtpFechaCierre.Value.Date;
+               // btnFechaCierreCicloLectivo.Enabled = DateTime.Today >= dtpFechaCierre.Value.Date;
                 btnGeneraCicloLectivo.Enabled = false;
                 grbDatosCicloLectivo.Size = new System.Drawing.Size(760, 265);
                 txtAnioLectivo.Text = this.CicloLectivoId.ToString();
@@ -117,6 +116,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     grbFinalesDiciembre.Visible = false;
                     grbInscripcionSuperiores.Visible = false;
                     btnAceptar.Visible = false;
+                btnFechaCierreCicloLectivo.Enabled = false;
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
                     txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
                     DateTimePickerEnBlanco();
