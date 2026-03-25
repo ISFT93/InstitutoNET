@@ -1,0 +1,10 @@
+.vs/*
+
+ISFDyT93.Vista/bin/*
+ISFDyT93.Vista/obj/*
+ISFDyT93.Datos/bin/*
+ISFDyT93.Datos/obj/*
+ISFDyT93.Datos/Core/Settings.cs
+ISFDyT93.Negocio/bin/*
+ISFDyT93.Negocio/obj/*
+/packages/FontAwesome.Sharp.6.3.0
