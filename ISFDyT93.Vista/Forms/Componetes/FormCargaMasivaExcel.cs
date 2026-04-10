@@ -272,10 +272,15 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
             if (_columnasNoMapeadas.Count > 0)
             {
-                MessageBox.Show(
-                    $"Mapee las siguientes columnas:\n{string.Join("\n", _columnasNoMapeadas.Select(i => dgvCargaMasiva.Columns[i].HeaderText))}",
-                    "Columnas sin mapear", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var result = MessageBox.Show(
+                    $"Hay columnas sin clasificar, estos datos no quedarán guardados:" +
+                    $"\n- {string.Join("\n- ", _columnasNoMapeadas.Select(i => dgvCargaMasiva.Columns[i].HeaderText))}" +
+                    "\n¿Está seguro de querer continuar?",
+                    "Columnas sin clasificar",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
+                if (result != DialogResult.OK)
+                    return;
             }
 
             var columnasMapeadas = new HashSet<string>(dtExcel.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
