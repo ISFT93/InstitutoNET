@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ISFDyT93.Negocio.Logica;
-using System.Globalization;
 
 namespace ISFDyT93.Negocio
 {
