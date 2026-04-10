@@ -29,6 +29,8 @@
 		<Coincidencia>Apellidos</Coincidencia>
 	    <Coincidencia>APELLIDO</Coincidencia>
 	    <Coincidencia>APELLIDOS</Coincidencia>
+		<Coincidencia>apellido</Coincidencia>
+		<Coincidencia>apellidos</Coincidencia>
 	</apellido>
 
 	<nombre>
