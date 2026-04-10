@@ -5,6 +5,7 @@ using Syncfusion.XlsIO;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -12,12 +13,17 @@ using ISFDyT93.Negocio;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using ISFDyT93.Vista.Forms.Alumnos;
+using ISFDyT93.Vista.Core.Enums;
+using ISFDyT93.Vista.Forms.Componetes;
+
 
 namespace ISFDyT93.Vista.Forms.Componentes
 {
     public partial class FormCargaMasivaExcel : Form
     {
         CarrerasLogica carrerasLogica = new CarrerasLogica();
+        AlumnosLogica alumnosLogica = new AlumnosLogica();
 
         public FormPrincipal Contenedor { get; set; }
         public string Accion { get; set; }
@@ -298,6 +304,103 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     "Carreras inválidas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            var carrerasPorNombre = _dtCarreras.AsEnumerable()
+                .ToDictionary(
+                    r => r["Nombre"].ToString().Trim(),
+                    r => Convert.ToInt32(r["CarreraId"]),
+                    StringComparer.OrdinalIgnoreCase
+                );
+
+            var titleCase = CultureInfo.CurrentCulture.TextInfo;
+            int agregados = 0;
+            int omitidos = 0;
+
+            foreach (DataRow dr in dtExcel.Rows)
+            {
+                string dni = GetColumnaValor(dr, nameof(AlumnosModelo.NumeroDocumento));
+                if (string.IsNullOrWhiteSpace(dni) || alumnosLogica.AlumnoExiste(dni))
+                {
+                    omitidos++;
+                    continue;
+                }
+
+                string carreraNombre = GetColumnaValor(dr, _carrerasColumnName);
+                if (!carrerasPorNombre.TryGetValue(carreraNombre, out int carreraId))
+                {
+                    omitidos++;
+                    continue;
+                }
+
+                char sexo = NormalizarSexo(GetColumnaValor(dr, nameof(AlumnosModelo.Sexo)));
+                DateTime.TryParse(GetColumnaValor(dr, nameof(AlumnosModelo.FechaNacimiento)), out DateTime fechaNacimiento);
+
+                var modelo = new AlumnosModelo
+                {
+                    Apellido             = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Apellido)).ToLower()),
+                    Nombre               = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Nombre)).ToLower()),
+                    TipoDocumento        = "Dni",
+                    NumeroDocumento      = dni,
+                    EstadoCivil          = GetColumnaValor(dr, nameof(AlumnosModelo.EstadoCivil)),
+                    Sexo                 = sexo,
+                    FechaNacimiento      = fechaNacimiento,
+                    LocalidadNacimiento  = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.LocalidadNacimiento)).ToLower()),
+                    Calle                = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Calle)).ToLower()),
+                    Provincia            = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Provincia)).ToLower()),
+                    Distrito             = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Distrito)).ToLower()),
+                    Localidad            = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Localidad)).ToLower()),
+                    CodigoPostal         = GetColumnaValor(dr, nameof(AlumnosModelo.CodigoPostal)),
+                    Celular              = GetColumnaValor(dr, nameof(AlumnosModelo.Celular)),
+                    Email                = GetColumnaValor(dr, nameof(AlumnosModelo.Email)),
+                    FotoUrl              = GetColumnaValor(dr, nameof(AlumnosModelo.FotoUrl)),
+                    Activo               = true,
+                };
+
+                int nuevoAlumnoId = alumnosLogica.AgregarAlumnoCargaMasiva(modelo);
+                if (nuevoAlumnoId <= 0)
+                {
+                    omitidos++;
+                    continue;
+                }
+
+                alumnosLogica.AgregarAlumnoCarrera(new AlumnosCarrerasModelo
+                {
+                    AlumnoId  = nuevoAlumnoId,
+                    CarreraId = carreraId,
+                    FechaAlta = DateTime.Now,
+                    Activo    = true,
+                });
+
+                agregados++;
+            }
+
+            if (agregados > 0)
+            {
+                Contenedor.AbrirFormulario<FormAlumnos>();
+                FormNotificacion.Mensaje(TipoNotificacion.Success,
+                    $"{agregados} alumno{(agregados > 1 ? "s agregados" : " agregado")} con éxito" +
+                    (omitidos > 0 ? $" ({omitidos} omitidos por DNI duplicado o carrera inválida)" : ""));
+            }
+            else
+            {
+                FormNotificacion.Mensaje(TipoNotificacion.Warning,
+                    omitidos > 0
+                        ? $"No se agregó ningún alumno. {omitidos} fila{(omitidos > 1 ? "s omitidas" : " omitida")} por DNI duplicado."
+                        : "No se encontraron alumnos para agregar.");
+            }
+        }
+
+        private string GetColumnaValor(DataRow dr, string columna)
+        {
+            return dtExcel.Columns.Contains(columna) ? dr[columna]?.ToString()?.Trim() ?? "" : "";
+        }
+
+        private char NormalizarSexo(string valor)
+        {
+            if (string.IsNullOrWhiteSpace(valor)) return 'M';
+            valor = valor.Trim().ToLower();
+            if (valor == "femenino" || valor == "f") return 'F';
+            return 'M';
         }
     }
 }

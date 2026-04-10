@@ -38,12 +38,11 @@
 	    <Coincidencia>NOMBRE</Coincidencia>
 	</nombre>
 
-	<dni>
-		<Coincidencia>Dni</Coincidencia>
-		<Coincidencia>dni</Coincidencia>
+	<NumeroDocumento>
 		<Coincidencia>DNI</Coincidencia>
-	</dni>
-
+		<Coincidencia>Documento</Coincidencia>
+	</NumeroDocumento>
+	
 	<sexo>
 		<Coindencia>Sexo</Coindencia>
 		<Coincidencia>sexo</Coincidencia>
