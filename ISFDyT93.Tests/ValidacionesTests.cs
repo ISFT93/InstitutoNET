@@ -3,12 +3,6 @@ using ISFDyT93.Negocio;
 
 public class ValidacionesTests
 {
-    //private readonly Validaciones _validaciones;
-
-    //public ValidacionesTests()
-    //{
-    //    _validaciones = new Validaciones();
-    //}
 
     // --- Casos base ---
 
