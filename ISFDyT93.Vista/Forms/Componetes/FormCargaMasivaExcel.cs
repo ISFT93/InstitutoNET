@@ -260,6 +260,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             if (_dtCarreras == null) return;
 
             var menu = new ContextMenuStrip();
+            menu.MaximumSize = new Size(200, 400);
             int rowIndex = e.RowIndex;
 
             foreach (DataRow dr in _dtCarreras.Rows)
