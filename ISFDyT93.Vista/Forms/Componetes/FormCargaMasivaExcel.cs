@@ -16,6 +16,7 @@ using System.Linq;
 using ISFDyT93.Vista.Forms.Alumnos;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms.Componetes;
+using Syncfusion.XlsIO.Implementation;
 
 
 namespace ISFDyT93.Vista.Forms.Componentes
@@ -61,10 +62,28 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 using (Stream inputStream = File.OpenRead(rutaCvs))
                 using (ExcelEngine excelEngine = new ExcelEngine())
                 {
-                    IWorksheet worksheet = excelEngine.Excel.Workbooks.Open(inputStream).Worksheets[0];
-                    dtExcel = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
+                    // LEGACY:
+                    //IWorksheet worksheet = excelEngine.Excel.Workbooks.Open(inputStream).Worksheets[0];
+                    //dtExcel = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
+                    // NEW: Delete empty rows and columns to avoid issues with ExportDataTable
+                    IWorkbook workbook = excelEngine.Excel.Workbooks.Open(inputStream);
+                    IWorksheet worksheet = workbook.Worksheets[0];
+                    var usedRange = worksheet.UsedRange;
+                    dtExcel = worksheet.ExportDataTable(usedRange, ExcelExportDataTableOptions.ColumnNames);
+
+                    // Eliminar filas completamente vacías (Google Forms deja filas vacías con formato)
+                    var filasVacias = dtExcel.AsEnumerable()
+                        .Where(r => r.ItemArray.All(v => v == null || string.IsNullOrWhiteSpace(v?.ToString())))
+                        .ToList();
+                    foreach (var fila in filasVacias)
+                        dtExcel.Rows.Remove(fila);
                 }
                 dgvCargaMasiva.DataSource = dtExcel;
+
+                // Deshabilitar sort para evitar que las filas se reordenen al editar valores
+                foreach (DataGridViewColumn col in dgvCargaMasiva.Columns)
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+
                 ProcesarHeaders();
             }
         }
@@ -129,8 +148,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 using (var brush = new SolidBrush(Color.Crimson))
                     e.Graphics.FillRectangle(brush, e.CellBounds);
 
-                string texto = e.Value?.ToString() ?? "";
-                texto = (texto.Length > 10 ? texto.Substring(0, 10) + "..." : texto) + "  ▼";
+                string texto = (e.Value?.ToString() ?? "") + "  ▼";
                 var formato = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
                 using (var brush = new SolidBrush(Color.White))
                     e.Graphics.DrawString(texto, e.CellStyle.Font, brush, e.CellBounds, formato);
@@ -211,7 +229,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
         {
             XDocument doc = XDocument.Load(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "CargaMasivaMap.xml"));
             var dic = doc.Root.Elements()
-                .ToDictionary(
+                .ToDictionary( 
                     n => Validaciones.CrearSlug(n.Name.LocalName),
                     n => n.Elements().Select(x => x.Value).ToList()
                 );
@@ -228,7 +246,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             _dtCarreras = carrerasLogica.ObtenerCarreras();
             var nombresCarreras = new HashSet<string>(
                 _dtCarreras.AsEnumerable().Select(r => r["Nombre"].ToString().Trim()),
-                StringComparer.OrdinalIgnoreCase
+                System.StringComparer.OrdinalIgnoreCase
             );
 
             for (int row = 0; row < dtExcel.Rows.Count; row++)
@@ -311,10 +329,11 @@ namespace ISFDyT93.Vista.Forms.Componentes
             }
 
             var carrerasPorNombre = _dtCarreras.AsEnumerable()
+                .GroupBy(r => r["Nombre"].ToString().Trim(), System.StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(
-                    r => r["Nombre"].ToString().Trim(),
-                    r => Convert.ToInt32(r["CarreraId"]),
-                    StringComparer.OrdinalIgnoreCase
+                    g => g.Key,
+                    g => Convert.ToInt32(g.First()["CarreraId"]),
+                    System.StringComparer.OrdinalIgnoreCase
                 );
 
             var titleCase = CultureInfo.CurrentCulture.TextInfo;

@@ -78,7 +78,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.dgvCargaMasiva.MultiSelect = false;
             this.dgvCargaMasiva.Name = "dgvCargaMasiva";
             this.dgvCargaMasiva.ReadOnly = true;
-            this.dgvCargaMasiva.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgvCargaMasiva.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvCargaMasiva.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.MidnightBlue;
