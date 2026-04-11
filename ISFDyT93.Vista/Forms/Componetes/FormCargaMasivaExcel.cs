@@ -62,16 +62,12 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 using (Stream inputStream = File.OpenRead(rutaCvs))
                 using (ExcelEngine excelEngine = new ExcelEngine())
                 {
-                    // LEGACY:
-                    //IWorksheet worksheet = excelEngine.Excel.Workbooks.Open(inputStream).Worksheets[0];
-                    //dtExcel = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
-                    // NEW: Delete empty rows and columns to avoid issues with ExportDataTable
                     IWorkbook workbook = excelEngine.Excel.Workbooks.Open(inputStream);
                     IWorksheet worksheet = workbook.Worksheets[0];
                     var usedRange = worksheet.UsedRange;
                     dtExcel = worksheet.ExportDataTable(usedRange, ExcelExportDataTableOptions.ColumnNames);
 
-                    // Eliminar filas completamente vacías (Google Forms deja filas vacías con formato)
+                    // Eliminar filas completamente vacías
                     var filasVacias = dtExcel.AsEnumerable()
                         .Where(r => r.ItemArray.All(v => v == null || string.IsNullOrWhiteSpace(v?.ToString())))
                         .ToList();
@@ -181,6 +177,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             if (_propiedades == null) return;
 
             var menu = new ContextMenuStrip();
+            menu.MaximumSize = new Size(200, 400);
             int colIndex = e.ColumnIndex;
 
             foreach (var prop in _propiedades)
@@ -229,7 +226,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
         {
             XDocument doc = XDocument.Load(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "CargaMasivaMap.xml"));
             var dic = doc.Root.Elements()
-                .ToDictionary( 
+                .ToDictionary(
                     n => Validaciones.CrearSlug(n.Name.LocalName),
                     n => n.Elements().Select(x => x.Value).ToList()
                 );
@@ -361,23 +358,23 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
                 var modelo = new AlumnosModelo
                 {
-                    Apellido             = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Apellido)).ToLower()),
-                    Nombre               = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Nombre)).ToLower()),
-                    TipoDocumento        = "Dni",
-                    NumeroDocumento      = dni,
-                    EstadoCivil          = GetColumnaValor(dr, nameof(AlumnosModelo.EstadoCivil)),
-                    Sexo                 = sexo,
-                    FechaNacimiento      = fechaNacimiento,
-                    LocalidadNacimiento  = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.LocalidadNacimiento)).ToLower()),
-                    Calle                = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Calle)).ToLower()),
-                    Provincia            = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Provincia)).ToLower()),
-                    Distrito             = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Distrito)).ToLower()),
-                    Localidad            = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Localidad)).ToLower()),
-                    CodigoPostal         = GetColumnaValor(dr, nameof(AlumnosModelo.CodigoPostal)),
-                    Celular              = GetColumnaValor(dr, nameof(AlumnosModelo.Celular)),
-                    Email                = GetColumnaValor(dr, nameof(AlumnosModelo.Email)),
-                    FotoUrl              = GetColumnaValor(dr, nameof(AlumnosModelo.FotoUrl)),
-                    Activo               = true,
+                    Apellido = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Apellido)).ToLower()),
+                    Nombre = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Nombre)).ToLower()),
+                    TipoDocumento = "Dni",
+                    NumeroDocumento = dni,
+                    EstadoCivil = GetColumnaValor(dr, nameof(AlumnosModelo.EstadoCivil)),
+                    Sexo = sexo,
+                    FechaNacimiento = fechaNacimiento,
+                    LocalidadNacimiento = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.LocalidadNacimiento)).ToLower()),
+                    Calle = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Calle)).ToLower()),
+                    Provincia = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Provincia)).ToLower()),
+                    Distrito = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Distrito)).ToLower()),
+                    Localidad = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Localidad)).ToLower()),
+                    CodigoPostal = GetColumnaValor(dr, nameof(AlumnosModelo.CodigoPostal)),
+                    Celular = GetColumnaValor(dr, nameof(AlumnosModelo.Celular)),
+                    Email = GetColumnaValor(dr, nameof(AlumnosModelo.Email)),
+                    FotoUrl = GetColumnaValor(dr, nameof(AlumnosModelo.FotoUrl)),
+                    Activo = true,
                 };
 
                 int nuevoAlumnoId = alumnosLogica.AgregarAlumnoCargaMasiva(modelo);
@@ -389,10 +386,10 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
                 alumnosLogica.AgregarAlumnoCarrera(new AlumnosCarrerasModelo
                 {
-                    AlumnoId  = nuevoAlumnoId,
+                    AlumnoId = nuevoAlumnoId,
                     CarreraId = carreraId,
                     FechaAlta = DateTime.Now,
-                    Activo    = true,
+                    Activo = true,
                 });
 
                 agregados++;
