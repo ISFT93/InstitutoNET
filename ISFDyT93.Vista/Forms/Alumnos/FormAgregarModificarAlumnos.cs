@@ -39,30 +39,37 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void FormAgregarModificarAlumnos_Load(object sender, EventArgs e)
         {
             ObtenerAniosLectivosActivos();
-
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
-            cmbMayorTitulo.Text = "Nignuno";
+            cmbMayorTitulo.Text = "Ninguno";
 
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
 
+            if (this.AlumnoId > 0)
+            {
+                this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
+                this.DatosAlumnosCarrera = alumnosLogica.TraerAlumnoCarrera(this.AlumnoId);
+
+                this.MapToForm<AlumnosModelo>(DatosAlumnos);
+                this.MapToForm<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
+            }
+
             if (this.Accion == TipoAccion.Ver)
             {
-                //En los groupbox a los controles de tipo textbox ponerlos solo lectura
-                grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbDocumentosEntregar.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbFichaSalud.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                // Usamos un método recursivo para que funcione tanto con TextBox directos del GroupBox
+                // como con TextBox anidados dentro de Panels u otros contenedores.
+                SetReadOnlyTextBox(grbDatosPersonales);
+                SetReadOnlyTextBox(grbFormacion);
+                SetReadOnlyTextBox(grbDocumentosEntregar);
+                SetReadOnlyTextBox(grbFichaSalud);
+                SetReadOnlyTextBox(grbDireccion);
+
                 btnGuardar.Visible = false;
-                cmbCarreraId.Enabled = false;
-                cmbTipoDocumento.Enabled = false;
-                cmbEstadoCivil.Enabled = false;
-                cmbSexo.Enabled = false;
-                cmbMayorTitulo.Enabled = false;
+                
                 dtpFechaNacimiento.Enabled = false;
                 pnlSiNoTS.Enabled = false;
                 pnlSiNoTT.Enabled = false;
@@ -75,8 +82,21 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 grbDocumentosEntregar.Enabled = false;
                 cmbCicloLectivo.Visible = false;
                 lblAnioLectivo.Visible=false;
-
                 this.Contenedor.SetTitulo("Ver Alumno");
+
+                cmbCarreraId.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                cmbEstadoCivil.Enabled = false;
+                cmbSexo.Enabled = false;
+                cmbMayorTitulo.Enabled = false;
+
+                ////En los groupbox a los controles de tipo textbox ponerlos solo lectura
+                //grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbDocumentosEntregar.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbFichaSalud.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+
+                return;
             }
             else if (this.Accion == TipoAccion.Modificar)
             {
@@ -98,17 +118,24 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 txtMayorOtorgadoPor.Enabled = false;
                 txtMayorPromedio.Enabled = false;
             }
-
-            if (this.AlumnoId > 0)
+        }
+        public void SetReadOnlyTextBox(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
             {
-                this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
-                this.DatosAlumnosCarrera = alumnosLogica.TraerAlumnoCarrera(this.AlumnoId);
+                // Para los TextBox: poner ReadOnly = true (no deshabilitar), así el usuario puede copiar texto al ver.
+                if (ctrl is TextBox tb)
+                {
+                    tb.ReadOnly = true;
+                }
 
-                this.MapToForm<AlumnosModelo>(DatosAlumnos);
-                this.MapToForm<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
+                // Recursividad para aplicar a controles anidados
+                if (ctrl.HasChildren)
+                {
+                    SetReadOnlyTextBox(ctrl);
+                }
             }
         }
-
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             txtMateriasAdeuda.Enabled = !rdbTituloSecundarioSi.Checked;
@@ -253,7 +280,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 this.MostrarErrores(epvAlumnos, alumno.Errores);
             }
         }
-
+        
         private void ActualizarAutoComplete()
         {            
             txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());       
@@ -289,6 +316,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void txtNumeroDocumento_Leave(object sender, EventArgs e)
         {
+            if (this.Accion == TipoAccion.Ver || this.Accion == TipoAccion.Modificar)
+                return;
+            
             if (!validador.AlumnoNuevo(txtNumeroDocumento.Text))
             {
                 MessageBox.Show("El numero de documento ya esta registrador");
@@ -319,6 +349,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtEmail.Text))
+                return;
             if (!validador.FormatoEmailValido(txtEmail.Text))
             {
                 MessageBox.Show("Email inválido");
