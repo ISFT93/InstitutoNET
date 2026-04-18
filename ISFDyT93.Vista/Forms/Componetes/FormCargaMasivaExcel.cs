@@ -89,7 +89,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             _columnasNoMapeadas.Clear();
             _celdasCarreraInvalidas.Clear();
             _columnaCarreraIndex = -1;
-            _propiedades = typeof(AlumnosModelo).GetProperties().Select(p => p.Name).OrderBy(name => name).ToList()
+            _propiedades = typeof(AlumnosModelo).GetProperties().Select(p => p.Name).OrderBy(name => name).ToList();
             foreach (DataColumn column in dtExcel.Columns.Cast<DataColumn>().ToList())
             {
                 bool matched = false;
