@@ -62,6 +62,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCargaMasiva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCargaMasiva.ColumnHeadersHeight = 29;
             this.dgvCargaMasiva.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;

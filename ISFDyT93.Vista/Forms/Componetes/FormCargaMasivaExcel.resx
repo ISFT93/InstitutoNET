@@ -120,31 +120,31 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAceptarCargaMasiva.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
-        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
-        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
-        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
-        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
-        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
-        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
-        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAXVJREFUSEvd
+        lc9KA0EMxhfEPy/iwapHRW/6AIKgoqCPI15F8AH0IHjQxxFEbb0I2h7sJil0vxGMpN3S7cy0uz304gcf
+        LEPyy5AJ2ST511LVRSKccYpHJtSZ8J27zowHIpxajJ9XSZLikAnvTNASNyTFgZ8/Vqo6J+SuIqCJFnKX
+        luvzAhG5az+5qu1iPm9EzNj3k6b0L3O253N7UtWlij0vcyP68EI4iQSX2DWJ3Ja0u7vFc0lx5PMTItyH
+        gEl2TRGs9XPd5kgBwp3PT5jwGkLGOMUHUbacwzeY0PZinn2+FZAAFHM53Mw+3wp0ikHS7u4w/2xbK4bn
+        7ksENYvvdLDOlLUi8LEFXopBdjs7F8GqgZnwKYKVCnBz2KLwkbOWgfIitSng8UeOj+mwiKkKvFcgNqaq
+        usCENz/YgNau/iiWw63Vqjrv83ua6aoYiBkXkcRKJsK5zws083U90Mx+OEXZVsyn65YJT0zo5rbvG0lx
+        HN2c/0p/PG7Vh5oI4CkAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnBuscarArchivoExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
 </root>
