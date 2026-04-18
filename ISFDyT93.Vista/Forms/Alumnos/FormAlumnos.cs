@@ -115,14 +115,14 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmAgregarAlumno.Visible = false;
 
 
-                    tsmModificarAlumno.Visible = !activo;
+                    tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
                     if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-                        tsmAsignarMaterias.Visible = ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
+                        tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
                     else
                         tsmAsignarMaterias.Visible = false;
-                    tsmDarAlta.Visible = !activo;
+                    tsmDarAlta.Visible = true;// !activo;
 
                 }
                 else

@@ -273,7 +273,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void txtSoloNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!validador.SoloNumeros(e.KeyChar.ToString()))
+            if (!char.IsControl(e.KeyChar) && !validador.SoloNumeros(e.KeyChar.ToString()))
             {
                 e.Handled = true; // Bloquea la tecla
             }
@@ -281,7 +281,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void txtSoloLetrasEspacios_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!validador.SoloLetrasEspacios(e.KeyChar.ToString()))
+            if (!char.IsControl(e.KeyChar) && !validador.SoloLetrasEspacios(e.KeyChar.ToString()))
             {
                 e.Handled = true; // Bloquea la tecla
             }
@@ -297,14 +297,14 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void txtLetrasYNumerosYEspacio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!validador.SoloLetrasEspaciosyNumeros(e.KeyChar.ToString()))
+            if (!char.IsControl(e.KeyChar) && !validador.SoloLetrasEspaciosyNumeros(e.KeyChar.ToString()))
             {
                 e.Handled = true; // Bloquea la tecla
             }
         }
         private void txtLetrasYNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!validador.SoloLetrasYNumeros(e.KeyChar.ToString()))
+            if (!char.IsControl(e.KeyChar) && !validador.SoloLetrasYNumeros(e.KeyChar.ToString()))
             {
                 e.Handled = true; // Bloquea la tecla
             }
@@ -322,11 +322,12 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (!validador.FormatoEmailValido(txtEmail.Text))
             {
                 MessageBox.Show("Email inválido");
+                txtEmail.Focus();
             }
         }
         private void txtTexto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!validador.TextoParrafo(e.KeyChar.ToString()))
+            if (!char.IsControl(e.KeyChar) && !validador.TextoParrafo(e.KeyChar.ToString()))
             {
                 e.Handled = true; // Bloquea la tecla
             }
