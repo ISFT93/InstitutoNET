@@ -11,7 +11,8 @@ namespace ISFDyT93.Datos.Daos
         {
             //Query para seleccionar todos resgistros de Carreras
             string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
-              " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId WHERE C.CarreraEstadoId = 1";
+              " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId WHERE C.CarreraEstadoId = 1" +
+              " ORDER BY C.Nombre ASC;";
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasInactivas(bool Activo = false)

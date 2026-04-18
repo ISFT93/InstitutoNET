@@ -89,8 +89,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             _columnasNoMapeadas.Clear();
             _celdasCarreraInvalidas.Clear();
             _columnaCarreraIndex = -1;
-            _propiedades = typeof(AlumnosModelo).GetProperties().Select(p => p.Name).ToList();
-
+            _propiedades = typeof(AlumnosModelo).GetProperties().Select(p => p.Name).OrderBy(name => name).ToList()
             foreach (DataColumn column in dtExcel.Columns.Cast<DataColumn>().ToList())
             {
                 bool matched = false;
@@ -166,8 +165,6 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     e.Graphics.DrawString(texto, e.CellStyle.Font, brush, e.CellBounds, formato);
                     e.Graphics.DrawLine(Pens.Black, e.CellBounds.Left, e.CellBounds.Top, e.CellBounds.Right, e.CellBounds.Top);
                 }
-
-
                 e.Handled = true;
             }
         }
@@ -237,6 +234,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             return dic.ContainsKey(nombrePropiedad) && dic[nombrePropiedad].Any(c => nombreExcel == Validaciones.CrearSlug(c));
         }
 
+        // Valida que las carreras ingresadas existan en la base de datos, marcando en rojo las celdas con valores no válidos
         private void ValidarColumnasCarrera()
         {
             _celdasCarreraInvalidas.Clear();
@@ -260,7 +258,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             if (_dtCarreras == null) return;
 
             var menu = new ContextMenuStrip();
-            menu.MaximumSize = new Size(200, 400);
+            menu.MaximumSize = new Size(600, 400);
             int rowIndex = e.RowIndex;
 
             foreach (DataRow dr in _dtCarreras.Rows)
@@ -275,6 +273,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             menu.Show(dgvCargaMasiva.PointToScreen(new Point(rect.Left, rect.Bottom)));
         }
 
+        // Al seleccionar una carrera válida del menú, actualizar el valor de la celda y eliminarla del conjunto de celdas inválidas
         private void AplicarCarrera(int rowIndex, string nombreCarrera)
         {
             dtExcel.Rows[rowIndex][_carrerasColumnName] = nombreCarrera;
