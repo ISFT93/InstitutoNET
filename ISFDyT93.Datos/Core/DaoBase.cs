@@ -63,7 +63,6 @@ namespace ISFDyT93.Datos.Core
                 }
             }
         }
-
         public string CreateInsertQuery<T>(T model)
         {
             Type type = typeof(T);
