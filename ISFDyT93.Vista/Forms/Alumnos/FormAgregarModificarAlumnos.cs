@@ -1,12 +1,14 @@
 using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Negocio;
+using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using ISFDyT93.Vista.Core;
-using ISFDyT93.Negocio.Core.Enums;
-using ISFDyT93.Vista.Core.Enums;
 
 namespace ISFDyT93.Vista.Forms.Alumnos
 {
@@ -27,6 +29,23 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         AlumnosCarrerasModelo DatosAlumnosCarrera = null;
 
         #endregion
+        private Dictionary<string, string> codigosPostales = new Dictionary<string, string>()
+
+    {
+
+        { "san vicente", "1865" },
+
+        { "alejandro korn", "1864" },
+
+        { "guernica", "1862" },
+
+        { "brandsen", "1980" },
+
+        { "glew", "1856" }
+
+    };
+
+
 
         public FormAgregarModificarAlumnos()
         {
@@ -38,6 +57,12 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormAgregarModificarAlumnos_Load(object sender, EventArgs e)
         {
+            cmbSexo.Items.Clear();
+            cmbSexo.Items.Add("Femenino");
+            cmbSexo.Items.Add("Masculino");
+            cmbSexo.Items.Add("Sin Especificar");
+            cmbSexo.Items.Add(" otro");
+            dtpFechaNacimiento.MaxDate = DateTime.Now.AddYears(-17);
             ObtenerAniosLectivosActivos();
 
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
@@ -74,7 +99,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 pnlEstadoDiscapacidad.Enabled = false;
                 grbDocumentosEntregar.Enabled = false;
                 cmbCicloLectivo.Visible = false;
-                lblAnioLectivo.Visible=false;
+                lblAnioLectivo.Visible = false;
 
                 this.Contenedor.SetTitulo("Ver Alumno");
             }
@@ -203,7 +228,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
+        {     if (!ValidarFormulario())
+                return;
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
 
@@ -255,20 +281,57 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
 
         private void ActualizarAutoComplete()
-        {            
-            txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());       
-            
-            txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());  
-            
-            txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());       
-            
-            txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());     
-            
+        {
+            txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());
+
+            txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+
+            txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+
+            txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());
+
             txtProvincia.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerProvinciaAlumnos());
         }
         private void ObtenerAniosLectivosActivos()
         {
             cmbCicloLectivo.DataSource = new CicloLectivosLogica().ObtenerAniosCiclosLectivosActivos();
         }
+
+        private void grbCarrera_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void txtLocalidad_TextChanged(object sender, EventArgs e)
+        {
+            {
+
+
+                string localidad = txtLocalidad.Text.Trim().ToLower();
+
+                if (codigosPostales.ContainsKey(localidad))
+                {
+                    txtCodigoPostal.Text = codigosPostales[localidad];
+                }
+                else
+                {
+                    txtCodigoPostal.Text = "";
+                }
+            }
+
+        }
+    
+        private bool ValidarFormulario()
+        {
+            var validaciones = new Validaciones();
+            if (!validaciones.Obligatorio(txtLocalidad.Text))
+
+                return false;
+
+            return true;
+
+        }
     }
 }
+

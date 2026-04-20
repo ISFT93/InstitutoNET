@@ -111,10 +111,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
 
-                    tsmAgregarAlumno.Visible = false;
+                    tsmAgregarAlumno.Visible = !activo;
 
 
-                    tsmModificarAlumno.Visible = !activo;
+                    tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
                     tsmAsignarMaterias.Visible = ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
@@ -124,6 +124,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 else
                 {
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
+                    tsmAgregarAlumno.Visible = true;
                     tsmModificarAlumno.Visible = false;
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
