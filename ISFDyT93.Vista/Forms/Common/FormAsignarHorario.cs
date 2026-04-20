@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Forms.Carreras;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;

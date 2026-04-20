@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Logica;
 
@@ -54,14 +54,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             else
             {
                 this.carrera = carrerasLogica.ObtenerCarrera(this.CarreraId);
-                this.Contenedor.SetTitulo($"Correlativas de {carrera.DescripcionCorta}").SetVolver(() => 
+                this.Contenedor.SetTitulo($"Correlativas de {carrera.DescripcionCorta}").SetVolver(() =>
                 {
                     this.Contenedor.AbrirFormulario<FormCarreras>();
                 });
                 dgvCorrelativas.DataSource = correlativasLogica.ObtenerCorrelativasCarrera(CarreraId);
             }
-            
-            
+
+
 
             LimpiarDuplicadas();
         }

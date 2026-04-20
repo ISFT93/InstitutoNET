@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Vista.Core;
 using System.Data;
 using System.Linq;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Vista.Core.Enums;
 
 namespace ISFDyT93.Vista.Forms.Personal
@@ -23,19 +23,19 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         private PersonalModelo Modelo { get; set; }
         #endregion
-        
+
         byte Tramo;
-        
+
         public FormAgregarModificarPersonal()
         {
             this.DoubleBuffered = true;
-            personalLogica = new PersonalLogica();            
+            personalLogica = new PersonalLogica();
             InitializeComponent();
         }
 
         private void FormAgregarProfesores_Load(object sender, EventArgs e)
         {
-            if(this.Accion == TipoAccion.Agregar)
+            if (this.Accion == TipoAccion.Agregar)
             {
                 this.Contenedor.SetTitulo("Agregar Personal");
             }
@@ -43,13 +43,14 @@ namespace ISFDyT93.Vista.Forms.Personal
             {
                 this.Contenedor.SetTitulo("Modificar Personal");
             }
-            else if(this.Accion == TipoAccion.Ver)
+            else if (this.Accion == TipoAccion.Ver)
             {
                 this.Contenedor.SetTitulo("Ver Personal");
                 this.DeshabilitarControles();
             }
 
-            this.Contenedor.SetVolver(() => {
+            this.Contenedor.SetVolver(() =>
+            {
                 this.Contenedor.AbrirFormulario<FormPersonal>();
             });
 
@@ -75,7 +76,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
 
         }
-        
+
         public void Limpiar()
         {
             txtNumeroDocumento.Text = "";

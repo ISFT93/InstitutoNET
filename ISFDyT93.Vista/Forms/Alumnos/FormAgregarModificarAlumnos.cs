@@ -1,4 +1,4 @@
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using System;
 using System.Data;
@@ -12,7 +12,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 {
     public partial class FormAgregarModificarAlumnos : FormBase
     {
-        #region Propuedades Públicas
+        #region Propuedades Pï¿½blicas
         public int AlumnoId { get; set; }
         public TipoAccion Accion { get; set; }
         #endregion
@@ -42,7 +42,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
-            cmbCarreraId.DisplayMember = "Descripción";
+            cmbCarreraId.DisplayMember = "Descripciï¿½n";
             cmbMayorTitulo.Text = "Nignuno";
 
             this.Contenedor.SetVolver(() =>
@@ -74,7 +74,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 pnlEstadoDiscapacidad.Enabled = false;
                 grbDocumentosEntregar.Enabled = false;
                 cmbCicloLectivo.Visible = false;
-                lblAnioLectivo.Visible=false;
+                lblAnioLectivo.Visible = false;
 
                 this.Contenedor.SetTitulo("Ver Alumno");
             }
@@ -255,15 +255,15 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
 
         private void ActualizarAutoComplete()
-        {            
-            txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());       
-            
-            txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());  
-            
-            txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());       
-            
-            txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());     
-            
+        {
+            txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());
+
+            txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+
+            txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+
+            txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());
+
             txtProvincia.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerProvinciaAlumnos());
         }
         private void ObtenerAniosLectivosActivos()

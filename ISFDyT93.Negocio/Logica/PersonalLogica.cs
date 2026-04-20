@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using iTextSharp.text.pdf;
 using ISFDyT93.Negocio.Core;
 using System.Collections.Generic;
@@ -20,8 +20,8 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.personalDao = new PersonalDao();
         }
-         
-        public DataTable ObtenerListaPersonal(TipoFiltroProfesor tipo,  string filtro, int estado )
+
+        public DataTable ObtenerListaPersonal(TipoFiltroProfesor tipo, string filtro, int estado)
         {
             if (string.IsNullOrEmpty(filtro))
             {
@@ -56,9 +56,9 @@ namespace ISFDyT93.Negocio.Logica
             System.IO.File.Copy(archivoViejo, path + archivoNuevo);
         }
 
-        public void AsignarProfesorMateria( int MateriaId, int CursoId, int ProfesorId, string Fecha)
+        public void AsignarProfesorMateria(int MateriaId, int CursoId, int ProfesorId, string Fecha)
         {
-            this.personalDao.AsignarProfesorMateria( MateriaId, CursoId, ProfesorId, Fecha);
+            this.personalDao.AsignarProfesorMateria(MateriaId, CursoId, ProfesorId, Fecha);
         }
 
         public void AgregarPersonal(PersonalModelo modelo)
@@ -87,7 +87,7 @@ namespace ISFDyT93.Negocio.Logica
         public int ModificarPersonal(PersonalModelo modelo)
         {
             string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
-           
+
             string archiImagen = modelo.Foto;
 
             if (!string.IsNullOrEmpty(modelo.Foto) && !modelo.Foto.StartsWith(@"\Imagen"))
@@ -97,7 +97,7 @@ namespace ISFDyT93.Negocio.Logica
             }
 
             if (this.personalDao.ModificarPersonal(modelo) > 0)
-            {              
+            {
                 if (!string.IsNullOrEmpty(archiImagen) && !archiImagen.StartsWith(@"\Imagen"))
                     GuardarArchivo(archiImagen, modelo.Foto, @"\Imagen");
             }
@@ -152,7 +152,7 @@ namespace ISFDyT93.Negocio.Logica
                     campos.SetField("Celular", fila["Celular"].ToString());
                     campos.SetField("Email", fila["Email"].ToString());
 
-                    if((fila["Foto"] != DBNull.Value) && (!string.IsNullOrEmpty(fila["Foto"].ToString())))
+                    if ((fila["Foto"] != DBNull.Value) && (!string.IsNullOrEmpty(fila["Foto"].ToString())))
                     {
                         try
                         {
@@ -168,7 +168,7 @@ namespace ISFDyT93.Negocio.Logica
                         }
                         catch
                         {
-                            
+
                         }
                     }
                 }
@@ -183,7 +183,7 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataTable ObtenerProfesorMaterias(int ProfesorId)
         {
-          return this.personalDao.ObtenerProfesorMaterias(ProfesorId);
+            return this.personalDao.ObtenerProfesorMaterias(ProfesorId);
         }
 
         public bool PersonalExiste(string DNI)
@@ -211,7 +211,7 @@ namespace ISFDyT93.Negocio.Logica
                     Proyecto = @"\PDF\Proyecto_" + time + ".pdf";
                 }
 
-                if (this.personalDao.AgregarDocumentacion(Analitico, Proyecto, ProfesorMateriaId,CiclosLectivoId) > 0)
+                if (this.personalDao.AgregarDocumentacion(Analitico, Proyecto, ProfesorMateriaId, CiclosLectivoId) > 0)
                 {
 
                     if (!string.IsNullOrEmpty(archiAnalitico))
@@ -219,11 +219,11 @@ namespace ISFDyT93.Negocio.Logica
 
                     if (!string.IsNullOrEmpty(archiProyecto))
                         GuardarArchivo(archiProyecto, Proyecto, @"\PDF");
-                
+
                 }
 
             }
-            catch 
+            catch
             {
 
             }
@@ -267,7 +267,7 @@ namespace ISFDyT93.Negocio.Logica
             return id;
         }
 
-        public DataRow ObtenerDocumentacion( int ProfesorMateriaId, int CicloLectivoId )
+        public DataRow ObtenerDocumentacion(int ProfesorMateriaId, int CicloLectivoId)
         {
             return this.personalDao.ObtenerDocumentacion(ProfesorMateriaId, CicloLectivoId);
         }
@@ -276,7 +276,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.personalDao.ObtenerPath(ProfesorMateriaId, CicloLectivoId);
         }
-        
+
         public void DarAltaProfesores(int ProfesorId)
         {
             this.personalDao.DarAltaProfesores(ProfesorId);

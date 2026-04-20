@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System.Collections.Generic;
 using System.Windows.Forms;
 

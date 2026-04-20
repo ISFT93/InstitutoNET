@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Forms.Common;
 
@@ -55,8 +55,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                     this.AnioCarreraId = Convert.ToInt32(dgvAniosCarrera["AnioCarreraId", info.RowIndex].Value.ToString());
 
-                    int anio = Convert.ToInt32( dgvAniosCarrera.Rows[0].Cells[0].Selected);
-                    if (anio== 1)
+                    int anio = Convert.ToInt32(dgvAniosCarrera.Rows[0].Cells[0].Selected);
+                    if (anio == 1)
                     {
                         tsmVerCorrelativas.Visible = false;
                     }
@@ -74,7 +74,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         tsmVerMaterias.Text = "Asignar Materias";
                         tsmVerHorarios.Visible = false;
                         tsmVerCursos.Visible = false;
-                    } 
+                    }
                     if (this.Carrera.CarreraEstadoId == (int)CarreraEstado.Bloqueado && info.RowIndex == dgvAniosCarrera.RowCount - 1)
                     {
                         tsmVerMaterias.Visible = false;
@@ -97,9 +97,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmVerMaterias_Click(object sender, EventArgs e)
         {
-            if(this.AnioCarreraId > 0)
+            if (this.AnioCarreraId > 0)
             {
-                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form => {
+                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+                {
                     form.AnioCarreraId = this.AnioCarreraId;
                 });
             }
@@ -122,10 +123,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
 
         public FormAniosCarreras()
-        { 
+        {
             this.CarrerasLogica = new CarrerasLogica();
             this.AniosLogica = new AniosCarreraLogica();
-          
+
             InitializeComponent();
         }
 
@@ -136,15 +137,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             dgvAniosCarrera.DataSource = AniosLogica.ObtenerAniosCarrera(CarreraId);
             dgvAniosCarrera.Columns["AnioCarreraId"].Visible = false;
 
-            this.Contenedor.SetTitulo($"Años de { this.Carrera.DescripcionCorta }")
-                .SetVolver(() => {
+            this.Contenedor.SetTitulo($"Años de {this.Carrera.DescripcionCorta}")
+                .SetVolver(() =>
+                {
                     this.Contenedor.AbrirFormulario<FormCarreras>(form =>
                     {
                         form.CarreraId = this.CarreraId;
                     });
                 });
         }
-       
+
         private void FormAniosCarreras_Load(object sender, EventArgs e)
         {
             this.RecargarGrilla();
@@ -155,12 +157,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             int cargaHorariaTotal = 0;
 
-            if (dgvAniosCarrera.RowCount> 0)
+            if (dgvAniosCarrera.RowCount > 0)
             {
                 for (int i = 0; i < dgvAniosCarrera.RowCount; i++)
                 {
                     cargaHorariaTotal += Convert.ToInt32(dgvAniosCarrera.Rows[i].Cells["Carga Horaria Completa"].Value);
-                   
+
                 }
                 lblCargaHorariaTotal.Text = "Carga horaria total: " + cargaHorariaTotal.ToString();
             }

@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using System;

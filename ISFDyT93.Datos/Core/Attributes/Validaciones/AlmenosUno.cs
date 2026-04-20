@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,15 +36,15 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 
             var campos = this.Campos.Split(':');
 
-            foreach(var campo in campos)
+            foreach (var campo in campos)
             {
                 var propiedad = tipo.GetProperty(campo);
 
-                if(propiedad != null)
+                if (propiedad != null)
                 {
                     var valor = propiedad.GetValue(modelo);
 
-                    if(!validado)
+                    if (!validado)
                     {
                         validado = TieneValor(valor);
                     }

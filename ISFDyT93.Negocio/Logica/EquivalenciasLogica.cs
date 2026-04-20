@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Negocio.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Daos;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -16,7 +16,7 @@ namespace ISFDyT93.Datos.Daos
         public int AgregarAnio(int anioCarrera, int carreraId)
         {
             string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId) VALUES(" + anioCarrera + "," + carreraId + ")";
-                
+
             return this.Conexion.EjecutarAccion(query);
         }
 
@@ -29,9 +29,9 @@ namespace ISFDyT93.Datos.Daos
 
         public int ActualizarCargaHoria(int anioCarreraId)
         {
-            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId =" + anioCarreraId+")," +
+            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId =" + anioCarreraId + ")," +
             "CargaHorariaCompleta = (SELECT SUM(CargaHoraria) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") WHERE AnioCarreraId = " + anioCarreraId;
-            
+
             return this.Conexion.EjecutarAccion(query);
         }
         public DataTable ObtenerAnios(int alumnoId)
@@ -45,7 +45,7 @@ namespace ISFDyT93.Datos.Daos
 
         public int ObtenerCargaHoraria(int CarreraId)
         {
-            string query = "SELECT SUM(CargaHorariaCompleta) as CargaHoraria FROM AniosCarreras WHERE CarreraId = "+ CarreraId;
+            string query = "SELECT SUM(CargaHorariaCompleta) as CargaHoraria FROM AniosCarreras WHERE CarreraId = " + CarreraId;
             var row = this.Conexion.ObtenerRegistro(query);
             try
             {
@@ -69,7 +69,7 @@ namespace ISFDyT93.Datos.Daos
 
         public AniosCarrerasModelo ObtenerAnioCarrera(int anioCarreraId)
         {
-            string query = $"SELECT A.*, C.DescripcionCorta AS NombreCarrera, C.CarreraEstadoId FROM AniosCarreras A INNER JOIN Carreras C ON A.CarreraId = C.CarreraId where AnioCarreraId = { anioCarreraId }";
+            string query = $"SELECT A.*, C.DescripcionCorta AS NombreCarrera, C.CarreraEstadoId FROM AniosCarreras A INNER JOIN Carreras C ON A.CarreraId = C.CarreraId where AnioCarreraId = {anioCarreraId}";
             return this.MapToModel<AniosCarrerasModelo>(this.Conexion.ObtenerRegistro(query));
         }
 

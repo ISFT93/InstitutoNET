@@ -1,4 +1,6 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Core.Attributes;
+using ISFDyT93.Entidades.Core.Attributes.Validaciones;
+using ISFDyT93.Entidades.Core;
 using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -48,7 +50,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
             string table = type.Name.Substring(0, type.Name.IndexOf("Modelo"));
             string query = null;
 
-           // if (modelo.Modificando())
+            // if (modelo.Modificando())
             {
                 var clave = type.GetProperties()
                     .Where(p => Attribute.IsDefined(p, typeof(Clave)))
@@ -60,14 +62,14 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
                     {
                         if (valorClave > 0)
                         {
-                            query = $"SELECT TOP 1 { this.PropertyName } FROM { table } WHERE { this.PropertyName } = '{ value }' AND { clave.Name } != { valorClave }";
+                            query = $"SELECT TOP 1 {this.PropertyName} FROM {table} WHERE {this.PropertyName} = '{value}' AND {clave.Name} != {valorClave}";
                         }
                     }
                 }
             }
-          //  else
+            //  else
             {
-                query = $"SELECT TOP 1 { this.PropertyName } FROM { table } WHERE { this.PropertyName } = '{ value.ToString() }'";
+                query = $"SELECT TOP 1 {this.PropertyName} FROM {table} WHERE {this.PropertyName} = '{value.ToString()}'";
             }
 
 

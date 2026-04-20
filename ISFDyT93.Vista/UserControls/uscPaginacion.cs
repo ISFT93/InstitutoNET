@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core.Enums;
 using System;
@@ -18,7 +18,7 @@ namespace CapaPresentacionAdmin.Controls
         public uscPaginacion()
         {
             InitializeComponent();
-            BuscarPaginacion();            
+            BuscarPaginacion();
         }
 
         private int Paginacion { get; set; } = 100;
@@ -34,14 +34,14 @@ namespace CapaPresentacionAdmin.Controls
                 if (_entradaDatos != null)
                 {
                     cantidadFilas = _entradaDatos.Rows.Count;
-                    cantidadPartes =  (int)Math.Ceiling((double)(cantidadFilas / (double)Paginacion));
+                    cantidadPartes = (int)Math.Ceiling((double)(cantidadFilas / (double)Paginacion));
                     if (cantidadPartes == 0) cantidadPartes = 1;
                     setearContador();
                     CambiarPagina(1);
                 }
             }
         }
-        
+
         private DataTable _entradaDatos;
         private int cantidadPartes = 0;
         private int paginaActual = 1;
@@ -74,12 +74,12 @@ namespace CapaPresentacionAdmin.Controls
             btnSegundo.Width = btnSizes;
             btnTercero.Width = btnSizes;
             btnDerecha.Width = btnSizes;
-        }       
+        }
         private void Convertir()
-        {  
+        {
             SalidaDatos = EntradaDatos.Copy();
             SalidaDatos.Rows.Clear();
-            
+
             int fila = 0;
             int minimo = (paginaActual * Paginacion) - Paginacion;
             int maximo = paginaActual * Paginacion;
@@ -90,8 +90,8 @@ namespace CapaPresentacionAdmin.Controls
                 if (fila < maximo & fila >= minimo)
                 {
                     SalidaDatos.ImportRow(dr);
-                }                
-                fila++;                
+                }
+                fila++;
             }
             dataGridView.DataSource = SalidaDatos;
         }
@@ -111,10 +111,10 @@ namespace CapaPresentacionAdmin.Controls
         }
         private void CambiarPagina(int pagina)
         {
-            if(pagina >= 1 && pagina <= cantidadPartes)
-            {                
+            if (pagina >= 1 && pagina <= cantidadPartes)
+            {
                 paginaActual = pagina;
-                if(pagina >= 4)
+                if (pagina >= 4)
                 {
                     btnPrimero.Text = (pagina - 1).ToString();
                     btnSegundo.Text = pagina.ToString();
@@ -151,8 +151,8 @@ namespace CapaPresentacionAdmin.Controls
             {
                 btnTercero.Select();
                 btnTercero.BackColor = Color.FromArgb(156, 219, 224);
-            }     
-            
+            }
+
         }
         private void setearContador()
         {

@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {
@@ -17,24 +17,26 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
             this.Minimo = minimo;
             this.Maximo = maximo;
 
-            if(this.Long >= 0)
+            if (this.Long >= 0)
             {
-                this.Mensaje = $"El campo debe tener { this.Long } caracteres";
-            } else {
+                this.Mensaje = $"El campo debe tener {this.Long} caracteres";
+            }
+            else
+            {
 
-                if(Minimo >= 0 && Maximo >= 0)
+                if (Minimo >= 0 && Maximo >= 0)
                 {
-                    this.Mensaje = $"El campo debe tener entre ${ this.Minimo } y ${ this.Maximo } caracteres";
-                } 
+                    this.Mensaje = $"El campo debe tener entre ${this.Minimo} y ${this.Maximo} caracteres";
+                }
                 else
                 {
                     if (this.Minimo >= 0)
                     {
-                        this.Mensaje = $"El campo debe tener un mínimo de ${ this.Minimo } caracteres";
+                        this.Mensaje = $"El campo debe tener un mínimo de ${this.Minimo} caracteres";
                     }
-                    else if(this.Maximo >= 0)
+                    else if (this.Maximo >= 0)
                     {
-                        this.Mensaje = $"El campo debe tener un máximo de ${ this.Maximo } caracteres";
+                        this.Mensaje = $"El campo debe tener un máximo de ${this.Maximo} caracteres";
                     }
                 }
             }

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Forms.Common;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
@@ -70,7 +70,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmA.Enabled = string.IsNullOrEmpty(asistencia.ToString());
             }
 
-                    
+
 
             this.CalcularPorcentajeActual();
         }
@@ -270,7 +270,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             };
             var datos = this.controlAsistenciasLogica.CargarAsistenciasAlumnosReporte(modelo);
 
-            this.Contenedor.AbrirFormulario<FormReporte>(form => {
+            this.Contenedor.AbrirFormulario<FormReporte>(form =>
+            {
                 form.SetReporte("Diseño.Reports.ControlAsistencias.rdlc")
                 .AddDataSource(datos, "DSListaAsistencia")
                 .AddParameter("Materia", txtNombreMateria.Text)

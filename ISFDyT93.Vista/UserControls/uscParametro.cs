@@ -2,10 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Vista.Forms.Componetes;
 using ISFDyT93.Vista.Core.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Vista.UserControls
 {
@@ -186,7 +186,7 @@ namespace ISFDyT93.Vista.UserControls
         }
 
         #endregion
-               
+
         private void picMover_Click(object sender, EventArgs e)
         {
             FormNotificacion.Mensaje(TipoNotificacion.Message, $"{Nombre}\n{Descripcion}", Tiempo: 3000);

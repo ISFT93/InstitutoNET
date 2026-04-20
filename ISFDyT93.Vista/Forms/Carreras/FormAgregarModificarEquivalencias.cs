@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using Microsoft.ReportingServices.Diagnostics.Internal;
 
@@ -39,7 +39,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             Contenedor.SetTitulo("Equivalencias de " + NombreCarrera).SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormCarreras>();
-            }); 
+            });
             cmbCarreras.DataSource = equivalenciasLogica.ObtenerCarreras(CarreraId);
             cmbCarreras.DisplayMember = "DescripcionCorta";
             cmbCarreras.ValueMember = "CarreraId";

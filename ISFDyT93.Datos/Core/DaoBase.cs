@@ -1,8 +1,8 @@
-﻿using ISFDyT93.Datos.Core.Attributes;
+﻿using ISFDyT93.Entidades.Core.Attributes;
 using System;
 using System.Linq;
 using System.Data;
-using ISFDyT93.Datos.Core.Attributes.Validaciones;
+using ISFDyT93.Entidades.Core;
 using System.Collections.Generic;
 
 namespace ISFDyT93.Datos.Core

@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -36,25 +36,25 @@ namespace ISFDyT93.Datos.Daos
             string query = $"SELECT Nombre, Apellido FROM Personal WHERE PersonalId = 2";
             return this.Conexion.ObtenerRegistro(query);
         }
-       
+
         public void ActualizoUltimaFechaAsistencia(AsistenciasModelo Modelo)
-        {   
+        {
             string FechaA = Modelo.UltimoPresentismo.ToString("yyyy-MM-dd");
-            string query = "update CursadaAlumnoCarreras set UltimoPresentismo = '" + FechaA +"', HorasCursadas = '" + Modelo.HorasCursadas + "', PorcentajeAsistencia = '" + Modelo.PorcentajeAsistencia + "'  where CursadaAlumnoCarreraId = '" + Modelo.CursadaAlumnoCarreraId + "'";
+            string query = "update CursadaAlumnoCarreras set UltimoPresentismo = '" + FechaA + "', HorasCursadas = '" + Modelo.HorasCursadas + "', PorcentajeAsistencia = '" + Modelo.PorcentajeAsistencia + "'  where CursadaAlumnoCarreraId = '" + Modelo.CursadaAlumnoCarreraId + "'";
             this.Conexion.EjecutarAccion(query);
         }
 
         public int AgregarAsistencia(AsistenciasModelo Modelo)
         {
             string FechaA = Modelo.UltimoPresentismo.ToString("yyyy-MM-dd");
-            string query = $"INSERT INTO Asistencias VALUES ('{ FechaA }', '{ Modelo.Asistencia }', { Modelo.CursadaAlumnoCarreraId })";
+            string query = $"INSERT INTO Asistencias VALUES ('{FechaA}', '{Modelo.Asistencia}', {Modelo.CursadaAlumnoCarreraId})";
             return this.Conexion.EjecutarAccion(query);
         }
 
         public int ActualizarCursada(AsistenciasModelo Modelo)
         {
             string FechaA = Modelo.FechaAsistenciaStr;
-            string query = $"UPDATE Cursadas SET HoraCatedra = '{ Modelo.HorasCursadas }', FechaAsistencia = '{ FechaA }', PorcentajeAsistencia = '{ Modelo.PorcentajeAsistencia }' WHERE CursadaId = { Modelo.CursadaId }";
+            string query = $"UPDATE Cursadas SET HoraCatedra = '{Modelo.HorasCursadas}', FechaAsistencia = '{FechaA}', PorcentajeAsistencia = '{Modelo.PorcentajeAsistencia}' WHERE CursadaId = {Modelo.CursadaId}";
             return this.Conexion.EjecutarAccion(query);
         }
 
@@ -75,7 +75,7 @@ namespace ISFDyT93.Datos.Daos
         public DataRow CalcularPorcentajeAsistenciaAlumnos(AsistenciasModelo Modelo)
         {
             DataRow dr;
-            string query = "select PorcentajeAsistencia from CursadaAlumnoCarreras where AlumnoCarreraId = '"+ Modelo.AlumnoCarreraId + "'";
+            string query = "select PorcentajeAsistencia from CursadaAlumnoCarreras where AlumnoCarreraId = '" + Modelo.AlumnoCarreraId + "'";
             dr = this.Conexion.ObtenerRegistro(query);
             return dr;
         }
@@ -110,7 +110,7 @@ namespace ISFDyT93.Datos.Daos
             parAsistencia.Value = Modelo.Asistencia;
             var parCursadaAlumnoCarreraId = new SqlParameter("CursadaAlumnoCarreraId", SqlDbType.Int);
             parCursadaAlumnoCarreraId.Value = Modelo.Asistencia;
-            var parametros = new SqlParameter[10] { parHorascursadasCa, parPorcentajeAsistenciaCa, parUltimoPresentismoCa, parFechaAsistencia,parHoraCatedraC, parPorcentajeAsistenciaC, parCursadaId, parAlumnoCarreraId, parAsistencia, parCursadaAlumnoCarreraId };
+            var parametros = new SqlParameter[10] { parHorascursadasCa, parPorcentajeAsistenciaCa, parUltimoPresentismoCa, parFechaAsistencia, parHoraCatedraC, parPorcentajeAsistenciaC, parCursadaId, parAlumnoCarreraId, parAsistencia, parCursadaAlumnoCarreraId };
             res = this.Conexion.EjecutarStoreNumber("SP_ActualizarPorcentajeAsistencia", parametros);
             return res;
         }

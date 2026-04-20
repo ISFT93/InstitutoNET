@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
@@ -47,14 +47,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmAsignarCurso.Visible = false;
             }
 
-            this.Contenedor.SetVolver(() => {
+            this.Contenedor.SetVolver(() =>
+            {
                 this.Contenedor.AbrirFormulario<FormAniosCarreras>(form =>
                 {
                     form.CarreraId = this.anioCarrera.CarreraId;
                 });
             });
 
-            this.Contenedor.SetTitulo($"Cursos de { anioCarrera.AnioCarrera } - { anioCarrera.NombreCarrera }");
+            this.Contenedor.SetTitulo($"Cursos de {anioCarrera.AnioCarrera} - {anioCarrera.NombreCarrera}");
         }
 
         private void dgvCursos_MouseUp(object sender, MouseEventArgs e)
@@ -109,7 +110,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbActivos.Checked)
+            if (rbActivos.Checked)
             {
                 this.CargarGrilla();
             }

@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,7 +9,7 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerCargos(int personalId)
         {
-         
+
             var parPersonalId = new SqlParameter("PersonalId", SqlDbType.Int);
             parPersonalId.Value = personalId;
 
@@ -43,7 +43,7 @@ namespace ISFDyT93.Datos.Daos
                 "LEFT JOIN AniosCarreras ac on ma.AnioCarreraId = ac.AnioCarreraId " +
                 "LEFT JOIN LibroActas la on la.LibroActaId = se.LibroActaId " +
                 "LEFT JOIN  Cursos cu on cu.CursoId = cm.CursoId " +
-                $"WHERE se.personalId = { personalId } AND se.Activo = { activo }";
+                $"WHERE se.personalId = {personalId} AND se.Activo = {activo}";
             return this.Conexion.ObtenerRegistros(query);
         }
 
@@ -65,7 +65,7 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        
+
 
         public DataTable ObtenerMateriasLibres(int tipoAsignacionId, int cursoId, int situacionRevistaId)
         {
@@ -126,17 +126,17 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "SELECT * FROM Carreras WHERE JefeCatedra IS NULL AND Activo= 'True'";
 
-            return this.Conexion.ObtenerRegistros(query) ;
+            return this.Conexion.ObtenerRegistros(query);
         }
 
         public DataTable ObtenerAnioCarreras(int carreraId)
         {
-            string query = "SELECT AnioCarreraId, AnioCarrera FROM AniosCarreras WHERE CarreraId="+carreraId;
+            string query = "SELECT AnioCarreraId, AnioCarrera FROM AniosCarreras WHERE CarreraId=" + carreraId;
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable ObtenerCursos(int anioCarreraId)
         {
-            string query = "SELECT CursoId, NombreCurso FROM Cursos WHERE Activo=1 and AnioCarreraId="+ anioCarreraId;
+            string query = "SELECT CursoId, NombreCurso FROM Cursos WHERE Activo=1 and AnioCarreraId=" + anioCarreraId;
             return this.Conexion.ObtenerRegistros(query);
         }
 

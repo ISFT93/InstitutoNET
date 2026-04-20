@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.UserControls;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Vista.Core.Enums;
 using System.Data;
 using System.Collections;
@@ -80,9 +80,9 @@ namespace ISFDyT93.Vista
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(chkTabla.Checked)
+            if (chkTabla.Checked)
             {
-                foreach(var control in flpContenedor.Controls)
+                foreach (var control in flpContenedor.Controls)
                 {
                     if (control.GetType() == typeof(uscCargos))
                         ((uscCargos)control).Guardar();

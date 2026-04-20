@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Datos.Daos;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 
 namespace ISFDyT93.Negocio.Logica
@@ -21,7 +21,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             var anioLectivo = this.ciclolectivoDao.AgregarCicloLectivo(Modelo);
 
-            if(anioLectivo > 0)
+            if (anioLectivo > 0)
             {
                 this.ciclolectivoDao.CargarCursadasSP(anioLectivo);
             }
@@ -54,13 +54,13 @@ namespace ISFDyT93.Negocio.Logica
             return this.ciclolectivoDao.AgregarFechaFinalesDiciembre(modelo);
         }
 
-       
+
         public int IngresoCursadaPrimeroSP(int CicloLectivo)
         {
             return this.ciclolectivoDao.IngresoCursadaPrimeroSP(CicloLectivo);
         }
 
-        
+
         public DataTable ObtenerCargaGrillaCicloLectivo()
         {
             return this.ciclolectivoDao.ObtenerCicloLectivo();
@@ -70,14 +70,14 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.ciclolectivoDao.ObtenerAlumnoDePrimero(aniolectivo);
         }
-        
+
         public int ObtenerMaximoAnioCicloLectivo()
         {
             int maxAnioLectivo = 0;
             var dt = this.ciclolectivoDao.ObtenerCicloLectivo();
-            if(dt.Rows.Count > 0)             
-                maxAnioLectivo = (int)dt.Compute("Max(AnioLectivo)", "");          
-           
+            if (dt.Rows.Count > 0)
+                maxAnioLectivo = (int)dt.Compute("Max(AnioLectivo)", "");
+
             return maxAnioLectivo;
         }
 
@@ -91,12 +91,12 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataTable CargarInscripcionAlumnoSP(int CicloLectivo)
         {
-         return this.ciclolectivoDao.CargarInscripcionAlumnoSP(CicloLectivo);
-            
+            return this.ciclolectivoDao.CargarInscripcionAlumnoSP(CicloLectivo);
+
         }
-        
+
         public int[] ObtenerAniosCiclosLectivos()
-        {            
+        {
             var ciclosLectivos = this.ciclolectivoDao.ObtenerCicloLectivo();
             return ciclosLectivos.Rows.Cast<DataRow>().Select(r => r.Field<int>("AnioLectivo")).ToArray();
         }
@@ -109,10 +109,10 @@ namespace ISFDyT93.Negocio.Logica
 
         public int ObtenerCicloLectivoActual()
         {
-            DataRow[] dr = this.ciclolectivoDao.ObtenerCicloLectivo().Select("Activo=True");           
+            DataRow[] dr = this.ciclolectivoDao.ObtenerCicloLectivo().Select("Activo=True");
             if (dr.Length > 0) return Convert.ToInt32(dr.Cast<DataRow>().Select(r => r.Field<int>("AnioLectivo")).ToArray()[0]);
             return 0;
         }
     }
-    
+
 }

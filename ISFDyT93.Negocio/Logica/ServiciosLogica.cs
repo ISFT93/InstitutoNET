@@ -1,6 +1,6 @@
 ﻿using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System;
 using System.Data;
@@ -27,9 +27,9 @@ namespace ISFDyT93.Negocio.Logica
             var libro = this.serviciosDao.ObtenerUltimoLibro(tipoLibroId);
             int libroNumero = -1;
 
-            if(libro != null)
-            {   
-                if(libro.FolioNumero == libro.FolioMaximo)
+            if (libro != null)
+            {
+                if (libro.FolioNumero == libro.FolioMaximo)
                 {
                     libroNumero = libro.LibroNumero;
                 }
@@ -43,7 +43,7 @@ namespace ISFDyT93.Negocio.Logica
                 libroNumero = 0;
             }
 
-            if(libroNumero != -1)
+            if (libroNumero != -1)
             {
                 libroNumero++;
 
@@ -67,10 +67,10 @@ namespace ISFDyT93.Negocio.Logica
         }
 
         public DataTable ObtenerSituacionRevista()
-        { 
+        {
             return this.serviciosDao.ObtenerSituacionRevista();
         }
-         
+
         public DataTable ObtenerCargosAsignados(int CargoId, int personalId)
         {
             return this.serviciosDao.ObtenerCargosAsignados(CargoId, personalId);
@@ -95,7 +95,7 @@ namespace ISFDyT93.Negocio.Logica
 
             var result = this.serviciosDao.AgregarServicio(servicio);
 
-            if(result > 0)
+            if (result > 0)
             {
                 if (servicio.CargoId == (int)Cargo.JefeCatedra)
                 {
@@ -118,14 +118,14 @@ namespace ISFDyT93.Negocio.Logica
 
             var result = this.serviciosDao.ActualizarServicio(servicio);
 
-            if(result > 0)
+            if (result > 0)
             {
-                if(servicio.CargoId == (int)Cargo.JefeCatedra)
+                if (servicio.CargoId == (int)Cargo.JefeCatedra)
                 {
                     this.serviciosDao.ActualizarJefeCatedra(servicio.CarreraId.Value, null);
                 }
 
-                if(cantidadServicios == 1)
+                if (cantidadServicios == 1)
                 {
                     this.serviciosDao.ActualizarPersonalEstado((int)PersonalEstado.Inactiva, servicio.PersonalId);
                 }
@@ -133,7 +133,7 @@ namespace ISFDyT93.Negocio.Logica
         }
 
         public DataTable ObtenerCarreras(int tipoAsignacionId, int situacionRevistaId)
-        { 
+        {
             return this.serviciosDao.ObtenerCarreras(tipoAsignacionId, situacionRevistaId);
         }
         public DataTable ObtenerCarrerasSinJefeCatedra(int PersonalId)
@@ -142,11 +142,11 @@ namespace ISFDyT93.Negocio.Logica
         }
 
         public DataTable ObtenerAnioCarreras(int CarreraId)
-        { 
+        {
             return this.serviciosDao.ObtenerAnioCarreras(CarreraId);
         }
         public DataTable ObtenerCursos(int AnioCarreraId)
-        { 
+        {
             return this.serviciosDao.ObtenerCursos(AnioCarreraId);
         }
         public int ObtenerModuloMateria(int CursoMateriaId)
@@ -154,8 +154,8 @@ namespace ISFDyT93.Negocio.Logica
             DataRow row = serviciosDao.ObtenerModuloMateria(CursoMateriaId);
             string result = row["Modulos"].ToString();
             if (result != null && result != "")
-                    return Convert.ToInt32(result);
-            
+                return Convert.ToInt32(result);
+
             return -1;
         }
     }

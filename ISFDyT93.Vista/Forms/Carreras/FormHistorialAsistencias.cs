@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Core;
 using System;
 using ISFDyT93.Vista.Forms.Alumnos;
@@ -41,7 +41,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormHistorialAsistencia_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void CargarPropiedadesFormPrincipal()
@@ -67,7 +67,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             var datos = this.controlAsistenciasLogica.HistorialAsistenciasAlumnos(CursadaAlumnoCarreraStr);
 
-            this.Contenedor.AbrirFormulario<FormReporte>(form => {
+            this.Contenedor.AbrirFormulario<FormReporte>(form =>
+            {
                 form.SetReporte("Diseño.Reports.HistorialAsistenciasAlumnos.rdlc")
                 .AddDataSource(datos, "DSHistorialAsistenciasAlumno")
                 .AddParameter("Alumno", txtHistAsistenciaAl.Text)
@@ -92,7 +93,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             txtHistAsistenciaMateria.Text = Materia;
             txtHistAsistenciaModulos.Text = Modulos.ToString();
             txtHistAsistenciaUltimoPresentismo.Text = UltimoPresentismo.ToString("dd-MM-yyyy");
-           
+
 
             this.CargarPropiedadesFormPrincipal();
         }

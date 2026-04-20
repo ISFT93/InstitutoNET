@@ -37,22 +37,22 @@ namespace ISFDyT93.Negocio.Logica
             return dt;
         }
 
-        public int BajaLicencia(Datos.Modelos.LicenciaServicioModelo modelo)
+        public int BajaLicencia(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             return this.LicenciaDao.BajaLicencia(modelo);
         }
-        public DataTable ObtenerServiciosDeActivo(Datos.Modelos.LicenciaServicioModelo modelo)
+        public DataTable ObtenerServiciosDeActivo(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             return this.LicenciaDao.ObtenerLicenciasDeActivos(modelo);
         }
 
-        public DataTable ObtenerServiciosDeInactivo(Datos.Modelos.LicenciaServicioModelo modelo)
+        public DataTable ObtenerServiciosDeInactivo(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             return this.LicenciaDao.ObtenerLicenciasDeInactivos(modelo);
 
         }
 
-        public DataRow ObtenerFechaBajaObligatorio(Datos.Modelos.LicenciaServicioModelo modelo)
+        public DataRow ObtenerFechaBajaObligatorio(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             return this.LicenciaDao.ObtenerFechaBajaObligatorio(modelo);
         }
@@ -62,7 +62,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.LicenciaDao.ObtenerLicenciasTipo();
         }
 
-        public int AltaLicencia(Datos.Modelos.LicenciaServicioModelo modelo)
+        public int AltaLicencia(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
             string rutaOriginal = modelo.certificado;

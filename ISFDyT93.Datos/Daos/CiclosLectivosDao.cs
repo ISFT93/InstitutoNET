@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 
@@ -15,7 +15,7 @@ namespace ISFDyT93.Datos.Daos
 {
     public class CiclosLectivosDao : DaoBase
     {
-        public DataTable ObtenerCicloLectivo(bool actualizar = false) 
+        public DataTable ObtenerCicloLectivo(bool actualizar = false)
         {
             if (Cache.CicloLectivo == null || actualizar)
             {
@@ -24,7 +24,7 @@ namespace ISFDyT93.Datos.Daos
             }
             return Cache.CicloLectivo;
         }
-        
+
         public DataTable CargarInscripcionAlumnoSP(int CicloLectivo)
         {
             var parCicloLectivoId = new SqlParameter("AnioLectivoId", SqlDbType.Int);
@@ -39,10 +39,10 @@ namespace ISFDyT93.Datos.Daos
             var parCicloLectivoId1 = new SqlParameter("AnioLectivoId", SqlDbType.Int);
             parCicloLectivoId1.Value = CicloLectivo.ToString();
             var parametros1 = new SqlParameter[1] { parCicloLectivoId1 };
-            return this.Conexion.EjecutarStoreNumber("SP_IngresoCursadaPrimero", parametros1); 
+            return this.Conexion.EjecutarStoreNumber("SP_IngresoCursadaPrimero", parametros1);
 
         }
-        
+
         public int AgregarCicloLectivo(CicloLectivoModelo Modelo)
         {
             string query = this.CreateInsertQuery<CicloLectivoModelo>(Modelo);
@@ -51,7 +51,7 @@ namespace ISFDyT93.Datos.Daos
 
             _ = ObtenerCicloLectivo(true);
 
-            return result > 0 ? Modelo.AnioLectivo : 0; 
+            return result > 0 ? Modelo.AnioLectivo : 0;
         }
 
         public int CargarCursadasSP(int anioLectivo)
@@ -59,12 +59,12 @@ namespace ISFDyT93.Datos.Daos
             var parAnioLectivoId = new SqlParameter("AnioLectivoId", SqlDbType.Int);
             parAnioLectivoId.Value = anioLectivo;
 
-            var parametros = new SqlParameter[1] { parAnioLectivoId};
+            var parametros = new SqlParameter[1] { parAnioLectivoId };
             var result = this.Conexion.EjecutarStoreNumber("SP_CargaCursadas", parametros);
-            
+
             return result;
         }
-        
+
         public int AgregarFechaFinalesMarzo(CicloLectivoModelo modelo)
         {
             string query = $"update CicloLectivo set FechaMarzoInicio = '{modelo.FechaMarzoInicio:yyyy-MM-dd}', FechaMarzoFinal = '{modelo.FechaMarzoFinal:yyyy-MM-dd}' where anioLectivo = {modelo.AnioLectivo}";
@@ -84,11 +84,11 @@ namespace ISFDyT93.Datos.Daos
         public int ObtenerAlumnoDePrimero(int CicloLectivo)
         {
             string query = "SELECT COUNT(*) from AlumnosCarreras where CicloLectivoId =" + CicloLectivo + " and Inicializado = 0";
-           var  ret=  this.Conexion.EjecutarAccion(query);
+            var ret = this.Conexion.EjecutarAccion(query);
             return ret;
 
-        }       
+        }
 
-        
+
     }
 }

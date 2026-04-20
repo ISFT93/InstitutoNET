@@ -1,7 +1,7 @@
 ﻿using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System.Data;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Negocio.Core;
 using System;
 using System.Linq;
@@ -21,8 +21,8 @@ namespace ISFDyT93.Negocio.Logica
         {
             string replacePoint = modelo.Promedio.ToString();
             replacePoint.Replace(".", ",");
-            
-            if(this.alumnosDao.AgregarAlumno(modelo) > 0)
+
+            if (this.alumnosDao.AgregarAlumno(modelo) > 0)
             {
                 return this.alumnosDao.UltimoId();
             }
@@ -30,9 +30,9 @@ namespace ISFDyT93.Negocio.Logica
             return 0;
         }
         public int UltimoRegistroAlumno(AlumnosModelo modelo)
-        {           
-                return this.alumnosDao.UltimoId();
-                      
+        {
+            return this.alumnosDao.UltimoId();
+
         }
         public int AgregarAlumnoTablaExcel(AlumnosModelo modelo)
         {
@@ -65,7 +65,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.alumnosDao.ModificarAlumnoCarrera(modelo);
         }
 
-        
+
         public DataTable ObtenerAlumnosPrueba()
         {
             return this.alumnosDao.ObtenerAlumnosPrueba();
@@ -91,7 +91,7 @@ namespace ISFDyT93.Negocio.Logica
         }
 
         public int TraerCarreraIdActiva(int AlumnoId)
-         {
+        {
             //AlumnosCarreraModelo result = new AlumnosCarreraModelo();
 
             //return result;
@@ -106,14 +106,14 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.alumnosDao.BajaAlumnoCarrera(AlumnoId);
         }
-       
+
         public bool AlumnoExiste(string DNI)
         {
             var resultado = this.alumnosDao.AlumnoExiste(DNI);
 
             return resultado != null;
         }
-       
+
         public int ConsultarAlumnoCiclo(int AlumnoId)
         {
             return this.alumnosDao.ConsultarAlumnoCiclo(AlumnoId);
@@ -122,7 +122,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.alumnosDao.DarAltaAlumnos(alumnoId);
         }
-        
+
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo = null)
         {
             return this.alumnosDao.ObtenerTodosAlumnos(tipo, filtro, activo);
@@ -130,12 +130,12 @@ namespace ISFDyT93.Negocio.Logica
         public string[] ObtenerPaisNacimientoAlumnos()
         {
             var paisNacimiento = alumnosDao.ObtenerPaisNacimientoAlumnos();
-            return paisNacimiento.Rows.Cast<DataRow>().Select(r => r.Field<String>("PaisNacimiento")).ToArray();           
+            return paisNacimiento.Rows.Cast<DataRow>().Select(r => r.Field<String>("PaisNacimiento")).ToArray();
         }
         public string[] ObtenerLocalidadAlumnos()
         {
             var localidad = alumnosDao.ObtenerLocalidadAlumnos();
-            return  localidad.Rows.Cast<DataRow>().Select(r => r.Field<String>("Localidad")).ToArray();            
+            return localidad.Rows.Cast<DataRow>().Select(r => r.Field<String>("Localidad")).ToArray();
         }
         public string[] ObtenerDistritoAlumnos()
         {

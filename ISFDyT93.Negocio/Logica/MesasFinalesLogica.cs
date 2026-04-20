@@ -6,8 +6,8 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using Microsoft.Win32;
 
@@ -52,17 +52,17 @@ namespace ISFDyT93.Negocio.Logica
             return this.mesasFinalesDao.AgregarMesa(carreraId, fecha, turno, llamado, materiaId, presidenteId, vocalId, anioLectivo);
         }
 
-        public int ModificarMesa (DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId)
+        public int ModificarMesa(DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId)
         {
             return this.mesasFinalesDao.ModificarMesas(fecha, turno, presidenteId, vocalId, mesaFinalId);
         }
 
-        public int EliminarMesa (int mesaFinalId)
+        public int EliminarMesa(int mesaFinalId)
         {
             return this.mesasFinalesDao.EliminarMesas(mesaFinalId);
         }
 
-        public DataTable ObtenerMateriaFinal (int mesaFinalId)
+        public DataTable ObtenerMateriaFinal(int mesaFinalId)
         {
             return this.mesasFinalesDao.ObtenerMateriaFinal(mesaFinalId);
         }
@@ -78,7 +78,7 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId)
         {
-            return this.mesasFinalesDao.ObtenerMesasReporte(carreraId, anioLectivoId, turnoId , llamadoId);
+            return this.mesasFinalesDao.ObtenerMesasReporte(carreraId, anioLectivoId, turnoId, llamadoId);
         }
 
         public int CargarMesasFinales(int cicloLectivoId, int turnoId)
@@ -119,7 +119,7 @@ namespace ISFDyT93.Negocio.Logica
             DataRow[] dr;
             if (fechaUnica)
                 dr = this.mesasFinalesDao.ObtenerLlamados().Select("LlamadoId = 3");
-            
+
             else
                 dr = this.mesasFinalesDao.ObtenerLlamados().Select("LlamadoId <> 3");
 

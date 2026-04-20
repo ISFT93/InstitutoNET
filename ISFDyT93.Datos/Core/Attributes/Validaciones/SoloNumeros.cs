@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {
@@ -53,7 +53,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 
             long salida;
 
-            if(!long.TryParse(value.ToString(), out salida))
+            if (!long.TryParse(value.ToString(), out salida))
             {
                 validado = false;
             }
@@ -65,7 +65,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
                     validado = false;
                 }
 
-                if(this.Maximo != null && this.Maximo < salida)
+                if (this.Maximo != null && this.Maximo < salida)
                 {
                     validado = false;
                 }

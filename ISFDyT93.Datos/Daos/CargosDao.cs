@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;

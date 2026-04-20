@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -25,7 +25,7 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public int AsignarFechaExamen(int CursadaId, DateTime fecha, int Evaluados )
+        public int AsignarFechaExamen(int CursadaId, DateTime fecha, int Evaluados)
         {
             var parCursadaId = new SqlParameter("CursadaId", SqlDbType.Int);
             parCursadaId.Value = CursadaId;
@@ -36,12 +36,12 @@ namespace ISFDyT93.Datos.Daos
             var parEvaluados = new SqlParameter("Evaluados", SqlDbType.Int);
             parEvaluados.Value = Evaluados;
 
-           var parametros = new SqlParameter[3] { parCursadaId,parFecha,parEvaluados };
+            var parametros = new SqlParameter[3] { parCursadaId, parFecha, parEvaluados };
 
 
 
             return this.Conexion.EjecutarStoreNumber("SP_CursadaExamen", parametros);
-             
+
         }
 
         public DataRow ObtenerUltimoExamenId()
@@ -50,7 +50,7 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistro(query);
         }
 
-        public void AsignarNotas(int nota,int CursadaExamenId, int CursadaAlumnoCarreraId)
+        public void AsignarNotas(int nota, int CursadaExamenId, int CursadaAlumnoCarreraId)
         {
             string query = $"INSERT INTO CursadaNotas(CursadaExamenId,CursadaAlumnoCarreraId,nota) VALUES({CursadaExamenId},{CursadaAlumnoCarreraId},{nota})";
         }
