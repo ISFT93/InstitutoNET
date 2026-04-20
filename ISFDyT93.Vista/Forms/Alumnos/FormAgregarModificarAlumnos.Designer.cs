@@ -217,7 +217,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+<<<<<<< HEAD
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+=======
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.lblNombre, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
@@ -273,6 +277,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(374, 27);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // lblApellido
             // 
@@ -295,7 +300,11 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
+<<<<<<< HEAD
             this.cmbEstadoCivil.Location = new System.Drawing.Point(433, 149);
+=======
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(433, 146);
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(374, 27);
             this.cmbEstadoCivil.TabIndex = 6;
@@ -309,6 +318,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(374, 27);
             this.txtApellido.TabIndex = 2;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // lblTipoDoc
             // 
@@ -354,6 +364,8 @@
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(374, 27);
             this.txtNumeroDocumento.TabIndex = 4;
+            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtNumeroDocumento.Leave += new System.EventHandler(this.txtNumeroDocumento_Leave);
             // 
             // lblEstadoCivil
             // 
@@ -381,8 +393,6 @@
             this.cmbSexo.FormattingEnabled = true;
             this.cmbSexo.Items.AddRange(new object[] {
             "F",
-            "M",
-            "F",
             "M"});
             this.cmbSexo.Location = new System.Drawing.Point(23, 149);
             this.cmbSexo.Name = "cmbSexo";
@@ -400,6 +410,7 @@
             this.txtLocalidadNacimiento.Name = "txtLocalidadNacimiento";
             this.txtLocalidadNacimiento.Size = new System.Drawing.Size(374, 27);
             this.txtLocalidadNacimiento.TabIndex = 8;
+            this.txtLocalidadNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
             // 
             // lblLocNacimiento
             // 
@@ -454,6 +465,7 @@
             this.txtPaisNacimiento.Name = "txtPaisNacimiento";
             this.txtPaisNacimiento.Size = new System.Drawing.Size(374, 27);
             this.txtPaisNacimiento.TabIndex = 7;
+            this.txtPaisNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // txtEmail
             // 
@@ -464,6 +476,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(383, 27);
             this.txtEmail.TabIndex = 18;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtProvincia
             // 
@@ -475,6 +488,7 @@
             this.txtProvincia.Name = "txtProvincia";
             this.txtProvincia.Size = new System.Drawing.Size(383, 27);
             this.txtProvincia.TabIndex = 16;
+            this.txtProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // txtDistrito
             // 
@@ -485,6 +499,7 @@
             this.txtDistrito.Name = "txtDistrito";
             this.txtDistrito.Size = new System.Drawing.Size(383, 27);
             this.txtDistrito.TabIndex = 14;
+            this.txtDistrito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
             // 
             // txtLocalidad
             // 
@@ -495,7 +510,11 @@
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(383, 27);
             this.txtLocalidad.TabIndex = 15;
+<<<<<<< HEAD
             this.txtLocalidad.TextChanged += new System.EventHandler(this.txtLocalidad_TextChanged);
+=======
+            this.txtLocalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             // 
             // txtCalle
             // 
@@ -506,6 +525,7 @@
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(383, 27);
             this.txtCalle.TabIndex = 10;
+            this.txtCalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
             // 
             // txtCelular
             // 
@@ -516,6 +536,7 @@
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(383, 27);
             this.txtCelular.TabIndex = 20;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // txtTelefono
             // 
@@ -526,6 +547,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(383, 27);
             this.txtTelefono.TabIndex = 19;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // lblEmail
             // 
@@ -598,6 +620,7 @@
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.Size = new System.Drawing.Size(178, 27);
             this.txtDepartamento.TabIndex = 13;
+            this.txtDepartamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
             // 
             // lblDepto
             // 
@@ -625,6 +648,7 @@
             this.txtPiso.Name = "txtPiso";
             this.txtPiso.Size = new System.Drawing.Size(178, 27);
             this.txtPiso.TabIndex = 12;
+            this.txtPiso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // lblPiso
             // 
@@ -643,6 +667,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(178, 27);
             this.txtNumero.TabIndex = 11;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // lblNumero
             // 
@@ -660,6 +685,7 @@
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(178, 27);
             this.txtCodigoPostal.TabIndex = 17;
+            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // grbFormacion
             // 
@@ -683,7 +709,11 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+<<<<<<< HEAD
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+=======
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.tableLayoutPanel3.Controls.Add(this.lblTituloSec, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtMayorPromedio, 5, 14);
             this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTS, 1, 1);
@@ -881,6 +911,7 @@
             this.txtDescripcionMaterias.Name = "txtDescripcionMaterias";
             this.txtDescripcionMaterias.Size = new System.Drawing.Size(792, 74);
             this.txtDescripcionMaterias.TabIndex = 24;
+            this.txtDescripcionMaterias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexto_KeyPress);
             // 
             // lblCasodeSi
             // 
@@ -910,6 +941,7 @@
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(378, 27);
             this.txtTitulo.TabIndex = 25;
+            this.txtTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // lblOrientacion
             // 
@@ -930,6 +962,7 @@
             this.txtOrientacion.Name = "txtOrientacion";
             this.txtOrientacion.Size = new System.Drawing.Size(378, 27);
             this.txtOrientacion.TabIndex = 26;
+            this.txtOrientacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // txtAnioEgreso
             // 
@@ -951,6 +984,7 @@
             this.txtPromedio.Size = new System.Drawing.Size(171, 27);
             this.txtPromedio.TabIndex = 28;
             this.txtPromedio.Text = "0";
+            this.txtPromedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // lblAnioEgreso
             // 
@@ -989,6 +1023,7 @@
             this.txtOtorgadoPor.Name = "txtOtorgadoPor";
             this.txtOtorgadoPor.Size = new System.Drawing.Size(378, 27);
             this.txtOtorgadoPor.TabIndex = 37;
+            this.txtOtorgadoPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
             // 
             // lblTituloTramite
             // 
@@ -1089,7 +1124,11 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+<<<<<<< HEAD
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+=======
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.tableLayoutPanel4.Controls.Add(this.lblEnunciado, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtMonto, 3, 8);
             this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaTitulo, 1, 1);
@@ -1145,6 +1184,7 @@
             this.txtMonto.Size = new System.Drawing.Size(379, 34);
             this.txtMonto.TabIndex = 47;
             this.txtMonto.Text = "0";
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // chkFotocopiaTitulo
             // 
@@ -1167,6 +1207,7 @@
             this.txtRecibo.Size = new System.Drawing.Size(379, 34);
             this.txtRecibo.TabIndex = 46;
             this.txtRecibo.Text = "0";
+            this.txtRecibo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // lblMonto
             // 
@@ -1317,7 +1358,11 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+<<<<<<< HEAD
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+=======
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.tableLayoutPanel5.Controls.Add(this.lblPoseeObraSocial, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pnlEstadoDiscapacidad, 1, 8);
             this.tableLayoutPanel5.Controls.Add(this.txtTelefonoContacto, 3, 11);
@@ -1421,6 +1466,7 @@
             this.txtTelefonoContacto.Name = "txtTelefonoContacto";
             this.txtTelefonoContacto.Size = new System.Drawing.Size(394, 27);
             this.txtTelefonoContacto.TabIndex = 61;
+            this.txtTelefonoContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // pnlSiNoOS
             // 
@@ -1489,6 +1535,7 @@
             this.txtContactoEmergencia.Name = "txtContactoEmergencia";
             this.txtContactoEmergencia.Size = new System.Drawing.Size(394, 27);
             this.txtContactoEmergencia.TabIndex = 60;
+            this.txtContactoEmergencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
             // 
             // txtDescripcionObraSocial
             // 
@@ -1847,7 +1894,11 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cmbCicloLectivo.Location = new System.Drawing.Point(698, 10);
+=======
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(698, 13);
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
             this.cmbCicloLectivo.Size = new System.Drawing.Size(135, 27);
             this.cmbCicloLectivo.TabIndex = 175;
@@ -1872,7 +1923,11 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
+<<<<<<< HEAD
             this.cmbCarreraId.Location = new System.Drawing.Point(122, 10);
+=======
+            this.cmbCarreraId.Location = new System.Drawing.Point(122, 13);
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(433, 27);
             this.cmbCarreraId.TabIndex = 0;
@@ -1902,7 +1957,11 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+<<<<<<< HEAD
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+=======
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+>>>>>>> cd985411d30b8f0ea6b7c644b9363e07390ffbf7
             this.tableLayoutPanel6.Controls.Add(this.lblCalle, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.txtEmail, 5, 7);
             this.tableLayoutPanel6.Controls.Add(this.lblCelular, 5, 8);

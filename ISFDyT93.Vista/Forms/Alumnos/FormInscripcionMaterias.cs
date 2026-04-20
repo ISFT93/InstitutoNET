@@ -79,6 +79,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvInscripcionAlumnos.Columns.Contains("Ciclo Lectivo"))
                 dgvInscripcionAlumnos.Columns["Ciclo Lectivo"].FillWeight = 50;
 
+
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
             column.Name = "Asignar";
             column.HeaderText = "Asignar";                

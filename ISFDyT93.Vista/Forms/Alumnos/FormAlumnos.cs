@@ -106,7 +106,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
-                    this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
+                    if(!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
+                        this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
@@ -117,7 +118,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
-                    tsmAsignarMaterias.Visible = ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
+                    if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+                        tsmAsignarMaterias.Visible = ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
+                    else
+                        tsmAsignarMaterias.Visible = false;
                     tsmDarAlta.Visible = !activo;
 
                 }
