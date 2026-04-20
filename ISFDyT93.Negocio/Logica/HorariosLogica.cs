@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 
 namespace ISFDyT93.Negocio.Logica

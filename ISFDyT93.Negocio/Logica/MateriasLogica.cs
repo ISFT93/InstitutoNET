@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 
 namespace ISFDyT93.Negocio.Logica
@@ -31,14 +31,14 @@ namespace ISFDyT93.Negocio.Logica
         }
 
         public int ObtenerUltimaMateriaId()
-        {          
-           return this.materiasDao.ObtenerUltimaMateriaId();           
+        {
+            return this.materiasDao.ObtenerUltimaMateriaId();
         }
         public int EliminarMateria(int materiaId, int anioCarreraId)
         {
             var resultado = this.materiasDao.EliminarMateria(materiaId);
 
-            if(resultado >= 0)
+            if (resultado >= 0)
             {
                 this.aniosCarreraDao.ActualizarCargaHoria(anioCarreraId);
             }
@@ -59,7 +59,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             int estado = this.materiasDao.AgregarMaterias(modelo);
 
-            if(estado > 0)
+            if (estado > 0)
             {
                 this.aniosCarreraDao.ActualizarCargaHoria(modelo.AnioCarreraId);
             }
@@ -113,7 +113,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.materiasDao.EliminarMateriaAsignar(AlumnoCicloLectivoMateriaId);
         }
-       
+
         public DataTable ObtenerNombresMaterias()
         {
             return this.materiasDao.ObtenerNombresMaterias();
@@ -124,7 +124,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.materiasDao.MateriasId(CarreraId);
         }
 
-        public DataTable ObtenerMateriasByCursoAndAnioLectivo(int AnioLectivo,int CursoId)
+        public DataTable ObtenerMateriasByCursoAndAnioLectivo(int AnioLectivo, int CursoId)
         {
             return this.materiasDao.ObtenerMateriasByCursoAndAnioLectivo(AnioLectivo, CursoId);
         }

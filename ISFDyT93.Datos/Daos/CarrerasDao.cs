@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Data;
 
@@ -31,7 +31,7 @@ namespace ISFDyT93.Datos.Daos
         {
             //Query para seleccionar todos resgistros de Carrera
             string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
-     
+
             return this.Conexion.ObtenerRegistros(query);
         }
         public CarrerasModelo ObtenerCarrera(int id)
@@ -43,7 +43,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataRow CarreraExiste(string Nombre)
         {
-            string query = "SELECT TOP 1 CarreraId FROM Carreras WHERE Nombre = '" + Nombre+"'";
+            string query = "SELECT TOP 1 CarreraId FROM Carreras WHERE Nombre = '" + Nombre + "'";
             return this.Conexion.ObtenerRegistro(query);
         }
 
@@ -52,13 +52,13 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT CarreraId FROM Carreras WHERE Nombre = '" + nombre + "'";
             var carrera = this.Conexion.ObtenerRegistro(query);
 
-                if (carrera != null)
-                {
-                    return Convert.ToInt32(carrera["CarreraId"]);
-                }
+            if (carrera != null)
+            {
+                return Convert.ToInt32(carrera["CarreraId"]);
+            }
 
-                return 0;
-          
+            return 0;
+
         }
 
         public int ObtenerUltimoCarreraId()

@@ -1,5 +1,5 @@
 ﻿using System;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,14 +36,14 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         private int mesasMarzo, mesasJulio, mesasDiciembre;
         private string tagTurno;
         private bool cargarFinal;
-        
+
         public FormAgregarModificarCicloLectivo()
         {
             this.cicloLectivosLogica = new CicloLectivosLogica();
             this.mesasFinalesLogica = new MesasFinalesLogica();
             InitializeComponent();
         }
-        
+
         private void FormAgregarModificarCicloLectivo_Load(object sender, EventArgs e)
         {
             VerificarAltaCicloLectivo();
@@ -52,7 +52,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             {
                 this.Contenedor.AbrirFormulario<FormCicloLectivo>();
             });
-            
+
             if (this.Accion == TipoAccion.Modificar)
             {
                 this.Contenedor.SetTitulo("Modificar Ciclo Lectivo");
@@ -62,7 +62,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaInscripcionFinal.Enabled = false;
                 txtCantidadSemana.Enabled = false;
                 txtAnioLectivo.Enabled = false;
-                
+
 
                 lblFinFinalDiciembre.Visible = true;
                 lblFinFinalJunio.Visible = true;
@@ -82,52 +82,53 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 ExistenMesasFinales(this.CicloLectivoId);
             }
             else
-            if (this.Accion == TipoAccion.Agregar)
-            {
-                this.Contenedor.SetTitulo("Agregar Ciclo Lectivo");
-                dtpFechaInicio.Enabled = true;
-                dtpFechaCierre.Enabled = true;
-                dtpFechaInscripcionInicio.Enabled = true;
-                dtpFechaInscripcionFinal.Enabled = true;
-                txtCantidadSemana.Enabled = true;
-                txtAnioLectivo.Enabled = true;
+                if (this.Accion == TipoAccion.Agregar)
+                {
+                    this.Contenedor.SetTitulo("Agregar Ciclo Lectivo");
+                    dtpFechaInicio.Enabled = true;
+                    dtpFechaCierre.Enabled = true;
+                    dtpFechaInscripcionInicio.Enabled = true;
+                    dtpFechaInscripcionFinal.Enabled = true;
+                    txtCantidadSemana.Enabled = true;
+                    txtAnioLectivo.Enabled = true;
 
-                grbFinalesMarzo.Visible = false;
-                grbFinalesJulio.Visible = false;
-                grbFinalesDiciembre.Visible = false;
+                    grbFinalesMarzo.Visible = false;
+                    grbFinalesJulio.Visible = false;
+                    grbFinalesDiciembre.Visible = false;
 
-                ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
-                txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
-                DateTimePickerEnBlanco();              
+                    ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
+                    txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
+                    DateTimePickerEnBlanco();
 
 
-            }
-               else
-                if (this.Accion == TipoAccion.Ver)
-            {
-                this.Contenedor.SetTitulo("Ver Ciclo Lectivo ");
-                dtpFechaInicio.Enabled = true;
-                dtpFechaCierre.Enabled = true;
-                dtpFechaInscripcionInicio.Enabled = true;
-                dtpFechaInscripcionFinal.Enabled = true;
-                txtCantidadSemana.Enabled = true;
-                txtAnioLectivo.Enabled = false;
+                }
+                else
+                    if (this.Accion == TipoAccion.Ver)
+                    {
+                        this.Contenedor.SetTitulo("Ver Ciclo Lectivo ");
+                        dtpFechaInicio.Enabled = true;
+                        dtpFechaCierre.Enabled = true;
+                        dtpFechaInscripcionInicio.Enabled = true;
+                        dtpFechaInscripcionFinal.Enabled = true;
+                        txtCantidadSemana.Enabled = true;
+                        txtAnioLectivo.Enabled = false;
 
-                grbFinalesMarzo.Enabled = false;
-                grbFinalesJulio.Enabled = false;
-                grbFinalesDiciembre.Enabled = false;
+                        grbFinalesMarzo.Enabled = false;
+                        grbFinalesJulio.Enabled = false;
+                        grbFinalesDiciembre.Enabled = false;
 
-                if (CicloLectivoId.ToString()== "0" )
-                    CicloLectivoId = (cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo());
+                        if (CicloLectivoId.ToString() == "0")
+                            CicloLectivoId = (cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo());
 
-                txtAnioLectivo.Text = CicloLectivoId.ToString();
-                CargarDatos(Convert.ToInt32(txtAnioLectivo.Text));
+                        txtAnioLectivo.Text = CicloLectivoId.ToString();
+                        CargarDatos(Convert.ToInt32(txtAnioLectivo.Text));
 
-            }
+                    }
         }
         public void DateTimePickerEnBlanco()
         {
-            this.SetControlConfig(control => {
+            this.SetControlConfig(control =>
+            {
                 if (control is DateTimePicker dtp)
                 {
                     dtp.CustomFormat = " ";
@@ -140,7 +141,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         {
             string Mensaje = null;
 
-            if(this.Accion == TipoAccion.Agregar)
+            if (this.Accion == TipoAccion.Agregar)
             {
                 ParametrosModelo parametro = new ParametrosLogica().ObtenerParametro(NombreParametro.NuevoCicloLectivo);
                 if (parametro != null)
@@ -153,7 +154,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 btnAceptar.Enabled = (!CicloYaCreado && PermiteAgregar);
                 if (CicloYaCreado) Mensaje = $"Ya existe un ciclo lectivo\nposterior al actual: 'ciclo {cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo()}'";
             }
-            if(Mensaje != null)
+            if (Mensaje != null)
                 Notificar(TipoNotificacion.Information, Mensaje, Tiempo: 5000);
         }
         private void CargarDatos(int anio)
@@ -179,7 +180,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     dtpFechaMarzoInicio.CustomFormat = " ";
                     dtpFechaMarzoInicio.Format = DateTimePickerFormat.Custom;
                 }
-                if ((dt.Rows[0]["FechaMarzoFinal"].ToString()) != ("01/01/1900 0:00:00").ToString()) 
+                if ((dt.Rows[0]["FechaMarzoFinal"].ToString()) != ("01/01/1900 0:00:00").ToString())
                 {
                     dtpFechaMarzoFinal.Value = Convert.ToDateTime(dt.Rows[0]["FechaMarzoFinal"]);
                     dtpFechaMarzoFinal.CustomFormat = "dd/MM/yyyy";
@@ -241,7 +242,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         public bool ValidarFechasAperturaCicloLectivo()
         {
             bool OK = false;
-           if (dtpFechaInicio.Value.Year >= DateTime.Today.Year && Convert.ToInt32(txtAnioLectivo.Text) > Convert.ToInt32(DateTime.Today.Year) && Convert.ToInt32(txtCantidadSemana.Text) > 0)
+            if (dtpFechaInicio.Value.Year >= DateTime.Today.Year && Convert.ToInt32(txtAnioLectivo.Text) > Convert.ToInt32(DateTime.Today.Year) && Convert.ToInt32(txtCantidadSemana.Text) > 0)
             {
                 OK = true;
             }
@@ -251,12 +252,12 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         {
             var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
             CicloLectivo.FechaDiciembreInicio = dtpFechaDiciembreInicio1.Value;
-                DialogResult dr;
+            DialogResult dr;
             if (CicloLectivo.Errores.Count == 0)
             {
                 if (this.Accion == TipoAccion.Agregar)
                 {
-                    
+
                     dr = MessageBox.Show("Generación de Cursos Lectivos" + txtAnioLectivo.Text, "Ciclo Lectivo", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
                     {
@@ -387,7 +388,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 cargarFinal = true;
                 tagTurno = "Julio";
                 grbFinalesMarzo.Enabled = false;
-                grbFinalesDiciembre .Enabled = false;
+                grbFinalesDiciembre.Enabled = false;
             }
             else if (mesasMarzo == 1 && mesasJulio == 1 && mesasDiciembre == 0)
             {

@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Core;
 using System.Collections.Generic;
 using ISFDyT93.Vista.Core.Enums;
@@ -40,7 +40,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             dt.Rows.InsertAt(dr, 0);
             cmbAnio.DataSource = dt;
             cmbAnio.ValueMember = "Anio";
-            cmbAnio.DisplayMember = "Anio";            
+            cmbAnio.DisplayMember = "Anio";
 
             cargarGrilla();
 
@@ -69,7 +69,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvInscripcionAlumnos.Columns.Contains("CursoId"))
                 dgvInscripcionAlumnos.Columns["CursoId"].Visible = false;
             if (dgvInscripcionAlumnos.Columns.Contains("MateriaId"))
-                dgvInscripcionAlumnos.Columns["MateriaId"].Visible = false;          
+                dgvInscripcionAlumnos.Columns["MateriaId"].Visible = false;
             if (dgvInscripcionAlumnos.Columns.Contains("Año"))
                 dgvInscripcionAlumnos.Columns["Año"].FillWeight = 50;
             if (dgvInscripcionAlumnos.Columns.Contains("Carrera"))
@@ -81,14 +81,14 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
             column.Name = "Asignar";
-            column.HeaderText = "Asignar";                
+            column.HeaderText = "Asignar";
             dgvInscripcionAlumnos.Columns.Add(column);
             if (dgvInscripcionAlumnos.Columns.Contains("Asignar"))
                 dgvInscripcionAlumnos.Columns["Asignar"].FillWeight = 50;
-            
-            foreach(DataGridViewRow row in dgvInscripcionAlumnos.Rows)
+
+            foreach (DataGridViewRow row in dgvInscripcionAlumnos.Rows)
             {
-                if (ltsMateriaIdCursoId.IndexOf(row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()) != -1 )
+                if (ltsMateriaIdCursoId.IndexOf(row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()) != -1)
                 {
                     row.Cells["Asignar"].Value = "Asignado";
                     row.Cells["Asignar"].Style.ForeColor = Color.Green;
@@ -98,8 +98,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void dgvInscripcionAlumnos_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)            {
-                
+            if (e.Button == MouseButtons.Right)
+            {
+
                 if (e.X > -1 && e.Y > -1)
                 {
                     DataGridView.HitTestInfo info = dgvInscripcionAlumnos.HitTest(e.X, e.Y);

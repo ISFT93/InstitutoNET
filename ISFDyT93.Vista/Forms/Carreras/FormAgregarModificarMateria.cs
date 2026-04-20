@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Negocio.Core.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Core;
 using System.Linq;
 using System.Data;
@@ -61,7 +61,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 }
             }
-                
+
         }
 
         private void FormAgregarModificarMateria_Load(object sender, EventArgs e)
@@ -73,8 +73,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbEspacioId.ValueMember = "EspacioId";
             cmbEspacioId.DisplayMember = "Descripcion";
 
-            this.Contenedor.SetVolver(() => {
-                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form => {
+            this.Contenedor.SetVolver(() =>
+            {
+                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+                {
                     form.AnioCarreraId = this.AnioCarreraId;
                 });
             });
@@ -125,15 +127,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     if (estado != -1)
                     {
                         //Refrescar grilla
-                        FormNotificacion.Mensaje(TipoNotificacion.Success , "Carga exitosa");
+                        FormNotificacion.Mensaje(TipoNotificacion.Success, "Carga exitosa");
 
-                            this.LimpiarControlles();
+                        this.LimpiarControlles();
 
-                            this.txtNombre.AutoCompleteCustomSource.Add(this.materia.Nombre);
+                        this.txtNombre.AutoCompleteCustomSource.Add(this.materia.Nombre);
 
-                            txtNombre.Focus();
+                        txtNombre.Focus();
 
-                            this.ActualizarAutoComplete();                        
+                        this.ActualizarAutoComplete();
                     }
                 }
                 if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver)
@@ -148,7 +150,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
                             FormNotificacion.Mensaje(TipoNotificacion.Success, "Modificada correctamente");
                         }
 
-                        Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form => {
+                        Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+                        {
                             form.AnioCarreraId = this.AnioCarreraId;
                         });
                     }

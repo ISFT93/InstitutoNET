@@ -1,5 +1,5 @@
 ﻿using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.cursadasDao = new CursadasDao();
         }
-        
+
         public CursadasModelo ObtenerCursada(int CursadaId)
         {
             return this.cursadasDao.ObtenerCursada(CursadaId);

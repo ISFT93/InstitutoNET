@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Linq;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Core;
@@ -40,7 +40,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.carrerasDao.CarrerasActivas(true);
         }
         public bool CarrerasExiste(string Nombre)
-        { 
+        {
             var resultado = this.carrerasDao.CarreraExiste(Nombre);
 
             return resultado != null;
@@ -66,7 +66,7 @@ namespace ISFDyT93.Negocio.Logica
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
 
-                if(accion == TipoAccion.Agregar)
+                if (accion == TipoAccion.Agregar)
                 {
                     modelo.Activo = true;
                     modelo.CarreraEstadoId = 3;
@@ -106,7 +106,7 @@ namespace ISFDyT93.Negocio.Logica
                         if (!string.IsNullOrEmpty(archiImagen))
                             GuardarArchivo(archiImagen, modelo.ImagenDescriptiva, @"\Imagen");
 
-                        
+
                         int carreraId = carrerasDao.ObtenerUltimoCarreraId();
 
                         for (int anio = 1; anio <= modelo.Duracion; anio++)
@@ -116,8 +116,8 @@ namespace ISFDyT93.Negocio.Logica
 
                         resultado = true;
                     }
-                } 
-                else if( accion == TipoAccion.Modificar)
+                }
+                else if (accion == TipoAccion.Modificar)
                 {
                     if (!string.IsNullOrEmpty(modelo.PlanEstudio) && !modelo.PlanEstudio.StartsWith(@"\PDF"))
                     {
@@ -157,7 +157,7 @@ namespace ISFDyT93.Negocio.Logica
                     }
                 }
 
-                if(resultado)
+                if (resultado)
                 {
                     if (!string.IsNullOrEmpty(archiPlanEstudio) && !archiPlanEstudio.StartsWith(@"\PDF"))
                         GuardarArchivo(archiPlanEstudio, modelo.PlanEstudio, @"\PDF");
@@ -184,7 +184,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             var path = Application.StartupPath;
 
-            if(!System.IO.Directory.Exists(Carpeta))
+            if (!System.IO.Directory.Exists(Carpeta))
             {
                 System.IO.Directory.CreateDirectory(Carpeta);
             }

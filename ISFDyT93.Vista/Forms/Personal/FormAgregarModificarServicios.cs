@@ -1,9 +1,9 @@
 ﻿using ISFDyT93.Negocio.Logica;
 using System;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Core;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Enums;
 using System.Data;
 using ISFDyT93.Vista.Core.Enums;
 
@@ -22,11 +22,11 @@ namespace ISFDyT93.Vista.Forms.Personal
         private PersonalModelo Personal { get; set; }
         private LibroActasModelo LibroActa { get; set; }
         private DataTable TablaCargos { get; set; }
-        private int CargoId 
+        private int CargoId
         {
             get
             {
-                return  Convert.ToInt32(cmbCargoId.SelectedValue);
+                return Convert.ToInt32(cmbCargoId.SelectedValue);
             }
         }
         private int CursoId
@@ -40,7 +40,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         private int TipoAsignacionId
         {
             get { return BuscarTipoAsignacion(CargoId); }
-        } 
+        }
         #endregion
 
         //Constructor y Load
@@ -51,33 +51,33 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.PersonalLogica = new PersonalLogica();
 
             InitializeComponent();
-        }       
+        }
         private void FormAgregarModificarServicios_Load(object sender, EventArgs e)
         {
             this.Personal = this.PersonalLogica.ObtenerPersonal(this.PersonalId);
-            
+
             txtLibro.Enabled = false;
             txtFolio.Enabled = false;
-            
+
             cmbCargoId.ValueMember = "CargoId";
             cmbCargoId.DisplayMember = "Descripcion";
             TablaCargos = this.ServiciosLogica.ObtenerCargos(PersonalId);
-            cmbCargoId.DataSource = TablaCargos;            
-           
+            cmbCargoId.DataSource = TablaCargos;
+
             cmbSituacionRevistaId.ValueMember = "SituacionRevistaId";
             cmbSituacionRevistaId.DisplayMember = "Descripcion";
             cmbSituacionRevistaId.DataSource = this.ServiciosLogica.ObtenerSituacionRevista();
 
-            this.Contenedor.SetTitulo($"Agregar Servicio a { this.Personal.Nombre } { this.Personal.Apellido }");
+            this.Contenedor.SetTitulo($"Agregar Servicio a {this.Personal.Nombre} {this.Personal.Apellido}");
 
-            this.Contenedor.SetVolver( () => 
+            this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormServicios>(form =>
                 {
                     form.PersonalId = this.PersonalId;
                 });
             });
-            
+
             LibroFolio();
             VisibilidadDeControles();
         }
@@ -108,8 +108,8 @@ namespace ISFDyT93.Vista.Forms.Personal
         //Index Clanges de los ComboBox
         private void cmbCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if (TipoAsignacionId == (int)TipoAsignacion.AsignarMateria || TipoAsignacionId == (int)TipoAsignacion.AsignarCarrera) 
+
+            if (TipoAsignacionId == (int)TipoAsignacion.AsignarMateria || TipoAsignacionId == (int)TipoAsignacion.AsignarCarrera)
                 ActualizarCarreras();
             if (BuscarRepetibles(CargoId))
                 ActualizarCargosAsignados();
@@ -140,7 +140,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         {
             ActualizarMateriasDisponibles();
             ActualizarModulo();
-        }        
+        }
         private void cmbCursoMateriaId_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarModulo();
@@ -149,9 +149,9 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         //Funciones        
         public void VisibilidadDeControles()
-        {            
+        {
             bool repetibles = BuscarRepetibles(CargoId);
-            
+
             //Habilitar Visibles
 
             CarreraVisible((TipoAsignacionId == (int)TipoAsignacion.AsignarMateria || TipoAsignacionId == (int)TipoAsignacion.AsignarCarrera));
@@ -230,7 +230,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             cmbCursoMateriaId.ValueMember = "CursoMateriaId";
             cmbCursoMateriaId.DisplayMember = "Nombre";
             cmbCursoMateriaId.DataSource = this.ServiciosLogica.ObtenerMateriasLibres(TipoAsignacionId, CursoId, SituacionRevistaId);
-        }       
+        }
         private void ActualizarModulo()
         {
             if (cmbCursoMateriaId.SelectedIndex != -1)
@@ -264,7 +264,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             {
                 DataRow row = rows[0];
                 string result = row["TipoAsignacionId"].ToString();
-                if(result != null && result != "")
+                if (result != null && result != "")
                     return Convert.ToInt32(result);
             }
             return -1;
@@ -281,6 +281,6 @@ namespace ISFDyT93.Vista.Forms.Personal
             }
             return false;
         }
-        
+
     }
 }

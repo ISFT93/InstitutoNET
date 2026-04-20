@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 
 namespace ISFDyT93.Negocio.Logica
@@ -8,7 +8,7 @@ namespace ISFDyT93.Negocio.Logica
     public class AniosCarreraLogica : LogicaBase
     {
         AniosCarreraDao aniosDao;
-       
+
         public AniosCarreraLogica()
         {
             this.aniosDao = new AniosCarreraDao();

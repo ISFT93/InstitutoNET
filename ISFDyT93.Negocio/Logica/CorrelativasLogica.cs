@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using ISFDyT93.Datos.Daos;
 
@@ -26,7 +26,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.correlativasDao.ObtenerMateriasCorrelativas(MateriaId);
         }
 
-        public int AgregarCorrelativa( int IdMateria, int IdCorrelativa )
+        public int AgregarCorrelativa(int IdMateria, int IdCorrelativa)
         {
             return this.correlativasDao.AgregarCorrelativa(IdMateria, IdCorrelativa);
         }

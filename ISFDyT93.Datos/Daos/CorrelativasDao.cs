@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Core;
 
 namespace ISFDyT93.Datos.Daos
@@ -14,10 +14,10 @@ namespace ISFDyT93.Datos.Daos
     {
         public int CorrelativaExisteCarrera(int CarreraId)
         {
-            string query = "select correlativaId from correlativas inner join Materias "+
-               " on Correlativas.MateriaId = Materias.MateriaId inner join "+
-               " AniosCarreras on Materias.AnioCarreraId = AniosCarreras.AnioCarreraId inner join Carreras"+
-               " on Carreras.CarreraId = AniosCarreras.CarreraId where carreras.CarreraId = "+CarreraId;
+            string query = "select correlativaId from correlativas inner join Materias " +
+               " on Correlativas.MateriaId = Materias.MateriaId inner join " +
+               " AniosCarreras on Materias.AnioCarreraId = AniosCarreras.AnioCarreraId inner join Carreras" +
+               " on Carreras.CarreraId = AniosCarreras.CarreraId where carreras.CarreraId = " + CarreraId;
 
             var cantidad = this.Conexion.ObtenerRegistro(query);
             if (cantidad == null)
@@ -55,7 +55,7 @@ namespace ISFDyT93.Datos.Daos
         }
 
 
-        public int AgregarCorrelativa( int IdMateria, int IdCorrelativa )
+        public int AgregarCorrelativa(int IdMateria, int IdCorrelativa)
         {
             var query = "INSERT INTO Correlativas ( MateriaId, MateriaCorrelativaId ) VALUES ( " + IdMateria + ", " + IdCorrelativa + " ) ";
 

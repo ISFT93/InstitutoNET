@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using System;
@@ -35,7 +35,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             this.materiasLogica = new MateriasLogica();
 
-            this.cursosLogica = new CursosLogica(); 
+            this.cursosLogica = new CursosLogica();
 
             InitializeComponent();
         }
@@ -57,7 +57,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.Curso = this.cursosLogica.ObtenerCurso(this.CursoId);
 
-            this.Contenedor.SetTitulo($"CURSO { this.Curso.AnioCarrera } - {this.Curso.NombreCurso }");
+            this.Contenedor.SetTitulo($"CURSO {this.Curso.AnioCarrera} - {this.Curso.NombreCurso}");
 
             this.Contenedor.SetVolver(() =>
                Contenedor.AbrirFormulario<FormCursos>(form =>
@@ -73,8 +73,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (anioLectivo != null)
             {
                 cmbCicloLectivo.DisplayMember = "AnioLectivo";
-                cmbCicloLectivo.DataSource = anioLectivo;                
-                if(cmbCicloLectivo.Items.Count > 0) cmbCicloLectivo.SelectedIndex = 0;
+                cmbCicloLectivo.DataSource = anioLectivo;
+                if (cmbCicloLectivo.Items.Count > 0) cmbCicloLectivo.SelectedIndex = 0;
                 this.CargarGrilla();
             }
         }

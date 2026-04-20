@@ -539,6 +539,10 @@
       <Project>{157d5044-fef4-49a2-aba0-cc4b9114f0d9}</Project>
       <Name>ISFDyT93.Datos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ISFDyT93.Entidades\ISFDyT93.Entidades.csproj">
+      <Project>{fc9c8560-73c4-4748-b6d6-ae1bbcf6b4d3}</Project>
+      <Name>ISFDyT93.Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ISFDyT93.Negocio\ISFDyT93.Negocio.csproj">
       <Project>{6f6ee66f-88ab-4ffb-8495-00927ea80b04}</Project>
       <Name>ISFDyT93.Negocio</Name>

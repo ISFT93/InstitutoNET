@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using System.Globalization;
 using ISFDyT93.Vista.Forms.Componentes;
@@ -27,7 +27,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private int AlumnoId { get; set; }
         private string ApellidoNombre { get; set; }
         private int AlumnoCarreraId { get; set; }
-       
+
         FormCargaMasivaCsv FormCarMasivaCsv = new FormCargaMasivaCsv();
 
         #endregion
@@ -38,7 +38,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             this.AlumnosInscLogica = new InscripcionAlumnoLogica();
             this.CargaMasivaLogica = new CargaMasivaLogica();
             this.CicloLectivosLogica = new CicloLectivosLogica();
-            
+
             InitializeComponent();
         }
 
@@ -108,7 +108,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
 
-                    
+
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
@@ -130,11 +130,12 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         #region ControlMenuStrip
         private void tsmAgregarAlumno_Click(object sender, EventArgs e)
         {
-            
+
             bool OK = AlumnosInscLogica.obtenerFechaIncripcion();
             if (OK)
             {
-                Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
+                Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
+                {
                     form.Accion = TipoAccion.Agregar;
                     form.AlumnoId = AlumnoId;
                 });
@@ -144,7 +145,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 DialogResult dg = MessageBox.Show("Fecha a inscripciones cerrada", "Fecha inscripción cerrada", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (dg == DialogResult.OK)
                 {
-                    Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
+                    Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
+                    {
                         form.Accion = TipoAccion.Agregar;
                         form.AlumnoId = AlumnoId;
                     });
@@ -153,7 +155,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void tsmModificarAlumno_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
+            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
+            {
                 form.Accion = TipoAccion.Modificar;
                 form.AlumnoId = AlumnoId;
             });
@@ -233,7 +236,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
             if (dialogResult == DialogResult.Yes)
             {
-                Contenedor.AbrirFormulario<FormCargaMasivaExcel>(form => {
+                Contenedor.AbrirFormulario<FormCargaMasivaExcel>(form =>
+                {
                     form.Accion = "Agregar";
                     form.AlumnoId = AlumnoId;
                     form.AlumnoCarreraId = AlumnoCarreraId;
@@ -345,14 +349,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void tsmVerAlumno_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
+            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
+            {
                 form.Accion = TipoAccion.Ver;
                 form.AlumnoId = AlumnoId;
             });
         }
         private void tsmAsignarMaterias_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormInscripcionMaterias>(form => {
+            Contenedor.AbrirFormulario<FormInscripcionMaterias>(form =>
+            {
                 form.AlumnoId = AlumnoId;
                 form.ApellidoNombre = ApellidoNombre;
             });
@@ -363,7 +369,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             var datos = this.AlumnosLogica.ObtenerAlumnosPrueba();
 
-            this.Contenedor.AbrirFormulario<FormReporte>(form => {
+            this.Contenedor.AbrirFormulario<FormReporte>(form =>
+            {
                 form.SetReporte("ISFDyT93.Vista.Reports.AlumnosActivos.rdlc")
                 .AddDataSource(datos, "AlumnosDS")
                 .AddParameter("Carrera", "Sistemas")
