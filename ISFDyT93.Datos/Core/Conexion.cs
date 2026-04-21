@@ -1,4 +1,5 @@
 ﻿using ISFDyT93.Datos.Core;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,8 +13,14 @@ namespace ISFDyT93.Datos.Core
         //Luego se instancia en el constructor
         public Conexion()
         {
-            //Servidor SQL Server - Base de Datos
-            string strConexion = Settings.STRCONNECTION;
+            // Leer la cadena de conexión desde App.config (proyecto ISFDyT93.Vista)
+            var connSetting = ConfigurationManager.ConnectionStrings["InstiDB"];
+            if (connSetting == null || string.IsNullOrWhiteSpace(connSetting.ConnectionString))
+            {
+                throw new System.InvalidOperationException("No se encontró la cadena de conexión 'InstiDB' en App.config.");
+            }
+
+            string strConexion = connSetting.ConnectionString;
             this.Conector = new SqlConnection(strConexion);
         }
 
