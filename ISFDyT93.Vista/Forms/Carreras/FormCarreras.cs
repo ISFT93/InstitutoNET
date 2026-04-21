@@ -49,7 +49,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 CarreraEstados();
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
+                    //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
@@ -105,7 +105,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             rbActivos.Visible = true;
             rbInactivos.Visible = true;
             dgvCarreras.ContextMenuStrip = cmsCarreras;
-            this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerCarreras();
+            this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerTodasLasCarreras();
 
             //Ocultar columna de la grilla CarreraId CarreraEstadoId
             dgvCarreras.Columns["CarreraId"].Visible = false;

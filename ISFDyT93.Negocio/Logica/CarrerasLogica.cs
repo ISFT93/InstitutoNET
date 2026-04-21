@@ -23,6 +23,10 @@ namespace ISFDyT93.Negocio.Logica
             this.correlativasDao = new CorrelativasDao();
             this.materiasDao = new MateriasDao();
         }
+        public DataTable ObtenerTodasLasCarreras()
+        {
+            return this.carrerasDao.ObtenerTodasLasCarreras(true);
+        }
         public DataTable ObtenerCarreras()
         {
             return this.carrerasDao.ObtenerCarreras(true);
