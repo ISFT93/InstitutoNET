@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Alumnos>
+	<Email>
+		<Coincidencia>correo</Coincidencia>
+		<Coincidencia>correo electronico</Coincidencia>
+		<Coincidencia>email</Coincidencia>
+		<Coincidencia>mail</Coincidencia>
+		<Coincidencia>gmail</Coincidencia>
+		<Coincidencia>CORREO ELECTRONICO</Coincidencia>
+	    <Coincidencia>CORREO</Coincidencia>
+	    <Coincidencia>EMAIL</Coincidencia>
+	    <Coincidencia>MAIL</Coincidencia>
+	    <Coincidencia>GMAIL</Coincidencia>
+	</Email>
+	
+	<Carreras>
+		<Coincidencia>Carreras</Coincidencia>
+		<Coincidencia>Carrera</Coincidencia>
+		<Coincidencia>Tecnicaturas</Coincidencia>
+		<Coincidencia>Tecnicatura</Coincidencia>
+	    <Coincidencia>CARRERAS</Coincidencia>
+	    <Coincidencia>CARRERA</Coincidencia>
+	    <Coincidencia>TECNICATURAS</Coincidencia>
+	    <Coincidencia>TECNICATURA</Coincidencia>
+	</Carreras>
+
+	<apellido>
+		<Coincidencia>Apellido</Coincidencia>
+		<Coincidencia>Apellidos</Coincidencia>
+	    <Coincidencia>APELLIDO</Coincidencia>
+	    <Coincidencia>APELLIDOS</Coincidencia>
+		<Coincidencia>apellido</Coincidencia>
+		<Coincidencia>apellidos</Coincidencia>
+	</apellido>
+
+	<nombre>
+		<Coincidencia>nombre</Coincidencia>
+		<Coincidencia>nombres</Coincidencia>
+	    <Coincidencia>NOMBRES</Coincidencia>
+	    <Coincidencia>NOMBRE</Coincidencia>
+	</nombre>
+
+	<NumeroDocumento>
+		<Coincidencia>DNI</Coincidencia>
+		<Coincidencia>Documento</Coincidencia>
+	</NumeroDocumento>
+	
+	<sexo>
+		<Coindencia>Sexo</Coindencia>
+		<Coincidencia>sexo</Coincidencia>
+		<Coincidencia>SEXO</Coincidencia>
+	</sexo>
+
+	<fechanac>
+		<Coindencia>Fecha de nacimiento</Coindencia>
+		<Coincidencia>fecha de nacimiento</Coincidencia>
+		<Coincidencia>fechanac</Coincidencia>
+		<Coincidencia>fechadenac</Coincidencia>
+		<Coincidencia>FECHA DE NACIMIENTO</Coincidencia>
+	</fechanac>
+
+	<lugardenacimiento>
+		<Coincidencia>lugar de nacimiento</Coincidencia>
+		<Coincidencia>LUGAR DE NACIMIENT0</Coincidencia>
+		<Coincidencia>Lugar de nacimiento</Coincidencia>
+	</lugardenacimiento>
+
+	<estadoCivil>
+		<Coincidencia>estado civil</Coincidencia>
+		<Coincidencia>Estado Civil</Coincidencia>
+		<Coincidencia>ESTADO CIVIL</Coincidencia>
+		<Coincidencia>Estado civil</Coincidencia>
+	</estadoCivil>
+
+	<numeroCel>
+		<Coincidencia>tel</Coincidencia>
+		<Coincidencia>numero de telefono</Coincidencia>
+		<Coincidencia>numero de celular</Coincidencia>
+		<Coindiciencia>telefono</Coindiciencia>
+		<Coincidencia>celular</Coincidencia>
+	    <Coincidencia>TEL</Coincidencia>
+	    <Coincidencia>NUMERO DE TELEFONO</Coincidencia>
+	    <Coincidencia>NUMERO DE CELULAR</Coincidencia>
+	    <Coincidencia>TELEFONO</Coincidencia>
+	    <Coincidencia>CELULAR</Coincidencia>
+	</numeroCel>
+
+	<Direccion>
+		<Coincidencia>direccion</Coincidencia>
+		<Coincidencia>Direccion</Coincidencia>
+		<Coincidencia>DIRECCION</Coincidencia>
+		<Coincidencia>DIRECCIÓN</Coincidencia>
+		<Coincidencia>dirección</Coincidencia>
+		<Coincidencia>Dirección</Coincidencia>
+		<Coincidencia>domicilio</Coincidencia>
+		<Coincidencia>Domicilio</Coincidencia>
+		<Coincidencia>DOMICILIO</Coincidencia>
+		<Coincidencia>calle</Coincidencia>
+		<Coincidencia>CALLE</Coincidencia>
+		<Coincidencia>Calle</Coincidencia>
+		<Coincidencia>direccion domicilio</Coincidencia>
+		<Coincidencia>domicilio particular</Coincidencia>
+		<Coincidencia>address</Coincidencia>
+	</Direccion>
+
+	<Localidad>
+		<Coincidencia>localidad</Coincidencia>
+		<Coincidencia>Localidad</Coincidencia>
+		<Coincidencia>ciudad</Coincidencia>
+		<Coincidencia>Ciudad</Coincidencia>
+		<Coincidencia>poblacion</Coincidencia>
+		<Coincidencia>Poblacion</Coincidencia>
+		<Coincidencia>población</Coincidencia>
+		<Coincidencia>Población</Coincidencia>
+		<Coincidencia>POBLACIÓN</Coincidencia>
+		<Coincidencia>city</Coincidencia>
+	</Localidad>
+
+	<Partido>
+		<Coincidencia>partido</Coincidencia>
+		<Coincidencia>Partido</Coincidencia>
+		<Coincidencia>PARTIDO</Coincidencia>
+		<Coincidencia>municipio</Coincidencia>
+		<Coincidencia>Municipio</Coincidencia>
+		<Coincidencia>MUNICIPIO</Coincidencia>
+		<Coincidencia>distrito</Coincidencia>
+		<Coincidencia>Distrito</Coincidencia>
+		<Coincidencia>Partido municipio</Coincidencia>
+		<Coincidencia>Municipality</Coincidencia>
+	</Partido>
+
+	<CodigoPostal>
+		<Coincidencia>codigo postal</Coincidencia>
+		<Coincidencia>Codigo Postal</Coincidencia>
+		<Coincidencia>CODIGO POSTAL</Coincidencia>
+		<Coincidencia>código postal</Coincidencia>
+		<Coincidencia>Código postal</Coincidencia>
+		<Coincidencia>CÓDIGO POSTAL</Coincidencia>
+		<Coincidencia>cp</Coincidencia>
+		<Coincidencia>c.p.</Coincidencia>
+		<Coincidencia>postal</Coincidencia>
+		<Coincidencia>zip</Coincidencia>
+		<Coincidencia>zip code</Coincidencia>
+	</CodigoPostal>
+
+	<Provincia>
+		<Coincidencia>provincia</Coincidencia>
+		<Coincidencia>Provincia</Coincidencia>
+		<Coincidencia>PROVINCIA</Coincidencia>
+		<Coincidencia>estado</Coincidencia>
+		<Coincidencia>Estado</Coincidencia>
+		<Coincidencia>region</Coincidencia>
+		<Coincidencia>Region</Coincidencia>
+		<Coincidencia>región</Coincidencia>
+		<Coincidencia>Región</Coincidencia>
+		<Coincidencia>Prov</Coincidencia>
+		<Coincidencia>Province</Coincidencia>
+		<Coincidencia>State</Coincidencia>
+	</Provincia>
+
+
+</Alumnos>

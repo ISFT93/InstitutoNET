@@ -572,6 +572,9 @@
     <None Include="Resources\list-alt-solid.png" />
     <None Include="Resources\upload-solid.png" />
     <None Include="Resources\arrow-alt-circle-right-solid.png" />
+    <Content Include="Assets\CargaMasivaMap.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\eye-slash-solid.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

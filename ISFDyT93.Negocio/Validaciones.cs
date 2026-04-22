@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ISFDyT93.Negocio.Logica;
 using System.Windows.Forms;
@@ -300,8 +302,6 @@ namespace ISFDyT93.Negocio
         }
 
 
-
-
         #region Validaciones con Keypress
         public static void SoloNumerosEnteros(KeyPressEventArgs e)
         {
@@ -316,5 +316,27 @@ namespace ISFDyT93.Negocio
         }
         #endregion
 
+        public static string CrearSlug(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return string.Empty;
+
+            string normalizado = texto.Normalize(NormalizationForm.FormD); // descompone acentos y los quita
+            var sb = new StringBuilder();
+            foreach (char c in normalizado)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark) // si el tipo de caracter no es un acento lo agrego al sb
+                    sb.Append(c);
+            }
+
+            string resultado = sb.ToString()
+                .Normalize(NormalizationForm.FormC) // recompone los caracteres
+                .ToLower() // pasa a minúsculas
+                .Replace(" ", "-"); // remplaza los espacios por guiones
+
+            resultado = Regex.Replace(resultado, @"[^a-z0-9\-]", ""); // elimina todo lo que no sea letra, número o guión
+            resultado = Regex.Replace(resultado, @"-{2,}", "-"); // si hay 2 o mas guiones seguidos deja solo uno
+            return resultado.Trim('-'); // elimina guiones al inicio y al final
+        }
     }
 }

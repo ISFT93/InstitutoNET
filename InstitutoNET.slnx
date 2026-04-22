@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ISFDyT93.Datos/ISFDyT93.Datos.csproj" Id="157d5044-fef4-49a2-aba0-cc4b9114f0d9" />
   <Project Path="ISFDyT93.Negocio/ISFDyT93.Negocio.csproj" Id="6f6ee66f-88ab-4ffb-8495-00927ea80b04" />
+  <Project Path="ISFDyT93.Tests/ISFDyT93.Tests.csproj" Id="4c895131-156d-4c70-a6b7-1711d8008c33" />
   <Project Path="ISFDyT93.Vista/ISFDyT93.Vista.csproj" Id="cbe7546b-02d1-4ad1-b5f7-05f38ed6e158" />
 </Solution>

@@ -23,7 +23,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
         {
             Type tipo = modelo.GetType();
 
-            if(!string.IsNullOrEmpty(this.Condicion))
+            if (!string.IsNullOrEmpty(this.Condicion))
             {
                 var metodo = tipo.GetMethod(Condicion);
 
