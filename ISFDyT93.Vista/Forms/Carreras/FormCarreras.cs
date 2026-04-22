@@ -302,12 +302,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 }
                 else
                 {
+                    //Oculta opciones cuando se hace click en un espacio vacio del datagridview
                     tsmDarAlta.Visible = false;
                     tsmModificarCarrera.Visible = false;
                     tsmEliminarCarrera.Visible = false;
                     tsmVerCorrelativas.Visible = false;
                     tsmVerEquivalencias.Visible = false;
                     tsmActivar.Visible = false;
+                    tsmVerAnios.Visible = false;
+                    
+
 
                     //Si hay una carrera en borrador no se podra agregar otra
                     bool agregar = true;
