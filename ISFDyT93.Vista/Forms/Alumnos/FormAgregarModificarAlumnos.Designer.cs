@@ -128,7 +128,6 @@
             this.pnlEstadoDiscapacidad = new System.Windows.Forms.Panel();
             this.rdbEstadoDiscapacidadPermanente = new System.Windows.Forms.RadioButton();
             this.rdbEstadoDiscapacidadTemporal = new System.Windows.Forms.RadioButton();
-            this.txtTelefonoContacto = new System.Windows.Forms.TextBox();
             this.pnlSiNoOS = new System.Windows.Forms.Panel();
             this.rdbObraSocialPrepagaSi = new System.Windows.Forms.RadioButton();
             this.rdbObraSocialPrepagaNo = new System.Windows.Forms.RadioButton();
@@ -172,6 +171,7 @@
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txtTelefonoContacto = new System.Windows.Forms.MaskedTextBox();
             this.grbDatosPersonales.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.grbFormacion.SuspendLayout();
@@ -296,7 +296,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(449, 149);
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(449, 146);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(390, 27);
             this.cmbEstadoCivil.TabIndex = 6;
@@ -332,7 +332,7 @@
             "DNI",
             "LE",
             "LC"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 89);
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(390, 27);
             this.cmbTipoDocumento.TabIndex = 3;
@@ -383,7 +383,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
             this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Location = new System.Drawing.Point(23, 149);
+            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(390, 27);
             this.cmbSexo.TabIndex = 5;
@@ -1055,7 +1055,7 @@
             "Terciario",
             "Universitario",
             "Postgrado"});
-            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 389);
+            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
             this.cmbMayorTitulo.Name = "cmbMayorTitulo";
             this.cmbMayorTitulo.Size = new System.Drawing.Size(394, 27);
             this.cmbMayorTitulo.TabIndex = 32;
@@ -1317,7 +1317,6 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel5.Controls.Add(this.lblPoseeObraSocial, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pnlEstadoDiscapacidad, 1, 8);
-            this.tableLayoutPanel5.Controls.Add(this.txtTelefonoContacto, 3, 11);
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoOS, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.label11, 1, 11);
             this.tableLayoutPanel5.Controls.Add(this.label1, 1, 1);
@@ -1340,6 +1339,7 @@
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoD, 3, 6);
             this.tableLayoutPanel5.Controls.Add(this.label7, 1, 6);
             this.tableLayoutPanel5.Controls.Add(this.btnGuardar, 5, 12);
+            this.tableLayoutPanel5.Controls.Add(this.txtTelefonoContacto, 3, 11);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -1408,17 +1408,6 @@
             this.rdbEstadoDiscapacidadTemporal.Tag = "EstadoDiscapacidad";
             this.rdbEstadoDiscapacidadTemporal.Text = "Temporal";
             this.rdbEstadoDiscapacidadTemporal.UseVisualStyleBackColor = true;
-            // 
-            // txtTelefonoContacto
-            // 
-            this.txtTelefonoContacto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.SetColumnSpan(this.txtTelefonoContacto, 3);
-            this.txtTelefonoContacto.Location = new System.Drawing.Point(433, 446);
-            this.txtTelefonoContacto.MaxLength = 15;
-            this.txtTelefonoContacto.Name = "txtTelefonoContacto";
-            this.txtTelefonoContacto.Size = new System.Drawing.Size(410, 27);
-            this.txtTelefonoContacto.TabIndex = 61;
-            this.txtTelefonoContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // pnlSiNoOS
             // 
@@ -1845,7 +1834,7 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(726, 10);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(726, 13);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
             this.cmbCicloLectivo.Size = new System.Drawing.Size(141, 27);
             this.cmbCicloLectivo.TabIndex = 175;
@@ -1870,7 +1859,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(127, 10);
+            this.cmbCarreraId.Location = new System.Drawing.Point(127, 13);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(451, 27);
             this.cmbCarreraId.TabIndex = 0;
@@ -1963,6 +1952,17 @@
             this.txtTelefono.Size = new System.Drawing.Size(399, 27);
             this.txtTelefono.TabIndex = 117;
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // txtTelefonoContacto
+            // 
+            this.txtTelefonoContacto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.SetColumnSpan(this.txtTelefonoContacto, 3);
+            this.txtTelefonoContacto.Location = new System.Drawing.Point(433, 446);
+            this.txtTelefonoContacto.Mask = "(0999) 000-0000";
+            this.txtTelefonoContacto.Name = "txtTelefonoContacto";
+            this.txtTelefonoContacto.Size = new System.Drawing.Size(410, 27);
+            this.txtTelefonoContacto.TabIndex = 174;
+            this.txtTelefonoContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
             // FormAgregarModificarAlumnos
             // 
@@ -2091,7 +2091,6 @@
         private System.Windows.Forms.Panel pnlSiNoTS;
         private System.Windows.Forms.Panel pnlSiNoTT;
         private System.Windows.Forms.GroupBox grbFichaSalud;
-        private System.Windows.Forms.TextBox txtTelefonoContacto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtContactoEmergencia;
         private System.Windows.Forms.Label label10;
@@ -2164,5 +2163,6 @@
         private System.Windows.Forms.Label lblAnioLectivo;
         private System.Windows.Forms.MaskedTextBox txtCelular;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.MaskedTextBox txtTelefonoContacto;
     }
 }
