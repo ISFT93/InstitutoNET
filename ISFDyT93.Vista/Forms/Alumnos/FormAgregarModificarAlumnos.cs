@@ -253,9 +253,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarFormulario())
-                return;
+
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            if (!ValidarFormulario())
+            {
+                this.MostrarErrores(epvAlumnos, alumno.Errores);
+                return;
+            }
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
 
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)

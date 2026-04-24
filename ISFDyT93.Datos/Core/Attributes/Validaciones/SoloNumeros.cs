@@ -1,4 +1,5 @@
 ﻿using ISFDyT93.Datos.Modelos;
+using System.Linq;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {
@@ -37,42 +38,27 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 
         public bool InnerValidar(object value, ModeloBase modelo)
         {
-            if (string.IsNullOrEmpty(value.ToString()))
-            {
+            if (value == null)
                 return true;
-            }
 
-            bool validado = true;
-            foreach (char c in value.ToString())
-            {
-                if (!NUMEROS.Contains(c.ToString()))
-                {
-                    validado = false;
-                }
-            }
+            string texto = value.ToString();
+            
+            string limpio = new string(texto.Where(char.IsDigit).ToArray());
 
-            long salida;
+            // 3. Si está vacío, lo consideramos válido (como hacías antes)
+            if (string.IsNullOrEmpty(limpio))
+                return true;
+            
+            if (!long.TryParse(limpio, out long salida))
+                return false;
+            
+            if (this.Minimo != null && salida < this.Minimo)
+                return false;
 
-            if(!long.TryParse(value.ToString(), out salida))
-            {
-                validado = false;
-            }
+            if (this.Maximo != null && salida > this.Maximo)
+                return false;
 
-            if (validado)
-            {
-                if (this.Minimo != null && this.Minimo > salida)
-                {
-                    validado = false;
-                }
-
-                if(this.Maximo != null && this.Maximo < salida)
-                {
-                    validado = false;
-                }
-            }
-
-            return validado;
-
+            return true;
         }
     }
 }
