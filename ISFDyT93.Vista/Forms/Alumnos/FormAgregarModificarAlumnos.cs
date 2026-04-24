@@ -152,7 +152,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 {
                     tb.ReadOnly = true;
                 }
-
+                if (ctrl is MaskedTextBox mtb)
+                {
+                    mtb.ReadOnly = true;
+                }
                 // Recursividad para aplicar a controles anidados
                 if (ctrl.HasChildren)
                 {

@@ -319,6 +319,11 @@ namespace ISFDyT93.Vista.Core
                     var txtBox = control as TextBox;
                     txtBox.Text = propiedad.GetValue(datos).ToString();
                 }
+                else if (control.GetType() == typeof(MaskedTextBox))
+                {
+                    var maskedtxtBox = control as MaskedTextBox;
+                    maskedtxtBox.Text = propiedad.GetValue(datos).ToString();
+                }
                 else if (control.GetType() == typeof(ComboBox))
                 {
                     var cmbBox = control as ComboBox;
