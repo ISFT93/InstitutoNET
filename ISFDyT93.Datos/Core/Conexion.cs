@@ -1,11 +1,12 @@
 ﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace ISFDyT93.Datos.Core
 {
-    public class Conexion
+    public class Conexion:IConexion
     {
         //Primero se declara el objeto
         public SqlConnection Conector;
@@ -93,14 +94,7 @@ namespace ISFDyT93.Datos.Core
             return result;          
         }
         
-        /*
-         * En la forma que estaba antes, si se ejecutaba un SP que tuviera un throw o un raiserror se cortaba la ejecución
-         * del programa para mostrar el error.
-         * El try/catch colocado es para poder traer excepciones generadas en la ejecución del SP y poder generar un errorMessage
-         * en el form correspondiente.
-        */
-
-        public int EjecutarStoreNumber(string nombre, SqlParameter[] parametros)
+         public int EjecutarStoreNumber(string nombre, SqlParameter[] parametros)
         {           
             var Comando = new SqlCommand(nombre, this.Conector);
             Comando.CommandType = CommandType.StoredProcedure;

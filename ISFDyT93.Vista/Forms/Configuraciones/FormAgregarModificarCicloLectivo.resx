@@ -120,14 +120,14 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAceptar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
-        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
-        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
-        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
-        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
-        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
-        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
-        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAXVJREFUSEvd
+        lc9KA0EMxhfEPy/iwapHRW/6AIKgoqCPI15F8AH0IHjQxxFEbb0I2h7sJil0vxGMpN3S7cy0uz304gcf
+        LEPyy5AJ2ST511LVRSKccYpHJtSZ8J27zowHIpxajJ9XSZLikAnvTNASNyTFgZ8/Vqo6J+SuIqCJFnKX
+        luvzAhG5az+5qu1iPm9EzNj3k6b0L3O253N7UtWlij0vcyP68EI4iQSX2DWJ3Ja0u7vFc0lx5PMTItyH
+        gEl2TRGs9XPd5kgBwp3PT5jwGkLGOMUHUbacwzeY0PZinn2+FZAAFHM53Mw+3wp0ikHS7u4w/2xbK4bn
+        7ksENYvvdLDOlLUi8LEFXopBdjs7F8GqgZnwKYKVCnBz2KLwkbOWgfIitSng8UeOj+mwiKkKvFcgNqaq
+        usCENz/YgNau/iiWw63Vqjrv83ua6aoYiBkXkcRKJsK5zws083U90Mx+OEXZVsyn65YJT0zo5rbvG0lx
+        HN2c/0p/PG7Vh5oI4CkAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

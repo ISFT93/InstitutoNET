@@ -22,6 +22,11 @@ namespace ISFDyT93.Datos.Modelos
         [Obligatorio]
         public DateTime? FechaInicio { get; set; }
         [Obligatorio]
+        public DateTime? FechaPreInscripcionInicio { get; set; }
+        [Obligatorio(condicion: "checkFechaInscripcionInicio")]
+        [MayorQue("FechaPreInscripcionInicio")]
+        public DateTime? FechaPreInscripcionFinal { get; set; }
+        [Obligatorio("Modificando")]
         public DateTime? FechaInscripcionInicio { get; set; }
         [Obligatorio(condicion: "checkFechaInscripcionInicio")]
         [MayorQue("FechaInscripcionInicio")]

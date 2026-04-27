@@ -60,6 +60,7 @@
     <Compile Include="Enums\TipoLibro.cs" />
     <Compile Include="Daos\EvaluacionesDao.cs" />
     <Compile Include="Enums\TipoParametro.cs" />
+    <Compile Include="Interfaces\IConexion.cs" />
     <Compile Include="Modelos\AniosCarrerasModelo.cs" />
     <Compile Include="Modelos\AsistenciasModelo.cs" />
     <Compile Include="Daos\CiclosLectivosDao.cs" />

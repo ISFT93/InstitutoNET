@@ -19,7 +19,7 @@ namespace ISFDyT93.Negocio.Logica
         }
         public int AgregarCicloLectivo(CicloLectivoModelo Modelo)
         {
-            var anioLectivo = this.ciclolectivoDao.AgregarCicloLectivo(Modelo);
+                var anioLectivo = this.ciclolectivoDao.AgregarCicloLectivo(Modelo);
 
             if(anioLectivo > 0)
             {

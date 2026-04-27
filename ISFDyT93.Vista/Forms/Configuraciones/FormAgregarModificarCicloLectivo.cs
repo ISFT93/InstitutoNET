@@ -353,7 +353,18 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             if (dtpFechaInscripcionFinal.Value != dtpFechaInscripcionFinal.MinDate)
                 dtpFechaInscripcionFinal.CustomFormat = "dd/MM/yyyy";
         }
+        private void dtpFechaPreInscripcionInicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFechaPreInscripcionInicio.Value != dtpFechaPreInscripcionInicio.MinDate)
+                dtpFechaPreInscripcionInicio.CustomFormat = "dd/MM/yyyy";
 
+        }
+
+        private void dtpFechaPreInscripcionFinal_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFechaPreInscripcionFinal.Value != dtpFechaPreInscripcionFinal.MinDate)
+                dtpFechaPreInscripcionFinal.CustomFormat = "dd/MM/yyyy";
+        }
         private void dtpFechaMarzoInicio_ValueChanged(object sender, EventArgs e)
         {
             if (dtpFechaMarzoInicio.Value != dtpFechaMarzoInicio.MinDate)
