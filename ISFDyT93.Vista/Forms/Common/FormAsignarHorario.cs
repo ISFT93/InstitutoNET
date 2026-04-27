@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Vista.Forms.Carreras;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
@@ -253,6 +253,7 @@ namespace ISFDyT93.Vista.Forms.Common
             foreach (DataRow dr in Cursos.Rows)
             {
                 var grupoHorarios = horariosLogica.ObtenerHorarios((int)dr["CursoId"]);
+                // quizas hacer revicion de conteo de columnas aqui.
                 HxCurso.AgregarListaHorarios((int)dr["CursoId"], grupoHorarios);
             }
         }
@@ -352,14 +353,24 @@ namespace ISFDyT93.Vista.Forms.Common
         }
         internal List<int> ObtenerCursoMateriasIds()
         {
-            var lista = lts.Select(x => x.ltsHorarios).ToList();
+            //bool contieneHorario = lts.Any(x=> x.ltsHorarios != null &&  x.ltsHorarios.Count > 0); // agregado
             var listaResult = new List<int>();
-            foreach (var lt in lista)
-            {
-                var ids = new HashSet<int>(lt.Select(x => x.CursoMateriaId));
-                listaResult.AddRange(ids.ToList());
-            }
-            return listaResult;
+
+            //if (contieneHorario)
+            //{
+
+                var lista = lts.Select(x => x.ltsHorarios).ToList();
+
+                foreach (var lt in lista)
+                {
+                    var ids = new HashSet<int>(lt.Select(x => x.CursoMateriaId));
+                    listaResult.AddRange(ids.ToList());
+                }
+
+                return listaResult;
+            //}
+            //listaResult.Add(0); // add cambio.
+            //return listaResult; // agregado
         }
     }
 }

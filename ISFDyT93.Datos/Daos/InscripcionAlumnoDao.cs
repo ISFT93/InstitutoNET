@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using ISFDyT93.Datos.Core;
-using ISFDyT93.Entidades;
-using ISFDyT93.Entidades.Core;
-using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -44,7 +41,7 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistro(query);
         }
 
-        public int actualizarEstadoCursada(InscripcionMateriasModelo Modelo)
+        public int actualizarEstadoCursada(Modelos.InscripcionMateriasModelo Modelo)
         {
             string query = "UPDATE CursadaAlumnoCarreras SET Estado = '" + Modelo.estado + "', Cursada = '" + Modelo.cursada + "' WHERE CursadaAlumnoCarreraId =" + Modelo.cursadaAlumnoId;
             return Conexion.EjecutarAccion(query);

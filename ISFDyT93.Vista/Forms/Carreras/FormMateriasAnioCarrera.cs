@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Negocio.Core.Enums;
-using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Datos.Enums;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -24,17 +24,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private MateriasLogica materiasLogica { get; set; }
         private AniosCarreraLogica aniosLogica { get; set; }
         #endregion
-
+        
         public FormMateriasAnioCarrera()
         {
             this.materiasLogica = new MateriasLogica();
             this.aniosLogica = new AniosCarreraLogica();
 
-            InitializeComponent();
+            InitializeComponent();   
         }
 
         private void FormMateriasAnioCarrera_Load(object sender, EventArgs e)
-        {
+        {   
             this.anioCarrera = this.aniosLogica.ObtenerAnioCarrera(this.AnioCarreraId);
 
             dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId);
@@ -49,13 +49,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmVerCorrelatividades.Visible = false;
             }
 
-            this.Contenedor.SetTitulo($"Materias de {this.anioCarrera.AnioCarrera} año de {anioCarrera.NombreCarrera}")
-                .SetVolver(() =>
-                {
-                    this.Contenedor.AbrirFormulario<FormAniosCarreras>((form) =>
-                    {
-                        form.CarreraId = this.anioCarrera.CarreraId;
-                    });
+            this.Contenedor.SetTitulo($"Materias de { this.anioCarrera.AnioCarrera } año de { anioCarrera.NombreCarrera }")
+                .SetVolver(() => {
+                    this.Contenedor.AbrirFormulario<FormAniosCarreras>((form) => {
+                       form.CarreraId = this.anioCarrera.CarreraId;
+                   });
                 }
             );
 
@@ -64,20 +62,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmAgregarMateria_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form =>
-            {
+            Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form => {
                 form.AnioCarreraId = this.AnioCarreraId;
                 form.MateriaId = this.MateriaId;
                 form.Accion = TipoAccion.Agregar;
-            });
+            }); 
         }
 
         private void tsmModificarMateria_Click(object sender, EventArgs e)
         {
             if (tsmModificarMateria.Text == "Modificar")
             {
-                Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form =>
-                {
+                Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form => {
                     form.AnioCarreraId = this.AnioCarreraId;
                     form.MateriaId = this.MateriaId;
                     form.Accion = TipoAccion.Modificar;
@@ -85,8 +81,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             else
             {
-                Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form =>
-                {
+                Contenedor.AbrirFormulario<FormAgregarModificarMateria>(form => {
                     form.AnioCarreraId = this.AnioCarreraId;
                     form.MateriaId = this.MateriaId;
                     form.Accion = TipoAccion.Ver;
@@ -98,8 +93,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (MateriaId > 0)
             {
-                Contenedor.AbrirFormulario<FormAgregarModificarCorrelativa>(form =>
-                {
+                Contenedor.AbrirFormulario<FormAgregarModificarCorrelativa>(form => {
                     form.MateriaId = this.MateriaId;
                     form.DescripcionCarrera = anioCarrera.NombreCarrera;
                 });
@@ -115,8 +109,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (resultado == DialogResult.Yes)
             {
                 materiasLogica.EliminarMateria(this.MateriaId, this.AnioCarreraId);
-
-                dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId);
+                
+                dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId); 
                 //Ocultar columna de la grilla
                 dgvMatAnioCarrera.Columns["MateriaId"].Visible = false;
             }

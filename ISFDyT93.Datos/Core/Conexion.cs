@@ -1,5 +1,4 @@
 ﻿using ISFDyT93.Datos.Core;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,20 +12,17 @@ namespace ISFDyT93.Datos.Core
         //Luego se instancia en el constructor
         public Conexion()
         {
-            // Leer la cadena de conexión desde App.config (proyecto ISFDyT93.Vista)
-            var connSetting = ConfigurationManager.ConnectionStrings["InstiDB"];
-            if (connSetting == null || string.IsNullOrWhiteSpace(connSetting.ConnectionString))
-            {
-                throw new System.InvalidOperationException("No se encontró la cadena de conexión 'InstiDB' en App.config.");
-            }
-
-            string strConexion = connSetting.ConnectionString;
+            //Servidor SQL Server - Base de Datos
+            string strConexion = Settings.STRCONNECTION;
             this.Conector = new SqlConnection(strConexion);
         }
 
         //Metodo para obtener muchos registros
         public DataTable ObtenerRegistros(string query)
         {
+            /*posible error de sintaxis sql
+            Select * FROM ViewCargosServiciosCursoMateria WHERE CursoMateriaId IN () AND Activo = 'True'
+            el error puede ser por el parentesis ().*/
             var Comando = new SqlCommand(query, this.Conector);
 
             DataTable result = new DataTable();

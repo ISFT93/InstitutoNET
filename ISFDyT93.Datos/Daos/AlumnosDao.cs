@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Datos.Enums;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 
@@ -12,7 +12,7 @@ namespace ISFDyT93.Datos.Daos
         public int AgregarAlumnoTablaExcel(AlumnosModelo modelo)
         {
             string query = "INSERT INTO Alumnos  ([Apellido], [Nombre],[TipoDocumento], [NumeroDocumento],[EstadoCivil]," +
-                    "[Sexo],  [LocalidadNacimiento], [Calle],[Numero],[Provincia],[Distrito],[Localidad],[CodigoPostal],[Celular]," +
+                    "[Sexo],  [LocNacimiento], [Calle],[Numero],[Provincia],[Distrito],[Localidad],[CodigoPostal],[Celular]," +
                     "[Email], [FotoUrl], [Activo]) VALUES ('" + modelo.Apellido + "','" +
                      modelo.Nombre + "', '" + modelo.TipoDocumento + "','" + modelo.NumeroDocumento + "','" +
                      modelo.EstadoCivil + "', '" + modelo.Sexo + "', '" +
@@ -27,11 +27,11 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "UPDATE Alumnos SET Apellido='" + modelo.Apellido + "',Nombre=" +
             " '" + modelo.Nombre + "',TipoDocumento='" + modelo.TipoDocumento + "',EstadoCivil=" +
-            " '" + modelo.EstadoCivil + "',Sexo='" + modelo.Sexo + "',LocalidadNacimiento=" +
+            " '" + modelo.EstadoCivil + "',Sexo='" + modelo.Sexo + "',LocNacimiento=" +
             " '" + modelo.LocalidadNacimiento + "',Calle='" + modelo.Calle + "',Numero=" +
-            " '" + modelo.Numero + "',Provincia='" + modelo.Provincia + "',Distrito=" +
-            " '" + modelo.Distrito + "',Localidad='" + modelo.Localidad + "',CodigoPostal='" + modelo.CodigoPostal + "',Celular=" +
-            " '" + modelo.Celular + "',Email='" + modelo.Email + "',FotoUrl='" + modelo.FotoUrl + "',Activo='" + modelo.Activo + "' WHERE NumeroDocumento ='" + modelo.NumeroDocumento + "'";
+            " '" + modelo.Numero +"',Provincia='" + modelo.Provincia + "',Distrito=" +
+            " '" + modelo.Distrito + "',Localidad='" + modelo.Localidad + "',CodigoPostal='" + modelo.CodigoPostal  + "',Celular=" +
+            " '" + modelo.Celular + "',Email='" + modelo.Email + "',FotoUrl='" + modelo.FotoUrl+ "',Activo='" +modelo.Activo +"' WHERE NumeroDocumento ='" + modelo.NumeroDocumento+"'";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -46,15 +46,11 @@ namespace ISFDyT93.Datos.Daos
 
         public int AgregarAlumnoCargaMasiva(AlumnosModelo modelo)
         {
-            int activo;
-            if (modelo.Activo) activo = 1;
-            else activo = 0;
-            string query = $@"INSERT INTO Alumnos ([Apellido], [Nombre], [TipoDocumento],[NumeroDocumento],
-                    [EstadoCivil], [Sexo], [FechaNacimiento], [LocalidadNacimiento],[Calle],[Provincia],[Distrito],[Localidad],[CodigoPostal],[Celular],
-                    [Email], [FotoUrl], [Activo])  VALUES ('{modelo.Apellido}','{modelo.Nombre}', '{modelo.TipoDocumento}', '{modelo.NumeroDocumento}',
-                    '{modelo.EstadoCivil}', '{modelo.Sexo}', '{modelo.FechaNacimiento}','{modelo.LocalidadNacimiento}','{modelo.Calle}',
-                    '{modelo.Provincia}','{modelo.Distrito}', '{modelo.Localidad}', '{modelo.CodigoPostal}', '{modelo.Celular}',
-                    '{modelo.Email}', '{modelo.FotoUrl}', '{activo}')";
+            string query = "INSERT INTO Alumnos ([Apellido], [Nombre], [TipoDocumento],[NumeroDocumento]," +
+                    "[EstadoCivil], [Sexo], [FechaNacimiento], [LocNacimiento],[Calle],[Provincia],[Distrito],[Localidad],[CodigoPostal],[Celular]," +
+                    "[Email], [FotoUrl])  VALUES ('" + modelo.Apellido + "','" + modelo.Nombre + "', '" + modelo.TipoDocumento + "', '" + modelo.NumeroDocumento + "','" +
+          modelo.EstadoCivil + "', '" + modelo.Sexo + "', '" + modelo.FechaNacimiento + "','" + modelo.LocalidadNacimiento + "','" + modelo.Calle + "','" + modelo.Provincia + "','" +
+          modelo.Distrito + "', '" + modelo.Localidad + "', '" + modelo.CodigoPostal + "', '" + modelo.Celular + "', '" + modelo.Email + "', '" + modelo.FotoUrl + "')";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -64,7 +60,7 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.EjecutarAccion(query);
         }
-
+        
         public int AgregarAlumnoCarrera(AlumnosCarrerasModelo modelo)
         {
             string query = this.CreateInsertQuery<AlumnosCarrerasModelo>(modelo);
@@ -76,6 +72,8 @@ namespace ISFDyT93.Datos.Daos
             int activ = 0;
             if (modelo.Activo == false)
                 activ = 1;
+            else
+                activ = 0;
 
             string query = "INSERT INTO AlumnosCarreras ([CarreraId], [AlumnoId], [FechaAlta], [Activo]) VALUES (" +
             modelo.CarreraId + "," + modelo.AlumnoId + ",'" + modelo.FechaAlta + "'," + activ + ")";
@@ -86,9 +84,9 @@ namespace ISFDyT93.Datos.Daos
             string query = this.CreateUpdateQuery<AlumnosCarrerasModelo>(modelo);
 
             return this.Conexion.EjecutarAccion(query);
-        }
+        }       
 
-
+        
         public DataTable ObtenerAlumnosPrueba()//Carga la grilla new
         {
             string query = "SELECT Alumnos.Apellido, Alumnos.Nombre, Alumnos.NumeroDocumento AS [Documento] FROM Alumnos ";
@@ -115,7 +113,7 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "SELECT * FROM AlumnosCarreras WHERE AlumnoId =" + AlumnoId + " AND Activo = 1";
             return MapToModel<AlumnosCarrerasModelo>(this.Conexion.ObtenerRegistro(query));
-
+   
         }
         public void EliminarAlumno(int AlumnoId)
         {
@@ -178,7 +176,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "UPDATE Alumnos SET Activo = " + 1 + " WHERE AlumnoId = " + alumnoId;
             this.Conexion.EjecutarAccion(query);
         }
-
+        
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo)
         {
             string query;

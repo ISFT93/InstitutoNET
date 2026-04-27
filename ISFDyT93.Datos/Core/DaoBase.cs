@@ -1,68 +1,21 @@
-﻿using ISFDyT93.Entidades.Core.Attributes;
+﻿using ISFDyT93.Datos.Core.Attributes;
 using System;
 using System.Linq;
 using System.Data;
-using ISFDyT93.Entidades.Core;
+using ISFDyT93.Datos.Core.Attributes.Validaciones;
 using System.Collections.Generic;
 
 namespace ISFDyT93.Datos.Core
 {
     public class DaoBase
     {
-        private Conexion _instance;
-        private readonly object _conexionLock = new object();
+        protected Conexion Conexion { get; set; }
 
-        public Conexion Conexion
+        public DaoBase()
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (_conexionLock)
-                    {
-                        if (_instance == null)
-                        {
-                            _instance = new Conexion();
-                        }
-                    }
-                }
-                if (_instance.Conector == null)
-                {
-                    lock (_conexionLock)
-                    {
-                        _instance = new Conexion();
-                    }
-                }
-
-                return _instance;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    if (_instance != null)
-                    {
-                        try
-                        {
-                            if (_instance.Conector != null && _instance.Conector.State != ConnectionState.Closed)
-                            {
-                                _instance.Conector.Close();
-                            }
-                            _instance.Conector?.Dispose();
-                        }
-                        catch
-                        {
-                        }
-                    }
-
-                    _instance = null;
-                }
-                else
-                {
-                    _instance = value;
-                }
-            }
+            this.Conexion = new Conexion();
         }
+
         public string CreateInsertQuery<T>(T model)
         {
             Type type = typeof(T);

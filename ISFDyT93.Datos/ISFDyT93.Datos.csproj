@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -43,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Attributes\Validaciones\Unico.cs" />
     <Compile Include="Core\Cache.cs" />
+    <Compile Include="Core\Attributes\Validaciones\MayorQue.cs" />
     <Compile Include="Daos\AlumnosDao.cs" />
     <Compile Include="Daos\AniosCarreraDao.cs" />
     <Compile Include="Daos\CargosDao.cs" />
@@ -54,17 +53,61 @@
     <Compile Include="Daos\MesasFinalesDao.cs" />
     <Compile Include="Daos\ParametrosDao.cs" />
     <Compile Include="Daos\EquivalenciasDao.cs" />
+    <Compile Include="Enums\Cargo.cs" />
+    <Compile Include="Enums\CarreraEstado.cs" />
+    <Compile Include="Enums\PersonalEstado.cs" />
+    <Compile Include="Enums\TipoLibro.cs" />
     <Compile Include="Daos\EvaluacionesDao.cs" />
+    <Compile Include="Enums\TipoParametro.cs" />
+    <Compile Include="Modelos\AniosCarrerasModelo.cs" />
+    <Compile Include="Modelos\AsistenciasModelo.cs" />
     <Compile Include="Daos\CiclosLectivosDao.cs" />
+    <Compile Include="Core\Attributes\Ignorar.cs" />
+    <Compile Include="Core\Attributes\Clave.cs" />
+    <Compile Include="Core\Attributes\Validaciones\AlmenosUno.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Email.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Expediente.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Longitud.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Obligatorio.cs" />
+    <Compile Include="Core\Attributes\Validaciones\SoloLetras.cs" />
+    <Compile Include="Core\Attributes\Validaciones\SoloLetrasEspacios.cs" />
+    <Compile Include="Core\Attributes\Validaciones\SoloLetrasNumerosEspacios.cs" />
+    <Compile Include="Core\Attributes\Validaciones\SoloNumeros.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Unico.cs" />
+    <Compile Include="Core\Attributes\Validaciones\Validacion.cs" />
     <Compile Include="Core\DaoBase.cs" />
+    <Compile Include="Core\Error.cs" />
     <Compile Include="Daos\CorrelativasDao.cs" />
     <Compile Include="Daos\CursosDao.cs" />
+    <Compile Include="Enums\TipoFiltroAlumno.cs" />
+    <Compile Include="Enums\TipoFiltroProfesor.cs" />
     <Compile Include="Daos\HorariosDao.cs" />
     <Compile Include="Daos\InscripcionAlumnoDao.cs" />
     <Compile Include="Daos\LicenciaServicioDao.cs" />
+    <Compile Include="Modelos\AlumnosModelo.cs" />
+    <Compile Include="Modelos\AlumnosCarrerasModelo.cs" />
+    <Compile Include="Modelos\CargosModelo.cs" />
+    <Compile Include="Modelos\CargosModeloDTO.cs" />
+    <Compile Include="Modelos\CarrerasModelo.cs" />
     <Compile Include="Daos\CarrerasDao.cs" />
     <Compile Include="Core\Conexion.cs" />
+    <Compile Include="Modelos\CicloLectivoModelo.cs" />
+    <Compile Include="Modelos\CorrelatividadModel.cs" />
+    <Compile Include="Modelos\CursadasModelo.cs" />
+    <Compile Include="Modelos\CursoMateriasModelo.cs" />
+    <Compile Include="Modelos\CursosModelo.cs" />
+    <Compile Include="Modelos\HorariosModelo.cs" />
+    <Compile Include="Modelos\InscripcionMateriasModelo.cs" />
+    <Compile Include="Modelos\LibroActasModelo.cs" />
+    <Compile Include="Modelos\LicenciaServicioModelo.cs" />
+    <Compile Include="Modelos\MateriasModelo.cs" />
     <Compile Include="Daos\MateriasDao.cs" />
+    <Compile Include="Core\ModeloBase.cs" />
+    <Compile Include="Modelos\ModelosCicloLectivo.cs" />
+    <Compile Include="Modelos\ParametrosModelo.cs" />
+    <Compile Include="Modelos\PersonalModelo.cs" />
+    <Compile Include="Modelos\ProfesoresModelo.cs" />
+    <Compile Include="Modelos\ServiciosModelo.cs" />
     <Compile Include="Daos\PersonalDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Daos\ServiciosDao.cs" />
@@ -81,12 +124,5 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ISFDyT93.Entidades\ISFDyT93.Entidades.csproj">
-      <Project>{fc9c8560-73c4-4748-b6d6-ae1bbcf6b4d3}</Project>
-      <Name>ISFDyT93.Entidades</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

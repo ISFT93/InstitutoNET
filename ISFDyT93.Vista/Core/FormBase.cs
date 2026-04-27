@@ -1,7 +1,7 @@
-﻿using ISFDyT93.Entidades.Core;
-using ISFDyT93.Entidades.Core.Attributes;
-using ISFDyT93.Entidades.Core.Attributes.Validaciones;
-using ISFDyT93.Entidades.Modelos;
+﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Core.Attributes;
+using ISFDyT93.Datos.Core.Attributes.Validaciones;
+using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms;
 using ISFDyT93.Vista.Forms.Componetes;
@@ -22,11 +22,11 @@ namespace ISFDyT93.Vista.Core
             InitializeComponent();
         }
 
-        public void Notificar(TipoNotificacion TipoNotificacion, string Mensaje, ContentAlignment Alineacion = ContentAlignment.BottomCenter, int Tiempo = 3000)
+        public void Notificar(TipoNotificacion TipoNotificacion, string Mensaje, ContentAlignment Alineacion = ContentAlignment.BottomCenter, int Tiempo = 2000)
         {
             if (Tiempo > 0)
             {
-                new FormNotificacion(TipoNotificacion, Mensaje, Alineacion, Tiempo).Show();
+                new FormNotificacion(TipoNotificacion, Mensaje, Alineacion, Tiempo).ShowDialog();
             }
         }
 
@@ -76,7 +76,7 @@ namespace ISFDyT93.Vista.Core
                 {
                     ((Control)error.Control).Focus();
                     focus = true;
-                }
+                } 
             }
         }
 
@@ -160,11 +160,11 @@ namespace ISFDyT93.Vista.Core
                 else if (control.GetType() == typeof(DateTimePicker))
                 {
                     var dtpPiker = control as DateTimePicker;
-
+                    
 
                     if (!dtpPiker.Text.Equals(" "))
                     {
-
+                        
                         value = dtpPiker.Value;
                     }
                 }
@@ -398,7 +398,7 @@ namespace ISFDyT93.Vista.Core
             }
 
             return result;
-        }
-
-    }
+        }       
+        
+    }   
 }
