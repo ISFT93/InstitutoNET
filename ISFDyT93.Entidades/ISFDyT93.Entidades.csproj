@@ -47,6 +47,7 @@
     <Compile Include="Core\Attributes\Validaciones\AlmenosUno.cs" />
     <Compile Include="Core\Attributes\Validaciones\Email.cs" />
     <Compile Include="Core\Attributes\Validaciones\Expediente.cs" />
+    <Compile Include="Core\Attributes\Validaciones\LimpiarTexto.cs" />
     <Compile Include="Core\Attributes\Validaciones\Longitud.cs" />
     <Compile Include="Core\Attributes\Validaciones\MayorQue.cs" />
     <Compile Include="Core\Attributes\Validaciones\Obligatorio.cs" />
