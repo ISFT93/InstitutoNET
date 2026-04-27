@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {
@@ -21,7 +21,8 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
             this.Mensaje = mensaje;
         }
 
-        public virtual bool Validar(object valor, ModeloBase modelo) {
+        public virtual bool Validar(object valor, ModeloBase modelo)
+        {
             return Metodo(valor, modelo);
         }
     }

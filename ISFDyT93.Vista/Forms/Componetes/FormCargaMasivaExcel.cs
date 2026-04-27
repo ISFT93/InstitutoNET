@@ -1,5 +1,5 @@
-using ISFDyT93.Datos.Core.Attributes.Validaciones;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Core.Attributes.Validaciones;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using Syncfusion.XlsIO;
 using System;

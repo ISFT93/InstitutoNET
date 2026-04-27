@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Negocio.Core.Enums;
 using static ISFDyT93.Negocio.Validaciones;
@@ -59,7 +59,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     var existe = MateriasLogica.MateriaAsignada(this.CarreraId);
 
                     //Solo para cambiar el titulo
-                    this.Contenedor.SetTitulo($"Modificar Carrera { Modelo.DescripcionCorta }");
+                    this.Contenedor.SetTitulo($"Modificar Carrera {Modelo.DescripcionCorta}");
 
                     if (this.Modelo.CarreraEstadoId == 3)
                     {
@@ -93,7 +93,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (this.Accion == TipoAccion.Ver)
                 {
-                    this.Contenedor.SetTitulo($"Carrera  { Modelo.DescripcionCorta }");
+                    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
                     this.DeshabilitarControles();
                     btnGuardar.Visible = false;
                 }
@@ -113,7 +113,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
 
-       
+
 
         public void Limpiar()
         {
@@ -149,7 +149,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                             CarrerasLogica.GuardarCarrera(carrera, TipoAccion.Modificar);
 
                             Notificar(TipoNotificacion.Success, "Carrera desactivada");
-                                Contenedor.AbrirFormulario<FormCarreras>();                            
+                            Contenedor.AbrirFormulario<FormCarreras>();
                         }
                     }
                     else
@@ -168,7 +168,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     }
                     else
                     {
-                        Notificar(TipoNotificacion.Error, "No se ha podido guardar la carrera");                       
+                        Notificar(TipoNotificacion.Error, "No se ha podido guardar la carrera");
                     }
                 }
             }

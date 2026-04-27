@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using ISFDyT93.Vista.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -32,11 +32,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.materiaModelo = materiasLogica.ObtenerMateria(MateriaId);
             var Carrera = materiasLogica.ObtenerCarreraDeAnio(this.materiaModelo.AnioCarreraId);
 
-            this.Contenedor.SetVolver(() => {
-               this.Contenedor.AbrirFormulario<FormMateriasAnioCarrera>((form) =>
-               {
-                   form.AnioCarreraId = materiaModelo.AnioCarreraId;
-               });
+            this.Contenedor.SetVolver(() =>
+            {
+                this.Contenedor.AbrirFormulario<FormMateriasAnioCarrera>((form) =>
+                {
+                    form.AnioCarreraId = materiaModelo.AnioCarreraId;
+                });
             });
 
             //ACTIVA o INACTIVA
@@ -55,7 +56,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 btnQuitarMateria.Visible = true;
                 btnQuitarTodos.Visible = true;
                 this.Contenedor.SetTitulo($"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}");
-            } 
+            }
 
             this.ActualizarListas();
         }
@@ -65,7 +66,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var materiaDatos = materiasLogica.ObtenerMateria(MateriaId);
             int AnioCarreraId = materiaDatos.AnioCarreraId;
 
-            Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form => {
+            Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+            {
                 form.AnioCarreraId = AnioCarreraId;
             });
         }
@@ -133,7 +135,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             var tabla = (DataTable)lstCorrelativas.DataSource;
 
-            if(tabla.Rows.Count > 0)
+            if (tabla.Rows.Count > 0)
             {
                 this.correlativasLogica.EliminarCorrelativas(this.MateriaId);
                 this.ActualizarListas();

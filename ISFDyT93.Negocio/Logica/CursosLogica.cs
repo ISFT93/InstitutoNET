@@ -1,6 +1,6 @@
 ﻿using ISFDyT93.Datos;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System.Data;
 
@@ -21,7 +21,7 @@ namespace ISFDyT93.Negocio.Logica
         {
             return cursosDao.ConsultarCursos(anioCarreraId);
         }
-        
+
         public DataTable ConsultarCursosPrimerAnio(int alumnoId)
         {
             return cursosDao.ConsultarCursosPrimerAnio(alumnoId);
@@ -30,7 +30,7 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable AgregarCurso(int anioCarreraId, int cantidadCursos)
         {
             string abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-            string nombreCurso = abecedario[cantidadCursos].ToString();         
+            string nombreCurso = abecedario[cantidadCursos].ToString();
 
             return cursosDao.AgregarCurso(anioCarreraId, nombreCurso);
         }

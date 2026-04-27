@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -18,19 +19,19 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistro(query);
         }
 
-        public DataRow ObtenerFechaBajaObligatorio(Modelos.LicenciaServicioModelo modelos)
+        public DataRow ObtenerFechaBajaObligatorio(LicenciaServicioModelo modelos)
         {
             string query = "SELECT FechaBajaObligatiorio FROM TipoLicencias WHERE TipoLicenciaId = " + modelos.licenciaTipoId;
             return this.Conexion.ObtenerRegistro(query);
         }
 
-        public DataTable ObtenerLicenciasDeActivos(Modelos.LicenciaServicioModelo modelo)
+        public DataTable ObtenerLicenciasDeActivos(LicenciaServicioModelo modelo)
         {
             string query = " select L.LicenciaId, M.Nombre AS 'Servicio', L.FechaAlta AS 'Fecha de Inicio', L.FechaBaja AS 'Fecha de Fin', S.ServicioId, L.Comentarios, L.Certificado  FROM LicenciaServicios LS INNER JOIN Licencias L ON LS.LicenciaId = L.LicenciaId INNER JOIN Servicios S ON S.ServicioId = LS.ServicioId INNER JOIN Personal P ON P.PersonalId = S.PersonalId INNER JOIN CursoMaterias CM ON CM.CursoMateriaId = S.CursoMateriaId INNER JOIN Materias M ON M.MateriaId = CM.MateriaId WHERE P.PersonalId = " + modelo.personalId + " AND (L.FechaBaja IS NULL OR  L.FechaBaja >= '" + DateTime.Today.ToString("yyyy-MM-dd") + "')";
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public DataTable ObtenerLicenciasDeInactivos(Modelos.LicenciaServicioModelo modelo)
+        public DataTable ObtenerLicenciasDeInactivos(LicenciaServicioModelo modelo)
         {
             string query = " select L.LicenciaId, M.Nombre AS 'Servicio', L.FechaAlta AS 'Fecha de Inicio', L.FechaBaja AS 'Fecha de Fin', S.ServicioId, L.Comentarios, L.Certificado FROM LicenciaServicios LS INNER JOIN Licencias L ON LS.LicenciaId = L.LicenciaId INNER JOIN Servicios S ON S.ServicioId = LS.ServicioId INNER JOIN Personal P ON P.PersonalId = S.PersonalId INNER JOIN CursoMaterias CM ON CM.CursoMateriaId = S.CursoMateriaId INNER JOIN Materias M ON M.MateriaId = CM.MateriaId WHERE P.PersonalId = " + modelo.personalId + " AND L.FechaBaja < '" + DateTime.Today.ToString("yyyy-MM-dd") + "'";
             return this.Conexion.ObtenerRegistros(query);
@@ -41,12 +42,12 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public int BajaLicencia(Modelos.LicenciaServicioModelo modelo)
+        public int BajaLicencia(LicenciaServicioModelo modelo)
         {
             string query = "UPDATE Licencias SET FechaBaja = '" + modelo.fechaBajaSTR + "' WHERE LicenciaId = " + modelo.licenciaId;
             return this.Conexion.EjecutarAccion(query);
         }
-        public int AltaLicencia(Modelos.LicenciaServicioModelo modelo)
+        public int AltaLicencia(LicenciaServicioModelo modelo)
         {
             int res = 0;
             var parServicioId = new SqlParameter("servicioId", SqlDbType.Int);

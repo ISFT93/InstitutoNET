@@ -1,5 +1,5 @@
-﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Datos.Core;
+using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Data;
 
@@ -67,7 +67,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataRow CarreraExiste(string Nombre)
         {
-            string query = "SELECT TOP 1 CarreraId FROM Carreras WHERE Nombre = '" + Nombre+"'";
+            string query = "SELECT TOP 1 CarreraId FROM Carreras WHERE Nombre = '" + Nombre + "'";
             return this.Conexion.ObtenerRegistro(query);
         }
 
@@ -76,13 +76,13 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT CarreraId FROM Carreras WHERE Nombre = '" + nombre + "'";
             var carrera = this.Conexion.ObtenerRegistro(query);
 
-                if (carrera != null)
-                {
-                    return Convert.ToInt32(carrera["CarreraId"]);
-                }
+            if (carrera != null)
+            {
+                return Convert.ToInt32(carrera["CarreraId"]);
+            }
 
-                return 0;
-          
+            return 0;
+
         }
 
         public int ObtenerUltimoCarreraId()

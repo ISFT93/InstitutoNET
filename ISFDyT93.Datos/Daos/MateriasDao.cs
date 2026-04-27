@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -27,7 +27,7 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = $"SELECT MateriaId, Nombre " +
                 $"FROM Materias " +
-                $"WHERE AnioCarreraId = { anioCarreraId } AND Activo = { (activo ? "1" : "0") } ";
+                $"WHERE AnioCarreraId = {anioCarreraId} AND Activo = {(activo ? "1" : "0")} ";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -48,19 +48,19 @@ namespace ISFDyT93.Datos.Daos
 
         public int EliminarMateria(int idMateria)
         {
-            string query = $"DELETE Materias WHERE MateriaId = { idMateria }";
-          return  this.Conexion.EjecutarAccion(query);
+            string query = $"DELETE Materias WHERE MateriaId = {idMateria}";
+            return this.Conexion.EjecutarAccion(query);
         }
 
         public DataRow MateriaAsignada(int id)
         {
-           string query = "SELECT COUNT(Materias.MateriaId) AS Cantidad " +
-                "FROM Materias " +
-                "INNER JOIN AniosCarreras ON Materias.AnioCarreraId = AniosCarreras.AnioCarreraId " +
-                $"WHERE AniosCarreras.CarreraId = { id }";
+            string query = "SELECT COUNT(Materias.MateriaId) AS Cantidad " +
+                 "FROM Materias " +
+                 "INNER JOIN AniosCarreras ON Materias.AnioCarreraId = AniosCarreras.AnioCarreraId " +
+                 $"WHERE AniosCarreras.CarreraId = {id}";
             return this.Conexion.ObtenerRegistro(query);
         }
-        
+
         public int AgregarMaterias(MateriasModelo modelo)
         {
             string query = this.CreateInsertQuery<MateriasModelo>(modelo);
@@ -84,10 +84,10 @@ namespace ISFDyT93.Datos.Daos
 
         public MateriasModelo ObtenerMateria(int materiaId)
         {  /*   Si activo es true escribe 1 si no 0 */
-            string query = "SELECT M.*, AC.CarreraId, AC.AnioCarrera "+
-                "FROM Materias M "+
+            string query = "SELECT M.*, AC.CarreraId, AC.AnioCarrera " +
+                "FROM Materias M " +
                 "INNER JOIN AniosCarreras AC ON M.AnioCarreraId = AC.AnioCarreraId " +
-                $"WHERE MateriaId = { materiaId }";
+                $"WHERE MateriaId = {materiaId}";
 
             return this.MapToModel<MateriasModelo>(this.Conexion.ObtenerRegistro(query));//
         }
@@ -97,7 +97,7 @@ namespace ISFDyT93.Datos.Daos
             string query = " SELECT M.MateriaId, M.Nombre " +
                 "FROM Materias M INNER JOIN AniosCarreras AC ON M.AnioCarreraId = AC.AnioCarreraId " +
                 "INNER JOIN Carreras C ON AC.CarreraId = C.CarreraId  INNER JOIN AlumnosCarreras ALC ON C.CarreraId = ALC.CarreraId " +
-                $"WHERE ALC.Activo = 1 AND ALC.AlumnoId = { alumnoId } AND AC.AnioCarreraId = { anioCarreraId }";
+                $"WHERE ALC.Activo = 1 AND ALC.AlumnoId = {alumnoId} AND AC.AnioCarreraId = {anioCarreraId}";
             return this.Conexion.ObtenerRegistros(query);
         }
 
@@ -122,7 +122,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT M.MateriaId, M.Nombre, ACLM.AlumnoCicloLectivoMateriaId " +
                 "FROM Materias M " +
                 "INNER JOIN AlumnoCicloLectivoMaterias ACLM ON M.MateriaId = ACLM.MateriaId " +
-                $"WHERE ACLM.AlumnoId = { alumnoId }";
+                $"WHERE ACLM.AlumnoId = {alumnoId}";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -140,10 +140,10 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.EjecutarAccion("");
         }
-        
+
         public int EliminarMateriaAsignar(int alumnoCicloLectivoMateriaId)
         {
-            string query = $"DELETE AlumnoCicloLectivoMaterias WHERE AlumnoCicloLectivoMateriaId = { alumnoCicloLectivoMateriaId }";
+            string query = $"DELETE AlumnoCicloLectivoMaterias WHERE AlumnoCicloLectivoMateriaId = {alumnoCicloLectivoMateriaId}";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -166,11 +166,11 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable MateriasId(int carreraId)
         {
-           string query = "SELECT ma.MateriaId, ma.Nombre " +
-                "FROM materias ma " +
-                "INNER JOIN AniosCarreras ac ON ma.AnioCarreraId = ac.AnioCarreraId " +
-                "INNER JOIN Carreras ca on ac.CarreraId = ca.CarreraId " +
-                $"WHERE ca.CarreraId = { carreraId }";
+            string query = "SELECT ma.MateriaId, ma.Nombre " +
+                 "FROM materias ma " +
+                 "INNER JOIN AniosCarreras ac ON ma.AnioCarreraId = ac.AnioCarreraId " +
+                 "INNER JOIN Carreras ca on ac.CarreraId = ca.CarreraId " +
+                 $"WHERE ca.CarreraId = {carreraId}";
 
             return this.Conexion.ObtenerRegistros(query);
         }

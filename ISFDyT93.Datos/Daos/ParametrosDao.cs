@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
-using ISFDyT93.Datos.Enums;
+using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Entidades.Enums;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 using System.Collections.Generic;
@@ -22,8 +22,8 @@ namespace ISFDyT93.Datos.Daos
         }
         public ParametrosModelo ObtenerParametro(string Nombre)
         {
-            foreach(ParametrosModelo parametro in ObtenerParametros())
-                if(parametro.Nombre == Nombre && parametro.Activo == true)
+            foreach (ParametrosModelo parametro in ObtenerParametros())
+                if (parametro.Nombre == Nombre && parametro.Activo == true)
                     return parametro;
             return null;
         }

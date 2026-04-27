@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 
@@ -46,12 +46,12 @@ namespace ISFDyT93.Vista.Forms.Personal
             IniciarDataTimePicker();
         }
 
-        
+
         private void cmbLicencias_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
-        
+
         private void btnCertificado_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofdCertificados = new OpenFileDialog();
@@ -65,7 +65,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        { 
+        {
         }
 
         private void txtCertificado_TextChanged(object sender, EventArgs e)

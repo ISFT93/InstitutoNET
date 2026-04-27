@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
@@ -38,15 +38,15 @@ namespace ISFDyT93.Vista.UserControls
             pnlContenedor.Controls.Add(usc);
             cargos = cargosLogica.ObtenerCargos();
 
-            foreach(CargosModelo cargo in cargos.Cargos)
+            foreach (CargosModelo cargo in cargos.Cargos)
             {
                 usc.AgregarCelda(cargo.Descripcion, cargo.CargoId);
                 usc.AgregarCelda(cargos.TipoAsignacion, cargo.TipoAsignacionId.ToString());
                 usc.AgregarCelda(cargos.TipoAplicacion, cargo.TipoAplicacionId.ToString());
                 usc.AgregarCelda(cargo.Activo);
-            }     
+            }
 
-           Dimensionar();
+            Dimensionar();
         }
         private void Dimensionar()
         {
@@ -80,7 +80,7 @@ namespace ISFDyT93.Vista.UserControls
                     TipoAsignacionId = Convert.ToInt32(row[1].Value),
                     TipoAplicacionId = Convert.ToInt32(row[2].Value),
                     Activo = Convert.ToBoolean(row[3].Value)
-                }) ;
+                });
             }
 
             if (cargosLogica.ActualizarCargos(actualizarCargos) > 0)

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using ISFDyT93.Datos.Daos;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 
 namespace ISFDyT93.Negocio.Logica
@@ -57,11 +57,11 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataRow CalculaTotalAlumnos()
         {
-           return controlAsistenciasDao.CalculaTotalAlumnos();
+            return controlAsistenciasDao.CalculaTotalAlumnos();
         }
         public DataRow CalculaModulosAlumnos(AsistenciasModelo Modelo)
         {
-           return controlAsistenciasDao.CalculaModulosAlumnos(Modelo);
+            return controlAsistenciasDao.CalculaModulosAlumnos(Modelo);
         }
 
         public int ActualizarGrilla(AsistenciasModelo Modelo)
@@ -71,7 +71,7 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataRow CalcularPorcentajeAsistenciaAlumnos(AsistenciasModelo Modelo)
         {
-           return controlAsistenciasDao.CalcularPorcentajeAsistenciaAlumnos(Modelo);
+            return controlAsistenciasDao.CalcularPorcentajeAsistenciaAlumnos(Modelo);
         }
 
         public DataTable HistorialAsistenciasAlumnos(AsistenciasModelo Modelo)

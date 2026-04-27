@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Datos.Modelos;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using System;
@@ -16,7 +16,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         #region Propiedades Privadas
         private int ServicioId { get; set; }
-        
+
         private ServiciosLogica ServiciosLogica { get; set; }
         private PersonalLogica PersonalLogica { get; set; }
         private PersonalModelo Personal { get; set; }
@@ -36,7 +36,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         {
             this.Personal = this.PersonalLogica.ObtenerPersonal(this.PersonalId);
 
-            this.Contenedor.SetTitulo($"Servicios de { Personal.Nombre } { Personal.Apellido }");
+            this.Contenedor.SetTitulo($"Servicios de {Personal.Nombre} {Personal.Apellido}");
 
             this.Contenedor.SetVolver(() =>
             {
@@ -48,9 +48,9 @@ namespace ISFDyT93.Vista.Forms.Personal
         }
 
         public void AnchoColumnas()
-        { 
+        {
             //cargo
-            dgvServicios.Columns["Cargo"].Width =110;
+            dgvServicios.Columns["Cargo"].Width = 110;
             //Situacion
             dgvServicios.Columns["Situacion"].Width = 80;
             //Folio
@@ -60,11 +60,11 @@ namespace ISFDyT93.Vista.Forms.Personal
             //Activo
             dgvServicios.Columns["Activo"].Width = 55;
         }
-        
+
         public void Refrescar()
         {
             dgvServicios.DataSource = ServiciosLogica.ObtenerServiciosPersonal(this.PersonalId, rdbActivos.Checked ? 1 : 0);
-            
+
             // ServicioId
             dgvServicios.Columns["ServicioId"].Visible = false;
             dgvServicios.Columns["Activo"].Visible = false;
@@ -80,7 +80,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         private void rdbInactivos_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdbInactivos.Checked)
+            if (rdbInactivos.Checked)
             {
                 Refrescar();
             }
@@ -99,19 +99,20 @@ namespace ISFDyT93.Vista.Forms.Personal
             var cantidadServicios = dgvServicios.Rows.Count;
 
             ServiciosLogica.DesactivarServicio(this.ServicioId, cantidadServicios);
-           
+
             Refrescar();
         }
 
         private void tsmLicencias_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tsmEvaluaciones_Click(object sender, EventArgs e)
-        {  
-            this.Contenedor.AbrirFormulario<FormCargaEvaluaciones>((form) => {
-                form.ServicioId = ServicioId; 
+        {
+            this.Contenedor.AbrirFormulario<FormCargaEvaluaciones>((form) =>
+            {
+                form.ServicioId = ServicioId;
             });
         }
 
@@ -126,22 +127,22 @@ namespace ISFDyT93.Vista.Forms.Personal
                 {
                     dgvServicios.Rows[info.RowIndex].Selected = true;
 
-                    if (dgvServicios.Rows[info.RowIndex].Cells[1].Value.ToString() == "Profesor/a" && rdbActivos.Checked==true) 
+                    if (dgvServicios.Rows[info.RowIndex].Cells[1].Value.ToString() == "Profesor/a" && rdbActivos.Checked == true)
                         tsmEvaluaciones.Visible = true;
                     else
                         tsmEvaluaciones.Visible = false;
 
-                     ServicioId = Convert.ToInt32(dgvServicios["ServicioId", info.RowIndex].Value.ToString()); 
+                    ServicioId = Convert.ToInt32(dgvServicios["ServicioId", info.RowIndex].Value.ToString());
 
                     tsmAsignarServicio.Visible = true;
                     tsmDesactivarServicio.Visible = true;
 
                     if (rdbInactivos.Checked == true)
                     {
-                        tsmAsignarServicio.Visible = false; 
+                        tsmAsignarServicio.Visible = false;
                         tsmDesactivarServicio.Visible = false;
                     }
-                   
+
                     cmsServicios.Show(dgvServicios, e.X - cmsServicios.Width / 2, e.Y);
                 }
                 else

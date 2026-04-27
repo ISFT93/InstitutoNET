@@ -1,6 +1,6 @@
 ﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Datos.Enums;
-using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -64,10 +64,10 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
-        public IList<CargosModeloDTO> ObtenerPersonalConCargos(List<int> cursoMateriaIds) 
+        public IList<CargosModeloDTO> ObtenerPersonalConCargos(List<int> cursoMateriaIds)
         {
             string ids = string.Join(",", cursoMateriaIds);
-            
+
             string query = $"Select * FROM ViewCargosServiciosCursoMateria WHERE CursoMateriaId IN ({ids}) AND Activo = 'True'";
             return MapToModel<CargosModeloDTO>(Conexion.ObtenerRegistros(query));
         }
@@ -110,15 +110,15 @@ namespace ISFDyT93.Datos.Daos
         }
         public void AsignarProfesorMateria(int MateriaId, int CursoId, int ProfesorId, string Fecha)
         {
-            string query = "INSERT INTO ProfesoresMaterias (ProfesorId, MateriaId, CursoId, Fecha) VALUES ( " + ProfesorId + "," + MateriaId + "," + CursoId + ",'"+ Fecha +"' )";
-          
-             this.Conexion.EjecutarAccion(query);
+            string query = "INSERT INTO ProfesoresMaterias (ProfesorId, MateriaId, CursoId, Fecha) VALUES ( " + ProfesorId + "," + MateriaId + "," + CursoId + ",'" + Fecha + "' )";
+
+            this.Conexion.EjecutarAccion(query);
         }
         public DataTable ObtenerProfesorMaterias(int PersonalId)
         {
-            string query = "SELECT PM.ProfesorMateriaId, M.Nombre AS Materia, AC.AnioCarrera AS Año, AC.AnioCarreraId, C.NombreCurso AS Curso, CA.Nombre AS Carrera, M.CargaHoraria FROM Materias as M "+
-                " INNER JOIN ProfesoresMaterias as PM ON M.MateriaId = PM.MateriaId INNER JOIN Cursos as C ON PM.CursoId = C.CursoId "+ 
-                " INNER JOIN AniosCarreras as AC ON C.AnioCarreraId = AC.AnioCarreraId "+
+            string query = "SELECT PM.ProfesorMateriaId, M.Nombre AS Materia, AC.AnioCarrera AS Año, AC.AnioCarreraId, C.NombreCurso AS Curso, CA.Nombre AS Carrera, M.CargaHoraria FROM Materias as M " +
+                " INNER JOIN ProfesoresMaterias as PM ON M.MateriaId = PM.MateriaId INNER JOIN Cursos as C ON PM.CursoId = C.CursoId " +
+                " INNER JOIN AniosCarreras as AC ON C.AnioCarreraId = AC.AnioCarreraId " +
                 " INNER JOIN Carreras as CA ON AC.CarreraId = CA.CarreraId WHERE PM.PersonalId = " + PersonalId + " ORDER BY AC.AnioCarrera ASC";
 
 
@@ -138,7 +138,7 @@ namespace ISFDyT93.Datos.Daos
         }
         public int ModificarDocumentacion(string Analitico, string Proyecto, int ProfesorMateriaId, int CiclosLectivoId)
         {
-            string query = "UPDATE  ProfesorMateriaCicloLectivo SET Analitico = '" + Analitico + "', Proyecto = '" + Proyecto + "' WHERE ProfesorMateriaId = " + ProfesorMateriaId + " AND CicloLectivoId = " + CiclosLectivoId +"";
+            string query = "UPDATE  ProfesorMateriaCicloLectivo SET Analitico = '" + Analitico + "', Proyecto = '" + Proyecto + "' WHERE ProfesorMateriaId = " + ProfesorMateriaId + " AND CicloLectivoId = " + CiclosLectivoId + "";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -206,7 +206,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT DISTINCT Nacionalidad FROM Personal";
             return this.Conexion.ObtenerRegistros(query);
         }
-         
-         
+
+
     }
 }
