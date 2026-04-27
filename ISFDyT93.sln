@@ -9,12 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Datos", "ISFDyT93.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Negocio", "ISFDyT93.Negocio\ISFDyT93.Negocio.csproj", "{6F6EE66F-88AB-4FFB-8495-00927EA80B04}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstitutoSetup", "InstitutoSetup\InstitutoSetup.vdproj", "{4A2301F9-5252-DCE3-171A-FBAA69622622}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D107F4C8-89CC-BEA8-D3D7-CA6B7733353D}"
 	ProjectSection(SolutionItems) = preProject
 		datos.xml = datos.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Entidades", "ISFDyT93.Entidades\ISFDyT93.Entidades.csproj", "{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +34,10 @@ Global
 		{6F6EE66F-88AB-4FFB-8495-00927EA80B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F6EE66F-88AB-4FFB-8495-00927EA80B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F6EE66F-88AB-4FFB-8495-00927EA80B04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A2301F9-5252-DCE3-171A-FBAA69622622}.Debug|Any CPU.ActiveCfg = Debug
-		{4A2301F9-5252-DCE3-171A-FBAA69622622}.Release|Any CPU.ActiveCfg = Release
+		{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
