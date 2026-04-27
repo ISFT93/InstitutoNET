@@ -10,7 +10,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerAniosCarrera(int carreraId)
         {
             string query = "SELECT AniosCarrerasCodigoBloque AS [Codigo], " +
-                "AnioCarreraId,AnioCarrera AS [Año]," +
+                "AnioCarreraId, " +
                 "CantidadMaterias AS [Cantidad de Materias]," +
                 "CargaHorariaCompleta AS [Carga Horaria Completa] " +
                 "FROM AniosCarreras WHERE CarreraId = " + carreraId;
