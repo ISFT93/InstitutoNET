@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ISFDyT93.Datos.Core.Attributes.Validaciones
+namespace ISFDyT93.Entidades.Core.Attributes.Validaciones
 {
     public static class LimpiarTexto
     {
