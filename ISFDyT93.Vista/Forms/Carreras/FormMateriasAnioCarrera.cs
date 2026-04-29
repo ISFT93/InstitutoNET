@@ -169,7 +169,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     {
                         tsmAgregarMateria.Visible = false;
                         tsmEliminarMateria.Visible = false;
-                        tsmModificarMateria.Text = "Ver materias";
+                        tsmModificarMateria.Visible = false;
                     }
                     else if (anioCarrera.CarreraEstadoId == (int)CarreraEstado.Borrador)
                     {
