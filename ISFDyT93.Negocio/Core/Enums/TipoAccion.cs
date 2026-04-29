@@ -10,5 +10,6 @@ namespace ISFDyT93.Negocio.Core.Enums
         Activar = 5,
         Desactivar = 6,
         Inscripcion= 7,
+        Documentacion = 8,
     }
 }

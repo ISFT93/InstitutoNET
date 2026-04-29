@@ -91,7 +91,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 SetReadOnly(grbDocumentosEntregar, false);
                 SetReadOnly(grbFichaSalud, false);
                 SetReadOnly(grbDireccion, false);
-
                 btnGuardar.Visible = false;
                 
                 dtpFechaNacimiento.Enabled = false;
@@ -128,6 +127,19 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 cmbTipoDocumento.Enabled = false;
 
                 this.Contenedor.SetTitulo("Modificar Alumno");
+                ActualizarAutoComplete();
+            }
+            else if (this.Accion == TipoAccion.Documentacion)
+            {
+                txtNumeroDocumento.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                SetReadOnly(grbDocumentosEntregar, true);
+                SetReadOnly(grbDatosPersonales, false);
+                SetReadOnly(grbFormacion, false);
+                SetReadOnly(grbFichaSalud, false);
+                SetReadOnly(grbDireccion, false);
+
+                this.Contenedor.SetTitulo("Cargar Dcumentacion del Alumno");
                 ActualizarAutoComplete();
             }
             else
@@ -322,6 +334,25 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     //Modifico la carrera
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "El alumno fue\nmodificado con exito");
+                }
+                else if (this.Accion == TipoAccion.Documentacion)
+                {
+                    //verificar si la carrera que selecciono es distinta a la que tenia
+                    if (alumnoCarrera.CarreraId != (DatosAlumnosCarrera.CarreraId))
+                    {
+                        //Inactivo el alumno para esa carrera
+                        alumnosLogica.BajaAlumnoCarrera(alumno.AlumnoId);
+                        alumnosLogica.AgregarAlumnoCarrera(alumnoCarrera);
+                    }
+                    else
+                    {
+                        //Si la carrera no es distinta solo modifico
+                        //UPDATE
+                        alumnosLogica.ModificarAlumnoCarrera(alumnoCarrera);
+                    }
+                    //Modifico la carrera
+                    alumnosLogica.ModificarAlumno(alumno);
+                    Notificar(TipoNotificacion.Success, "La documentacion fue\nmodificada con exito");
                 }
 
                 Contenedor.AbrirFormulario<FormAlumnos>();

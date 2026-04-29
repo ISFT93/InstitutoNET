@@ -114,6 +114,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     tsmAgregarAlumno.Visible = false;
 
+                    if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+                        tsmActualizarDocumentacion.Visible = false;
 
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
@@ -132,6 +134,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
+                    tsmDarAlta.Visible = false;
+                    tsmActualizarDocumentacion.Visible = false;
                 }
             }
         }
@@ -401,6 +405,14 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void FormAlumnos_Resize(object sender, EventArgs e)
         {
             uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
+        }
+
+        private void tsmActualizarDocumentacion_Click(object sender, EventArgs e)
+        {
+            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
+                form.Accion = TipoAccion.Documentacion;
+                form.AlumnoId = AlumnoId;
+            });
         }
     }
 }

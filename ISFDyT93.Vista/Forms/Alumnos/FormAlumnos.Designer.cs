@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlumnos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSelccFiltroAlum = new System.Windows.Forms.Label();
             this.cmbFiltroAlum = new System.Windows.Forms.ComboBox();
             this.txtFiltroAlumno = new System.Windows.Forms.TextBox();
@@ -54,6 +54,7 @@
             this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
+            this.tsmActualizarDocumentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAlumnos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,7 +87,7 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 9);
+            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 6);
             this.cmbFiltroAlum.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroAlum.Name = "cmbFiltroAlum";
             this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 27);
@@ -117,9 +118,10 @@
             this.tsmVerAlumno,
             this.tsmAsignarMaterias,
             this.tsmDarAlta,
+            this.tsmActualizarDocumentacion,
             this.tsmCargaMasiva});
             this.cmsAlumnos.Name = "contextMenuStrip1";
-            this.cmsAlumnos.Size = new System.Drawing.Size(181, 214);
+            this.cmsAlumnos.Size = new System.Drawing.Size(189, 266);
             // 
             // tsmAgregarAlumno
             // 
@@ -128,7 +130,7 @@
             this.tsmAgregarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarAlumno.Image")));
             this.tsmAgregarAlumno.Name = "tsmAgregarAlumno";
-            this.tsmAgregarAlumno.Size = new System.Drawing.Size(180, 30);
+            this.tsmAgregarAlumno.Size = new System.Drawing.Size(188, 30);
             this.tsmAgregarAlumno.Text = "Agregar ";
             this.tsmAgregarAlumno.Click += new System.EventHandler(this.tsmAgregarAlumno_Click);
             // 
@@ -139,7 +141,7 @@
             this.tsmModificarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmModificarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.user_edit_solid;
             this.tsmModificarAlumno.Name = "tsmModificarAlumno";
-            this.tsmModificarAlumno.Size = new System.Drawing.Size(180, 30);
+            this.tsmModificarAlumno.Size = new System.Drawing.Size(188, 30);
             this.tsmModificarAlumno.Text = "Modificar";
             this.tsmModificarAlumno.Click += new System.EventHandler(this.tsmModificarAlumno_Click);
             // 
@@ -150,7 +152,7 @@
             this.tsmEliminarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
             this.tsmEliminarAlumno.Name = "tsmEliminarAlumno";
-            this.tsmEliminarAlumno.Size = new System.Drawing.Size(180, 30);
+            this.tsmEliminarAlumno.Size = new System.Drawing.Size(188, 30);
             this.tsmEliminarAlumno.Text = "Eliminar";
             this.tsmEliminarAlumno.Click += new System.EventHandler(this.tsmEliminarAlumno_Click);
             // 
@@ -161,7 +163,7 @@
             this.tsmVerAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmVerAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmVerAlumno.Image")));
             this.tsmVerAlumno.Name = "tsmVerAlumno";
-            this.tsmVerAlumno.Size = new System.Drawing.Size(180, 30);
+            this.tsmVerAlumno.Size = new System.Drawing.Size(188, 30);
             this.tsmVerAlumno.Text = "Ver Datos";
             this.tsmVerAlumno.Click += new System.EventHandler(this.tsmVerAlumno_Click);
             // 
@@ -172,7 +174,7 @@
             this.tsmAsignarMaterias.ForeColor = System.Drawing.Color.White;
             this.tsmAsignarMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.arrow_alt_circle_right_solid;
             this.tsmAsignarMaterias.Name = "tsmAsignarMaterias";
-            this.tsmAsignarMaterias.Size = new System.Drawing.Size(180, 30);
+            this.tsmAsignarMaterias.Size = new System.Drawing.Size(188, 30);
             this.tsmAsignarMaterias.Text = "Asignar Materias";
             this.tsmAsignarMaterias.Click += new System.EventHandler(this.tsmAsignarMaterias_Click);
             // 
@@ -183,7 +185,7 @@
             this.tsmDarAlta.ForeColor = System.Drawing.Color.White;
             this.tsmDarAlta.Image = global::ISFDyT93.Vista.Properties.Resources.plus_square_solid;
             this.tsmDarAlta.Name = "tsmDarAlta";
-            this.tsmDarAlta.Size = new System.Drawing.Size(180, 30);
+            this.tsmDarAlta.Size = new System.Drawing.Size(188, 30);
             this.tsmDarAlta.Text = "Dar de Alta";
             this.tsmDarAlta.Visible = false;
             this.tsmDarAlta.Click += new System.EventHandler(this.tsmDarAlta_Click);
@@ -195,7 +197,7 @@
             this.tsmCargaMasiva.ForeColor = System.Drawing.Color.White;
             this.tsmCargaMasiva.Image = ((System.Drawing.Image)(resources.GetObject("tsmCargaMasiva.Image")));
             this.tsmCargaMasiva.Name = "tsmCargaMasiva";
-            this.tsmCargaMasiva.Size = new System.Drawing.Size(180, 30);
+            this.tsmCargaMasiva.Size = new System.Drawing.Size(188, 30);
             this.tsmCargaMasiva.Text = "Carga Masiva";
             this.tsmCargaMasiva.Click += new System.EventHandler(this.tsmCargaMasiva_Click);
             // 
@@ -347,24 +349,24 @@
             this.dgvAlumnos.BackgroundColor = System.Drawing.Color.White;
             this.dgvAlumnos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAlumnos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlumnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlumnos.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAlumnos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAlumnos.EnableHeadersVisualStyles = false;
             this.dgvAlumnos.GridColor = System.Drawing.Color.White;
@@ -373,27 +375,38 @@
             this.dgvAlumnos.Name = "dgvAlumnos";
             this.dgvAlumnos.ReadOnly = true;
             this.dgvAlumnos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlumnos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAlumnos.RowHeadersVisible = false;
             this.dgvAlumnos.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvAlumnos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvAlumnos.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAlumnos.RowTemplate.Height = 28;
             this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumnos.Size = new System.Drawing.Size(732, 294);
             this.dgvAlumnos.TabIndex = 60;
             this.dgvAlumnos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAlumnos_MouseUp);
+            // 
+            // tsmActualizarDocumentacion
+            // 
+            this.tsmActualizarDocumentacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmActualizarDocumentacion.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.tsmActualizarDocumentacion.ForeColor = System.Drawing.Color.White;
+            this.tsmActualizarDocumentacion.Image = global::ISFDyT93.Vista.Properties.Resources.document_arrow;
+            this.tsmActualizarDocumentacion.Name = "tsmActualizarDocumentacion";
+            this.tsmActualizarDocumentacion.Size = new System.Drawing.Size(188, 30);
+            this.tsmActualizarDocumentacion.Text = "Documentacion";
+            this.tsmActualizarDocumentacion.Click += new System.EventHandler(this.tsmActualizarDocumentacion_Click);
             // 
             // FormAlumnos
             // 
@@ -439,5 +452,6 @@
         private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public System.Windows.Forms.DataGridView dgvAlumnos;
+        private System.Windows.Forms.ToolStripMenuItem tsmActualizarDocumentacion;
     }
 }
