@@ -180,43 +180,54 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo)
         {
             string query;
+
             if (tipo != TipoFiltroAlumno.Anio && tipo != TipoFiltroAlumno.Curso)
             {
-                query = "SELECT Alumnos.AlumnoId, AlumnosCarreras.AlumnoCarreraId, Alumnos.Apellido, Alumnos.Nombre, " +
-                    "Alumnos.NumeroDocumento AS Documento, Alumnos.FechaNacimiento AS Nacimiento, Carreras.DescripcionCorta AS Carrera, " +
-                    "Alumnos.Activo, AlumnosCarreras.Inicializado " +
-                    "FROM Alumnos " +
-                    "LEFT JOIN AlumnosCarreras ON Alumnos.AlumnoId = AlumnosCarreras.AlumnoId " +
-                    "LEFT JOIN Carreras ON AlumnosCarreras.CarreraId = Carreras.CarreraId " +
-                    "WHERE ";
+                query = "SELECT Alumnos.AlumnoId, ac.AlumnoCarreraId, Alumnos.Apellido, Alumnos.Nombre, " +
+                        "Alumnos.NumeroDocumento AS Documento, Alumnos.FechaNacimiento AS Nacimiento, Carreras.DescripcionCorta AS Carrera, " +
+                        "Alumnos.Activo, ac.Inicializado " +
+                        "FROM Alumnos " +
+
+                        // 👇 ACÁ ESTÁ LA CLAVE
+                        "LEFT JOIN AlumnosCarreras ac ON ac.AlumnoId = Alumnos.AlumnoId AND ac.Activo = 1 " +
+
+                        "LEFT JOIN Carreras ON ac.CarreraId = Carreras.CarreraId " +
+                        "WHERE ";
             }
             else
             {
-                query = "SELECT Apellido, Nombre, Materia, Anio AS Año, Curso, Carrera, Activo, AlumnoId, AlumnoCarreraId, Inicializado FROM AlumnoMateriaCursoAnioCarrera WHERE ";
+                query = "SELECT Apellido, Nombre, Materia, Anio AS Año, Curso, Carrera, Activo, AlumnoId, AlumnoCarreraId, Inicializado " +
+                        "FROM AlumnoMateriaCursoAnioCarrera WHERE ";
             }
 
             switch (tipo)
             {
                 case TipoFiltroAlumno.Todos:
-                    query += "(Alumnos.Apellido LIKE '%" + filtro + "%'" + " OR " +
-                        "Alumnos.Nombre LIKE '%" + filtro + "%'" + " OR " +
-                        "Alumnos.NumeroDocumento LIKE '%" + filtro + "%')";
+                    query += "(Alumnos.Apellido LIKE '%" + filtro + "%' OR " +
+                             "Alumnos.Nombre LIKE '%" + filtro + "%' OR " +
+                             "Alumnos.NumeroDocumento LIKE '%" + filtro + "%')";
                     break;
+
                 case TipoFiltroAlumno.NumeroDocumento:
                     query += "Alumnos.NumeroDocumento LIKE '%" + filtro + "%'";
                     break;
+
                 case TipoFiltroAlumno.Nombre:
                     query += "Alumnos.Nombre LIKE '%" + filtro + "%'";
                     break;
+
                 case TipoFiltroAlumno.Apellido:
                     query += "Alumnos.Apellido LIKE '%" + filtro + "%'";
                     break;
+
                 case TipoFiltroAlumno.Carrera:
                     query += "Carreras.DescripcionCorta LIKE '%" + filtro + "%'";
                     break;
+
                 case TipoFiltroAlumno.Anio:
                     query += $"Anio LIKE '%{filtro}%'";
                     break;
+
                 case TipoFiltroAlumno.Curso:
                     query += $"Curso LIKE '%{filtro}%'";
                     break;
@@ -225,10 +236,11 @@ namespace ISFDyT93.Datos.Daos
             if (activo != null)
             {
                 if (tipo != TipoFiltroAlumno.Anio && tipo != TipoFiltroAlumno.Curso)
-                    query += " AND Alumnos.Activo= " + activo;
+                    query += " AND Alumnos.Activo = " + activo; // 👈 BIT correcto (1 o 0)
                 else
-                    query += " AND Activo= " + activo;
+                    query += " AND Activo = " + activo;
             }
+
             query += " ORDER BY Apellido ASC";
 
             return this.Conexion.ObtenerRegistros(query);
@@ -257,7 +269,7 @@ namespace ISFDyT93.Datos.Daos
         }
         public DataTable ObtenerLocalidadAlumnos()
         {
-            return this.Conexion.EjecutarStore("SP_ListaLocalidades");
+            return this.Conexion.EjecutarStore("ListaLocalidades");
         }
         public DataTable ObtenerDistritoAlumnos()
         {

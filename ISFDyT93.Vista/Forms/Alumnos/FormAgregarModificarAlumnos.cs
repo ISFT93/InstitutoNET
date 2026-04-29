@@ -1,5 +1,6 @@
 using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Negocio.Logica;
+using System.Collections.Generic;
 using System;
 using System.Data;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 {
     public partial class FormAgregarModificarAlumnos : FormBase
     {
-        #region Propuedades Públicas
+        #region Propuedades PÃºblicas
         public int AlumnoId { get; set; }
         public TipoAccion Accion { get; set; }
         #endregion
@@ -25,44 +26,74 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         AlumnosModelo DatosAlumnos = null;
         AlumnosCarrerasModelo DatosAlumnosCarrera = null;
-
+        Negocio.Validaciones validador;
         #endregion
 
         public FormAgregarModificarAlumnos()
         {
             alumnosLogica = new AlumnosLogica();
             carrerasLogica = new CarrerasLogica();
-
+            validador = new Negocio.Validaciones();
             InitializeComponent();
         }
+        private Dictionary<string, string> codigosPostales = new Dictionary<string, string>()
+        {
 
+            { "san vicente", "1865" },
+
+            { "alejandro korn", "1864" },
+
+            { "guernica", "1862" },
+
+            { "brandsen", "1980" },
+
+            { "glew", "1856" }
+
+        };
         private void FormAgregarModificarAlumnos_Load(object sender, EventArgs e)
         {
             ObtenerAniosLectivosActivos();
 
+            cmbSexo.Items.Clear();
+            cmbSexo.Items.Add("Femenino");
+            cmbSexo.Items.Add("Masculino");
+            cmbSexo.Items.Add("Sin Especificar");
+            cmbSexo.Items.Add("Otro");
+            dtpFechaNacimiento.MaxDate = DateTime.Now.AddYears(-17);
+
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
-            cmbMayorTitulo.Text = "Nignuno";
+            cmbMayorTitulo.Text = "Ninguno";
+
+            SetReadOnly(grbDocumentosEntregar,false);
 
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
 
+            if (this.AlumnoId > 0)
+            {
+                this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
+                this.DatosAlumnosCarrera = alumnosLogica.TraerAlumnoCarrera(this.AlumnoId);
+
+                this.MapToForm<AlumnosModelo>(DatosAlumnos);
+                this.MapToForm<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
+            }
+
             if (this.Accion == TipoAccion.Ver)
             {
-                //En los groupbox a los controles de tipo textbox ponerlos solo lectura
-                grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbDocumentosEntregar.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
-                grbFichaSalud.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                // Usamos un mÃ©todo recursivo para que funcione tanto con TextBox directos del GroupBox
+                // como con TextBox anidados dentro de Panels u otros contenedores.
+                SetReadOnly(grbDatosPersonales, false);
+                SetReadOnly(grbFormacion, false);
+                SetReadOnly(grbDocumentosEntregar, false);
+                SetReadOnly(grbFichaSalud, false);
+                SetReadOnly(grbDireccion, false);
+
                 btnGuardar.Visible = false;
-                cmbCarreraId.Enabled = false;
-                cmbTipoDocumento.Enabled = false;
-                cmbEstadoCivil.Enabled = false;
-                cmbSexo.Enabled = false;
-                cmbMayorTitulo.Enabled = false;
+                
                 dtpFechaNacimiento.Enabled = false;
                 pnlSiNoTS.Enabled = false;
                 pnlSiNoTT.Enabled = false;
@@ -75,8 +106,21 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 grbDocumentosEntregar.Enabled = false;
                 cmbCicloLectivo.Visible = false;
                 lblAnioLectivo.Visible=false;
-
                 this.Contenedor.SetTitulo("Ver Alumno");
+
+                cmbCarreraId.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                cmbEstadoCivil.Enabled = false;
+                cmbSexo.Enabled = false;
+                cmbMayorTitulo.Enabled = false;
+
+                ////En los groupbox a los controles de tipo textbox ponerlos solo lectura
+                //grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbDocumentosEntregar.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+                //grbFichaSalud.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
+
+                return;
             }
             else if (this.Accion == TipoAccion.Modificar)
             {
@@ -98,17 +142,45 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 txtMayorOtorgadoPor.Enabled = false;
                 txtMayorPromedio.Enabled = false;
             }
-
-            if (this.AlumnoId > 0)
+            txtTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+        }
+        public void SetReadOnly(Control parent, bool valor)
+        {
+            foreach (Control ctrl in parent.Controls)
             {
-                this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
-                this.DatosAlumnosCarrera = alumnosLogica.TraerAlumnoCarrera(this.AlumnoId);
-
-                this.MapToForm<AlumnosModelo>(DatosAlumnos);
-                this.MapToForm<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
+                // Para los TextBox: poner ReadOnly = true (no deshabilitar), as? el usuario puede copiar texto al ver.
+                if (ctrl is TextBox tb)
+                {
+                    tb.ReadOnly = !valor;
+                }
+                if (ctrl is MaskedTextBox mtb)
+                {
+                    mtb.ReadOnly = !valor;
+                }
+                // Recursividad para aplicar a controles anidados
+                if (ctrl.HasChildren)
+                {
+                    SetReadOnly(ctrl, valor);
+                }
+                if (ctrl is CheckBox cb)
+                {
+                    cb.Enabled = valor;
+                }
+                if (ctrl is RadioButton rb)
+                {
+                    rb.Enabled = valor;
+                }
+                if (ctrl is ComboBox cbox)
+                {
+                    cbox.Enabled = valor;
+                }
+                if (ctrl is DateTimePicker dtp)
+                {
+                    dtp.Enabled = valor;
+                }
             }
         }
-
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             txtMateriasAdeuda.Enabled = !rdbTituloSecundarioSi.Checked;
@@ -204,7 +276,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            if (!ValidarFormulario())
+            {
+                this.MostrarErrores(epvAlumnos, alumno.Errores);
+                return;
+            }
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
 
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)
@@ -253,7 +331,15 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 this.MostrarErrores(epvAlumnos, alumno.Errores);
             }
         }
+        private bool ValidarFormulario()
+        {
+            if (!validador.Obligatorio(txtLocalidad.Text))
 
+                return false;
+
+            return true;
+
+        }
         private void ActualizarAutoComplete()
         {            
             txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());       
@@ -269,6 +355,145 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void ObtenerAniosLectivosActivos()
         {
             cmbCicloLectivo.DataSource = new CicloLectivosLogica().ObtenerAniosCiclosLectivosActivos();
+        }
+
+        private void txtSoloNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !validador.SoloNumeros(e.KeyChar.ToString()))
+            {
+                e.Handled = true; // Bloquea la tecla
+            }
+        }
+
+        private void txtSoloLetrasEspacios_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            // permitir teclas de control
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // bloquear espacio al inicio
+            if (char.IsWhiteSpace(e.KeyChar) && (txt.Text.Length == 0 || txt.Text.EndsWith(" ")))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // usar tu validador
+            if (!validador.SoloLetrasEspacios(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumeroDocumento_Leave(object sender, EventArgs e)
+        {
+            if (this.Accion == TipoAccion.Ver || this.Accion == TipoAccion.Modificar)
+                return;
+            
+            if (!validador.AlumnoNuevo(txtNumeroDocumento.Text))
+            {
+                MessageBox.Show("El numero de documento ya esta registrador");
+                txtNumeroDocumento.Focus();
+            }
+        }
+        private void txtLetrasYNumerosYEspacio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            if (char.IsWhiteSpace(e.KeyChar) && (txt.Text.Length == 0 || txt.Text.EndsWith(" ")))
+            {
+                e.Handled = true;
+            }
+            
+
+            if(!validador.SoloLetrasEspaciosyNumeros(e.KeyChar.ToString()))
+            {
+                e.Handled = true; // Bloquea la tecla
+            }
+            return;
+        }
+        private void txtLetrasYNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !validador.SoloLetrasYNumeros(e.KeyChar.ToString()))
+            {
+                e.Handled = true; // Bloquea la tecla
+            }
+        }
+        private void txtValidarMail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && e.KeyChar != '_' && e.KeyChar != '-' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text))
+                return;
+            if (!validador.FormatoEmailValido(txtEmail.Text))
+            {
+                MessageBox.Show("Email invÃ¡lido");
+                txtEmail.Focus();
+            }
+        }
+        private void txtTexto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !validador.TextoParrafo(e.KeyChar.ToString()))
+            {
+                e.Handled = true; // Bloquea la tecla
+            }
+        }
+
+        private void txtLocalidad_TextChanged(object sender, EventArgs e)
+        {
+            string localidad = txtLocalidad.Text.Trim().ToLower();
+
+            if (codigosPostales.ContainsKey(localidad))
+            {
+                txtCodigoPostal.Text = codigosPostales[localidad];
+            }
+            else
+            {
+                txtCodigoPostal.Text = "";
+            }
+        }
+        
+        private void TxtQuitarCeros_Enter(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+
+            if (txt.Text == "0")
+            {
+                txt.Text = "";
+            }
+
+            txt.SelectAll();
+        }
+        private void txtQuitarCeros_Leave(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                txt.Text = "0";
+            }
+        }
+        private void RecorrerEspacios_Leave(object sender, EventArgs e)
+        {
+            MaskedTextBox txt = sender as MaskedTextBox;
+
+            if (!txt.MaskFull)
+            {
+                epvAlumnos.SetError(txt, "Formato Invalido \n Tiene que usarse este formato: \n (1234)567-8900");
+            }
+            else
+            {
+                epvAlumnos.SetError(txt, "");
+            }
         }
     }
 }

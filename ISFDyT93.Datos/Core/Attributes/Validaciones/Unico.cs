@@ -48,7 +48,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
             string table = type.Name.Substring(0, type.Name.IndexOf("Modelo"));
             string query = null;
 
-           // if (modelo.Modificando())
+            if (modelo.Modificando())
             {
                 var clave = type.GetProperties()
                     .Where(p => Attribute.IsDefined(p, typeof(Clave)))
@@ -64,10 +64,16 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
                         }
                     }
                 }
+                // Si no construimos una consulta arriba (sin clave o valorClave <= 0), recurrir a una verificación general
+                if (string.IsNullOrEmpty(query))
+                {
+                    query = $"SELECT TOP 1 {this.PropertyName} FROM {table} WHERE {this.PropertyName} = '{value?.ToString()}'";
+                }
             }
-          //  else
+            
+            else
             {
-                query = $"SELECT TOP 1 { this.PropertyName } FROM { table } WHERE { this.PropertyName } = '{ value.ToString() }'";
+                query = $"SELECT TOP 1 {this.PropertyName} FROM {table} WHERE {this.PropertyName} = '{value?.ToString()}'";
             }
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Negocio.Logica;
+using System.Text.RegularExpressions;
 
 namespace ISFDyT93.Negocio
 {
@@ -265,7 +266,25 @@ namespace ISFDyT93.Negocio
             }
             return validado;
         }
+        public bool SoloLetrasYNumeros(string evaluado)
+        {
+            if (string.IsNullOrEmpty(evaluado))
+            {
+                return true;
+            }
 
+            bool validado = true;
+
+            foreach (char c in evaluado)
+            {
+                if (!NUMEROSLETRAS.Contains(c.ToString().ToLower()) || c == ' ')
+                {
+                    validado = false;
+                }
+            }
+
+            return validado;
+        }
         public bool FormatoEmail(string evaluado)//Evalua si solo tiene letras y espacios en un string
         {
             if (string.IsNullOrEmpty(evaluado))
@@ -283,6 +302,32 @@ namespace ISFDyT93.Negocio
                 }
             }
             return validado;
+        }
+        public bool TextoParrafo(string evaluado)
+        {
+            if (string.IsNullOrEmpty(evaluado))
+            {
+                return true;
+            }
+
+            foreach (char c in evaluado)
+            {
+                if (!char.IsLetterOrDigit(c) &&     // letras y números
+                    !char.IsWhiteSpace(c) &&        // espacios y saltos de línea
+                    !char.IsPunctuation(c))         // signos .,;:!? etc.
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public bool FormatoEmailValido(string evaluado)
+        {
+            if (string.IsNullOrEmpty(evaluado))
+                return false;
+
+            return Regex.IsMatch(evaluado, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
 
         public bool AlumnoNuevo(string Documento)
