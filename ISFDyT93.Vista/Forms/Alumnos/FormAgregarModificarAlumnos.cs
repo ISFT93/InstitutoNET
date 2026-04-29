@@ -58,7 +58,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             cmbSexo.Items.Add("Femenino");
             cmbSexo.Items.Add("Masculino");
             cmbSexo.Items.Add("Sin Especificar");
-            cmbSexo.Items.Add(" otro");
+            cmbSexo.Items.Add("Otro");
             dtpFechaNacimiento.MaxDate = DateTime.Now.AddYears(-17);
 
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
@@ -66,7 +66,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             cmbCarreraId.DisplayMember = "Descripción";
             cmbMayorTitulo.Text = "Ninguno";
 
-            SetReadOnly(grbDocumentosEntregar);
+            SetReadOnly(grbDocumentosEntregar,false);
 
             this.Contenedor.SetVolver(() =>
             {
@@ -86,11 +86,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 // Usamos un método recursivo para que funcione tanto con TextBox directos del GroupBox
                 // como con TextBox anidados dentro de Panels u otros contenedores.
-                SetReadOnly(grbDatosPersonales);
-                SetReadOnly(grbFormacion);
-                SetReadOnly(grbDocumentosEntregar);
-                SetReadOnly(grbFichaSalud);
-                SetReadOnly(grbDireccion);
+                SetReadOnly(grbDatosPersonales, false);
+                SetReadOnly(grbFormacion, false);
+                SetReadOnly(grbDocumentosEntregar, false);
+                SetReadOnly(grbFichaSalud, false);
+                SetReadOnly(grbDireccion, false);
 
                 btnGuardar.Visible = false;
                 
@@ -145,27 +145,39 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             txtTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
         }
-        public void SetReadOnly(Control parent)
+        public void SetReadOnly(Control parent, bool valor)
         {
             foreach (Control ctrl in parent.Controls)
             {
-                // Para los TextBox: poner ReadOnly = true (no deshabilitar), así el usuario puede copiar texto al ver.
+                // Para los TextBox: poner ReadOnly = true (no deshabilitar), as? el usuario puede copiar texto al ver.
                 if (ctrl is TextBox tb)
                 {
-                    tb.ReadOnly = true;
+                    tb.ReadOnly = !valor;
                 }
                 if (ctrl is MaskedTextBox mtb)
                 {
-                    mtb.ReadOnly = true;
+                    mtb.ReadOnly = !valor;
                 }
                 // Recursividad para aplicar a controles anidados
                 if (ctrl.HasChildren)
                 {
-                    SetReadOnly(ctrl);
+                    SetReadOnly(ctrl, valor);
                 }
                 if (ctrl is CheckBox cb)
                 {
-                    cb.Enabled = false;
+                    cb.Enabled = valor;
+                }
+                if (ctrl is RadioButton rb)
+                {
+                    rb.Enabled = valor;
+                }
+                if (ctrl is ComboBox cbox)
+                {
+                    cbox.Enabled = valor;
+                }
+                if (ctrl is DateTimePicker dtp)
+                {
+                    dtp.Enabled = valor;
                 }
             }
         }
