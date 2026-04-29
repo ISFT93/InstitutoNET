@@ -8,13 +8,11 @@ namespace ISFDyT93.Datos.Core
         {
             get
             {
-                //string connStr = Environment.GetEnvironmentVariable("INSTITUTO_DB_CONNECTION_STRING");
-                //if (string.IsNullOrWhiteSpace(connStr))
-                //    throw new InvalidOperationException(
-                //        "La variable de entorno INSTITUTO_DB_CONNECTION_STRING no está definida.");
-                //return connStr;
-
-                return "Data Source=DESKTOP-DR1CPKS\\SQLEXPRESS;Initial Catalog=instituto_db;Integrated Security=True";
+                string connStr = Environment.GetEnvironmentVariable("INSTITUTO_DB_CONNECTION_STRING");
+                if (string.IsNullOrWhiteSpace(connStr))
+                    throw new InvalidOperationException(
+                        "La variable de entorno INSTITUTO_DB_CONNECTION_STRING no está definida.");
+                return connStr;
 
             }
         }
