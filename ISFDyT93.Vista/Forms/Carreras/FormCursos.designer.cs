@@ -40,11 +40,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCurso = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCursoDarAlta = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.rbActivos = new System.Windows.Forms.RadioButton();
             this.rbInactivos = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvCursos = new System.Windows.Forms.DataGridView();
-            this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCursos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).BeginInit();
@@ -60,7 +60,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmCursoDarAlta,
             this.tsmVerMaterias});
             this.cmsCursos.Name = "contextMenuStrip1";
-            this.cmsCursos.Size = new System.Drawing.Size(219, 182);
+            this.cmsCursos.Size = new System.Drawing.Size(157, 154);
             // 
             // tsmAsignarCurso
             // 
@@ -70,7 +70,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAsignarCurso.Image = ((System.Drawing.Image)(resources.GetObject("tsmAsignarCurso.Image")));
             this.tsmAsignarCurso.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tsmAsignarCurso.Name = "tsmAsignarCurso";
-            this.tsmAsignarCurso.Size = new System.Drawing.Size(218, 30);
+            this.tsmAsignarCurso.Size = new System.Drawing.Size(156, 30);
             this.tsmAsignarCurso.Text = "Asignar ";
             this.tsmAsignarCurso.Click += new System.EventHandler(this.tsmAsignarCurso_Click);
             // 
@@ -81,7 +81,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCurso.ForeColor = System.Drawing.Color.White;
             this.tsmModificarCurso.Image = ((System.Drawing.Image)(resources.GetObject("tsmModificarCurso.Image")));
             this.tsmModificarCurso.Name = "tsmModificarCurso";
-            this.tsmModificarCurso.Size = new System.Drawing.Size(218, 30);
+            this.tsmModificarCurso.Size = new System.Drawing.Size(156, 30);
             this.tsmModificarCurso.Text = "Modificar ";
             this.tsmModificarCurso.Click += new System.EventHandler(this.tsmModificarCurso_Click);
             // 
@@ -92,8 +92,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmEliminarCursos.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarCursos.Image = ((System.Drawing.Image)(resources.GetObject("tsmEliminarCursos.Image")));
             this.tsmEliminarCursos.Name = "tsmEliminarCursos";
-            this.tsmEliminarCursos.Size = new System.Drawing.Size(218, 30);
-            this.tsmEliminarCursos.Text = "Eliminar ";
+            this.tsmEliminarCursos.Size = new System.Drawing.Size(156, 30);
+            this.tsmEliminarCursos.Text = "Desactivar";
             this.tsmEliminarCursos.Click += new System.EventHandler(this.tsmEliminarCursos_Click);
             // 
             // tsmCursoDarAlta
@@ -104,19 +104,30 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmCursoDarAlta.Image = ((System.Drawing.Image)(resources.GetObject("tsmCursoDarAlta.Image")));
             this.tsmCursoDarAlta.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tsmCursoDarAlta.Name = "tsmCursoDarAlta";
-            this.tsmCursoDarAlta.Size = new System.Drawing.Size(218, 30);
+            this.tsmCursoDarAlta.Size = new System.Drawing.Size(156, 30);
             this.tsmCursoDarAlta.Text = "Dar de Alta";
             this.tsmCursoDarAlta.Click += new System.EventHandler(this.tsmCursoDarAlta_Click);
+            // 
+            // tsmVerMaterias
+            // 
+            this.tsmVerMaterias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmVerMaterias.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmVerMaterias.ForeColor = System.Drawing.Color.White;
+            this.tsmVerMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
+            this.tsmVerMaterias.Name = "tsmVerMaterias";
+            this.tsmVerMaterias.Size = new System.Drawing.Size(156, 30);
+            this.tsmVerMaterias.Text = "Ver Materias";
+            this.tsmVerMaterias.Click += new System.EventHandler(this.tsmVerMaterias_Click);
             // 
             // rbActivos
             // 
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(4, 11);
-            this.rbActivos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbActivos.Location = new System.Drawing.Point(4, 14);
+            this.rbActivos.Margin = new System.Windows.Forms.Padding(4);
             this.rbActivos.Name = "rbActivos";
-            this.rbActivos.Size = new System.Drawing.Size(229, 28);
+            this.rbActivos.Size = new System.Drawing.Size(229, 23);
             this.rbActivos.TabIndex = 55;
             this.rbActivos.TabStop = true;
             this.rbActivos.Text = "Activos";
@@ -127,10 +138,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(241, 11);
-            this.rbInactivos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbInactivos.Location = new System.Drawing.Point(241, 14);
+            this.rbInactivos.Margin = new System.Windows.Forms.Padding(4);
             this.rbInactivos.Name = "rbInactivos";
-            this.rbInactivos.Size = new System.Drawing.Size(229, 28);
+            this.rbInactivos.Size = new System.Drawing.Size(229, 23);
             this.rbInactivos.TabIndex = 54;
             this.rbInactivos.Text = "Inactivos";
             this.rbInactivos.UseVisualStyleBackColor = true;
@@ -147,7 +158,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Controls.Add(this.rbInactivos, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(24, 25);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
@@ -187,7 +198,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCursos.EnableHeadersVisualStyles = false;
             this.dgvCursos.GridColor = System.Drawing.Color.White;
             this.dgvCursos.Location = new System.Drawing.Point(24, 111);
-            this.dgvCursos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCursos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCursos.MultiSelect = false;
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
@@ -214,26 +225,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCursos.TabIndex = 57;
             this.dgvCursos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvCursos_MouseUp);
             // 
-            // tsmVerMaterias
-            // 
-            this.tsmVerMaterias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmVerMaterias.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmVerMaterias.ForeColor = System.Drawing.Color.White;
-            this.tsmVerMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
-            this.tsmVerMaterias.Name = "tsmVerMaterias";
-            this.tsmVerMaterias.Size = new System.Drawing.Size(218, 30);
-            this.tsmVerMaterias.Text = "Ver Materias";
-            this.tsmVerMaterias.Click += new System.EventHandler(this.tsmVerMaterias_Click);
-            // 
             // FormCursos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(999, 688);
             this.Controls.Add(this.dgvCursos);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormCursos";
             this.Padding = new System.Windows.Forms.Padding(24, 25, 24, 25);
             this.Text = "FormCursos";
