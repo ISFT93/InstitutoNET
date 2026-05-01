@@ -7,10 +7,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class EquivalenciasDao : DaoBase
+    public class EquivalenciasDao : DaoBase , IEquivalenciasDao
     {
         public DataTable ObtenerCarreras(int CarreraId)
         {

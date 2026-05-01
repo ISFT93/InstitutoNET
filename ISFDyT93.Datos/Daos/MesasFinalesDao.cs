@@ -8,10 +8,11 @@ using ISFDyT93.Datos.Core;
 using System.Reflection;
 using System.Data.SqlClient;
 using System.Security;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class MesasFinalesDao : DaoBase
+    public class MesasFinalesDao : DaoBase , IMesasFinalesDao
     {
 
         public DataTable ObtenerProfesorTitular(int MateriaId)

@@ -9,10 +9,11 @@ using ISFDyT93.Entidades.Modelos;
 using iTextSharp.text.pdf;
 using ISFDyT93.Negocio.Core;
 using System.Collections.Generic;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class PersonalLogica : LogicaBase
+    public class PersonalLogica : LogicaBase , IPersonalLogica
     {
         PersonalDao personalDao;
 

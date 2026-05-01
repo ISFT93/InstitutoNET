@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class EvaluacionesDao : DaoBase
+    public class EvaluacionesDao : DaoBase , IEvaluacionesDao
     {
         public DataTable ObtenerAlumnos(int ServicioId)
         {

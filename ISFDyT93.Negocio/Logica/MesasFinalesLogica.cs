@@ -10,10 +10,11 @@ using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using Microsoft.Win32;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class MesasFinalesLogica : LogicaBase
+    public class MesasFinalesLogica : LogicaBase , IMesasFinalesLogica
     {
         #region Privates
         private MesasFinalesDao mesasFinalesDao;

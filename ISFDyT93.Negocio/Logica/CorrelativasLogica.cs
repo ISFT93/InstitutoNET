@@ -3,10 +3,11 @@ using System.Data;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using ISFDyT93.Datos.Daos;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CorrelativasLogica : LogicaBase
+    public class CorrelativasLogica : LogicaBase , ICorrelativasLogica
     {
         CorrelativasDao correlativasDao;
         public CorrelativasLogica()

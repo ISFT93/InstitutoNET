@@ -76,6 +76,16 @@
     <Compile Include="Interfaces\ICursadasDao.cs" />
     <Compile Include="Interfaces\ICursosDao.cs" />
     <Compile Include="Interfaces\IDaoBase.cs" />
+    <Compile Include="Interfaces\IEquivalenciasDao.cs" />
+    <Compile Include="Interfaces\IEvaluacionesDao.cs" />
+    <Compile Include="Interfaces\IHorariosDao.cs" />
+    <Compile Include="Interfaces\IInscripcionAlumnoDao.cs" />
+    <Compile Include="Interfaces\ILicenciaServicioDao.cs" />
+    <Compile Include="Interfaces\IMateriasDao.cs" />
+    <Compile Include="Interfaces\IMesasFinalesDao.cs" />
+    <Compile Include="Interfaces\IParametrosDao.cs" />
+    <Compile Include="Interfaces\IPersonalDao.cs" />
+    <Compile Include="Interfaces\IServiciosDao.cs" />
     <Compile Include="Interfaces\ISettings.cs" />
     <Compile Include="Interfaces\IUnico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

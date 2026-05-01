@@ -8,10 +8,11 @@ using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades;
 using ISFDyT93.Entidades.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class InscripcionAlumnoDao : DaoBase
+    public class InscripcionAlumnoDao : DaoBase , IInscripcionAlumnoDao
     {
         public DataTable ObtenerMateriasVigentes(int alumnoId, string anio)
         {

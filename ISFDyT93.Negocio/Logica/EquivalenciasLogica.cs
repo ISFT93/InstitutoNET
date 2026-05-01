@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class EquivalenciasLogica : LogicaBase
+    public class EquivalenciasLogica : LogicaBase , IEquivalenciasLogica
     {
         EquivalenciasDao equivalenciasDao;
 

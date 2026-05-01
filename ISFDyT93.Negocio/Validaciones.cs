@@ -7,10 +7,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ISFDyT93.Negocio.Logica;
 using System.Text.RegularExpressions;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio
 {
-    public class Validaciones
+    public class Validaciones : IValidaciones
     {
         const string NUMEROSLETRAS = "abcdefghijklmnñopqrstuvwxyzáéíóú0123456789 ";
         const string EMAIL= "abcdefghijklmnñopqrstuvwxyzáéíóú0123456789@_.";

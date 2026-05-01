@@ -1,5 +1,6 @@
 ﻿using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CargosLogica
+    public class CargosLogica : ICargosLogica
     {
         CargosDao cargosDao = new CargosDao();
         public (DataTable, DataTable, IList<CargosModelo>) ObtenerCargos()

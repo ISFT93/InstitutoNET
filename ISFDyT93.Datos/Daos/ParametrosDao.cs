@@ -5,10 +5,11 @@ using ISFDyT93.Entidades.Enums;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 using System.Collections.Generic;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class ParametrosDao : DaoBase
+    public class ParametrosDao : DaoBase , IParametrosDao
     {
         public IList<ParametrosModelo> ObtenerParametros(bool actualizar = false)
         {
