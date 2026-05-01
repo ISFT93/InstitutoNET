@@ -4,11 +4,12 @@ using ISFDyT93.Entidades.Core;
 using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class Unico : Validacion
+    public class Unico : Validacion , IUnico
     {
         private string PropertyName { get; set; }
         private string Condicion { get; set; }

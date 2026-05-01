@@ -6,10 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CargosDao : DaoBase
+    public class CargosDao : DaoBase , ICargosDao
     {
         public (DataTable TipoAsignacion, DataTable TipoAplicacion, IList<CargosModelo> Cargos) ObtenerCargos()
         {

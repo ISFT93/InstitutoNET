@@ -1,8 +1,9 @@
 using System;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Core
 {
-    internal static class Settings
+    internal static class Settings : ISettings
     {
         public static string STRCONNECTION
         {

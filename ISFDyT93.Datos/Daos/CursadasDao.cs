@@ -6,10 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CursadasDao : DaoBase
+    public class CursadasDao : DaoBase , ICursadasDao
     {
         public DataRow ObtenerDatosCursadaByCursadaAlumnoCarreraId(int CursadaAlumnoCarreraId)
         {

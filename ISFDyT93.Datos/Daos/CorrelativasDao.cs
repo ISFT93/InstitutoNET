@@ -7,10 +7,11 @@ using System.Data;
 using System.Data.SqlClient;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CorrelativasDao : DaoBase
+    public class CorrelativasDao : DaoBase , ICorrelativasDao
     {
         public int CorrelativaExisteCarrera(int CarreraId)
         {
