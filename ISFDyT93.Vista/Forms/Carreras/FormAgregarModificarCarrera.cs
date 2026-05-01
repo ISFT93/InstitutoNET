@@ -22,6 +22,76 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private CarrerasModelo Modelo { get; set; }
         #endregion
 
+        #region funciones
+        private void MostrarCarreraExistentes()
+        {
+
+
+            switch (this.Accion)
+            {
+                case TipoAccion.Agregar:
+                    this.Contenedor.SetTitulo("Agregar Carrera");
+                    nudAnioInicio.Value = DateTime.Now.Year;
+                    nudAnioFin.Enabled = false;
+                    break;
+                case TipoAccion.Modificar:
+                    break;
+                case TipoAccion.Ver:
+                    ComprobarCarreraId();
+                    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
+                    this.DeshabilitarControles();
+                    btnGuardar.Visible = false;
+                    break;
+                case TipoAccion.Desactivar:
+                    ComprobarCarreraId();
+                    this.DeshabilitarControles();
+                    this.nudAnioFin.Value = DateTime.Now.Year;
+                    break;
+            }
+
+            //if (this.Accion == TipoAccion.Ver)
+            //{
+            //    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
+            //    this.DeshabilitarControles();
+            //    btnGuardar.Visible = false;
+            //}
+           
+            //if (this.Accion == TipoAccion.Desactivar)
+            //{
+            //    this.DeshabilitarControles();
+            //    this.nudAnioFin.Value = DateTime.Now.Year;
+            //}
+        }
+
+        private void ComprobarCarreraId()
+        {
+            if (this.CarreraId > 0)
+            {
+                this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
+
+                this.MapToForm<CarrerasModelo>(Modelo);
+
+                //Controlo que el campo duracion no se pueda modificar
+                var existe = MateriasLogica.MateriaAsignada(this.CarreraId);
+
+                //Solo para cambiar el titulo
+                this.Contenedor.SetTitulo($"Modificar Carrera {Modelo.DescripcionCorta}");
+
+                nudAnioFin.Enabled = this.Modelo.CarreraEstadoId != 3;
+
+                this.txtCantidadHoras.Text = this.Modelo.CantidadHoras.ToString();
+
+                bool enableOpciones = existe > 0;
+                txtCantidadHoras.Enabled = !enableOpciones;
+                Modelo.PoseeMaterias = enableOpciones;
+                txtDuracion.Enabled = !enableOpciones;
+
+                this.txtDuracion.Text = this.Modelo.Duracion.ToString();
+
+            }
+        }
+        #endregion
+
         public FormAgregarModificarCarrera()
         {
             this.CarrerasLogica = new CarrerasLogica();
@@ -37,78 +107,90 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 this.Contenedor.AbrirFormulario<FormCarreras>();
             });
 
-            if (this.Accion == TipoAccion.Agregar)
-            {
-                this.Contenedor.SetTitulo("Agregar Carrera");
+            MostrarCarreraExistentes();
 
-                nudAnioInicio.Value = DateTime.Now.Year;
-                nudAnioFin.Enabled = false;
-            }
+            //if (this.Accion == TipoAccion.Agregar)
+            //{
+            //    this.Contenedor.SetTitulo("Agregar Carrera");
 
-            if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver || this.Accion == TipoAccion.Desactivar)
-            {
-                if (this.CarreraId > 0)
-                {
-                    this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
+            //    nudAnioInicio.Value = DateTime.Now.Year;
+            //    nudAnioFin.Enabled = false;
+            //    return;
+            //}
 
-                    this.MapToForm<CarrerasModelo>(Modelo);
 
-                    //Controlo que el campo duracion no se pueda modificar
-                    var existe = MateriasLogica.MateriaAsignada(this.CarreraId);
+            //if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver || this.Accion == TipoAccion.Desactivar)
+            //{
+            //if (this.CarreraId > 0)
+            //{
+            //    this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
 
-                    //Solo para cambiar el titulo
-                    this.Contenedor.SetTitulo($"Modificar Carrera {Modelo.DescripcionCorta}");
+            //    this.MapToForm<CarrerasModelo>(Modelo);
 
-                    if (this.Modelo.CarreraEstadoId == 3)
-                    {
-                        nudAnioFin.Enabled = false;
-                    }
+            //    //Controlo que el campo duracion no se pueda modificar
+            //    var existe = MateriasLogica.MateriaAsignada(this.CarreraId);
 
-                    this.txtCantidadHoras.Text = this.Modelo.CantidadHoras.ToString();
+            //    //Solo para cambiar el titulo
+            //    this.Contenedor.SetTitulo($"Modificar Carrera {Modelo.DescripcionCorta}");
 
-                    if (existe > 0) //si hay id que concida en la bd
-                    {
-                        txtCantidadHoras.Enabled = false;
-                        Modelo.PoseeMaterias = true;
-                    }
-                    else //si no hay id que coincida en la bd
-                    {
-                        txtCantidadHoras.Enabled = true;
-                    }
+            //    nudAnioFin.Enabled = this.Modelo.CarreraEstadoId != 3;
+            //    //if (this.Modelo.CarreraEstadoId == 3)
+            //    //{
+            //    //    nudAnioFin.Enabled = false;
+            //    //}
 
-                    this.txtDuracion.Text = this.Modelo.Duracion.ToString();
+            //    this.txtCantidadHoras.Text = this.Modelo.CantidadHoras.ToString();
 
-                    if (existe > 0) //si hay id que concida en la bd
-                    {
-                        txtDuracion.Enabled = false;
-                        Modelo.PoseeMaterias = true;
-                    }
-                    else //si no hay id que coincida en la bd
-                    {
-                        txtDuracion.Enabled = true;
-                    }
-                }
+            //    bool enableOpciones = existe > 0;
+            //    txtCantidadHoras.Enabled = !enableOpciones;
+            //    Modelo.PoseeMaterias = enableOpciones;
+            //    txtDuracion.Enabled = !enableOpciones;
+            //    //if (existe > 0) //si hay id que concida en la bd
+            //    //{
+            //    //    txtCantidadHoras.Enabled = false;
+            //    //    Modelo.PoseeMaterias = true;
+            //    //    txtDuracion.Enabled = false;
+            //    //}
+            //    //else //si no hay id que coincida en la bd
+            //    //{
+            //    //    txtCantidadHoras.Enabled = true;
+            //    //    txtDuracion.Enabled = true;
+            //    //}
 
-                if (this.Accion == TipoAccion.Ver)
-                {
-                    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
-                    this.DeshabilitarControles();
-                    btnGuardar.Visible = false;
-                }
+            //    this.txtDuracion.Text = this.Modelo.Duracion.ToString();
 
-                if (this.Accion == TipoAccion.Desactivar || this.Accion == TipoAccion.Modificar)
-                {
-                    if (this.Accion == TipoAccion.Desactivar)
-                    {
-                        this.DeshabilitarControles();
-                    }
-                }
-            }
+            //    //if (existe > 0) //si hay id que concida en la bd
+            //    //{
+            //    //    txtDuracion.Enabled = false;
+            //    //    Modelo.PoseeMaterias = true;
+            //    //}
+            //    //else //si no hay id que coincida en la bd
+            //    //{
+            //    //    txtDuracion.Enabled = true;
+            //    //}
+            //}
 
-            if (this.Accion == TipoAccion.Desactivar)
-            {
-                this.nudAnioFin.Value = DateTime.Now.Year;
-            }
+            //if (this.Accion == TipoAccion.Ver)
+            //{
+            //    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
+            //    this.DeshabilitarControles();
+            //    btnGuardar.Visible = false;
+            //}
+
+            //if (this.Accion == TipoAccion.Desactivar || this.Accion == TipoAccion.Modificar)
+            //{
+            //    if (this.Accion == TipoAccion.Desactivar)
+            //    {
+            //        this.DeshabilitarControles();
+            //    }
+            //}
+            //}
+
+            //if (this.Accion == TipoAccion.Desactivar)
+            //{
+            //    this.nudAnioFin.Value = DateTime.Now.Year;
+            //}
+
         }
 
 

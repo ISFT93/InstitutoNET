@@ -6,6 +6,7 @@ using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Core;
+using System.Collections.Generic;
 
 namespace ISFDyT93.Negocio.Logica
 {
@@ -236,5 +237,17 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.carrerasDao.AltaCarreraActivo(Carreraid);
         }
+
+        //public Dictionary<string,bool> VerCarrerasActivas() 
+        //{
+        //    var opctionEnabDisab = new Dictionary<string, bool>()
+        //    {
+        //        { "nudAnioFin", true},
+        //        { "txtCantidadHoras", true},
+        //        { "PoseeMaterias", true},
+        //        { "txtDuracion", true},
+        //        { "btnGuardar", true}
+        //    };
+        //}
     }
 }
