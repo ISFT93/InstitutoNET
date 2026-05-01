@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Attributes\Validaciones\Unico.cs" />
     <Compile Include="Core\Cache.cs" />
     <Compile Include="Daos\AlumnosDao.cs" />
     <Compile Include="Daos\AniosCarreraDao.cs" />
@@ -88,7 +87,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

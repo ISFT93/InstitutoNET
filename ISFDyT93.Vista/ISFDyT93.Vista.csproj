@@ -87,14 +87,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\DataSource\DSInstituto.cs">
-      <DependentUpon>DSInstituto.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Core\DataSource\DSInstituto.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSInstituto.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Core\Enums\NombreParametro.cs" />
     <Compile Include="Core\Enums\TipoNotificacion.cs" />
     <Compile Include="Core\FormBase.cs">
@@ -509,17 +501,6 @@
     <EmbeddedResource Include="UserControls\uscPersonalGrid.resx">
       <DependentUpon>uscPersonalGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Core\DataSource\DSInstituto.xsc">
-      <DependentUpon>DSInstituto.xsd</DependentUpon>
-    </None>
-    <None Include="Core\DataSource\DSInstituto.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSInstituto.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Core\DataSource\DSInstituto.xss">
-      <DependentUpon>DSInstituto.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
