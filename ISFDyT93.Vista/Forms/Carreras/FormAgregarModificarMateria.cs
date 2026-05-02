@@ -27,6 +27,53 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private AutoCompleteStringCollection NombreAutoComplete { get; set; }
         #endregion
 
+        #region Funciones
+        private void MostrarMaterias()
+        {
+            this.anioCarrera = this.aniosLogica.ObtenerAnioCarrera(this.AnioCarreraId);
+
+            //Cargo el combo de Espacios
+            cmbEspacioId.DataSource = materiasLogica.ObtnenerEspacios();
+            cmbEspacioId.ValueMember = "EspacioId";
+            cmbEspacioId.DisplayMember = "Descripcion";
+
+            this.Contenedor.SetVolver(() =>
+            {
+                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+                {
+                    form.AnioCarreraId = this.AnioCarreraId;
+                });
+            });
+
+            switch (this.Accion)
+            {
+                case TipoAccion.Agregar:
+                    this.Contenedor.SetTitulo($"Agregar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+                    this.ActualizarAutoComplete();
+                    break;
+                case TipoAccion.Modificar:
+                    this.ComprobarMateriasId();
+                    this.Contenedor.SetTitulo($"Modificar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+                    break;
+                case TipoAccion.Ver:
+                    this.ComprobarMateriasId();
+                    this.DeshabilitarControles();
+                    this.Contenedor.SetTitulo($"Detalle Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+                    break;
+
+            }
+        }
+
+        private void ComprobarMateriasId()
+        {
+            if (this.MateriaId > 0)
+            {
+                this.materia = materiasLogica.ObtenerMateria(this.MateriaId);
+                this.MapToForm<MateriasModelo>(this.materia);
+            }
+        }
+        #endregion
+
         public FormAgregarModificarMateria()
         {
             this.materiasLogica = new MateriasLogica();
@@ -66,47 +113,48 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormAgregarModificarMateria_Load(object sender, EventArgs e)
         {
-            this.anioCarrera = this.aniosLogica.ObtenerAnioCarrera(this.AnioCarreraId);
+            MostrarMaterias();
+            //this.anioCarrera = this.aniosLogica.ObtenerAnioCarrera(this.AnioCarreraId);
 
-            //Cargo el combo de Espacios
-            cmbEspacioId.DataSource = materiasLogica.ObtnenerEspacios();
-            cmbEspacioId.ValueMember = "EspacioId";
-            cmbEspacioId.DisplayMember = "Descripcion";
+            ////Cargo el combo de Espacios
+            //cmbEspacioId.DataSource = materiasLogica.ObtnenerEspacios();
+            //cmbEspacioId.ValueMember = "EspacioId";
+            //cmbEspacioId.DisplayMember = "Descripcion";
 
-            this.Contenedor.SetVolver(() =>
-            {
-                Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
-                {
-                    form.AnioCarreraId = this.AnioCarreraId;
-                });
-            });
+            //this.Contenedor.SetVolver(() =>
+            //{
+            //    Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
+            //    {
+            //        form.AnioCarreraId = this.AnioCarreraId;
+            //    });
+            //});
 
-            if (this.Accion == TipoAccion.Agregar)
-            {
-                this.Contenedor.SetTitulo($"Agregar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
-                this.ActualizarAutoComplete();
-            }
+            //if (this.Accion == TipoAccion.Agregar)
+            //{
+            //    this.Contenedor.SetTitulo($"Agregar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+            //    this.ActualizarAutoComplete();
+            //}
 
-            if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver)
-            {
-                if (this.MateriaId > 0)
-                {
-                    this.materia = materiasLogica.ObtenerMateria(this.MateriaId);
+            //if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver)
+            //{
+            //    if (this.MateriaId > 0)
+            //    {
+            //        this.materia = materiasLogica.ObtenerMateria(this.MateriaId);
 
-                    this.MapToForm<MateriasModelo>(this.materia);
-                }
+            //        this.MapToForm<MateriasModelo>(this.materia);
+            //    }
 
-                if (this.Accion == TipoAccion.Ver)
-                {
-                    this.DeshabilitarControles();
+            //    if (this.Accion == TipoAccion.Ver)
+            //    {
+            //        this.DeshabilitarControles();
 
-                    this.Contenedor.SetTitulo($"Detalle Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
-                }
-                else
-                {
-                    this.Contenedor.SetTitulo($"Modificar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
-                }
-            }
+            //        this.Contenedor.SetTitulo($"Detalle Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+            //    }
+            //    else
+            //    {
+            //        this.Contenedor.SetTitulo($"Modificar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+            //    }
+            //}
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
