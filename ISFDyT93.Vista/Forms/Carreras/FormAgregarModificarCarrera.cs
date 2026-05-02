@@ -133,6 +133,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 Notificar(TipoNotificacion.Error, "No se ha podido guardar la carrera");
             }
         }
+        public void Limpiar()
+        {
+            txtNombre.Text = "";
+            txtTitulo.Text = "";
+            txtDescripcionCorta.Text = "";
+            txtJefeCatedra.Text = "";
+            txtPlanEstudio.Text = "";
+            txtResolucion.Text = "";
+            txtCorrelatividades.Text = "";
+            txtImagenDescriptiva.Text = "";
+            txtNumeroExpediente.Text = "";
+            txtCantidadHoras.Text = "";
+            txtDuracion.Text = "";
+        }
         #endregion
 
         public FormAgregarModificarCarrera()
@@ -155,20 +169,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
 
 
-        public void Limpiar()
-        {
-            txtNombre.Text = "";
-            txtTitulo.Text = "";
-            txtDescripcionCorta.Text = "";
-            txtJefeCatedra.Text = "";
-            txtPlanEstudio.Text = "";
-            txtResolucion.Text = "";
-            txtCorrelatividades.Text = "";
-            txtImagenDescriptiva.Text = "";
-            txtNumeroExpediente.Text = "";
-            txtCantidadHoras.Text = "";
-            txtDuracion.Text = "";
-        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
