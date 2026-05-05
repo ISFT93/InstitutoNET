@@ -114,15 +114,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     tsmAgregarAlumno.Visible = false;
 
-
+                    tsmDarAlta.Visible = !activo;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
+                    tsmCargaMasiva.Visible = false;
+
                     if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
                         tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
                     else
                         tsmAsignarMaterias.Visible = false;
-                    tsmDarAlta.Visible = true;// !activo;
 
                 }
                 else
@@ -132,6 +133,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
+                    tsmDarAlta.Visible = false;
+                    tsmCargaMasiva.Visible = true;
                 }
             }
         }
@@ -146,7 +149,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                 {
                     form.Accion = TipoAccion.Agregar;
-                    form.AlumnoId = AlumnoId;
+                    //form.AlumnoId = AlumnoId;
                 });
             }
             else
@@ -157,7 +160,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                     {
                         form.Accion = TipoAccion.Agregar;
-                        form.AlumnoId = AlumnoId;
+                        //form.AlumnoId = AlumnoId;
                     });
                 }
             }
