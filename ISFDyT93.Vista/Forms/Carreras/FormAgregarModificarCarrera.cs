@@ -102,10 +102,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             if (this.Accion == TipoAccion.Desactivar)
             {
-                int AnioActual = Convert.ToInt32(DateTime.Today.Year);
+                //int AnioActual = Convert.ToInt32(DateTime.Today.Year);
                 //Si el form se abre desde la seleccion modificar en el menu
                 //Modificar a la base de datos
-                if (this.nudAnioFin.Value < AnioActual)
+                if (!CarrerasLogica.AnioValidoDesactivar(this.nudAnioFin.Value))
                 {
                     Notificar(TipoNotificacion.Warning, "No se pudo desactivar\n" +
                             "el año debe ser mayor o igual al año actual");
@@ -125,7 +125,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
             {
                 Notificar(TipoNotificacion.Success, "Carrera guardada correctamente");
-
                 Contenedor.AbrirFormulario<FormCarreras>();
             }
             else

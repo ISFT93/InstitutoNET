@@ -238,6 +238,12 @@ namespace ISFDyT93.Negocio.Logica
             this.carrerasDao.AltaCarreraActivo(Carreraid);
         }
 
+        public bool AnioValidoDesactivar(decimal AnioFin)
+        {
+            int AnioActual = Convert.ToInt32(DateTime.Today.Year);
+            return AnioFin > AnioActual;
+        }
+
         //public Dictionary<string,bool> VerCarrerasActivas() 
         //{
         //    var opctionEnabDisab = new Dictionary<string, bool>()
