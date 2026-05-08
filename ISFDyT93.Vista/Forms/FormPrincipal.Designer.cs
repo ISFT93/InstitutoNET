@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.pnlDerecho = new System.Windows.Forms.Panel();
             this.pnlIzquierdo = new System.Windows.Forms.Panel();
+            this.btnAsistencia = new FontAwesome.Sharp.IconButton();
             this.btnOpciones = new FontAwesome.Sharp.IconButton();
             this.btnAlumnos = new FontAwesome.Sharp.IconButton();
             this.btnPersonal = new FontAwesome.Sharp.IconButton();
@@ -46,7 +47,9 @@
             this.tsmPruebaSP = new System.Windows.Forms.ToolStripMenuItem();
             this.Parametros = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVolver = new FontAwesome.Sharp.IconButton();
-            this.btnAsistencia = new FontAwesome.Sharp.IconButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.pnlIzquierdo.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.cmsOpciones.SuspendLayout();
@@ -66,6 +69,8 @@
             // pnlIzquierdo
             // 
             this.pnlIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.pnlIzquierdo.Controls.Add(this.button3);
+            this.pnlIzquierdo.Controls.Add(this.button2);
             this.pnlIzquierdo.Controls.Add(this.btnAsistencia);
             this.pnlIzquierdo.Controls.Add(this.btnOpciones);
             this.pnlIzquierdo.Controls.Add(this.btnAlumnos);
@@ -78,6 +83,26 @@
             this.pnlIzquierdo.Name = "pnlIzquierdo";
             this.pnlIzquierdo.Size = new System.Drawing.Size(200, 600);
             this.pnlIzquierdo.TabIndex = 0;
+            // 
+            // btnAsistencia
+            // 
+            this.btnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAsistencia.FlatAppearance.BorderSize = 0;
+            this.btnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsistencia.ForeColor = System.Drawing.Color.White;
+            this.btnAsistencia.IconChar = FontAwesome.Sharp.IconChar.LineChart;
+            this.btnAsistencia.IconColor = System.Drawing.Color.White;
+            this.btnAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAsistencia.IconSize = 36;
+            this.btnAsistencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAsistencia.Location = new System.Drawing.Point(0, 290);
+            this.btnAsistencia.Name = "btnAsistencia";
+            this.btnAsistencia.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnAsistencia.Size = new System.Drawing.Size(200, 60);
+            this.btnAsistencia.TabIndex = 14;
+            this.btnAsistencia.Text = "Asistencia/Evaluaciones";
+            this.btnAsistencia.UseVisualStyleBackColor = true;
+            this.btnAsistencia.Click += new System.EventHandler(this.btnAsistencia_Click);
             // 
             // btnOpciones
             // 
@@ -197,7 +222,7 @@
             this.lblProyecto.ForeColor = System.Drawing.Color.White;
             this.lblProyecto.Location = new System.Drawing.Point(40, 13);
             this.lblProyecto.Name = "lblProyecto";
-            this.lblProyecto.Size = new System.Drawing.Size(138, 29);
+            this.lblProyecto.Size = new System.Drawing.Size(109, 23);
             this.lblProyecto.TabIndex = 0;
             this.lblProyecto.Text = "ISFDyT 93";
             // 
@@ -220,7 +245,7 @@
             this.tsmCiclosLectivos,
             this.Parametros});
             this.cmsOpciones.Name = "cmsOpciones";
-            this.cmsOpciones.Size = new System.Drawing.Size(180, 64);
+            this.cmsOpciones.Size = new System.Drawing.Size(160, 64);
             // 
             // tsmCiclosLectivos
             // 
@@ -232,7 +257,7 @@
             this.tsmCiclosLectivos.ForeColor = System.Drawing.Color.White;
             this.tsmCiclosLectivos.Image = global::ISFDyT93.Vista.Properties.Resources.calendar_alt_solid;
             this.tsmCiclosLectivos.Name = "tsmCiclosLectivos";
-            this.tsmCiclosLectivos.Size = new System.Drawing.Size(179, 30);
+            this.tsmCiclosLectivos.Size = new System.Drawing.Size(159, 30);
             this.tsmCiclosLectivos.Text = "Ciclo Lectivo";
             // 
             // tsmVerCiclos
@@ -241,7 +266,7 @@
             this.tsmVerCiclos.ForeColor = System.Drawing.Color.White;
             this.tsmVerCiclos.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCiclos.Name = "tsmVerCiclos";
-            this.tsmVerCiclos.Size = new System.Drawing.Size(168, 26);
+            this.tsmVerCiclos.Size = new System.Drawing.Size(139, 22);
             this.tsmVerCiclos.Text = "Ver Ciclos";
             this.tsmVerCiclos.Click += new System.EventHandler(this.tsmVerCiclos_Click);
             // 
@@ -251,7 +276,7 @@
             this.tsmPruebaSP.ForeColor = System.Drawing.Color.White;
             this.tsmPruebaSP.Image = global::ISFDyT93.Vista.Properties.Resources.plus_circle_solid;
             this.tsmPruebaSP.Name = "tsmPruebaSP";
-            this.tsmPruebaSP.Size = new System.Drawing.Size(168, 26);
+            this.tsmPruebaSP.Size = new System.Drawing.Size(139, 22);
             this.tsmPruebaSP.Text = "Prueba SP";
             this.tsmPruebaSP.Click += new System.EventHandler(this.tsmPruebaSP_Click);
             // 
@@ -262,7 +287,7 @@
             this.Parametros.ForeColor = System.Drawing.Color.White;
             this.Parametros.Image = ((System.Drawing.Image)(resources.GetObject("Parametros.Image")));
             this.Parametros.Name = "Parametros";
-            this.Parametros.Size = new System.Drawing.Size(179, 30);
+            this.Parametros.Size = new System.Drawing.Size(159, 30);
             this.Parametros.Text = "Parametros";
             this.Parametros.Click += new System.EventHandler(this.Parametros_Click);
             // 
@@ -285,31 +310,41 @@
             this.btnVolver.Visible = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // btnAsistencia
+            // button1
             // 
-            this.btnAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAsistencia.FlatAppearance.BorderSize = 0;
-            this.btnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAsistencia.ForeColor = System.Drawing.Color.White;
-            this.btnAsistencia.IconChar = FontAwesome.Sharp.IconChar.LineChart;
-            this.btnAsistencia.IconColor = System.Drawing.Color.White;
-            this.btnAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAsistencia.IconSize = 36;
-            this.btnAsistencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAsistencia.Location = new System.Drawing.Point(0, 290);
-            this.btnAsistencia.Name = "btnAsistencia";
-            this.btnAsistencia.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnAsistencia.Size = new System.Drawing.Size(200, 60);
-            this.btnAsistencia.TabIndex = 14;
-            this.btnAsistencia.Text = "Asistencia/Evaluaciones";
-            this.btnAsistencia.UseVisualStyleBackColor = true;
-            this.btnAsistencia.Click += new System.EventHandler(this.btnAsistencia_Click);
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(0, 356);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(201, 50);
+            this.button3.TabIndex = 16;
+            this.button3.Text = "Mesas Finales";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 600);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.pnlIzquierdo);
@@ -349,6 +384,9 @@
         private System.Windows.Forms.ToolStripMenuItem Parametros;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCiclos;
         private FontAwesome.Sharp.IconButton btnAsistencia;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
