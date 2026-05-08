@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.pnlDerecho = new System.Windows.Forms.Panel();
             this.pnlIzquierdo = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnAsistencia = new FontAwesome.Sharp.IconButton();
             this.btnOpciones = new FontAwesome.Sharp.IconButton();
             this.btnAlumnos = new FontAwesome.Sharp.IconButton();
@@ -47,7 +48,6 @@
             this.tsmPruebaSP = new System.Windows.Forms.ToolStripMenuItem();
             this.Parametros = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVolver = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.pnlIzquierdo.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.cmsOpciones.SuspendLayout();
@@ -80,6 +80,27 @@
             this.pnlIzquierdo.Name = "pnlIzquierdo";
             this.pnlIzquierdo.Size = new System.Drawing.Size(200, 600);
             this.pnlIzquierdo.TabIndex = 0;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.Transparent;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.LineChart;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 36;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(0, 350);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton1.Size = new System.Drawing.Size(200, 60);
+            this.iconButton1.TabIndex = 17;
+            this.iconButton1.Text = "Mesas Finales";
+            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // btnAsistencia
             // 
@@ -306,25 +327,6 @@
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Visible = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.LineChart;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 36;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 350);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Size = new System.Drawing.Size(200, 46);
-            this.iconButton1.TabIndex = 17;
-            this.iconButton1.Text = "Mesas Finales";
-            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // FormPrincipal
             // 
