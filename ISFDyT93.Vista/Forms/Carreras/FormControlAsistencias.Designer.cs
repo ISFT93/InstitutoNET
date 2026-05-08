@@ -186,11 +186,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAsistencias.RowTemplate.Height = 28;
             this.dgvAsistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-<<<<<<< HEAD
-            this.dgvAsistencias.Size = new System.Drawing.Size(1204, 279);
-=======
             this.dgvAsistencias.Size = new System.Drawing.Size(1225, 465);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.dgvAsistencias.TabIndex = 68;
             this.dgvAsistencias.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAsistencias_MouseUp);
             // 
@@ -198,11 +194,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.dtpFechaAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFechaAsistencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-<<<<<<< HEAD
-            this.dtpFechaAsistencia.Location = new System.Drawing.Point(308, 75);
-=======
             this.dtpFechaAsistencia.Location = new System.Drawing.Point(313, 117);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.dtpFechaAsistencia.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaAsistencia.Name = "dtpFechaAsistencia";
             this.dtpFechaAsistencia.Size = new System.Drawing.Size(301, 32);
@@ -212,11 +204,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtNombreMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreMateria.Enabled = false;
-<<<<<<< HEAD
-            this.txtNombreMateria.Location = new System.Drawing.Point(308, 4);
-=======
             this.txtNombreMateria.Location = new System.Drawing.Point(313, 7);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.txtNombreMateria.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreMateria.Name = "txtNombreMateria";
             this.txtNombreMateria.Size = new System.Drawing.Size(301, 32);
@@ -227,11 +215,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
             this.lblProfesor.Font = new System.Drawing.Font("Tahoma", 12F);
-<<<<<<< HEAD
-            this.lblProfesor.Location = new System.Drawing.Point(612, 7);
-=======
             this.lblProfesor.Location = new System.Drawing.Point(622, 11);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.lblProfesor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProfesor.Name = "lblProfesor";
             this.lblProfesor.Size = new System.Drawing.Size(301, 24);
@@ -243,11 +227,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblMat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMat.AutoSize = true;
             this.lblMat.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.lblMat.Location = new System.Drawing.Point(4, 7);
-=======
             this.lblMat.Location = new System.Drawing.Point(4, 11);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.lblMat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMat.Name = "lblMat";
             this.lblMat.Size = new System.Drawing.Size(301, 24);
@@ -274,11 +254,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfesor.Enabled = false;
-<<<<<<< HEAD
-            this.txtProfesor.Location = new System.Drawing.Point(916, 4);
-=======
             this.txtProfesor.Location = new System.Drawing.Point(931, 7);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.txtProfesor.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfesor.Name = "txtProfesor";
             this.txtProfesor.Size = new System.Drawing.Size(302, 32);
@@ -288,11 +264,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtPorcentajeAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPorcentajeAsistencia.Enabled = false;
-<<<<<<< HEAD
-            this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(308, 38);
-=======
             this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(313, 58);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.txtPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4);
             this.txtPorcentajeAsistencia.Name = "txtPorcentajeAsistencia";
             this.txtPorcentajeAsistencia.Size = new System.Drawing.Size(301, 32);
@@ -302,11 +274,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtHoraCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHoraCatedra.Enabled = false;
-<<<<<<< HEAD
-            this.txtHoraCatedra.Location = new System.Drawing.Point(916, 38);
-=======
             this.txtHoraCatedra.Location = new System.Drawing.Point(931, 58);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.txtHoraCatedra.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoraCatedra.Name = "txtHoraCatedra";
             this.txtHoraCatedra.Size = new System.Drawing.Size(302, 32);
@@ -328,11 +296,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPocAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPocAsistencia.AutoSize = true;
             this.lblPocAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.lblPocAsistencia.Location = new System.Drawing.Point(4, 42);
-=======
             this.lblPocAsistencia.Location = new System.Drawing.Point(4, 62);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.lblPocAsistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPocAsistencia.Name = "lblPocAsistencia";
             this.lblPocAsistencia.Size = new System.Drawing.Size(301, 24);
@@ -344,11 +308,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.lblFecha.Location = new System.Drawing.Point(4, 79);
-=======
             this.lblFecha.Location = new System.Drawing.Point(4, 121);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(301, 24);
@@ -360,11 +320,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblModulos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModulos.AutoSize = true;
             this.lblModulos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.lblModulos.Location = new System.Drawing.Point(612, 42);
-=======
             this.lblModulos.Location = new System.Drawing.Point(622, 62);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.lblModulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblModulos.Name = "lblModulos";
             this.lblModulos.Size = new System.Drawing.Size(301, 24);
@@ -427,17 +383,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-<<<<<<< HEAD
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1216, 174);
-=======
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1237, 165);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.tableLayoutPanel1.TabIndex = 72;
             // 
             // lblCantRecursantes
@@ -531,23 +479,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.dgvAsistencias, 0, 0);
-<<<<<<< HEAD
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 203);
-=======
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 427);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-<<<<<<< HEAD
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1216, 291);
-=======
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1237, 477);
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
             this.tableLayoutPanel3.TabIndex = 74;
             // 
             // tableLayoutPanel0
@@ -795,12 +734,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TextBox txtCantidadAlumnos;
         private System.Windows.Forms.TextBox txtPorcentajePresente;
-<<<<<<< HEAD
-        private System.Windows.Forms.Label lblCantAlumnos;
-        private System.Windows.Forms.Label lblCantDesertores;
-        private System.Windows.Forms.Label lblCantRecursantes;
-        private System.Windows.Forms.Label lblHorasCátedra;
-=======
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel0;
         private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbMateria;
@@ -816,6 +749,5 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.ComboBox cmbProfesor;
         private System.Windows.Forms.Button btnAplicarFiltros;
         private System.Windows.Forms.Panel panel1;
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
     }
 }

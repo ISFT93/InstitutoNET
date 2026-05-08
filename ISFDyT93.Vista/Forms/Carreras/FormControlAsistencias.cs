@@ -313,11 +313,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             });
         }
 
-<<<<<<< HEAD
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-=======
         private CarrerasDao _carrerasDao= new CarrerasDao();
 
         private void CargarCarreras()
@@ -507,7 +502,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (!int.TryParse(cmbMateria.SelectedValue.ToString(), out materiaId)) return;
 
             cmbCicloLectivo.Enabled = true;
->>>>>>> 7bbf27b7e298c7d30f563fecea960592a5b47d63
         }
     }
 }
