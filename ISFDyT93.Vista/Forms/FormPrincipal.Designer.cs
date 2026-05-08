@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.pnlDerecho = new System.Windows.Forms.Panel();
             this.pnlIzquierdo = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnMesasFinales = new FontAwesome.Sharp.IconButton();
             this.btnAsistencia = new FontAwesome.Sharp.IconButton();
             this.btnOpciones = new FontAwesome.Sharp.IconButton();
             this.btnAlumnos = new FontAwesome.Sharp.IconButton();
@@ -67,7 +67,7 @@
             // pnlIzquierdo
             // 
             this.pnlIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.pnlIzquierdo.Controls.Add(this.iconButton1);
+            this.pnlIzquierdo.Controls.Add(this.btnMesasFinales);
             this.pnlIzquierdo.Controls.Add(this.btnAsistencia);
             this.pnlIzquierdo.Controls.Add(this.btnOpciones);
             this.pnlIzquierdo.Controls.Add(this.btnAlumnos);
@@ -81,26 +81,26 @@
             this.pnlIzquierdo.Size = new System.Drawing.Size(200, 600);
             this.pnlIzquierdo.TabIndex = 0;
             // 
-            // iconButton1
+            // btnMesasFinales
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.LineChart;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 36;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 350);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Size = new System.Drawing.Size(200, 60);
-            this.iconButton1.TabIndex = 17;
-            this.iconButton1.Text = "Mesas Finales";
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnMesasFinales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnMesasFinales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMesasFinales.FlatAppearance.BorderSize = 0;
+            this.btnMesasFinales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMesasFinales.ForeColor = System.Drawing.Color.Transparent;
+            this.btnMesasFinales.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
+            this.btnMesasFinales.IconColor = System.Drawing.Color.White;
+            this.btnMesasFinales.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMesasFinales.IconSize = 36;
+            this.btnMesasFinales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMesasFinales.Location = new System.Drawing.Point(0, 350);
+            this.btnMesasFinales.Name = "btnMesasFinales";
+            this.btnMesasFinales.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnMesasFinales.Size = new System.Drawing.Size(200, 60);
+            this.btnMesasFinales.TabIndex = 17;
+            this.btnMesasFinales.Text = "Mesas Finales";
+            this.btnMesasFinales.UseVisualStyleBackColor = true;
+            this.btnMesasFinales.Click += new System.EventHandler(this.btnMesasFinales_Click);
             // 
             // btnAsistencia
             // 
@@ -108,7 +108,7 @@
             this.btnAsistencia.FlatAppearance.BorderSize = 0;
             this.btnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAsistencia.ForeColor = System.Drawing.Color.White;
-            this.btnAsistencia.IconChar = FontAwesome.Sharp.IconChar.LineChart;
+            this.btnAsistencia.IconChar = FontAwesome.Sharp.IconChar.CalendarCheck;
             this.btnAsistencia.IconColor = System.Drawing.Color.White;
             this.btnAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAsistencia.IconSize = 36;
@@ -372,7 +372,7 @@
         private System.Windows.Forms.ToolStripMenuItem Parametros;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCiclos;
         private FontAwesome.Sharp.IconButton btnAsistencia;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnMesasFinales;
     }
 }
 
