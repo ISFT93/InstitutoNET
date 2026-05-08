@@ -134,6 +134,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             var tabla = lstMaterias.DataSource as DataTable;
 
+            // modificado
             correlativasLogica.AgregarTodasLasCorrelativas(this.MateriaId, tabla);
 
             ActualizarListas();
