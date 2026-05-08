@@ -6,6 +6,9 @@ using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Forms.Common;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
+using ISFDyT93.Datos.Daos;
+using System.Diagnostics;
+
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -38,7 +41,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void ControlAsistencias_Load(object sender, EventArgs e)
         {
             this.PropiedadesFormPrincipal();
-
             this.Cursada = this.cursadasLogica.ObtenerCursada(this.CursadaId);
             this.MapToForm<CursadasModelo>(this.Cursada);
 
@@ -46,6 +48,33 @@ namespace ISFDyT93.Vista.Forms.Carreras
             txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
 
             this.RellenarGrilla();
+            ///
+            cmbCarrera.DataSource = null;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Text = "";
+            cmbCarrera.SelectedIndex = -1;
+            ///
+            cmbProfesor.DataSource = null;
+            cmbProfesor.Items.Clear();
+            cmbProfesor.Text = "";
+            cmbProfesor.SelectedIndex = -1;
+            //
+            cmbAnio.DataSource = null;
+            cmbAnio.Items.Clear();
+            cmbAnio.Text = "";
+            cmbAnio.SelectedIndex = -1;
+            //
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+            cmbCurso.Text = "";
+            cmbCurso.Text = "";
+            cmbCurso.SelectedIndex = -1;
+            //
+            cmbAnio.Enabled = false;
+            cmbCurso.Enabled = false;
+            cmbMateria.Enabled = false;
+            cmbCicloLectivo.Enabled = false;
+
         }
 
         private void RellenarGrilla()
@@ -284,9 +313,195 @@ namespace ISFDyT93.Vista.Forms.Carreras
             });
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private CarrerasDao _carrerasDao= new CarrerasDao();
+
+        private void CargarCarreras()
         {
 
+            DataTable dt = _carrerasDao.CarrerasActivas();
+
+            cmbCarrera.DataSource = dt;
+            cmbCarrera.ValueMember = "CarreraId";
+            cmbCarrera.DisplayMember = "Nombre";
+            cmbCarrera.SelectedIndex = -1;
+
+        }
+        private bool carrerasCargadas = false;
+        private void cmbCarrera_DropDown(object sender, EventArgs e)
+        {
+
+            if (carrerasCargadas) return;
+            CargarCarreras();
+            carrerasCargadas = true;
+        }
+        //profesor
+        private PersonalDao _personalDao = new PersonalDao();
+
+        private void CargarProfesores()
+        {
+            DataTable dt = _personalDao.ObtenerProfesoresParaCombo(1);
+
+            cmbProfesor.DataSource = dt;
+            cmbProfesor.ValueMember = "PersonalId";
+            cmbProfesor.DisplayMember = "NombreCompleto";
+            cmbProfesor.SelectedIndex = -1;
+        }
+        private bool profesoresCargados = false;
+        private void cmbProfesor_DropDown(object sender, EventArgs e)
+        {
+            if (profesoresCargados) return;
+            CargarProfesores();
+            profesoresCargados = true;
+        }
+        // año
+        private AniosCarreraDao _aniosCarrerasDao = new AniosCarreraDao();
+        
+        private void CargarAniosPorCarrera(int carreraId)
+        {
+            DataTable dt = _aniosCarrerasDao.ObtenerAniosCarrera(carreraId);
+
+            cmbAnio.DataSource = dt;
+            cmbAnio.ValueMember = "AnioCarreraId";
+            cmbAnio.DisplayMember = "Año";
+            cmbAnio.SelectedIndex = -1;
+        }
+
+        private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbAnio.DataSource = null;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            cmbCicloLectivo.DataSource = null;
+            cmbCicloLectivo.SelectedIndex = -1;
+            cmbCicloLectivo.Enabled = false;
+
+            if (cmbCarrera.SelectedValue == null) return;
+
+            int carreraId;
+            if (!int.TryParse(cmbCarrera.SelectedValue.ToString(), out carreraId)) return;
+
+            CargarAniosPorCarrera(carreraId);
+            cmbAnio.Enabled = true; 
+        }
+
+        private CursosDao _cursosDao = new CursosDao();
+
+        private void CargarCursosPorAnio(int anioCarreraId)
+        {
+
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+
+            DataTable dt = _cursosDao.ConsultarCursos(anioCarreraId);
+            cmbCurso.DataSource = dt;
+            cmbCurso.ValueMember = "CursoId";
+            cmbCurso.DisplayMember = "NombreCurso";
+            cmbCurso.SelectedIndex = -1;
+         
+            Debug.Write(dt.Rows.Count);
+
+        }
+
+        //private int _ultimoAnioCarreraId = -1;
+        //private int _ultimoAnioCarreraIdMaterias = -1;
+
+        private void cmbAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cmbCurso.DataSource = null;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            cmbCicloLectivo.DataSource = null;
+            cmbCicloLectivo.SelectedIndex = -1;
+            cmbCicloLectivo.Enabled = false;
+
+            if (cmbAnio.SelectedValue == null) return;
+
+            int anioCarreraId;
+            if (!int.TryParse(cmbAnio.SelectedValue.ToString(), out anioCarreraId)) return;
+
+            CargarCursosPorAnio(anioCarreraId);
+            cmbCurso.Enabled = true; 
+        }
+
+        private MateriasDao _materiasDao = new MateriasDao();
+      
+        private void CargarMateriasPorAnio(int anioCarreraId)
+        {
+
+            cmbMateria.DataSource = null;
+            cmbMateria.Items.Clear();
+
+            DataTable dt = _materiasDao.CargarMaterias(anioCarreraId, true); 
+            cmbMateria.DataSource = dt;
+            cmbMateria.ValueMember = "MateriaId";
+            cmbMateria.DisplayMember = "Nombre";
+            cmbMateria.SelectedIndex = -1;
+        }
+
+        private CiclosLectivosDao _ciclosLectivosDao = new CiclosLectivosDao();
+        private bool ciclosLectivosCargados = false;
+
+        private void CargarCiclosLectivos()
+        {
+            DataTable dt = _ciclosLectivosDao.ObtenerCicloLectivo();
+
+            cmbCicloLectivo.DataSource = dt;
+            cmbCicloLectivo.ValueMember = "AnioLectivo";
+            cmbCicloLectivo.DisplayMember = "AnioLectivo";
+            cmbCicloLectivo.SelectedIndex = -1;
+        }
+
+        private void cmbCicloLectivo_DropDown(object sender, EventArgs e)
+        {
+            if (ciclosLectivosCargados) return;
+            CargarCiclosLectivos();
+            ciclosLectivosCargados = true;
+        }
+
+        private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            cmbCicloLectivo.DataSource = null;
+            cmbCicloLectivo.SelectedIndex = -1;
+            cmbCicloLectivo.Enabled = false;
+
+            if (cmbCurso.SelectedValue == null) return;
+
+            if (cmbAnio.SelectedValue == null) return;
+
+            int anioCarreraId;
+            if (!int.TryParse(cmbAnio.SelectedValue.ToString(), out anioCarreraId)) return;
+
+            CargarMateriasPorAnio(anioCarreraId);
+            cmbMateria.Enabled = true;
+        }
+
+        private void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMateria.SelectedValue == null) return;
+
+            int materiaId;
+            if (!int.TryParse(cmbMateria.SelectedValue.ToString(), out materiaId)) return;
+
+            cmbCicloLectivo.Enabled = true;
         }
     }
 }
