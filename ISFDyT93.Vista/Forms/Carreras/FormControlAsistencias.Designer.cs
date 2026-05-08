@@ -50,6 +50,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPocAsistencia = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblModulos = new System.Windows.Forms.Label();
+            this.lblCantRecursantes = new System.Windows.Forms.Label();
+            this.lblCantAlumnos = new System.Windows.Forms.Label();
+            this.lblCantDesertores = new System.Windows.Forms.Label();
+            this.lblHorasCátedra = new System.Windows.Forms.Label();
             this.cmsPyA = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmP = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmA = new System.Windows.Forms.ToolStripMenuItem();
@@ -323,6 +327,54 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblModulos.TabIndex = 66;
             this.lblModulos.Text = "Módulos:";
             // 
+            // lblCantRecursantes
+            // 
+            this.lblCantRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantRecursantes.AutoSize = true;
+            this.lblCantRecursantes.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantRecursantes.Location = new System.Drawing.Point(634, 79);
+            this.lblCantRecursantes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantRecursantes.Name = "lblCantRecursantes";
+            this.lblCantRecursantes.Size = new System.Drawing.Size(307, 19);
+            this.lblCantRecursantes.TabIndex = 70;
+            this.lblCantRecursantes.Text = "Cant. Recursante:";
+            // 
+            // lblCantAlumnos
+            // 
+            this.lblCantAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantAlumnos.AutoSize = true;
+            this.lblCantAlumnos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantAlumnos.Location = new System.Drawing.Point(4, 79);
+            this.lblCantAlumnos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantAlumnos.Name = "lblCantAlumnos";
+            this.lblCantAlumnos.Size = new System.Drawing.Size(307, 19);
+            this.lblCantAlumnos.TabIndex = 73;
+            this.lblCantAlumnos.Text = "Cant. Alumnos:";
+            // 
+            // lblCantDesertores
+            // 
+            this.lblCantDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantDesertores.AutoSize = true;
+            this.lblCantDesertores.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantDesertores.Location = new System.Drawing.Point(634, 113);
+            this.lblCantDesertores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantDesertores.Name = "lblCantDesertores";
+            this.lblCantDesertores.Size = new System.Drawing.Size(307, 19);
+            this.lblCantDesertores.TabIndex = 74;
+            this.lblCantDesertores.Text = "Cant. Desertores:";
+            // 
+            // lblHorasCátedra
+            // 
+            this.lblHorasCátedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHorasCátedra.AutoSize = true;
+            this.lblHorasCátedra.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHorasCátedra.Location = new System.Drawing.Point(4, 113);
+            this.lblHorasCátedra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHorasCátedra.Name = "lblHorasCátedra";
+            this.lblHorasCátedra.Size = new System.Drawing.Size(307, 19);
+            this.lblHorasCátedra.TabIndex = 75;
+            this.lblHorasCátedra.Text = "Horas Cátedra:";
+            // 
             // cmsPyA
             // 
             this.cmsPyA.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -371,6 +423,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Controls.Add(this.txtProfesor, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblModulos, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblFecha, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantRecursantes, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantAlumnos, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantDesertores, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblHorasCátedra, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 262);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -685,6 +741,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.Label lblPocAsistencia;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblModulos;
+        private System.Windows.Forms.Label lblCantRecursantes;
+        private System.Windows.Forms.Label lblCantAlumnos;
+        private System.Windows.Forms.Label lblCantDesertores;
+        private System.Windows.Forms.Label lblHorasCátedra;
         private System.Windows.Forms.ContextMenuStrip cmsPyA;
         private System.Windows.Forms.ToolStripMenuItem tsmP;
         private System.Windows.Forms.ToolStripMenuItem tsmA;
