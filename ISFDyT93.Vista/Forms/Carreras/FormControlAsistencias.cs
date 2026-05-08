@@ -99,12 +99,27 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 modelo.MateriaId = filtro;
             if (cmbCicloLectivo.SelectedValue != null && int.TryParse(cmbCicloLectivo.SelectedValue.ToString(), out filtro))
                 modelo.AnioLectivo = filtro;
+            if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out filtro))
+                modelo.PersonalId = filtro;
+
+            Debug.WriteLine($"[FILTROS] Carrera={modelo.CarreraId}, Anio={modelo.AnioCarreraId}, Curso={modelo.CursoId}, Materia={modelo.MateriaId}, Ciclo={modelo.AnioLectivo}, Profesor={modelo.PersonalId}, Cursada={modelo.CursadaId}");
 
             dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
             dgvAsistencias.Columns["AlumnoId"].Visible = false;
             dgvAsistencias.Columns["CursadaId"].Visible = false;
             dgvAsistencias.Columns["AlumnoCarreraId"].Visible = false;
             dgvAsistencias.Columns["CursadaAlumnoCarreraId"].Visible = false;
+
+            if (dgvAsistencias.Columns["Materia"] != null)
+            {
+                dgvAsistencias.Columns["Materia"].Visible = true;
+                dgvAsistencias.Columns["Materia"].DisplayIndex = 1;
+            }
+            if (dgvAsistencias.Columns["Profesor"] != null)
+            {
+                dgvAsistencias.Columns["Profesor"].Visible = true;
+                dgvAsistencias.Columns["Profesor"].DisplayIndex = 2;
+            }
 
 
             if (dgvAsistencias.Rows.Count > 0)
@@ -588,6 +603,5 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbCicloLectivo.SelectedIndex = -1;
             cmbCicloLectivo.Enabled = false;
         }
-
     }
 }

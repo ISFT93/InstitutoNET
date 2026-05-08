@@ -27,7 +27,7 @@ namespace ISFDyT93.Datos.Daos
         {
             DataTable dt = new DataTable();
 
-            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Al.Apellido, Ca.HorasCursadas AS Modulos, Ca.UltimoPresentismo, Ca.PorcentajeAsistencia, A.Asistencia " +
+            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Al.Apellido, m.Nombre AS Materia, CONCAT(p.Nombre, ' ', p.Apellido) AS Profesor, Ca.HorasCursadas AS Modulos, Ca.UltimoPresentismo, Ca.PorcentajeAsistencia, A.Asistencia " +
                 "FROM AlumnosCarreras AC " +
                 "INNER JOIN Alumnos Al ON Al.AlumnoId = AC.AlumnoId " +
                 "INNER JOIN CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId " +
@@ -36,10 +36,12 @@ namespace ISFDyT93.Datos.Daos
                 "INNER JOIN Cursos c ON cm.CursoId = c.CursoId " +
                 "INNER JOIN AniosCarreras acr ON c.AnioCarreraId = acr.AnioCarreraId " +
                 "INNER JOIN Materias m ON cm.MateriaId = m.MateriaId " +
+                "LEFT JOIN Servicios s ON s.CursoMateriaId = cm.CursoMateriaId AND s.Activo = 1 " +
+                "LEFT JOIN Personal p ON s.PersonalId = p.PersonalId " +
                 "LEFT JOIN Asistencias A ON (Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId AND A.Fecha = '" + Modelo.FechaAsistenciaStr + "') " +
                 "WHERE 1=1 ";
 
-            bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0;
+            bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0 || Modelo.PersonalId > 0;
 
             if (!hayFiltros && Modelo.CursadaId > 0)
             {
@@ -57,9 +59,13 @@ namespace ISFDyT93.Datos.Daos
                     query += " AND m.MateriaId = " + Modelo.MateriaId;
                 if (Modelo.AnioLectivo > 0)
                     query += " AND cu.AnioLectivo = " + Modelo.AnioLectivo;
+                if (Modelo.PersonalId > 0)
+                    query += " AND EXISTS (SELECT 1 FROM Servicios s WHERE s.CursoMateriaId = cm.CursoMateriaId AND s.PersonalId = " + Modelo.PersonalId + ")";
             }
 
+            System.Diagnostics.Debug.WriteLine("[SQL] " + query);
             dt = this.Conexion.ObtenerRegistros(query);
+            System.Diagnostics.Debug.WriteLine("[ROWS] " + dt.Rows.Count);
             return dt;
         }
 
