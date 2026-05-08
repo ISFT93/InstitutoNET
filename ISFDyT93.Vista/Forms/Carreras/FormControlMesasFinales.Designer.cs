@@ -34,33 +34,33 @@ namespace ISFDyT93.Vista.Forms.Carreras
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnDescargar = new System.Windows.Forms.Button();
-            this.lblPorcentajeAlumnosI = new System.Windows.Forms.Label();
-            this.lblTotalAlumnosI = new System.Windows.Forms.Label();
-            this.dgvAsistencias = new System.Windows.Forms.DataGridView();
-            this.dtpFechaAsistencia = new System.Windows.Forms.DateTimePicker();
-            this.txtNombreMateria = new System.Windows.Forms.TextBox();
-            this.lblProfesor = new System.Windows.Forms.Label();
-            this.lblMat = new System.Windows.Forms.Label();
-            this.btnAceptarAsistencia = new System.Windows.Forms.Button();
-            this.txtProfesor = new System.Windows.Forms.TextBox();
-            this.txtPorcentajeAsistencia = new System.Windows.Forms.TextBox();
-            this.txtHoraCatedra = new System.Windows.Forms.TextBox();
-            this.txtCantidadAlumnosRecursantes = new System.Windows.Forms.TextBox();
-            this.txtCantidadAlumnosDesertores = new System.Windows.Forms.TextBox();
-            this.lblPorcentajeAsistencia = new System.Windows.Forms.Label();
-            this.lblPocAsistencia = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblModulos = new System.Windows.Forms.Label();
-            this.cmsPyA = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmP = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmA = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmHistorialAsistenciasAlumnos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtCantidadAlumnos = new System.Windows.Forms.TextBox();
+            this.lblTotalAlumnosI = new System.Windows.Forms.Label();
+            this.lblPorcentajeAlumnosI = new System.Windows.Forms.Label();
+            this.btnAceptarAsistencia = new System.Windows.Forms.Button();
+            this.btnDescargar = new System.Windows.Forms.Button();
             this.txtPorcentajePresente = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAsistencias = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblMat = new System.Windows.Forms.Label();
+            this.lblProfesor = new System.Windows.Forms.Label();
+            this.txtNombreMateria = new System.Windows.Forms.TextBox();
+            this.lblPocAsistencia = new System.Windows.Forms.Label();
+            this.txtPorcentajeAsistencia = new System.Windows.Forms.TextBox();
+            this.dtpFechaAsistencia = new System.Windows.Forms.DateTimePicker();
+            this.txtProfesor = new System.Windows.Forms.TextBox();
+            this.lblModulos = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblCantRecursantes = new System.Windows.Forms.Label();
+            this.txtCantidadAlumnosRecursantes = new System.Windows.Forms.TextBox();
+            this.lblCantAlumnos = new System.Windows.Forms.Label();
+            this.txtCantidadAlumnos = new System.Windows.Forms.TextBox();
+            this.lblCantDesertores = new System.Windows.Forms.Label();
+            this.txtCantidadAlumnosDesertores = new System.Windows.Forms.TextBox();
+            this.lblHorasCátedra = new System.Windows.Forms.Label();
+            this.txtHoraCatedra = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.cmbCurso = new System.Windows.Forms.ComboBox();
@@ -75,14 +75,81 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbAnio = new System.Windows.Forms.ComboBox();
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
             this.btnAplicarFiltros = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).BeginInit();
-            this.cmsPyA.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.lblPorcentajeAsistencia = new System.Windows.Forms.Label();
+            this.cmsPyA = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmP = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmHistorialAsistenciasAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel0.SuspendLayout();
+            this.cmsPyA.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.lblTotalAlumnosI, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblPorcentajeAlumnosI, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnAceptarAsistencia, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnDescargar, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtPorcentajePresente, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 935);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1241, 196);
+            this.tableLayoutPanel2.TabIndex = 79;
+            // 
+            // lblTotalAlumnosI
+            // 
+            this.lblTotalAlumnosI.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblTotalAlumnosI.AutoSize = true;
+            this.lblTotalAlumnosI.BackColor = System.Drawing.Color.White;
+            this.lblTotalAlumnosI.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAlumnosI.Location = new System.Drawing.Point(4, 39);
+            this.lblTotalAlumnosI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalAlumnosI.Name = "lblTotalAlumnosI";
+            this.lblTotalAlumnosI.Size = new System.Drawing.Size(138, 19);
+            this.lblTotalAlumnosI.TabIndex = 69;
+            this.lblTotalAlumnosI.Text = "Total de alumnos:";
+            this.lblTotalAlumnosI.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblPorcentajeAlumnosI
+            // 
+            this.lblPorcentajeAlumnosI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPorcentajeAlumnosI.AutoSize = true;
+            this.lblPorcentajeAlumnosI.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPorcentajeAlumnosI.Location = new System.Drawing.Point(4, 137);
+            this.lblPorcentajeAlumnosI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPorcentajeAlumnosI.Name = "lblPorcentajeAlumnosI";
+            this.lblPorcentajeAlumnosI.Size = new System.Drawing.Size(302, 19);
+            this.lblPorcentajeAlumnosI.TabIndex = 70;
+            this.lblPorcentajeAlumnosI.Text = "Porcentaje de alumnos presentes:";
+            // 
+            // btnAceptarAsistencia
+            // 
+            this.btnAceptarAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptarAsistencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnAceptarAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptarAsistencia.ForeColor = System.Drawing.Color.White;
+            this.btnAceptarAsistencia.Location = new System.Drawing.Point(934, 120);
+            this.btnAceptarAsistencia.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAceptarAsistencia.Name = "btnAceptarAsistencia";
+            this.btnAceptarAsistencia.Size = new System.Drawing.Size(303, 54);
+            this.btnAceptarAsistencia.TabIndex = 63;
+            this.btnAceptarAsistencia.Text = "Aceptar";
+            this.btnAceptarAsistencia.UseVisualStyleBackColor = false;
             // 
             // btnDescargar
             // 
@@ -98,33 +165,30 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.btnDescargar.TabIndex = 71;
             this.btnDescargar.Text = "Descargar";
             this.btnDescargar.UseVisualStyleBackColor = false;
-            this.btnDescargar.Click += new System.EventHandler(this.btnDescargar_Click);
             // 
-            // lblPorcentajeAlumnosI
+            // txtPorcentajePresente
             // 
-            this.lblPorcentajeAlumnosI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPorcentajeAlumnosI.AutoSize = true;
-            this.lblPorcentajeAlumnosI.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPorcentajeAlumnosI.Location = new System.Drawing.Point(4, 137);
-            this.lblPorcentajeAlumnosI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPorcentajeAlumnosI.Name = "lblPorcentajeAlumnosI";
-            this.lblPorcentajeAlumnosI.Size = new System.Drawing.Size(302, 19);
-            this.lblPorcentajeAlumnosI.TabIndex = 70;
-            this.lblPorcentajeAlumnosI.Text = "Porcentaje de alumnos presentes:";
+            this.txtPorcentajePresente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPorcentajePresente.Enabled = false;
+            this.txtPorcentajePresente.Location = new System.Drawing.Point(313, 133);
+            this.txtPorcentajePresente.Name = "txtPorcentajePresente";
+            this.txtPorcentajePresente.Size = new System.Drawing.Size(304, 27);
+            this.txtPorcentajePresente.TabIndex = 73;
             // 
-            // lblTotalAlumnosI
+            // tableLayoutPanel3
             // 
-            this.lblTotalAlumnosI.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblTotalAlumnosI.AutoSize = true;
-            this.lblTotalAlumnosI.BackColor = System.Drawing.Color.White;
-            this.lblTotalAlumnosI.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAlumnosI.Location = new System.Drawing.Point(4, 39);
-            this.lblTotalAlumnosI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotalAlumnosI.Name = "lblTotalAlumnosI";
-            this.lblTotalAlumnosI.Size = new System.Drawing.Size(138, 19);
-            this.lblTotalAlumnosI.TabIndex = 69;
-            this.lblTotalAlumnosI.Text = "Total de alumnos:";
-            this.lblTotalAlumnosI.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.dgvAsistencias, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 458);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1241, 477);
+            this.tableLayoutPanel3.TabIndex = 80;
             // 
             // dgvAsistencias
             // 
@@ -185,40 +249,43 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAsistencias.Size = new System.Drawing.Size(1229, 465);
             this.dgvAsistencias.TabIndex = 68;
-            this.dgvAsistencias.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAsistencias_MouseUp);
             // 
-            // dtpFechaAsistencia
+            // tableLayoutPanel1
             // 
-            this.dtpFechaAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpFechaAsistencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaAsistencia.Location = new System.Drawing.Point(314, 74);
-            this.dtpFechaAsistencia.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpFechaAsistencia.Name = "dtpFechaAsistencia";
-            this.dtpFechaAsistencia.Size = new System.Drawing.Size(302, 27);
-            this.dtpFechaAsistencia.TabIndex = 67;
-            this.dtpFechaAsistencia.ValueChanged += new System.EventHandler(this.dtpFechaAsistencia_ValueChanged);
-            // 
-            // txtNombreMateria
-            // 
-            this.txtNombreMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombreMateria.Enabled = false;
-            this.txtNombreMateria.Location = new System.Drawing.Point(314, 4);
-            this.txtNombreMateria.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombreMateria.Name = "txtNombreMateria";
-            this.txtNombreMateria.Size = new System.Drawing.Size(302, 27);
-            this.txtNombreMateria.TabIndex = 60;
-            // 
-            // lblProfesor
-            // 
-            this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblProfesor.Location = new System.Drawing.Point(624, 8);
-            this.lblProfesor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(302, 19);
-            this.lblProfesor.TabIndex = 64;
-            this.lblProfesor.Text = "Profesor:";
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.lblMat, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblProfesor, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtNombreMateria, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblPocAsistencia, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtPorcentajeAsistencia, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dtpFechaAsistencia, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtProfesor, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblModulos, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantRecursantes, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtCantidadAlumnosRecursantes, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantAlumnos, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtCantidadAlumnos, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantDesertores, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtCantidadAlumnosDesertores, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblHorasCátedra, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtHoraCatedra, 1, 4);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 262);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1241, 196);
+            this.tableLayoutPanel1.TabIndex = 78;
             // 
             // lblMat
             // 
@@ -232,82 +299,27 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblMat.TabIndex = 65;
             this.lblMat.Text = "Materia:";
             // 
-            // btnAceptarAsistencia
+            // lblProfesor
             // 
-            this.btnAceptarAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptarAsistencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
-            this.btnAceptarAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptarAsistencia.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarAsistencia.Location = new System.Drawing.Point(934, 120);
-            this.btnAceptarAsistencia.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAceptarAsistencia.Name = "btnAceptarAsistencia";
-            this.btnAceptarAsistencia.Size = new System.Drawing.Size(303, 54);
-            this.btnAceptarAsistencia.TabIndex = 63;
-            this.btnAceptarAsistencia.Text = "Aceptar";
-            this.btnAceptarAsistencia.UseVisualStyleBackColor = false;
-            this.btnAceptarAsistencia.Click += new System.EventHandler(this.btnAceptarAsistencia_Click_1);
+            this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProfesor.AutoSize = true;
+            this.lblProfesor.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblProfesor.Location = new System.Drawing.Point(624, 8);
+            this.lblProfesor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProfesor.Name = "lblProfesor";
+            this.lblProfesor.Size = new System.Drawing.Size(302, 19);
+            this.lblProfesor.TabIndex = 64;
+            this.lblProfesor.Text = "Profesor:";
             // 
-            // txtProfesor
+            // txtNombreMateria
             // 
-            this.txtProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProfesor.Enabled = false;
-            this.txtProfesor.Location = new System.Drawing.Point(934, 4);
-            this.txtProfesor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProfesor.Name = "txtProfesor";
-            this.txtProfesor.Size = new System.Drawing.Size(303, 27);
-            this.txtProfesor.TabIndex = 61;
-            // 
-            // txtPorcentajeAsistencia
-            // 
-            this.txtPorcentajeAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPorcentajeAsistencia.Enabled = false;
-            this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(314, 39);
-            this.txtPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPorcentajeAsistencia.Name = "txtPorcentajeAsistencia";
-            this.txtPorcentajeAsistencia.Size = new System.Drawing.Size(302, 27);
-            this.txtPorcentajeAsistencia.TabIndex = 59;
-            // 
-            // txtHoraCatedra
-            // 
-            this.txtHoraCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHoraCatedra.Enabled = false;
-            this.txtHoraCatedra.Location = new System.Drawing.Point(934, 39);
-            this.txtHoraCatedra.Margin = new System.Windows.Forms.Padding(4);
-            this.txtHoraCatedra.Name = "txtHoraCatedra";
-            this.txtHoraCatedra.Size = new System.Drawing.Size(303, 27);
-            this.txtHoraCatedra.TabIndex = 62;
-            // 
-            // txtCantidadAlumnosRecursantes
-            // 
-            this.txtCantidadAlumnosRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadAlumnosRecursantes.Enabled = false;
-            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(934, 75);
-            this.txtCantidadAlumnosRecursantes.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCantidadAlumnosRecursantes.Name = "txtCantidadAlumnosRecursantes";
-            this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(303, 27);
-            this.txtCantidadAlumnosRecursantes.TabIndex = 76;
-            // 
-            // txtCantidadAlumnosDesertores
-            // 
-            this.txtCantidadAlumnosDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadAlumnosDesertores.Enabled = false;
-            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(934, 111);
-            this.txtCantidadAlumnosDesertores.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCantidadAlumnosDesertores.Name = "txtCantidadAlumnosDesertores";
-            this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(303, 27);
-            this.txtCantidadAlumnosDesertores.TabIndex = 77;
-            // 
-            // lblPorcentajeAsistencia
-            // 
-            this.lblPorcentajeAsistencia.AutoSize = true;
-            this.lblPorcentajeAsistencia.BackColor = System.Drawing.Color.Transparent;
-            this.lblPorcentajeAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPorcentajeAsistencia.Location = new System.Drawing.Point(772, 396);
-            this.lblPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPorcentajeAsistencia.Name = "lblPorcentajeAsistencia";
-            this.lblPorcentajeAsistencia.Size = new System.Drawing.Size(0, 19);
-            this.lblPorcentajeAsistencia.TabIndex = 58;
+            this.txtNombreMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNombreMateria.Enabled = false;
+            this.txtNombreMateria.Location = new System.Drawing.Point(314, 4);
+            this.txtNombreMateria.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombreMateria.Name = "txtNombreMateria";
+            this.txtNombreMateria.Size = new System.Drawing.Size(302, 27);
+            this.txtNombreMateria.TabIndex = 60;
             // 
             // lblPocAsistencia
             // 
@@ -321,17 +333,36 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPocAsistencia.TabIndex = 57;
             this.lblPocAsistencia.Text = "Porc. Asistencia:";
             // 
-            // lblFecha
+            // txtPorcentajeAsistencia
             // 
-            this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(4, 78);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(302, 19);
-            this.lblFecha.TabIndex = 56;
-            this.lblFecha.Text = "Fecha:";
+            this.txtPorcentajeAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPorcentajeAsistencia.Enabled = false;
+            this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(314, 39);
+            this.txtPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPorcentajeAsistencia.Name = "txtPorcentajeAsistencia";
+            this.txtPorcentajeAsistencia.Size = new System.Drawing.Size(302, 27);
+            this.txtPorcentajeAsistencia.TabIndex = 59;
+            // 
+            // dtpFechaAsistencia
+            // 
+            this.dtpFechaAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFechaAsistencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaAsistencia.Location = new System.Drawing.Point(314, 74);
+            this.dtpFechaAsistencia.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaAsistencia.Name = "dtpFechaAsistencia";
+            this.dtpFechaAsistencia.Size = new System.Drawing.Size(302, 27);
+            this.dtpFechaAsistencia.TabIndex = 67;
+            this.dtpFechaAsistencia.ValueChanged += new System.EventHandler(this.dtpFechaAsistencia_ValueChanged);
+            // 
+            // txtProfesor
+            // 
+            this.txtProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProfesor.Enabled = false;
+            this.txtProfesor.Location = new System.Drawing.Point(934, 4);
+            this.txtProfesor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProfesor.Name = "txtProfesor";
+            this.txtProfesor.Size = new System.Drawing.Size(303, 27);
+            this.txtProfesor.TabIndex = 61;
             // 
             // lblModulos
             // 
@@ -345,122 +376,112 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblModulos.TabIndex = 66;
             this.lblModulos.Text = "Módulos:";
             // 
-            // cmsPyA
+            // lblFecha
             // 
-            this.cmsPyA.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsPyA.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmP,
-            this.tsmA,
-            this.tsmHistorialAsistenciasAlumnos});
-            this.cmsPyA.Name = "cmsPyA";
-            this.cmsPyA.Size = new System.Drawing.Size(119, 70);
+            this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(4, 78);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(302, 19);
+            this.lblFecha.TabIndex = 56;
+            this.lblFecha.Text = "Fecha:";
             // 
-            // tsmP
+            // lblCantRecursantes
             // 
-            this.tsmP.Name = "tsmP";
-            this.tsmP.Size = new System.Drawing.Size(118, 22);
-            this.tsmP.Text = "P";
-            this.tsmP.Click += new System.EventHandler(this.tsmP_Click);
+            this.lblCantRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantRecursantes.AutoSize = true;
+            this.lblCantRecursantes.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantRecursantes.Location = new System.Drawing.Point(624, 78);
+            this.lblCantRecursantes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantRecursantes.Name = "lblCantRecursantes";
+            this.lblCantRecursantes.Size = new System.Drawing.Size(302, 19);
+            this.lblCantRecursantes.TabIndex = 70;
+            this.lblCantRecursantes.Text = "Cant. Recursante:";
             // 
-            // tsmA
+            // txtCantidadAlumnosRecursantes
             // 
-            this.tsmA.Name = "tsmA";
-            this.tsmA.Size = new System.Drawing.Size(118, 22);
-            this.tsmA.Text = "A";
-            this.tsmA.Click += new System.EventHandler(this.tsmA_Click);
+            this.txtCantidadAlumnosRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAlumnosRecursantes.Enabled = false;
+            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(934, 74);
+            this.txtCantidadAlumnosRecursantes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidadAlumnosRecursantes.Name = "txtCantidadAlumnosRecursantes";
+            this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(303, 27);
+            this.txtCantidadAlumnosRecursantes.TabIndex = 76;
             // 
-            // tsmHistorialAsistenciasAlumnos
+            // lblCantAlumnos
             // 
-            this.tsmHistorialAsistenciasAlumnos.Name = "tsmHistorialAsistenciasAlumnos";
-            this.tsmHistorialAsistenciasAlumnos.Size = new System.Drawing.Size(118, 22);
-            this.tsmHistorialAsistenciasAlumnos.Text = "Historial";
-            this.tsmHistorialAsistenciasAlumnos.Visible = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.lblMat, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblProfesor, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtHoraCatedra, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtNombreMateria, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblPocAsistencia, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtPorcentajeAsistencia, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtpFechaAsistencia, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtProfesor, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblModulos, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblFecha, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(30, 262);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1241, 114);
-            this.tableLayoutPanel1.TabIndex = 72;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.lblTotalAlumnosI, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblPorcentajeAlumnosI, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAceptarAsistencia, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnDescargar, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtCantidadAlumnos, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtPorcentajePresente, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 853);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1241, 196);
-            this.tableLayoutPanel2.TabIndex = 73;
+            this.lblCantAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantAlumnos.AutoSize = true;
+            this.lblCantAlumnos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantAlumnos.Location = new System.Drawing.Point(4, 113);
+            this.lblCantAlumnos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantAlumnos.Name = "lblCantAlumnos";
+            this.lblCantAlumnos.Size = new System.Drawing.Size(302, 19);
+            this.lblCantAlumnos.TabIndex = 73;
+            this.lblCantAlumnos.Text = "Cant. Alumnos:";
             // 
             // txtCantidadAlumnos
             // 
             this.txtCantidadAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnos.Enabled = false;
-            this.txtCantidadAlumnos.Location = new System.Drawing.Point(313, 35);
+            this.txtCantidadAlumnos.Location = new System.Drawing.Point(313, 109);
             this.txtCantidadAlumnos.Name = "txtCantidadAlumnos";
             this.txtCantidadAlumnos.Size = new System.Drawing.Size(304, 27);
             this.txtCantidadAlumnos.TabIndex = 72;
             // 
-            // txtPorcentajePresente
+            // lblCantDesertores
             // 
-            this.txtPorcentajePresente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPorcentajePresente.Enabled = false;
-            this.txtPorcentajePresente.Location = new System.Drawing.Point(313, 133);
-            this.txtPorcentajePresente.Name = "txtPorcentajePresente";
-            this.txtPorcentajePresente.Size = new System.Drawing.Size(304, 27);
-            this.txtPorcentajePresente.TabIndex = 73;
+            this.lblCantDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantDesertores.AutoSize = true;
+            this.lblCantDesertores.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantDesertores.Location = new System.Drawing.Point(624, 113);
+            this.lblCantDesertores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantDesertores.Name = "lblCantDesertores";
+            this.lblCantDesertores.Size = new System.Drawing.Size(302, 19);
+            this.lblCantDesertores.TabIndex = 74;
+            this.lblCantDesertores.Text = "Cant. Desertores:";
             // 
-            // tableLayoutPanel3
+            // txtCantidadAlumnosDesertores
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.dgvAsistencias, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 376);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1241, 477);
-            this.tableLayoutPanel3.TabIndex = 74;
+            this.txtCantidadAlumnosDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAlumnosDesertores.Enabled = false;
+            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(934, 109);
+            this.txtCantidadAlumnosDesertores.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidadAlumnosDesertores.Name = "txtCantidadAlumnosDesertores";
+            this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(303, 27);
+            this.txtCantidadAlumnosDesertores.TabIndex = 77;
+            // 
+            // lblHorasCátedra
+            // 
+            this.lblHorasCátedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHorasCátedra.AutoSize = true;
+            this.lblHorasCátedra.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHorasCátedra.Location = new System.Drawing.Point(4, 158);
+            this.lblHorasCátedra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHorasCátedra.Name = "lblHorasCátedra";
+            this.lblHorasCátedra.Size = new System.Drawing.Size(302, 19);
+            this.lblHorasCátedra.TabIndex = 75;
+            this.lblHorasCátedra.Text = "Horas Cátedra:";
+            // 
+            // txtHoraCatedra
+            // 
+            this.txtHoraCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHoraCatedra.Enabled = false;
+            this.txtHoraCatedra.Location = new System.Drawing.Point(314, 154);
+            this.txtHoraCatedra.Margin = new System.Windows.Forms.Padding(4);
+            this.txtHoraCatedra.Name = "txtHoraCatedra";
+            this.txtHoraCatedra.Size = new System.Drawing.Size(302, 27);
+            this.txtHoraCatedra.TabIndex = 62;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(30, 218);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1241, 44);
+            this.panel1.TabIndex = 82;
             // 
             // tableLayoutPanel0
             // 
@@ -493,35 +514,38 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel0.Size = new System.Drawing.Size(1241, 189);
-            this.tableLayoutPanel0.TabIndex = 75;
+            this.tableLayoutPanel0.TabIndex = 81;
             // 
             // cmbMateria
             // 
+            this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(933, 101);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(293, 27);
+            this.cmbMateria.Size = new System.Drawing.Size(305, 27);
             this.cmbMateria.TabIndex = 79;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
             // cmbCurso
             // 
+            this.cmbCurso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurso.FormattingEnabled = true;
             this.cmbCurso.Location = new System.Drawing.Point(933, 51);
             this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(293, 27);
+            this.cmbCurso.Size = new System.Drawing.Size(305, 27);
             this.cmbCurso.TabIndex = 78;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
             // cmbCarrera
             // 
+            this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(933, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(293, 27);
+            this.cmbCarrera.Size = new System.Drawing.Size(305, 27);
             this.cmbCarrera.TabIndex = 77;
             this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -600,54 +624,91 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // cmbCicloLectivo
             // 
+            this.cmbCicloLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
             this.cmbCicloLectivo.Location = new System.Drawing.Point(313, 3);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
-            this.cmbCicloLectivo.Size = new System.Drawing.Size(292, 27);
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(304, 27);
             this.cmbCicloLectivo.TabIndex = 74;
             this.cmbCicloLectivo.DropDown += new System.EventHandler(this.cmbCicloLectivo_DropDown);
             // 
             // cmbAnio
             // 
+            this.cmbAnio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnio.FormattingEnabled = true;
             this.cmbAnio.Location = new System.Drawing.Point(313, 51);
             this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(292, 27);
+            this.cmbAnio.Size = new System.Drawing.Size(304, 27);
             this.cmbAnio.TabIndex = 75;
             this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
             // 
             // cmbProfesor
             // 
+            this.cmbProfesor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesor.FormattingEnabled = true;
             this.cmbProfesor.Location = new System.Drawing.Point(313, 101);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(292, 27);
+            this.cmbProfesor.Size = new System.Drawing.Size(304, 27);
             this.cmbProfesor.TabIndex = 76;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
+            this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
             // 
             // btnAplicarFiltros
             // 
             this.btnAplicarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnAplicarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAplicarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAplicarFiltros.ForeColor = System.Drawing.Color.White;
             this.btnAplicarFiltros.Location = new System.Drawing.Point(3, 144);
             this.btnAplicarFiltros.Name = "btnAplicarFiltros";
-            this.btnAplicarFiltros.Size = new System.Drawing.Size(282, 42);
+            this.btnAplicarFiltros.Size = new System.Drawing.Size(304, 42);
             this.btnAplicarFiltros.TabIndex = 80;
             this.btnAplicarFiltros.Text = "Filtrar";
             this.btnAplicarFiltros.UseVisualStyleBackColor = false;
             this.btnAplicarFiltros.Click += new System.EventHandler(this.btnAplicarFiltros_Click);
             // 
-            // panel1
+            // lblPorcentajeAsistencia
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(30, 218);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1241, 44);
-            this.panel1.TabIndex = 76;
+            this.lblPorcentajeAsistencia.AutoSize = true;
+            this.lblPorcentajeAsistencia.BackColor = System.Drawing.Color.Transparent;
+            this.lblPorcentajeAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPorcentajeAsistencia.Location = new System.Drawing.Point(772, 282);
+            this.lblPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPorcentajeAsistencia.Name = "lblPorcentajeAsistencia";
+            this.lblPorcentajeAsistencia.Size = new System.Drawing.Size(0, 19);
+            this.lblPorcentajeAsistencia.TabIndex = 77;
+            // 
+            // cmsPyA
+            // 
+            this.cmsPyA.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsPyA.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmP,
+            this.tsmA,
+            this.tsmHistorialAsistenciasAlumnos});
+            this.cmsPyA.Name = "cmsPyA";
+            this.cmsPyA.Size = new System.Drawing.Size(119, 70);
+            // 
+            // tsmP
+            // 
+            this.tsmP.Name = "tsmP";
+            this.tsmP.Size = new System.Drawing.Size(118, 22);
+            this.tsmP.Text = "P";
+            // 
+            // tsmA
+            // 
+            this.tsmA.Name = "tsmA";
+            this.tsmA.Size = new System.Drawing.Size(118, 22);
+            this.tsmA.Text = "A";
+            // 
+            // tsmHistorialAsistenciasAlumnos
+            // 
+            this.tsmHistorialAsistenciasAlumnos.Name = "tsmHistorialAsistenciasAlumnos";
+            this.tsmHistorialAsistenciasAlumnos.Size = new System.Drawing.Size(118, 22);
+            this.tsmHistorialAsistenciasAlumnos.Text = "Historial";
+            this.tsmHistorialAsistenciasAlumnos.Visible = false;
             // 
             // FormControlMesasFinales
             // 
@@ -667,15 +728,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.Padding = new System.Windows.Forms.Padding(30, 29, 30, 29);
             this.Text = "ControlAsistencias";
             this.Load += new System.EventHandler(this.ControlMesasFinales_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).EndInit();
-            this.cmsPyA.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel0.ResumeLayout(false);
             this.tableLayoutPanel0.PerformLayout();
+            this.cmsPyA.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,39 +744,39 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         #endregion
 
-        private System.Windows.Forms.Button btnDescargar;
-        private System.Windows.Forms.Label lblPorcentajeAlumnosI;
-        private System.Windows.Forms.Label lblTotalAlumnosI;
-        public System.Windows.Forms.DataGridView dgvAsistencias;
-        private System.Windows.Forms.DateTimePicker dtpFechaAsistencia;
-        private System.Windows.Forms.TextBox txtNombreMateria;
-        private System.Windows.Forms.Label lblProfesor;
-        private System.Windows.Forms.Label lblMat;
-        private System.Windows.Forms.Button btnAceptarAsistencia;
-        private System.Windows.Forms.TextBox txtProfesor;
-        private System.Windows.Forms.TextBox txtPorcentajeAsistencia;
-        private System.Windows.Forms.TextBox txtHoraCatedra;
-        private System.Windows.Forms.TextBox txtCantidadAlumnosRecursantes;
-        private System.Windows.Forms.TextBox txtCantidadAlumnosDesertores;
-        private System.Windows.Forms.Label lblPorcentajeAsistencia;
-        private System.Windows.Forms.Label lblPocAsistencia;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Label lblModulos;
-        private System.Windows.Forms.ContextMenuStrip cmsPyA;
-        private System.Windows.Forms.ToolStripMenuItem tsmP;
-        private System.Windows.Forms.ToolStripMenuItem tsmA;
-        private System.Windows.Forms.ToolStripMenuItem tsmHistorialAsistenciasAlumnos;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TextBox txtCantidadAlumnos;
+        private System.Windows.Forms.Label lblTotalAlumnosI;
+        private System.Windows.Forms.Label lblPorcentajeAlumnosI;
+        private System.Windows.Forms.Button btnAceptarAsistencia;
+        private System.Windows.Forms.Button btnDescargar;
         private System.Windows.Forms.TextBox txtPorcentajePresente;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        public System.Windows.Forms.DataGridView dgvAsistencias;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lblMat;
+        private System.Windows.Forms.Label lblProfesor;
+        private System.Windows.Forms.TextBox txtNombreMateria;
+        private System.Windows.Forms.Label lblPocAsistencia;
+        private System.Windows.Forms.TextBox txtPorcentajeAsistencia;
+        private System.Windows.Forms.DateTimePicker dtpFechaAsistencia;
+        private System.Windows.Forms.TextBox txtProfesor;
+        private System.Windows.Forms.Label lblModulos;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblCantRecursantes;
+        private System.Windows.Forms.TextBox txtCantidadAlumnosRecursantes;
+        private System.Windows.Forms.Label lblCantAlumnos;
+        private System.Windows.Forms.TextBox txtCantidadAlumnos;
+        private System.Windows.Forms.Label lblCantDesertores;
+        private System.Windows.Forms.TextBox txtCantidadAlumnosDesertores;
+        private System.Windows.Forms.Label lblHorasCátedra;
+        private System.Windows.Forms.TextBox txtHoraCatedra;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel0;
-        private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbMateria;
         private System.Windows.Forms.ComboBox cmbCurso;
         private System.Windows.Forms.ComboBox cmbCarrera;
         private System.Windows.Forms.Label lblCicloLectivo;
+        private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.Label lblCarrera;
         private System.Windows.Forms.Label lblAnio;
         private System.Windows.Forms.Label lblProf;
@@ -724,6 +785,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.ComboBox cmbAnio;
         private System.Windows.Forms.ComboBox cmbProfesor;
         private System.Windows.Forms.Button btnAplicarFiltros;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPorcentajeAsistencia;
+        private System.Windows.Forms.ContextMenuStrip cmsPyA;
+        private System.Windows.Forms.ToolStripMenuItem tsmP;
+        private System.Windows.Forms.ToolStripMenuItem tsmA;
+        private System.Windows.Forms.ToolStripMenuItem tsmHistorialAsistenciasAlumnos;
     }
 }
