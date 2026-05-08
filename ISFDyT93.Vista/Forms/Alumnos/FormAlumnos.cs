@@ -98,15 +98,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 DataGridView.HitTestInfo info = dgvAlumnos.HitTest(e.X, e.Y);
 
                 tsmAgregarAlumno.Visible = ((CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0));
+                tsmActualizarDocumentacion.Visible = false;
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
-                    
+
 
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
-                    if(!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
+                    if (!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
                         this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
@@ -114,8 +115,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     tsmAgregarAlumno.Visible = false;
 
-                    if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-                        tsmActualizarDocumentacion.Visible = false;
+                    //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
 
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
@@ -124,7 +124,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                         tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
                     else
                         tsmAsignarMaterias.Visible = false;
-                    tsmDarAlta.Visible = true;// !activo;
 
                 }
                 else
@@ -135,7 +134,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
                     tsmDarAlta.Visible = false;
-                    tsmActualizarDocumentacion.Visible = false;
+                    tsmActualizarDocumentacion.Visible = true;
                 }
             }
         }
@@ -409,10 +408,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void tsmActualizarDocumentacion_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form => {
-                form.Accion = TipoAccion.Documentacion;
-                form.AlumnoId = AlumnoId;
-            });
+            Contenedor.AbrirFormulario<FormDocumentacionAlumnos>();
         }
     }
 }

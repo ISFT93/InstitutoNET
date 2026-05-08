@@ -105,6 +105,12 @@
     </Compile>
     <Compile Include="Core\ReportTable.cs" />
     <Compile Include="Core\ThemeColor.cs" />
+    <Compile Include="Forms\Alumnos\FormDocumentacionAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alumnos\FormDocumentacionAlumnos.Designer.cs">
+      <DependentUpon>FormDocumentacionAlumnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Carreras\FormAgregarFechasFinales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </Compile>
     <EmbeddedResource Include="Core\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alumnos\FormDocumentacionAlumnos.resx">
+      <DependentUpon>FormDocumentacionAlumnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormAgregarFechasFinales.resx">
       <DependentUpon>FormAgregarFechasFinales.cs</DependentUpon>
