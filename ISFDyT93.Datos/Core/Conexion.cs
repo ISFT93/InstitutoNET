@@ -13,14 +13,26 @@ namespace ISFDyT93.Datos.Core
         //Luego se instancia en el constructor
         public Conexion()
         {
-            // Leer la cadena de conexión desde App.config (proyecto ISFDyT93.Vista)
-            var connSetting = ConfigurationManager.ConnectionStrings["InstiDB"];
-            if (connSetting == null || string.IsNullOrWhiteSpace(connSetting.ConnectionString))
+            // Prioridad 1: Variable de entorno (según README.md)
+            string strConexion = System.Environment.GetEnvironmentVariable("INSTITUTO_DB_CONNECTION_STRING");
+
+            // Prioridad 2: App.config (fallback)
+            if (string.IsNullOrWhiteSpace(strConexion))
             {
-                throw new System.InvalidOperationException("No se encontró la cadena de conexión 'InstiDB' en App.config.");
+                var connSetting = ConfigurationManager.ConnectionStrings["InstiDB"];
+                if (connSetting != null)
+                {
+                    strConexion = connSetting.ConnectionString;
+                }
             }
 
-            string strConexion = connSetting.ConnectionString;
+            if (string.IsNullOrWhiteSpace(strConexion))
+            {
+                throw new System.InvalidOperationException(
+                    "No se pudo establecer la conexión. Defina la variable de entorno 'INSTITUTO_DB_CONNECTION_STRING' " +
+                    "o configure 'InstiDB' en el App.config.");
+            }
+
             this.Conector = new SqlConnection(strConexion);
         }
 
