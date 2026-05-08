@@ -157,7 +157,7 @@
             this.cmbAnioLectivo.FormattingEnabled = true;
             this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
             this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 27);
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 32);
             this.cmbAnioLectivo.TabIndex = 5;
             this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
             // 
@@ -168,7 +168,7 @@
             this.cmbTurno.FormattingEnabled = true;
             this.cmbTurno.Location = new System.Drawing.Point(362, 43);
             this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 27);
+            this.cmbTurno.Size = new System.Drawing.Size(193, 32);
             this.cmbTurno.TabIndex = 6;
             this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
             // 
@@ -176,9 +176,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 10);
+            this.label1.Location = new System.Drawing.Point(163, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 19);
+            this.label1.Size = new System.Drawing.Size(193, 24);
             this.label1.TabIndex = 7;
             this.label1.Text = "Año:";
             // 
@@ -186,9 +186,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 10);
+            this.label2.Location = new System.Drawing.Point(362, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 19);
+            this.label2.Size = new System.Drawing.Size(193, 24);
             this.label2.TabIndex = 8;
             this.label2.Text = "Turno:";
             // 
@@ -199,7 +199,7 @@
             this.cmbLlamados.FormattingEnabled = true;
             this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
             this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 27);
+            this.cmbLlamados.Size = new System.Drawing.Size(196, 32);
             this.cmbLlamados.TabIndex = 9;
             this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
             // 
@@ -207,9 +207,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 10);
+            this.label3.Location = new System.Drawing.Point(561, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 19);
+            this.label3.Size = new System.Drawing.Size(196, 24);
             this.label3.TabIndex = 10;
             this.label3.Text = "Llamado:";
             // 
@@ -235,7 +235,7 @@
             // 
             // FormMesasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
