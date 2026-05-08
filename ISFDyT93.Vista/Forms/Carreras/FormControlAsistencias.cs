@@ -283,5 +283,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 .AddParameter("Fecha", Convert.ToString(dtpFechaAsistencia.Value));
             });
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
