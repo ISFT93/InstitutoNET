@@ -9,13 +9,60 @@ namespace ISFDyT93.Datos.Core
 {
     public class DaoBase
     {
-        protected Conexion Conexion { get; set; }
+        private Conexion _instance;
+        private readonly object _conexionLock = new object();
 
-        public DaoBase()
+        public Conexion Conexion
         {
-            this.Conexion = new Conexion();
-        }
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_conexionLock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new Conexion();
+                        }
+                    }
+                }
+                if (_instance.Conector == null)
+                {
+                    lock (_conexionLock)
+                    {
+                        _instance = new Conexion();
+                    }
+                }
 
+                return _instance;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    if (_instance != null)
+                    {
+                        try
+                        {
+                            if (_instance.Conector != null && _instance.Conector.State != ConnectionState.Closed)
+                            {
+                                _instance.Conector.Close();
+                            }
+                            _instance.Conector?.Dispose();
+                        }
+                        catch
+                        {
+                        }
+                    }
+
+                    _instance = null;
+                }
+                else
+                {
+                    _instance = value;
+                }
+            }
+        }
         public string CreateInsertQuery<T>(T model)
         {
             Type type = typeof(T);

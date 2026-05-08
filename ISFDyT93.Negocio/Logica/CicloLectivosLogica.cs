@@ -113,6 +113,11 @@ namespace ISFDyT93.Negocio.Logica
             if (dr.Length > 0) return Convert.ToInt32(dr.Cast<DataRow>().Select(r => r.Field<int>("AnioLectivo")).ToArray()[0]);
             return 0;
         }
+
+        public bool CicloLectivoActivo()
+        {
+            return this.ciclolectivoDao.ObtenerCicloLectivo(true).Select("Activo=True").Length > 0;
+        }
     }
 
 }

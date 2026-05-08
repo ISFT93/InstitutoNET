@@ -14,7 +14,7 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ConsultarCursos(int AnioCarreraId)
         {
-            string query = "SELECT * FROM Cursos WHERE AnioCarreraId =" + AnioCarreraId + " AND Activo=" + 1;
+            string query = "SELECT * FROM Cursos WHERE AnioCarreraId =" + AnioCarreraId + " AND Activo=" + 1 + "and CursoId > 18 order by CursoId asc";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -66,7 +66,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable CursosInactivos(int AnioCarreraId)
         {
-            string query = "SELECT * FROM Cursos WHERE AnioCarreraId =" + AnioCarreraId + " AND Activo=" + 0;
+            string query = "SELECT * FROM Cursos WHERE AnioCarreraId =" + AnioCarreraId + " AND Activo=" + 0 + " and CursoId > 18 order by CursoId asc";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -100,6 +100,16 @@ namespace ISFDyT93.Datos.Daos
                 + $"WHERE CursoId={cursoId}";
 
             return this.MapToModel<CursosModelo>(this.Conexion.ObtenerRegistro(query));
+        }
+
+        public bool ConsultarCursosInactivo(int AnioCarreraId)
+        {
+
+            string query = "SELECT * FROM Cursos WHERE Activo=" + 0 + "and CursoId > 18 AND AnioCarreraId = " + AnioCarreraId;
+
+            DataTable dt = this.Conexion.ObtenerRegistros(query);
+
+            return dt.Rows.Count > 0;
         }
     }
 }

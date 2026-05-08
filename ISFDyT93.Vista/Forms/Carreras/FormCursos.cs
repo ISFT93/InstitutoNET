@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ISFDyT93.Entidades.Modelos;
@@ -20,6 +23,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private CarrerasLogica carrerasLogica { get; set; }
 
         private AniosCarrerasModelo anioCarrera { get; set; }
+        private CicloLectivosLogica cicloLectivosLogica { get; set; }
 
         private int CursoId { get; set; }
         private string CursoAnio { get; set; }
@@ -31,6 +35,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cursosLogica = new CursosLogica();
             this.aniosLogica = new AniosCarreraLogica();
             this.carrerasLogica = new CarrerasLogica();
+            this.cicloLectivosLogica = new CicloLectivosLogica();
 
             InitializeComponent();
         }
@@ -47,15 +52,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmAsignarCurso.Visible = false;
             }
 
-            this.Contenedor.SetVolver(() =>
-            {
+            this.Contenedor.SetVolver(() => {
                 this.Contenedor.AbrirFormulario<FormAniosCarreras>(form =>
                 {
                     form.CarreraId = this.anioCarrera.CarreraId;
                 });
             });
 
-            this.Contenedor.SetTitulo($"Cursos de {anioCarrera.AnioCarrera} - {anioCarrera.NombreCarrera}");
+            tsmEliminarCursos.Enabled = !cicloLectivosLogica.CicloLectivoActivo();
+
+            this.Contenedor.SetTitulo($"Cursos de { anioCarrera.AnioCarrera } - { anioCarrera.NombreCarrera }");
         }
 
         private void dgvCursos_MouseUp(object sender, MouseEventArgs e)
@@ -110,7 +116,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbActivos.Checked)
+            if(rbActivos.Checked)
             {
                 this.CargarGrilla();
             }
@@ -126,14 +132,29 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmAsignarCurso_Click(object sender, EventArgs e)
         {
+
+
             DialogResult Resultado = MessageBox.Show("¿Desea asignar un nuevo curso?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-            if (Resultado == DialogResult.Yes)
-            {
-                this.cursosLogica.AgregarCurso(this.AnioCarreraId, this.dgvCursos.RowCount);
+            if (Resultado != DialogResult.Yes)
+                return;
 
+            // revisar antes cursos inactivos, si hay inactivos no dejar agregar curso hasta activar todos los inactivos.
+            if (this.cursosLogica.ConsultarCursosInactivo(this.AnioCarreraId))
+            {
+                DataTable dt = this.cursosLogica.CursosInactivos(this.AnioCarreraId);
+
+                int idCurso = Convert.ToInt32(dt.Rows[0]["CursoId"]);
+                this.cursosLogica.DarAltaCurso(idCurso);
+                Notificar(TipoNotificacion.Success, "Curso dado de alta con exito");
                 this.CargarGrilla();
+                return;
             }
+
+            this.cursosLogica.AgregarCurso(this.AnioCarreraId, this.dgvCursos.RowCount);
+
+            this.CargarGrilla();
+
         }
 
         private void tsmModificarCurso_Click(object sender, EventArgs e)
@@ -143,27 +164,48 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmEliminarCursos_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Esta seguro de dar de baja este curso?",
-           "Eliminar Curso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //======================================
 
-            if (resultado == DialogResult.Yes)
-            {
-                this.cursosLogica.EliminarCurso(this.CursoId);
+            var listaid = DevolverListaOrdenada();
 
-                this.CargarGrilla();
-            }
+            int indiceCurso = this.dgvCursos.Rows.Count;
+            int idCurso = listaid[indiceCurso-1].CursoId;
+            string cursoSeleccionado = listaid[indiceCurso - 1].NombreCurso.ToString();
+
+            // usar una vez la tabla curso contenga el codigo de materia,carrera, año y curso ej:08104A
+            //string letraCurso = cursoSellecionado[cursoSellecionado.Length - 1].ToString();
+
+            //======================================
+
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de dar de baja el curso "+cursoSeleccionado+" ?",
+            "Desactivar Curso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(resultado != DialogResult.Yes)
+                return;
+
+            this.cursosLogica.EliminarCurso(idCurso);
+            this.CargarGrilla();
+
         }
 
         private void tsmCursoDarAlta_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Esta seguro de dar de alta este curso?",
+            var listaid = DevolverListaOrdenada();
+
+            int idCurso = listaid[0].CursoId;
+            string cursoSeleccionado = listaid[0].NombreCurso.ToString();
+
+
+            DialogResult resultado = MessageBox.Show("¿Esta seguro de dar de alta este curso " + cursoSeleccionado + " ?",
            "Alta de Curso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                this.cursosLogica.DarAltaCurso(this.CursoId);
-                Notificar(TipoNotificacion.Success, "Curso dado de alta con exito");
-                rbActivos.Checked = true;
-            }
+            if (resultado != DialogResult.Yes)
+                return;
+
+
+
+            this.cursosLogica.DarAltaCurso(idCurso);
+            Notificar(TipoNotificacion.Success, "Curso dado de alta con exito");
+            rbActivos.Checked = true;
         }
 
         private void CargarGrilla()
@@ -171,15 +213,37 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (this.rbActivos.Checked)
             {
                 dgvCursos.DataSource = this.cursosLogica.ConsultarCursos(this.AnioCarreraId);
+                
             }
             else
             {
                 dgvCursos.DataSource = this.cursosLogica.CursosInactivos(this.AnioCarreraId);
             }
 
+            // Ordenar la grilla
+            dgvCursos.Sort(dgvCursos.Columns["CursoId"], ListSortDirection.Ascending);
+
             dgvCursos.Columns["CursoId"].Visible = false;
             //dgvCursos.Columns["CicloLectivoId"].Visible = false;
             dgvCursos.Columns["AnioCarreraId"].Visible = false;
+            dgvCursos.Columns["AdmiteCurso"].Visible = false;
+        }
+
+        private List<CursoItem> DevolverListaOrdenada()
+        {
+             var listaid = this.dgvCursos.Rows
+                .Cast<DataGridViewRow>()
+                .Where(f => !f.IsNewRow)
+                .Select(f => new CursoItem
+                {
+                    CursoId = Convert.ToInt32(f.Cells["CursoId"].Value),
+                    NombreCurso = f.Cells["NombreCurso"].Value.ToString()
+                })
+                .OrderBy(f => f.CursoId)
+                .ToList();
+
+             return listaid;
+
         }
 
         private void tsmVerMaterias_Click(object sender, EventArgs e)
@@ -188,6 +252,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 form.CursoId = this.CursoId;
             });
+        }
+
+        private class CursoItem
+        {
+            public int CursoId { get; set; }
+            public string NombreCurso { get; set; }
         }
     }
 }
