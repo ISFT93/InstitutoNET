@@ -155,13 +155,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            // si no seleccionaste fila, Equivalencia es 0 y el negocio no sabra que borrar.
             if (EquivalenciaId == 0)
             {
                 EquivalenciaId = Convert.ToInt32(dgvEquivalencias["EquivalenciaId", 0].Value);
-                equivalenciasLogica.EliminarEquivalencia(EquivalenciaId);
-                EquivalenciaId = 0;
             }
 
+            equivalenciasLogica.EliminarEquivalencia(EquivalenciaId);
+            EquivalenciaId = 0;
             RefrescarPantalla(); // Reutilización
 
             /// <summary>
