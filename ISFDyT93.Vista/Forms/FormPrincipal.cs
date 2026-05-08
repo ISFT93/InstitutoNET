@@ -190,11 +190,10 @@ namespace ISFDyT93.Vista.Forms
             this.ActivarBoton(sender, ThemeColor.GetColor());
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void btnMesasFinales_Click(object sender, EventArgs e)
         {
             this.ActivarBoton(sender, ThemeColor.GetColor());
             AbrirFormulario<FormControlMesasFinales>();
-
         }
     }
-    }
+}
