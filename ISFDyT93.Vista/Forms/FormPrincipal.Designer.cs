@@ -47,9 +47,7 @@
             this.tsmPruebaSP = new System.Windows.Forms.ToolStripMenuItem();
             this.Parametros = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVolver = new FontAwesome.Sharp.IconButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.pnlIzquierdo.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.cmsOpciones.SuspendLayout();
@@ -69,8 +67,7 @@
             // pnlIzquierdo
             // 
             this.pnlIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.pnlIzquierdo.Controls.Add(this.button3);
-            this.pnlIzquierdo.Controls.Add(this.button2);
+            this.pnlIzquierdo.Controls.Add(this.iconButton1);
             this.pnlIzquierdo.Controls.Add(this.btnAsistencia);
             this.pnlIzquierdo.Controls.Add(this.btnOpciones);
             this.pnlIzquierdo.Controls.Add(this.btnAlumnos);
@@ -310,41 +307,30 @@
             this.btnVolver.Visible = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // button1
+            // iconButton1
             // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 356);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(201, 50);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Mesas Finales";
-            this.button3.UseVisualStyleBackColor = false;
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.Transparent;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.LineChart;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 36;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(0, 350);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.iconButton1.Size = new System.Drawing.Size(200, 46);
+            this.iconButton1.TabIndex = 17;
+            this.iconButton1.Text = "Mesas Finales";
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 600);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.pnlIzquierdo);
@@ -384,9 +370,7 @@
         private System.Windows.Forms.ToolStripMenuItem Parametros;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCiclos;
         private FontAwesome.Sharp.IconButton btnAsistencia;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
 
