@@ -90,7 +90,7 @@ namespace ISFDyT93.Datos.Daos
         public int ActualizarCursada(AsistenciasModelo Modelo)
         {
             string FechaA = Modelo.FechaAsistenciaStr;
-            string query = $"UPDATE Cursadas SET HoraCatedra = '{Modelo.HorasCursadas}', FechaAsistencia = '{FechaA}', PorcentajeAsistencia = '{Modelo.PorcentajeAsistencia}' WHERE CursadaId = {Modelo.CursadaId}";
+            string query = $"UPDATE Cursadas SET HoraCatedra = {Modelo.HorasCursadas}, FechaAsistencia = '{FechaA}', PorcentajeAsistencia = {Modelo.PorcentajeAsistencia.ToString(System.Globalization.CultureInfo.InvariantCulture)} WHERE CursadaId = {Modelo.CursadaId}";
             return this.Conexion.EjecutarAccion(query);
         }
 
