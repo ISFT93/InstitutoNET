@@ -384,29 +384,30 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbAnio.DataSource = null;
-            cmbAnio.SelectedIndex = -1;
-            cmbAnio.Enabled = false;
+            if (_enCambioCombos) return;
+            _enCambioCombos = true;
 
-            cmbCurso.DataSource = null;
-            cmbCurso.SelectedIndex = -1;
-            cmbCurso.Enabled = false;
+            cmbProfesor.SelectedIndex = -1;
 
-            cmbMateria.DataSource = null;
-            cmbMateria.SelectedIndex = -1;
-            cmbMateria.Enabled = false;
+            ResetCadenaCarrera();
 
-            cmbCicloLectivo.DataSource = null;
-            cmbCicloLectivo.SelectedIndex = -1;
-            cmbCicloLectivo.Enabled = false;
-
-            if (cmbCarrera.SelectedValue == null) return;
+            if (cmbCarrera.SelectedValue == null)
+            {
+                _enCambioCombos = false;
+                return;
+            }
 
             int carreraId;
-            if (!int.TryParse(cmbCarrera.SelectedValue.ToString(), out carreraId)) return;
+            if (!int.TryParse(cmbCarrera.SelectedValue.ToString(), out carreraId))
+            {
+                _enCambioCombos = false;
+                return;
+            }
 
             CargarAniosPorCarrera(carreraId);
-            cmbAnio.Enabled = true; 
+            cmbAnio.Enabled = true;
+
+            _enCambioCombos = false;
         }
 
         private CursosDao _cursosDao = new CursosDao();
@@ -426,9 +427,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             Debug.Write(dt.Rows.Count);
 
         }
-
-        //private int _ultimoAnioCarreraId = -1;
-        //private int _ultimoAnioCarreraIdMaterias = -1;
 
         private void cmbAnio_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -524,5 +522,72 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.RellenarGrilla();
         }
+
+        private ServiciosDao _serviciosDao = new ServiciosDao();
+
+        private void cmbProfesor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (_enCambioCombos) return;
+            _enCambioCombos = true;
+
+            ResetCadenaCarrera();
+
+            cmbCarrera.SelectedIndex = -1;
+
+            if (cmbCarrera.DataSource == null)
+            {
+                carrerasCargadas = false;
+                CargarCarreras();
+            }
+
+            cmbCarrera.SelectedIndex = -1;
+
+            if (cmbProfesor.SelectedValue == null)
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            int personalId;
+            if (!int.TryParse(cmbProfesor.SelectedValue.ToString(), out personalId))
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            var dt = _serviciosDao.ObtenerServicioPersonalAmpliado(personalId, 1);
+            var dv = dt.DefaultView;
+            dv.RowFilter = "CursoMateriaId IS NOT NULL";
+
+            cmbMateria.DataSource = dv.ToTable();
+            cmbMateria.ValueMember = "CursoMateriaId";
+            cmbMateria.DisplayMember = "Servicio";
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = true;
+
+            _enCambioCombos = false;
+        }
+  
+        private bool _enCambioCombos = false;
+        private void ResetCadenaCarrera()
+        {
+            cmbAnio.DataSource = null;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            cmbCicloLectivo.DataSource = null;
+            cmbCicloLectivo.SelectedIndex = -1;
+            cmbCicloLectivo.Enabled = false;
+        }
+
     }
 }

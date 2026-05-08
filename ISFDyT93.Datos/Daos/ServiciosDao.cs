@@ -170,5 +170,36 @@ namespace ISFDyT93.Datos.Daos
             string query = $"SELECT Modulos FROM Materias WHERE MateriaId = (SELECT MateriaId FROM CursoMaterias WHERE CursoMateriaId = {CursoMateriaId})";
             return this.Conexion.ObtenerRegistro(query);
         }
+        ///
+        public DataTable ObtenerServicioPersonalAmpliado(int personalId, int activo)
+        {
+            string query =
+                "SELECT " +
+                "se.ServicioId, " +
+                "cm.CursoMateriaId, " +   // NUEVO
+                "ma.MateriaId, " +        // NUEVO
+                "ca.Descripcion as Cargo, " +
+                "sr.Descripcion as Situacion, " +
+                "IIF(se.CursoMateriaId IS NULL, IIF(se.CarreraId IS NOT NULL, car.DescripcionCorta, ''), " +
+                "CONCAT(ma.Nombre, ' - ', car.DescripcionCorta, ' ', ac.AnioCarrera, cu.NombreCurso)) AS 'Servicio', " +
+                "se.FechaAlta, " +
+                "se.FechaBaja, " +
+                "la.LibroNumero as Libro, " +
+                "la.FolioNumero as Folio, " +
+                "se.Activo " +
+                "FROM Servicios se " +
+                "LEFT JOIN Carreras car on car.CarreraId = se.CarreraId " +
+                "LEFT JOIN CursoMaterias cm on se.CursoMateriaId = cm.CursoMateriaId " +
+                "LEFT JOIN Materias ma on ma.MateriaId = cm.MateriaId " +
+                "INNER JOIN  Cargos ca on ca.CargoId = se.CargoId " +
+                "LEFT JOIN SituacionRevistas sr on sr.SituacionRevistaId = se.SituacionRevistaId " +
+                "LEFT JOIN personal pe on pe.PersonalId = se.PersonalId " +
+                "LEFT JOIN AniosCarreras ac on ma.AnioCarreraId = ac.AnioCarreraId " +
+                "LEFT JOIN LibroActas la on la.LibroActaId = se.LibroActaId " +
+                "LEFT JOIN  Cursos cu on cu.CursoId = cm.CursoId " +
+                $"WHERE se.personalId = {personalId} AND se.Activo = {activo}";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
     }
 }
