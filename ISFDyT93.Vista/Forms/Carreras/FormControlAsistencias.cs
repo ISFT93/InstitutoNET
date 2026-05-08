@@ -43,6 +43,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.PropiedadesFormPrincipal();
             this.Cursada = this.cursadasLogica.ObtenerCursada(this.CursadaId);
             this.MapToForm<CursadasModelo>(this.Cursada);
+            this.Contenedor.SetTitulo("Control Asustencias/Evaluaciones");
+
 
             var dr = controlAsistenciasLogica.CargarProfesor();
             txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
