@@ -118,16 +118,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
 
 
-            if (dgvAsistencias.Rows.Count > 0)
-            {
-                var asistencia = dgvAsistencias.Rows[0].Cells["Asistencia"].Value;
-
-                tsmP.Enabled = string.IsNullOrEmpty(asistencia.ToString());
-                tsmA.Enabled = string.IsNullOrEmpty(asistencia.ToString());
-            }
-
-
-
             this.CalcularPorcentajeActual();
             this.ActualizarDatosInformativos();
         }
@@ -174,15 +164,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     fila = info.RowIndex;
                     dgvAsistencias.Rows[info.RowIndex].Selected = true;
 
-                    if (dtpFechaAsistencia.Value < DateTime.Now.Date)
-                    {
-                        tsmA.Visible = true;
-                        tsmP.Visible = true;
-                    }
+                    var asistenciaValue = dgvAsistencias.Rows[info.RowIndex].Cells["Asistencia"].Value;
+                    bool yaTieneAsistencia = asistenciaValue != null && !string.IsNullOrEmpty(asistenciaValue.ToString());
+
                     if (dgvAsistencias.Columns[info.ColumnIndex].Name == "Asistencia")
                     {
-                        tsmP.Visible = true;
-                        tsmA.Visible = true;
+                        tsmP.Visible = !yaTieneAsistencia;
+                        tsmA.Visible = !yaTieneAsistencia;
                         tsmHistorialAsistenciasAlumnos.Visible = false;
                     }
                     else
