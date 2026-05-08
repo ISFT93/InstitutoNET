@@ -43,6 +43,21 @@ namespace ISFDyT93.Negocio.Logica
 
             return 0;
         }
+
+        // Dentro de public class AlumnosLogica : LogicaBase
+
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado)
+        {
+            // Llama al DAO para traer los alumnos filtrados
+            return this.alumnosDao.ObtenerAlumnosPorEstadoDocumentacion(estado);
+        }
+
+        public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)
+        {
+            // Llama al DAO para actualizar el campo Inicializado (0, 1 o 2)
+            return this.alumnosDao.ActualizarEstadoInicializado(alumnoId, nuevoEstado);
+        }
+
         public int AgregarAlumnoCargaMasiva(AlumnosModelo modelo)
         {
             if (this.alumnosDao.AgregarAlumnoCargaMasiva(modelo) > 0)

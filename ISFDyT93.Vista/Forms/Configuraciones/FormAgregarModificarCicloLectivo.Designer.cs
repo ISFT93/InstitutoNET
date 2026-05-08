@@ -31,7 +31,6 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAgregarModificarCicloLectivo));
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.epvCicloLectivo = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtpFechaDiciembreFinal = new System.Windows.Forms.DateTimePicker();
@@ -68,6 +67,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.grbFinalesDiciembre = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAceptar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epvCicloLectivo)).BeginInit();
             this.grbDatosCicloLectivo.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -79,27 +79,6 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
-            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
-            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(638, 9);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(119, 44);
-            this.btnAceptar.TabIndex = 128;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.UseVisualStyleBackColor = false;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // epvCicloLectivo
             // 
@@ -578,6 +557,27 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(760, 56);
             this.tableLayoutPanel5.TabIndex = 133;
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAceptar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAceptar.Location = new System.Drawing.Point(638, 9);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(119, 44);
+            this.btnAceptar.TabIndex = 128;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // FormAgregarModificarCicloLectivo
             // 

@@ -44,6 +44,9 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.EjecutarAccion(q);
         }
 
+
+
+
         public int AgregarAlumnoCargaMasiva(AlumnosModelo modelo)
         {
             int activo;
@@ -282,6 +285,31 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "SELECT DISTINCT Provincia FROM Alumnos";
             return this.Conexion.ObtenerRegistros(query);
+        }
+
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado)
+        {
+            // Requerimiento 11B: Filtra por el campo Inicializado de la tabla AlumnosCarreras
+            // Si estado es -1, traemos todos.
+            string filtroEstado = estado == -1 ? "" : " AND ac.Inicializado = " + estado;
+
+            string query = @"SELECT A.AlumnoId, A.Apellido, A.Nombre, A.NumeroDocumento AS Documento, 
+                     C.DescripcionCorta AS Carrera, ac.Inicializado 
+                     FROM Alumnos A
+                     INNER JOIN AlumnosCarreras ac ON ac.AlumnoId = A.AlumnoId
+                     INNER JOIN Carreras C ON C.CarreraId = ac.CarreraId
+                     WHERE ac.Activo = 1" + filtroEstado + " ORDER BY A.Apellido ASC";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
+        public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)
+        {
+            // Requerimiento 11A y 11B: Cambia el estado (0: Incompleto, 1: Enviado, 2: Validado)
+            string query = "UPDATE AlumnosCarreras SET Inicializado = " + nuevoEstado +
+                           " WHERE AlumnoId = " + alumnoId + " AND Activo = 1";
+
+            return this.Conexion.EjecutarAccion(query);
         }
     }
 }

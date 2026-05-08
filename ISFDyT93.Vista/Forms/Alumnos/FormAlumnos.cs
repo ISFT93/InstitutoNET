@@ -97,45 +97,57 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 DataGridView.HitTestInfo info = dgvAlumnos.HitTest(e.X, e.Y);
 
-                tsmAgregarAlumno.Visible = ((CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0));
+                // Opción de agregar general
+                tsmAgregarAlumno.Visible = (CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0);
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
-                    
-
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
-                    cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
+
+                    // Guardamos el ID del alumno seleccionado
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
-                    if(!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
+
+                    if (!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
                         this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
+
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
-                    ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
-                    ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
+                    ApellidoNombre = $"{dgvAlumnos["Apellido", info.RowIndex].Value} {dgvAlumnos["Nombre", info.RowIndex].Value}";
 
+                    // --- CONFIGURACIÓN DE VISIBILIDAD ---
                     tsmAgregarAlumno.Visible = false;
-
-                    if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-                        tsmActualizarDocumentacion.Visible = false;
-
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
-                    if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-                        tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
-                    else
-                        tsmAsignarMaterias.Visible = false;
-                    tsmDarAlta.Visible = true;// !activo;
+                    tsmDarAlta.Visible = true;
 
+                    // Opción de CONTROL GENERAL (La pantalla de Totales y Mails)
+                    tsmControlDocumentacion.Visible = true;
+
+                    // Opción de FICHA INDIVIDUAL (Si tiene carrera asignada / Inicializado tiene valor)
+                    if (!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["Inicializado", info.RowIndex].Value)))
+                    {
+                        tsmActualizarDocumentacion.Visible = true;
+                        tsmAsignarMaterias.Visible = true;
+                    }
+                    else
+                    {
+                        tsmActualizarDocumentacion.Visible = false;
+                        tsmAsignarMaterias.Visible = false;
+                    }
+
+                    cmsAlumnos.Show(dgvAlumnos, e.Location);
                 }
                 else
                 {
-                    cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
+                    // Clic fuera de una fila: ocultamos opciones individuales
+                    cmsAlumnos.Show(dgvAlumnos, e.Location);
                     tsmModificarAlumno.Visible = false;
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
                     tsmDarAlta.Visible = false;
                     tsmActualizarDocumentacion.Visible = false;
+                    tsmControlDocumentacion.Visible = false;
                 }
             }
         }
@@ -190,6 +202,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             this.AlumnosLogica.DarAltaAlumnos(AlumnoId);
             RecargarGrilla();
         }
+
+        private void tsmControlDocumentacion_Click(object sender, EventArgs e)
+        {
+            // Esto abrirá la pantalla general de los requerimientos (Totales, filtros, etc.)
+            Contenedor.AbrirFormulario<ControlDocumentacion>();
+        }
+
         public void tsmCargaMasiva_Click(object sender, EventArgs e)
         {
             //color 27, 1, 124

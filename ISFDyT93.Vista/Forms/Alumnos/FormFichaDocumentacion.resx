@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>136, 17</value>
-  </metadata>
-  <metadata name="epvAlumnos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>79</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="epvAlumnos.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAMAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAfA8PI3sQEn58EROIfBETiHwRE4h8EROIfBETiHwRE4h8EROIfBETiHwRE4h8EROIfBETiHwR
-        E4h6EhJzdBcXC3oQEsp7ERL/exES/3sREv97ERL/exES/3sREv97ERL/exES/3sREv97ERL/exES/3sR
-        Ev97ERL/exES/3sRE4l7ERKqexES/3sREv97ERL/exES/3sREv97ERP4fBIScXsRE5V7ERL/exES/3sR
-        Ev97ERL/exES/3sREv97ERFqfRISK3sREvt7ERL/exES/3sREv97ERL/exESwwAAAABmAAAFexES/XsR
-        Ev97ERL/exES/3sREv97ERLfgCAgCAAAAAB7ERGTexES/3sREv97ERL/exES/3sREvt6ERN7exASnXsR
-        Ev97ERL/exES/3sREv97ERL/fBISVAAAAAAAAAAAgA4OEnsREu17ERL/exES/3sREv97ERL/ehERknsR
-        ErV7ERL/exES/3sREv97ERL/fBETwAAAAAAAAAAAAAAAAAAAAAB7EhJyexES/3sREv97ERL/exES/3oR
-        ES58ERFnexES/3sREv97ERL/exES/XsTEzYAAAAAAAAAAAAAAAAAAAAAgAAABHsREtV7ERL/exES/3sR
-        Ev6AGhoKfBAUQHsREv97ERL/exES/3sREpoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6ERFLexES/3sR
-        Ev98ERLhAAAAAIASEhx7ERL/exES/3sREvOAFBQaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHsR
-        E7N7ERL/fBETwAAAAACAAAACexES/HsREv97EhJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAB5FBQmexES+XsRE/h7ERFoexESi3sREv97EhLagAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAHoREZJ7ERL/exES/3sREv97ERL/exISUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAB5DQ0TexES7nsREv97ERL/exESwwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHsREVl7ERL+exES8HkTEygAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAehERLnsSEh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAA//8AAMADAAAAAAAAAQEAAIGBAACBAwAAwAMAAOGHAADhhwAA8Y8AAPGfAAD5HwAA+D8AAPw/
-        AAD+fwAA//8AAA==
-</value>
-  </data>
 </root>

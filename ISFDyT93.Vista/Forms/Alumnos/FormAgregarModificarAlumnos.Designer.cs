@@ -30,98 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAgregarModificarAlumnos));
-            this.grbDatosPersonales = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblApellido = new System.Windows.Forms.Label();
-            this.cmbEstadoCivil = new System.Windows.Forms.ComboBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblTipoDoc = new System.Windows.Forms.Label();
-            this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.lblNumeroDocumento = new System.Windows.Forms.Label();
-            this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
-            this.lblEstadoCivil = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbSexo = new System.Windows.Forms.ComboBox();
-            this.txtLocalidadNacimiento = new System.Windows.Forms.TextBox();
-            this.lblLocNacimiento = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.lblFechaNacimiento = new System.Windows.Forms.Label();
-            this.lblPaisNac = new System.Windows.Forms.Label();
-            this.txtPaisNacimiento = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtProvincia = new System.Windows.Forms.TextBox();
-            this.txtDistrito = new System.Windows.Forms.TextBox();
-            this.txtLocalidad = new System.Windows.Forms.TextBox();
-            this.txtCalle = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCelular = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.lblProvincia = new System.Windows.Forms.Label();
-            this.lblCodPostal = new System.Windows.Forms.Label();
-            this.lblDistrito = new System.Windows.Forms.Label();
-            this.lblLocalidad = new System.Windows.Forms.Label();
-            this.txtDepartamento = new System.Windows.Forms.TextBox();
-            this.lblDepto = new System.Windows.Forms.Label();
-            this.lblCalle = new System.Windows.Forms.Label();
-            this.txtPiso = new System.Windows.Forms.TextBox();
-            this.lblPiso = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.txtCodigoPostal = new System.Windows.Forms.TextBox();
-            this.grbFormacion = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTituloSec = new System.Windows.Forms.Label();
-            this.txtMayorPromedio = new System.Windows.Forms.TextBox();
-            this.pnlSiNoTS = new System.Windows.Forms.Panel();
-            this.rdbTituloSecundarioSi = new System.Windows.Forms.RadioButton();
-            this.rdbTituloSecundarioNo = new System.Windows.Forms.RadioButton();
-            this.lblPromedioMayor = new System.Windows.Forms.Label();
-            this.lblCuentasAdeuda = new System.Windows.Forms.Label();
-            this.txtMayorOtorgadoPor = new System.Windows.Forms.TextBox();
-            this.txtMateriasAdeuda = new System.Windows.Forms.TextBox();
-            this.lblOtorgadoPorMayor = new System.Windows.Forms.Label();
-            this.lblCuales = new System.Windows.Forms.Label();
-            this.txtOtroTitulo = new System.Windows.Forms.TextBox();
-            this.lblTituloMayor = new System.Windows.Forms.Label();
-            this.txtDescripcionMaterias = new System.Windows.Forms.TextBox();
-            this.lblCasodeSi = new System.Windows.Forms.Label();
-            this.lblTitu = new System.Windows.Forms.Label();
-            this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.lblOrientacion = new System.Windows.Forms.Label();
-            this.txtOrientacion = new System.Windows.Forms.TextBox();
-            this.txtAnioEgreso = new System.Windows.Forms.TextBox();
-            this.txtPromedio = new System.Windows.Forms.TextBox();
-            this.lblAnioEgreso = new System.Windows.Forms.Label();
-            this.lblOtorgadoPor = new System.Windows.Forms.Label();
-            this.lblPromedio = new System.Windows.Forms.Label();
-            this.txtOtorgadoPor = new System.Windows.Forms.TextBox();
-            this.lblTituloTramite = new System.Windows.Forms.Label();
-            this.pnlSiNoTT = new System.Windows.Forms.Panel();
-            this.rdbTituloTramiteSi = new System.Windows.Forms.RadioButton();
-            this.rdbTituloTramiteNo = new System.Windows.Forms.RadioButton();
-            this.lblMayorTitulo = new System.Windows.Forms.Label();
-            this.cmbMayorTitulo = new System.Windows.Forms.ComboBox();
-            this.epvAlumnos = new System.Windows.Forms.ErrorProvider(this.components);
-            this.grbDocumentosEntregar = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblEnunciado = new System.Windows.Forms.Label();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.chkFotocopiaTitulo = new System.Windows.Forms.CheckBox();
-            this.txtRecibo = new System.Windows.Forms.TextBox();
-            this.lblMonto = new System.Windows.Forms.Label();
-            this.chkFotocopiaDocumento = new System.Windows.Forms.CheckBox();
-            this.chkConstanciaTituloTramite = new System.Windows.Forms.CheckBox();
-            this.lblRecibo = new System.Windows.Forms.Label();
-            this.chkFotoCarnet = new System.Windows.Forms.CheckBox();
-            this.chkVacunaAntitetanica = new System.Windows.Forms.CheckBox();
-            this.chkConstanciaAdeudaMaterias = new System.Windows.Forms.CheckBox();
-            this.chkCertificadoAptitud = new System.Windows.Forms.CheckBox();
-            this.chkVacunaAntihepatitis = new System.Windows.Forms.CheckBox();
-            this.chkFotocopiaPartidaNacimiento = new System.Windows.Forms.CheckBox();
-            this.txtCantidadAdeudaMaterias = new System.Windows.Forms.TextBox();
-            this.lblConstAdeuda = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grbFichaSalud = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblPoseeObraSocial = new System.Windows.Forms.Label();
@@ -161,26 +70,108 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.txtTelefonoContacto = new System.Windows.Forms.MaskedTextBox();
+            this.grbDocumentosEntregar = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblEnunciado = new System.Windows.Forms.Label();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.chkFotocopiaTitulo = new System.Windows.Forms.CheckBox();
+            this.txtRecibo = new System.Windows.Forms.TextBox();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.chkFotocopiaDocumento = new System.Windows.Forms.CheckBox();
+            this.chkConstanciaTituloTramite = new System.Windows.Forms.CheckBox();
+            this.lblRecibo = new System.Windows.Forms.Label();
+            this.chkFotoCarnet = new System.Windows.Forms.CheckBox();
+            this.chkVacunaAntitetanica = new System.Windows.Forms.CheckBox();
+            this.chkConstanciaAdeudaMaterias = new System.Windows.Forms.CheckBox();
+            this.chkCertificadoAptitud = new System.Windows.Forms.CheckBox();
+            this.chkVacunaAntihepatitis = new System.Windows.Forms.CheckBox();
+            this.chkFotocopiaPartidaNacimiento = new System.Windows.Forms.CheckBox();
+            this.txtCantidadAdeudaMaterias = new System.Windows.Forms.TextBox();
+            this.lblConstAdeuda = new System.Windows.Forms.Label();
+            this.grbFormacion = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTituloSec = new System.Windows.Forms.Label();
+            this.txtMayorPromedio = new System.Windows.Forms.TextBox();
+            this.pnlSiNoTS = new System.Windows.Forms.Panel();
+            this.rdbTituloSecundarioSi = new System.Windows.Forms.RadioButton();
+            this.rdbTituloSecundarioNo = new System.Windows.Forms.RadioButton();
+            this.lblPromedioMayor = new System.Windows.Forms.Label();
+            this.lblCuentasAdeuda = new System.Windows.Forms.Label();
+            this.txtMayorOtorgadoPor = new System.Windows.Forms.TextBox();
+            this.txtMateriasAdeuda = new System.Windows.Forms.TextBox();
+            this.lblOtorgadoPorMayor = new System.Windows.Forms.Label();
+            this.lblCuales = new System.Windows.Forms.Label();
+            this.txtOtroTitulo = new System.Windows.Forms.TextBox();
+            this.lblTituloMayor = new System.Windows.Forms.Label();
+            this.txtDescripcionMaterias = new System.Windows.Forms.TextBox();
+            this.lblCasodeSi = new System.Windows.Forms.Label();
+            this.lblTitu = new System.Windows.Forms.Label();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.lblOrientacion = new System.Windows.Forms.Label();
+            this.txtOrientacion = new System.Windows.Forms.TextBox();
+            this.txtAnioEgreso = new System.Windows.Forms.TextBox();
+            this.txtPromedio = new System.Windows.Forms.TextBox();
+            this.lblAnioEgreso = new System.Windows.Forms.Label();
+            this.lblOtorgadoPor = new System.Windows.Forms.Label();
+            this.lblPromedio = new System.Windows.Forms.Label();
+            this.txtOtorgadoPor = new System.Windows.Forms.TextBox();
+            this.lblTituloTramite = new System.Windows.Forms.Label();
+            this.pnlSiNoTT = new System.Windows.Forms.Panel();
+            this.rdbTituloTramiteSi = new System.Windows.Forms.RadioButton();
+            this.rdbTituloTramiteNo = new System.Windows.Forms.RadioButton();
+            this.lblMayorTitulo = new System.Windows.Forms.Label();
+            this.cmbMayorTitulo = new System.Windows.Forms.ComboBox();
+            this.grbDireccion = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtProvincia = new System.Windows.Forms.TextBox();
+            this.txtDistrito = new System.Windows.Forms.TextBox();
+            this.txtLocalidad = new System.Windows.Forms.TextBox();
+            this.txtCalle = new System.Windows.Forms.TextBox();
+            this.lblCalle = new System.Windows.Forms.Label();
+            this.lblCelular = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.lblLocalidad = new System.Windows.Forms.Label();
+            this.lblDistrito = new System.Windows.Forms.Label();
+            this.lblCodPostal = new System.Windows.Forms.Label();
+            this.lblProvincia = new System.Windows.Forms.Label();
+            this.txtCodigoPostal = new System.Windows.Forms.TextBox();
+            this.lblPiso = new System.Windows.Forms.Label();
+            this.txtPiso = new System.Windows.Forms.TextBox();
+            this.lblDepto = new System.Windows.Forms.Label();
+            this.txtDepartamento = new System.Windows.Forms.TextBox();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.grbDatosPersonales = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.cmbEstadoCivil = new System.Windows.Forms.ComboBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblTipoDoc = new System.Windows.Forms.Label();
+            this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.lblNumeroDocumento = new System.Windows.Forms.Label();
+            this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
+            this.lblEstadoCivil = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbSexo = new System.Windows.Forms.ComboBox();
+            this.txtLocalidadNacimiento = new System.Windows.Forms.TextBox();
+            this.lblLocNacimiento = new System.Windows.Forms.Label();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.lblFechaNacimiento = new System.Windows.Forms.Label();
+            this.lblPaisNac = new System.Windows.Forms.Label();
+            this.txtPaisNacimiento = new System.Windows.Forms.TextBox();
             this.grbCarrera = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblAnioLectivo = new System.Windows.Forms.Label();
             this.cmbCicloLectivo = new System.Windows.Forms.ComboBox();
             this.lblCarreras = new System.Windows.Forms.Label();
             this.cmbCarreraId = new System.Windows.Forms.ComboBox();
-            this.grbDireccion = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.grbDatosPersonales.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.grbFormacion.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.pnlSiNoTS.SuspendLayout();
-            this.pnlSiNoTT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epvAlumnos)).BeginInit();
-            this.grbDocumentosEntregar.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
+            this.epvAlumnos = new System.Windows.Forms.ErrorProvider(this.components);
             this.grbFichaSalud.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.pnlEstadoDiscapacidad.SuspendLayout();
@@ -189,1127 +180,20 @@
             this.pnlSiNoCert.SuspendLayout();
             this.pnlSiNoMed.SuspendLayout();
             this.pnlSiNoD.SuspendLayout();
-            this.grbCarrera.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.grbDocumentosEntregar.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.grbFormacion.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.pnlSiNoTS.SuspendLayout();
+            this.pnlSiNoTT.SuspendLayout();
             this.grbDireccion.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.grbDatosPersonales.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.grbCarrera.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epvAlumnos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // grbDatosPersonales
-            // 
-            this.grbDatosPersonales.Controls.Add(this.tableLayoutPanel2);
-            this.grbDatosPersonales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbDatosPersonales.Location = new System.Drawing.Point(20, 94);
-            this.grbDatosPersonales.Name = "grbDatosPersonales";
-            this.grbDatosPersonales.Size = new System.Drawing.Size(944, 328);
-            this.grbDatosPersonales.TabIndex = 2;
-            this.grbDatosPersonales.TabStop = false;
-            this.grbDatosPersonales.Text = "Datos Personales:";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 9;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.lblNombre, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblApellido, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cmbEstadoCivil, 5, 5);
-            this.tableLayoutPanel2.Controls.Add(this.txtApellido, 5, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblTipoDoc, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.cmbTipoDocumento, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.lblNumeroDocumento, 5, 2);
-            this.tableLayoutPanel2.Controls.Add(this.txtNumeroDocumento, 5, 3);
-            this.tableLayoutPanel2.Controls.Add(this.lblEstadoCivil, 5, 4);
-            this.tableLayoutPanel2.Controls.Add(this.label12, 1, 4);
-            this.tableLayoutPanel2.Controls.Add(this.cmbSexo, 1, 5);
-            this.tableLayoutPanel2.Controls.Add(this.txtLocalidadNacimiento, 5, 7);
-            this.tableLayoutPanel2.Controls.Add(this.lblLocNacimiento, 5, 6);
-            this.tableLayoutPanel2.Controls.Add(this.dtpFechaNacimiento, 1, 9);
-            this.tableLayoutPanel2.Controls.Add(this.lblFechaNacimiento, 1, 8);
-            this.tableLayoutPanel2.Controls.Add(this.lblPaisNac, 1, 6);
-            this.tableLayoutPanel2.Controls.Add(this.txtPaisNacimiento, 1, 7);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 11;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(938, 302);
-            this.tableLayoutPanel2.TabIndex = 119;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(23, 0);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(72, 19);
-            this.lblNombre.TabIndex = 65;
-            this.lblNombre.Text = "Nombre:";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.txtNombre, 3);
-            this.txtNombre.Location = new System.Drawing.Point(23, 26);
-            this.txtNombre.MaxLength = 30;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(422, 27);
-            this.txtNombre.TabIndex = 1;
-            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // lblApellido
-            // 
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(481, 0);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(73, 19);
-            this.lblApellido.TabIndex = 67;
-            this.lblApellido.Text = "Apellido:";
-            // 
-            // cmbEstadoCivil
-            // 
-            this.cmbEstadoCivil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbEstadoCivil.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.SetColumnSpan(this.cmbEstadoCivil, 3);
-            this.cmbEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstadoCivil.FormattingEnabled = true;
-            this.cmbEstadoCivil.Items.AddRange(new object[] {
-            "Soltero/a",
-            "Casado/a",
-            "Divorciado/a",
-            "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(481, 146);
-            this.cmbEstadoCivil.Name = "cmbEstadoCivil";
-            this.cmbEstadoCivil.Size = new System.Drawing.Size(422, 27);
-            this.cmbEstadoCivil.TabIndex = 6;
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.txtApellido, 3);
-            this.txtApellido.Location = new System.Drawing.Point(481, 26);
-            this.txtApellido.MaxLength = 30;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(422, 27);
-            this.txtApellido.TabIndex = 2;
-            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // lblTipoDoc
-            // 
-            this.lblTipoDoc.AutoSize = true;
-            this.lblTipoDoc.Location = new System.Drawing.Point(23, 60);
-            this.lblTipoDoc.Name = "lblTipoDoc";
-            this.lblTipoDoc.Size = new System.Drawing.Size(155, 19);
-            this.lblTipoDoc.TabIndex = 94;
-            this.lblTipoDoc.Text = "Tipo de Documento:";
-            // 
-            // cmbTipoDocumento
-            // 
-            this.cmbTipoDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbTipoDocumento.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.SetColumnSpan(this.cmbTipoDocumento, 3);
-            this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoDocumento.FormattingEnabled = true;
-            this.cmbTipoDocumento.Items.AddRange(new object[] {
-            "DNI",
-            "LE",
-            "LC"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
-            this.cmbTipoDocumento.Name = "cmbTipoDocumento";
-            this.cmbTipoDocumento.Size = new System.Drawing.Size(422, 27);
-            this.cmbTipoDocumento.TabIndex = 3;
-            // 
-            // lblNumeroDocumento
-            // 
-            this.lblNumeroDocumento.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.lblNumeroDocumento, 3);
-            this.lblNumeroDocumento.Location = new System.Drawing.Point(481, 60);
-            this.lblNumeroDocumento.Name = "lblNumeroDocumento";
-            this.lblNumeroDocumento.Size = new System.Drawing.Size(180, 19);
-            this.lblNumeroDocumento.TabIndex = 63;
-            this.lblNumeroDocumento.Text = "Número de Documento:";
-            // 
-            // txtNumeroDocumento
-            // 
-            this.txtNumeroDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.txtNumeroDocumento, 3);
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(481, 86);
-            this.txtNumeroDocumento.MaxLength = 8;
-            this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(422, 27);
-            this.txtNumeroDocumento.TabIndex = 4;
-            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtNumeroDocumento.Leave += new System.EventHandler(this.txtNumeroDocumento_Leave);
-            // 
-            // lblEstadoCivil
-            // 
-            this.lblEstadoCivil.AutoSize = true;
-            this.lblEstadoCivil.Location = new System.Drawing.Point(481, 120);
-            this.lblEstadoCivil.Name = "lblEstadoCivil";
-            this.lblEstadoCivil.Size = new System.Drawing.Size(97, 19);
-            this.lblEstadoCivil.TabIndex = 90;
-            this.lblEstadoCivil.Text = "Estado Civil:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 120);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 19);
-            this.label12.TabIndex = 118;
-            this.label12.Text = "Sexo:";
-            // 
-            // cmbSexo
-            // 
-            this.cmbSexo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
-            this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
-            this.cmbSexo.Name = "cmbSexo";
-            this.cmbSexo.Size = new System.Drawing.Size(422, 27);
-            this.cmbSexo.TabIndex = 5;
-            // 
-            // txtLocalidadNacimiento
-            // 
-            this.txtLocalidadNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLocalidadNacimiento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtLocalidadNacimiento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tableLayoutPanel2.SetColumnSpan(this.txtLocalidadNacimiento, 3);
-            this.txtLocalidadNacimiento.Location = new System.Drawing.Point(481, 206);
-            this.txtLocalidadNacimiento.MaxLength = 15;
-            this.txtLocalidadNacimiento.Name = "txtLocalidadNacimiento";
-            this.txtLocalidadNacimiento.Size = new System.Drawing.Size(422, 27);
-            this.txtLocalidadNacimiento.TabIndex = 8;
-            this.txtLocalidadNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // lblLocNacimiento
-            // 
-            this.lblLocNacimiento.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.lblLocNacimiento, 3);
-            this.lblLocNacimiento.Location = new System.Drawing.Point(481, 180);
-            this.lblLocNacimiento.Name = "lblLocNacimiento";
-            this.lblLocNacimiento.Size = new System.Drawing.Size(187, 19);
-            this.lblLocNacimiento.TabIndex = 86;
-            this.lblLocNacimiento.Text = "Localidad de Nacimiento:";
-            // 
-            // dtpFechaNacimiento
-            // 
-            this.dtpFechaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.dtpFechaNacimiento, 3);
-            this.dtpFechaNacimiento.CustomFormat = "";
-            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(23, 266);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(422, 27);
-            this.dtpFechaNacimiento.TabIndex = 9;
-            this.dtpFechaNacimiento.Value = new System.DateTime(2020, 8, 30, 0, 0, 0, 0);
-            // 
-            // lblFechaNacimiento
-            // 
-            this.lblFechaNacimiento.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.lblFechaNacimiento, 3);
-            this.lblFechaNacimiento.Location = new System.Drawing.Point(23, 240);
-            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
-            this.lblFechaNacimiento.Size = new System.Drawing.Size(161, 19);
-            this.lblFechaNacimiento.TabIndex = 69;
-            this.lblFechaNacimiento.Text = "Fecha de Nacimiento:";
-            // 
-            // lblPaisNac
-            // 
-            this.lblPaisNac.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.lblPaisNac, 3);
-            this.lblPaisNac.Location = new System.Drawing.Point(23, 180);
-            this.lblPaisNac.Name = "lblPaisNac";
-            this.lblPaisNac.Size = new System.Drawing.Size(149, 19);
-            this.lblPaisNac.TabIndex = 74;
-            this.lblPaisNac.Text = "Pais de Nacimiento:";
-            // 
-            // txtPaisNacimiento
-            // 
-            this.txtPaisNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaisNacimiento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtPaisNacimiento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tableLayoutPanel2.SetColumnSpan(this.txtPaisNacimiento, 3);
-            this.txtPaisNacimiento.Location = new System.Drawing.Point(23, 206);
-            this.txtPaisNacimiento.MaxLength = 15;
-            this.txtPaisNacimiento.Name = "txtPaisNacimiento";
-            this.txtPaisNacimiento.Size = new System.Drawing.Size(422, 27);
-            this.txtPaisNacimiento.TabIndex = 7;
-            this.txtPaisNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtEmail, 3);
-            this.txtEmail.Location = new System.Drawing.Point(475, 206);
-            this.txtEmail.MaxLength = 255;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(431, 27);
-            this.txtEmail.TabIndex = 18;
-            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidarMail_KeyPress);
-            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
-            // 
-            // txtProvincia
-            // 
-            this.txtProvincia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProvincia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtProvincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tableLayoutPanel6.SetColumnSpan(this.txtProvincia, 3);
-            this.txtProvincia.Location = new System.Drawing.Point(475, 146);
-            this.txtProvincia.Name = "txtProvincia";
-            this.txtProvincia.Size = new System.Drawing.Size(431, 27);
-            this.txtProvincia.TabIndex = 16;
-            this.txtProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // txtDistrito
-            // 
-            this.txtDistrito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtDistrito, 3);
-            this.txtDistrito.Location = new System.Drawing.Point(475, 86);
-            this.txtDistrito.MaxLength = 15;
-            this.txtDistrito.Name = "txtDistrito";
-            this.txtDistrito.Size = new System.Drawing.Size(431, 27);
-            this.txtDistrito.TabIndex = 14;
-            this.txtDistrito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // txtLocalidad
-            // 
-            this.txtLocalidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtLocalidad, 3);
-            this.txtLocalidad.Location = new System.Drawing.Point(17, 146);
-            this.txtLocalidad.MaxLength = 15;
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Size = new System.Drawing.Size(431, 27);
-            this.txtLocalidad.TabIndex = 15;
-            this.txtLocalidad.TextChanged += new System.EventHandler(this.txtLocalidad_TextChanged);
-            this.txtLocalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // txtCalle
-            // 
-            this.txtCalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtCalle, 3);
-            this.txtCalle.Location = new System.Drawing.Point(17, 26);
-            this.txtCalle.MaxLength = 255;
-            this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(431, 27);
-            this.txtCalle.TabIndex = 10;
-            this.txtCalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(475, 180);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(60, 19);
-            this.lblEmail.TabIndex = 116;
-            this.lblEmail.Text = "E-mail:";
-            // 
-            // lblCelular
-            // 
-            this.lblCelular.AutoSize = true;
-            this.lblCelular.Location = new System.Drawing.Point(475, 240);
-            this.lblCelular.Name = "lblCelular";
-            this.lblCelular.Size = new System.Drawing.Size(64, 19);
-            this.lblCelular.TabIndex = 114;
-            this.lblCelular.Text = "Celular:";
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(17, 240);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(77, 19);
-            this.lblTelefono.TabIndex = 112;
-            this.lblTelefono.Text = "Teléfono:";
-            // 
-            // lblProvincia
-            // 
-            this.lblProvincia.AutoSize = true;
-            this.lblProvincia.Location = new System.Drawing.Point(475, 120);
-            this.lblProvincia.Name = "lblProvincia";
-            this.lblProvincia.Size = new System.Drawing.Size(79, 19);
-            this.lblProvincia.TabIndex = 110;
-            this.lblProvincia.Text = "Provincia:";
-            // 
-            // lblCodPostal
-            // 
-            this.lblCodPostal.AutoSize = true;
-            this.lblCodPostal.Location = new System.Drawing.Point(17, 180);
-            this.lblCodPostal.Name = "lblCodPostal";
-            this.lblCodPostal.Size = new System.Drawing.Size(112, 19);
-            this.lblCodPostal.TabIndex = 108;
-            this.lblCodPostal.Text = "Codigo Postal:";
-            // 
-            // lblDistrito
-            // 
-            this.lblDistrito.AutoSize = true;
-            this.lblDistrito.Location = new System.Drawing.Point(475, 60);
-            this.lblDistrito.Name = "lblDistrito";
-            this.lblDistrito.Size = new System.Drawing.Size(66, 19);
-            this.lblDistrito.TabIndex = 106;
-            this.lblDistrito.Text = "Distrito:";
-            // 
-            // lblLocalidad
-            // 
-            this.lblLocalidad.AutoSize = true;
-            this.lblLocalidad.Location = new System.Drawing.Point(17, 120);
-            this.lblLocalidad.Name = "lblLocalidad";
-            this.lblLocalidad.Size = new System.Drawing.Size(81, 19);
-            this.lblLocalidad.TabIndex = 104;
-            this.lblLocalidad.Text = "Localidad:";
-            // 
-            // txtDepartamento
-            // 
-            this.txtDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDepartamento.Location = new System.Drawing.Point(246, 86);
-            this.txtDepartamento.MaxLength = 10;
-            this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.Size = new System.Drawing.Size(202, 27);
-            this.txtDepartamento.TabIndex = 13;
-            this.txtDepartamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // lblDepto
-            // 
-            this.lblDepto.AutoSize = true;
-            this.lblDepto.Location = new System.Drawing.Point(246, 60);
-            this.lblDepto.Name = "lblDepto";
-            this.lblDepto.Size = new System.Drawing.Size(115, 19);
-            this.lblDepto.TabIndex = 102;
-            this.lblDepto.Text = "Departamento:";
-            // 
-            // lblCalle
-            // 
-            this.lblCalle.AutoSize = true;
-            this.lblCalle.Location = new System.Drawing.Point(17, 0);
-            this.lblCalle.Name = "lblCalle";
-            this.lblCalle.Size = new System.Drawing.Size(49, 19);
-            this.lblCalle.TabIndex = 96;
-            this.lblCalle.Text = "Calle:";
-            // 
-            // txtPiso
-            // 
-            this.txtPiso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPiso.Location = new System.Drawing.Point(17, 86);
-            this.txtPiso.MaxLength = 2;
-            this.txtPiso.Name = "txtPiso";
-            this.txtPiso.Size = new System.Drawing.Size(202, 27);
-            this.txtPiso.TabIndex = 12;
-            this.txtPiso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // lblPiso
-            // 
-            this.lblPiso.AutoSize = true;
-            this.lblPiso.Location = new System.Drawing.Point(17, 60);
-            this.lblPiso.Name = "lblPiso";
-            this.lblPiso.Size = new System.Drawing.Size(44, 19);
-            this.lblPiso.TabIndex = 100;
-            this.lblPiso.Text = "Piso:";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumero.Location = new System.Drawing.Point(475, 26);
-            this.txtNumero.MaxLength = 5;
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(202, 27);
-            this.txtNumero.TabIndex = 11;
-            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(475, 0);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(39, 19);
-            this.lblNumero.TabIndex = 98;
-            this.lblNumero.Text = "N° :";
-            // 
-            // txtCodigoPostal
-            // 
-            this.txtCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoPostal.Location = new System.Drawing.Point(17, 206);
-            this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(202, 27);
-            this.txtCodigoPostal.TabIndex = 17;
-            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // grbFormacion
-            // 
-            this.grbFormacion.Controls.Add(this.tableLayoutPanel3);
-            this.grbFormacion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbFormacion.Location = new System.Drawing.Point(20, 751);
-            this.grbFormacion.Name = "grbFormacion";
-            this.grbFormacion.Size = new System.Drawing.Size(944, 515);
-            this.grbFormacion.TabIndex = 3;
-            this.grbFormacion.TabStop = false;
-            this.grbFormacion.Text = "Formación:";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 9;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel3.Controls.Add(this.lblTituloSec, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtMayorPromedio, 5, 14);
-            this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTS, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblPromedioMayor, 5, 13);
-            this.tableLayoutPanel3.Controls.Add(this.lblCuentasAdeuda, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtMayorOtorgadoPor, 1, 14);
-            this.tableLayoutPanel3.Controls.Add(this.txtMateriasAdeuda, 5, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblOtorgadoPorMayor, 1, 13);
-            this.tableLayoutPanel3.Controls.Add(this.lblCuales, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.txtOtroTitulo, 5, 12);
-            this.tableLayoutPanel3.Controls.Add(this.lblTituloMayor, 5, 11);
-            this.tableLayoutPanel3.Controls.Add(this.txtDescripcionMaterias, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.lblCasodeSi, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.lblTitu, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.txtTitulo, 1, 6);
-            this.tableLayoutPanel3.Controls.Add(this.lblOrientacion, 5, 5);
-            this.tableLayoutPanel3.Controls.Add(this.txtOrientacion, 5, 6);
-            this.tableLayoutPanel3.Controls.Add(this.txtAnioEgreso, 1, 10);
-            this.tableLayoutPanel3.Controls.Add(this.txtPromedio, 5, 8);
-            this.tableLayoutPanel3.Controls.Add(this.lblAnioEgreso, 1, 9);
-            this.tableLayoutPanel3.Controls.Add(this.lblOtorgadoPor, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.lblPromedio, 5, 7);
-            this.tableLayoutPanel3.Controls.Add(this.txtOtorgadoPor, 1, 8);
-            this.tableLayoutPanel3.Controls.Add(this.lblTituloTramite, 5, 9);
-            this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTT, 5, 10);
-            this.tableLayoutPanel3.Controls.Add(this.lblMayorTitulo, 1, 11);
-            this.tableLayoutPanel3.Controls.Add(this.cmbMayorTitulo, 1, 12);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 23);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 16;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(938, 489);
-            this.tableLayoutPanel3.TabIndex = 152;
-            // 
-            // lblTituloSec
-            // 
-            this.lblTituloSec.AutoSize = true;
-            this.lblTituloSec.Location = new System.Drawing.Point(17, 0);
-            this.lblTituloSec.Name = "lblTituloSec";
-            this.lblTituloSec.Size = new System.Drawing.Size(133, 19);
-            this.lblTituloSec.TabIndex = 115;
-            this.lblTituloSec.Text = "Título Secundario";
-            // 
-            // txtMayorPromedio
-            // 
-            this.txtMayorPromedio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMayorPromedio.Enabled = false;
-            this.txtMayorPromedio.Location = new System.Drawing.Point(479, 446);
-            this.txtMayorPromedio.MaxLength = 4;
-            this.txtMayorPromedio.Name = "txtMayorPromedio";
-            this.txtMayorPromedio.Size = new System.Drawing.Size(195, 27);
-            this.txtMayorPromedio.TabIndex = 35;
-            this.txtMayorPromedio.Text = "0";
-            this.txtMayorPromedio.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
-            this.txtMayorPromedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtMayorPromedio.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
-            // 
-            // pnlSiNoTS
-            // 
-            this.pnlSiNoTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.pnlSiNoTS, 3);
-            this.pnlSiNoTS.Controls.Add(this.rdbTituloSecundarioSi);
-            this.pnlSiNoTS.Controls.Add(this.rdbTituloSecundarioNo);
-            this.pnlSiNoTS.Location = new System.Drawing.Point(17, 23);
-            this.pnlSiNoTS.Name = "pnlSiNoTS";
-            this.pnlSiNoTS.Size = new System.Drawing.Size(426, 33);
-            this.pnlSiNoTS.TabIndex = 1;
-            // 
-            // rdbTituloSecundarioSi
-            // 
-            this.rdbTituloSecundarioSi.AutoSize = true;
-            this.rdbTituloSecundarioSi.Location = new System.Drawing.Point(44, 3);
-            this.rdbTituloSecundarioSi.Name = "rdbTituloSecundarioSi";
-            this.rdbTituloSecundarioSi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdbTituloSecundarioSi.Size = new System.Drawing.Size(40, 23);
-            this.rdbTituloSecundarioSi.TabIndex = 21;
-            this.rdbTituloSecundarioSi.Tag = "TituloSecundario";
-            this.rdbTituloSecundarioSi.Text = "Sí";
-            this.rdbTituloSecundarioSi.UseVisualStyleBackColor = true;
-            this.rdbTituloSecundarioSi.CheckedChanged += new System.EventHandler(this.rdbSi_CheckedChanged);
-            // 
-            // rdbTituloSecundarioNo
-            // 
-            this.rdbTituloSecundarioNo.AutoSize = true;
-            this.rdbTituloSecundarioNo.Checked = true;
-            this.rdbTituloSecundarioNo.Location = new System.Drawing.Point(121, 4);
-            this.rdbTituloSecundarioNo.Name = "rdbTituloSecundarioNo";
-            this.rdbTituloSecundarioNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdbTituloSecundarioNo.Size = new System.Drawing.Size(47, 23);
-            this.rdbTituloSecundarioNo.TabIndex = 21;
-            this.rdbTituloSecundarioNo.TabStop = true;
-            this.rdbTituloSecundarioNo.Tag = "TituloSecundario";
-            this.rdbTituloSecundarioNo.Text = "No";
-            this.rdbTituloSecundarioNo.UseVisualStyleBackColor = true;
-            // 
-            // lblPromedioMayor
-            // 
-            this.lblPromedioMayor.AutoSize = true;
-            this.lblPromedioMayor.Location = new System.Drawing.Point(479, 420);
-            this.lblPromedioMayor.Name = "lblPromedioMayor";
-            this.lblPromedioMayor.Size = new System.Drawing.Size(77, 19);
-            this.lblPromedioMayor.TabIndex = 142;
-            this.lblPromedioMayor.Text = "Promedio";
-            // 
-            // lblCuentasAdeuda
-            // 
-            this.lblCuentasAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCuentasAdeuda.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.lblCuentasAdeuda, 3);
-            this.lblCuentasAdeuda.Location = new System.Drawing.Point(479, 0);
-            this.lblCuentasAdeuda.Name = "lblCuentasAdeuda";
-            this.lblCuentasAdeuda.Size = new System.Drawing.Size(426, 19);
-            this.lblCuentasAdeuda.TabIndex = 118;
-            this.lblCuentasAdeuda.Text = "En caso de NO ¿Cuántas materias adeuda?";
-            // 
-            // txtMayorOtorgadoPor
-            // 
-            this.txtMayorOtorgadoPor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtMayorOtorgadoPor, 3);
-            this.txtMayorOtorgadoPor.Enabled = false;
-            this.txtMayorOtorgadoPor.Location = new System.Drawing.Point(17, 446);
-            this.txtMayorOtorgadoPor.MaxLength = 15;
-            this.txtMayorOtorgadoPor.Name = "txtMayorOtorgadoPor";
-            this.txtMayorOtorgadoPor.Size = new System.Drawing.Size(426, 27);
-            this.txtMayorOtorgadoPor.TabIndex = 34;
-            this.txtMayorOtorgadoPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // txtMateriasAdeuda
-            // 
-            this.txtMateriasAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMateriasAdeuda.Location = new System.Drawing.Point(479, 26);
-            this.txtMateriasAdeuda.MaxLength = 2;
-            this.txtMateriasAdeuda.Name = "txtMateriasAdeuda";
-            this.txtMateriasAdeuda.Size = new System.Drawing.Size(195, 27);
-            this.txtMateriasAdeuda.TabIndex = 23;
-            this.txtMateriasAdeuda.Text = "0";
-            this.txtMateriasAdeuda.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
-            this.txtMateriasAdeuda.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
-            // 
-            // lblOtorgadoPorMayor
-            // 
-            this.lblOtorgadoPorMayor.AutoSize = true;
-            this.lblOtorgadoPorMayor.Location = new System.Drawing.Point(17, 420);
-            this.lblOtorgadoPorMayor.Name = "lblOtorgadoPorMayor";
-            this.lblOtorgadoPorMayor.Size = new System.Drawing.Size(105, 19);
-            this.lblOtorgadoPorMayor.TabIndex = 140;
-            this.lblOtorgadoPorMayor.Text = "Otorgado por";
-            // 
-            // lblCuales
-            // 
-            this.lblCuales.AutoSize = true;
-            this.lblCuales.Location = new System.Drawing.Point(17, 60);
-            this.lblCuales.Name = "lblCuales";
-            this.lblCuales.Size = new System.Drawing.Size(71, 19);
-            this.lblCuales.TabIndex = 120;
-            this.lblCuales.Text = "¿Cuáles?";
-            // 
-            // txtOtroTitulo
-            // 
-            this.txtOtroTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtOtroTitulo, 3);
-            this.txtOtroTitulo.Enabled = false;
-            this.txtOtroTitulo.Location = new System.Drawing.Point(479, 386);
-            this.txtOtroTitulo.MaxLength = 50;
-            this.txtOtroTitulo.Name = "txtOtroTitulo";
-            this.txtOtroTitulo.Size = new System.Drawing.Size(426, 27);
-            this.txtOtroTitulo.TabIndex = 33;
-            this.txtOtroTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // lblTituloMayor
-            // 
-            this.lblTituloMayor.AutoSize = true;
-            this.lblTituloMayor.Location = new System.Drawing.Point(479, 360);
-            this.lblTituloMayor.Name = "lblTituloMayor";
-            this.lblTituloMayor.Size = new System.Drawing.Size(56, 19);
-            this.lblTituloMayor.TabIndex = 139;
-            this.lblTituloMayor.Text = "Título:";
-            // 
-            // txtDescripcionMaterias
-            // 
-            this.txtDescripcionMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtDescripcionMaterias, 7);
-            this.txtDescripcionMaterias.Location = new System.Drawing.Point(17, 83);
-            this.txtDescripcionMaterias.MaxLength = 100;
-            this.txtDescripcionMaterias.Multiline = true;
-            this.txtDescripcionMaterias.Name = "txtDescripcionMaterias";
-            this.txtDescripcionMaterias.Size = new System.Drawing.Size(888, 74);
-            this.txtDescripcionMaterias.TabIndex = 24;
-            this.txtDescripcionMaterias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexto_KeyPress);
-            // 
-            // lblCasodeSi
-            // 
-            this.lblCasodeSi.AutoSize = true;
-            this.lblCasodeSi.Location = new System.Drawing.Point(17, 160);
-            this.lblCasodeSi.Name = "lblCasodeSi";
-            this.lblCasodeSi.Size = new System.Drawing.Size(111, 19);
-            this.lblCasodeSi.TabIndex = 114;
-            this.lblCasodeSi.Text = "En caso de SI:";
-            // 
-            // lblTitu
-            // 
-            this.lblTitu.AutoSize = true;
-            this.lblTitu.Location = new System.Drawing.Point(17, 180);
-            this.lblTitu.Name = "lblTitu";
-            this.lblTitu.Size = new System.Drawing.Size(56, 19);
-            this.lblTitu.TabIndex = 122;
-            this.lblTitu.Text = "Título:";
-            // 
-            // txtTitulo
-            // 
-            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtTitulo, 3);
-            this.txtTitulo.Enabled = false;
-            this.txtTitulo.Location = new System.Drawing.Point(17, 206);
-            this.txtTitulo.MaxLength = 50;
-            this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(426, 27);
-            this.txtTitulo.TabIndex = 25;
-            this.txtTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // lblOrientacion
-            // 
-            this.lblOrientacion.AutoSize = true;
-            this.lblOrientacion.Location = new System.Drawing.Point(479, 180);
-            this.lblOrientacion.Name = "lblOrientacion";
-            this.lblOrientacion.Size = new System.Drawing.Size(90, 19);
-            this.lblOrientacion.TabIndex = 123;
-            this.lblOrientacion.Text = "Orientación";
-            // 
-            // txtOrientacion
-            // 
-            this.txtOrientacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtOrientacion, 3);
-            this.txtOrientacion.Enabled = false;
-            this.txtOrientacion.Location = new System.Drawing.Point(479, 206);
-            this.txtOrientacion.MaxLength = 15;
-            this.txtOrientacion.Name = "txtOrientacion";
-            this.txtOrientacion.Size = new System.Drawing.Size(426, 27);
-            this.txtOrientacion.TabIndex = 26;
-            this.txtOrientacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // txtAnioEgreso
-            // 
-            this.txtAnioEgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAnioEgreso.Enabled = false;
-            this.txtAnioEgreso.Location = new System.Drawing.Point(17, 326);
-            this.txtAnioEgreso.MaxLength = 4;
-            this.txtAnioEgreso.Name = "txtAnioEgreso";
-            this.txtAnioEgreso.Size = new System.Drawing.Size(195, 27);
-            this.txtAnioEgreso.TabIndex = 29;
-            this.txtAnioEgreso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // txtPromedio
-            // 
-            this.txtPromedio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPromedio.Enabled = false;
-            this.txtPromedio.Location = new System.Drawing.Point(479, 266);
-            this.txtPromedio.MaxLength = 4;
-            this.txtPromedio.Name = "txtPromedio";
-            this.txtPromedio.Size = new System.Drawing.Size(195, 27);
-            this.txtPromedio.TabIndex = 28;
-            this.txtPromedio.Text = "0";
-            this.txtPromedio.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
-            this.txtPromedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtPromedio.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
-            // 
-            // lblAnioEgreso
-            // 
-            this.lblAnioEgreso.AutoSize = true;
-            this.lblAnioEgreso.Location = new System.Drawing.Point(17, 300);
-            this.lblAnioEgreso.Name = "lblAnioEgreso";
-            this.lblAnioEgreso.Size = new System.Drawing.Size(91, 19);
-            this.lblAnioEgreso.TabIndex = 127;
-            this.lblAnioEgreso.Text = "Año Egreso";
-            // 
-            // lblOtorgadoPor
-            // 
-            this.lblOtorgadoPor.AutoSize = true;
-            this.lblOtorgadoPor.Location = new System.Drawing.Point(17, 240);
-            this.lblOtorgadoPor.Name = "lblOtorgadoPor";
-            this.lblOtorgadoPor.Size = new System.Drawing.Size(105, 19);
-            this.lblOtorgadoPor.TabIndex = 125;
-            this.lblOtorgadoPor.Text = "Otorgado por";
-            // 
-            // lblPromedio
-            // 
-            this.lblPromedio.AutoSize = true;
-            this.lblPromedio.Location = new System.Drawing.Point(479, 240);
-            this.lblPromedio.Name = "lblPromedio";
-            this.lblPromedio.Size = new System.Drawing.Size(77, 19);
-            this.lblPromedio.TabIndex = 129;
-            this.lblPromedio.Text = "Promedio";
-            // 
-            // txtOtorgadoPor
-            // 
-            this.txtOtorgadoPor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtOtorgadoPor, 3);
-            this.txtOtorgadoPor.Enabled = false;
-            this.txtOtorgadoPor.Location = new System.Drawing.Point(17, 266);
-            this.txtOtorgadoPor.MaxLength = 15;
-            this.txtOtorgadoPor.Name = "txtOtorgadoPor";
-            this.txtOtorgadoPor.Size = new System.Drawing.Size(426, 27);
-            this.txtOtorgadoPor.TabIndex = 37;
-            this.txtOtorgadoPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
-            // 
-            // lblTituloTramite
-            // 
-            this.lblTituloTramite.AutoSize = true;
-            this.lblTituloTramite.Location = new System.Drawing.Point(479, 300);
-            this.lblTituloTramite.Name = "lblTituloTramite";
-            this.lblTituloTramite.Size = new System.Drawing.Size(132, 19);
-            this.lblTituloTramite.TabIndex = 131;
-            this.lblTituloTramite.Text = "Título en Trámite";
-            // 
-            // pnlSiNoTT
-            // 
-            this.pnlSiNoTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.pnlSiNoTT, 3);
-            this.pnlSiNoTT.Controls.Add(this.rdbTituloTramiteSi);
-            this.pnlSiNoTT.Controls.Add(this.rdbTituloTramiteNo);
-            this.pnlSiNoTT.Location = new System.Drawing.Point(479, 323);
-            this.pnlSiNoTT.Name = "pnlSiNoTT";
-            this.pnlSiNoTT.Size = new System.Drawing.Size(426, 33);
-            this.pnlSiNoTT.TabIndex = 9;
-            // 
-            // rdbTituloTramiteSi
-            // 
-            this.rdbTituloTramiteSi.AutoSize = true;
-            this.rdbTituloTramiteSi.Enabled = false;
-            this.rdbTituloTramiteSi.Location = new System.Drawing.Point(5, 5);
-            this.rdbTituloTramiteSi.Name = "rdbTituloTramiteSi";
-            this.rdbTituloTramiteSi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdbTituloTramiteSi.Size = new System.Drawing.Size(40, 23);
-            this.rdbTituloTramiteSi.TabIndex = 30;
-            this.rdbTituloTramiteSi.Tag = "TituloTramite";
-            this.rdbTituloTramiteSi.Text = "Sí";
-            this.rdbTituloTramiteSi.UseVisualStyleBackColor = true;
-            // 
-            // rdbTituloTramiteNo
-            // 
-            this.rdbTituloTramiteNo.AutoSize = true;
-            this.rdbTituloTramiteNo.Checked = true;
-            this.rdbTituloTramiteNo.Enabled = false;
-            this.rdbTituloTramiteNo.Location = new System.Drawing.Point(86, 4);
-            this.rdbTituloTramiteNo.Name = "rdbTituloTramiteNo";
-            this.rdbTituloTramiteNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdbTituloTramiteNo.Size = new System.Drawing.Size(47, 23);
-            this.rdbTituloTramiteNo.TabIndex = 31;
-            this.rdbTituloTramiteNo.TabStop = true;
-            this.rdbTituloTramiteNo.Tag = "TituloTramite";
-            this.rdbTituloTramiteNo.Text = "No";
-            this.rdbTituloTramiteNo.UseVisualStyleBackColor = true;
-            // 
-            // lblMayorTitulo
-            // 
-            this.lblMayorTitulo.AutoSize = true;
-            this.lblMayorTitulo.Location = new System.Drawing.Point(17, 360);
-            this.lblMayorTitulo.Name = "lblMayorTitulo";
-            this.lblMayorTitulo.Size = new System.Drawing.Size(160, 19);
-            this.lblMayorTitulo.TabIndex = 134;
-            this.lblMayorTitulo.Text = "Mayor título obtenido";
-            // 
-            // cmbMayorTitulo
-            // 
-            this.cmbMayorTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbMayorTitulo.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel3.SetColumnSpan(this.cmbMayorTitulo, 3);
-            this.cmbMayorTitulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMayorTitulo.Enabled = false;
-            this.cmbMayorTitulo.FormattingEnabled = true;
-            this.cmbMayorTitulo.Items.AddRange(new object[] {
-            "Ninguno",
-            "Terciario",
-            "Universitario",
-            "Postgrado"});
-            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
-            this.cmbMayorTitulo.Name = "cmbMayorTitulo";
-            this.cmbMayorTitulo.Size = new System.Drawing.Size(426, 27);
-            this.cmbMayorTitulo.TabIndex = 32;
-            this.cmbMayorTitulo.SelectionChangeCommitted += new System.EventHandler(this.cmbMayorTitulo_SelectionChangeCommitted);
-            this.cmbMayorTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
-            // 
-            // epvAlumnos
-            // 
-            this.epvAlumnos.ContainerControl = this;
-            this.epvAlumnos.Icon = ((System.Drawing.Icon)(resources.GetObject("epvAlumnos.Icon")));
-            // 
-            // grbDocumentosEntregar
-            // 
-            this.grbDocumentosEntregar.Controls.Add(this.tableLayoutPanel4);
-            this.grbDocumentosEntregar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbDocumentosEntregar.Location = new System.Drawing.Point(20, 1266);
-            this.grbDocumentosEntregar.Name = "grbDocumentosEntregar";
-            this.grbDocumentosEntregar.Size = new System.Drawing.Size(944, 354);
-            this.grbDocumentosEntregar.TabIndex = 4;
-            this.grbDocumentosEntregar.TabStop = false;
-            this.grbDocumentosEntregar.Text = "Documentos a entregar:";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel4.Controls.Add(this.lblEnunciado, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.txtMonto, 3, 8);
-            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaTitulo, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.txtRecibo, 1, 8);
-            this.tableLayoutPanel4.Controls.Add(this.lblMonto, 3, 7);
-            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaDocumento, 3, 1);
-            this.tableLayoutPanel4.Controls.Add(this.chkConstanciaTituloTramite, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.lblRecibo, 1, 7);
-            this.tableLayoutPanel4.Controls.Add(this.chkFotoCarnet, 3, 2);
-            this.tableLayoutPanel4.Controls.Add(this.chkVacunaAntitetanica, 3, 6);
-            this.tableLayoutPanel4.Controls.Add(this.chkConstanciaAdeudaMaterias, 1, 3);
-            this.tableLayoutPanel4.Controls.Add(this.chkCertificadoAptitud, 1, 6);
-            this.tableLayoutPanel4.Controls.Add(this.chkVacunaAntihepatitis, 3, 5);
-            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaPartidaNacimiento, 3, 3);
-            this.tableLayoutPanel4.Controls.Add(this.txtCantidadAdeudaMaterias, 1, 5);
-            this.tableLayoutPanel4.Controls.Add(this.lblConstAdeuda, 1, 4);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 23);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 10;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(938, 328);
-            this.tableLayoutPanel4.TabIndex = 160;
-            // 
-            // lblEnunciado
-            // 
-            this.lblEnunciado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEnunciado.AutoSize = true;
-            this.tableLayoutPanel4.SetColumnSpan(this.lblEnunciado, 3);
-            this.lblEnunciado.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnunciado.Location = new System.Drawing.Point(17, 10);
-            this.lblEnunciado.Name = "lblEnunciado";
-            this.lblEnunciado.Size = new System.Drawing.Size(890, 19);
-            this.lblEnunciado.TabIndex = 144;
-            this.lblEnunciado.Text = "Se deja constancia de haber recibido del alumno la siguiente documentación:";
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMonto.Location = new System.Drawing.Point(480, 283);
-            this.txtMonto.MaxLength = 6;
-            this.txtMonto.Multiline = true;
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(427, 34);
-            this.txtMonto.TabIndex = 47;
-            this.txtMonto.Text = "0";
-            this.txtMonto.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
-            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtMonto.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
-            // 
-            // chkFotocopiaTitulo
-            // 
-            this.chkFotocopiaTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFotocopiaTitulo.AutoSize = true;
-            this.chkFotocopiaTitulo.Location = new System.Drawing.Point(17, 48);
-            this.chkFotocopiaTitulo.Name = "chkFotocopiaTitulo";
-            this.chkFotocopiaTitulo.Size = new System.Drawing.Size(427, 23);
-            this.chkFotocopiaTitulo.TabIndex = 36;
-            this.chkFotocopiaTitulo.Text = "Fotocopia del Título Secundario";
-            this.chkFotocopiaTitulo.UseVisualStyleBackColor = true;
-            // 
-            // txtRecibo
-            // 
-            this.txtRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRecibo.Location = new System.Drawing.Point(17, 283);
-            this.txtRecibo.MaxLength = 10;
-            this.txtRecibo.Multiline = true;
-            this.txtRecibo.Name = "txtRecibo";
-            this.txtRecibo.Size = new System.Drawing.Size(427, 34);
-            this.txtRecibo.TabIndex = 46;
-            this.txtRecibo.Text = "0";
-            this.txtRecibo.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
-            this.txtRecibo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtRecibo.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
-            // 
-            // lblMonto
-            // 
-            this.lblMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(480, 260);
-            this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(427, 19);
-            this.lblMonto.TabIndex = 159;
-            this.lblMonto.Text = "Monto";
-            // 
-            // chkFotocopiaDocumento
-            // 
-            this.chkFotocopiaDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFotocopiaDocumento.AutoSize = true;
-            this.chkFotocopiaDocumento.Location = new System.Drawing.Point(480, 48);
-            this.chkFotocopiaDocumento.Name = "chkFotocopiaDocumento";
-            this.chkFotocopiaDocumento.Size = new System.Drawing.Size(427, 23);
-            this.chkFotocopiaDocumento.TabIndex = 37;
-            this.chkFotocopiaDocumento.Text = "Fotocopia del Documento de Identidad";
-            this.chkFotocopiaDocumento.UseVisualStyleBackColor = true;
-            // 
-            // chkConstanciaTituloTramite
-            // 
-            this.chkConstanciaTituloTramite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkConstanciaTituloTramite.AutoSize = true;
-            this.chkConstanciaTituloTramite.Location = new System.Drawing.Point(17, 88);
-            this.chkConstanciaTituloTramite.Name = "chkConstanciaTituloTramite";
-            this.chkConstanciaTituloTramite.Size = new System.Drawing.Size(427, 23);
-            this.chkConstanciaTituloTramite.TabIndex = 38;
-            this.chkConstanciaTituloTramite.Text = "Constancia de Título en Trámite";
-            this.chkConstanciaTituloTramite.UseVisualStyleBackColor = true;
-            // 
-            // lblRecibo
-            // 
-            this.lblRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRecibo.AutoSize = true;
-            this.lblRecibo.Location = new System.Drawing.Point(17, 260);
-            this.lblRecibo.Name = "lblRecibo";
-            this.lblRecibo.Size = new System.Drawing.Size(427, 19);
-            this.lblRecibo.TabIndex = 157;
-            this.lblRecibo.Text = "Recibo N°";
-            // 
-            // chkFotoCarnet
-            // 
-            this.chkFotoCarnet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFotoCarnet.AutoSize = true;
-            this.chkFotoCarnet.Location = new System.Drawing.Point(480, 88);
-            this.chkFotoCarnet.Name = "chkFotoCarnet";
-            this.chkFotoCarnet.Size = new System.Drawing.Size(427, 23);
-            this.chkFotoCarnet.TabIndex = 39;
-            this.chkFotoCarnet.Text = "Foto Carnet 4 x 4 ";
-            this.chkFotoCarnet.UseVisualStyleBackColor = true;
-            // 
-            // chkVacunaAntitetanica
-            // 
-            this.chkVacunaAntitetanica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkVacunaAntitetanica.AutoSize = true;
-            this.chkVacunaAntitetanica.Location = new System.Drawing.Point(480, 228);
-            this.chkVacunaAntitetanica.Name = "chkVacunaAntitetanica";
-            this.chkVacunaAntitetanica.Size = new System.Drawing.Size(427, 23);
-            this.chkVacunaAntitetanica.TabIndex = 45;
-            this.chkVacunaAntitetanica.Text = "Vacuna Antitetánica";
-            this.chkVacunaAntitetanica.UseVisualStyleBackColor = true;
-            // 
-            // chkConstanciaAdeudaMaterias
-            // 
-            this.chkConstanciaAdeudaMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkConstanciaAdeudaMaterias.AutoSize = true;
-            this.chkConstanciaAdeudaMaterias.Location = new System.Drawing.Point(17, 128);
-            this.chkConstanciaAdeudaMaterias.Name = "chkConstanciaAdeudaMaterias";
-            this.chkConstanciaAdeudaMaterias.Size = new System.Drawing.Size(427, 23);
-            this.chkConstanciaAdeudaMaterias.TabIndex = 40;
-            this.chkConstanciaAdeudaMaterias.Text = "Constancia Adeuda Materias";
-            this.chkConstanciaAdeudaMaterias.UseVisualStyleBackColor = true;
-            this.chkConstanciaAdeudaMaterias.CheckedChanged += new System.EventHandler(this.chkAdeudaMaterias_CheckedChanged);
-            // 
-            // chkCertificadoAptitud
-            // 
-            this.chkCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkCertificadoAptitud.AutoSize = true;
-            this.chkCertificadoAptitud.Location = new System.Drawing.Point(17, 228);
-            this.chkCertificadoAptitud.Name = "chkCertificadoAptitud";
-            this.chkCertificadoAptitud.Size = new System.Drawing.Size(427, 23);
-            this.chkCertificadoAptitud.TabIndex = 44;
-            this.chkCertificadoAptitud.Text = "Certificado de Aptitud Psicofísica";
-            this.chkCertificadoAptitud.UseVisualStyleBackColor = true;
-            // 
-            // chkVacunaAntihepatitis
-            // 
-            this.chkVacunaAntihepatitis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkVacunaAntihepatitis.AutoSize = true;
-            this.chkVacunaAntihepatitis.Location = new System.Drawing.Point(480, 188);
-            this.chkVacunaAntihepatitis.Name = "chkVacunaAntihepatitis";
-            this.chkVacunaAntihepatitis.Size = new System.Drawing.Size(427, 23);
-            this.chkVacunaAntihepatitis.TabIndex = 43;
-            this.chkVacunaAntihepatitis.Text = "Vacuna Antihepatitis B";
-            this.chkVacunaAntihepatitis.UseVisualStyleBackColor = true;
-            // 
-            // chkFotocopiaPartidaNacimiento
-            // 
-            this.chkFotocopiaPartidaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFotocopiaPartidaNacimiento.AutoSize = true;
-            this.chkFotocopiaPartidaNacimiento.Location = new System.Drawing.Point(480, 128);
-            this.chkFotocopiaPartidaNacimiento.Name = "chkFotocopiaPartidaNacimiento";
-            this.chkFotocopiaPartidaNacimiento.Size = new System.Drawing.Size(427, 23);
-            this.chkFotocopiaPartidaNacimiento.TabIndex = 41;
-            this.chkFotocopiaPartidaNacimiento.Text = "Fotocopia de la Partida de Nacimiento";
-            this.chkFotocopiaPartidaNacimiento.UseVisualStyleBackColor = true;
-            // 
-            // txtCantidadAdeudaMaterias
-            // 
-            this.txtCantidadAdeudaMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadAdeudaMaterias.Enabled = false;
-            this.txtCantidadAdeudaMaterias.Location = new System.Drawing.Point(17, 186);
-            this.txtCantidadAdeudaMaterias.MaxLength = 2;
-            this.txtCantidadAdeudaMaterias.Name = "txtCantidadAdeudaMaterias";
-            this.txtCantidadAdeudaMaterias.Size = new System.Drawing.Size(427, 27);
-            this.txtCantidadAdeudaMaterias.TabIndex = 42;
-            this.txtCantidadAdeudaMaterias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // lblConstAdeuda
-            // 
-            this.lblConstAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblConstAdeuda.AutoSize = true;
-            this.lblConstAdeuda.Location = new System.Drawing.Point(17, 160);
-            this.lblConstAdeuda.Name = "lblConstAdeuda";
-            this.lblConstAdeuda.Size = new System.Drawing.Size(427, 19);
-            this.lblConstAdeuda.TabIndex = 150;
-            this.lblConstAdeuda.Text = "Cuantas?";
             // 
             // grbFichaSalud
             // 
@@ -1331,7 +215,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.Controls.Add(this.lblPoseeObraSocial, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pnlEstadoDiscapacidad, 1, 8);
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoOS, 3, 0);
@@ -1820,6 +704,1207 @@
             this.txtTelefonoContacto.TabIndex = 174;
             this.txtTelefonoContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             // 
+            // grbDocumentosEntregar
+            // 
+            this.grbDocumentosEntregar.Controls.Add(this.tableLayoutPanel4);
+            this.grbDocumentosEntregar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbDocumentosEntregar.Location = new System.Drawing.Point(20, 1266);
+            this.grbDocumentosEntregar.Name = "grbDocumentosEntregar";
+            this.grbDocumentosEntregar.Size = new System.Drawing.Size(944, 354);
+            this.grbDocumentosEntregar.TabIndex = 4;
+            this.grbDocumentosEntregar.TabStop = false;
+            this.grbDocumentosEntregar.Text = "Documentos a entregar:";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel4.Controls.Add(this.lblEnunciado, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txtMonto, 3, 8);
+            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaTitulo, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.txtRecibo, 1, 8);
+            this.tableLayoutPanel4.Controls.Add(this.lblMonto, 3, 7);
+            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaDocumento, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.chkConstanciaTituloTramite, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.lblRecibo, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.chkFotoCarnet, 3, 2);
+            this.tableLayoutPanel4.Controls.Add(this.chkVacunaAntitetanica, 3, 6);
+            this.tableLayoutPanel4.Controls.Add(this.chkConstanciaAdeudaMaterias, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.chkCertificadoAptitud, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.chkVacunaAntihepatitis, 3, 5);
+            this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaPartidaNacimiento, 3, 3);
+            this.tableLayoutPanel4.Controls.Add(this.txtCantidadAdeudaMaterias, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.lblConstAdeuda, 1, 4);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 10;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(938, 328);
+            this.tableLayoutPanel4.TabIndex = 160;
+            // 
+            // lblEnunciado
+            // 
+            this.lblEnunciado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEnunciado.AutoSize = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.lblEnunciado, 3);
+            this.lblEnunciado.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnunciado.Location = new System.Drawing.Point(17, 10);
+            this.lblEnunciado.Name = "lblEnunciado";
+            this.lblEnunciado.Size = new System.Drawing.Size(890, 19);
+            this.lblEnunciado.TabIndex = 144;
+            this.lblEnunciado.Text = "Se deja constancia de haber recibido del alumno la siguiente documentación:";
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMonto.Location = new System.Drawing.Point(480, 283);
+            this.txtMonto.MaxLength = 6;
+            this.txtMonto.Multiline = true;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(427, 34);
+            this.txtMonto.TabIndex = 47;
+            this.txtMonto.Text = "0";
+            this.txtMonto.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtMonto.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
+            // 
+            // chkFotocopiaTitulo
+            // 
+            this.chkFotocopiaTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFotocopiaTitulo.AutoSize = true;
+            this.chkFotocopiaTitulo.Location = new System.Drawing.Point(17, 48);
+            this.chkFotocopiaTitulo.Name = "chkFotocopiaTitulo";
+            this.chkFotocopiaTitulo.Size = new System.Drawing.Size(427, 23);
+            this.chkFotocopiaTitulo.TabIndex = 36;
+            this.chkFotocopiaTitulo.Text = "Fotocopia del Título Secundario";
+            this.chkFotocopiaTitulo.UseVisualStyleBackColor = true;
+            // 
+            // txtRecibo
+            // 
+            this.txtRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRecibo.Location = new System.Drawing.Point(17, 283);
+            this.txtRecibo.MaxLength = 10;
+            this.txtRecibo.Multiline = true;
+            this.txtRecibo.Name = "txtRecibo";
+            this.txtRecibo.Size = new System.Drawing.Size(427, 34);
+            this.txtRecibo.TabIndex = 46;
+            this.txtRecibo.Text = "0";
+            this.txtRecibo.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
+            this.txtRecibo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtRecibo.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
+            // 
+            // lblMonto
+            // 
+            this.lblMonto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(480, 260);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(427, 19);
+            this.lblMonto.TabIndex = 159;
+            this.lblMonto.Text = "Monto";
+            // 
+            // chkFotocopiaDocumento
+            // 
+            this.chkFotocopiaDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFotocopiaDocumento.AutoSize = true;
+            this.chkFotocopiaDocumento.Location = new System.Drawing.Point(480, 48);
+            this.chkFotocopiaDocumento.Name = "chkFotocopiaDocumento";
+            this.chkFotocopiaDocumento.Size = new System.Drawing.Size(427, 23);
+            this.chkFotocopiaDocumento.TabIndex = 37;
+            this.chkFotocopiaDocumento.Text = "Fotocopia del Documento de Identidad";
+            this.chkFotocopiaDocumento.UseVisualStyleBackColor = true;
+            // 
+            // chkConstanciaTituloTramite
+            // 
+            this.chkConstanciaTituloTramite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkConstanciaTituloTramite.AutoSize = true;
+            this.chkConstanciaTituloTramite.Location = new System.Drawing.Point(17, 88);
+            this.chkConstanciaTituloTramite.Name = "chkConstanciaTituloTramite";
+            this.chkConstanciaTituloTramite.Size = new System.Drawing.Size(427, 23);
+            this.chkConstanciaTituloTramite.TabIndex = 38;
+            this.chkConstanciaTituloTramite.Text = "Constancia de Título en Trámite";
+            this.chkConstanciaTituloTramite.UseVisualStyleBackColor = true;
+            // 
+            // lblRecibo
+            // 
+            this.lblRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecibo.AutoSize = true;
+            this.lblRecibo.Location = new System.Drawing.Point(17, 260);
+            this.lblRecibo.Name = "lblRecibo";
+            this.lblRecibo.Size = new System.Drawing.Size(427, 19);
+            this.lblRecibo.TabIndex = 157;
+            this.lblRecibo.Text = "Recibo N°";
+            // 
+            // chkFotoCarnet
+            // 
+            this.chkFotoCarnet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFotoCarnet.AutoSize = true;
+            this.chkFotoCarnet.Location = new System.Drawing.Point(480, 88);
+            this.chkFotoCarnet.Name = "chkFotoCarnet";
+            this.chkFotoCarnet.Size = new System.Drawing.Size(427, 23);
+            this.chkFotoCarnet.TabIndex = 39;
+            this.chkFotoCarnet.Text = "Foto Carnet 4 x 4 ";
+            this.chkFotoCarnet.UseVisualStyleBackColor = true;
+            // 
+            // chkVacunaAntitetanica
+            // 
+            this.chkVacunaAntitetanica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkVacunaAntitetanica.AutoSize = true;
+            this.chkVacunaAntitetanica.Location = new System.Drawing.Point(480, 228);
+            this.chkVacunaAntitetanica.Name = "chkVacunaAntitetanica";
+            this.chkVacunaAntitetanica.Size = new System.Drawing.Size(427, 23);
+            this.chkVacunaAntitetanica.TabIndex = 45;
+            this.chkVacunaAntitetanica.Text = "Vacuna Antitetánica";
+            this.chkVacunaAntitetanica.UseVisualStyleBackColor = true;
+            // 
+            // chkConstanciaAdeudaMaterias
+            // 
+            this.chkConstanciaAdeudaMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkConstanciaAdeudaMaterias.AutoSize = true;
+            this.chkConstanciaAdeudaMaterias.Location = new System.Drawing.Point(17, 128);
+            this.chkConstanciaAdeudaMaterias.Name = "chkConstanciaAdeudaMaterias";
+            this.chkConstanciaAdeudaMaterias.Size = new System.Drawing.Size(427, 23);
+            this.chkConstanciaAdeudaMaterias.TabIndex = 40;
+            this.chkConstanciaAdeudaMaterias.Text = "Constancia Adeuda Materias";
+            this.chkConstanciaAdeudaMaterias.UseVisualStyleBackColor = true;
+            this.chkConstanciaAdeudaMaterias.CheckedChanged += new System.EventHandler(this.chkAdeudaMaterias_CheckedChanged);
+            // 
+            // chkCertificadoAptitud
+            // 
+            this.chkCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkCertificadoAptitud.AutoSize = true;
+            this.chkCertificadoAptitud.Location = new System.Drawing.Point(17, 228);
+            this.chkCertificadoAptitud.Name = "chkCertificadoAptitud";
+            this.chkCertificadoAptitud.Size = new System.Drawing.Size(427, 23);
+            this.chkCertificadoAptitud.TabIndex = 44;
+            this.chkCertificadoAptitud.Text = "Certificado de Aptitud Psicofísica";
+            this.chkCertificadoAptitud.UseVisualStyleBackColor = true;
+            // 
+            // chkVacunaAntihepatitis
+            // 
+            this.chkVacunaAntihepatitis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkVacunaAntihepatitis.AutoSize = true;
+            this.chkVacunaAntihepatitis.Location = new System.Drawing.Point(480, 188);
+            this.chkVacunaAntihepatitis.Name = "chkVacunaAntihepatitis";
+            this.chkVacunaAntihepatitis.Size = new System.Drawing.Size(427, 23);
+            this.chkVacunaAntihepatitis.TabIndex = 43;
+            this.chkVacunaAntihepatitis.Text = "Vacuna Antihepatitis B";
+            this.chkVacunaAntihepatitis.UseVisualStyleBackColor = true;
+            // 
+            // chkFotocopiaPartidaNacimiento
+            // 
+            this.chkFotocopiaPartidaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkFotocopiaPartidaNacimiento.AutoSize = true;
+            this.chkFotocopiaPartidaNacimiento.Location = new System.Drawing.Point(480, 128);
+            this.chkFotocopiaPartidaNacimiento.Name = "chkFotocopiaPartidaNacimiento";
+            this.chkFotocopiaPartidaNacimiento.Size = new System.Drawing.Size(427, 23);
+            this.chkFotocopiaPartidaNacimiento.TabIndex = 41;
+            this.chkFotocopiaPartidaNacimiento.Text = "Fotocopia de la Partida de Nacimiento";
+            this.chkFotocopiaPartidaNacimiento.UseVisualStyleBackColor = true;
+            // 
+            // txtCantidadAdeudaMaterias
+            // 
+            this.txtCantidadAdeudaMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAdeudaMaterias.Enabled = false;
+            this.txtCantidadAdeudaMaterias.Location = new System.Drawing.Point(17, 186);
+            this.txtCantidadAdeudaMaterias.MaxLength = 2;
+            this.txtCantidadAdeudaMaterias.Name = "txtCantidadAdeudaMaterias";
+            this.txtCantidadAdeudaMaterias.Size = new System.Drawing.Size(427, 27);
+            this.txtCantidadAdeudaMaterias.TabIndex = 42;
+            this.txtCantidadAdeudaMaterias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // lblConstAdeuda
+            // 
+            this.lblConstAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblConstAdeuda.AutoSize = true;
+            this.lblConstAdeuda.Location = new System.Drawing.Point(17, 160);
+            this.lblConstAdeuda.Name = "lblConstAdeuda";
+            this.lblConstAdeuda.Size = new System.Drawing.Size(427, 19);
+            this.lblConstAdeuda.TabIndex = 150;
+            this.lblConstAdeuda.Text = "Cuantas?";
+            // 
+            // grbFormacion
+            // 
+            this.grbFormacion.Controls.Add(this.tableLayoutPanel3);
+            this.grbFormacion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbFormacion.Location = new System.Drawing.Point(20, 751);
+            this.grbFormacion.Name = "grbFormacion";
+            this.grbFormacion.Size = new System.Drawing.Size(944, 515);
+            this.grbFormacion.TabIndex = 3;
+            this.grbFormacion.TabStop = false;
+            this.grbFormacion.Text = "Formación:";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 9;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.Controls.Add(this.lblTituloSec, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtMayorPromedio, 5, 14);
+            this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTS, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblPromedioMayor, 5, 13);
+            this.tableLayoutPanel3.Controls.Add(this.lblCuentasAdeuda, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtMayorOtorgadoPor, 1, 14);
+            this.tableLayoutPanel3.Controls.Add(this.txtMateriasAdeuda, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblOtorgadoPorMayor, 1, 13);
+            this.tableLayoutPanel3.Controls.Add(this.lblCuales, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtOtroTitulo, 5, 12);
+            this.tableLayoutPanel3.Controls.Add(this.lblTituloMayor, 5, 11);
+            this.tableLayoutPanel3.Controls.Add(this.txtDescripcionMaterias, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.lblCasodeSi, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.lblTitu, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.txtTitulo, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.lblOrientacion, 5, 5);
+            this.tableLayoutPanel3.Controls.Add(this.txtOrientacion, 5, 6);
+            this.tableLayoutPanel3.Controls.Add(this.txtAnioEgreso, 1, 10);
+            this.tableLayoutPanel3.Controls.Add(this.txtPromedio, 5, 8);
+            this.tableLayoutPanel3.Controls.Add(this.lblAnioEgreso, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.lblOtorgadoPor, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.lblPromedio, 5, 7);
+            this.tableLayoutPanel3.Controls.Add(this.txtOtorgadoPor, 1, 8);
+            this.tableLayoutPanel3.Controls.Add(this.lblTituloTramite, 5, 9);
+            this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTT, 5, 10);
+            this.tableLayoutPanel3.Controls.Add(this.lblMayorTitulo, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.cmbMayorTitulo, 1, 12);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 16;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(938, 489);
+            this.tableLayoutPanel3.TabIndex = 152;
+            // 
+            // lblTituloSec
+            // 
+            this.lblTituloSec.AutoSize = true;
+            this.lblTituloSec.Location = new System.Drawing.Point(17, 0);
+            this.lblTituloSec.Name = "lblTituloSec";
+            this.lblTituloSec.Size = new System.Drawing.Size(133, 19);
+            this.lblTituloSec.TabIndex = 115;
+            this.lblTituloSec.Text = "Título Secundario";
+            // 
+            // txtMayorPromedio
+            // 
+            this.txtMayorPromedio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMayorPromedio.Enabled = false;
+            this.txtMayorPromedio.Location = new System.Drawing.Point(479, 446);
+            this.txtMayorPromedio.MaxLength = 4;
+            this.txtMayorPromedio.Name = "txtMayorPromedio";
+            this.txtMayorPromedio.Size = new System.Drawing.Size(195, 27);
+            this.txtMayorPromedio.TabIndex = 35;
+            this.txtMayorPromedio.Text = "0";
+            this.txtMayorPromedio.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
+            this.txtMayorPromedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtMayorPromedio.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
+            // 
+            // pnlSiNoTS
+            // 
+            this.pnlSiNoTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.pnlSiNoTS, 3);
+            this.pnlSiNoTS.Controls.Add(this.rdbTituloSecundarioSi);
+            this.pnlSiNoTS.Controls.Add(this.rdbTituloSecundarioNo);
+            this.pnlSiNoTS.Location = new System.Drawing.Point(17, 23);
+            this.pnlSiNoTS.Name = "pnlSiNoTS";
+            this.pnlSiNoTS.Size = new System.Drawing.Size(426, 33);
+            this.pnlSiNoTS.TabIndex = 1;
+            // 
+            // rdbTituloSecundarioSi
+            // 
+            this.rdbTituloSecundarioSi.AutoSize = true;
+            this.rdbTituloSecundarioSi.Location = new System.Drawing.Point(44, 3);
+            this.rdbTituloSecundarioSi.Name = "rdbTituloSecundarioSi";
+            this.rdbTituloSecundarioSi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdbTituloSecundarioSi.Size = new System.Drawing.Size(40, 23);
+            this.rdbTituloSecundarioSi.TabIndex = 21;
+            this.rdbTituloSecundarioSi.Tag = "TituloSecundario";
+            this.rdbTituloSecundarioSi.Text = "Sí";
+            this.rdbTituloSecundarioSi.UseVisualStyleBackColor = true;
+            this.rdbTituloSecundarioSi.CheckedChanged += new System.EventHandler(this.rdbSi_CheckedChanged);
+            // 
+            // rdbTituloSecundarioNo
+            // 
+            this.rdbTituloSecundarioNo.AutoSize = true;
+            this.rdbTituloSecundarioNo.Checked = true;
+            this.rdbTituloSecundarioNo.Location = new System.Drawing.Point(121, 4);
+            this.rdbTituloSecundarioNo.Name = "rdbTituloSecundarioNo";
+            this.rdbTituloSecundarioNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdbTituloSecundarioNo.Size = new System.Drawing.Size(47, 23);
+            this.rdbTituloSecundarioNo.TabIndex = 21;
+            this.rdbTituloSecundarioNo.TabStop = true;
+            this.rdbTituloSecundarioNo.Tag = "TituloSecundario";
+            this.rdbTituloSecundarioNo.Text = "No";
+            this.rdbTituloSecundarioNo.UseVisualStyleBackColor = true;
+            // 
+            // lblPromedioMayor
+            // 
+            this.lblPromedioMayor.AutoSize = true;
+            this.lblPromedioMayor.Location = new System.Drawing.Point(479, 420);
+            this.lblPromedioMayor.Name = "lblPromedioMayor";
+            this.lblPromedioMayor.Size = new System.Drawing.Size(77, 19);
+            this.lblPromedioMayor.TabIndex = 142;
+            this.lblPromedioMayor.Text = "Promedio";
+            // 
+            // lblCuentasAdeuda
+            // 
+            this.lblCuentasAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCuentasAdeuda.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.lblCuentasAdeuda, 3);
+            this.lblCuentasAdeuda.Location = new System.Drawing.Point(479, 0);
+            this.lblCuentasAdeuda.Name = "lblCuentasAdeuda";
+            this.lblCuentasAdeuda.Size = new System.Drawing.Size(426, 19);
+            this.lblCuentasAdeuda.TabIndex = 118;
+            this.lblCuentasAdeuda.Text = "En caso de NO ¿Cuántas materias adeuda?";
+            // 
+            // txtMayorOtorgadoPor
+            // 
+            this.txtMayorOtorgadoPor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtMayorOtorgadoPor, 3);
+            this.txtMayorOtorgadoPor.Enabled = false;
+            this.txtMayorOtorgadoPor.Location = new System.Drawing.Point(17, 446);
+            this.txtMayorOtorgadoPor.MaxLength = 15;
+            this.txtMayorOtorgadoPor.Name = "txtMayorOtorgadoPor";
+            this.txtMayorOtorgadoPor.Size = new System.Drawing.Size(426, 27);
+            this.txtMayorOtorgadoPor.TabIndex = 34;
+            this.txtMayorOtorgadoPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // txtMateriasAdeuda
+            // 
+            this.txtMateriasAdeuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMateriasAdeuda.Location = new System.Drawing.Point(479, 26);
+            this.txtMateriasAdeuda.MaxLength = 2;
+            this.txtMateriasAdeuda.Name = "txtMateriasAdeuda";
+            this.txtMateriasAdeuda.Size = new System.Drawing.Size(195, 27);
+            this.txtMateriasAdeuda.TabIndex = 23;
+            this.txtMateriasAdeuda.Text = "0";
+            this.txtMateriasAdeuda.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
+            this.txtMateriasAdeuda.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
+            // 
+            // lblOtorgadoPorMayor
+            // 
+            this.lblOtorgadoPorMayor.AutoSize = true;
+            this.lblOtorgadoPorMayor.Location = new System.Drawing.Point(17, 420);
+            this.lblOtorgadoPorMayor.Name = "lblOtorgadoPorMayor";
+            this.lblOtorgadoPorMayor.Size = new System.Drawing.Size(105, 19);
+            this.lblOtorgadoPorMayor.TabIndex = 140;
+            this.lblOtorgadoPorMayor.Text = "Otorgado por";
+            // 
+            // lblCuales
+            // 
+            this.lblCuales.AutoSize = true;
+            this.lblCuales.Location = new System.Drawing.Point(17, 60);
+            this.lblCuales.Name = "lblCuales";
+            this.lblCuales.Size = new System.Drawing.Size(71, 19);
+            this.lblCuales.TabIndex = 120;
+            this.lblCuales.Text = "¿Cuáles?";
+            // 
+            // txtOtroTitulo
+            // 
+            this.txtOtroTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtOtroTitulo, 3);
+            this.txtOtroTitulo.Enabled = false;
+            this.txtOtroTitulo.Location = new System.Drawing.Point(479, 386);
+            this.txtOtroTitulo.MaxLength = 50;
+            this.txtOtroTitulo.Name = "txtOtroTitulo";
+            this.txtOtroTitulo.Size = new System.Drawing.Size(426, 27);
+            this.txtOtroTitulo.TabIndex = 33;
+            this.txtOtroTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // lblTituloMayor
+            // 
+            this.lblTituloMayor.AutoSize = true;
+            this.lblTituloMayor.Location = new System.Drawing.Point(479, 360);
+            this.lblTituloMayor.Name = "lblTituloMayor";
+            this.lblTituloMayor.Size = new System.Drawing.Size(56, 19);
+            this.lblTituloMayor.TabIndex = 139;
+            this.lblTituloMayor.Text = "Título:";
+            // 
+            // txtDescripcionMaterias
+            // 
+            this.txtDescripcionMaterias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtDescripcionMaterias, 7);
+            this.txtDescripcionMaterias.Location = new System.Drawing.Point(17, 83);
+            this.txtDescripcionMaterias.MaxLength = 100;
+            this.txtDescripcionMaterias.Multiline = true;
+            this.txtDescripcionMaterias.Name = "txtDescripcionMaterias";
+            this.txtDescripcionMaterias.Size = new System.Drawing.Size(888, 74);
+            this.txtDescripcionMaterias.TabIndex = 24;
+            this.txtDescripcionMaterias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTexto_KeyPress);
+            // 
+            // lblCasodeSi
+            // 
+            this.lblCasodeSi.AutoSize = true;
+            this.lblCasodeSi.Location = new System.Drawing.Point(17, 160);
+            this.lblCasodeSi.Name = "lblCasodeSi";
+            this.lblCasodeSi.Size = new System.Drawing.Size(111, 19);
+            this.lblCasodeSi.TabIndex = 114;
+            this.lblCasodeSi.Text = "En caso de SI:";
+            // 
+            // lblTitu
+            // 
+            this.lblTitu.AutoSize = true;
+            this.lblTitu.Location = new System.Drawing.Point(17, 180);
+            this.lblTitu.Name = "lblTitu";
+            this.lblTitu.Size = new System.Drawing.Size(56, 19);
+            this.lblTitu.TabIndex = 122;
+            this.lblTitu.Text = "Título:";
+            // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtTitulo, 3);
+            this.txtTitulo.Enabled = false;
+            this.txtTitulo.Location = new System.Drawing.Point(17, 206);
+            this.txtTitulo.MaxLength = 50;
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(426, 27);
+            this.txtTitulo.TabIndex = 25;
+            this.txtTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // lblOrientacion
+            // 
+            this.lblOrientacion.AutoSize = true;
+            this.lblOrientacion.Location = new System.Drawing.Point(479, 180);
+            this.lblOrientacion.Name = "lblOrientacion";
+            this.lblOrientacion.Size = new System.Drawing.Size(90, 19);
+            this.lblOrientacion.TabIndex = 123;
+            this.lblOrientacion.Text = "Orientación";
+            // 
+            // txtOrientacion
+            // 
+            this.txtOrientacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtOrientacion, 3);
+            this.txtOrientacion.Enabled = false;
+            this.txtOrientacion.Location = new System.Drawing.Point(479, 206);
+            this.txtOrientacion.MaxLength = 15;
+            this.txtOrientacion.Name = "txtOrientacion";
+            this.txtOrientacion.Size = new System.Drawing.Size(426, 27);
+            this.txtOrientacion.TabIndex = 26;
+            this.txtOrientacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // txtAnioEgreso
+            // 
+            this.txtAnioEgreso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAnioEgreso.Enabled = false;
+            this.txtAnioEgreso.Location = new System.Drawing.Point(17, 326);
+            this.txtAnioEgreso.MaxLength = 4;
+            this.txtAnioEgreso.Name = "txtAnioEgreso";
+            this.txtAnioEgreso.Size = new System.Drawing.Size(195, 27);
+            this.txtAnioEgreso.TabIndex = 29;
+            this.txtAnioEgreso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // txtPromedio
+            // 
+            this.txtPromedio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPromedio.Enabled = false;
+            this.txtPromedio.Location = new System.Drawing.Point(479, 266);
+            this.txtPromedio.MaxLength = 4;
+            this.txtPromedio.Name = "txtPromedio";
+            this.txtPromedio.Size = new System.Drawing.Size(195, 27);
+            this.txtPromedio.TabIndex = 28;
+            this.txtPromedio.Text = "0";
+            this.txtPromedio.Enter += new System.EventHandler(this.TxtQuitarCeros_Enter);
+            this.txtPromedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtPromedio.Leave += new System.EventHandler(this.txtQuitarCeros_Leave);
+            // 
+            // lblAnioEgreso
+            // 
+            this.lblAnioEgreso.AutoSize = true;
+            this.lblAnioEgreso.Location = new System.Drawing.Point(17, 300);
+            this.lblAnioEgreso.Name = "lblAnioEgreso";
+            this.lblAnioEgreso.Size = new System.Drawing.Size(91, 19);
+            this.lblAnioEgreso.TabIndex = 127;
+            this.lblAnioEgreso.Text = "Año Egreso";
+            // 
+            // lblOtorgadoPor
+            // 
+            this.lblOtorgadoPor.AutoSize = true;
+            this.lblOtorgadoPor.Location = new System.Drawing.Point(17, 240);
+            this.lblOtorgadoPor.Name = "lblOtorgadoPor";
+            this.lblOtorgadoPor.Size = new System.Drawing.Size(105, 19);
+            this.lblOtorgadoPor.TabIndex = 125;
+            this.lblOtorgadoPor.Text = "Otorgado por";
+            // 
+            // lblPromedio
+            // 
+            this.lblPromedio.AutoSize = true;
+            this.lblPromedio.Location = new System.Drawing.Point(479, 240);
+            this.lblPromedio.Name = "lblPromedio";
+            this.lblPromedio.Size = new System.Drawing.Size(77, 19);
+            this.lblPromedio.TabIndex = 129;
+            this.lblPromedio.Text = "Promedio";
+            // 
+            // txtOtorgadoPor
+            // 
+            this.txtOtorgadoPor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtOtorgadoPor, 3);
+            this.txtOtorgadoPor.Enabled = false;
+            this.txtOtorgadoPor.Location = new System.Drawing.Point(17, 266);
+            this.txtOtorgadoPor.MaxLength = 15;
+            this.txtOtorgadoPor.Name = "txtOtorgadoPor";
+            this.txtOtorgadoPor.Size = new System.Drawing.Size(426, 27);
+            this.txtOtorgadoPor.TabIndex = 37;
+            this.txtOtorgadoPor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // lblTituloTramite
+            // 
+            this.lblTituloTramite.AutoSize = true;
+            this.lblTituloTramite.Location = new System.Drawing.Point(479, 300);
+            this.lblTituloTramite.Name = "lblTituloTramite";
+            this.lblTituloTramite.Size = new System.Drawing.Size(132, 19);
+            this.lblTituloTramite.TabIndex = 131;
+            this.lblTituloTramite.Text = "Título en Trámite";
+            // 
+            // pnlSiNoTT
+            // 
+            this.pnlSiNoTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.pnlSiNoTT, 3);
+            this.pnlSiNoTT.Controls.Add(this.rdbTituloTramiteSi);
+            this.pnlSiNoTT.Controls.Add(this.rdbTituloTramiteNo);
+            this.pnlSiNoTT.Location = new System.Drawing.Point(479, 323);
+            this.pnlSiNoTT.Name = "pnlSiNoTT";
+            this.pnlSiNoTT.Size = new System.Drawing.Size(426, 33);
+            this.pnlSiNoTT.TabIndex = 9;
+            // 
+            // rdbTituloTramiteSi
+            // 
+            this.rdbTituloTramiteSi.AutoSize = true;
+            this.rdbTituloTramiteSi.Enabled = false;
+            this.rdbTituloTramiteSi.Location = new System.Drawing.Point(5, 5);
+            this.rdbTituloTramiteSi.Name = "rdbTituloTramiteSi";
+            this.rdbTituloTramiteSi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdbTituloTramiteSi.Size = new System.Drawing.Size(40, 23);
+            this.rdbTituloTramiteSi.TabIndex = 30;
+            this.rdbTituloTramiteSi.Tag = "TituloTramite";
+            this.rdbTituloTramiteSi.Text = "Sí";
+            this.rdbTituloTramiteSi.UseVisualStyleBackColor = true;
+            // 
+            // rdbTituloTramiteNo
+            // 
+            this.rdbTituloTramiteNo.AutoSize = true;
+            this.rdbTituloTramiteNo.Checked = true;
+            this.rdbTituloTramiteNo.Enabled = false;
+            this.rdbTituloTramiteNo.Location = new System.Drawing.Point(86, 4);
+            this.rdbTituloTramiteNo.Name = "rdbTituloTramiteNo";
+            this.rdbTituloTramiteNo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdbTituloTramiteNo.Size = new System.Drawing.Size(47, 23);
+            this.rdbTituloTramiteNo.TabIndex = 31;
+            this.rdbTituloTramiteNo.TabStop = true;
+            this.rdbTituloTramiteNo.Tag = "TituloTramite";
+            this.rdbTituloTramiteNo.Text = "No";
+            this.rdbTituloTramiteNo.UseVisualStyleBackColor = true;
+            // 
+            // lblMayorTitulo
+            // 
+            this.lblMayorTitulo.AutoSize = true;
+            this.lblMayorTitulo.Location = new System.Drawing.Point(17, 360);
+            this.lblMayorTitulo.Name = "lblMayorTitulo";
+            this.lblMayorTitulo.Size = new System.Drawing.Size(160, 19);
+            this.lblMayorTitulo.TabIndex = 134;
+            this.lblMayorTitulo.Text = "Mayor título obtenido";
+            // 
+            // cmbMayorTitulo
+            // 
+            this.cmbMayorTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbMayorTitulo.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel3.SetColumnSpan(this.cmbMayorTitulo, 3);
+            this.cmbMayorTitulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMayorTitulo.Enabled = false;
+            this.cmbMayorTitulo.FormattingEnabled = true;
+            this.cmbMayorTitulo.Items.AddRange(new object[] {
+            "Ninguno",
+            "Terciario",
+            "Universitario",
+            "Postgrado"});
+            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
+            this.cmbMayorTitulo.Name = "cmbMayorTitulo";
+            this.cmbMayorTitulo.Size = new System.Drawing.Size(426, 27);
+            this.cmbMayorTitulo.TabIndex = 32;
+            this.cmbMayorTitulo.SelectionChangeCommitted += new System.EventHandler(this.cmbMayorTitulo_SelectionChangeCommitted);
+            this.cmbMayorTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // grbDireccion
+            // 
+            this.grbDireccion.Controls.Add(this.tableLayoutPanel6);
+            this.grbDireccion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbDireccion.Location = new System.Drawing.Point(20, 422);
+            this.grbDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.grbDireccion.Name = "grbDireccion";
+            this.grbDireccion.Padding = new System.Windows.Forms.Padding(2);
+            this.grbDireccion.Size = new System.Drawing.Size(944, 329);
+            this.grbDireccion.TabIndex = 6;
+            this.grbDireccion.TabStop = false;
+            this.grbDireccion.Text = "Dirección";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 9;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel6.Controls.Add(this.lblCalle, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtEmail, 5, 7);
+            this.tableLayoutPanel6.Controls.Add(this.lblCelular, 5, 8);
+            this.tableLayoutPanel6.Controls.Add(this.txtCalle, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.lblEmail, 5, 6);
+            this.tableLayoutPanel6.Controls.Add(this.lblTelefono, 1, 8);
+            this.tableLayoutPanel6.Controls.Add(this.lblLocalidad, 1, 4);
+            this.tableLayoutPanel6.Controls.Add(this.txtProvincia, 5, 5);
+            this.tableLayoutPanel6.Controls.Add(this.txtLocalidad, 1, 5);
+            this.tableLayoutPanel6.Controls.Add(this.lblDistrito, 5, 2);
+            this.tableLayoutPanel6.Controls.Add(this.lblCodPostal, 1, 6);
+            this.tableLayoutPanel6.Controls.Add(this.lblProvincia, 5, 4);
+            this.tableLayoutPanel6.Controls.Add(this.txtDistrito, 5, 3);
+            this.tableLayoutPanel6.Controls.Add(this.txtCodigoPostal, 1, 7);
+            this.tableLayoutPanel6.Controls.Add(this.lblPiso, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.txtPiso, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.lblDepto, 3, 2);
+            this.tableLayoutPanel6.Controls.Add(this.txtDepartamento, 3, 3);
+            this.tableLayoutPanel6.Controls.Add(this.lblNumero, 5, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtNumero, 5, 1);
+            this.tableLayoutPanel6.Controls.Add(this.txtCelular, 5, 9);
+            this.tableLayoutPanel6.Controls.Add(this.txtTelefono, 1, 9);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 22);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 11;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(940, 305);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtEmail, 3);
+            this.txtEmail.Location = new System.Drawing.Point(475, 206);
+            this.txtEmail.MaxLength = 255;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(431, 27);
+            this.txtEmail.TabIndex = 18;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValidarMail_KeyPress);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            // 
+            // txtProvincia
+            // 
+            this.txtProvincia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProvincia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtProvincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel6.SetColumnSpan(this.txtProvincia, 3);
+            this.txtProvincia.Location = new System.Drawing.Point(475, 146);
+            this.txtProvincia.Name = "txtProvincia";
+            this.txtProvincia.Size = new System.Drawing.Size(431, 27);
+            this.txtProvincia.TabIndex = 16;
+            this.txtProvincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // txtDistrito
+            // 
+            this.txtDistrito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtDistrito, 3);
+            this.txtDistrito.Location = new System.Drawing.Point(475, 86);
+            this.txtDistrito.MaxLength = 15;
+            this.txtDistrito.Name = "txtDistrito";
+            this.txtDistrito.Size = new System.Drawing.Size(431, 27);
+            this.txtDistrito.TabIndex = 14;
+            this.txtDistrito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // txtLocalidad
+            // 
+            this.txtLocalidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtLocalidad, 3);
+            this.txtLocalidad.Location = new System.Drawing.Point(17, 146);
+            this.txtLocalidad.MaxLength = 15;
+            this.txtLocalidad.Name = "txtLocalidad";
+            this.txtLocalidad.Size = new System.Drawing.Size(431, 27);
+            this.txtLocalidad.TabIndex = 15;
+            this.txtLocalidad.TextChanged += new System.EventHandler(this.txtLocalidad_TextChanged);
+            this.txtLocalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // txtCalle
+            // 
+            this.txtCalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtCalle, 3);
+            this.txtCalle.Location = new System.Drawing.Point(17, 26);
+            this.txtCalle.MaxLength = 255;
+            this.txtCalle.Name = "txtCalle";
+            this.txtCalle.Size = new System.Drawing.Size(431, 27);
+            this.txtCalle.TabIndex = 10;
+            this.txtCalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // lblCalle
+            // 
+            this.lblCalle.AutoSize = true;
+            this.lblCalle.Location = new System.Drawing.Point(17, 0);
+            this.lblCalle.Name = "lblCalle";
+            this.lblCalle.Size = new System.Drawing.Size(49, 19);
+            this.lblCalle.TabIndex = 96;
+            this.lblCalle.Text = "Calle:";
+            // 
+            // lblCelular
+            // 
+            this.lblCelular.AutoSize = true;
+            this.lblCelular.Location = new System.Drawing.Point(475, 240);
+            this.lblCelular.Name = "lblCelular";
+            this.lblCelular.Size = new System.Drawing.Size(64, 19);
+            this.lblCelular.TabIndex = 114;
+            this.lblCelular.Text = "Celular:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(475, 180);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(60, 19);
+            this.lblEmail.TabIndex = 116;
+            this.lblEmail.Text = "E-mail:";
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Location = new System.Drawing.Point(17, 240);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(77, 19);
+            this.lblTelefono.TabIndex = 112;
+            this.lblTelefono.Text = "Teléfono:";
+            // 
+            // lblLocalidad
+            // 
+            this.lblLocalidad.AutoSize = true;
+            this.lblLocalidad.Location = new System.Drawing.Point(17, 120);
+            this.lblLocalidad.Name = "lblLocalidad";
+            this.lblLocalidad.Size = new System.Drawing.Size(81, 19);
+            this.lblLocalidad.TabIndex = 104;
+            this.lblLocalidad.Text = "Localidad:";
+            // 
+            // lblDistrito
+            // 
+            this.lblDistrito.AutoSize = true;
+            this.lblDistrito.Location = new System.Drawing.Point(475, 60);
+            this.lblDistrito.Name = "lblDistrito";
+            this.lblDistrito.Size = new System.Drawing.Size(66, 19);
+            this.lblDistrito.TabIndex = 106;
+            this.lblDistrito.Text = "Distrito:";
+            // 
+            // lblCodPostal
+            // 
+            this.lblCodPostal.AutoSize = true;
+            this.lblCodPostal.Location = new System.Drawing.Point(17, 180);
+            this.lblCodPostal.Name = "lblCodPostal";
+            this.lblCodPostal.Size = new System.Drawing.Size(112, 19);
+            this.lblCodPostal.TabIndex = 108;
+            this.lblCodPostal.Text = "Codigo Postal:";
+            // 
+            // lblProvincia
+            // 
+            this.lblProvincia.AutoSize = true;
+            this.lblProvincia.Location = new System.Drawing.Point(475, 120);
+            this.lblProvincia.Name = "lblProvincia";
+            this.lblProvincia.Size = new System.Drawing.Size(79, 19);
+            this.lblProvincia.TabIndex = 110;
+            this.lblProvincia.Text = "Provincia:";
+            // 
+            // txtCodigoPostal
+            // 
+            this.txtCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigoPostal.Location = new System.Drawing.Point(17, 206);
+            this.txtCodigoPostal.Name = "txtCodigoPostal";
+            this.txtCodigoPostal.Size = new System.Drawing.Size(202, 27);
+            this.txtCodigoPostal.TabIndex = 17;
+            this.txtCodigoPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // lblPiso
+            // 
+            this.lblPiso.AutoSize = true;
+            this.lblPiso.Location = new System.Drawing.Point(17, 60);
+            this.lblPiso.Name = "lblPiso";
+            this.lblPiso.Size = new System.Drawing.Size(44, 19);
+            this.lblPiso.TabIndex = 100;
+            this.lblPiso.Text = "Piso:";
+            // 
+            // txtPiso
+            // 
+            this.txtPiso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPiso.Location = new System.Drawing.Point(17, 86);
+            this.txtPiso.MaxLength = 2;
+            this.txtPiso.Name = "txtPiso";
+            this.txtPiso.Size = new System.Drawing.Size(202, 27);
+            this.txtPiso.TabIndex = 12;
+            this.txtPiso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // lblDepto
+            // 
+            this.lblDepto.AutoSize = true;
+            this.lblDepto.Location = new System.Drawing.Point(246, 60);
+            this.lblDepto.Name = "lblDepto";
+            this.lblDepto.Size = new System.Drawing.Size(115, 19);
+            this.lblDepto.TabIndex = 102;
+            this.lblDepto.Text = "Departamento:";
+            // 
+            // txtDepartamento
+            // 
+            this.txtDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDepartamento.Location = new System.Drawing.Point(246, 86);
+            this.txtDepartamento.MaxLength = 10;
+            this.txtDepartamento.Name = "txtDepartamento";
+            this.txtDepartamento.Size = new System.Drawing.Size(202, 27);
+            this.txtDepartamento.TabIndex = 13;
+            this.txtDepartamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Location = new System.Drawing.Point(475, 0);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(39, 19);
+            this.lblNumero.TabIndex = 98;
+            this.lblNumero.Text = "N° :";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNumero.Location = new System.Drawing.Point(475, 26);
+            this.txtNumero.MaxLength = 5;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(202, 27);
+            this.txtNumero.TabIndex = 11;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtCelular, 3);
+            this.txtCelular.Location = new System.Drawing.Point(475, 266);
+            this.txtCelular.Mask = "(999) 000-0000";
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(431, 27);
+            this.txtCelular.TabIndex = 20;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtCelular.Leave += new System.EventHandler(this.RecorrerEspacios_Leave);
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.txtTelefono, 3);
+            this.txtTelefono.Location = new System.Drawing.Point(17, 266);
+            this.txtTelefono.Mask = "(0999) 000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(431, 27);
+            this.txtTelefono.TabIndex = 117;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtTelefono.Leave += new System.EventHandler(this.RecorrerEspacios_Leave);
+            // 
+            // grbDatosPersonales
+            // 
+            this.grbDatosPersonales.Controls.Add(this.tableLayoutPanel2);
+            this.grbDatosPersonales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbDatosPersonales.Location = new System.Drawing.Point(20, 94);
+            this.grbDatosPersonales.Name = "grbDatosPersonales";
+            this.grbDatosPersonales.Size = new System.Drawing.Size(944, 328);
+            this.grbDatosPersonales.TabIndex = 2;
+            this.grbDatosPersonales.TabStop = false;
+            this.grbDatosPersonales.Text = "Datos Personales:";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 9;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.lblNombre, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblApellido, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cmbEstadoCivil, 5, 5);
+            this.tableLayoutPanel2.Controls.Add(this.txtApellido, 5, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblTipoDoc, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.cmbTipoDocumento, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lblNumeroDocumento, 5, 2);
+            this.tableLayoutPanel2.Controls.Add(this.txtNumeroDocumento, 5, 3);
+            this.tableLayoutPanel2.Controls.Add(this.lblEstadoCivil, 5, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label12, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.cmbSexo, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.txtLocalidadNacimiento, 5, 7);
+            this.tableLayoutPanel2.Controls.Add(this.lblLocNacimiento, 5, 6);
+            this.tableLayoutPanel2.Controls.Add(this.dtpFechaNacimiento, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.lblFechaNacimiento, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.lblPaisNac, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.txtPaisNacimiento, 1, 7);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 11;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(938, 302);
+            this.tableLayoutPanel2.TabIndex = 119;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(23, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(72, 19);
+            this.lblNombre.TabIndex = 65;
+            this.lblNombre.Text = "Nombre:";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.txtNombre, 3);
+            this.txtNombre.Location = new System.Drawing.Point(23, 26);
+            this.txtNombre.MaxLength = 30;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(422, 27);
+            this.txtNombre.TabIndex = 1;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // lblApellido
+            // 
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Location = new System.Drawing.Point(481, 0);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(73, 19);
+            this.lblApellido.TabIndex = 67;
+            this.lblApellido.Text = "Apellido:";
+            // 
+            // cmbEstadoCivil
+            // 
+            this.cmbEstadoCivil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbEstadoCivil.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.SetColumnSpan(this.cmbEstadoCivil, 3);
+            this.cmbEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoCivil.FormattingEnabled = true;
+            this.cmbEstadoCivil.Items.AddRange(new object[] {
+            "Soltero/a",
+            "Casado/a",
+            "Divorciado/a",
+            "Viudo/a"});
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(481, 146);
+            this.cmbEstadoCivil.Name = "cmbEstadoCivil";
+            this.cmbEstadoCivil.Size = new System.Drawing.Size(422, 27);
+            this.cmbEstadoCivil.TabIndex = 6;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.txtApellido, 3);
+            this.txtApellido.Location = new System.Drawing.Point(481, 26);
+            this.txtApellido.MaxLength = 30;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(422, 27);
+            this.txtApellido.TabIndex = 2;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
+            // lblTipoDoc
+            // 
+            this.lblTipoDoc.AutoSize = true;
+            this.lblTipoDoc.Location = new System.Drawing.Point(23, 60);
+            this.lblTipoDoc.Name = "lblTipoDoc";
+            this.lblTipoDoc.Size = new System.Drawing.Size(155, 19);
+            this.lblTipoDoc.TabIndex = 94;
+            this.lblTipoDoc.Text = "Tipo de Documento:";
+            // 
+            // cmbTipoDocumento
+            // 
+            this.cmbTipoDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTipoDocumento.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.SetColumnSpan(this.cmbTipoDocumento, 3);
+            this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoDocumento.FormattingEnabled = true;
+            this.cmbTipoDocumento.Items.AddRange(new object[] {
+            "DNI",
+            "LE",
+            "LC"});
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
+            this.cmbTipoDocumento.Name = "cmbTipoDocumento";
+            this.cmbTipoDocumento.Size = new System.Drawing.Size(422, 27);
+            this.cmbTipoDocumento.TabIndex = 3;
+            // 
+            // lblNumeroDocumento
+            // 
+            this.lblNumeroDocumento.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.lblNumeroDocumento, 3);
+            this.lblNumeroDocumento.Location = new System.Drawing.Point(481, 60);
+            this.lblNumeroDocumento.Name = "lblNumeroDocumento";
+            this.lblNumeroDocumento.Size = new System.Drawing.Size(180, 19);
+            this.lblNumeroDocumento.TabIndex = 63;
+            this.lblNumeroDocumento.Text = "Número de Documento:";
+            // 
+            // txtNumeroDocumento
+            // 
+            this.txtNumeroDocumento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.txtNumeroDocumento, 3);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(481, 86);
+            this.txtNumeroDocumento.MaxLength = 8;
+            this.txtNumeroDocumento.Name = "txtNumeroDocumento";
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(422, 27);
+            this.txtNumeroDocumento.TabIndex = 4;
+            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
+            this.txtNumeroDocumento.Leave += new System.EventHandler(this.txtNumeroDocumento_Leave);
+            // 
+            // lblEstadoCivil
+            // 
+            this.lblEstadoCivil.AutoSize = true;
+            this.lblEstadoCivil.Location = new System.Drawing.Point(481, 120);
+            this.lblEstadoCivil.Name = "lblEstadoCivil";
+            this.lblEstadoCivil.Size = new System.Drawing.Size(97, 19);
+            this.lblEstadoCivil.TabIndex = 90;
+            this.lblEstadoCivil.Text = "Estado Civil:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 120);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 19);
+            this.label12.TabIndex = 118;
+            this.label12.Text = "Sexo:";
+            // 
+            // cmbSexo
+            // 
+            this.cmbSexo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
+            this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSexo.FormattingEnabled = true;
+            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
+            this.cmbSexo.Name = "cmbSexo";
+            this.cmbSexo.Size = new System.Drawing.Size(422, 27);
+            this.cmbSexo.TabIndex = 5;
+            // 
+            // txtLocalidadNacimiento
+            // 
+            this.txtLocalidadNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLocalidadNacimiento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtLocalidadNacimiento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel2.SetColumnSpan(this.txtLocalidadNacimiento, 3);
+            this.txtLocalidadNacimiento.Location = new System.Drawing.Point(481, 206);
+            this.txtLocalidadNacimiento.MaxLength = 15;
+            this.txtLocalidadNacimiento.Name = "txtLocalidadNacimiento";
+            this.txtLocalidadNacimiento.Size = new System.Drawing.Size(422, 27);
+            this.txtLocalidadNacimiento.TabIndex = 8;
+            this.txtLocalidadNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLetrasYNumerosYEspacio_KeyPress);
+            // 
+            // lblLocNacimiento
+            // 
+            this.lblLocNacimiento.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.lblLocNacimiento, 3);
+            this.lblLocNacimiento.Location = new System.Drawing.Point(481, 180);
+            this.lblLocNacimiento.Name = "lblLocNacimiento";
+            this.lblLocNacimiento.Size = new System.Drawing.Size(187, 19);
+            this.lblLocNacimiento.TabIndex = 86;
+            this.lblLocNacimiento.Text = "Localidad de Nacimiento:";
+            // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.dtpFechaNacimiento, 3);
+            this.dtpFechaNacimiento.CustomFormat = "";
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(23, 266);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(422, 27);
+            this.dtpFechaNacimiento.TabIndex = 9;
+            this.dtpFechaNacimiento.Value = new System.DateTime(2020, 8, 30, 0, 0, 0, 0);
+            // 
+            // lblFechaNacimiento
+            // 
+            this.lblFechaNacimiento.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.lblFechaNacimiento, 3);
+            this.lblFechaNacimiento.Location = new System.Drawing.Point(23, 240);
+            this.lblFechaNacimiento.Name = "lblFechaNacimiento";
+            this.lblFechaNacimiento.Size = new System.Drawing.Size(161, 19);
+            this.lblFechaNacimiento.TabIndex = 69;
+            this.lblFechaNacimiento.Text = "Fecha de Nacimiento:";
+            // 
+            // lblPaisNac
+            // 
+            this.lblPaisNac.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.lblPaisNac, 3);
+            this.lblPaisNac.Location = new System.Drawing.Point(23, 180);
+            this.lblPaisNac.Name = "lblPaisNac";
+            this.lblPaisNac.Size = new System.Drawing.Size(149, 19);
+            this.lblPaisNac.TabIndex = 74;
+            this.lblPaisNac.Text = "Pais de Nacimiento:";
+            // 
+            // txtPaisNacimiento
+            // 
+            this.txtPaisNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPaisNacimiento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtPaisNacimiento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tableLayoutPanel2.SetColumnSpan(this.txtPaisNacimiento, 3);
+            this.txtPaisNacimiento.Location = new System.Drawing.Point(23, 206);
+            this.txtPaisNacimiento.MaxLength = 15;
+            this.txtPaisNacimiento.Name = "txtPaisNacimiento";
+            this.txtPaisNacimiento.Size = new System.Drawing.Size(422, 27);
+            this.txtPaisNacimiento.TabIndex = 7;
+            this.txtPaisNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloLetrasEspacios_KeyPress);
+            // 
             // grbCarrera
             // 
             this.grbCarrera.AutoSize = true;
@@ -1897,95 +1982,10 @@
             this.cmbCarreraId.TabIndex = 0;
             this.cmbCarreraId.SelectionChangeCommitted += new System.EventHandler(this.cmbCarreras_SelectionChangeCommitted);
             // 
-            // grbDireccion
+            // epvAlumnos
             // 
-            this.grbDireccion.Controls.Add(this.tableLayoutPanel6);
-            this.grbDireccion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbDireccion.Location = new System.Drawing.Point(20, 422);
-            this.grbDireccion.Margin = new System.Windows.Forms.Padding(2);
-            this.grbDireccion.Name = "grbDireccion";
-            this.grbDireccion.Padding = new System.Windows.Forms.Padding(2);
-            this.grbDireccion.Size = new System.Drawing.Size(944, 329);
-            this.grbDireccion.TabIndex = 6;
-            this.grbDireccion.TabStop = false;
-            this.grbDireccion.Text = "Dirección";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 9;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.Controls.Add(this.lblCalle, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.txtEmail, 5, 7);
-            this.tableLayoutPanel6.Controls.Add(this.lblCelular, 5, 8);
-            this.tableLayoutPanel6.Controls.Add(this.txtCalle, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.lblEmail, 5, 6);
-            this.tableLayoutPanel6.Controls.Add(this.lblTelefono, 1, 8);
-            this.tableLayoutPanel6.Controls.Add(this.lblLocalidad, 1, 4);
-            this.tableLayoutPanel6.Controls.Add(this.txtProvincia, 5, 5);
-            this.tableLayoutPanel6.Controls.Add(this.txtLocalidad, 1, 5);
-            this.tableLayoutPanel6.Controls.Add(this.lblDistrito, 5, 2);
-            this.tableLayoutPanel6.Controls.Add(this.lblCodPostal, 1, 6);
-            this.tableLayoutPanel6.Controls.Add(this.lblProvincia, 5, 4);
-            this.tableLayoutPanel6.Controls.Add(this.txtDistrito, 5, 3);
-            this.tableLayoutPanel6.Controls.Add(this.txtCodigoPostal, 1, 7);
-            this.tableLayoutPanel6.Controls.Add(this.lblPiso, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.txtPiso, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.lblDepto, 3, 2);
-            this.tableLayoutPanel6.Controls.Add(this.txtDepartamento, 3, 3);
-            this.tableLayoutPanel6.Controls.Add(this.lblNumero, 5, 0);
-            this.tableLayoutPanel6.Controls.Add(this.txtNumero, 5, 1);
-            this.tableLayoutPanel6.Controls.Add(this.txtCelular, 5, 9);
-            this.tableLayoutPanel6.Controls.Add(this.txtTelefono, 1, 9);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 22);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 11;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(940, 305);
-            this.tableLayoutPanel6.TabIndex = 0;
-            // 
-            // txtCelular
-            // 
-            this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtCelular, 3);
-            this.txtCelular.Location = new System.Drawing.Point(475, 266);
-            this.txtCelular.Mask = "(999) 000-0000";
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(431, 27);
-            this.txtCelular.TabIndex = 20;
-            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtCelular.Leave += new System.EventHandler(this.RecorrerEspacios_Leave);
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.txtTelefono, 3);
-            this.txtTelefono.Location = new System.Drawing.Point(17, 266);
-            this.txtTelefono.Mask = "(0999) 000-0000";
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(431, 27);
-            this.txtTelefono.TabIndex = 117;
-            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            this.txtTelefono.Leave += new System.EventHandler(this.RecorrerEspacios_Leave);
+            this.epvAlumnos.ContainerControl = this;
+            this.epvAlumnos.Icon = ((System.Drawing.Icon)(resources.GetObject("epvAlumnos.Icon")));
             // 
             // FormAgregarModificarAlumnos
             // 
@@ -2004,20 +2004,6 @@
             this.Padding = new System.Windows.Forms.Padding(20);
             this.Text = " ";
             this.Load += new System.EventHandler(this.FormAgregarModificarAlumnos_Load);
-            this.grbDatosPersonales.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.grbFormacion.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.pnlSiNoTS.ResumeLayout(false);
-            this.pnlSiNoTS.PerformLayout();
-            this.pnlSiNoTT.ResumeLayout(false);
-            this.pnlSiNoTT.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epvAlumnos)).EndInit();
-            this.grbDocumentosEntregar.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.grbFichaSalud.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
@@ -2033,12 +2019,26 @@
             this.pnlSiNoMed.PerformLayout();
             this.pnlSiNoD.ResumeLayout(false);
             this.pnlSiNoD.PerformLayout();
-            this.grbCarrera.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.grbDocumentosEntregar.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.grbFormacion.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.pnlSiNoTS.ResumeLayout(false);
+            this.pnlSiNoTS.PerformLayout();
+            this.pnlSiNoTT.ResumeLayout(false);
+            this.pnlSiNoTT.PerformLayout();
             this.grbDireccion.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.grbDatosPersonales.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.grbCarrera.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epvAlumnos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

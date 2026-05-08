@@ -1,5 +1,4 @@
 ﻿using ISFDyT93.Datos.Core;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,14 +12,8 @@ namespace ISFDyT93.Datos.Core
         //Luego se instancia en el constructor
         public Conexion()
         {
-            // Leer la cadena de conexión desde App.config (proyecto ISFDyT93.Vista)
-            var connSetting = ConfigurationManager.ConnectionStrings["InstiDB"];
-            if (connSetting == null || string.IsNullOrWhiteSpace(connSetting.ConnectionString))
-            {
-                throw new System.InvalidOperationException("No se encontró la cadena de conexión 'InstiDB' en App.config.");
-            }
-
-            string strConexion = connSetting.ConnectionString;
+            //Servidor SQL Server - Base de Datos
+            string strConexion = Settings.STRCONNECTION;
             this.Conector = new SqlConnection(strConexion);
         }
 
@@ -63,13 +56,13 @@ namespace ISFDyT93.Datos.Core
 
             this.Conector.Open();
 
-             int result = Comando.ExecuteNonQuery();
+            int result = Comando.ExecuteNonQuery();
 
             this.Conector.Close();
 
             return result;
 
-           
+
         }
 
         public DataTable EjecutarStore(string nombreSP, SqlParameter[] parametros = null)
@@ -90,9 +83,9 @@ namespace ISFDyT93.Datos.Core
 
             Conector.Close();
 
-            return result;          
+            return result;
         }
-        
+
         /*
          * En la forma que estaba antes, si se ejecutaba un SP que tuviera un throw o un raiserror se cortaba la ejecución
          * del programa para mostrar el error.
@@ -101,7 +94,7 @@ namespace ISFDyT93.Datos.Core
         */
 
         public int EjecutarStoreNumber(string nombre, SqlParameter[] parametros)
-        {           
+        {
             var Comando = new SqlCommand(nombre, this.Conector);
             Comando.CommandType = CommandType.StoredProcedure;
             Comando.Parameters.AddRange(parametros);

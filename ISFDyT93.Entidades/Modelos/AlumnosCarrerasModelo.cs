@@ -7,6 +7,7 @@ namespace ISFDyT93.Entidades.Modelos
     public class AlumnosCarrerasModelo : ModeloBase
     {
         [Clave]
+        public int Inicializado { get; set; }
         public int AlumnoCarreraId { get; set; }
         public int CarreraId { get; set; }
         public int AlumnoId { get; set; }
