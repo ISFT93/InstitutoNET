@@ -46,6 +46,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtProfesor = new System.Windows.Forms.TextBox();
             this.txtPorcentajeAsistencia = new System.Windows.Forms.TextBox();
             this.txtHoraCatedra = new System.Windows.Forms.TextBox();
+            this.txtCantidadAlumnosRecursantes = new System.Windows.Forms.TextBox();
+            this.txtCantidadAlumnosDesertores = new System.Windows.Forms.TextBox();
             this.lblPorcentajeAsistencia = new System.Windows.Forms.Label();
             this.lblPocAsistencia = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -275,6 +277,26 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtHoraCatedra.Name = "txtHoraCatedra";
             this.txtHoraCatedra.Size = new System.Drawing.Size(303, 27);
             this.txtHoraCatedra.TabIndex = 62;
+            // 
+            // txtCantidadAlumnosRecursantes
+            // 
+            this.txtCantidadAlumnosRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAlumnosRecursantes.Enabled = false;
+            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(934, 75);
+            this.txtCantidadAlumnosRecursantes.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidadAlumnosRecursantes.Name = "txtCantidadAlumnosRecursantes";
+            this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(303, 27);
+            this.txtCantidadAlumnosRecursantes.TabIndex = 76;
+            // 
+            // txtCantidadAlumnosDesertores
+            // 
+            this.txtCantidadAlumnosDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAlumnosDesertores.Enabled = false;
+            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(934, 111);
+            this.txtCantidadAlumnosDesertores.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidadAlumnosDesertores.Name = "txtCantidadAlumnosDesertores";
+            this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(303, 27);
+            this.txtCantidadAlumnosDesertores.TabIndex = 77;
             // 
             // lblPorcentajeAsistencia
             // 
@@ -673,6 +695,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.TextBox txtProfesor;
         private System.Windows.Forms.TextBox txtPorcentajeAsistencia;
         private System.Windows.Forms.TextBox txtHoraCatedra;
+        private System.Windows.Forms.TextBox txtCantidadAlumnosRecursantes;
+        private System.Windows.Forms.TextBox txtCantidadAlumnosDesertores;
         private System.Windows.Forms.Label lblPorcentajeAsistencia;
         private System.Windows.Forms.Label lblPocAsistencia;
         private System.Windows.Forms.Label lblFecha;

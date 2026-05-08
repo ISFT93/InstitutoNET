@@ -129,6 +129,35 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
 
             this.CalcularPorcentajeActual();
+            this.ActualizarDatosInformativos();
+        }
+
+        private void ActualizarDatosInformativos()
+        {
+            if (dgvAsistencias.Rows.Count > 0)
+            {
+                int cursadaId = Convert.ToInt32(dgvAsistencias.Rows[0].Cells["CursadaId"].Value);
+                this.Cursada = this.cursadasLogica.ObtenerCursada(cursadaId);
+                this.MapToForm<CursadasModelo>(this.Cursada);
+
+                var dr = controlAsistenciasLogica.CargarProfesor();
+                txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
+            }
+            else
+            {
+                this.LimpiarControlesInformativos();
+            }
+        }
+
+        private void LimpiarControlesInformativos()
+        {
+            txtNombreMateria.Text = string.Empty;
+            txtProfesor.Text = string.Empty;
+            txtPorcentajeAsistencia.Text = string.Empty;
+            txtHoraCatedra.Text = string.Empty;
+            txtCantidadAlumnos.Text = string.Empty;
+            txtCantidadAlumnosRecursantes.Text = string.Empty;
+            txtCantidadAlumnosDesertores.Text = string.Empty;
         }
 
         private void dgvAsistencias_MouseUp(object sender, MouseEventArgs e)
