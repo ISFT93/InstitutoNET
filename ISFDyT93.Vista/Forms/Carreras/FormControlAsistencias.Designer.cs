@@ -30,10 +30,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDescargar = new System.Windows.Forms.Button();
             this.lblPorcentajeAlumnosI = new System.Windows.Forms.Label();
             this.lblTotalAlumnosI = new System.Windows.Forms.Label();
@@ -61,8 +61,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmA = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHistorialAsistenciasAlumnos = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCantidadAlumnos = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPorcentajePresente = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
@@ -142,24 +142,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAsistencias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAsistencias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAsistencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsistencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAsistencias.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAsistencias.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAsistencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAsistencias.EnableHeadersVisualStyles = false;
             this.dgvAsistencias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
@@ -168,23 +168,23 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.MultiSelect = false;
             this.dgvAsistencias.Name = "dgvAsistencias";
             this.dgvAsistencias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(16)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistencias.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(16)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistencias.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAsistencias.RowHeadersVisible = false;
             this.dgvAsistencias.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvAsistencias.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvAsistencias.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAsistencias.RowTemplate.Height = 28;
             this.dgvAsistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAsistencias.Size = new System.Drawing.Size(1250, 465);
@@ -276,17 +276,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtHoraCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHoraCatedra.Enabled = false;
-            this.txtHoraCatedra.Location = new System.Drawing.Point(949, 39);
+            this.txtHoraCatedra.Location = new System.Drawing.Point(319, 154);
             this.txtHoraCatedra.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoraCatedra.Name = "txtHoraCatedra";
-            this.txtHoraCatedra.Size = new System.Drawing.Size(309, 27);
+            this.txtHoraCatedra.Size = new System.Drawing.Size(307, 27);
             this.txtHoraCatedra.TabIndex = 62;
             // 
             // txtCantidadAlumnosRecursantes
             // 
             this.txtCantidadAlumnosRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnosRecursantes.Enabled = false;
-            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(949, 75);
+            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(949, 74);
             this.txtCantidadAlumnosRecursantes.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadAlumnosRecursantes.Name = "txtCantidadAlumnosRecursantes";
             this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(309, 27);
@@ -296,7 +296,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtCantidadAlumnosDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnosDesertores.Enabled = false;
-            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(949, 111);
+            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(949, 109);
             this.txtCantidadAlumnosDesertores.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadAlumnosDesertores.Name = "txtCantidadAlumnosDesertores";
             this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(309, 27);
@@ -366,7 +366,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantAlumnos.AutoSize = true;
             this.lblCantAlumnos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantAlumnos.Location = new System.Drawing.Point(4, 105);
+            this.lblCantAlumnos.Location = new System.Drawing.Point(4, 113);
             this.lblCantAlumnos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantAlumnos.Name = "lblCantAlumnos";
             this.lblCantAlumnos.Size = new System.Drawing.Size(307, 19);
@@ -378,7 +378,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantDesertores.AutoSize = true;
             this.lblCantDesertores.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantDesertores.Location = new System.Drawing.Point(634, 105);
+            this.lblCantDesertores.Location = new System.Drawing.Point(634, 113);
             this.lblCantDesertores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantDesertores.Name = "lblCantDesertores";
             this.lblCantDesertores.Size = new System.Drawing.Size(307, 19);
@@ -390,7 +390,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblHorasCátedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHorasCátedra.AutoSize = true;
             this.lblHorasCátedra.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHorasCátedra.Location = new System.Drawing.Point(4, 150);
+            this.lblHorasCátedra.Location = new System.Drawing.Point(4, 158);
             this.lblHorasCátedra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHorasCátedra.Name = "lblHorasCátedra";
             this.lblHorasCátedra.Size = new System.Drawing.Size(307, 19);
@@ -465,6 +465,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1262, 196);
             this.tableLayoutPanel1.TabIndex = 72;
             // 
+            // txtCantidadAlumnos
+            // 
+            this.txtCantidadAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidadAlumnos.Enabled = false;
+            this.txtCantidadAlumnos.Location = new System.Drawing.Point(318, 109);
+            this.txtCantidadAlumnos.Name = "txtCantidadAlumnos";
+            this.txtCantidadAlumnos.Size = new System.Drawing.Size(309, 27);
+            this.txtCantidadAlumnos.TabIndex = 72;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -486,15 +495,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 196);
             this.tableLayoutPanel2.TabIndex = 73;
-            // 
-            // txtCantidadAlumnos
-            // 
-            this.txtCantidadAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadAlumnos.Enabled = false;
-            this.txtCantidadAlumnos.Location = new System.Drawing.Point(318, 35);
-            this.txtCantidadAlumnos.Name = "txtCantidadAlumnos";
-            this.txtCantidadAlumnos.Size = new System.Drawing.Size(309, 27);
-            this.txtCantidadAlumnos.TabIndex = 72;
             // 
             // txtPorcentajePresente
             // 
