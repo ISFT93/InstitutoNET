@@ -48,13 +48,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion
             cmbCarreraId.SelectedIndex = 0; //por defecto busca todos
-            RecargarGrilla();
             uscPaginacion1.BringToFront();
 
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
 
+            RecargarGrilla(cmbCarreraId.Text);
             this.Contenedor.SetTitulo("Documentación de Alumnos");
             this.Contenedor.SetVolver(() =>
             {
@@ -64,7 +64,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void RecargarGrilla(string filtro = "")
         {
             dgvAlumnos.ClearSelection();
-            var tipo = (TipoFiltroAlumno)cmbCarreraId.SelectedIndex;
+            var tipo = (TipoFiltroAlumno.Carrera);
 
             if (rbTodos.Checked == true)
                 uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
@@ -118,9 +118,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             });
         }
 
-        private void dgvAlumnos_MouseUp(object sender, MouseEventArgs e)
+        private void cmbCarreraId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            RecargarGrilla(cmbCarreraId.Text);
         }
     }
 }

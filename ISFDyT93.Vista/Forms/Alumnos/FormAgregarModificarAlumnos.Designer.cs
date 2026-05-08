@@ -301,7 +301,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(497, 146);
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(497, 149);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(438, 27);
             this.cmbEstadoCivil.TabIndex = 6;
@@ -337,7 +337,7 @@
             "DNI",
             "LE",
             "LC"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 89);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(438, 27);
             this.cmbTipoDocumento.TabIndex = 3;
@@ -388,7 +388,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
             this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
+            this.cmbSexo.Location = new System.Drawing.Point(23, 149);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(438, 27);
             this.cmbSexo.TabIndex = 5;
@@ -1071,7 +1071,7 @@
             "Terciario",
             "Universitario",
             "Postgrado"});
-            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
+            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 389);
             this.cmbMayorTitulo.Name = "cmbMayorTitulo";
             this.cmbMayorTitulo.Size = new System.Drawing.Size(442, 27);
             this.cmbMayorTitulo.TabIndex = 32;
@@ -1848,7 +1848,7 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(812, 13);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(812, 10);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
             this.cmbCicloLectivo.Size = new System.Drawing.Size(157, 27);
             this.cmbCicloLectivo.TabIndex = 175;
@@ -1873,7 +1873,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(142, 13);
+            this.cmbCarreraId.Location = new System.Drawing.Point(142, 10);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(505, 27);
             this.cmbCarreraId.TabIndex = 0;
