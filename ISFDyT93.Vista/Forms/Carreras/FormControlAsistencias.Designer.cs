@@ -613,11 +613,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // btnAplicarFiltros
             // 
             this.btnAplicarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnAplicarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAplicarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAplicarFiltros.ForeColor = System.Drawing.Color.White;
             this.btnAplicarFiltros.Location = new System.Drawing.Point(3, 144);
             this.btnAplicarFiltros.Name = "btnAplicarFiltros";
-            this.btnAplicarFiltros.Size = new System.Drawing.Size(282, 42);
+            this.btnAplicarFiltros.Size = new System.Drawing.Size(304, 42);
             this.btnAplicarFiltros.TabIndex = 80;
             this.btnAplicarFiltros.Text = "Filtrar";
             this.btnAplicarFiltros.UseVisualStyleBackColor = false;

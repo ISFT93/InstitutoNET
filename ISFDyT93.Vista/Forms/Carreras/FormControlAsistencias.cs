@@ -81,12 +81,26 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void RellenarGrilla()
         {
-            var FechaAsistenciaStr = new AsistenciasModelo
+            var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
+                CursadaId = this.CursadaId
             };
 
-            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(FechaAsistenciaStr);
+            // Leer filtros de los combos
+            int filtro;
+            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out filtro))
+                modelo.CarreraId = filtro;
+            if (cmbAnio.SelectedValue != null && int.TryParse(cmbAnio.SelectedValue.ToString(), out filtro))
+                modelo.AnioCarreraId = filtro;
+            if (cmbCurso.SelectedValue != null && int.TryParse(cmbCurso.SelectedValue.ToString(), out filtro))
+                modelo.CursoId = filtro;
+            if (cmbMateria.SelectedValue != null && int.TryParse(cmbMateria.SelectedValue.ToString(), out filtro))
+                modelo.MateriaId = filtro;
+            if (cmbCicloLectivo.SelectedValue != null && int.TryParse(cmbCicloLectivo.SelectedValue.ToString(), out filtro))
+                modelo.AnioLectivo = filtro;
+
+            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
             dgvAsistencias.Columns["AlumnoId"].Visible = false;
             dgvAsistencias.Columns["CursadaId"].Visible = false;
             dgvAsistencias.Columns["AlumnoCarreraId"].Visible = false;
@@ -297,7 +311,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
-
+                CursadaId = this.CursadaId
             };
             var datos = this.controlAsistenciasLogica.CargarAsistenciasAlumnosReporte(modelo);
 
@@ -504,6 +518,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (!int.TryParse(cmbMateria.SelectedValue.ToString(), out materiaId)) return;
 
             cmbCicloLectivo.Enabled = true;
+        }
+
+        private void btnAplicarFiltros_Click(object sender, EventArgs e)
+        {
+            this.RellenarGrilla();
         }
     }
 }
