@@ -112,21 +112,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 lblAnioLectivo.Visible=false;
                 this.Contenedor.SetTitulo("Ver Alumno");
 
-                cmbCarreraId.Enabled = false;
-                cmbTipoDocumento.Enabled = false;
-                cmbEstadoCivil.Enabled = false;
-                cmbSexo.Enabled = false;
-                cmbMayorTitulo.Enabled = false;
-                dtpFechaNacimiento.Visible = false;
-                lblFechaNacimiento.Visible = false;
-                txtPaisNacimiento.Visible = false;
-                lblPaisNac.Visible = false;
-                txtLocalidadNacimiento.Visible = false;
-                lblLocNacimiento.Visible = false;
-                cmbSexo.Visible = false;
-                label12.Visible = false;
-                cmbEstadoCivil.Visible = false;
-                lblEstadoCivil.Visible = false;
                 ////En los groupbox a los controles de tipo textbox ponerlos solo lectura
                 //grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
                 //grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
@@ -155,8 +140,37 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 grbDireccion.Visible = false;
                 grbFichaSalud.Visible = false;
                 grbFormacion.Visible = false;
+
                 btnDocumentacionOk.Visible = true;
                 
+
+                cmbCarreraId.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                cmbEstadoCivil.Enabled = false;
+                cmbSexo.Enabled = false;
+                cmbMayorTitulo.Enabled = false;
+                tableLayoutPanel2.Controls.Remove(dtpFechaNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblFechaNacimiento);
+                tableLayoutPanel2.Controls.Remove(txtPaisNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblPaisNac);
+                tableLayoutPanel2.Controls.Remove(txtLocalidadNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblLocNacimiento);
+                tableLayoutPanel2.Controls.Remove(cmbSexo);
+                tableLayoutPanel2.Controls.Remove(label12);
+                tableLayoutPanel2.Controls.Remove(cmbEstadoCivil);
+                tableLayoutPanel2.Controls.Remove(lblEstadoCivil);
+
+                tableLayoutPanel2.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[2].Height = 0;
+
+                tableLayoutPanel2.RowStyles[3].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[3].Height = 0;
+
+                tableLayoutPanel2.RowStyles[4].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[4].Height = 0;
+                tableLayoutPanel2.Height = 90;
+                grbDatosPersonales.Height = 120;
+
                 this.Contenedor.SetTitulo("Cargar Dcumentacion del Alumno");
                 ActualizarAutoComplete();
             }
@@ -368,6 +382,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     //Modifico la carrera
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "La documentacion fue\nmodificada con exito");
+
+                    Contenedor.AbrirFormulario<FormDocumentacionAlumnos>();
+                    return;
                 }
 
                 Contenedor.AbrirFormulario<FormAlumnos>();

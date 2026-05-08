@@ -159,9 +159,7 @@
             this.rdbDiscapacidadSi = new System.Windows.Forms.RadioButton();
             this.rdbDiscapacidadNo = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.txtTelefonoContacto = new System.Windows.Forms.MaskedTextBox();
-            this.btnDocumentacionOk = new FontAwesome.Sharp.IconButton();
             this.grbCarrera = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblAnioLectivo = new System.Windows.Forms.Label();
@@ -173,6 +171,10 @@
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.grbBotones = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDocumentacionOk = new FontAwesome.Sharp.IconButton();
+            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.grbDatosPersonales.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.grbFormacion.SuspendLayout();
@@ -194,6 +196,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDireccion.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.grbBotones.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbDatosPersonales
@@ -218,7 +222,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.lblNombre, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
@@ -297,7 +301,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(497, 149);
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(497, 146);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(438, 27);
             this.cmbEstadoCivil.TabIndex = 6;
@@ -333,7 +337,7 @@
             "DNI",
             "LE",
             "LC"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 89);
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(438, 27);
             this.cmbTipoDocumento.TabIndex = 3;
@@ -384,7 +388,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
             this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Location = new System.Drawing.Point(23, 149);
+            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(438, 27);
             this.cmbSexo.TabIndex = 5;
@@ -675,7 +679,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel3.Controls.Add(this.lblTituloSec, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtMayorPromedio, 5, 14);
             this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTS, 1, 1);
@@ -1067,7 +1071,7 @@
             "Terciario",
             "Universitario",
             "Postgrado"});
-            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 389);
+            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
             this.cmbMayorTitulo.Name = "cmbMayorTitulo";
             this.cmbMayorTitulo.Size = new System.Drawing.Size(442, 27);
             this.cmbMayorTitulo.TabIndex = 32;
@@ -1097,7 +1101,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.Controls.Add(this.lblEnunciado, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtMonto, 3, 8);
             this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaTitulo, 1, 1);
@@ -1318,7 +1322,7 @@
             this.grbFichaSalud.Dock = System.Windows.Forms.DockStyle.Top;
             this.grbFichaSalud.Location = new System.Drawing.Point(20, 1620);
             this.grbFichaSalud.Name = "grbFichaSalud";
-            this.grbFichaSalud.Size = new System.Drawing.Size(978, 627);
+            this.grbFichaSalud.Size = new System.Drawing.Size(978, 517);
             this.grbFichaSalud.TabIndex = 5;
             this.grbFichaSalud.TabStop = false;
             this.grbFichaSalud.Text = "Ficha de salud - En caso de emergencia";
@@ -1332,7 +1336,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.Controls.Add(this.lblPoseeObraSocial, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pnlEstadoDiscapacidad, 1, 8);
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoOS, 3, 0);
@@ -1356,13 +1360,11 @@
             this.tableLayoutPanel5.Controls.Add(this.txtDescripcionMedicacion, 3, 5);
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoD, 3, 6);
             this.tableLayoutPanel5.Controls.Add(this.label7, 1, 6);
-            this.tableLayoutPanel5.Controls.Add(this.btnGuardar, 5, 12);
             this.tableLayoutPanel5.Controls.Add(this.txtTelefonoContacto, 3, 11);
-            this.tableLayoutPanel5.Controls.Add(this.btnDocumentacionOk, 3, 12);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 13;
+            this.tableLayoutPanel5.RowCount = 12;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -1376,8 +1378,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(972, 601);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(972, 491);
             this.tableLayoutPanel5.TabIndex = 177;
             // 
             // lblPoseeObraSocial
@@ -1470,7 +1471,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 450);
+            this.label11.Location = new System.Drawing.Point(17, 456);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(428, 19);
             this.label11.TabIndex = 173;
@@ -1791,56 +1792,15 @@
             this.label7.TabIndex = 164;
             this.label7.Text = "Posee algún tipo de discapacidad";
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.White;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 32;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGuardar.Location = new System.Drawing.Point(806, 548);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(133, 50);
-            this.btnGuardar.TabIndex = 62;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // txtTelefonoContacto
             // 
             this.txtTelefonoContacto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.SetColumnSpan(this.txtTelefonoContacto, 3);
-            this.txtTelefonoContacto.Location = new System.Drawing.Point(481, 446);
+            this.txtTelefonoContacto.Location = new System.Drawing.Point(481, 452);
             this.txtTelefonoContacto.Mask = "(0999) 000-0000";
             this.txtTelefonoContacto.Name = "txtTelefonoContacto";
-            this.txtTelefonoContacto.Size = new System.Drawing.Size(458, 27);
+            this.txtTelefonoContacto.Size = new System.Drawing.Size(211, 27);
             this.txtTelefonoContacto.TabIndex = 174;
             this.txtTelefonoContacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
-            // 
-            // btnDocumentacionOk
-            // 
-            this.btnDocumentacionOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDocumentacionOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnDocumentacionOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDocumentacionOk.ForeColor = System.Drawing.Color.White;
-            this.btnDocumentacionOk.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnDocumentacionOk.IconColor = System.Drawing.Color.White;
-            this.btnDocumentacionOk.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDocumentacionOk.IconSize = 32;
-            this.btnDocumentacionOk.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnDocumentacionOk.Location = new System.Drawing.Point(485, 548);
-            this.btnDocumentacionOk.Name = "btnDocumentacionOk";
-            this.btnDocumentacionOk.Size = new System.Drawing.Size(207, 50);
-            this.btnDocumentacionOk.TabIndex = 175;
-            this.btnDocumentacionOk.Text = "DOCUMENTACION OK";
-            this.btnDocumentacionOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDocumentacionOk.UseVisualStyleBackColor = false;
-            this.btnDocumentacionOk.Visible = false;
             // 
             // grbCarrera
             // 
@@ -1888,7 +1848,7 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(812, 10);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(812, 13);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
             this.cmbCicloLectivo.Size = new System.Drawing.Size(157, 27);
             this.cmbCicloLectivo.TabIndex = 175;
@@ -1913,7 +1873,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(142, 10);
+            this.cmbCarreraId.Location = new System.Drawing.Point(142, 13);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(505, 27);
             this.cmbCarreraId.TabIndex = 0;
@@ -1943,7 +1903,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel6.Controls.Add(this.lblCalle, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.txtEmail, 5, 7);
             this.tableLayoutPanel6.Controls.Add(this.lblCelular, 5, 8);
@@ -2009,6 +1969,71 @@
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoloNumero_KeyPress);
             this.txtTelefono.Leave += new System.EventHandler(this.RecorrerEspacios_Leave);
             // 
+            // grbBotones
+            // 
+            this.grbBotones.Controls.Add(this.tableLayoutPanel7);
+            this.grbBotones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbBotones.Location = new System.Drawing.Point(20, 2137);
+            this.grbBotones.Name = "grbBotones";
+            this.grbBotones.Size = new System.Drawing.Size(978, 80);
+            this.grbBotones.TabIndex = 7;
+            this.grbBotones.TabStop = false;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.90946F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.09053F));
+            this.tableLayoutPanel7.Controls.Add(this.btnDocumentacionOk, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnGuardar, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(972, 54);
+            this.tableLayoutPanel7.TabIndex = 177;
+            // 
+            // btnDocumentacionOk
+            // 
+            this.btnDocumentacionOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDocumentacionOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnDocumentacionOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDocumentacionOk.ForeColor = System.Drawing.Color.White;
+            this.btnDocumentacionOk.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnDocumentacionOk.IconColor = System.Drawing.Color.White;
+            this.btnDocumentacionOk.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDocumentacionOk.IconSize = 32;
+            this.btnDocumentacionOk.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnDocumentacionOk.Location = new System.Drawing.Point(557, 3);
+            this.btnDocumentacionOk.Name = "btnDocumentacionOk";
+            this.btnDocumentacionOk.Size = new System.Drawing.Size(207, 50);
+            this.btnDocumentacionOk.TabIndex = 176;
+            this.btnDocumentacionOk.Text = "DOCUMENTACION OK";
+            this.btnDocumentacionOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDocumentacionOk.UseVisualStyleBackColor = false;
+            this.btnDocumentacionOk.Visible = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardar.IconColor = System.Drawing.Color.White;
+            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardar.IconSize = 32;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnGuardar.Location = new System.Drawing.Point(836, 3);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(133, 50);
+            this.btnGuardar.TabIndex = 177;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // FormAgregarModificarAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -2016,6 +2041,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1035, 605);
+            this.Controls.Add(this.grbBotones);
             this.Controls.Add(this.grbFichaSalud);
             this.Controls.Add(this.grbDocumentosEntregar);
             this.Controls.Add(this.grbFormacion);
@@ -2061,6 +2087,8 @@
             this.grbDireccion.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.grbBotones.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2200,7 +2228,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.GroupBox grbDireccion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -2209,6 +2236,9 @@
         private System.Windows.Forms.MaskedTextBox txtCelular;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
         private System.Windows.Forms.MaskedTextBox txtTelefonoContacto;
+        private System.Windows.Forms.GroupBox grbBotones;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private FontAwesome.Sharp.IconButton btnGuardar;
         private FontAwesome.Sharp.IconButton btnDocumentacionOk;
     }
 }

@@ -98,12 +98,29 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void dgvAlumnos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            // En CellDoubleClick ya dispones de las coordenadas de celda (fila/columna)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            object valor = null;
+            if (dgvAlumnos.Columns.Contains("AlumnoId"))
+                valor = dgvAlumnos["AlumnoId", e.RowIndex].Value;
+
+            if (valor != null && valor != DBNull.Value)
+            {
+                this.AlumnoId = Convert.ToInt32(valor);
+            }
+
             Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
             {
                 form.Accion = TipoAccion.Documentacion;
                 form.AlumnoId = AlumnoId;
             });
-        
+        }
+
+        private void dgvAlumnos_MouseUp(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }
