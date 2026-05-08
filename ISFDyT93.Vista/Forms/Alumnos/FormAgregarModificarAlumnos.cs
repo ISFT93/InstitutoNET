@@ -67,11 +67,20 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             cmbMayorTitulo.Text = "Ninguno";
 
             SetReadOnly(grbDocumentosEntregar,false);
-
-            this.Contenedor.SetVolver(() =>
+            if(this.Accion == TipoAccion.Documentacion)
             {
-                this.Contenedor.AbrirFormulario<FormAlumnos>();
-            });
+                this.Contenedor.SetVolver(() =>
+                {
+                    this.Contenedor.AbrirFormulario<FormDocumentacionAlumnos>();
+                });
+            }
+            else
+            {
+                this.Contenedor.SetVolver(() =>
+                {
+                    this.Contenedor.AbrirFormulario<FormAlumnos>();
+                });
+            }
 
             if (this.AlumnoId > 0)
             {
@@ -86,11 +95,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 // Usamos un método recursivo para que funcione tanto con TextBox directos del GroupBox
                 // como con TextBox anidados dentro de Panels u otros contenedores.
-                SetReadOnly(grbDatosPersonales, false);
-                SetReadOnly(grbFormacion, false);
                 SetReadOnly(grbDocumentosEntregar, false);
-                SetReadOnly(grbFichaSalud, false);
-                SetReadOnly(grbDireccion, false);
                 btnGuardar.Visible = false;
                 
                 dtpFechaNacimiento.Enabled = false;
@@ -112,7 +117,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 cmbEstadoCivil.Enabled = false;
                 cmbSexo.Enabled = false;
                 cmbMayorTitulo.Enabled = false;
-
+                dtpFechaNacimiento.Visible = false;
+                lblFechaNacimiento.Visible = false;
+                txtPaisNacimiento.Visible = false;
+                lblPaisNac.Visible = false;
+                txtLocalidadNacimiento.Visible = false;
+                lblLocNacimiento.Visible = false;
+                cmbSexo.Visible = false;
+                label12.Visible = false;
+                cmbEstadoCivil.Visible = false;
+                lblEstadoCivil.Visible = false;
                 ////En los groupbox a los controles de tipo textbox ponerlos solo lectura
                 //grbDatosPersonales.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
                 //grbFormacion.Controls.OfType<TextBox>().ToList().ForEach(tb => tb.ReadOnly = true);
@@ -138,7 +152,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 SetReadOnly(grbFormacion, false);
                 SetReadOnly(grbFichaSalud, false);
                 SetReadOnly(grbDireccion, false);
-
+                grbDireccion.Visible = false;
+                grbFichaSalud.Visible = false;
+                grbFormacion.Visible = false;
+                btnDocumentacionOk.Visible = true;
+                
                 this.Contenedor.SetTitulo("Cargar Dcumentacion del Alumno");
                 ActualizarAutoComplete();
             }
