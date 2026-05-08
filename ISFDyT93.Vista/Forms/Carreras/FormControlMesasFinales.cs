@@ -79,16 +79,43 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
         private void RellenarGrilla()
         {
-            var FechaAsistenciaStr = new AsistenciasModelo
+            var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
+                CursadaId = this.CursadaId
             };
 
-            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(FechaAsistenciaStr);
+            // Leer filtros de los combos
+            int filtro;
+            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out filtro))
+                modelo.CarreraId = filtro;
+            if (cmbAnio.SelectedValue != null && int.TryParse(cmbAnio.SelectedValue.ToString(), out filtro))
+                modelo.AnioCarreraId = filtro;
+            if (cmbCurso.SelectedValue != null && int.TryParse(cmbCurso.SelectedValue.ToString(), out filtro))
+                modelo.CursoId = filtro;
+            if (cmbMateria.SelectedValue != null && int.TryParse(cmbMateria.SelectedValue.ToString(), out filtro))
+                modelo.MateriaId = filtro;
+            if (cmbCicloLectivo.SelectedValue != null && int.TryParse(cmbCicloLectivo.SelectedValue.ToString(), out filtro))
+                modelo.AnioLectivo = filtro;
+            if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out filtro))
+                modelo.PersonalId = filtro;
+
+            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
             dgvAsistencias.Columns["AlumnoId"].Visible = false;
             dgvAsistencias.Columns["CursadaId"].Visible = false;
             dgvAsistencias.Columns["AlumnoCarreraId"].Visible = false;
             dgvAsistencias.Columns["CursadaAlumnoCarreraId"].Visible = false;
+
+            if (dgvAsistencias.Columns["Materia"] != null)
+            {
+                dgvAsistencias.Columns["Materia"].Visible = true;
+                dgvAsistencias.Columns["Materia"].DisplayIndex = 1;
+            }
+            if (dgvAsistencias.Columns["Profesor"] != null)
+            {
+                dgvAsistencias.Columns["Profesor"].Visible = true;
+                dgvAsistencias.Columns["Profesor"].DisplayIndex = 2;
+            }
 
 
             if (dgvAsistencias.Rows.Count > 0)
@@ -227,23 +254,39 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dr == DialogResult.Yes)
                 {
-                    int totalModulos = this.Cursada.HoraCatedra + this.Cursada.ModulosMateria;
-                    int cursantes = 0;
-                    double totalPorcentajes = 0;
-                    for (int i = 0; i <= dgvAsistencias.Rows.Count - 1; i++)
+                    var filasPorCursada = new System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<int>>();
+
+                    for (int i = 0; i < dgvAsistencias.Rows.Count; i++)
                     {
-                        if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value != null)
+                        int cursadaId = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["CursadaId"].Value);
+                        if (!filasPorCursada.ContainsKey(cursadaId))
+                            filasPorCursada[cursadaId] = new System.Collections.Generic.List<int>();
+                        filasPorCursada[cursadaId].Add(i);
+                    }
+
+                    foreach (var grupo in filasPorCursada)
+                    {
+                        int cursadaId = grupo.Key;
+                        var indices = grupo.Value;
+
+                        var cursadaActual = this.cursadasLogica.ObtenerCursada(cursadaId);
+                        if (cursadaActual == null) continue;
+
+                        int totalModulos = cursadaActual.HoraCatedra + cursadaActual.ModulosMateria;
+                        double totalPorcentajes = 0;
+
+                        foreach (int i in indices)
                         {
-                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Módulos"].Value);
+                            if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value == null) continue;
+
+                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Modulos"].Value);
 
                             if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value.ToString() == "P")
                             {
-                                modulosCursadas += this.Cursada.ModulosMateria;
-                                cursantes++;
-
+                                modulosCursadas += cursadaActual.ModulosMateria;
                             }
 
-                            double porcentaje = modulosCursadas * 100 / totalModulos;
+                            double porcentaje = totalModulos > 0 ? modulosCursadas * 100.0 / totalModulos : 0;
                             totalPorcentajes += porcentaje;
 
                             var Modelo = new AsistenciasModelo
@@ -262,23 +305,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                             controlAsistenciasLogica.AgregarAsistencia(Modelo);
                         }
+
+                        double promedioCursada = indices.Count > 0 ? totalPorcentajes / indices.Count : 0;
+
+                        var cursadaModelo = new AsistenciasModelo
+                        {
+                            HorasCursadas = totalModulos,
+                            FechaAsistencia = dtpFechaAsistencia.Value,
+                            PorcentajeAsistencia = promedioCursada,
+                            CursadaId = cursadaId
+                        };
+
+                        controlAsistenciasLogica.ActualizarCursada(cursadaModelo);
                     }
 
-                    double promedioCursada = totalPorcentajes / dgvAsistencias.Rows.Count;
-
-                    var cursada = new AsistenciasModelo
-                    {
-                        HorasCursadas = totalModulos,
-                        FechaAsistencia = dtpFechaAsistencia.Value,
-                        PorcentajeAsistencia = promedioCursada,
-                        CursadaId = this.CursadaId
-                    };
-
-                    controlAsistenciasLogica.ActualizarCursada(cursada);
-
                     this.RellenarGrilla();
-                    Notificar(TipoNotificacion.Success, "Asistencias agregada con éxito");
-                    //this.LimpiarColumnaAsistencia();
+                    Notificar(TipoNotificacion.Success, "Asistencias agregadas con éxito");
                 }
             }
             else
@@ -295,7 +337,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
-
+                CursadaId = this.CursadaId
             };
             var datos = this.controlAsistenciasLogica.CargarAsistenciasAlumnosReporte(modelo);
 
@@ -502,6 +544,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (!int.TryParse(cmbMateria.SelectedValue.ToString(), out materiaId)) return;
 
             cmbCicloLectivo.Enabled = true;
+        }
+
+        private void btnAplicarFiltros_Click(object sender, EventArgs e)
+        {
+            this.RellenarGrilla();
         }
     }
 }

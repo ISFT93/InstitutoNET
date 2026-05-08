@@ -63,9 +63,7 @@ namespace ISFDyT93.Datos.Daos
                     query += " AND EXISTS (SELECT 1 FROM Servicios s WHERE s.CursoMateriaId = cm.CursoMateriaId AND s.PersonalId = " + Modelo.PersonalId + ")";
             }
 
-            System.Diagnostics.Debug.WriteLine("[SQL] " + query);
             dt = this.Conexion.ObtenerRegistros(query);
-            System.Diagnostics.Debug.WriteLine("[ROWS] " + dt.Rows.Count);
             return dt;
         }
 

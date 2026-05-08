@@ -102,8 +102,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out filtro))
                 modelo.PersonalId = filtro;
 
-            Debug.WriteLine($"[FILTROS] Carrera={modelo.CarreraId}, Anio={modelo.AnioCarreraId}, Curso={modelo.CursoId}, Materia={modelo.MateriaId}, Ciclo={modelo.AnioLectivo}, Profesor={modelo.PersonalId}, Cursada={modelo.CursadaId}");
-
             dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
             dgvAsistencias.Columns["AlumnoId"].Visible = false;
             dgvAsistencias.Columns["CursadaId"].Visible = false;
@@ -258,23 +256,40 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dr == DialogResult.Yes)
                 {
-                    int totalModulos = this.Cursada.HoraCatedra + this.Cursada.ModulosMateria;
-                    int cursantes = 0;
-                    double totalPorcentajes = 0;
-                    for (int i = 0; i <= dgvAsistencias.Rows.Count - 1; i++)
+                    // Agrupar filas por CursadaId para soportar múltiples cursadas
+                    var filasPorCursada = new System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<int>>();
+
+                    for (int i = 0; i < dgvAsistencias.Rows.Count; i++)
                     {
-                        if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value != null)
+                        int cursadaId = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["CursadaId"].Value);
+                        if (!filasPorCursada.ContainsKey(cursadaId))
+                            filasPorCursada[cursadaId] = new System.Collections.Generic.List<int>();
+                        filasPorCursada[cursadaId].Add(i);
+                    }
+
+                    foreach (var grupo in filasPorCursada)
+                    {
+                        int cursadaId = grupo.Key;
+                        var indices = grupo.Value;
+
+                        var cursadaActual = this.cursadasLogica.ObtenerCursada(cursadaId);
+                        if (cursadaActual == null) continue;
+
+                        int totalModulos = cursadaActual.HoraCatedra + cursadaActual.ModulosMateria;
+                        double totalPorcentajes = 0;
+
+                        foreach (int i in indices)
                         {
-                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Módulos"].Value);
+                            if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value == null) continue;
+
+                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Modulos"].Value);
 
                             if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value.ToString() == "P")
                             {
-                                modulosCursadas += this.Cursada.ModulosMateria;
-                                cursantes++;
-
+                                modulosCursadas += cursadaActual.ModulosMateria;
                             }
 
-                            double porcentaje = modulosCursadas * 100 / totalModulos;
+                            double porcentaje = totalModulos > 0 ? modulosCursadas * 100.0 / totalModulos : 0;
                             totalPorcentajes += porcentaje;
 
                             var Modelo = new AsistenciasModelo
@@ -293,23 +308,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                             controlAsistenciasLogica.AgregarAsistencia(Modelo);
                         }
+
+                        double promedioCursada = indices.Count > 0 ? totalPorcentajes / indices.Count : 0;
+
+                        var cursadaModelo = new AsistenciasModelo
+                        {
+                            HorasCursadas = totalModulos,
+                            FechaAsistencia = dtpFechaAsistencia.Value,
+                            PorcentajeAsistencia = promedioCursada,
+                            CursadaId = cursadaId
+                        };
+
+                        controlAsistenciasLogica.ActualizarCursada(cursadaModelo);
                     }
 
-                    double promedioCursada = totalPorcentajes / dgvAsistencias.Rows.Count;
-
-                    var cursada = new AsistenciasModelo
-                    {
-                        HorasCursadas = totalModulos,
-                        FechaAsistencia = dtpFechaAsistencia.Value,
-                        PorcentajeAsistencia = promedioCursada,
-                        CursadaId = this.CursadaId
-                    };
-
-                    controlAsistenciasLogica.ActualizarCursada(cursada);
-
                     this.RellenarGrilla();
-                    Notificar(TipoNotificacion.Success, "Asistencias agregada con éxito");
-                    //this.LimpiarColumnaAsistencia();
+                    Notificar(TipoNotificacion.Success, "Asistencias agregadas con éxito");
                 }
             }
             else
