@@ -144,6 +144,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
             txtTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            txtTelefonoContacto.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
         }
         public void SetReadOnly(Control parent, bool valor)
         {
@@ -278,11 +279,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
 
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
-            if (!ValidarFormulario())
-            {
-                this.MostrarErrores(epvAlumnos, alumno.Errores);
-                return;
-            }
+            
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
 
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)
