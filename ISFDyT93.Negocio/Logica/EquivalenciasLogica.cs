@@ -43,5 +43,35 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.equivalenciasDao.AsignarEquivalencia(CarreraId, MateriaId, CarreraEquivalenciaId, MateriaEquivalenciaId);
         }
+
+        /// <summary>
+        /// Obtiene las materias de una carrera, filtrando aquellas que ya tienen 
+        /// una equivalencia asignada con la carrera de comparación.
+        /// </summary>
+        public DataTable ObtenerMateriasDisponiblesParaEquivalencia(int carreraOrigenId, int carreraDestinoId)
+        {
+            // Buscamos todas las materias de la carrera de origen
+            DataTable dtMaterias = this.equivalenciasDao.ObtenerMaterias(carreraOrigenId);
+
+            // Buscamos qué equivalencias ya existen entre estas dos carreras
+            DataTable dtEquivalenciasExistentes = this.equivalenciasDao.ObtenerEquivalencias(carreraOrigenId, carreraDestinoId);
+
+            // Lógica de filtrado: Quitamos de la lista las que ya están asignadas
+            // Lo hacemos aquí para que la Vista reciba los Datos preprocesados
+            foreach (DataRow filaEq in dtEquivalenciasExistentes.Rows)
+            {
+                string idMateriaEq = filaEq["MateriaId"].ToString();
+
+                for (int i = dtMaterias.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (dtMaterias.Rows[i]["MateriaId"].ToString() == idMateriaEq)
+                    {
+                        dtMaterias.Rows.RemoveAt(i);
+                    }
+                }
+            }
+            dtMaterias.AcceptChanges();
+            return dtMaterias;
+        }
     }
 }
