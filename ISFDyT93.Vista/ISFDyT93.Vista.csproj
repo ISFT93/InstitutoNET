@@ -175,6 +175,10 @@
     <Compile Include="Forms\Configuraciones\FormInscripcionCicloLectivo.Designer.cs">
       <DependentUpon>FormInscripcionCicloLectivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Personal\FormAgregarCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Personal\FormAgregarCargos.Designer.cs" />
     <Compile Include="Forms\Personal\FormAgregarDocumentacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +340,14 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscLibroActas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscLibroActas.Designer.cs" />
+    <Compile Include="UserControls\uscMostrarCargos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscMostrarCargos.Designer.cs" />
     <Compile Include="UserControls\uscPaginacion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -396,6 +408,7 @@
     <EmbeddedResource Include="Forms\Configuraciones\FormParametros.resx">
       <DependentUpon>FormParametros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Personal\FormAgregarCargos.resx" />
     <EmbeddedResource Include="Forms\Personal\FormAgregarDocumentacion.resx">
       <DependentUpon>FormAgregarDocumentacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +505,8 @@
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscLibroActas.resx" />
+    <EmbeddedResource Include="UserControls\uscMostrarCargos.resx" />
     <EmbeddedResource Include="UserControls\uscPaginacion.resx">
       <DependentUpon>uscPaginacion.cs</DependentUpon>
     </EmbeddedResource>
