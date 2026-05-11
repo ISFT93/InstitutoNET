@@ -2,10 +2,11 @@
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class ControlAsistenciasDao : DaoBase
+    public class ControlAsistenciasDao : DaoBase , IControlAsistenciasDao
     {
         public DataTable CargarAsistenciasAlumnos()
         {

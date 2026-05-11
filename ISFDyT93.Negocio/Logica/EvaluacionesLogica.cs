@@ -2,10 +2,11 @@
 using System.Data;
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class EvaluacionesLogica : LogicaBase
+    public class EvaluacionesLogica : LogicaBase , IEvaluacionesLogica
     {
         EvaluacionesDao evaluacionesDao;
         public EvaluacionesLogica()

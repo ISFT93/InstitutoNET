@@ -4,11 +4,12 @@ using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System;
 using System.Data;
+using ISFDyT93.Negocio.Interfaces;
 
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class ServiciosLogica : LogicaBase
+    public class ServiciosLogica : LogicaBase , IServiciosLogica
     {
         ServiciosDao serviciosDao;
 

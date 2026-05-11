@@ -2,10 +2,11 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Core
 {
-    public class Conexion
+    public class Conexion : IConexion
     {
         //Primero se declara el objeto
         public SqlConnection Conector;

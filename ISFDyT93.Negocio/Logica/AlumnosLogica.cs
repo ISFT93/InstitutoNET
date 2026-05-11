@@ -5,10 +5,11 @@ using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Negocio.Core;
 using System;
 using System.Linq;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class AlumnosLogica : LogicaBase
+    public class AlumnosLogica : LogicaBase , IAlumnosLogica
     {
 
         AlumnosDao alumnosDao;
