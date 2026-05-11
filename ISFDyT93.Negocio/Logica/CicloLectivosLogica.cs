@@ -7,10 +7,11 @@ using ISFDyT93.Datos.Daos;
 using System.Data;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CicloLectivosLogica : LogicaBase
+    public class CicloLectivosLogica : LogicaBase , ICicloLectivosLogica
     {
         CiclosLectivosDao ciclolectivoDao;
         public CicloLectivosLogica()

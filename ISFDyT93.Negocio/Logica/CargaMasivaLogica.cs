@@ -2,10 +2,11 @@
 using System.Text;
 using System.IO;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CargaMasivaLogica : LogicaBase
+    public class CargaMasivaLogica : LogicaBase , ICargaMasivaLogica
     {
         public DataTable ImportarExel(string nombre)
         {

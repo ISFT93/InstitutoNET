@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Data;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class HorariosDao : DaoBase
+    public class HorariosDao : DaoBase , IHorariosDao
     {
         public DataTable ObtnerModulos()
         {

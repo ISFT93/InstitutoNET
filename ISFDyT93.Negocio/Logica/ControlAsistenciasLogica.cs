@@ -2,10 +2,11 @@
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class ControlAsistenciasLogica : LogicaBase
+    public class ControlAsistenciasLogica : LogicaBase , IControlAsistenciasLogica
     {
         ControlAsistenciasDao controlAsistenciasDao;
 

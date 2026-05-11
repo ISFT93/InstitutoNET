@@ -7,13 +7,14 @@ using System.Data;
 using ISFDyT93.Entidades.Modelos;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 
 using System.Windows.Forms;
 
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CiclosLectivosDao : DaoBase
+    public class CiclosLectivosDao : DaoBase , ICiclosLectivosDao
     {
         public DataTable ObtenerCicloLectivo(bool actualizar = false)
         {
