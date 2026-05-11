@@ -16,5 +16,6 @@ namespace ISFDyT93.Entidades.Modelos
         public int TipoAsignacionId { get; set; }
         public int TipoAplicacionId { get; set; }
         public bool Activo { get; set; }
+        public int CargaHoraria { get; set; }
     }
 }

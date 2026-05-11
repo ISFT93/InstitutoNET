@@ -32,7 +32,6 @@
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.lblAnioCarrera = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.flpContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,6 +41,7 @@
             this.chkNumero = new System.Windows.Forms.CheckBox();
             this.chkHora = new System.Windows.Forms.CheckBox();
             this.chkTabla = new System.Windows.Forms.CheckBox();
+            this.flpContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -57,10 +57,10 @@
             this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblAnioCarrera, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtBuscar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flpContenedor, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flpContenedor, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -79,7 +79,7 @@
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.btnBuscar.IconColor = System.Drawing.Color.White;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 20;
@@ -111,19 +111,6 @@
             this.txtBuscar.Size = new System.Drawing.Size(187, 27);
             this.txtBuscar.TabIndex = 128;
             // 
-            // flpContenedor
-            // 
-            this.flpContenedor.AutoScroll = true;
-            this.flpContenedor.BackColor = System.Drawing.Color.White;
-            this.flpContenedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel1.SetColumnSpan(this.flpContenedor, 4);
-            this.flpContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpContenedor.Location = new System.Drawing.Point(2, 99);
-            this.flpContenedor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.flpContenedor.Name = "flpContenedor";
-            this.flpContenedor.Size = new System.Drawing.Size(728, 409);
-            this.flpContenedor.TabIndex = 129;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
@@ -141,7 +128,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 32;
@@ -259,6 +246,20 @@
             this.chkTabla.UseVisualStyleBackColor = true;
             this.chkTabla.CheckedChanged += new System.EventHandler(this.Check_Changed);
             // 
+            // flpContenedor
+            // 
+            this.flpContenedor.AutoScroll = true;
+            this.flpContenedor.BackColor = System.Drawing.Color.White;
+            this.flpContenedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.flpContenedor, 4);
+            this.flpContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpContenedor.Location = new System.Drawing.Point(2, 99);
+            this.flpContenedor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.flpContenedor.Name = "flpContenedor";
+            this.flpContenedor.Size = new System.Drawing.Size(728, 409);
+            this.flpContenedor.TabIndex = 129;
+            this.flpContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContenedor_Paint);
+            // 
             // FormParametros
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -286,7 +287,6 @@
         private FontAwesome.Sharp.IconButton btnBuscar;
         private System.Windows.Forms.Label lblAnioCarrera;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.FlowLayoutPanel flpContenedor;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox chkNumero;
@@ -295,5 +295,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox chkHora;
         private System.Windows.Forms.CheckBox chkTabla;
+        private System.Windows.Forms.FlowLayoutPanel flpContenedor;
     }
 }

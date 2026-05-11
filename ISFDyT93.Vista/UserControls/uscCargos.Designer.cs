@@ -84,6 +84,7 @@
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Cargos Disponibles";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // pnlContenedor
             // 
@@ -93,6 +94,7 @@
             this.pnlContenedor.Name = "pnlContenedor";
             this.pnlContenedor.Size = new System.Drawing.Size(215, 60);
             this.pnlContenedor.TabIndex = 7;
+            this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
             // picAgregar
             // 
