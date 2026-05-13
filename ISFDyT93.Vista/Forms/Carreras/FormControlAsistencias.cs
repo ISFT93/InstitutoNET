@@ -642,7 +642,66 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnFiltrarEvaluaciones_Click(object sender, EventArgs e)
         {
+            this.LimpiarGrilla();
+        }
 
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            this.LimpiarFiltros();
+        }
+
+        private void LimpiarGrilla()
+        {
+            dgvAsistencias.DataSource = null;
+            dgvAsistencias.Rows.Clear();
+            dgvAsistencias.ClearSelection();
+
+            this.LimpiarControlesInformativos();
+        }
+
+        private void LimpiarFiltros()
+        {
+            _enCambioCombos = true;
+
+            cmbCarrera.DataSource = null;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Text = string.Empty;
+            cmbCarrera.SelectedIndex = -1;
+
+            cmbProfesor.DataSource = null;
+            cmbProfesor.Items.Clear();
+            cmbProfesor.Text = string.Empty;
+            cmbProfesor.SelectedIndex = -1;
+
+            cmbAnio.DataSource = null;
+            cmbAnio.Items.Clear();
+            cmbAnio.Text = string.Empty;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+            cmbCurso.Text = string.Empty;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.Items.Clear();
+            cmbMateria.Text = string.Empty;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            cmbCicloLectivo.DataSource = null;
+            cmbCicloLectivo.Items.Clear();
+            cmbCicloLectivo.Text = string.Empty;
+            cmbCicloLectivo.SelectedIndex = -1;
+            cmbCicloLectivo.Enabled = false;
+
+            carrerasCargadas = false;
+            profesoresCargados = false;
+            ciclosLectivosCargados = false;
+
+            _enCambioCombos = false;
         }
     }
 }
