@@ -563,11 +563,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             cmbCicloLectivo.Enabled = true;
         }
-
-        private void btnAplicarFiltros_Click(object sender, EventArgs e)
-        {
-            this.RellenarGrilla();
-        }
+        //
+        //private void btnAplicarFiltros_Click(object sender, EventArgs e)
+        //{
+        //    this.RellenarGrilla();
+        //}
 
         private ServiciosDao _serviciosDao = new ServiciosDao();
 
@@ -633,6 +633,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbCicloLectivo.DataSource = null;
             cmbCicloLectivo.SelectedIndex = -1;
             cmbCicloLectivo.Enabled = false;
+        }
+
+        private void btnFiltrarAsistencias_Click(object sender, EventArgs e)
+        {
+            this.RellenarGrilla();
+        }
+
+        private void btnFiltrarEvaluaciones_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
