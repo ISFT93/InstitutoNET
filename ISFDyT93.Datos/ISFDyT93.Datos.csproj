@@ -51,6 +51,7 @@
     <Compile Include="Daos\ControlAsistenciasDao.cs" />
     <Compile Include="Core\Settings.cs" />
     <Compile Include="Daos\CursadasDao.cs" />
+    <Compile Include="Daos\MailService.cs" />
     <Compile Include="Daos\MesasFinalesDao.cs" />
     <Compile Include="Daos\ParametrosDao.cs" />
     <Compile Include="Daos\EquivalenciasDao.cs" />

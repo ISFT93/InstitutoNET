@@ -1,10 +1,12 @@
 ﻿using ISFDyT93.Datos.Daos;
-using ISFDyT93.Entidades.Modelos;
-using System.Data;
 using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Negocio.Logica
 {
@@ -12,9 +14,11 @@ namespace ISFDyT93.Negocio.Logica
     {
 
         AlumnosDao alumnosDao;
+        MailService mailService;
         public AlumnosLogica()
         {
             alumnosDao = new AlumnosDao();
+            mailService = new MailService();
         }
 
         public int AgregarAlumno(AlumnosModelo modelo)
@@ -42,6 +46,18 @@ namespace ISFDyT93.Negocio.Logica
             }
 
             return 0;
+        }
+
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado,int idCarrera)
+        {
+            // Llama al DAO para traer los alumnos filtrados
+            return this.alumnosDao.ObtenerAlumnosPorEstadoDocumentacion(estado,idCarrera);
+        }
+
+        public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)
+        {
+            // Llama al DAO para actualizar el campo Inicializado (0, 1 o 2)
+            return this.alumnosDao.ActualizarEstadoInicializado(alumnoId, nuevoEstado);
         }
         public int AgregarAlumnoCargaMasiva(AlumnosModelo modelo)
         {
@@ -147,6 +163,21 @@ namespace ISFDyT93.Negocio.Logica
             var provincia = alumnosDao.ObtenerProvinciaAlumnos();
             return provincia.Rows.Cast<DataRow>().Select(r => r.Field<String>("Provincia")).ToArray();
         }
-
+        public bool EnviarMailDocumentos(string destino,
+        string asunto,
+        string mensaje,
+        bool esHtml = true,
+        List<string> adjuntos = null,
+        List<string> copia = null,
+        List<string> copiaOculta = null)
+        {
+            return this.mailService.SendMail(destino,
+        asunto,
+        mensaje,
+        esHtml = true,
+        adjuntos = null,
+        copia = null,
+        copiaOculta = null);
+        }
     }
 }

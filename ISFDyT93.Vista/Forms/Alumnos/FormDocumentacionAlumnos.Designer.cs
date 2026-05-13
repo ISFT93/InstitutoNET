@@ -36,8 +36,8 @@
             this.rbCompletos = new System.Windows.Forms.RadioButton();
             this.rbIncompletos = new System.Windows.Forms.RadioButton();
             this.rbTodos = new System.Windows.Forms.RadioButton();
-            this.btnCierre = new FontAwesome.Sharp.IconButton();
             this.cmbCarreraId = new System.Windows.Forms.ComboBox();
+            this.btnEnviarMail = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
@@ -57,8 +57,8 @@
             this.tableLayoutPanel1.Controls.Add(this.rbCompletos, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.rbIncompletos, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.rbTodos, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnCierre, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbCarreraId, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEnviarMail, 5, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -70,6 +70,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 146);
             this.tableLayoutPanel1.TabIndex = 54;
+            // 
+            // rbCompletos
+            // 
+            this.rbCompletos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCompletos.AutoSize = true;
+            this.rbCompletos.Location = new System.Drawing.Point(137, 88);
+            this.rbCompletos.Name = "rbCompletos";
+            this.rbCompletos.Size = new System.Drawing.Size(115, 23);
+            this.rbCompletos.TabIndex = 49;
+            this.rbCompletos.Text = "Completos";
+            this.rbCompletos.UseVisualStyleBackColor = true;
+            this.rbCompletos.CheckedChanged += new System.EventHandler(this.CheckedGrilla);
             //
             //
             // uscPaginacion1
@@ -86,17 +98,6 @@
             this.uscPaginacion1.Size = new System.Drawing.Size(237, 62);
             this.uscPaginacion1.TabIndex = 56;
             // 
-            // rbCompletos
-            // 
-            this.rbCompletos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbCompletos.AutoSize = true;
-            this.rbCompletos.Location = new System.Drawing.Point(137, 88);
-            this.rbCompletos.Name = "rbCompletos";
-            this.rbCompletos.Size = new System.Drawing.Size(115, 23);
-            this.rbCompletos.TabIndex = 49;
-            this.rbCompletos.Text = "Completos";
-            this.rbCompletos.UseVisualStyleBackColor = true;
-            // 
             // rbIncompletos
             // 
             this.rbIncompletos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -109,6 +110,7 @@
             this.rbIncompletos.TabStop = true;
             this.rbIncompletos.Text = "Incomplentos";
             this.rbIncompletos.UseVisualStyleBackColor = true;
+            this.rbIncompletos.CheckedChanged += new System.EventHandler(this.CheckedGrilla);
             // 
             // rbTodos
             // 
@@ -120,29 +122,7 @@
             this.rbTodos.TabIndex = 51;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
-            // 
-            // btnCierre
-            // 
-            this.btnCierre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCierre.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnCierre, 2);
-            this.btnCierre.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnCierre.FlatAppearance.BorderSize = 3;
-            this.btnCierre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCierre.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCierre.ForeColor = System.Drawing.Color.Red;
-            this.btnCierre.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnCierre.IconColor = System.Drawing.Color.White;
-            this.btnCierre.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCierre.IconSize = 32;
-            this.btnCierre.Location = new System.Drawing.Point(377, 67);
-            this.btnCierre.Name = "btnCierre";
-            this.tableLayoutPanel1.SetRowSpan(this.btnCierre, 2);
-            this.btnCierre.Size = new System.Drawing.Size(352, 50);
-            this.btnCierre.TabIndex = 56;
-            this.btnCierre.Text = "CIERRE DE INCRIPCION";
-            this.btnCierre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCierre.UseVisualStyleBackColor = false;
+            this.rbTodos.CheckedChanged += new System.EventHandler(this.CheckedGrilla);
             // 
             // cmbCarreraId
             // 
@@ -159,12 +139,32 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(4, 9);
+            this.cmbCarreraId.Location = new System.Drawing.Point(4, 6);
             this.cmbCarreraId.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(346, 27);
             this.cmbCarreraId.TabIndex = 46;
             this.cmbCarreraId.SelectedIndexChanged += new System.EventHandler(this.cmbCarreraId_SelectedIndexChanged);
+            // 
+            // btnEnviarMail
+            // 
+            this.btnEnviarMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnviarMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnEnviarMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviarMail.ForeColor = System.Drawing.Color.White;
+            this.btnEnviarMail.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
+            this.btnEnviarMail.IconColor = System.Drawing.Color.White;
+            this.btnEnviarMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEnviarMail.IconSize = 32;
+            this.btnEnviarMail.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnEnviarMail.Location = new System.Drawing.Point(555, 83);
+            this.btnEnviarMail.Name = "btnEnviarMail";
+            this.btnEnviarMail.Size = new System.Drawing.Size(174, 34);
+            this.btnEnviarMail.TabIndex = 178;
+            this.btnEnviarMail.Text = "Enviar Mail";
+            this.btnEnviarMail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEnviarMail.UseVisualStyleBackColor = false;
+            this.btnEnviarMail.Click += new System.EventHandler(this.btnEnviarMail_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -267,7 +267,7 @@
         private System.Windows.Forms.RadioButton rbTodos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public System.Windows.Forms.DataGridView dgvAlumnos;
-        private FontAwesome.Sharp.IconButton btnCierre;
         private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
+        private FontAwesome.Sharp.IconButton btnEnviarMail;
     }
 }

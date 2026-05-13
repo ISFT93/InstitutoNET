@@ -3,6 +3,7 @@ using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms.Common;
 using ISFDyT93.Vista.Forms.Componentes;
 using System;
@@ -47,31 +48,40 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void FormDocumentacionAlumnos_Load(object sender, EventArgs e)
         {
             uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion
-            cmbCarreraId.SelectedIndex = 0; //por defecto busca todos
-            uscPaginacion1.BringToFront();
-
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
+            cmbCarreraId.SelectedIndex = 0; //por defecto busca todos
+            uscPaginacion1.BringToFront();
 
-            RecargarGrilla(cmbCarreraId.Text);
+            
+
+            RecargarGrilla();
             this.Contenedor.SetTitulo("Documentación de Alumnos");
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
         }
-        private void RecargarGrilla(string filtro = "")
+        private void RecargarGrilla()
         {
+            var carreras =carrerasLogica.ObtenerCarreras();
+            int tipo = 0;
+            foreach (DataRow fila in carreras.Rows)
+            {
+                string c = fila["Descripción"].ToString();
+                if (cmbCarreraId.Text == c)
+                    tipo = Convert.ToInt32(fila["CarreraId"]);
+            }
+            
             dgvAlumnos.ClearSelection();
-            var tipo = (TipoFiltroAlumno.Carrera);
 
             if (rbTodos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1,tipo);
             else if (rbIncompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'True'");
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(0, tipo);
             else if (rbCompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'False'");
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo);
 
             EstilosColumnasDGV();
         }
@@ -82,7 +92,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvAlumnos.Columns.Contains("AlumnoCarreraId"))
                 dgvAlumnos.Columns["AlumnoCarreraId"].Visible = false;
             if (dgvAlumnos.Columns.Contains("Inicializado"))
-                dgvAlumnos.Columns["Inicializado"].Visible = false;
+                dgvAlumnos.Columns["Inicializado"].Visible = true;
             if (dgvAlumnos.Columns.Contains("Curso"))
             {
                 dgvAlumnos.Columns["Curso"].FillWeight = 50;
@@ -120,7 +130,32 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void cmbCarreraId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RecargarGrilla(cmbCarreraId.Text);
+            RecargarGrilla();
+        }
+
+        private void CheckedGrilla(object sender, EventArgs e)
+        {
+            RecargarGrilla();
+        }
+        public string mailasunto = "Documentación Pendiente";
+        public string mailtexto = @"Por medio de la presente, se le solicita tenga a bien acercarse al instituto a fin de presentar la documentación correspondiente.
+                                Desde ya, muchas gracias.";
+        private void btnEnviarMail_Click(object sender, EventArgs e)
+        {
+            int enviados = 0;
+            foreach (DataGridViewRow fila in dgvAlumnos.SelectedRows)
+            {
+                mailtexto = "Estimado/a "+fila.Cells["Apellido"].Value.ToString() + " " + fila.Cells["Nombre"].Value.ToString() + ",\n\n" + mailtexto;
+                int id = Convert.ToInt32(fila.Cells["AlumnoId"].Value);
+                string mail = fila.Cells["Mail"].Value.ToString();
+                if (Convert.ToInt32(fila.Cells["Inicializado"].Value) == 0)
+                {
+                    AlumnosLogica.EnviarMailDocumentos(mail,mailasunto,mailtexto);
+                    AlumnosLogica.ActualizarEstadoInicializado(id, 1);
+                    enviados++;
+                }
+            }
+            this.Notificar(TipoNotificacion.Success, $"Se han {enviados} Mails enviados.");
         }
     }
 }
