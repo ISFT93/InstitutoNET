@@ -87,7 +87,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="Core\Enums\NombreParametro.cs" />
     <Compile Include="Core\Enums\TipoNotificacion.cs" />
     <Compile Include="Core\FormBase.cs">
