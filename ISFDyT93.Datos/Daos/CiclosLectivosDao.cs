@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Entidades.Modelos;
 
 using System.Windows.Forms;
 
@@ -65,7 +65,7 @@ namespace ISFDyT93.Datos.Daos
             return result;
         }
 
-        public int AgregarFechaFinalesMarzo(CicloLectivoModelo modelo)
+        public int AgregarFechaFinalesMarzo(Entidades.Modelos.CicloLectivoModelo modelo)
         {
             string query = $"update CicloLectivo set FechaMarzoInicio = '{modelo.FechaMarzoInicio:yyyy-MM-dd}', FechaMarzoFinal = '{modelo.FechaMarzoFinal:yyyy-MM-dd}' where anioLectivo = {modelo.AnioLectivo}";
             int result = this.Conexion.EjecutarAccion(query);
@@ -73,7 +73,7 @@ namespace ISFDyT93.Datos.Daos
             return result;
         }
 
-        public int AgregarFechaFinalesJulio(CicloLectivoModelo modelo)
+        public int AgregarFechaFinalesJulio(Entidades.Modelos.CicloLectivoModelo modelo)
         {
             string query = $"update CicloLectivo set FechaJunioInicio = '{modelo.FechaJunioInicio:yyyy-MM-dd}', FechaJunioFinal = '{modelo.FechaJunioFinal:yyyy-MM-dd}' where AnioLectivo = {modelo.AnioLectivo}";
             int result = this.Conexion.EjecutarAccion(query);
@@ -81,7 +81,7 @@ namespace ISFDyT93.Datos.Daos
             return result;
         }
 
-        public int AgregarFechaFinalesDiciembre(CicloLectivoModelo modelo)
+        public int AgregarFechaFinalesDiciembre(Entidades.Modelos.CicloLectivoModelo modelo)
         {
             string query = $"update CicloLectivo set FechaDiciembreInicio = '{modelo.FechaDiciembreInicio:yyyy-MM-dd}', FechaDiciembreFinal = '{modelo.FechaDiciembreFinal:yyyy-MM-dd}' where anioLectivo = {modelo.AnioLectivo}";
             int result = this.Conexion.EjecutarAccion(query);

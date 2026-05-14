@@ -49,6 +49,15 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio(condicion: "checkFechaInicio")]
         [MayorQue("FechaInicio")]
         public DateTime? FechaCierre { get; set; }
+
+
+        //Fecha CicloSuperiores
+        [Obligatorio(condicion: "checkFechaSuperioresInicio")]
+        public DateTime? FechaInscripcionSuperioresInicio { get; set; }
+
+        [Obligatorio(condicion: "checkFechaSuperioresInicio")]
+        [MayorQue("FechaInscripcionSuperioresInicio")]
+        public DateTime? FechaInscripcionSuperioresFinal { get; set; }
         [Ignorar]
         public bool Activo { get; set; }
 
@@ -58,5 +67,7 @@ namespace ISFDyT93.Entidades.Modelos
         public bool checkFechaJunioInicio() => this.Modificando() && this.FechaJunioInicio != null;
         public bool checkFechaDiciembreInicio() => this.Modificando() && this.FechaDiciembreInicio != null;
         public bool checkFechaEspecialInicio() => this.Modificando() && this.FechaEspecialInicio != null;
+        public bool checkFechaSuperioresInicio() => this.Modificando() && this.FechaInscripcionSuperioresInicio != null;
+
     }
 }

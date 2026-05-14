@@ -1,4 +1,5 @@
-﻿using ISFDyT93.Entidades.Modelos;
+﻿using ISFDyT93.Entidades.Core;
+using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

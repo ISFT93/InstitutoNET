@@ -1,4 +1,5 @@
 ﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Entidades.Core;
 
 namespace ISFDyT93.Datos.Modelos
 {

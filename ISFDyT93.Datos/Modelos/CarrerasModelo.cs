@@ -2,6 +2,9 @@
 using ISFDyT93.Datos.Core.Attributes;
 using ISFDyT93.Datos.Core.Attributes.Validaciones;
 using ISFDyT93.Datos.Modelos;
+using ISFDyT93.Entidades.Core;
+using ISFDyT93.Entidades.Core.Attributes;
+using ISFDyT93.Entidades.Core.Attributes.Validaciones;
 
 namespace ISFDyT93.Datos.Modelos
 {

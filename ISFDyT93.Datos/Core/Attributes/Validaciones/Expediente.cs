@@ -1,4 +1,5 @@
-﻿using ISFDyT93.Entidades.Modelos;
+﻿using ISFDyT93.Entidades.Core;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Datos.Core.Attributes.Validaciones
 {

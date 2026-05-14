@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ISFDyT93.Datos.Daos;
 using System.Data;
-using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Negocio.Logica
 {

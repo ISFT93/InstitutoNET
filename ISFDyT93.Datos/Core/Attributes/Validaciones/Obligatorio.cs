@@ -19,7 +19,7 @@ namespace ISFDyT93.Datos.Core.Attributes.Validaciones
             this.Condicion = condicion;
         }
 
-        public bool InnerValidar(object value, ModeloBase modelo)
+        public bool InnerValidar(object value, Entidades.Core.ModeloBase modelo)
         {
             Type tipo = modelo.GetType();
 

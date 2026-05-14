@@ -1,18 +1,12 @@
 ﻿using System;
-using ISFDyT93.Datos.Modelos;
 using ISFDyT93.Negocio.Logica;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Vista.Core.Enums;
-using ISFDyT93.Vista.Forms.Componetes;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Vista.Forms.Configuraciones
 {

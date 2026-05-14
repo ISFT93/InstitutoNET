@@ -1,5 +1,7 @@
 ﻿using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Core.Attributes;
+using ISFDyT93.Entidades.Core;
+using ISFDyT93.Entidades.Core.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
