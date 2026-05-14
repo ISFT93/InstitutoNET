@@ -296,36 +296,30 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         }
         private bool ValidarAnioFechas()
         {
-            if (!int.TryParse(txtAnioLectivo.Text, out int anio)) return true;
+            if (!int.TryParse(txtAnioLectivo.Text, out int anio)) return false;
 
-            var fechas = new (DateTimePicker dtp, string nombre)[]
+            var fechas = new (DateTimePicker dtp, string nombre, int anioEsperado, string mensaje)[]
             {
-                (dtpFechaInicio,                      "Fecha Inicio"),
-                (dtpFechaCierre,                      "Fecha Cierre"),
-                (dtpFechaInscripcionInicio,           "Fecha Inscripción Inicio"),
-                (dtpFechaInscripcionFinal,            "Fecha Inscripción Final"),
-                (dtpFechaMarzoInicio,                 "Finales Marzo - Inicio"),
-                (dtpFechaMarzoFinal,                  "Finales Marzo - Final"),
-                (dtpFechaJunioInicio,                 "Finales Julio - Inicio"),
-                (dtpFechaJunioFinal,                  "Finales Julio - Final"),
-                (dtpFechaDiciembreInicio1,            "Finales Diciembre - Inicio"),
-                (dtpFechaDiciembreFinal,              "Finales Diciembre - Final"),
-                (dtpFechaInscripcionSuperioresInicio, "Inscripción Superiores - Inicio"),
-                (dtpFechaInscripcionSuperioresFinal,  "Inscripción Superiores - Final"),
+                (dtpFechaInicio,                      "Fecha Inicio",                      anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaCierre,                      "Fecha Cierre",                      anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaInscripcionInicio,           "Fecha Inscripción Inicio",          anio - 1, $"el año de la fecha de la inscripción al ciclo lectivo debe ser {anio - 1}"),
+                (dtpFechaInscripcionFinal,            "Fecha Inscripción Final",           anio - 1, $"el año de la fecha de la inscripción al ciclo lectivo debe ser {anio - 1}"),
+                (dtpFechaMarzoInicio,                 "Finales Marzo - Inicio",            anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaMarzoFinal,                  "Finales Marzo - Final",             anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaJunioInicio,                 "Finales Julio - Inicio",            anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaJunioFinal,                  "Finales Julio - Final",             anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaDiciembreInicio1,            "Finales Diciembre - Inicio",        anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaDiciembreFinal,              "Finales Diciembre - Final",         anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaInscripcionSuperioresInicio, "Inscripción Superiores - Inicio",   anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
+                (dtpFechaInscripcionSuperioresFinal,  "Inscripción Superiores - Final",    anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
             };
 
-            foreach (var (dtp, nombre) in fechas)
+            foreach (var (dtp, nombre, anioEsperado, mensaje) in fechas)
             {
-                if (!nombre.StartsWith("Fecha Inscripci") && dtp.CustomFormat == "dd/MM/yyyy" && dtp.Value.Year != anio)
+                if (dtp.CustomFormat != "dd/MM/yyyy") continue;
+                if (dtp.Value.Year != anioEsperado)
                 {
-                    Notificar(TipoNotificacion.Information,
-                        $"{nombre}: el año de la fecha no coincide con el ciclo lectivo {anio}");
-                    return false;
-                }
-                if (nombre.StartsWith("Fecha Inscripci") && dtp.CustomFormat == "dd/MM/yyyy" && dtp.Value.Year != anio - 1)
-                {
-                    Notificar(TipoNotificacion.Information,
-                        $"{nombre}: el año de la fecha de la inscripcion al ciclo lectivo debe ser {anio -1}");
+                    Notificar(TipoNotificacion.Information, $"{nombre}: {mensaje}");
                     return false;
                 }
             }
