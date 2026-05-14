@@ -1,0 +1,1187 @@
+using System; using System.Drawing; using System.Windows.Forms; using ISFDyT93.Datos.Enums; using ISFDyT93.Negocio.Logica; using ISFDyT93.Negocio.Core.Enums; using ISFDyT93.Vista.Core; using ISFDyT93.Vista.Core.Enums; using System.Data;
+
+namespace ISFDyT93.Vista.Forms.Carreras { public partial class FormCarreras : FormBase { #region Propiedades Publicas public FormPrincipal Contenedor { get; set; } public int CarreraId { get; set; } #endregion
+
+    #region Propiedades Privadas
+    private string NombreCarrera { get; set; }
+    private string AccionARealizar { get; set; }
+
+    private CarrerasLogica carrerasLogica { get; set; }
+    private AniosCarreraLogica aniosCarreraLogica { get; set; }
+    private CorrelativasLogica correlativasLogica { get; set; }
+    private MesasFinalesLogica mesasFinalesLogica {  get; set; }
+    #endregion
+    private int Ticks;
+    public FormCarreras()
+    {
+        this.carrerasLogica = new CarrerasLogica();
+        this.aniosCarreraLogica = new AniosCarreraLogica();
+        this.correlativasLogica = new CorrelativasLogica();
+        this.mesasFinalesLogica = new MesasFinalesLogica();
+
+        InitializeComponent();
+        tmrRetrasoForm.Start();
+    }
+
+    //Metodos para actualizar grilla
+    //Carga la grilla según el filtro seleccionado
+    private void CargarGrillaActivoInactivo()
+    {
+        if (rbActivos.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasActivas();
+        }
+        else if (rbInactivos.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
+        }
+        else if (rbBorrador.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
+        }
+
+        ConfigurarColumnasCodigo();
+        CarreraEstados();
+        /*
+        if (rbActivos.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasActivas();
+
+            CarreraEstados();
+            if (dgvCarreras.Rows.Count > 0)
+            {
+                //Ocultar columna de la grilla CarreraId CarreraEstadoId
+                dgvCarreras.Columns["CarreraId"].Visible = false;
+                dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+            }
+        }
+        else
+        if (rbInactivos.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
+            CarreraEstados();
+            if (dgvCarreras.Rows.Count > 0)
+            {
+                //Ocultar columna de la grilla CarreraId CarreraEstadoId
+                dgvCarreras.Columns["CarreraId"].Visible = false;
+                dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+            }
+        }
+        else
+        if (rbBorrador.Checked == true)
+        {
+            dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
+            CarreraEstados();
+            if (dgvCarreras.Rows.Count > 0)
+            {
+                //Ocultar columna de la grilla CarreraId CarreraEstadoId
+                dgvCarreras.Columns["CarreraId"].Visible = false;
+                dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+                dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
+            }
+        }*/
+
+    }
+
+    private void CambiarColor()
+    {
+        if (dgvCarreras.Rows.Count > 0)
+        {
+            for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+            {
+                switch (dgvCarreras.Rows[i].Cells["Estado"].Value.ToString())
+                {
+                    case "Bloqueado":
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Red;
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
+                        break;
+                }
+            }
+        }
+
+    }
+
+    public void Refrescar()
+    {
+        rbActivos.Visible = true;
+        rbInactivos.Visible = true;
+        dgvCarreras.ContextMenuStrip = cmsCarreras;
+
+        this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerCarreras();
+
+        ConfigurarColumnasCodigo();
+        CarreraEstados();
+
+        /*
+        rbActivos.Visible = true;
+        rbInactivos.Visible = true;
+        dgvCarreras.ContextMenuStrip = cmsCarreras;
+
+        this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerCarreras();
+
+        ConfigurarColumnasCodigo();
+        CarreraEstados();*/
+
+
+        /*
+        rbActivos.Visible = true;
+        rbInactivos.Visible = true;
+        dgvCarreras.ContextMenuStrip = cmsCarreras;
+        this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerCarreras();
+
+        //Ocultar columna de la grilla CarreraId CarreraEstadoId
+        dgvCarreras.Columns["CarreraId"].Visible = false;
+        dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+        dgvCarreras.Columns["Año De Fin"].Visible = false;
+        dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
+        dgvCarreras.Columns["Año De Inicio"].Visible = false;
+
+        CarreraEstados();*/
+    }
+
+    public void CarreraEstados()
+    {
+        if (dgvCarreras.Rows.Count > 0)
+        {
+
+            for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+            {
+                var estado = dgvCarreras.Rows[i].Cells["Estado"].Value.ToString();
+
+                if (estado == "Activa")
+                {
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Green;
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Green;
+                }
+                else if (estado == "Inactiva")//AQUICOLOR
+                {
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Yellow;
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Yellow;
+                }
+                else
+                {
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Red;
+                    dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
+                }
+            }
+        }
+    }
+
+    private void ExistenMesasFinales()
+    {
+        DataTable dt = mesasFinalesLogica.ObtenerMesas(this.CarreraId);
+        if (dt.Rows.Count == 0)
+        {
+            MessageBox.Show("Primero debe generar mesas finales.", "No existen mesas finales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        else
+        {
+            Contenedor.AbrirFormulario<FormMesasFinales>(form =>
+            {
+                form.CarreraId = this.CarreraId;
+                form.NombreCarrera = this.NombreCarrera;
+            });
+        }
+    }
+
+    private void FormCarreras_Load(object sender, EventArgs e)
+    {
+        this.Contenedor.SetTitulo("Carreras");
+        CargarGrillaActivoInactivo();
+
+    }
+
+    private void tsmActivar_Click(object sender, EventArgs e)
+    {
+        int ExisteCorrelativa = correlativasLogica.CorrelativaExisteCarrera(CarreraId);
+
+        if (ExisteCorrelativa == 0)
+        {
+            DialogResult result = MessageBox.Show("En la carrera '" + this.NombreCarrera + "' no hay correlativas asignadas, Desea agregarlas?", "Asignar correlativas", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                Contenedor.AbrirFormulario<FormAniosCarreras>(form =>
+                {
+                    form.CarreraId = this.CarreraId;
+                });
+            }
+            else if (result == DialogResult.No)
+            {
+                carrerasLogica.AltaCarreraActivo(CarreraId);
+                Notificar(TipoNotificacion.Success, "Carrera dada de alta con exito");
+                Refrescar();
+            }
+        }
+        else
+        {
+            DialogResult result = MessageBox.Show("Desea activar la carrera '" + this.NombreCarrera + "'?", "Activar carrera", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                carrerasLogica.AltaCarreraActivo(CarreraId);
+                Notificar(TipoNotificacion.Success, "Carrera dada de alta con exito");
+
+            }
+
+            Refrescar();
+        }
+    }
+
+    private void dgvCarreras_MouseUp(object sender, MouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Right)
+        {
+            DataGridView.HitTestInfo info = dgvCarreras.HitTest(e.X, e.Y);
+
+            if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
+            {
+                this.NombreCarrera = dgvCarreras["Descripción", info.RowIndex].Value.ToString();
+                this.CarreraId = Convert.ToInt32(dgvCarreras["CarreraId", info.RowIndex].Value.ToString());
+                var estado = Convert.ToInt32(dgvCarreras.Rows[info.RowIndex].Cells["CarreraEstadoId"].Value);
+                var cargaHoraria = aniosCarreraLogica.ObtenerCargaHoraria(this.CarreraId).ToString();
+
+                dgvCarreras.Rows[info.RowIndex].Selected = true;
+
+                // Control si esta Activo solo se puede ver los datos, caso contrario, si es borrador, se pueden modificar
+                if (estado == (int)CarreraEstado.Activa)
+                {
+                     
+                    tsmModificarCarrera.Text = "Ver datos";
+                    tsmEliminarCarrera.Text = "Desactivar";
+                    AccionARealizar = "Desactivar";
+                    tsmEliminarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.eye_slash_solid;//Aqui
+                    tsmModificarCarrera.Visible = true;
+                    tsmEliminarCarrera.Visible = true;
+                    tsmVerAnios.Visible = true;
+                    tsmVerCorrelativas.Visible = true;
+                    tsmVerEquivalencias.Visible = true;
+                    tsmDarAlta.Visible = false;
+                    tsmActivar.Visible = false;
+                } 
+                else if (estado == (int)CarreraEstado.Borrador)
+                {
+                    tsmEliminarCarrera.Text = "Eliminar";
+                    tsmEliminarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.trash_alt_solid;
+                    tsmModificarCarrera.Text = "Modificar";
+                    tsmAgregarCarrera.Visible = true;
+                    tsmModificarCarrera.Visible = true;
+                    tsmEliminarCarrera.Visible = true;
+                    tsmVerAnios.Visible = true;
+                    tsmVerCorrelativas.Visible = true;
+                    tsmVerEquivalencias.Visible = true;
+                    tsmDarAlta.Visible = true;
+                    tsmActivar.Visible = true;
+                }
+                else
+                {
+                    tsmModificarCarrera.Text = "Ver datos";
+                    tsmAgregarCarrera.Visible = true;
+                    tsmModificarCarrera.Visible = true;
+                    AccionARealizar = "Eliminar";
+                    tsmEliminarCarrera.Visible = false;
+                    tsmVerAnios.Visible = true;
+                    tsmVerCorrelativas.Visible = true;
+                    tsmVerEquivalencias.Visible = true;
+                    tsmDarAlta.Visible = false;
+                    tsmActivar.Visible = false;
+                }
+
+                //Si hay una carrera en borrador no se podra agregar otra
+                if (dgvCarreras.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+                    {
+                        if (estado == (int)CarreraEstado.Borrador)
+                        {
+                            tsmAgregarCarrera.Visible = false;
+                        }
+                    }
+                }
+
+                //Controla si coinciden las cantidades de horas cargadas y las calculadas para poder activar la carrera
+                bool Activar = true;
+                if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString())
+                {
+                    //Controla que no haya años vacios 
+                    var anios = aniosCarreraLogica.ObtenerAniosCarrera(CarreraId);
+                    for (int i = 0; i < anios.Rows.Count; i++)
+                    {
+                        if (anios.Rows[i]["Carga Horaria Completa"].ToString() == "0" || anios.Rows[i]["Carga Horaria Completa"].ToString() == "" || anios.Rows[i]["Carga Horaria Completa"].ToString() == null)
+                        {
+                            Activar = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Activar = false;
+                }
+
+                if (Activar == true)
+                    tsmActivar.Visible = true;
+                else
+                    tsmActivar.Visible = false;
+
+                cmsCarreras.Show(dgvCarreras, e.X - cmsCarreras.Width / 2, e.Y);
+            }
+            else
+            {
+                tsmDarAlta.Visible = false;
+                tsmModificarCarrera.Visible = false;
+                tsmEliminarCarrera.Visible = false;
+                tsmVerCorrelativas.Visible = false;
+                tsmVerEquivalencias.Visible = false;
+                tsmActivar.Visible = false;
+
+                //Si hay una carrera en borrador no se podra agregar otra
+                bool agregar = true;
+                if (dgvCarreras.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+                    {
+                        //var estado = dgvCarreras.Rows[i].Cells["Estado"].Value.ToString();
+                        var estado = "";
+                        if (estado == "Borrador")
+                        {
+                            agregar = false;
+                        }
+                    }
+                }
+                if (agregar == true)
+                {
+                    tsmAgregarCarrera.Visible = true;
+                }
+
+                cmsCarreras.Show(dgvCarreras, e.X - cmsCarreras.Width / 2, e.Y);
+            }
+        }
+    }
+
+    private void tsmAgregarCarreras_Click(object sender, EventArgs e)
+    {
+        Contenedor.AbrirFormulario<FormAgregarModificarCarrera>(form =>
+        {
+            form.CarreraId = this.CarreraId;
+            form.Accion = TipoAccion.Agregar;
+        });
+    }
+
+    private void tsmModificarCarrera_Click(object sender, EventArgs e)
+    {
+        Contenedor.AbrirFormulario<FormAgregarModificarCarrera>(form =>
+        {
+            form.CarreraId = this.CarreraId;
+            form.Accion = tsmModificarCarrera.Text == "Modificar" ? TipoAccion.Modificar : TipoAccion.Ver;
+        });
+    }
+    private void tsmVerAnios_Click(object sender, EventArgs e)
+    {
+        Contenedor.AbrirFormulario<FormAniosCarreras>(form =>
+        {
+            form.CarreraId = this.CarreraId;
+        });
+    }
+
+    private void tsmEliminarCarrera_Click(object sender, EventArgs e)
+    {
+        if (tsmEliminarCarrera.Text == "Desactivar")
+        {
+            DialogResult resultado = MessageBox.Show(
+                 "¿Desea desactivar la Carrera '" + this.NombreCarrera + "'?",
+                 "Desactivar Carrera",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question
+             );
+
+            if (resultado == DialogResult.Yes)
+            {
+                carrerasLogica.DesactivarCarrera(this.CarreraId);// Desactiva la carrera desde la lógica
+
+
+                Notificar(TipoNotificacion.Success, "Carrera desactivada con éxito");
+
+                rbInactivos.Checked = true;// Marca el filtro de inactivas
+                CargarGrillaActivoInactivo();
+            }
+        }
+        else
+        {
+            DialogResult resultado = MessageBox.Show(
+                $"¿Desea {AccionARealizar} la Carrera '" + this.NombreCarrera + "'?",
+                "Eliminar Carrera",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                carrerasLogica.EliminarCarrera(CarreraId);
+                Refrescar();
+            }
+            /*
+
+               Contenedor.AbrirFormulario<FormAgregarModificarCarrera>(form =>
+               {
+                   form.CarreraId = this.CarreraId;
+                   form.Accion = TipoAccion.Desactivar;
+               });
+             }
+             else
+             {
+               //CellContentClick cuando se selecciona en el menu Eliminar
+               DialogResult resultado = MessageBox.Show($"¿Desea {AccionARealizar} la Carrera '" + this.NombreCarrera + "'?",
+                 "Eliminar Carrera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+               if (resultado == DialogResult.Yes)
+               {
+                   carrerasLogica.EliminarCarrera(CarreraId);
+                   Refrescar();
+               }*/
+        }
+    }
+    private void rbTodos_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rbTodos.Checked)
+        {
+            Refrescar();
+        }
+        //Refrescar();
+    }
+    private void rbActivos_CheckedChanged(object sender, EventArgs e)
+    {
+        CargarGrillaActivoInactivo();
+    }
+    private void rbInactivos_CheckedChanged(object sender, EventArgs e)
+    {
+        CargarGrillaActivoInactivo();
+    }
+    private void tsmDarAlta_Click(object sender, EventArgs e)
+    {
+        carrerasLogica.AltaCarreraActivo(CarreraId);
+        Notificar(TipoNotificacion.Success, "Carrera dada de alta con exito");
+        Refrescar();
+        rbActivos.Checked = true;
+    }
+
+    private void tsmVerCorrelativas_Click(object sender, EventArgs e)
+    {
+        Contenedor.AbrirFormulario<FormVerCorrelativas>(form =>
+        {
+            form.CarreraId = this.CarreraId;
+        });
+    }
+
+    private void tsmVerEquivalencias_Click(object sender, EventArgs e)
+    {
+        Contenedor.AbrirFormulario<FormAgregarModificarEquivalencias>(form =>
+        {
+            form.CarreraId = this.CarreraId;
+            form.NombreCarrera = this.NombreCarrera;
+        });
+    }
+
+    private void rbBorrador_CheckedChanged(object sender, EventArgs e)
+    {
+        CargarGrillaActivoInactivo();
+    }
+
+    private void tmrRetrasoForm_Tick(object sender, EventArgs e)
+    {
+        Ticks++;
+        if (Ticks == 2)
+            tmrRetrasoForm.Stop();
+        CarreraEstados();
+    }
+
+    private void tsmVerFinales_Click(object sender, EventArgs e)
+    {
+        ExistenMesasFinales();
+    }
+    // Configura las columnas visibles de la grilla
+    private void ConfigurarColumnasCodigo()
+    {
+        if (dgvCarreras.Columns.Contains("Código"))
+        {
+            // La muestra
+            dgvCarreras.Columns["Código"].Visible = true;
+            dgvCarreras.Columns["Código"].HeaderText = "Código";// La pone como primera columna
+            dgvCarreras.Columns["Código"].DisplayIndex = 0;
+        }
+
+        if (dgvCarreras.Columns.Contains("CarreraId"))
+            dgvCarreras.Columns["CarreraId"].Visible = false;
+
+        if (dgvCarreras.Columns.Contains("CarreraEstadoId"))
+            dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+        // Oculta Año de Fin si existe con otra escritura
+        if (dgvCarreras.Columns.Contains("Año De Fin"))
+            dgvCarreras.Columns["Año De Fin"].Visible = false;
+
+        if (dgvCarreras.Columns.Contains("Año de Fin"))
+            dgvCarreras.Columns["Año de Fin"].Visible = false;
+
+        if (dgvCarreras.Columns.Contains("Año De Inicio"))
+            dgvCarreras.Columns["Año De Inicio"].Visible = false;
+
+        if (dgvCarreras.Columns.Contains("Año de Inicio"))
+            dgvCarreras.Columns["Año de Inicio"].Visible = false;
+
+        if (dgvCarreras.Columns.Contains("Carga Horaria Completa") && rbBorrador.Checked)
+            dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
+    }
+}
+
+using System; using System.Data; using ISFDyT93.Datos.Core; using ISFDyT93.Datos.Modelos;
+
+namespace ISFDyT93.Datos.Daos { public class AniosCarreraDao : DaoBase { // Obtiene los años pertenecientes a una carrera específica. // Ahora también trae CodigoBloque como columna [Código], // para que en la grilla se vea el código del año. // Ejemplo: carrera 01 + año 1 = 011. public DataTable ObtenerAniosCarrera(int carreraId) { string query = "SELECT " + "CodigoBloque AS [Año], " + "AnioCarreraId, " + //"AnioCarrera AS [Año], " + "CantidadMaterias AS [Cantidad de Materias], " + "CargaHorariaCompleta AS [Carga Horaria Completa] " + "FROM AniosCarreras " + "WHERE CarreraId = " + carreraId + " " + "ORDER BY AnioCarrera";
+
+        return this.Conexion.ObtenerRegistros(query);
+        /*
+        string query = "SELECT AnioCarreraId,AnioCarrera AS [Año],CantidadMaterias AS [Cantidad de Materias],CargaHorariaCompleta AS [Carga Horaria Completa] FROM AniosCarreras WHERE CarreraId = " + carreraId;
+
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+    // Agrega un nuevo año a una carrera.
+    // Además de guardar AnioCarrera y CarreraId,
+    // genera automáticamente el CodigoBloque del año.
+    // El código se forma uniendo el CodigoBloque de la carrera
+    // con el número de año.
+    public int AgregarAnio(int anioCarrera, int carreraId)
+    {
+        string query =
+         "INSERT INTO AniosCarreras (AnioCarrera, CarreraId, CodigoBloque) " +
+         "SELECT " +
+         anioCarrera + ", " +
+         carreraId + ", " +
+         "C.CodigoBloque + CAST(" + anioCarrera + " AS VARCHAR(1)) " +
+         "FROM Carreras C " +
+         "WHERE C.CarreraId = " + carreraId;
+
+        return this.Conexion.EjecutarAccion(query);
+        /*
+        string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId) VALUES(" + anioCarrera + "," + carreraId + ")";
+            
+        return this.Conexion.EjecutarAccion(query);*/
+    }
+
+    // Elimina un año de carrera según su Id interno.
+    // Borra el registro de la tabla AniosCarreras.
+    // Se usa cuando se elimina un año cargado en una carrera.
+    public int EliminarAnios(int anioCarreraId)
+    {
+        string query = "DELETE AniosCarreras WHERE AnioCarreraId = " + anioCarreraId;
+
+        return this.Conexion.EjecutarAccion(query);
+    }
+
+    // Actualiza la cantidad de materias y la carga horaria total de un año.
+    // Cuenta cuántas materias tiene ese año.
+    // También suma la carga horaria de todas sus materias.
+    // Luego guarda esos valores en AniosCarreras.
+    public int ActualizarCargaHoria(int anioCarreraId)
+    {
+        string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId =" + anioCarreraId+")," +
+        "CargaHorariaCompleta = (SELECT SUM(CargaHoraria) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") WHERE AnioCarreraId = " + anioCarreraId;
+        
+        return this.Conexion.EjecutarAccion(query);
+    }
+    // Obtiene los años de las carreras activas de un alumno.
+    // Relaciona AniosCarreras, Carreras y AlumnosCarreras.
+    // Se usa para saber qué años corresponden al alumno inscripto.
+    public DataTable ObtenerAnios(int alumnoId)
+    {
+        string query = "SELECT AC.AnioCarreraId, AC.AnioCarrera FROM AniosCarreras AC " +
+          "INNER JOIN Carreras C ON AC.CarreraId = C.CarreraId " +
+          "INNER JOIN AlumnosCarreras ALC ON C.CarreraId = ALC.CarreraId WHERE ALC.AlumnoId =" + alumnoId + " AND ALC.Activo = 1";
+
+        return this.Conexion.ObtenerRegistros(query);
+    }
+    // Obtiene la suma total de la carga horaria de todos los años de una carrera.
+    // Devuelve un número entero.
+    // Si no encuentra datos o hay error, devuelve 0.
+    public int ObtenerCargaHoraria(int CarreraId)
+    {
+        string query = "SELECT SUM(CargaHorariaCompleta) as CargaHoraria FROM AniosCarreras WHERE CarreraId = "+ CarreraId;
+        var row = this.Conexion.ObtenerRegistro(query);
+        try
+        {
+            if (row != null)
+            {
+                return Convert.ToInt32(row["CargaHoraria"]);
+            }
+            return 0;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+    // Obtiene el CarreraId al que pertenece un año de carrera.
+    // Recibe un AnioCarreraId y devuelve la carrera asociada.
+    public DataRow ObtenerCarrera(int AnioCarreraId)
+    {
+        string query = "SELECT CarreraId from AniosCarreras where AnioCarreraId=" + AnioCarreraId;
+        return this.Conexion.ObtenerRegistro(query);
+    }
+    // Obtiene todos los datos de un año de carrera específico.
+    // También trae el nombre corto de la carrera y su estado.
+    // Luego convierte el resultado a un modelo AniosCarrerasModelo.
+    public AniosCarrerasModelo ObtenerAnioCarrera(int anioCarreraId)
+    {
+        string query = $"SELECT A.*, C.DescripcionCorta AS NombreCarrera, C.CarreraEstadoId FROM AniosCarreras A INNER JOIN Carreras C ON A.CarreraId = C.CarreraId where AnioCarreraId = { anioCarreraId }";
+        return this.MapToModel<AniosCarrerasModelo>(this.Conexion.ObtenerRegistro(query));
+    }
+    // Obtiene solamente el número de año.
+    // Recibe el AnioCarreraId y devuelve AnioCarrera.
+    // Si no encuentra datos, devuelve 0.
+    public int ObtenerAnio(int anioCarreraId)
+    {
+        string query = "SELECT AnioCarrera FROM AniosCarreras WHERE AnioCarreraId = " + anioCarreraId;
+        var row = this.Conexion.ObtenerRegistro(query);
+        if (row != null)
+        {
+            return Convert.ToInt32(row["AnioCarrera"]);
+        }
+        return 0;
+    }
+
+
+}
+using ISFDyT93.Datos.Core; using ISFDyT93.Datos.Modelos; using System; using System.Data;
+
+namespace ISFDyT93.Datos.Daos { public class CarrerasDao : DaoBase { // Obtiene todas las carreras, sin filtrar por estado. // Trae el código de bloque, datos principales de la carrera, // el estado y la carga horaria. // Se usa cuando en el formulario se selecciona la opción "Todos". // El ORDER BY ordena las carreras por su código de bloque. public DataTable ObtenerCarreras(bool Activo = true) { string query = "SELECT " + "C.CodigoBloque AS [Código], " + "C.CarreraId, " + "C.Nombre, " + "C.DescripcionCorta AS [Descripción], " + "C.NumeroExpediente AS [Numero de Expediente], " + "C.AnioInicio AS [Año De Inicio], " + "IIF(C.AnioFin > 0, CONVERT(nvarchar(4), C.AnioFin), '') AS [Año De Fin], " + "C.CantidadHoras AS [Carga Horaria Completa], " + "C.CarreraEstadoId, " + "CE.Descripcion AS Estado " + "FROM Carreras C " + "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " + "ORDER BY C.CodigoBloque";
+
+        return this.Conexion.ObtenerRegistros(query);
+
+        /*
+        string query =
+         "SELECT " +
+         "C.CodigoBloque AS [Código], " +
+         "C.CarreraId, " +
+         "C.Nombre, " +
+         "C.DescripcionCorta AS [Descripción], " +
+         "C.NumeroExpediente AS [Numero de Expediente], " +
+         "C.AnioInicio AS [Año De Inicio], " +
+         "IIF(C.AnioFin > 0, CONVERT(nvarchar(4), C.AnioFin), '') AS [Año De Fin], " +
+         "C.CantidadHoras AS [Carga Horaria Completa], " +
+         "C.CarreraEstadoId, " +
+         "CE.Descripcion AS Estado " +
+         "FROM Carreras C " +
+         "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+         "WHERE C.CarreraEstadoId = 1";
+
+        return this.Conexion.ObtenerRegistros(query);*/
+
+
+
+        /*
+        //Query para seleccionar todos resgistros de Carreras
+        string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
+          " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId WHERE C.CarreraEstadoId = 1";
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+    // Obtiene solamente las carreras inactivas.
+    // Usa CarreraEstadoId = 2 para filtrar ese estado.
+    // También trae el código de bloque para mostrarlo en la grilla.
+    // Se usa cuando el usuario selecciona el filtro "Inactivos".
+    public DataTable CarrerasInactivas(bool Activo = false)
+    {
+        string query =
+          "SELECT " +
+          "C.CodigoBloque AS [Código], " +
+          "C.CarreraId, " +
+          "C.Nombre, " +
+          "C.DescripcionCorta AS [Descripción], " +
+          "C.NumeroExpediente AS [Numero de Expediente], " +
+          "C.CarreraEstadoId, " +
+          "CE.Descripcion AS Estado " +
+          "FROM Carreras C " +
+          "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+          "WHERE C.CarreraEstadoId = 2 " +
+          "ORDER BY C.CodigoBloque";
+
+        return this.Conexion.ObtenerRegistros(query);
+
+        /*
+        string query =
+        "SELECT " +
+        "C.CodigoBloque AS [Código], " +
+        "C.CarreraId, " +
+        "C.Nombre, " +
+        "C.DescripcionCorta AS [Descripción], " +
+        "C.NumeroExpediente AS [Numero de Expediente], " +
+        "C.CarreraEstadoId, " +
+        "CE.Descripcion AS Estado " +
+        "FROM Carreras C " +
+        "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+        "WHERE C.CarreraEstadoId = 2";
+        return this.Conexion.ObtenerRegistros(query);*/
+
+        /*
+        //Query para seleccionar todos resgistros de Carreras
+        string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+
+    // Obtiene solamente las carreras en borrador.
+    // Usa CarreraEstadoId = 3 para filtrar ese estado.
+    // Incluye la carga horaria completa porque se usa para controlar
+    // si una carrera en borrador puede activarse o no.
+    // Se usa cuando el usuario selecciona el filtro "Borrador".
+    public DataTable CarrerasBorrador(bool Activo = false)
+    {
+        string query =
+         "SELECT " +
+         "C.CodigoBloque AS [Código], " +
+         "C.CarreraId, " +
+         "C.Nombre, " +
+         "C.DescripcionCorta AS [Descripción], " +
+         "C.NumeroExpediente AS [Numero de Expediente], " +
+         "C.CarreraEstadoId, " +
+         "C.CantidadHoras AS [Carga Horaria Completa], " +
+         "CE.Descripcion AS Estado " +
+         "FROM Carreras C " +
+         "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+         "WHERE C.CarreraEstadoId = 3 " +
+         "ORDER BY C.CodigoBloque";
+
+        return this.Conexion.ObtenerRegistros(query);
+
+        /*string query =
+        "SELECT " +
+        "C.CodigoBloque AS [Código], " +
+        "C.CarreraId, " +
+        "C.Nombre, " +
+        "C.DescripcionCorta AS [Descripción], " +
+        "C.NumeroExpediente AS [Numero de Expediente], " +
+        "C.CarreraEstadoId, " +
+        "C.CantidadHoras AS [Carga Horaria Completa], " +
+        "CE.Descripcion AS Estado " +
+       "FROM Carreras C " +
+        "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+        "WHERE C.CarreraEstadoId = 3";
+
+        return this.Conexion.ObtenerRegistros(query);*/
+
+
+        /*
+        //Query para seleccionar todos resgistros de Carreras
+        string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , C.CantidadHoras as [Carga Horaria Completa], CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+
+    // Obtiene solamente las carreras activas.
+    // Usa CarreraEstadoId = 1 para filtrar ese estado.
+    // Trae el código de bloque y los datos principales de la carrera.
+    // Se usa cuando el usuario selecciona el filtro "Activos".
+    public DataTable CarrerasActivas(bool Activo = true)
+    {
+        string query =
+         "SELECT " +
+         "C.CodigoBloque AS [Código], " +
+         "C.CarreraId, " +
+         "C.Nombre, " +
+         "C.DescripcionCorta AS [Descripción], " +
+         "C.NumeroExpediente AS [Numero de Expediente], " +
+         "C.CarreraEstadoId, " +
+         "CE.Descripcion AS Estado " +
+         "FROM Carreras C " +
+         "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+         "WHERE C.CarreraEstadoId = 1 " +
+         "ORDER BY C.CodigoBloque";
+
+        return this.Conexion.ObtenerRegistros(query);
+
+        /*string query =
+           "SELECT " +
+           "C.CodigoBloque AS [Código], " +
+           "C.CarreraId, " +
+           "C.Nombre, " +
+           "C.DescripcionCorta AS [Descripción], " +
+           "C.NumeroExpediente AS [Numero de Expediente], " +
+           "C.CarreraEstadoId, " +
+           "CE.Descripcion AS Estado " +
+           "FROM Carreras C " +
+           "INNER JOIN CarreraEstados CE ON C.CarreraEstadoId = CE.CarreraEstadoId " +
+           "WHERE C.CarreraEstadoId = 1";
+
+        return this.Conexion.ObtenerRegistros(query);*/
+
+        /*
+        //Query para seleccionar todos resgistros de Carrera
+        string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
+ 
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+    public CarrerasModelo ObtenerCarrera(int id)
+    { /* Si activo es true escribe 1 si no 0 */
+        string query = "SELECT * FROM Carreras WHERE CarreraId = " + id;
+
+        return this.MapToModel<CarrerasModelo>(this.Conexion.ObtenerRegistro(query));
+    }
+
+    public int EstadoCarrera(CarrerasModelo modelo)
+    {
+        string query = "UPDATE Carreras SET Activo=" + modelo.Activo + " WHERE Activo= " + modelo.Activo;
+        return this.Conexion.EjecutarAccion(query);
+    
+    }
+
+    public DataRow CarreraExiste(string Nombre)
+    {
+        string query = "SELECT TOP 1 CarreraId FROM Carreras WHERE Nombre = '" + Nombre+"'";
+        return this.Conexion.ObtenerRegistro(query);
+    }
+
+    public int TraeIdDeCarrera(string nombre)
+    {
+        string query = "SELECT CarreraId FROM Carreras WHERE Nombre = '" + nombre + "'";
+        var carrera = this.Conexion.ObtenerRegistro(query);
+
+            if (carrera != null)
+            {
+                return Convert.ToInt32(carrera["CarreraId"]);
+            }
+
+            return 0;
+      
+    }
+
+    public int ObtenerUltimoCarreraId()
+    { /* Si activo es true escribe 1 si no 0 */
+        string query = "SELECT TOP 1 CarreraId FROM Carreras ORDER BY CarreraId DESC";
+
+        var row = this.Conexion.ObtenerRegistro(query);
+
+        if (row != null)
+        {
+            return Convert.ToInt32(row["CarreraId"]);
+        }
+        return 0;
+    }
+
+    // Agrega una nueva carrera a la base de datos.
+    // Primero crea el INSERT automáticamente a partir del modelo.
+    // Después genera el CodigoBloque de forma automática.
+    // Finalmente devuelve el resultado de la inserción.
+    public int AgregarCarreras(CarrerasModelo modelo)
+    {
+        // Crea la consulta INSERT usando los datos del modelo.
+        string query = this.CreateInsertQuery<CarrerasModelo>(modelo);
+        // Ejecuta el INSERT y guarda el resultado.
+        int resultado = this.Conexion.EjecutarAccion(query);
+        // Consulta adicional para generar el código de bloque de la carrera nueva.
+        string actualizarCodigo =
+            "DECLARE @NuevoCarreraId INT; " +
+            "DECLARE @NuevoCodigo VARCHAR(2); " +
+            // Toma el último CarreraId insertado.
+            "SELECT @NuevoCarreraId = MAX(CarreraId) " +
+            "FROM Carreras; " +
+
+            // Busca el mayor CodigoBloque existente y le suma 1.
+            // RIGHT('00' + ...) asegura que quede con dos dígitos, por ejemplo 01, 02, 10.
+            "SELECT @NuevoCodigo = RIGHT('00' + CAST(ISNULL(MAX(CAST(CodigoBloque AS INT)), 0) + 1 AS VARCHAR(2)), 2) " +
+            "FROM Carreras " +
+            "WHERE ISNUMERIC(CodigoBloque) = 1; " +
+            // Actualiza la carrera recién agregada con el nuevo código generado.
+            "UPDATE Carreras " +
+            "SET CodigoBloque = @NuevoCodigo " +
+            "WHERE CarreraId = @NuevoCarreraId;";
+
+        this.Conexion.EjecutarAccion(actualizarCodigo);
+
+        return resultado;
+        /*
+        string query = this.CreateInsertQuery<CarrerasModelo>(modelo);
+
+        return this.Conexion.EjecutarAccion(query);*/
+    }
+
+    //METODO para modificar carreras de la base 
+    public int ModificarCarrera(CarrerasModelo modelo)
+    {
+        string query = this.CreateUpdateQuery<CarrerasModelo>(modelo);
+
+        return this.Conexion.EjecutarAccion(query);
+    }
+    
+    public int ModificarCarreraEstado(CarrerasModelo modelo)
+    {
+        string query = "UPDATE Carreras SET CarreraEstadoId=" + modelo.CarreraEstadoId + " WHERE CarreraId= " + modelo.CarreraId;
+        return this.Conexion.EjecutarAccion(query);
+    }
+    // Elimina definitivamente una carrera de la tabla Carreras.
+    // Usa DELETE, por eso el registro desaparece de la base de datos.
+    // Se utiliza normalmente para carreras en borrador o registros que no deben conservarse.
+    public void EliminarCarrera(int CarreraId)
+    {
+        // string query = "UPDATE Carreras SET Activo = " + 0 + "WHERE CarreraId = " + CarreraId + "";
+        string query = "DELETE Carreras WHERE CarreraId =" + CarreraId;
+        this.Conexion.EjecutarAccion(query);
+    }
+
+    public void AltaCarreraActivo(int CarreraId)
+    {
+        string query = "UPDATE Carreras SET CarreraEstadoId = 1 WHERE CarreraId = " + CarreraId + "";
+        this.Conexion.EjecutarAccion(query);
+    }
+
+    public void ActualizarCargaHoraria(int CarreraId, int cantidadHoras)
+    {
+        string query = "UPDATE Carreras SET CantidadHoras = " + cantidadHoras + " WHERE CarreraId = " + CarreraId + "";
+        this.Conexion.EjecutarAccion(query);
+    }
+    // Cambia el estado de una carrera a "Inactiva".
+    // No borra la carrera de la base de datos, solo modifica su CarreraEstadoId a 2.
+    // Sirve para que la carrera deje de aparecer como activa y pase al listado de inactivas.
+    public void DesactivarCarrera(int carreraId)
+    {
+        string query = "UPDATE Carreras SET CarreraEstadoId = 2 WHERE CarreraId = " + carreraId;
+        this.Conexion.EjecutarAccion(query);
+    }
+}
+using System; using System.Collections.Generic; using System.Data; using System.Data.SqlClient; using ISFDyT93.Datos.Core; using ISFDyT93.Datos.Modelos;
+
+namespace ISFDyT93.Datos.Daos { public class MateriasDao : DaoBase { //AQUI NACHO F/P // Obtiene las materias de un año de carrera específico. // Ahora también trae CodigoBloqueMateria como columna [Código], // para que en la grilla se vea el código completo de la materia. // Ejemplo: carrera 01 + año 1 + materia 03 = 01103. // También cuenta cuántas correlativas tiene cada materia. public DataTable ObtenerMaterias(int anioCarreraId, bool activo = true) { //nuevo string query = "SELECT " + "Mat.CodigoBloqueMateria AS [Código], " + "Mat.MateriaId, " + "Mat.Nombre, " + "Mat.FinalPromocion AS [Final/Promoción], " + "Mat.AnioCarreraId, " + "Mat.CargaHoraria AS [Carga Horaria], " + "Esp.Descripcion AS [Descripción], " + "Mat.EspacioId, " + "COUNT(Cor.MateriaId) AS Correlativas " + "FROM Materias AS Mat " + "INNER JOIN Espacios AS Esp ON Esp.EspacioId = Mat.EspacioId " + "LEFT JOIN Correlativas AS Cor ON Cor.MateriaId = Mat.MateriaId " + "WHERE Mat.AnioCarreraId = " + anioCarreraId + " " + "AND Mat.Activo = " + (activo ? "1" : "0") + " " + "GROUP BY Mat.CodigoBloqueMateria, Mat.MateriaId, Mat.Nombre, Mat.FinalPromocion," + " Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId " + "ORDER BY Mat.CodigoBloqueMateria";
+
+        /*
+        string query =
+         "SELECT " +
+         "Mat.CodigoBloqueMateria AS [Código], " +
+         "Mat.MateriaId, " +
+         "Mat.Nombre, " +
+         "Mat.AnioCarreraId, " +
+         "Mat.CargaHoraria AS [Carga Horaria], " +
+         "Esp.Descripcion AS [Descripción], " +
+         "Mat.EspacioId, " +
+         "COUNT(Cor.MateriaId) AS Correlativas " +
+         "FROM Materias AS Mat " +
+         "INNER JOIN Espacios AS Esp ON Esp.EspacioId = Mat.EspacioId " +
+         "LEFT JOIN Correlativas AS Cor ON Cor.MateriaId = Mat.MateriaId " +
+         "WHERE Mat.AnioCarreraId = " + anioCarreraId + " " +
+         "AND Mat.Activo = " + (activo ? "1" : "0") + " " +
+         "GROUP BY Mat.CodigoBloqueMateria, Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId " +
+         "ORDER BY Mat.CodigoBloqueMateria";*/
+
+        return this.Conexion.ObtenerRegistros(query);
+        /*
+        string query = "SELECT Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria AS [Carga Horaria], Esp.Descripcion AS [Descripción], Mat.EspacioId,  COUNT(Cor.MateriaId) As Correlativas " +    
+            "FROM Materias as Mat " +
+            "INNER JOIN Espacios as Esp ON Esp.EspacioId = Mat.EspacioId " +
+            "LEFT JOIN Correlativas as Cor ON Cor.MateriaId = Mat.MateriaId " +
+            $"WHERE AnioCarreraId = { anioCarreraId } AND Activo = { (activo ? "1" : "0") } " +
+            "GROUP BY Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId " +
+            "ORDER BY Mat.EspacioId";
+
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+    // Carga materias para usarlas en combos o listados simples.
+    // En vez de mostrar solo el nombre, muestra código + nombre.
+    // Ejemplo: "01103 - Matemática".
+    // Mantiene MateriaId como valor interno para que el programa siga funcionando.
+    public DataTable CargarMaterias(int anioCarreraId, bool activo = true)
+    {
+        string query =
+        "SELECT " +
+        "MateriaId, " +
+        "CodigoBloqueMateria + ' - ' + Nombre AS Nombre " +
+        "FROM Materias " +
+        "WHERE AnioCarreraId = " + anioCarreraId + " " +
+        "AND Activo = " + (activo ? "1" : "0") + " " +
+        "ORDER BY CodigoBloqueMateria";
+
+        return this.Conexion.ObtenerRegistros(query);
+        /*
+        string query = $"SELECT MateriaId, Nombre " +
+            $"FROM Materias " +
+            $"WHERE AnioCarreraId = { anioCarreraId } AND Activo = { (activo ? "1" : "0") } ";
+
+        return this.Conexion.ObtenerRegistros(query);*/
+    }
+    public int ObtenerUltimaMateriaId()
+    { /* Si activo es true escribe 1 si no 0 */
+        string query = "SELECT TOP 1 MateriaId " +
+            "FROM Materias " +
+            "ORDER BY MateriaId DESC";
+
+        var row = this.Conexion.ObtenerRegistro(query);
+
+        if (row != null)
+        {
+            return Convert.ToInt32(row["MateriaId"]);
+        }
+        return 0;
+    }
+
+    public int EliminarMateria(int idMateria)
+    {
+        string query = $"DELETE Materias WHERE MateriaId = { idMateria }";
+      return  this.Conexion.EjecutarAccion(query);
+    }
+
+    public DataRow MateriaAsignada(int id)
+    {
+       string query = "SELECT COUNT(Materias.MateriaId) AS Cantidad " +
+            "FROM Materias " +
+            "INNER JOIN AniosCarreras ON Materias.AnioCarreraId = AniosCarreras.AnioCarreraId " +
+            $"WHERE AniosCarreras.CarreraId = { id }";
+        return this.Conexion.ObtenerRegistro(query);
+    }
+    // Agrega una nueva materia a la base de datos.
+    // Primero hace el INSERT normal usando el modelo.
+    // Después genera automáticamente CodigoBloqueMateria.
+    // El código se forma con el CodigoBloque del año + número de materia.
+    // Ejemplo: año 011 + materia 04 = 01104.
+    public int AgregarMaterias(MateriasModelo modelo)
+    {
+        string query = this.CreateInsertQuery<MateriasModelo>(modelo);
+
+        int resultado = this.Conexion.EjecutarAccion(query);
+
+        string actualizarCodigo =
+            "DECLARE @NuevaMateriaId INT; " +
+            "DECLARE @NumeroMateria INT; " +
+
+            "SELECT @NuevaMateriaId = MAX(MateriaId) " +
+            "FROM Materias " +
+            "WHERE AnioCarreraId = " + modelo.AnioCarreraId + "; " +
+
+            "SELECT @NumeroMateria = COUNT(*) " +
+            "FROM Materias " +
+            "WHERE AnioCarreraId = " + modelo.AnioCarreraId + "; " +
+
+            "UPDATE M " +
+            "SET M.CodigoBloqueMateria = AC.CodigoBloque + RIGHT('00' + CAST(@NumeroMateria AS VARCHAR(2)), 2) " +
+            "FROM Materias M " +
+            "INNER JOIN AniosCarreras AC ON AC.AnioCarreraId = M.AnioCarreraId " +
+            "WHERE M.MateriaId = @NuevaMateriaId;";
+
+        this.Conexion.EjecutarAccion(actualizarCodigo);
+
+        return resultado;
+        /*
+        string query = this.CreateInsertQuery<MateriasModelo>(modelo);
+
+        return this.Conexion.EjecutarAccion(query);*/
+    }
+
+    public int ModificarMateria(MateriasModelo modelo)
+    {
+        string query = this.CreateUpdateQuery<MateriasModelo>(modelo);
+
+        return this.Conexion.EjecutarAccion(query);
+    }
+
+    public DataTable ObtenerEspacios()
+    {
+        string query = "SELECT * FROM Espacios";
+
+        return this.Conexion.ObtenerRegistros(query);
+    }
+
+    public MateriasModelo ObtenerMateria(int materiaId)
+    {  /*   Si activo es true escribe 1 si no 0 */
+        string query = "SELECT M.*, AC.CarreraId, AC.AnioCarrera "+
+            "FROM Materias M "+
+            "INNER JOIN AniosCarreras AC ON M.AnioCarreraId = AC.AnioCarreraId " +
+            $"WHERE MateriaId = { materiaId }";
+
+        return this.MapToModel<MateriasModelo>(this.Conexion.ObtenerRegistro(query));//
+    }
+
+    public DataTable ObtenerAsignarMateria(int alumnoId, int anioCarreraId)
+    {
+        string query = " SELECT M.MateriaId, M.Nombre " +
+            "FROM Materias M INNER JOIN AniosCarreras AC ON M.AnioCarreraId = AC.AnioCarreraId " +
+            "INNER JOIN Carreras C ON AC.CarreraId = C.CarreraId  INNER JOIN AlumnosCarreras ALC ON C.CarreraId = ALC.CarreraId " +
+            $"WHERE ALC.Activo = 1 AND ALC.AlumnoId = { alumnoId } AND AC.AnioCarreraId = { anioCarreraId }";
+        return this.Conexion.ObtenerRegistros(query);
+    }
+
+    public DataTable ObtenerMateriasAsignar(int alumnoId, int anioCarreraId)
+    {
+        var parMateria = new SqlParameter("AlumnoID", SqlDbType.Int);
+        parMateria.Value = alumnoId;
+
+        var parCarreras = new SqlParameter("AnioCarreraID", SqlDbType.Int);
+        parCarreras.Value = anioCarreraId;
+
+        var parMensaje = new SqlParameter("Msj", SqlDbType.VarChar, 50);
+        parMensaje.Direction = ParameterDirection.Output;
+
+        var parametros = new SqlParameter[3] { parMateria, parCarreras, parMensaje };
+
+        return this.Conexion.EjecutarStore("SP_ListaMateriasAlumno", parametros);
+    }
+
+    public DataTable ObtenerMateriasAsignar(int alumnoId)//agregar concat
+    {
+        string query = "SELECT M.MateriaId, M.Nombre, ACLM.AlumnoCicloLectivoMateriaId " +
+            "FROM Materias M " +
+            "INNER JOIN AlumnoCicloLectivoMaterias ACLM ON M.MateriaId = ACLM.MateriaId " +
+            $"WHERE ACLM.AlumnoId = { alumnoId }";
+
+        return this.Conexion.ObtenerRegistros(query);
+    }
+   
+    public int EliminarMateriaAsignada(MateriasModelo modelo)
+    {
+        /*
+        string query = "DELETE AlumnoCicloLectivoMaterias WHERE AlumnoId =" + modelo.AlumnoId + " AND CursoId =" + modelo.CursoId + " AND CicloLectivoId =" + modelo.CicloLectivoId;
+        */
+        return this.Conexion.EjecutarAccion("");
+    }
+    public int AsignarMateria(MateriasModelo modelo)
+    {
+        //string query = "INSERT INTO AlumnoCicloLectivoMaterias (MateriaId, CursoId, AlumnoId, CicloLectivoId) VALUES (" + modelo.MateriaId + "," + modelo.CursoId + "," + modelo.AlumnoId + "," + modelo.CicloLectivoId + ")";
+
+        return this.Conexion.EjecutarAccion("");
+    }
+    
+    public int EliminarMateriaAsignar(int alumnoCicloLectivoMateriaId)
+    {
+        string query = $"DELETE AlumnoCicloLectivoMaterias WHERE AlumnoCicloLectivoMateriaId = { alumnoCicloLectivoMateriaId }";
+
+        return this.Conexion.EjecutarAccion(query);
+    }
+
+    public DataRow ObtenerCarreraDeAnio(int AnioCarerraId)
+    {
+        string query = $"SELECT c.* FROM " +
+            $"AniosCarreras AS Ac " +
+            $"INNER JOIN Carreras AS C ON Ac.CarreraId = C.CarreraId " +
+            $"WHERE Ac.AnioCarreraID = {AnioCarerraId}";
+
+        return this.Conexion.ObtenerRegistro(query);
+    }
+
+    public DataTable ObtenerNombresMaterias()
+    {
+        string query = "SELECT DISTINCT Nombre from Materias";
+        return this.Conexion.ObtenerRegistros(query);
+    }
+    // Obtiene las materias de una carrera específica.
+    // Relaciona Materias, AniosCarreras y Carreras.
+    // Devuelve MateriaId y Nombre.
+    public DataTable MateriasId(int carreraId)
+    {
+       string query = "SELECT ma.MateriaId, ma.Nombre " +
+            "FROM materias ma " +
+            "INNER JOIN AniosCarreras ac ON ma.AnioCarreraId = ac.AnioCarreraId " +
+            "INNER JOIN Carreras ca on ac.CarreraId = ca.CarreraId " +
+            $"WHERE ca.CarreraId = { carreraId }";
+
+        return this.Conexion.ObtenerRegistros(query);
+    }
+    // Obtiene materias asociadas a un curso y año lectivo.
+    // Relaciona Materias, CursoMaterias y Cursadas.
+    // Devuelve ciclo lectivo, materia, cantidad de alumnos y CursadaId.
+    public DataTable ObtenerMateriasByCursoAndAnioLectivo(int AnioLectivo, int CursoId)
+    {
+        string query = "SELECT c.AnioLectivo as 'Ciclo lectivo', m.Nombre as 'Materia' , c.CantidadAlumnos as 'Cantidad de alumnos', c.CursadaId " +
+            "FROM (Materias m INNER JOIN CursoMaterias cm ON m.MateriaId = cm.MateriaId)" +
+            "INNER JOIN Cursadas c ON cm.CursoMateriaId = c.CursoMateriaId " +
+            $"WHERE c.AnioLectivo = {AnioLectivo} and cm.CursoId = {CursoId}";
+
+        return this.Conexion.ObtenerRegistros(query);
+    }
+}
