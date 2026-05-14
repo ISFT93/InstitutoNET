@@ -316,10 +316,16 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             foreach (var (dtp, nombre) in fechas)
             {
-                if (dtp.CustomFormat == "dd/MM/yyyy" && dtp.Value.Year != anio)
+                if (!nombre.StartsWith("Fecha Inscripci") && dtp.CustomFormat == "dd/MM/yyyy" && dtp.Value.Year != anio)
                 {
                     Notificar(TipoNotificacion.Information,
                         $"{nombre}: el año de la fecha no coincide con el ciclo lectivo {anio}");
+                    return false;
+                }
+                if (nombre.StartsWith("Fecha Inscripci") && dtp.CustomFormat == "dd/MM/yyyy" && dtp.Value.Year != anio - 1)
+                {
+                    Notificar(TipoNotificacion.Information,
+                        $"{nombre}: el año de la fecha de la inscripcion al ciclo lectivo debe ser {anio -1}");
                     return false;
                 }
             }
