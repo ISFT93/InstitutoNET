@@ -266,7 +266,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void chkAdeudaMaterias_CheckedChanged(object sender, EventArgs e)
         {
+            chkConstanciaTituloTramite.Checked = false;
+            chkFotocopiaTitulo.Checked = false;
             txtCantidadAdeudaMaterias.Enabled = this.chkConstanciaAdeudaMaterias.Checked;
+            if(chkConstanciaAdeudaMaterias.Checked != true)
+                txtCantidadAdeudaMaterias.Text = "00";
         }
 
         private void cmbCarreras_SelectionChangeCommitted(object sender, EventArgs e)
@@ -557,6 +561,26 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 epvAlumnos.SetError(txt, "");
             }
+        }
+
+        private void btnDocumentacionOk_Click(object sender, EventArgs e)
+        {
+            alumnosLogica.ActualizarEstadoInicializado(this.AlumnoId, 2);
+            Contenedor.AbrirFormulario<FormDocumentacionAlumnos>();
+        }
+
+        private void chkConstanciaTituloTramite_CheckedChanged(object sender, EventArgs e)
+        {
+            chkFotocopiaTitulo.Checked = false;
+            chkConstanciaAdeudaMaterias.Checked = false;
+            txtCantidadAdeudaMaterias.Text = "00";
+        }
+
+        private void chkFotocopiaTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            chkConstanciaTituloTramite.Checked = false;
+            chkConstanciaAdeudaMaterias.Checked = false;
+            txtCantidadAdeudaMaterias.Text = "00";
         }
     }
 }

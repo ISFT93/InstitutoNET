@@ -117,6 +117,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
 
+                    tsmActualizarDocumentacion.Visible = true;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;

@@ -65,6 +65,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void RecargarGrilla()
         {
+            dgvAlumnos.DataSource = null;
+
             var carreras =carrerasLogica.ObtenerCarreras();
             int tipo = 0;
             foreach (DataRow fila in carreras.Rows)
@@ -73,13 +75,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 if (cmbCarreraId.Text == c)
                     tipo = Convert.ToInt32(fila["CarreraId"]);
             }
-            
-            dgvAlumnos.ClearSelection();
 
             if (rbTodos.Checked == true)
                 uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1,tipo);
             else if (rbIncompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(0, tipo);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(1, tipo);
             else if (rbCompletos.Checked == true)
                 uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo);
 
@@ -109,10 +109,20 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void dgvAlumnos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // En CellDoubleClick ya dispones de las coordenadas de celda (fila/columna)
+
+            object valor = null;
+            if (dgvAlumnos.Columns.Contains("AlumnoId"))
+            {
+                string ini = Convert.ToString(dgvAlumnos["Inicializado", e.RowIndex].Value);
+                if (ini == "2")
+                {
+                    this.Notificar(TipoNotificacion.Information, $"El alumno ya tiene la documentacion completa.");
+                    return; // Si el estado es "Completos", no se abre el formulario
+                }
+            }
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
 
-            object valor = null;
             if (dgvAlumnos.Columns.Contains("AlumnoId"))
                 valor = dgvAlumnos["AlumnoId", e.RowIndex].Value;
 
@@ -137,25 +147,52 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             RecargarGrilla();
         }
-        public string mailasunto = "Documentación Pendiente";
-        public string mailtexto = @"Por medio de la presente, se le solicita tenga a bien acercarse al instituto a fin de presentar la documentación correspondiente.
-                                Desde ya, muchas gracias.";
+
         private void btnEnviarMail_Click(object sender, EventArgs e)
         {
+            string mailasunto = "Documentación Pendiente";
+            string mailtexto = @"Por medio de la presente, se le solicita tenga a bien acercarse al instituto a fin de presentar la documentación correspondiente.
+                                Desde ya, muchas gracias.";
             int enviados = 0;
+            bool existe = dgvAlumnos.Rows
+            .Cast<DataGridViewRow>()
+            .Any(f => !f.IsNewRow &&
+                      Convert.ToInt32(f.Cells["Inicializado"].Value) == 0);
+
+            if (!existe)
+            {
+                this.Notificar(TipoNotificacion.Error, $"No hay alumnos para enviar el correo electronico.");
+                return;
+            }
             foreach (DataGridViewRow fila in dgvAlumnos.SelectedRows)
             {
-                mailtexto = "Estimado/a "+fila.Cells["Apellido"].Value.ToString() + " " + fila.Cells["Nombre"].Value.ToString() + ",\n\n" + mailtexto;
+                mailtexto = "Estimado/a " + fila.Cells["Apellido"].Value.ToString() + " " + fila.Cells["Nombre"].Value.ToString() + ",\n\n" + mailtexto;
                 int id = Convert.ToInt32(fila.Cells["AlumnoId"].Value);
-                string mail = fila.Cells["Mail"].Value.ToString();
+                string mail = fila.Cells["Correo"].Value.ToString();
                 if (Convert.ToInt32(fila.Cells["Inicializado"].Value) == 0)
                 {
-                    AlumnosLogica.EnviarMailDocumentos(mail,mailasunto,mailtexto);
-                    AlumnosLogica.ActualizarEstadoInicializado(id, 1);
-                    enviados++;
+                    bool enviado = AlumnosLogica.EnviarMailDocumentos(mail, mailasunto, mailtexto);
+                    if (enviado)
+                    {
+                        AlumnosLogica.ActualizarEstadoInicializado(id, 1);
+                        enviados++;
+                    }
+                    else
+                    {
+                        Timer timerMensajes = new Timer();
+                        this.Notificar(TipoNotificacion.Error, $"No se pudo enviar el mail a {fila.Cells["Apellido"].Value.ToString()} {fila.Cells["Nombre"].Value.ToString()}.");
+                        timerMensajes.Interval = 4000;
+                        timerMensajes.Tick += (s, c) =>
+                        {
+                            timerMensajes.Stop();
+                            timerMensajes.Dispose();
+                        };
+                        timerMensajes.Start();
+                    }
                 }
             }
             this.Notificar(TipoNotificacion.Success, $"Se han {enviados} Mails enviados.");
-        }
+            RecargarGrilla();
+        } 
     }
 }

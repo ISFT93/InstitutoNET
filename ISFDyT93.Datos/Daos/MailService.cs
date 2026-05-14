@@ -79,6 +79,17 @@ public class MailService
 
             return true;
         }
+
+        catch (SmtpFailedRecipientException ex)
+        {
+            GuardarLog("Destinatario inválido: " + destino);
+            return false;
+        }
+        catch (SmtpException ex)
+        {
+            GuardarLog("Error SMTP: " + ex.Message);
+            return false;
+        }
         catch (Exception ex)
         {
             GuardarLog(ex.Message);

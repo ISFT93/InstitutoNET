@@ -290,6 +290,7 @@ namespace ISFDyT93.Datos.Daos
                             A.Apellido,
                             A.Nombre,
                             A.NumeroDocumento AS Documento,
+                            A.Email AS Correo,
                             ac.Inicializado
                      FROM Alumnos A
                      LEFT JOIN AlumnosCarreras ac 
@@ -302,9 +303,9 @@ namespace ISFDyT93.Datos.Daos
             // Filtra por estado de documentación
             if (estado == 1)
             {
-                query += " AND ac.Inicializado = '0' AND ac.Inicializado = '1'";
+                query += " AND (ac.Inicializado = '0' OR ac.Inicializado = '1')";
             }
-            if (estado == 2)
+            else if (estado == 2)
             {
                 query += " AND ac.Inicializado = '2'";
             }

@@ -197,7 +197,7 @@
             this.tsmActualizarDocumentacion.Image = global::ISFDyT93.Vista.Properties.Resources.document_arrow;
             this.tsmActualizarDocumentacion.Name = "tsmActualizarDocumentacion";
             this.tsmActualizarDocumentacion.Size = new System.Drawing.Size(180, 30);
-            this.tsmActualizarDocumentacion.Text = "Documentacion";
+            this.tsmActualizarDocumentacion.Text = "Control de Documentacion";
             this.tsmActualizarDocumentacion.Click += new System.EventHandler(this.tsmActualizarDocumentacion_Click);
             // 
             // tsmCargaMasiva
