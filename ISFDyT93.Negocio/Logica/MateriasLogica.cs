@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using ISFDyT93.Datos.Daos;
+﻿using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Core.Enums;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class MateriasLogica : LogicaBase
+    public class MateriasLogica : LogicaBase , IMateriasLogica
     {
         AniosCarreraDao aniosCarreraDao;
         MateriasDao materiasDao;
@@ -55,8 +58,24 @@ namespace ISFDyT93.Negocio.Logica
 
             return 0;
         }
-        public int AgregarMaterias(MateriasModelo modelo)
+        //public int AgregarMaterias(MateriasModelo modelo)
+        //{
+        //    int estado = this.materiasDao.AgregarMaterias(modelo);
+
+        //    if (estado > 0)
+        //    {
+        //        this.aniosCarreraDao.ActualizarCargaHoria(modelo.AnioCarreraId);
+        //    }
+
+        //    return estado;
+        //}
+
+        // Modificado
+        public int AgregarMateria(MateriasModelo modelo, int anioCarreraId)
         {
+            modelo.Activo = true;
+            modelo.AnioCarreraId = anioCarreraId;
+
             int estado = this.materiasDao.AgregarMaterias(modelo);
 
             if (estado > 0)
@@ -127,6 +146,42 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ObtenerMateriasByCursoAndAnioLectivo(int AnioLectivo, int CursoId)
         {
             return this.materiasDao.ObtenerMateriasByCursoAndAnioLectivo(AnioLectivo, CursoId);
+        }
+
+        public int CalcularModulos(int cargaHoraria)
+        {
+            if (cargaHoraria <= 0)
+                return 0;
+
+            if (cargaHoraria % 32 == 0)
+                return cargaHoraria / 32;
+
+            return 0;
+        }
+
+        public int GuardarMateria(MateriasModelo modelo, TipoAccion accion, int anioCarreraId)
+        {
+            if (accion == TipoAccion.Agregar)
+            {
+                modelo.Activo = true;
+                modelo.AnioCarreraId = anioCarreraId;
+
+                return this.AgregarMateria(modelo, anioCarreraId);
+            }
+
+            if (accion == TipoAccion.Modificar)
+            {
+                return this.ModificarMateria(modelo);
+            }
+
+            return -1;
+        }
+
+        public string[] ObtenerNombresMateriasLista()
+        {
+            var materias = this.materiasDao.ObtenerNombresMaterias();
+
+            return materias.Rows.Cast<DataRow>().Select(r => r.Field<string>("Nombre")).ToArray();
         }
     }
 

@@ -59,6 +59,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void RecargarGrilla(string filtro = "")
         {
+            dgvAlumnos.ClearSelection();
             var tipo = (TipoFiltroAlumno)cmbFiltroAlum.SelectedIndex;
 
             if (rbTodos.Checked == true)
@@ -100,20 +101,29 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
+                    
+
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
-                    this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
+                    if(!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
+                        this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
 
+                    tsmAgregarAlumno.Visible = false;
 
+                    tsmDarAlta.Visible = !activo;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
-                    tsmAsignarMaterias.Visible = ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
-                    tsmDarAlta.Visible = !activo;
+                    tsmCargaMasiva.Visible = false;
+
+                    if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+                        tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
+                    else
+                        tsmAsignarMaterias.Visible = false;
 
                 }
                 else
@@ -123,6 +133,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
+                    tsmDarAlta.Visible = false;
+                    tsmCargaMasiva.Visible = true;
                 }
             }
         }
@@ -137,7 +149,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                 {
                     form.Accion = TipoAccion.Agregar;
-                    form.AlumnoId = AlumnoId;
+                    //form.AlumnoId = AlumnoId;
                 });
             }
             else
@@ -148,7 +160,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                     {
                         form.Accion = TipoAccion.Agregar;
-                        form.AlumnoId = AlumnoId;
+                        //form.AlumnoId = AlumnoId;
                     });
                 }
             }

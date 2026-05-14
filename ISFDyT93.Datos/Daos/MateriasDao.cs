@@ -4,10 +4,11 @@ using System.Data;
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class MateriasDao : DaoBase
+    public class MateriasDao : DaoBase , IMateriasDao
     {
         public DataTable ObtenerMaterias(int anioCarreraId, bool activo = true)
         {

@@ -24,41 +24,54 @@ namespace ISFDyT93.Entidades.Modelos
         [SoloNumeros]
         [Unico(Mensaje = "El documento ingresado ya existe")]
         public string NumeroDocumento { get; set; }
-
+        [Obligatorio]
         public string EstadoCivil { get; set; }
-
+        [Obligatorio]
         public char Sexo { get; set; }
-
+        [Obligatorio]
         public DateTime FechaNacimiento { get; set; }
-
+        [Obligatorio]
         [SoloLetrasEspacios]
         public string LocalidadNacimiento { get; set; }
         [SoloLetrasEspacios]
+        [Obligatorio]
         public string PaisNacimiento { get; set; }
-
+        [Obligatorio]
         [SoloLetrasNumerosEspacios]
         public string Calle { get; set; }
         [SoloNumeros]
+        [Obligatorio]
         public string Numero { get; set; }
+
         [SoloNumeros]
         public string Piso { get; set; }
-        [SoloLetras]
+
+        [SoloLetrasNumerosEspacios]
         public string Departamento { get; set; }
-        [SoloLetrasEspacios]
+
+        
+        [Obligatorio]
         public string Provincia { get; set; }
         [SoloLetrasEspacios]
+        [Obligatorio]
         public string Distrito { get; set; }
         [SoloLetrasEspacios]
+        [Obligatorio]
         public string Localidad { get; set; }
         [SoloNumeros]
+        [Obligatorio]
         public string CodigoPostal { get; set; }
         [SoloNumeros]
+        [Obligatorio]
         public string Telefono { get; set; }
         [SoloNumeros]
+        [Obligatorio]
         public string Celular { get; set; }
         [Email]
         [AlmenosUno("Telefono:Celular")]
+        [Obligatorio]
         public string Email { get; set; }
+        [Obligatorio]
         public bool TituloSecundario { get; set; }
 
         [Obligatorio(condicion: "TituloSecundarioInactivo")]
@@ -96,7 +109,7 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio(condicion: "MayorTituloAsignado")]
         [SoloNumeros(0, 10)]
         public decimal MayorPromedio { get; set; }
-
+        [Obligatorio]
         public bool FotocopiaTitulo { get; set; }
 
         public bool ConstanciaTituloTramite { get; set; }
@@ -148,10 +161,11 @@ namespace ISFDyT93.Entidades.Modelos
 
         [Obligatorio]
         public string ContactoEmergencia { get; set; }
+
         [Obligatorio]
         [SoloNumeros]
         public string TelefonoContacto { get; set; }
-
+        [Obligatorio]
         public string FotoUrl { get; set; }
 
         public bool Activo { get; set; }

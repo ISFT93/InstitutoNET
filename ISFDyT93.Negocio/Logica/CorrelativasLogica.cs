@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
-using ISFDyT93.Datos.Daos;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CorrelativasLogica : LogicaBase
+    public class CorrelativasLogica : LogicaBase , ICorrelativasLogica
     {
         CorrelativasDao correlativasDao;
         public CorrelativasLogica()
@@ -58,6 +60,27 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ObtenerCorrelativasCarrera(int CarreraId)
         {
             return this.correlativasDao.ObtenerCorrelativasCarrera(CarreraId);
+        }
+
+        public bool PuedeModificarCorrelativas(int carreraEstadoId)
+        {
+            return carreraEstadoId == 3;
+        }
+        //NUEVO MÉTODO
+        public void AgregarTodasLasCorrelativas(int materiaId, System.Data.DataTable tabla)
+        {
+            var correlativas = new List<CorrelatividadModel>();
+
+            foreach (System.Data.DataRow fila in tabla.Rows)
+            {
+                correlativas.Add(new CorrelatividadModel()
+                {
+                    MateriaId = materiaId,
+                    CorrelatividadId = Convert.ToInt32(fila["MateriaId"])
+                });
+            }
+
+            correlativasDao.GuardarCorrelatividades(correlativas);
         }
     }
 }

@@ -3,10 +3,11 @@ using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core;
 using System.Data;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CursosLogica : LogicaBase
+    public class CursosLogica : LogicaBase , ICursosLogica
     {
         CursosDao cursosDao;
         CiclosLectivosDao ciclosLectivosDao;
@@ -20,6 +21,11 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ConsultarCursos(int anioCarreraId)
         {
             return cursosDao.ConsultarCursos(anioCarreraId);
+        }
+
+        public bool ConsultarCursosInactivo(int AnioCarreraId)
+        {
+            return cursosDao.ConsultarCursosInactivo(AnioCarreraId);
         }
 
         public DataTable ConsultarCursosPrimerAnio(int alumnoId)

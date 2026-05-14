@@ -8,21 +8,18 @@ using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades;
 using ISFDyT93.Entidades.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class InscripcionAlumnoDao : DaoBase
+    public class InscripcionAlumnoDao : DaoBase , IInscripcionAlumnoDao
     {
         public DataTable ObtenerMateriasVigentes(int alumnoId, string anio)
         {
             string filtroAnio = "";
             if (anio != "") filtroAnio = $"AND Anio= '{anio}'";
-            string query = "SELECT CicloLectivoId AS [Ciclo Lectivo], Materia, Anio AS Año, Carrera, MateriaId, CursoId FROM MateriasCarrerasVigentes " +
-                "WHERE MateriaId NOT IN (SELECT MateriaId FROM AlumnoMateriaCursoAnioCarrera " +
-                "WHERE Estado != 'DE' " +
-                $"AND AlumnoId= {alumnoId}) {filtroAnio} " +
-                $"AND CarreraId IN (SELECT CarreraId FROM AlumnosCarreras WHERE AlumnoId= {alumnoId})";
-            
+            string query = $@" SELECT AnioLectivo AS [Ciclo Lectivo], Materia, Anio AS Año, Carrera, MateriaId, CursoId, Estado, AlumnoCarreraId FROM MateriasCarrerasVigentes WHERE (AlumnoId = {alumnoId} OR AlumnoId IS NULL) {filtroAnio} AND CarreraId IN ( SELECT CarreraId FROM AlumnosCarreras WHERE AlumnoId = {alumnoId} )";
+
             return this.Conexion.ObtenerRegistros(query);
         }
 
@@ -40,7 +37,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataRow obtenerFechaIncripcion()
         {
-            string query = "SELECT TOP 1 FechaInscripcionInicio, FechaInscripcionFinal FROM CicloLectivo ORDER BY FechaInscripcionInicio";
+            string query = "SELECT TOP 1 FechaInscripcionInicio, FechaInscripcionFinal FROM CicloLectivo ORDER BY FechaInscripcionInicio DESC";
             return this.Conexion.ObtenerRegistro(query);
         }
 

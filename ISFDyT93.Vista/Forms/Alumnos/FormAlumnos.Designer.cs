@@ -64,10 +64,10 @@
             // 
             this.lblSelccFiltroAlum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSelccFiltroAlum.AutoSize = true;
-            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 8);
+            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 10);
             this.lblSelccFiltroAlum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelccFiltroAlum.Name = "lblSelccFiltroAlum";
-            this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 24);
+            this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 19);
             this.lblSelccFiltroAlum.TabIndex = 47;
             this.lblSelccFiltroAlum.Text = "Filtro:";
             // 
@@ -86,10 +86,10 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 8);
+            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 9);
             this.cmbFiltroAlum.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroAlum.Name = "cmbFiltroAlum";
-            this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 32);
+            this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 27);
             this.cmbFiltroAlum.TabIndex = 46;
             // 
             // txtFiltroAlumno
@@ -104,7 +104,7 @@
             this.txtFiltroAlumno.Location = new System.Drawing.Point(4, 44);
             this.txtFiltroAlumno.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroAlumno.Name = "txtFiltroAlumno";
-            this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 32);
+            this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 27);
             this.txtFiltroAlumno.TabIndex = 44;
             // 
             // cmsAlumnos
@@ -119,7 +119,7 @@
             this.tsmDarAlta,
             this.tsmCargaMasiva});
             this.cmsAlumnos.Name = "contextMenuStrip1";
-            this.cmsAlumnos.Size = new System.Drawing.Size(213, 214);
+            this.cmsAlumnos.Size = new System.Drawing.Size(181, 214);
             // 
             // tsmAgregarAlumno
             // 
@@ -128,7 +128,7 @@
             this.tsmAgregarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarAlumno.Image")));
             this.tsmAgregarAlumno.Name = "tsmAgregarAlumno";
-            this.tsmAgregarAlumno.Size = new System.Drawing.Size(212, 30);
+            this.tsmAgregarAlumno.Size = new System.Drawing.Size(180, 30);
             this.tsmAgregarAlumno.Text = "Agregar ";
             this.tsmAgregarAlumno.Click += new System.EventHandler(this.tsmAgregarAlumno_Click);
             // 
@@ -139,7 +139,7 @@
             this.tsmModificarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmModificarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.user_edit_solid;
             this.tsmModificarAlumno.Name = "tsmModificarAlumno";
-            this.tsmModificarAlumno.Size = new System.Drawing.Size(212, 30);
+            this.tsmModificarAlumno.Size = new System.Drawing.Size(180, 30);
             this.tsmModificarAlumno.Text = "Modificar";
             this.tsmModificarAlumno.Click += new System.EventHandler(this.tsmModificarAlumno_Click);
             // 
@@ -150,7 +150,7 @@
             this.tsmEliminarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
             this.tsmEliminarAlumno.Name = "tsmEliminarAlumno";
-            this.tsmEliminarAlumno.Size = new System.Drawing.Size(212, 30);
+            this.tsmEliminarAlumno.Size = new System.Drawing.Size(180, 30);
             this.tsmEliminarAlumno.Text = "Eliminar";
             this.tsmEliminarAlumno.Click += new System.EventHandler(this.tsmEliminarAlumno_Click);
             // 
@@ -161,7 +161,7 @@
             this.tsmVerAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmVerAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmVerAlumno.Image")));
             this.tsmVerAlumno.Name = "tsmVerAlumno";
-            this.tsmVerAlumno.Size = new System.Drawing.Size(212, 30);
+            this.tsmVerAlumno.Size = new System.Drawing.Size(180, 30);
             this.tsmVerAlumno.Text = "Ver Datos";
             this.tsmVerAlumno.Click += new System.EventHandler(this.tsmVerAlumno_Click);
             // 
@@ -172,7 +172,7 @@
             this.tsmAsignarMaterias.ForeColor = System.Drawing.Color.White;
             this.tsmAsignarMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.arrow_alt_circle_right_solid;
             this.tsmAsignarMaterias.Name = "tsmAsignarMaterias";
-            this.tsmAsignarMaterias.Size = new System.Drawing.Size(212, 30);
+            this.tsmAsignarMaterias.Size = new System.Drawing.Size(180, 30);
             this.tsmAsignarMaterias.Text = "Asignar Materias";
             this.tsmAsignarMaterias.Click += new System.EventHandler(this.tsmAsignarMaterias_Click);
             // 
@@ -183,7 +183,7 @@
             this.tsmDarAlta.ForeColor = System.Drawing.Color.White;
             this.tsmDarAlta.Image = global::ISFDyT93.Vista.Properties.Resources.plus_square_solid;
             this.tsmDarAlta.Name = "tsmDarAlta";
-            this.tsmDarAlta.Size = new System.Drawing.Size(212, 30);
+            this.tsmDarAlta.Size = new System.Drawing.Size(180, 30);
             this.tsmDarAlta.Text = "Dar de Alta";
             this.tsmDarAlta.Visible = false;
             this.tsmDarAlta.Click += new System.EventHandler(this.tsmDarAlta_Click);
@@ -195,7 +195,7 @@
             this.tsmCargaMasiva.ForeColor = System.Drawing.Color.White;
             this.tsmCargaMasiva.Image = ((System.Drawing.Image)(resources.GetObject("tsmCargaMasiva.Image")));
             this.tsmCargaMasiva.Name = "tsmCargaMasiva";
-            this.tsmCargaMasiva.Size = new System.Drawing.Size(212, 30);
+            this.tsmCargaMasiva.Size = new System.Drawing.Size(180, 30);
             this.tsmCargaMasiva.Text = "Carga Masiva";
             this.tsmCargaMasiva.Click += new System.EventHandler(this.tsmCargaMasiva_Click);
             // 
@@ -203,9 +203,9 @@
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(121, 86);
+            this.rbInactivos.Location = new System.Drawing.Point(121, 88);
             this.rbInactivos.Name = "rbInactivos";
-            this.rbInactivos.Size = new System.Drawing.Size(112, 28);
+            this.rbInactivos.Size = new System.Drawing.Size(112, 23);
             this.rbInactivos.TabIndex = 49;
             this.rbInactivos.Text = "Inactivos";
             this.rbInactivos.UseVisualStyleBackColor = true;
@@ -216,9 +216,9 @@
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(3, 86);
+            this.rbActivos.Location = new System.Drawing.Point(3, 88);
             this.rbActivos.Name = "rbActivos";
-            this.rbActivos.Size = new System.Drawing.Size(112, 28);
+            this.rbActivos.Size = new System.Drawing.Size(112, 23);
             this.rbActivos.TabIndex = 50;
             this.rbActivos.TabStop = true;
             this.rbActivos.Text = "Activos";
@@ -229,9 +229,9 @@
             // 
             this.rbTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbTodos.AutoSize = true;
-            this.rbTodos.Location = new System.Drawing.Point(239, 86);
+            this.rbTodos.Location = new System.Drawing.Point(239, 88);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(112, 28);
+            this.rbTodos.Size = new System.Drawing.Size(112, 23);
             this.rbTodos.TabIndex = 51;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
@@ -315,7 +315,7 @@
             this.uscPaginacion1.dataGridView = null;
             this.uscPaginacion1.EntradaDatos = null;
             this.uscPaginacion1.Location = new System.Drawing.Point(247, 4);
-            this.uscPaginacion1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uscPaginacion1.Margin = new System.Windows.Forms.Padding(4);
             this.uscPaginacion1.Name = "uscPaginacion1";
             this.uscPaginacion1.Recargar = null;
             this.uscPaginacion1.SalidaDatos = null;

@@ -40,22 +40,45 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 });
             });
 
-            //ACTIVA o INACTIVA
-            if (Convert.ToInt32(Carrera["CarreraEstadoId"]) == 1 || Convert.ToInt32(Carrera["CarreraEstadoId"]) == 2)
+            /////ACTIVA o INACTIVA
+            //if (Convert.ToInt32(Carrera["CarreraEstadoId"]) == 1 || Convert.ToInt32(Carrera["CarreraEstadoId"]) == 2)
+            //{
+            //    btnAgregarMateria.Visible = false;
+            //    btnAgregarTodos.Visible = false;
+            //    btnQuitarMateria.Visible = false;
+            //    btnQuitarTodos.Visible = false;
+            //    this.Contenedor.SetTitulo($"Materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}");
+            //}///BORRADOR
+            //else if (Convert.ToInt32(Carrera["CarreraEstadoId"]) == 3)
+            //{
+            //    btnAgregarMateria.Visible = true;
+            //    btnAgregarTodos.Visible = true;
+            //    btnQuitarMateria.Visible = true;
+            //    btnQuitarTodos.Visible = true;
+            //    this.Contenedor.SetTitulo($"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}");
+            //}
+
+            //arreglo
+            bool puedeModificar = correlativasLogica.PuedeModificarCorrelativas(
+                Convert.ToInt32(Carrera["CarreraEstadoId"])
+            );
+
+            btnAgregarMateria.Visible = puedeModificar;
+            btnAgregarTodos.Visible = puedeModificar;
+            btnQuitarMateria.Visible = puedeModificar;
+            btnQuitarTodos.Visible = puedeModificar;
+
+            if (puedeModificar)
             {
-                btnAgregarMateria.Visible = false;
-                btnAgregarTodos.Visible = false;
-                btnQuitarMateria.Visible = false;
-                btnQuitarTodos.Visible = false;
-                this.Contenedor.SetTitulo($"Materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}");
-            }//BORRADOR
-            else if (Convert.ToInt32(Carrera["CarreraEstadoId"]) == 3)
+                this.Contenedor.SetTitulo(
+                    $"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}"
+                );
+            }
+            else
             {
-                btnAgregarMateria.Visible = true;
-                btnAgregarTodos.Visible = true;
-                btnQuitarMateria.Visible = true;
-                btnQuitarTodos.Visible = true;
-                this.Contenedor.SetTitulo($"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}");
+                this.Contenedor.SetTitulo(
+                    $"Materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}"
+                );
             }
 
             this.ActualizarListas();
@@ -109,26 +132,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
         private void btnAgregarTodos_Click_1(object sender, EventArgs e)
         {
-            var tabla = (DataTable)lstMaterias.DataSource;
+            var tabla = lstMaterias.DataSource as DataTable;
 
-            if (tabla.Rows.Count > 0)
-            {
-                var Correlativas = new List<CorrelatividadModel>();
+            // modificado
+            correlativasLogica.AgregarTodasLasCorrelativas(this.MateriaId, tabla);
 
-                foreach (DataRow fila in tabla.Rows)
-                {
-                    var model = new CorrelatividadModel()
-                    {
-                        MateriaId = this.MateriaId,
-                        CorrelatividadId = Convert.ToInt32(fila["MateriaId"])
-                    };
-
-                    Correlativas.Add(model);
-                }
-
-                correlativasLogica.GuardarCorrelatividades(Correlativas);
-                ActualizarListas();
-            }
+            ActualizarListas();
         }
 
         private void btnAgregarTodos_Click(object sender, EventArgs e)

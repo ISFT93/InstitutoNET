@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Data;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class HorariosDao : DaoBase
+    public class HorariosDao : DaoBase , IHorariosDao
     {
         public DataTable ObtnerModulos()
         {
@@ -20,11 +21,11 @@ namespace ISFDyT93.Datos.Daos
         public IList<HorariosModelo> ObtenerHorarios(int cursoId)
         {
             string query = "SELECT CursoMaterias.MateriaId, Materias.Nombre, HorarioId, DiaId, Horarios.ModuloId, Horarios.CursoMateriaId " +
-                "FROM Horarios " +
-                "INNER JOIN CursoMaterias ON Horarios.CursoMateriaId = CursoMaterias.CursoMateriaId " +
-                "INNER JOIN Cursos ON CursoMaterias.CursoId = Cursos.CursoId " +
-                "INNER JOIN Materias ON Materias.MateriaId = CursoMaterias.MateriaId " +
-                $"WHERE Cursos.CursoId = {cursoId}";
+               "FROM Cursos " +
+               "LEFT JOIN CursoMaterias ON CursoMaterias.CursoId = Cursos.CursoId " +
+               "LEFT JOIN Horarios ON Horarios.CursoMateriaId = CursoMaterias.CursoMateriaId " +
+               "LEFT JOIN Materias ON Materias.MateriaId = CursoMaterias.MateriaId " +
+               $"WHERE Cursos.CursoId = {cursoId}";
 
             return MapToModel<HorariosModelo>(Conexion.ObtenerRegistros(query));
         }

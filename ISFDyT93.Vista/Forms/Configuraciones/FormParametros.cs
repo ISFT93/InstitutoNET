@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ISFDyT93.Vista.Core;
-using ISFDyT93.Negocio.Logica;
+﻿using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Vista.UserControls;
-using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
-using System.Data;
+using ISFDyT93.Vista.Forms.Configuraciones;
+using ISFDyT93.Vista.UserControls;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Vista
 {
@@ -80,12 +81,15 @@ namespace ISFDyT93.Vista
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (chkTabla.Checked)
+            if(chkTabla.Checked)
             {
-                foreach (var control in flpContenedor.Controls)
+                foreach(var control in flpContenedor.Controls)
                 {
-                    if (control.GetType() == typeof(uscCargos))
-                        ((uscCargos)control).Guardar();
+                    //codigo antiguo:
+                    //if (control.GetType() == typeof(uscCargos))
+                    //((uscCargos)control).Guardar();
+                    if (control.GetType() == typeof(uscMostrarCargos))
+                        ((uscMostrarCargos)control).GuardarCargos();
                 }
             }
             else if (LtsParametros.Count > 0)
@@ -94,13 +98,12 @@ namespace ISFDyT93.Vista
                 if (Nro > 0) Notificar(TipoNotificacion.Success, "Parametros Actualizados");
                 else Notificar(TipoNotificacion.Error, "Error al Actualizar");
             }
-
         }
         #endregion
-
         private void CargarTiposParametros()
         {
             tipoParametro.Clear();
+
             if (chkTabla.Checked)
             {
                 tipoParametro.Add(TipoParametro.Table);
@@ -116,16 +119,22 @@ namespace ISFDyT93.Vista
         private void CargarControles()
         {
             flpContenedor.Controls.Clear();
+
             if (tipoParametro.IndexOf(TipoParametro.Table) != -1)
             {
-                uscCargos cargos = new uscCargos();
-                flpContenedor.Controls.Add(cargos);
+                //el codigo anterior, por si llegamos a necesitarlo, era este:
+                //uscCargos cargos = new uscCargos();
+                //flpContenedor.Controls.Add(cargos);
+
+                uscMostrarCargos mostrar = new uscMostrarCargos();
+                 flpContenedor.Controls.Add(mostrar);
+                 uscLibroActas libro = new uscLibroActas();
+                 flpContenedor.Controls.Add(libro);
             }
             else
             {
                 if (LtsParametros.Count > 0)
                 {
-
                     foreach (ParametrosModelo parametro in LtsParametros)
                     {
                         string nombre = parametro.Nombre.ToLower();
@@ -135,6 +144,13 @@ namespace ISFDyT93.Vista
 
                 }
             }
+        }
+
+        
+
+        private void flpContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

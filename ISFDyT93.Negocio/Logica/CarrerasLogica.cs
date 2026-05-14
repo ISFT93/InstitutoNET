@@ -6,10 +6,12 @@ using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Core;
+using System.Collections.Generic;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CarrerasLogica : LogicaBase
+    public class CarrerasLogica : LogicaBase , ICarrerasLogica
     {
         CarrerasDao carrerasDao;
         AniosCarreraDao aniosCarreraDao;
@@ -236,5 +238,23 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.carrerasDao.AltaCarreraActivo(Carreraid);
         }
+
+        public bool AnioValidoDesactivar(decimal AnioFin)
+        {
+            int AnioActual = Convert.ToInt32(DateTime.Today.Year);
+            return AnioFin > AnioActual;
+        }
+
+        //public Dictionary<string,bool> VerCarrerasActivas() 
+        //{
+        //    var opctionEnabDisab = new Dictionary<string, bool>()
+        //    {
+        //        { "nudAnioFin", true},
+        //        { "txtCantidadHoras", true},
+        //        { "PoseeMaterias", true},
+        //        { "txtDuracion", true},
+        //        { "btnGuardar", true}
+        //    };
+        //}
     }
 }

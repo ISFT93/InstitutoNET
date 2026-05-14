@@ -2,10 +2,11 @@
 using System.Data;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class AniosCarreraDao : DaoBase
+    public class AniosCarreraDao : DaoBase , IAniosCarreraDao
     {
         public DataTable ObtenerAniosCarrera(int carreraId)
         {

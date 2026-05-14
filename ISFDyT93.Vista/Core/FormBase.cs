@@ -152,6 +152,13 @@ namespace ISFDyT93.Vista.Core
                     var txtBox = control as TextBox;
                     value = txtBox.Text;
                 }
+                else if (control.GetType() == typeof(MaskedTextBox))
+                {
+                    var maskedtxtBox = control as MaskedTextBox;
+
+                    var mtb = control as MaskedTextBox;
+                    value = mtb.Text;
+                }
                 else if (control.GetType() == typeof(ComboBox))
                 {
                     var cmbBox = control as ComboBox;
@@ -319,18 +326,60 @@ namespace ISFDyT93.Vista.Core
                     var txtBox = control as TextBox;
                     txtBox.Text = propiedad.GetValue(datos).ToString();
                 }
-                else if (control.GetType() == typeof(ComboBox))
+                else if (control.GetType() == typeof(MaskedTextBox))
                 {
-                    var cmbBox = control as ComboBox;
+                    var maskedtxtBox = control as MaskedTextBox;
+                    maskedtxtBox.Text = propiedad.GetValue(datos).ToString();
+                }
+                else if (control is ComboBox cmbBox)
+                {
+                    var valor = propiedad.GetValue(datos);
 
-                    if (propiedad.PropertyType == typeof(int) || propiedad.PropertyType == typeof(long))
+                    if (valor == null)
+                        continue;
+
+                    // 🔹 1. Si está bindeado (DataSource) → usar SIEMPRE SelectedValue
+                    if (cmbBox.DataSource != null && !string.IsNullOrEmpty(cmbBox.ValueMember))
                     {
-                        cmbBox.SelectedValue = propiedad.GetValue(datos);
+                        try
+                        {
+                            cmbBox.SelectedValue = valor;
+                        }
+                        catch
+                        {
+                            // fallback por si no encuentra coincidencia
+                            cmbBox.SelectedIndex = -1;
+                        }
                     }
                     else
                     {
-                        cmbBox.SelectedItem = propiedad.GetValue(datos).ToString();
+                        string valorStr = valor.ToString();
+
+                        // 🔹 2. Buscar coincidencia exacta
+                        foreach (var item in cmbBox.Items)
+                        {
+                            if (item.ToString().Equals(valorStr, StringComparison.OrdinalIgnoreCase))
+                            {
+                                cmbBox.SelectedItem = item;
+                                goto FIN;
+                            }
+                        }
+
+                        // 🔹 3. Buscar coincidencia por inicio (F → Femenino)
+                        foreach (var item in cmbBox.Items)
+                        {
+                            if (item.ToString().StartsWith(valorStr, StringComparison.OrdinalIgnoreCase))
+                            {
+                                cmbBox.SelectedItem = item;
+                                goto FIN;
+                            }
+                        }
+
+                        // 🔹 4. Fallback: no encontró nada
+                        cmbBox.SelectedIndex = -1;
                     }
+
+                FIN:;
                 }
                 else if (control.GetType() == typeof(DateTimePicker))
                 {

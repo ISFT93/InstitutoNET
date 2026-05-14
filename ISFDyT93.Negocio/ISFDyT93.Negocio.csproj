@@ -1,3 +1,4 @@
+
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -48,6 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAlumnosLogica.cs" />
+    <Compile Include="Interfaces\IAniosCarreraLogica.cs" />
+    <Compile Include="Interfaces\ICargaMasivaLogica.cs" />
+    <Compile Include="Interfaces\ICargosLogica.cs" />
+    <Compile Include="Interfaces\ICarrerasLogica.cs" />
+    <Compile Include="Interfaces\ICicloLectivosLogica.cs" />
+    <Compile Include="Interfaces\IControlAsistenciasLogica.cs" />
+    <Compile Include="Interfaces\ICorrelativasLogica.cs" />
+    <Compile Include="Interfaces\ICursadasLogica.cs" />
+    <Compile Include="Interfaces\ICursosLogica.cs" />
+    <Compile Include="Interfaces\IEquivalenciasLogica.cs" />
+    <Compile Include="Interfaces\IEvaluacionesLogica.cs" />
+    <Compile Include="Interfaces\IHorariosLogica.cs" />
+    <Compile Include="Interfaces\IInscripcionAlumnoLogica.cs" />
+    <Compile Include="Interfaces\ILicenciaServicioLogica.cs" />
+    <Compile Include="Interfaces\ILogicaBase.cs" />
+    <Compile Include="Interfaces\IMateriasLogica.cs" />
+    <Compile Include="Interfaces\IMesasFinalesLogica.cs" />
+    <Compile Include="Interfaces\IParametrosLogica.cs" />
+    <Compile Include="Interfaces\IPersonalLogica.cs" />
+    <Compile Include="Interfaces\IServiciosLogica.cs" />
+    <Compile Include="Interfaces\IValidaciones.cs" />
     <Compile Include="Logica\AlumnosLogica.cs" />
     <Compile Include="Logica\AniosCarreraLogica.cs" />
     <Compile Include="Logica\CargaMasivaLogica.cs" />
@@ -75,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISFDyT93.Datos\ISFDyT93.Datos.csproj">
-      <Project>{157D5044-FEF4-49A2-ABA0-CC4B9114F0D9}</Project>
+      <Project>{157d5044-fef4-49a2-aba0-cc4b9114f0d9}</Project>
       <Name>ISFDyT93.Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\ISFDyT93.Entidades\ISFDyT93.Entidades.csproj">
@@ -90,4 +113,5 @@
     <Folder Include="Filtros\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

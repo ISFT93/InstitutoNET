@@ -7,10 +7,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CursadasLogica : LogicaBase
+    public class CursadasLogica : LogicaBase , ICursadasLogica
     {
         CursadasDao cursadasDao;
 
