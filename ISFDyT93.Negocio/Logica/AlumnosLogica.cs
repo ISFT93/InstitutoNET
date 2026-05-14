@@ -48,10 +48,10 @@ namespace ISFDyT93.Negocio.Logica
             return 0;
         }
 
-        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado,int idCarrera)
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado,int idCarrera, string filtro)
         {
             // Llama al DAO para traer los alumnos filtrados
-            return this.alumnosDao.ObtenerAlumnosPorEstadoDocumentacion(estado,idCarrera);
+            return this.alumnosDao.ObtenerAlumnosPorEstadoDocumentacion(estado,idCarrera,filtro);
         }
 
         public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)

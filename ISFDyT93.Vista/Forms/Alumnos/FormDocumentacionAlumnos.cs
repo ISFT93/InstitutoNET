@@ -63,7 +63,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
         }
-        private void RecargarGrilla()
+        private void RecargarGrilla(string filtro = "")
         {
             dgvAlumnos.DataSource = null;
 
@@ -77,11 +77,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
 
             if (rbTodos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1,tipo);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1,tipo,filtro);
             else if (rbIncompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(1, tipo);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(1, tipo,filtro);
             else if (rbCompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo, filtro);
 
             EstilosColumnasDGV();
         }
@@ -91,7 +91,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 dgvAlumnos.Columns["AlumnoId"].Visible = false;
             if (dgvAlumnos.Columns.Contains("AlumnoCarreraId"))
                 dgvAlumnos.Columns["AlumnoCarreraId"].Visible = false;
-            if (dgvAlumnos.Columns.Contains("Inicializado"))
+            if (dgvAlumnos.Columns.Contains("Inicializado")) 
                 dgvAlumnos.Columns["Inicializado"].Visible = true;
             if (dgvAlumnos.Columns.Contains("Curso"))
             {
@@ -105,7 +105,33 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvAlumnos.Columns.Contains("Activo"))
                 dgvAlumnos.Columns["Activo"].FillWeight = 50;
         }
+        private void dgvAlumnos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvAlumnos.Columns[e.ColumnIndex].Name == "Inicializado")
+            {
+                if (e.Value != null)
+                {
+                    int valor = Convert.ToInt32(e.Value);
 
+                    switch (valor)
+                    {
+                        case 0:
+                            e.Value = "Correo no enviado";
+                            break;
+
+                        case 1:
+                            e.Value = "Correo enviado";
+                            break;
+
+                        case 2:
+                            e.Value = "Documentación completa";
+                            break;
+                    }
+
+                    e.FormattingApplied = true;
+                }
+            }
+        }
         private void dgvAlumnos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // En CellDoubleClick ya dispones de las coordenadas de celda (fila/columna)
@@ -193,6 +219,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
             this.Notificar(TipoNotificacion.Success, $"Se han {enviados} Mails enviados.");
             RecargarGrilla();
-        } 
+        }
+
+        private void txtFiltroAlumno_TextChanged(object sender, EventArgs e)
+        {
+            RecargarGrilla(txtFiltroAlumno.Text);
+        }
     }
 }

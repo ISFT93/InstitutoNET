@@ -38,12 +38,28 @@
             this.rbTodos = new System.Windows.Forms.RadioButton();
             this.cmbCarreraId = new System.Windows.Forms.ComboBox();
             this.btnEnviarMail = new FontAwesome.Sharp.IconButton();
+            this.txtFiltroAlumno = new System.Windows.Forms.TextBox();
+            this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
-            this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             this.SuspendLayout();
+            //
+            //
+            // uscPaginacion1
+            // 
+            this.uscPaginacion1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.uscPaginacion1.BackColor = System.Drawing.Color.Transparent;
+            this.uscPaginacion1.dataGridView = null;
+            this.uscPaginacion1.EntradaDatos = null;
+            this.uscPaginacion1.Location = new System.Drawing.Point(247, 4);
+            this.uscPaginacion1.Margin = new System.Windows.Forms.Padding(4);
+            this.uscPaginacion1.Name = "uscPaginacion1";
+            this.uscPaginacion1.Recargar = null;
+            this.uscPaginacion1.SalidaDatos = null;
+            this.uscPaginacion1.Size = new System.Drawing.Size(237, 62);
+            this.uscPaginacion1.TabIndex = 56;
             // 
             // tableLayoutPanel1
             // 
@@ -59,6 +75,7 @@
             this.tableLayoutPanel1.Controls.Add(this.rbTodos, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.cmbCarreraId, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnEnviarMail, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtFiltroAlumno, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,21 +99,6 @@
             this.rbCompletos.Text = "Completos";
             this.rbCompletos.UseVisualStyleBackColor = true;
             this.rbCompletos.CheckedChanged += new System.EventHandler(this.CheckedGrilla);
-            //
-            //
-            // uscPaginacion1
-            // 
-            this.uscPaginacion1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.uscPaginacion1.BackColor = System.Drawing.Color.Transparent;
-            this.uscPaginacion1.dataGridView = null;
-            this.uscPaginacion1.EntradaDatos = null;
-            this.uscPaginacion1.Location = new System.Drawing.Point(247, 4);
-            this.uscPaginacion1.Margin = new System.Windows.Forms.Padding(4);
-            this.uscPaginacion1.Name = "uscPaginacion1";
-            this.uscPaginacion1.Recargar = null;
-            this.uscPaginacion1.SalidaDatos = null;
-            this.uscPaginacion1.Size = new System.Drawing.Size(237, 62);
-            this.uscPaginacion1.TabIndex = 56;
             // 
             // rbIncompletos
             // 
@@ -139,7 +141,7 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(4, 6);
+            this.cmbCarreraId.Location = new System.Drawing.Point(4, 9);
             this.cmbCarreraId.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(346, 27);
@@ -165,6 +167,22 @@
             this.btnEnviarMail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEnviarMail.UseVisualStyleBackColor = false;
             this.btnEnviarMail.Click += new System.EventHandler(this.btnEnviarMail_Click);
+            // 
+            // txtFiltroAlumno
+            // 
+            this.txtFiltroAlumno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFiltroAlumno.BackColor = System.Drawing.Color.White;
+            this.txtFiltroAlumno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtFiltroAlumno, 3);
+            this.txtFiltroAlumno.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltroAlumno.ForeColor = System.Drawing.Color.Black;
+            this.txtFiltroAlumno.Location = new System.Drawing.Point(4, 44);
+            this.txtFiltroAlumno.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFiltroAlumno.Name = "txtFiltroAlumno";
+            this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 27);
+            this.txtFiltroAlumno.TabIndex = 179;
+            this.txtFiltroAlumno.TextChanged += new System.EventHandler(this.txtFiltroAlumno_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -237,6 +255,7 @@
             this.dgvAlumnos.Size = new System.Drawing.Size(732, 294);
             this.dgvAlumnos.TabIndex = 61;
             this.dgvAlumnos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnos_CellDoubleClick);
+            this.dgvAlumnos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlumnos_CellFormatting);
             // 
             // FormDocumentacionAlumnos
             // 
@@ -269,5 +288,6 @@
         public System.Windows.Forms.DataGridView dgvAlumnos;
         private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
         private FontAwesome.Sharp.IconButton btnEnviarMail;
+        private System.Windows.Forms.TextBox txtFiltroAlumno;
     }
 }

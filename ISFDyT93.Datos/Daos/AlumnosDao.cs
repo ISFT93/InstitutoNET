@@ -283,7 +283,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT DISTINCT Provincia FROM Alumnos";
             return this.Conexion.ObtenerRegistros(query);
         }
-        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado, int carrera)
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado, int carrera, string filtro)
         {
             string query = @"SELECT A.AlumnoId,
                             ac.AlumnoCarreraId,
@@ -315,7 +315,14 @@ namespace ISFDyT93.Datos.Daos
             {
                 query += " AND ac.CarreraId = " + carrera;
             }
-
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                query += @" AND (
+                        A.Nombre LIKE '%" + filtro + @"%' 
+                        OR A.Apellido LIKE '%" + filtro + @"%' 
+                        OR A.NumeroDocumento LIKE '%" + filtro + @"%'
+                    )";
+            }
             query += " ORDER BY A.Apellido ASC";
 
             return this.Conexion.ObtenerRegistros(query);
