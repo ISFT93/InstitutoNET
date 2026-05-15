@@ -18,9 +18,9 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
-        public int AgregarAnio(int anioCarrera, int carreraId)
+        public int AgregarAnio(int anioCarrera, int carreraId, string aniosCarrerasCodigoBloque)
         {
-            string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId) VALUES(" + anioCarrera + "," + carreraId + ")";
+            string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId, AniosCarrerasCodigoBloque) VALUES(" + anioCarrera + "," + carreraId + ",'" + aniosCarrerasCodigoBloque + "')";
 
             return this.Conexion.EjecutarAccion(query);
         }
