@@ -64,5 +64,10 @@ namespace ISFDyT93.Vista.UserControls
         {
 
         }
+
+        private void flpContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
