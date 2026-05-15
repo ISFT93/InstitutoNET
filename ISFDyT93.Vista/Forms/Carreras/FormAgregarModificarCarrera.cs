@@ -140,7 +140,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             txtJefeCatedra.Text = "";
             txtPlanEstudio.Text = "";
             txtResolucion.Text = "";
-            txtCorrelatividades.Text = "";
             txtImagenDescriptiva.Text = "";
             txtNumeroExpediente.Text = "";
             txtCantidadHoras.Text = "";
@@ -167,22 +166,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
 
 
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             GuardarCarrera();        
         }
 
-        private void btnCorrelatividades_Click(object sender, EventArgs e)
-        {
-            ofdCarreras.Filter = "Archivos PDF|*.pdf";
 
-            if (ofdCarreras.ShowDialog() == DialogResult.OK)
-            {
-                txtCorrelatividades.Text = ofdCarreras.FileName;
-            }
-        }
 
         private void btnResolucion_Click(object sender, EventArgs e)
         {
