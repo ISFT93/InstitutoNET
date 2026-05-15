@@ -48,6 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAlumnosLogica.cs" />
+    <Compile Include="Interfaces\IAniosCarreraLogica.cs" />
+    <Compile Include="Interfaces\ICargaMasivaLogica.cs" />
+    <Compile Include="Interfaces\ICargosLogica.cs" />
+    <Compile Include="Interfaces\ICarrerasLogica.cs" />
+    <Compile Include="Interfaces\ICicloLectivosLogica.cs" />
+    <Compile Include="Interfaces\IControlAsistenciasLogica.cs" />
+    <Compile Include="Interfaces\ICorrelativasLogica.cs" />
+    <Compile Include="Interfaces\ICursadasLogica.cs" />
+    <Compile Include="Interfaces\ICursosLogica.cs" />
+    <Compile Include="Interfaces\IEquivalenciasLogica.cs" />
+    <Compile Include="Interfaces\IEvaluacionesLogica.cs" />
+    <Compile Include="Interfaces\IHorariosLogica.cs" />
+    <Compile Include="Interfaces\IInscripcionAlumnoLogica.cs" />
+    <Compile Include="Interfaces\ILicenciaServicioLogica.cs" />
+    <Compile Include="Interfaces\ILogicaBase.cs" />
+    <Compile Include="Interfaces\IMateriasLogica.cs" />
+    <Compile Include="Interfaces\IMesasFinalesLogica.cs" />
+    <Compile Include="Interfaces\IParametrosLogica.cs" />
+    <Compile Include="Interfaces\IPersonalLogica.cs" />
+    <Compile Include="Interfaces\IServiciosLogica.cs" />
+    <Compile Include="Interfaces\IValidaciones.cs" />
     <Compile Include="Logica\AlumnosLogica.cs" />
     <Compile Include="Logica\AniosCarreraLogica.cs" />
     <Compile Include="Logica\CargaMasivaLogica.cs" />

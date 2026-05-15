@@ -2,10 +2,11 @@
 using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Data;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CarrerasDao : DaoBase
+    public class CarrerasDao : DaoBase , ICarrerasDao
     {
         public DataTable ObtenerCarreras(bool Activo = true)
         {

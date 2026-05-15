@@ -4,10 +4,11 @@ using ISFDyT93.Negocio.Core;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CorrelativasLogica : LogicaBase
+    public class CorrelativasLogica : LogicaBase , ICorrelativasLogica
     {
         CorrelativasDao correlativasDao;
         public CorrelativasLogica()

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Data;
 using ISFDyT93.Entidades.Core;
 using System.Collections.Generic;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Core
 {
-    public class DaoBase
+    public class DaoBase : IDaoBase
     {
         private Conexion _instance;
         private readonly object _conexionLock = new object();

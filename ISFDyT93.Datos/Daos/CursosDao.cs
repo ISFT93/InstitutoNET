@@ -7,10 +7,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class CursosDao : DaoBase
+    public class CursosDao : DaoBase , ICursosDao
     {
         public DataTable ConsultarCursos(int AnioCarreraId)
         {

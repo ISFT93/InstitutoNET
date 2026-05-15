@@ -2,10 +2,11 @@
 using System.Data.SqlClient;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Datos.Interfaces;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class ControlAsistenciasDao : DaoBase
+    public class ControlAsistenciasDao : DaoBase , IControlAsistenciasDao
     {
         public DataTable CargarAsistenciasAlumnos()
         {
@@ -18,7 +19,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable CargarAsistenciasAlumnosReporte(AsistenciasModelo modelo)
         {
             DataTable dt = new DataTable();
-            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Concat(Al.Apellido, ', ', Al.Nombre) AS 'Alumnos', Ca.HorasCursadas AS [Módulos], Ca.UltimoPresentismo AS 'Ultimo_Presentismo', Ca.PorcentajeAsistencia AS 'Porcentaje_de_Asistencia', A.Asistencia FROM AlumnosCarreras AC INNER JOIN Alumnos Al on Al.AlumnoId = AC.AlumnoId inner join CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId left JOIN  Asistencias A ON ( Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId and ' " + modelo.FechaAsistenciaStr + "'= A. Fecha)  WHERE Ca.CursadaId = " + modelo.CursadaId;
+            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Concat(Al.Apellido, ', ', Al.Nombre) AS 'Alumnos', Ca.HorasCursadas AS [Módulos], Ca.UltimoPresentismo AS 'Ultimo_Presentismo', Ca.PorcentajeAsistencia AS 'Porcentaje_de_Asistencia', A.Asistencia FROM AlumnosCarreras AC INNER JOIN Alumnos Al on Al.AlumnoId = AC.AlumnoId inner join CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId left JOIN  Asistencias A ON ( Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId and ' " + modelo.FechaAsistenciaStr + "'= A. Fecha)  WHERE Ca.CursadaId = 1 ";
             dt = this.Conexion.ObtenerRegistros(query);
             return dt;
         }
@@ -26,43 +27,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable CargarAsistenciasAnteriores(AsistenciasModelo Modelo)
         {
             DataTable dt = new DataTable();
-
-            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Al.Apellido, m.Nombre AS Materia, CONCAT(p.Nombre, ' ', p.Apellido) AS Profesor, Ca.HorasCursadas AS Modulos, Ca.UltimoPresentismo, Ca.PorcentajeAsistencia, A.Asistencia " +
-                "FROM AlumnosCarreras AC " +
-                "INNER JOIN Alumnos Al ON Al.AlumnoId = AC.AlumnoId " +
-                "INNER JOIN CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId " +
-                "INNER JOIN Cursadas cu ON Ca.CursadaId = cu.CursadaId " +
-                "INNER JOIN CursoMaterias cm ON cu.CursoMateriaId = cm.CursoMateriaId " +
-                "INNER JOIN Cursos c ON cm.CursoId = c.CursoId " +
-                "INNER JOIN AniosCarreras acr ON c.AnioCarreraId = acr.AnioCarreraId " +
-                "INNER JOIN Materias m ON cm.MateriaId = m.MateriaId " +
-                "LEFT JOIN Servicios s ON s.CursoMateriaId = cm.CursoMateriaId AND s.Activo = 1 " +
-                "LEFT JOIN Personal p ON s.PersonalId = p.PersonalId " +
-                "LEFT JOIN Asistencias A ON (Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId AND A.Fecha = '" + Modelo.FechaAsistenciaStr + "') " +
-                "WHERE 1=1 ";
-
-            bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0 || Modelo.PersonalId > 0;
-
-            if (!hayFiltros && Modelo.CursadaId > 0)
-            {
-                query += " AND Ca.CursadaId = " + Modelo.CursadaId;
-            }
-            else
-            {
-                if (Modelo.CarreraId > 0)
-                    query += " AND acr.CarreraId = " + Modelo.CarreraId;
-                if (Modelo.AnioCarreraId > 0)
-                    query += " AND acr.AnioCarreraId = " + Modelo.AnioCarreraId;
-                if (Modelo.CursoId > 0)
-                    query += " AND c.CursoId = " + Modelo.CursoId;
-                if (Modelo.MateriaId > 0)
-                    query += " AND m.MateriaId = " + Modelo.MateriaId;
-                if (Modelo.AnioLectivo > 0)
-                    query += " AND cu.AnioLectivo = " + Modelo.AnioLectivo;
-                if (Modelo.PersonalId > 0)
-                    query += " AND EXISTS (SELECT 1 FROM Servicios s WHERE s.CursoMateriaId = cm.CursoMateriaId AND s.PersonalId = " + Modelo.PersonalId + ")";
-            }
-
+            string query = "SELECT Al.AlumnoId, AC.AlumnoCarreraId, Ca.CursadaId, Ca.CursadaAlumnoCarreraId, Al.Apellido, Ca.HorasCursadas AS Modulos, Ca.UltimoPresentismo, Ca.PorcentajeAsistencia, A.Asistencia FROM AlumnosCarreras AC INNER JOIN Alumnos Al on Al.AlumnoId = AC.AlumnoId inner join CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId left JOIN  Asistencias A ON (Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId AND A.Fecha = '" + Modelo.FechaAsistenciaStr + "') WHERE Ca.CursadaId = 1";
             dt = this.Conexion.ObtenerRegistros(query);
             return dt;
         }
@@ -90,7 +55,7 @@ namespace ISFDyT93.Datos.Daos
         public int ActualizarCursada(AsistenciasModelo Modelo)
         {
             string FechaA = Modelo.FechaAsistenciaStr;
-            string query = $"UPDATE Cursadas SET HoraCatedra = {Modelo.HorasCursadas}, FechaAsistencia = '{FechaA}', PorcentajeAsistencia = {Modelo.PorcentajeAsistencia.ToString(System.Globalization.CultureInfo.InvariantCulture)} WHERE CursadaId = {Modelo.CursadaId}";
+            string query = $"UPDATE Cursadas SET HoraCatedra = '{Modelo.HorasCursadas}', FechaAsistencia = '{FechaA}', PorcentajeAsistencia = '{Modelo.PorcentajeAsistencia}' WHERE CursadaId = {Modelo.CursadaId}";
             return this.Conexion.EjecutarAccion(query);
         }
 

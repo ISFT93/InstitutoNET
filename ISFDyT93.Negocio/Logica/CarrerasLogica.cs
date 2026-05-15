@@ -7,10 +7,11 @@ using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Core;
 using System.Collections.Generic;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CarrerasLogica : LogicaBase
+    public class CarrerasLogica : LogicaBase , ICarrerasLogica
     {
         CarrerasDao carrerasDao;
         AniosCarreraDao aniosCarreraDao;
