@@ -12,7 +12,7 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerMaterias(int anioCarreraId, bool activo = true)
         {
-            string query = "SELECT Mat.MateriasCodigoBloque AS [Codigo], Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, " +
+            string query = "SELECT Mat.MateriasCodigoBloque AS [Código], Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, " +
                 "Mat.CargaHoraria AS [Carga Horaria], Esp.Descripcion AS [Descripción], Mat.EspacioId,  COUNT(Cor.MateriaId) As Correlativas " +
                 "FROM Materias as Mat " +
                 "INNER JOIN Espacios as Esp ON Esp.EspacioId = Mat.EspacioId " +
