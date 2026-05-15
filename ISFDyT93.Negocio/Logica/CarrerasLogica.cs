@@ -25,6 +25,11 @@ namespace ISFDyT93.Negocio.Logica
             this.correlativasDao = new CorrelativasDao();
             this.materiasDao = new MateriasDao();
         }
+
+        public DataTable ObtenerTodasLasCarreras()
+        {
+            return this.carrerasDao.ObtenerTodasLasCarreras(true);
+        }
         public DataTable ObtenerCarreras()
         {
             return this.carrerasDao.ObtenerCarreras(true);
@@ -59,6 +64,8 @@ namespace ISFDyT93.Negocio.Logica
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
             bool resultado = false;
+            int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
+
 
             try
             {
@@ -111,9 +118,11 @@ namespace ISFDyT93.Negocio.Logica
 
                         int carreraId = carrerasDao.ObtenerUltimoCarreraId();
 
+
                         for (int anio = 1; anio <= modelo.Duracion; anio++)
                         {
-                            aniosCarreraDao.AgregarAnio(anio, carreraId);
+                            string codigoFormateado = carrerasCodigoBloque.ToString("D2") + anio.ToString();
+                            aniosCarreraDao.AgregarAnio(anio, carreraId, codigoFormateado);
                         }
 
                         resultado = true;
@@ -149,9 +158,11 @@ namespace ISFDyT93.Negocio.Logica
                         {
                             aniosCarreraDao.EliminarAnios(modelo.CarreraId);
 
+
                             for (int anio = 1; anio <= modelo.Duracion; anio++)
                             {
-                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId);
+                                string codigoFormateado = carrerasCodigoBloque.ToString("D2") + anio.ToString();
+                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId, codigoFormateado);
                             }
                         }
 
