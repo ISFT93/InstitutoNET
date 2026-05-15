@@ -18,6 +18,10 @@ namespace ISFDyT93.Entidades.Modelos
         public int PersonalId { get; set; }
         public char Asistencia { get; set; }
         public int CursadaId { get; set; }
+        public int CarreraId { get; set; }
+        public int AnioCarreraId { get; set; }
+        public int CursoId { get; set; }
+        public int AnioLectivo { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int CargaHoraria { get; set; }

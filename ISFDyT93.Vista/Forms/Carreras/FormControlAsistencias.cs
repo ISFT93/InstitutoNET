@@ -6,6 +6,10 @@ using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Vista.Forms.Common;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
+using ISFDyT93.Datos.Daos;
+using System.Diagnostics;
+using Microsoft.ReportingServices.Diagnostics.Internal;
+
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -38,41 +42,117 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void ControlAsistencias_Load(object sender, EventArgs e)
         {
             this.PropiedadesFormPrincipal();
-
             this.Cursada = this.cursadasLogica.ObtenerCursada(this.CursadaId);
             this.MapToForm<CursadasModelo>(this.Cursada);
+            this.Contenedor.SetTitulo("Control Asistencias/Evaluaciones");
+
 
             var dr = controlAsistenciasLogica.CargarProfesor();
             txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
 
-            this.RellenarGrilla();
+            //this.RellenarGrilla();
+       
+           
+            ///
+            cmbCarrera.DataSource = null;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Text = "";
+            cmbCarrera.SelectedIndex = -1;
+            ///
+            cmbProfesor.DataSource = null;
+            cmbProfesor.Items.Clear();
+            cmbProfesor.Text = "";
+            cmbProfesor.SelectedIndex = -1;
+            //
+            cmbAnio.DataSource = null;
+            cmbAnio.Items.Clear();
+            cmbAnio.Text = "";
+            cmbAnio.SelectedIndex = -1;
+            //
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+            cmbCurso.Text = "";
+            cmbCurso.Text = "";
+            cmbCurso.SelectedIndex = -1;
+            //
+            cmbAnio.Enabled = false;
+            cmbCurso.Enabled = false;
+            cmbMateria.Enabled = false;
+           
+
         }
 
         private void RellenarGrilla()
         {
-            var FechaAsistenciaStr = new AsistenciasModelo
+            var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
+                CursadaId = this.CursadaId
             };
 
-            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(FechaAsistenciaStr);
+            // Leer filtros de los combos
+            int filtro;
+            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out filtro))
+                modelo.CarreraId = filtro;
+            if (cmbAnio.SelectedValue != null && int.TryParse(cmbAnio.SelectedValue.ToString(), out filtro))
+                modelo.AnioCarreraId = filtro;
+            if (cmbCurso.SelectedValue != null && int.TryParse(cmbCurso.SelectedValue.ToString(), out filtro))
+                modelo.CursoId = filtro;
+            if (cmbMateria.SelectedValue != null && int.TryParse(cmbMateria.SelectedValue.ToString(), out filtro))
+                modelo.MateriaId = filtro;
+            if (cmbCicloLectivo.SelectedValue != null && int.TryParse(cmbCicloLectivo.SelectedValue.ToString(), out filtro))
+                modelo.AnioLectivo = filtro;
+            if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out filtro))
+                modelo.PersonalId = filtro;
+
+            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
             dgvAsistencias.Columns["AlumnoId"].Visible = false;
             dgvAsistencias.Columns["CursadaId"].Visible = false;
             dgvAsistencias.Columns["AlumnoCarreraId"].Visible = false;
             dgvAsistencias.Columns["CursadaAlumnoCarreraId"].Visible = false;
 
-
-            if (dgvAsistencias.Rows.Count > 0)
+            if (dgvAsistencias.Columns["Materia"] != null)
             {
-                var asistencia = dgvAsistencias.Rows[0].Cells["Asistencia"].Value;
-
-                tsmP.Enabled = string.IsNullOrEmpty(asistencia.ToString());
-                tsmA.Enabled = string.IsNullOrEmpty(asistencia.ToString());
+                dgvAsistencias.Columns["Materia"].Visible = true;
+                dgvAsistencias.Columns["Materia"].DisplayIndex = 1;
+            }
+            if (dgvAsistencias.Columns["Profesor"] != null)
+            {
+                dgvAsistencias.Columns["Profesor"].Visible = true;
+                dgvAsistencias.Columns["Profesor"].DisplayIndex = 2;
             }
 
 
-
             this.CalcularPorcentajeActual();
+            this.ActualizarDatosInformativos();
+        }
+
+        private void ActualizarDatosInformativos()
+        {
+            if (dgvAsistencias.Rows.Count > 0)
+            {
+                int cursadaId = Convert.ToInt32(dgvAsistencias.Rows[0].Cells["CursadaId"].Value);
+                this.Cursada = this.cursadasLogica.ObtenerCursada(cursadaId);
+                this.MapToForm<CursadasModelo>(this.Cursada);
+
+                var dr = controlAsistenciasLogica.CargarProfesor();
+                txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
+            }
+            else
+            {
+                this.LimpiarControlesInformativos();
+            }
+        }
+
+        private void LimpiarControlesInformativos()
+        {
+            txtNombreMateria.Text = string.Empty;
+            txtProfesor.Text = string.Empty;
+            txtPorcentajeAsistencia.Text = string.Empty;
+            txtHoraCatedra.Text = string.Empty;
+            txtCantidadAlumnos.Text = string.Empty;
+            txtCantidadAlumnosRecursantes.Text = string.Empty;
+            txtCantidadAlumnosDesertores.Text = string.Empty;
         }
 
         private void dgvAsistencias_MouseUp(object sender, MouseEventArgs e)
@@ -89,15 +169,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     fila = info.RowIndex;
                     dgvAsistencias.Rows[info.RowIndex].Selected = true;
 
-                    if (dtpFechaAsistencia.Value < DateTime.Now.Date)
-                    {
-                        tsmA.Visible = true;
-                        tsmP.Visible = true;
-                    }
+                    var asistenciaValue = dgvAsistencias.Rows[info.RowIndex].Cells["Asistencia"].Value;
+                    bool yaTieneAsistencia = asistenciaValue != null && !string.IsNullOrEmpty(asistenciaValue.ToString());
+
                     if (dgvAsistencias.Columns[info.ColumnIndex].Name == "Asistencia")
                     {
-                        tsmP.Visible = true;
-                        tsmA.Visible = true;
+                        tsmP.Visible = !yaTieneAsistencia;
+                        tsmA.Visible = !yaTieneAsistencia;
                         tsmHistorialAsistenciasAlumnos.Visible = false;
                     }
                     else
@@ -198,23 +276,40 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dr == DialogResult.Yes)
                 {
-                    int totalModulos = this.Cursada.HoraCatedra + this.Cursada.ModulosMateria;
-                    int cursantes = 0;
-                    double totalPorcentajes = 0;
-                    for (int i = 0; i <= dgvAsistencias.Rows.Count - 1; i++)
+                    // Agrupar filas por CursadaId para soportar múltiples cursadas
+                    var filasPorCursada = new System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<int>>();
+
+                    for (int i = 0; i < dgvAsistencias.Rows.Count; i++)
                     {
-                        if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value != null)
+                        int cursadaId = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["CursadaId"].Value);
+                        if (!filasPorCursada.ContainsKey(cursadaId))
+                            filasPorCursada[cursadaId] = new System.Collections.Generic.List<int>();
+                        filasPorCursada[cursadaId].Add(i);
+                    }
+
+                    foreach (var grupo in filasPorCursada)
+                    {
+                        int cursadaId = grupo.Key;
+                        var indices = grupo.Value;
+
+                        var cursadaActual = this.cursadasLogica.ObtenerCursada(cursadaId);
+                        if (cursadaActual == null) continue;
+
+                        int totalModulos = cursadaActual.HoraCatedra + cursadaActual.ModulosMateria;
+                        double totalPorcentajes = 0;
+
+                        foreach (int i in indices)
                         {
-                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Módulos"].Value);
+                            if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value == null) continue;
+
+                            int modulosCursadas = Convert.ToInt32(dgvAsistencias.Rows[i].Cells["Modulos"].Value);
 
                             if (dgvAsistencias.Rows[i].Cells["Asistencia"].Value.ToString() == "P")
                             {
-                                modulosCursadas += this.Cursada.ModulosMateria;
-                                cursantes++;
-
+                                modulosCursadas += cursadaActual.ModulosMateria;
                             }
 
-                            double porcentaje = modulosCursadas * 100 / totalModulos;
+                            double porcentaje = totalModulos > 0 ? modulosCursadas * 100.0 / totalModulos : 0;
                             totalPorcentajes += porcentaje;
 
                             var Modelo = new AsistenciasModelo
@@ -233,23 +328,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                             controlAsistenciasLogica.AgregarAsistencia(Modelo);
                         }
+
+                        double promedioCursada = indices.Count > 0 ? totalPorcentajes / indices.Count : 0;
+
+                        var cursadaModelo = new AsistenciasModelo
+                        {
+                            HorasCursadas = totalModulos,
+                            FechaAsistencia = dtpFechaAsistencia.Value,
+                            PorcentajeAsistencia = promedioCursada,
+                            CursadaId = cursadaId
+                        };
+
+                        controlAsistenciasLogica.ActualizarCursada(cursadaModelo);
                     }
 
-                    double promedioCursada = totalPorcentajes / dgvAsistencias.Rows.Count;
-
-                    var cursada = new AsistenciasModelo
-                    {
-                        HorasCursadas = totalModulos,
-                        FechaAsistencia = dtpFechaAsistencia.Value,
-                        PorcentajeAsistencia = promedioCursada,
-                        CursadaId = this.CursadaId
-                    };
-
-                    controlAsistenciasLogica.ActualizarCursada(cursada);
-
                     this.RellenarGrilla();
-                    Notificar(TipoNotificacion.Success, "Asistencias agregada con éxito");
-                    //this.LimpiarColumnaAsistencia();
+                    Notificar(TipoNotificacion.Success, "Asistencias agregadas con éxito");
                 }
             }
             else
@@ -266,7 +360,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var modelo = new AsistenciasModelo
             {
                 FechaAsistencia = dtpFechaAsistencia.Value,
-
+                CursadaId = this.CursadaId
             };
             var datos = this.controlAsistenciasLogica.CargarAsistenciasAlumnosReporte(modelo);
 
@@ -283,5 +377,345 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 .AddParameter("Fecha", Convert.ToString(dtpFechaAsistencia.Value));
             });
         }
+
+        private CarrerasDao _carrerasDao= new CarrerasDao();
+
+        private void CargarCarreras()
+        {
+
+            DataTable dt = _carrerasDao.CarrerasActivas();
+
+            cmbCarrera.DataSource = dt;
+            cmbCarrera.ValueMember = "CarreraId";
+            cmbCarrera.DisplayMember = "Nombre";
+            cmbCarrera.SelectedIndex = -1;
+
+        }
+        private bool carrerasCargadas = false;
+        private void cmbCarrera_DropDown(object sender, EventArgs e)
+        {
+
+            if (carrerasCargadas) return;
+            CargarCarreras();
+            carrerasCargadas = true;
+        }
+        //profesor
+        private PersonalDao _personalDao = new PersonalDao();
+
+        private void CargarProfesores()
+        {
+            DataTable dt = _personalDao.ObtenerProfesoresParaCombo(1);
+
+            cmbProfesor.DataSource = dt;
+            cmbProfesor.ValueMember = "PersonalId";
+            cmbProfesor.DisplayMember = "NombreCompleto";
+            cmbProfesor.SelectedIndex = -1;
+        }
+        private bool profesoresCargados = false;
+        private void cmbProfesor_DropDown(object sender, EventArgs e)
+        {
+            if (profesoresCargados) return;
+            CargarProfesores();
+            profesoresCargados = true;
+        }
+        // año
+        private AniosCarreraDao _aniosCarrerasDao = new AniosCarreraDao();
+        
+        private void CargarAniosPorCarrera(int carreraId)
+        {
+            DataTable dt = _aniosCarrerasDao.ObtenerAniosCarrera(carreraId);
+
+            cmbAnio.DataSource = dt;
+            cmbAnio.ValueMember = "AnioCarreraId";
+            cmbAnio.DisplayMember = "Año";
+            cmbAnio.SelectedIndex = -1;
+        }
+
+        private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_enCambioCombos) return;
+            _enCambioCombos = true;
+
+            cmbProfesor.SelectedIndex = -1;
+
+            ResetCadenaCarrera();
+
+            if (cmbCarrera.SelectedValue == null)
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            int carreraId;
+            if (!int.TryParse(cmbCarrera.SelectedValue.ToString(), out carreraId))
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            CargarAniosPorCarrera(carreraId);
+            cmbAnio.Enabled = true;
+
+            _enCambioCombos = false;
+        }
+
+        private CursosDao _cursosDao = new CursosDao();
+
+        private void CargarCursosPorAnio(int anioCarreraId)
+        {
+
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+
+            DataTable dt = _cursosDao.ConsultarCursos(anioCarreraId);
+            cmbCurso.DataSource = dt;
+            cmbCurso.ValueMember = "CursoId";
+            cmbCurso.DisplayMember = "NombreCurso";
+            cmbCurso.SelectedIndex = -1;
+         
+            Debug.Write(dt.Rows.Count);
+
+        }
+
+        private void cmbAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cmbCurso.DataSource = null;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
+
+            if (cmbAnio.SelectedValue == null) return;
+
+            int anioCarreraId;
+            if (!int.TryParse(cmbAnio.SelectedValue.ToString(), out anioCarreraId)) return;
+
+            CargarCursosPorAnio(anioCarreraId);
+            cmbCurso.Enabled = true; 
+        }
+
+        private MateriasDao _materiasDao = new MateriasDao();
+      
+        private void CargarMateriasPorAnio(int anioCarreraId)
+        {
+
+            cmbMateria.DataSource = null;
+            cmbMateria.Items.Clear();
+
+            DataTable dt = _materiasDao.CargarMaterias(anioCarreraId, true); 
+            cmbMateria.DataSource = dt;
+            cmbMateria.ValueMember = "MateriaId";
+            cmbMateria.DisplayMember = "Nombre";
+            cmbMateria.SelectedIndex = -1;
+        }
+
+        private CiclosLectivosDao _ciclosLectivosDao = new CiclosLectivosDao();
+        private bool ciclosLectivosCargados = false;
+
+        private void CargarCiclosLectivos()
+        {
+            DataTable dt = _ciclosLectivosDao.ObtenerCicloLectivo();
+
+            cmbCicloLectivo.DataSource = dt;
+            cmbCicloLectivo.ValueMember = "AnioLectivo";
+            cmbCicloLectivo.DisplayMember = "AnioLectivo";
+        }
+
+        private void cmbCicloLectivo_DropDown(object sender, EventArgs e)
+        {
+            if (ciclosLectivosCargados) return;
+            CargarCiclosLectivos();
+            ciclosLectivosCargados = true;
+
+            
+        }
+
+        private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
+
+            if (cmbCurso.SelectedValue == null) return;
+
+            if (cmbAnio.SelectedValue == null) return;
+
+            int anioCarreraId;
+            if (!int.TryParse(cmbAnio.SelectedValue.ToString(), out anioCarreraId)) return;
+
+            CargarMateriasPorAnio(anioCarreraId);
+            cmbMateria.Enabled = true;
+        }
+
+        private void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMateria.SelectedValue == null) return;
+
+            int materiaId;
+            if (!int.TryParse(cmbMateria.SelectedValue.ToString(), out materiaId)) return;
+
+            cmbCicloLectivo.Enabled = true;
+        }
+        //
+        //private void btnAplicarFiltros_Click(object sender, EventArgs e)
+        //{
+        //    this.RellenarGrilla();
+        //}
+
+        private ServiciosDao _serviciosDao = new ServiciosDao();
+
+        private void cmbProfesor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (_enCambioCombos) return;
+            _enCambioCombos = true;
+
+            ResetCadenaCarrera();
+
+            cmbCarrera.SelectedIndex = -1;
+
+            if (cmbCarrera.DataSource == null)
+            {
+                carrerasCargadas = false;
+                CargarCarreras();
+            }
+
+            cmbCarrera.SelectedIndex = -1;
+
+            if (cmbProfesor.SelectedValue == null)
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            int personalId;
+            if (!int.TryParse(cmbProfesor.SelectedValue.ToString(), out personalId))
+            {
+                _enCambioCombos = false;
+                return;
+            }
+
+            var dt = _serviciosDao.ObtenerServicioPersonalAmpliado(personalId, 1);
+            var dv = dt.DefaultView;
+            dv.RowFilter = "CursoMateriaId IS NOT NULL";
+
+            cmbMateria.DataSource = dv.ToTable();
+            cmbMateria.ValueMember = "CursoMateriaId";
+            cmbMateria.DisplayMember = "Servicio";
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = true;
+
+            _enCambioCombos = false;
+        }
+  
+        private bool _enCambioCombos = false;
+        private void ResetCadenaCarrera()
+        {
+            cmbAnio.DataSource = null;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
+        }
+
+        private void btnFiltrarAsistencias_Click(object sender, EventArgs e)
+        {
+            this.RellenarGrilla();
+        }
+
+        private void btnFiltrarEvaluaciones_Click(object sender, EventArgs e)
+        {
+            this.LimpiarGrilla();
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            this.LimpiarFiltros();
+            this.LimpiarGrilla();
+        }
+
+        private void LimpiarGrilla()
+        {
+            
+            dgvAsistencias.DataSource = null;
+            dgvAsistencias.Rows.Clear();
+            dgvAsistencias.ClearSelection();
+
+            this.LimpiarControlesInformativos();
+        }
+
+        private void LimpiarFiltros()
+        {
+            _enCambioCombos = true;
+
+            cmbCarrera.DataSource = null;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Text = string.Empty;
+            cmbCarrera.SelectedIndex = -1;
+
+            cmbProfesor.DataSource = null;
+            cmbProfesor.Items.Clear();
+            cmbProfesor.Text = string.Empty;
+            cmbProfesor.SelectedIndex = -1;
+
+            cmbAnio.DataSource = null;
+            cmbAnio.Items.Clear();
+            cmbAnio.Text = string.Empty;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+            cmbCurso.Text = string.Empty;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.Items.Clear();
+            cmbMateria.Text = string.Empty;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.Items.Clear();
+            //cmbCicloLectivo.Text = string.Empty;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
+
+            carrerasCargadas = false;
+            profesoresCargados = false;
+            ciclosLectivosCargados = false;
+
+            _enCambioCombos = false;
+        }
+
+        private void FormControlAsistencias_Shown(object sender, EventArgs e)
+        {
+            CargarCiclosLectivos();
+
+            cmbCicloLectivo.SelectedIndex = 0;
+        }
+
     }
 }

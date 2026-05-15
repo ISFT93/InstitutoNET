@@ -18,7 +18,6 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>DSListaAsistencia</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\el gringo\Desktop\IS93\PRACT.PROF\instituto\Diseño\Core\DataSource\DSListaAsistencia.xsd</rd:SchemaPath>
         <rd:TableName>ListaAsistencias</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

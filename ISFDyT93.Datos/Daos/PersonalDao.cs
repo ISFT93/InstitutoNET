@@ -208,6 +208,20 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
+        public DataTable ObtenerProfesoresParaCombo(int estado = 0)
+        {
+            string query = "SELECT PersonalId, CONCAT(Apellido, ', ', Nombre) AS NombreCompleto FROM Personal";
+
+            if (estado != 0)
+            {
+                query += $" WHERE PersonalEstadoId = {estado}";
+            }
+
+            query += " ORDER BY Apellido, Nombre";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
 
     }
 }

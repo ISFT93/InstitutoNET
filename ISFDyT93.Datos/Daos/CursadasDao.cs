@@ -28,5 +28,20 @@ namespace ISFDyT93.Datos.Daos
 
             return this.MapToModel<CursadasModelo>(this.Conexion.ObtenerRegistro(query));
         }
+
+        public int? ObtenerCursadaIdPorFiltros(int cursoId, int materiaId, int anioLectivo)
+        {
+            string query = "SELECT TOP 1 c.CursadaId FROM Cursadas c " +
+                        "INNER JOIN CursoMaterias cm ON c.CursoMateriaId = cm.CursoMateriaId " +
+                        $"WHERE cm.CursoId = {cursoId} " +
+                        $"AND cm.MateriaId = {materiaId} " +
+                        $"AND c.AnioLectivo = {anioLectivo}";
+
+            DataRow dr = this.Conexion.ObtenerRegistro(query);
+            if (dr == null || dr["CursadaId"] == DBNull.Value)
+                return null;
+
+            return Convert.ToInt32(dr["CursadaId"]);
+        }
     }
 }

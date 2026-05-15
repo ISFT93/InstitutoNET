@@ -30,14 +30,6 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>DSInstituto</rd:DataSetName>
-        <rd:SchemaPath>C:\Proyectos\instituto\ISFDyT93.Vista\Core\DataSource\DSInstituto.xsd</rd:SchemaPath>
-        <rd:TableName>Personas</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod />
-        <rd:TableAdapterName />
-      </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <ReportSections>
