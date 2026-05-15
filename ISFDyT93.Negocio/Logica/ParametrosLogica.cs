@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Datos.Daos;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class ParametrosLogica
+    public class ParametrosLogica : IParametrosLogica
     {
         ParametrosDao parametros = new ParametrosDao();
         public IList<ParametrosModelo> ObtenerParametros()

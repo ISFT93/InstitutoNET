@@ -4,10 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Core
 {
-    public class LogicaBase
+    public class LogicaBase : ILogicaBase
     {
         public DataTable ObtenerSiNo()
         {

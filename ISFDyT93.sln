@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Negocio", "ISFDyT9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Entidades", "ISFDyT93.Entidades\ISFDyT93.Entidades.csproj", "{FC9C8560-73C4-4748-B6D6-AE1BBCF6B4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFDyT93.Tests", "ISFDyT93.Tests\ISFDyT93.Tests.csproj", "{E9F0D347-C519-4781-589F-8922AAFB9E6F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -3,10 +3,11 @@ using System.Windows.Forms;
 using System.Data;
 using ISFDyT93.Datos.Daos;
 using ISFDyT93.Negocio.Core;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class LicenciaServicioLogica : LogicaBase
+    public class LicenciaServicioLogica : LogicaBase , ILicenciaServicioLogica
     {
         private LicenciaServicioDao LicenciaDao { get; set; }
 

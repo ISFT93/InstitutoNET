@@ -6,10 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class MateriasLogica : LogicaBase
+    public class MateriasLogica : LogicaBase , IMateriasLogica
     {
         AniosCarreraDao aniosCarreraDao;
         MateriasDao materiasDao;
