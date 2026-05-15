@@ -22,7 +22,41 @@ namespace ISFDyT93.Vista.Forms.Carreras
         #endregion
 
         #region Propiedades privadas
-        private CarrerasLogica carrerasLogica;
+        private CarrerasLogica 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            carrerasLogica;
         private EquivalenciasLogica equivalenciasLogica;
         private DataTable dtMaterias, dtMateriasEquivalentes;
         private int EquivalenciaId;

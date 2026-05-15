@@ -24,7 +24,8 @@ namespace ISFDyT93.Vista
         ParametrosLogica parametros = new ParametrosLogica();
         private IList<ParametrosModelo> LtsParametros { get; set; }
         private List<uscCargos> ltsUscCargos = new List<uscCargos>();
-
+        private uscMostrarCargos mostrar;
+        private uscLibroActas libro;
         #region Eventos
         private void FormParametros_Load(object sender, EventArgs e)
         {
@@ -122,14 +123,14 @@ namespace ISFDyT93.Vista
 
             if (tipoParametro.IndexOf(TipoParametro.Table) != -1)
             {
-                //el codigo anterior, por si llegamos a necesitarlo, era este:
-                //uscCargos cargos = new uscCargos();
-                //flpContenedor.Controls.Add(cargos);
+                if (mostrar == null)
+                    mostrar = new uscMostrarCargos();
 
-                uscMostrarCargos mostrar = new uscMostrarCargos();
-                 flpContenedor.Controls.Add(mostrar);
-                 uscLibroActas libro = new uscLibroActas();
-                 flpContenedor.Controls.Add(libro);
+                if (libro == null)
+                    libro = new uscLibroActas();
+
+                flpContenedor.Controls.Add(mostrar);
+                flpContenedor.Controls.Add(libro);
             }
             else
             {
@@ -138,15 +139,19 @@ namespace ISFDyT93.Vista
                     foreach (ParametrosModelo parametro in LtsParametros)
                     {
                         string nombre = parametro.Nombre.ToLower();
-                        if (tipoParametro.IndexOf((TipoParametro)parametro.TipoId) != -1 && nombre.Contains(txtBuscar.Text.Trim().ToLower()))
-                            flpContenedor.Controls.Add(new uscParametro(parametro));
-                    }
 
+                        if (tipoParametro.IndexOf((TipoParametro)parametro.TipoId) != -1
+                            && nombre.Contains(txtBuscar.Text.Trim().ToLower()))
+                        {
+                            flpContenedor.Controls.Add(
+                                new uscParametro(parametro));
+                        }
+                    }
                 }
             }
         }
 
-        
+
 
         private void flpContenedor_Paint(object sender, PaintEventArgs e)
         {

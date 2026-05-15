@@ -64,5 +64,16 @@ namespace ISFDyT93.Vista.UserControls
         {
 
         }
+
+        //private void InitializeComponent()
+        //{
+        //    this.SuspendLayout();
+        //    // 
+        //    // uscMostrarCargos
+        //    // 
+        //    this.Name = "uscMostrarCargos";
+        //    this.ResumeLayout(false);
+
+        //}
     }
 }

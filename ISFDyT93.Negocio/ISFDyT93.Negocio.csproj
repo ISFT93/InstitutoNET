@@ -86,6 +86,7 @@
     <Compile Include="Logica\EvaluacionesLogica.cs" />
     <Compile Include="Logica\HorariosLogica.cs" />
     <Compile Include="Logica\InscripcionAlumnoLogica.cs" />
+    <Compile Include="Logica\LibrosActasLogica.cs" />
     <Compile Include="Logica\LicenciaServicioLogica.cs" />
     <Compile Include="Logica\MateriasLogica.cs" />
     <Compile Include="Logica\MesasFinalesLogica.cs" />
