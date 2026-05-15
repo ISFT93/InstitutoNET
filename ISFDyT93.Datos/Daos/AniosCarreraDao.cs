@@ -10,7 +10,11 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerAniosCarrera(int carreraId)
         {
-            string query = "SELECT AnioCarreraId,AnioCarrera AS [Año],CantidadMaterias AS [Cantidad de Materias],CargaHorariaCompleta AS [Carga Horaria Completa] FROM AniosCarreras WHERE CarreraId = " + carreraId;
+            string query = "SELECT AniosCarrerasCodigoBloque AS [Código], " +
+                "AnioCarreraId, " +
+                "CantidadMaterias AS [Cantidad de Materias]," +
+                "CargaHorariaCompleta AS [Carga Horaria Completa] " +
+                "FROM AniosCarreras WHERE CarreraId = " + carreraId;
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -30,11 +34,14 @@ namespace ISFDyT93.Datos.Daos
 
         public int ActualizarCargaHoria(int anioCarreraId)
         {
-            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId =" + anioCarreraId + ")," +
-            "CargaHorariaCompleta = (SELECT SUM(CargaHoraria) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") WHERE AnioCarreraId = " + anioCarreraId;
+            //Se ingresa 0 en lugar de NULL en la CargaHoraria
+            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ")," +
+               "CargaHorariaCompleta = (SELECT ISNULL(SUM(CargaHoraria),0) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") " +
+               "WHERE AnioCarreraId = " + anioCarreraId;
 
             return this.Conexion.EjecutarAccion(query);
         }
+
         public DataTable ObtenerAnios(int alumnoId)
         {
             string query = "SELECT AC.AnioCarreraId, AC.AnioCarrera FROM AniosCarreras AC " +
@@ -62,6 +69,14 @@ namespace ISFDyT93.Datos.Daos
             }
         }
 
+        public int ObtenerIdCarrera(int AnioCarreraId)
+        {
+            string query = "SELECT CarreraId from AniosCarreras where AnioCarreraId=" + AnioCarreraId;
+            var row = this.Conexion.ObtenerRegistro(query);
+            return Convert.ToInt32(row["CarreraId"]);
+
+        }
+
         public DataRow ObtenerCarrera(int AnioCarreraId)
         {
             string query = "SELECT CarreraId from AniosCarreras where AnioCarreraId=" + AnioCarreraId;
@@ -84,6 +99,8 @@ namespace ISFDyT93.Datos.Daos
             }
             return 0;
         }
+
+
 
 
     }
