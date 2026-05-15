@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCarrera = new System.Windows.Forms.Label();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
@@ -93,9 +93,9 @@
             // 
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(3, 12);
+            this.lblCarrera.Location = new System.Drawing.Point(3, 13);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(184, 24);
+            this.lblCarrera.Size = new System.Drawing.Size(184, 19);
             this.lblCarrera.TabIndex = 0;
             this.lblCarrera.Text = "Carrera:";
             // 
@@ -106,7 +106,7 @@
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(184, 32);
+            this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
             this.cmbCarrera.TabIndex = 1;
             this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -115,9 +115,9 @@
             // 
             this.lblAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(383, 12);
+            this.lblAnio.Location = new System.Drawing.Point(383, 13);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(184, 24);
+            this.lblAnio.Size = new System.Drawing.Size(184, 19);
             this.lblAnio.TabIndex = 2;
             this.lblAnio.Text = "Año:";
             // 
@@ -129,7 +129,7 @@
             this.cmbAnio.FormattingEnabled = true;
             this.cmbAnio.Location = new System.Drawing.Point(573, 3);
             this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(184, 32);
+            this.cmbAnio.Size = new System.Drawing.Size(184, 27);
             this.cmbAnio.TabIndex = 3;
             this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
             // 
@@ -137,9 +137,9 @@
             // 
             this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(3, 58);
+            this.lblCurso.Location = new System.Drawing.Point(3, 59);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(184, 24);
+            this.lblCurso.Size = new System.Drawing.Size(184, 19);
             this.lblCurso.TabIndex = 4;
             this.lblCurso.Text = "Curso:";
             // 
@@ -151,7 +151,7 @@
             this.cmbCurso.FormattingEnabled = true;
             this.cmbCurso.Location = new System.Drawing.Point(193, 49);
             this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(184, 32);
+            this.cmbCurso.Size = new System.Drawing.Size(184, 27);
             this.cmbCurso.TabIndex = 5;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
@@ -159,9 +159,9 @@
             // 
             this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(383, 58);
+            this.lblMateria.Location = new System.Drawing.Point(383, 59);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(184, 24);
+            this.lblMateria.Size = new System.Drawing.Size(184, 19);
             this.lblMateria.TabIndex = 6;
             this.lblMateria.Text = "Materia:";
             // 
@@ -173,7 +173,7 @@
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(573, 49);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 32);
+            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
             this.cmbMateria.TabIndex = 7;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
@@ -181,9 +181,9 @@
             // 
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(3, 104);
+            this.lblProfesor.Location = new System.Drawing.Point(3, 106);
             this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(184, 24);
+            this.lblProfesor.Size = new System.Drawing.Size(184, 19);
             this.lblProfesor.TabIndex = 8;
             this.lblProfesor.Text = "Profesor:";
             // 
@@ -194,7 +194,7 @@
             this.cmbProfesor.FormattingEnabled = true;
             this.cmbProfesor.Location = new System.Drawing.Point(193, 95);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(184, 32);
+            this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
             this.cmbProfesor.TabIndex = 9;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
@@ -263,25 +263,25 @@
             this.dgvMesasFinales.BackgroundColor = System.Drawing.Color.White;
             this.dgvMesasFinales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvMesasFinales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvMesasFinales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMesasFinales, 4);
             this.dgvMesasFinales.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvMesasFinales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMesasFinales.EnableHeadersVisualStyles = false;
             this.dgvMesasFinales.GridColor = System.Drawing.Color.White;
@@ -290,22 +290,22 @@
             this.dgvMesasFinales.Name = "dgvMesasFinales";
             this.dgvMesasFinales.ReadOnly = true;
             this.dgvMesasFinales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvMesasFinales.RowHeadersVisible = false;
             this.dgvMesasFinales.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvMesasFinales.RowTemplate.Height = 28;
             this.dgvMesasFinales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
@@ -338,7 +338,7 @@
             this.cmbAnioLectivo.FormattingEnabled = true;
             this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
             this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 32);
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 27);
             this.cmbAnioLectivo.TabIndex = 5;
             this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
             // 
@@ -349,7 +349,7 @@
             this.cmbTurno.FormattingEnabled = true;
             this.cmbTurno.Location = new System.Drawing.Point(362, 43);
             this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 32);
+            this.cmbTurno.Size = new System.Drawing.Size(193, 27);
             this.cmbTurno.TabIndex = 6;
             this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
             // 
@@ -357,9 +357,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 8);
+            this.label1.Location = new System.Drawing.Point(163, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 24);
+            this.label1.Size = new System.Drawing.Size(193, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Año:";
             // 
@@ -367,9 +367,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 8);
+            this.label2.Location = new System.Drawing.Point(362, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 24);
+            this.label2.Size = new System.Drawing.Size(193, 19);
             this.label2.TabIndex = 8;
             this.label2.Text = "Turno:";
             // 
@@ -380,7 +380,7 @@
             this.cmbLlamados.FormattingEnabled = true;
             this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
             this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 32);
+            this.cmbLlamados.Size = new System.Drawing.Size(196, 27);
             this.cmbLlamados.TabIndex = 9;
             this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
             // 
@@ -388,16 +388,17 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 8);
+            this.label3.Location = new System.Drawing.Point(561, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 24);
+            this.label3.Size = new System.Drawing.Size(196, 19);
             this.label3.TabIndex = 10;
             this.label3.Text = "Llamado:";
             // 
             // btnReporteMesas
             // 
-            this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
             this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReporteMesas.Enabled = false;
             this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
             this.btnReporteMesas.IconChar = FontAwesome.Sharp.IconChar.Print;
@@ -416,7 +417,7 @@
             // 
             // FormMesasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
