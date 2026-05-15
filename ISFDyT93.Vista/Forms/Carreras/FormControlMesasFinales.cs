@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
-    public partial class FormControlAsistencias : FormBase
+    public partial class FormControlMesasFinales : FormBase
     {
 
         #region Propiedades Publicas
@@ -30,7 +30,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         #endregion
 
-        public FormControlAsistencias()
+        public FormControlMesasFinales()
         {
             this.controlAsistenciasLogica = new ControlAsistenciasLogica();
             this.cursadasLogica = new CursadasLogica();
@@ -38,12 +38,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             InitializeComponent();
         }
 
-        private void ControlAsistencias_Load(object sender, EventArgs e)
+        private void ControlMesasFinales_Load(object sender, EventArgs e)
         {
             this.PropiedadesFormPrincipal();
             this.Cursada = this.cursadasLogica.ObtenerCursada(this.CursadaId);
             this.MapToForm<CursadasModelo>(this.Cursada);
-            this.Contenedor.SetTitulo("Control Asistencias/Evaluaciones");
+            this.Contenedor.SetTitulo("Control Mesas Finales");
 
 
             var dr = controlAsistenciasLogica.CargarProfesor();
@@ -375,7 +375,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             });
         }
 
-        private CarrerasDao _carrerasDao= new CarrerasDao();
+        private CarrerasDao _carrerasDao = new CarrerasDao();
 
         private void CargarCarreras()
         {
@@ -417,7 +417,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
         // año
         private AniosCarreraDao _aniosCarrerasDao = new AniosCarreraDao();
-        
+
         private void CargarAniosPorCarrera(int carreraId)
         {
             DataTable dt = _aniosCarrerasDao.ObtenerAniosCarrera(carreraId);
@@ -469,7 +469,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbCurso.ValueMember = "CursoId";
             cmbCurso.DisplayMember = "NombreCurso";
             cmbCurso.SelectedIndex = -1;
-         
+
             Debug.Write(dt.Rows.Count);
 
         }
@@ -495,18 +495,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (!int.TryParse(cmbAnio.SelectedValue.ToString(), out anioCarreraId)) return;
 
             CargarCursosPorAnio(anioCarreraId);
-            cmbCurso.Enabled = true; 
+            cmbCurso.Enabled = true;
         }
 
         private MateriasDao _materiasDao = new MateriasDao();
-      
+
         private void CargarMateriasPorAnio(int anioCarreraId)
         {
 
             cmbMateria.DataSource = null;
             cmbMateria.Items.Clear();
 
-            DataTable dt = _materiasDao.CargarMaterias(anioCarreraId, true); 
+            DataTable dt = _materiasDao.CargarMaterias(anioCarreraId, true);
             cmbMateria.DataSource = dt;
             cmbMateria.ValueMember = "MateriaId";
             cmbMateria.DisplayMember = "Nombre";
@@ -614,7 +614,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             _enCambioCombos = false;
         }
-  
+
         private bool _enCambioCombos = false;
         private void ResetCadenaCarrera()
         {
