@@ -50,7 +50,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(3, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(72, 19);
+            this.lblNombre.Size = new System.Drawing.Size(87, 20);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -63,8 +63,9 @@
             this.txtNombre.Location = new System.Drawing.Point(3, 23);
             this.txtNombre.MaxLength = 200;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(382, 27);
+            this.txtNombre.Size = new System.Drawing.Size(382, 32);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtCargaHoraria
             // 
@@ -73,7 +74,7 @@
             this.txtCargaHoraria.Location = new System.Drawing.Point(3, 93);
             this.txtCargaHoraria.MaxLength = 5;
             this.txtCargaHoraria.Name = "txtCargaHoraria";
-            this.txtCargaHoraria.Size = new System.Drawing.Size(382, 27);
+            this.txtCargaHoraria.Size = new System.Drawing.Size(382, 32);
             this.txtCargaHoraria.TabIndex = 2;
             this.txtCargaHoraria.TextChanged += new System.EventHandler(this.txtCargaHoraria_TextChanged);
             // 
@@ -82,7 +83,7 @@
             this.lblCargaHoraria.AutoSize = true;
             this.lblCargaHoraria.Location = new System.Drawing.Point(3, 70);
             this.lblCargaHoraria.Name = "lblCargaHoraria";
-            this.lblCargaHoraria.Size = new System.Drawing.Size(111, 19);
+            this.lblCargaHoraria.Size = new System.Drawing.Size(138, 20);
             this.lblCargaHoraria.TabIndex = 9;
             this.lblCargaHoraria.Text = "Carga horaria:";
             // 
@@ -93,7 +94,7 @@
             this.lblEspacio.AutoSize = true;
             this.lblEspacio.Location = new System.Drawing.Point(391, 0);
             this.lblEspacio.Name = "lblEspacio";
-            this.lblEspacio.Size = new System.Drawing.Size(68, 20);
+            this.lblEspacio.Size = new System.Drawing.Size(84, 20);
             this.lblEspacio.TabIndex = 11;
             this.lblEspacio.Text = "Espacio:";
             // 
@@ -105,7 +106,7 @@
             this.cmbEspacioId.FormattingEnabled = true;
             this.cmbEspacioId.Location = new System.Drawing.Point(391, 23);
             this.cmbEspacioId.Name = "cmbEspacioId";
-            this.cmbEspacioId.Size = new System.Drawing.Size(383, 27);
+            this.cmbEspacioId.Size = new System.Drawing.Size(383, 32);
             this.cmbEspacioId.TabIndex = 1;
             // 
             // epvMaterias
@@ -120,7 +121,7 @@
             this.txtModulos.Enabled = false;
             this.txtModulos.Location = new System.Drawing.Point(391, 93);
             this.txtModulos.Name = "txtModulos";
-            this.txtModulos.Size = new System.Drawing.Size(383, 27);
+            this.txtModulos.Size = new System.Drawing.Size(383, 32);
             this.txtModulos.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -156,7 +157,7 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -177,13 +178,13 @@
             this.lblCantidadModulos.AutoSize = true;
             this.lblCantidadModulos.Location = new System.Drawing.Point(391, 70);
             this.lblCantidadModulos.Name = "lblCantidadModulos";
-            this.lblCantidadModulos.Size = new System.Drawing.Size(163, 20);
+            this.lblCantidadModulos.Size = new System.Drawing.Size(203, 20);
             this.lblCantidadModulos.TabIndex = 37;
             this.lblCantidadModulos.Text = "Cantidad de Módulos:";
             // 
             // FormAgregarModificarMateria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 449);
