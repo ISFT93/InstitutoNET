@@ -371,19 +371,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 }
                 else if (this.Accion == TipoAccion.Documentacion)
                 {
-                    //verificar si la carrera que selecciono es distinta a la que tenia
-                    if (alumnoCarrera.CarreraId != (DatosAlumnosCarrera.CarreraId))
-                    {
-                        //Inactivo el alumno para esa carrera
-                        alumnosLogica.BajaAlumnoCarrera(alumno.AlumnoId);
-                        alumnosLogica.AgregarAlumnoCarrera(alumnoCarrera);
-                    }
-                    else
-                    {
-                        //Si la carrera no es distinta solo modifico
-                        //UPDATE
-                        alumnosLogica.ModificarAlumnoCarrera(alumnoCarrera);
-                    }
                     //Modifico la carrera
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "La documentacion fue\nmodificada con exito");
@@ -566,6 +553,18 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void btnDocumentacionOk_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro de que desea guardar esta información de forma definitiva?\n\n" +
+                "Una vez confirmados los cambios, no podrán modificarse.",
+                "Confirmación",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information
+            ); 
+            if (result != DialogResult.OK)
+                return;
+            var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            alumnosLogica.ModificarAlumno(alumno);
             alumnosLogica.ActualizarEstadoInicializado(this.AlumnoId, 2);
             Contenedor.AbrirFormulario<FormDocumentacionAlumnos>();
         }
