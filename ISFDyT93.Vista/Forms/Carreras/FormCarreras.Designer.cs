@@ -39,7 +39,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCarrera = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerAnios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCorrelativas = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmVerFinales = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerEquivalencias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarCarrera = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmActivar = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +63,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCarrera,
             this.tsmVerAnios,
             this.tsmVerCorrelativas,
-            this.tsmVerFinales,
             this.tsmVerEquivalencias,
             this.tsmEliminarCarrera,
             this.tsmActivar,
@@ -115,17 +113,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelativas.Size = new System.Drawing.Size(208, 30);
             this.tsmVerCorrelativas.Text = "Ver Correlativas";
             this.tsmVerCorrelativas.Click += new System.EventHandler(this.tsmVerCorrelativas_Click);
-            // 
-            // tsmVerFinales
-            // 
-            this.tsmVerFinales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmVerFinales.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tsmVerFinales.ForeColor = System.Drawing.Color.White;
-            this.tsmVerFinales.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
-            this.tsmVerFinales.Name = "tsmVerFinales";
-            this.tsmVerFinales.Size = new System.Drawing.Size(208, 30);
-            this.tsmVerFinales.Text = "Ver Mesas Finales";
-            this.tsmVerFinales.Click += new System.EventHandler(this.tsmVerFinales_Click);
             // 
             // tsmVerEquivalencias
             // 
@@ -339,6 +326,5 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.RadioButton rbBorrador;
         private System.Windows.Forms.Timer tmrRetrasoForm;
         private System.Windows.Forms.ToolStripMenuItem tsmVerEquivalencias;
-        private System.Windows.Forms.ToolStripMenuItem tsmVerFinales;
     }
 }
