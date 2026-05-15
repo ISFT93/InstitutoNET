@@ -103,12 +103,6 @@
     <Compile Include="Forms\Carreras\FormAgregarFechasFinales.Designer.cs">
       <DependentUpon>FormAgregarFechasFinales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Carreras\FormControlMesasFinales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Carreras\FormControlMesasFinales.Designer.cs">
-      <DependentUpon>FormControlMesasFinales.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Carreras\FormMesasFinales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,9 +371,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormAgregarFechasFinales.resx">
       <DependentUpon>FormAgregarFechasFinales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Carreras\FormControlMesasFinales.resx">
-      <DependentUpon>FormControlMesasFinales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormMesasFinales.resx">
       <DependentUpon>FormMesasFinales.cs</DependentUpon>

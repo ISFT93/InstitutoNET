@@ -24,7 +24,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private CarrerasLogica carrerasLogica { get; set; }
         private AniosCarreraLogica aniosCarreraLogica { get; set; }
         private CorrelativasLogica correlativasLogica { get; set; }
-        private MesasFinalesLogica mesasFinalesLogica {  get; set; }
         #endregion
         private int Ticks;
         public FormCarreras()
@@ -32,7 +31,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.carrerasLogica = new CarrerasLogica();
             this.aniosCarreraLogica = new AniosCarreraLogica();
             this.correlativasLogica = new CorrelativasLogica();
-            this.mesasFinalesLogica = new MesasFinalesLogica();
 
             InitializeComponent();
             tmrRetrasoForm.Start();
@@ -142,23 +140,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
                     }
                 }
-            }
-        }
-
-        private void ExistenMesasFinales()
-        {
-            DataTable dt = mesasFinalesLogica.ObtenerMesas(this.CarreraId);
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("Primero debe generar mesas finales.", "No existen mesas finales", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Contenedor.AbrirFormulario<FormMesasFinales>(form =>
-                {
-                    form.CarreraId = this.CarreraId;
-                    form.NombreCarrera = this.NombreCarrera;
-                });
             }
         }
 
@@ -431,10 +412,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             CarreraEstados();
         }
 
-        private void tsmVerFinales_Click(object sender, EventArgs e)
-        {
-            ExistenMesasFinales();
-        }
     }
 }
 

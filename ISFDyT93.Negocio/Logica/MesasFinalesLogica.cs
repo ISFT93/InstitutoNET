@@ -71,9 +71,9 @@ namespace ISFDyT93.Negocio.Logica
             return this.mesasFinalesDao.ObtenerMesas(carreraId);
         }
 
-        public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId)
+        public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0)
         {
-            return this.mesasFinalesDao.ObtenerMesasFiltro(carreraId, anioLectivoId, turnoId, llamadoId);
+            return this.mesasFinalesDao.ObtenerMesasFiltro(carreraId, anioLectivoId, turnoId, llamadoId, anioCarreraId, cursoId, materiaId, profesorId);
         }
 
         public DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId)
