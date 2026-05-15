@@ -140,6 +140,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 grbDireccion.Visible = false;
                 grbFichaSalud.Visible = false;
                 grbFormacion.Visible = false;
+                grbCarrera.Visible = false;
 
                 btnDocumentacionOk.Visible = true;
                 
