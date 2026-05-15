@@ -22,10 +22,9 @@ namespace ISFDyT93.Entidades.Modelos
         [SoloNumeros(minimo: 0, maximo: 99)]
         public int Modulos { get; set; }
         public bool Activo { get; set; }
+        public string MateriasCodigoBloque { get; set; }
 
-
-        // Propiedades Extras
-        [Ignorar]
+        // Propiedades Extras        
         public int CarreraId { get; set; }
 
         [Ignorar]

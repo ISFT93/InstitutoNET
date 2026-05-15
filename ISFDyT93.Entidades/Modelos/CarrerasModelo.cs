@@ -50,5 +50,7 @@ namespace ISFDyT93.Entidades.Modelos
 
         [Ignorar]
         public bool PoseeMaterias { get; set; }
+
+        public string CarrerasCodigoBloque { get; set; }
     }
 }
