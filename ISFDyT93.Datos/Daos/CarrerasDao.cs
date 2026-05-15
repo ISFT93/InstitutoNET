@@ -139,5 +139,15 @@ namespace ISFDyT93.Datos.Daos
             string query = "UPDATE Carreras SET CantidadHoras = " + cantidadHoras + " WHERE CarreraId = " + CarreraId + "";
             this.Conexion.EjecutarAccion(query);
         }
+
+        //Crea codigo de bloque para Carreras
+        public int GeneraCarrerasCodigoBloque()
+        {
+            string query = "SELECT TOP 1 CarrerasCodigoBloque FROM Carreras ORDER BY CarrerasCodigoBloque DESC";
+            var row = this.Conexion.ObtenerRegistro(query);
+            int codigo = Convert.ToInt32(row["CarrerasCodigoBloque"]);
+            codigo++;
+            return codigo;
+        }
     }
 }
