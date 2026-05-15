@@ -49,7 +49,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmVerCorrelatividades.Visible = false;
             }
 
-            this.Contenedor.SetTitulo($"Materias de {this.anioCarrera.AnioCarrera} año de {anioCarrera.NombreCarrera}")
+            this.Contenedor.SetTitulo($" {this.anioCarrera.AnioCarrera} año de {anioCarrera.NombreCarrera}")
                 .SetVolver(() =>
                 {
                     this.Contenedor.AbrirFormulario<FormAniosCarreras>((form) =>
@@ -106,6 +106,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
 
+
         private void tsmEliminarMateria_Click(object sender, EventArgs e)
         {
             //CellContentClick cuando se selecciona en el menu Eliminar
@@ -116,10 +117,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 materiasLogica.EliminarMateria(this.MateriaId, this.AnioCarreraId);
 
+                //Renumera los codigos de bloque luego de que se elimina una materia
+                materiasLogica.RenumerarCodigoBloque(this.AnioCarreraId);
+
                 dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId);
                 //Ocultar columna de la grilla
                 dgvMatAnioCarrera.Columns["MateriaId"].Visible = false;
             }
+
 
             CalcularHoras();
         }
