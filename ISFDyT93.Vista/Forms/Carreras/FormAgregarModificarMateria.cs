@@ -178,65 +178,41 @@ namespace ISFDyT93.Vista.Forms.Carreras
             //Validacion para descripcion
             if (this.materia.Errores.Count == 0)
             {
-                //if (this.Accion == TipoAccion.Agregar)
-                //{
-                //        //this.materia.Activo = true;
-                //        //this.materia.AnioCarreraId = this.AnioCarreraId;
-
-                //        //Alta a la base de datos
-                //        int estado = materiasLogica.AgregarMateria(this.materia, this.AnioCarreraId);
-
-                //        if (estado != -1)
-                //        {
-                //            //Refrescar grilla
-                //            FormNotificacion.Mensaje(TipoNotificacion.Success, "Carga exitosa");
-
-                //            this.LimpiarControlles();
-
-                //            this.txtNombre.AutoCompleteCustomSource.Add(this.materia.Nombre);
-
-                //            txtNombre.Focus();
-
-                //            this.ActualizarAutoComplete();
-                //        }
-                //    }
-                //    if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver)
-                //    {
-                //        //Alta a la base de datos
-                //        int resultado = materiasLogica.ModificarMateria(this.materia);
-
-                //        if (resultado != -1)
-                //        {
-                //            if (this.Accion == TipoAccion.Modificar)
-                //            {
-                //                FormNotificacion.Mensaje(TipoNotificacion.Success, "Modificada correctamente");
-                //            }
-
-                //            Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
-                //            {
-                //                form.AnioCarreraId = this.AnioCarreraId;
-                //            });
-                //        }
-                //    }
-
-                int resultado = materiasLogica.GuardarMateria(this.materia, this.Accion, this.AnioCarreraId);
-
-                if (resultado != -1)
+                if (this.Accion == TipoAccion.Agregar)
                 {
-                    if (this.Accion == TipoAccion.Agregar)
+                    this.materia.Activo = true;
+                    this.materia.AnioCarreraId = this.AnioCarreraId;
+                    this.materia.CarreraId = aniosLogica.ObtenerIdCarrera(this.AnioCarreraId); //Obtiene el id de la carrera para insertarlo en la nueva columna de CarreraId de la tabla Materias
+                    this.materia.MateriasCodigoBloque = materiasLogica.CreaMateriaCodigoBloque(this.AnioCarreraId);
+
+                    //Alta a la base de datos
+                    int estado = materiasLogica.AgregarMaterias(this.materia);
+
+                    if (estado != -1)
                     {
+                        //Refrescar grilla
                         FormNotificacion.Mensaje(TipoNotificacion.Success, "Carga exitosa");
 
                         this.LimpiarControlles();
+
+                        this.txtNombre.AutoCompleteCustomSource.Add(this.materia.Nombre);
 
                         txtNombre.Focus();
 
                         this.ActualizarAutoComplete();
                     }
+                }
+                if (this.Accion == TipoAccion.Modificar || this.Accion == TipoAccion.Ver)
+                {
+                    //Alta a la base de datos
+                    int resultado = materiasLogica.ModificarMateria(this.materia);
 
-                    if (this.Accion == TipoAccion.Modificar)
+                    if (resultado != -1)
                     {
-                        FormNotificacion.Mensaje(TipoNotificacion.Success, "Modificada correctamente");
+                        if (this.Accion == TipoAccion.Modificar)
+                        {
+                            FormNotificacion.Mensaje(TipoNotificacion.Success, "Modificada correctamente");
+                        }
 
                         Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
                         {
