@@ -63,6 +63,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.grbFinalesMarzo = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnAgregarFinalMarzo = new System.Windows.Forms.Button();
             this.grbFinalesJulio = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.grbFinalesDiciembre = new System.Windows.Forms.GroupBox();
@@ -74,6 +75,9 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaInscripcionSuperioresFinal = new System.Windows.Forms.DateTimePicker();
             this.lblFinFechaInscripcionSuperior = new System.Windows.Forms.Label();
             this.lblInicioFechaInscripcionSuperior = new System.Windows.Forms.Label();
+            this.BtnAgregarCursoSuperioresMarzo = new System.Windows.Forms.Button();
+            this.BtnAgregarFinalJulio = new System.Windows.Forms.Button();
+            this.BtnAgregarFinalDiciembre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epvCicloLectivo)).BeginInit();
             this.grbDatosCicloLectivo.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -120,10 +124,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaDiciembreFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaDiciembreFinal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaDiciembreFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDiciembreFinal.Location = new System.Drawing.Point(391, 25);
+            this.dtpFechaDiciembreFinal.Location = new System.Drawing.Point(333, 25);
             this.dtpFechaDiciembreFinal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaDiciembreFinal.Name = "dtpFechaDiciembreFinal";
-            this.dtpFechaDiciembreFinal.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaDiciembreFinal.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaDiciembreFinal.TabIndex = 143;
             this.dtpFechaDiciembreFinal.ValueChanged += new System.EventHandler(this.dtpFechaDiciembreFinal_ValueChanged);
             // 
@@ -133,10 +137,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaJunioFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaJunioFinal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaJunioFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaJunioFinal.Location = new System.Drawing.Point(391, 25);
+            this.dtpFechaJunioFinal.Location = new System.Drawing.Point(333, 25);
             this.dtpFechaJunioFinal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaJunioFinal.Name = "dtpFechaJunioFinal";
-            this.dtpFechaJunioFinal.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaJunioFinal.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaJunioFinal.TabIndex = 142;
             this.dtpFechaJunioFinal.ValueChanged += new System.EventHandler(this.dtpFechaJunioFinal_ValueChanged);
             // 
@@ -144,7 +148,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             this.lblFinFinalDiciembre.AutoSize = true;
             this.lblFinFinalDiciembre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinFinalDiciembre.Location = new System.Drawing.Point(391, 0);
+            this.lblFinFinalDiciembre.Location = new System.Drawing.Point(333, 0);
             this.lblFinFinalDiciembre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinFinalDiciembre.Name = "lblFinFinalDiciembre";
             this.lblFinFinalDiciembre.Size = new System.Drawing.Size(36, 19);
@@ -171,7 +175,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaDiciembreInicio1.Location = new System.Drawing.Point(24, 25);
             this.dtpFechaDiciembreInicio1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaDiciembreInicio1.Name = "dtpFechaDiciembreInicio1";
-            this.dtpFechaDiciembreInicio1.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaDiciembreInicio1.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaDiciembreInicio1.TabIndex = 141;
             this.dtpFechaDiciembreInicio1.ValueChanged += new System.EventHandler(this.dtpFechaDiciembreInicio1_ValueChanged);
             // 
@@ -184,7 +188,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaJunioInicio.Location = new System.Drawing.Point(24, 25);
             this.dtpFechaJunioInicio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaJunioInicio.Name = "dtpFechaJunioInicio";
-            this.dtpFechaJunioInicio.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaJunioInicio.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaJunioInicio.TabIndex = 139;
             this.dtpFechaJunioInicio.ValueChanged += new System.EventHandler(this.dtpInicioFinalJunio_ValueChanged);
             // 
@@ -192,7 +196,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             this.lblFinFinalJunio.AutoSize = true;
             this.lblFinFinalJunio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinFinalJunio.Location = new System.Drawing.Point(391, 0);
+            this.lblFinFinalJunio.Location = new System.Drawing.Point(333, 0);
             this.lblFinFinalJunio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinFinalJunio.Name = "lblFinFinalJunio";
             this.lblFinFinalJunio.Size = new System.Drawing.Size(36, 19);
@@ -216,10 +220,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaMarzoFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaMarzoFinal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaMarzoFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaMarzoFinal.Location = new System.Drawing.Point(391, 25);
+            this.dtpFechaMarzoFinal.Location = new System.Drawing.Point(333, 25);
             this.dtpFechaMarzoFinal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaMarzoFinal.Name = "dtpFechaMarzoFinal";
-            this.dtpFechaMarzoFinal.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaMarzoFinal.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaMarzoFinal.TabIndex = 140;
             this.dtpFechaMarzoFinal.ValueChanged += new System.EventHandler(this.dtpFechaMarzoFinal_ValueChanged);
             // 
@@ -232,7 +236,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaMarzoInicio.Location = new System.Drawing.Point(24, 25);
             this.dtpFechaMarzoInicio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaMarzoInicio.Name = "dtpFechaMarzoInicio";
-            this.dtpFechaMarzoInicio.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaMarzoInicio.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaMarzoInicio.TabIndex = 138;
             this.dtpFechaMarzoInicio.ValueChanged += new System.EventHandler(this.dtpFechaMarzoInicio_ValueChanged);
             // 
@@ -240,7 +244,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             this.lblFinFinalMarzo.AutoSize = true;
             this.lblFinFinalMarzo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinFinalMarzo.Location = new System.Drawing.Point(391, 0);
+            this.lblFinFinalMarzo.Location = new System.Drawing.Point(333, 0);
             this.lblFinFinalMarzo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinFinalMarzo.Name = "lblFinFinalMarzo";
             this.lblFinFinalMarzo.Size = new System.Drawing.Size(36, 19);
@@ -481,16 +485,18 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 5;
+            this.tableLayoutPanel3.ColumnCount = 6;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.Controls.Add(this.lblFinFinalMarzo, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.dtpFechaMarzoFinal, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblInicioFinalMarzo, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.dtpFechaMarzoInicio, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.BtnAgregarFinalMarzo, 5, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -502,6 +508,28 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(754, 83);
             this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // BtnAgregarFinalMarzo
+            // 
+            this.BtnAgregarFinalMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarFinalMarzo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarFinalMarzo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarFinalMarzo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarFinalMarzo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarFinalMarzo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarFinalMarzo.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarFinalMarzo.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarFinalMarzo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalMarzo.Image")));
+            this.BtnAgregarFinalMarzo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarFinalMarzo.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarFinalMarzo.Name = "BtnAgregarFinalMarzo";
+            this.tableLayoutPanel3.SetRowSpan(this.BtnAgregarFinalMarzo, 3);
+            this.BtnAgregarFinalMarzo.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarFinalMarzo.TabIndex = 141;
+            this.BtnAgregarFinalMarzo.Text = "Agregar Mesas";
+            this.BtnAgregarFinalMarzo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarFinalMarzo.UseVisualStyleBackColor = false;
             // 
             // grbFinalesJulio
             // 
@@ -517,16 +545,18 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnCount = 6;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.Controls.Add(this.dtpFechaJunioInicio, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.dtpFechaJunioFinal, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblFinFinalJunio, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblInicioFinalJunio, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.BtnAgregarFinalJulio, 5, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -553,16 +583,18 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.Controls.Add(this.lblFinFinalDiciembre, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblInicioFinalDiciembre, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dtpFechaDiciembreFinal, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.dtpFechaDiciembreInicio1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.BtnAgregarFinalDiciembre, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -602,16 +634,18 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 5;
+            this.tableLayoutPanel6.ColumnCount = 6;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel6.Controls.Add(this.dtpFechaInscripcionSuperioresInicio, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.dtpFechaInscripcionSuperioresFinal, 3, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblFinFechaInscripcionSuperior, 3, 0);
             this.tableLayoutPanel6.Controls.Add(this.lblInicioFechaInscripcionSuperior, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.BtnAgregarCursoSuperioresMarzo, 5, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -633,7 +667,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaInscripcionSuperioresInicio.Location = new System.Drawing.Point(24, 25);
             this.dtpFechaInscripcionSuperioresInicio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaInscripcionSuperioresInicio.Name = "dtpFechaInscripcionSuperioresInicio";
-            this.dtpFechaInscripcionSuperioresInicio.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaInscripcionSuperioresInicio.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaInscripcionSuperioresInicio.TabIndex = 139;
             this.dtpFechaInscripcionSuperioresInicio.ValueChanged += new System.EventHandler(this.dtpFechaInscripcionSuperioresInicio_ValueChanged);
             // 
@@ -643,10 +677,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.dtpFechaInscripcionSuperioresFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaInscripcionSuperioresFinal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaInscripcionSuperioresFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInscripcionSuperioresFinal.Location = new System.Drawing.Point(391, 25);
+            this.dtpFechaInscripcionSuperioresFinal.Location = new System.Drawing.Point(333, 25);
             this.dtpFechaInscripcionSuperioresFinal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaInscripcionSuperioresFinal.Name = "dtpFechaInscripcionSuperioresFinal";
-            this.dtpFechaInscripcionSuperioresFinal.Size = new System.Drawing.Size(339, 27);
+            this.dtpFechaInscripcionSuperioresFinal.Size = new System.Drawing.Size(281, 27);
             this.dtpFechaInscripcionSuperioresFinal.TabIndex = 142;
             this.dtpFechaInscripcionSuperioresFinal.ValueChanged += new System.EventHandler(this.dtpFechaInscripcionSuperioresFinal_ValueChanged);
             // 
@@ -654,7 +688,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             this.lblFinFechaInscripcionSuperior.AutoSize = true;
             this.lblFinFechaInscripcionSuperior.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinFechaInscripcionSuperior.Location = new System.Drawing.Point(391, 0);
+            this.lblFinFechaInscripcionSuperior.Location = new System.Drawing.Point(333, 0);
             this.lblFinFechaInscripcionSuperior.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinFechaInscripcionSuperior.Name = "lblFinFechaInscripcionSuperior";
             this.lblFinFechaInscripcionSuperior.Size = new System.Drawing.Size(36, 19);
@@ -671,6 +705,72 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.lblInicioFechaInscripcionSuperior.Size = new System.Drawing.Size(54, 19);
             this.lblInicioFechaInscripcionSuperior.TabIndex = 135;
             this.lblInicioFechaInscripcionSuperior.Text = "Inicio:";
+            // 
+            // BtnAgregarCursoSuperioresMarzo
+            // 
+            this.BtnAgregarCursoSuperioresMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarCursoSuperioresMarzo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarCursoSuperioresMarzo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarCursoSuperioresMarzo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarCursoSuperioresMarzo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarCursoSuperioresMarzo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarCursoSuperioresMarzo.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarCursoSuperioresMarzo.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarCursoSuperioresMarzo.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarCursoSuperioresMarzo.Image")));
+            this.BtnAgregarCursoSuperioresMarzo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarCursoSuperioresMarzo.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarCursoSuperioresMarzo.Name = "BtnAgregarCursoSuperioresMarzo";
+            this.tableLayoutPanel6.SetRowSpan(this.BtnAgregarCursoSuperioresMarzo, 3);
+            this.BtnAgregarCursoSuperioresMarzo.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarCursoSuperioresMarzo.TabIndex = 143;
+            this.BtnAgregarCursoSuperioresMarzo.Text = "Agregar Cursos";
+            this.BtnAgregarCursoSuperioresMarzo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarCursoSuperioresMarzo.UseVisualStyleBackColor = false;
+            // 
+            // BtnAgregarFinalJulio
+            // 
+            this.BtnAgregarFinalJulio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarFinalJulio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarFinalJulio.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarFinalJulio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarFinalJulio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarFinalJulio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarFinalJulio.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarFinalJulio.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarFinalJulio.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalJulio.Image")));
+            this.BtnAgregarFinalJulio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarFinalJulio.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarFinalJulio.Name = "BtnAgregarFinalJulio";
+            this.tableLayoutPanel2.SetRowSpan(this.BtnAgregarFinalJulio, 3);
+            this.BtnAgregarFinalJulio.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarFinalJulio.TabIndex = 143;
+            this.BtnAgregarFinalJulio.Text = "Agregar Mesas";
+            this.BtnAgregarFinalJulio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarFinalJulio.UseVisualStyleBackColor = false;
+            // 
+            // BtnAgregarFinalDiciembre
+            // 
+            this.BtnAgregarFinalDiciembre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarFinalDiciembre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarFinalDiciembre.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarFinalDiciembre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarFinalDiciembre.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarFinalDiciembre.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarFinalDiciembre.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalDiciembre.Image")));
+            this.BtnAgregarFinalDiciembre.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarFinalDiciembre.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarFinalDiciembre.Name = "BtnAgregarFinalDiciembre";
+            this.tableLayoutPanel1.SetRowSpan(this.BtnAgregarFinalDiciembre, 3);
+            this.BtnAgregarFinalDiciembre.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarFinalDiciembre.TabIndex = 144;
+            this.BtnAgregarFinalDiciembre.Text = "Agregar Mesas";
+            this.BtnAgregarFinalDiciembre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarFinalDiciembre.UseVisualStyleBackColor = false;
             // 
             // FormAgregarModificarCicloLectivo
             // 
@@ -755,5 +855,9 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         private System.Windows.Forms.DateTimePicker dtpFechaInscripcionSuperioresFinal;
         private System.Windows.Forms.Label lblFinFechaInscripcionSuperior;
         private System.Windows.Forms.Label lblInicioFechaInscripcionSuperior;
+        private System.Windows.Forms.Button BtnAgregarFinalMarzo;
+        private System.Windows.Forms.Button BtnAgregarFinalDiciembre;
+        private System.Windows.Forms.Button BtnAgregarFinalJulio;
+        private System.Windows.Forms.Button BtnAgregarCursoSuperioresMarzo;
     }
 }
