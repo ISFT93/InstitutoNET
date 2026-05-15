@@ -29,7 +29,7 @@ namespace ISFDyT93.Vista.UserControls
         CargosLogica cargosLogica = new CargosLogica();
         uscPersonalGrid usc;
         (DataTable TipoAsignacion, DataTable TipoAplicacion, IList<CargosModelo> Cargos) cargos;
-
+        
         private void uscCargos_Load(object sender, EventArgs e)
         {
             this.Size = new Size(0, 0);
@@ -38,13 +38,10 @@ namespace ISFDyT93.Vista.UserControls
         }
 
         #region MenuContextual
-        private ContextMenuStrip menu;
         private void CrearMenuContextual() //////
         {
-            menu = new ContextMenuStrip();
-
-            ToolStripMenuItem opcion = new ToolStripMenuItem("Agregar Cargo");
-            opcion.Click += (s, e) =>
+            menu.Items.Add(agregarCargos);
+            agregarCargos.Click += (s, e) =>
             {
                 using (FormAgregarCargos frmAgregarCargos = new FormAgregarCargos())
                 {
@@ -55,7 +52,6 @@ namespace ISFDyT93.Vista.UserControls
                     }
                 }
             };
-            menu.Items.Add(opcion);
         }
         private void RecargarTabla()
         {
@@ -104,7 +100,7 @@ namespace ISFDyT93.Vista.UserControls
         {
             usc.Dock = DockStyle.None;
             usc.AgregarCelda("Nombre", true);
-            usc.AgregarCelda(cargos.TipoAsignacion);
+            //usc.AgregarCelda(cargo.TipoAsignacion);
             usc.AgregarCelda(cargos.TipoAplicacion);
             usc.AgregarCelda(true);
             Dimensionar();
@@ -156,6 +152,11 @@ namespace ISFDyT93.Vista.UserControls
         }
 
         private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

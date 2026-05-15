@@ -1,12 +1,16 @@
 ﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Vista.Forms.Personal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace ISFDyT93.Vista.UserControls
@@ -23,13 +27,19 @@ namespace ISFDyT93.Vista.UserControls
             {
                 this.Height = 616;
                 panel1.Visible = true;
-                CargarDGV(dgvLibros);
+                CargarTabla();
             }
             else
             {
                 this.Height = 60;
                 panel1.Visible = false;
             }
+        }
+        private void CargarTabla()
+        {
+            uscLibros libros = new uscLibros();
+            flpContenedor.Controls.Clear();
+            flpContenedor.Controls.Add(libros); //carga el user control de la tabla dentro del contenedor
         }
         private void chkCargos_CheckedChanged(object sender, EventArgs e)
         {
@@ -41,13 +51,13 @@ namespace ISFDyT93.Vista.UserControls
             this.Height = 60;
         }
 
-        private void CargarDGV(DataGridView dgv)
+        private void dgvLibros_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string query = "SELECT tl.Descripcion, la.LibroNumero, la.FolioNumero, la.FolioMaximo, la.FechaAlta, la.FechaBaja, la.Activo FROM TipoLibros tl INNER JOIN LibroActas la on tl.TipoLibroId = la.TipoLibroId";
-            Conexion conexion = new Conexion();
-            DataTable dt = conexion.ObtenerRegistros(query);
+        }
 
-            dgv.DataSource = dt;
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void panelCabecera_Paint(object sender, PaintEventArgs e)

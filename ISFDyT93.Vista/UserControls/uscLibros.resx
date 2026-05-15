@@ -141,7 +141,7 @@
   <data name="picAgregar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAcFJREFUWEfFlM1OwkAUhectWHSNK2NcgEUsFEopyEDBH1R8SBND3KgbE0k07qog
+        vAAADrwBlbxySQAAAcFJREFUWEfFlM1OwkAUhectWHSNK2NcgEUsFEopyEDBH1R8SBND3KgbE0k07qog
         FWoNPkdznWvG+BO4AmHgJF/Szpw758xm2KxqvfN4K3Q7rbAenb41AMHvzzWxJ23qJIK8r+C/tMKGJ21q
         dBLUYuK2eOOJoEfaF6/miGsnoQsU6JH2xQsPPw5rQKG8wNFrFSiUF2hiCIXyAgEHEqUFfK4dBhWgUFzA
         0g6CXaBQWoCLAvvDMlDwkTVfgVpgxTCAwh3aib1hCSjQM272J5glY8Wthna8MXC8xqAEy8XxMJu5L8VO
@@ -155,7 +155,7 @@
   <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="agregarCargos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="opcionAgregarNuevoLibro.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAr1JREFUeF7t
         3TFqG2EQxXEdQJVuEGxyChU5QBqDUwQ1vkdKG9wEd8aQG7iND+DjpMgFDC6UN5oJJMTFfrvfRk/L/wdT
