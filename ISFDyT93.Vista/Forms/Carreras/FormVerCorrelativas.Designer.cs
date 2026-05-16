@@ -71,7 +71,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCorrelativas.Location = new System.Drawing.Point(20, 20);
             this.dgvCorrelativas.MultiSelect = false;
             this.dgvCorrelativas.Name = "dgvCorrelativas";
-            this.dgvCorrelativas.ReadOnly = true;
             this.dgvCorrelativas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
@@ -93,10 +92,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCorrelativas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCorrelativas.Size = new System.Drawing.Size(777, 505);
             this.dgvCorrelativas.TabIndex = 1;
+            this.dgvCorrelativas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCorrelativas_CellFormatting);
             // 
             // FormVerCorrelativas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 545);

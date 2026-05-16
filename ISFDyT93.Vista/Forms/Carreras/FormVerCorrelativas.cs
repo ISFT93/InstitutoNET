@@ -37,7 +37,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormVerCorrelativas_Load(object sender, EventArgs e)
         {
-
             if (AnioCarreraId != 0)
             {
                 this.anioCarrera = aniosLogica.ObtenerAnioCarrera(AnioCarreraId);
@@ -60,28 +59,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 });
                 dgvCorrelativas.DataSource = correlativasLogica.ObtenerCorrelativasCarrera(CarreraId);
             }
-
-
-
-            LimpiarDuplicadas();
+            
         }
 
-        private void LimpiarDuplicadas()
-        {
-            string anterior = "";
 
-            for (int i = 0; i < dgvCorrelativas.Rows.Count; i++)
+        private void dgvCorrelativas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvCorrelativas.Columns[e.ColumnIndex].Name == "Para cursar" && e.RowIndex > 0)
             {
-                var dato = dgvCorrelativas.Rows[i].Cells["Para cursar"].Value.ToString();
-                if (dato == anterior)
+                var valorActual = e.Value?.ToString();
+                var valorAnterior = dgvCorrelativas.Rows[e.RowIndex - 1].Cells["Para cursar"].Value?.ToString();
+
+                if (valorActual == valorAnterior)
                 {
-                    dgvCorrelativas.Rows[i].Cells["Para cursar"].Value = "";
-                }
-                else
-                {
-                    anterior = dato;
+                    e.Value = ""; // solo cambia lo que se muestra, no el valor real
+                    e.FormattingApplied = true;
                 }
             }
         }
+
     }
 }
