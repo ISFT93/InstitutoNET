@@ -47,7 +47,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMateriasCorrelativas(int MateriaId)
         {
-            var query = "SELECT C.CorrelativaId, CONCAT(AC.AnioCarrera, '° año - ', M.Nombre) AS Materia, M.MateriaId FROM Correlativas C " +
+            var query = "SELECT C.CorrelativaId, CONCAT(M.MateriasCodigoBloque, ' - ', M.Nombre) AS Materia, M.MateriaId FROM Correlativas C " +
                     "INNER JOIN Materias M ON C.MateriaCorrelativaId = M.MateriaId " +
                     "INNER JOIN AniosCarreras AC ON M.AnioCarreraId = AC.AnioCarreraId " +
                     "WHERE C.MateriaId = " + MateriaId;
@@ -103,22 +103,27 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerCorrelativasAnio(int AnioCarreraId)
         {
-            var query = $"select M.Nombre as 'Para cursar', MC.Nombre as 'Necesita' " +
+            var query = $"select CONCAT(M.MateriasCodigoBloque, ' - ', M.Nombre) as 'Para cursar', " +
+                $"CONCAT(MC.MateriasCodigoBloque, ' - ', MC.Nombre) as 'Necesita' " +
                 $"from dbo.Materias M " +
                 $"inner join dbo.Correlativas C on C.MateriaId = M.MateriaId " +
                 $"inner join dbo.Materias MC on MC.MateriaId = C.MateriaCorrelativaId " +
                 $"where M.AnioCarreraId = {AnioCarreraId} order by M.Nombre asc";
+
             return this.Conexion.ObtenerRegistros(query);
         }
 
         public DataTable ObtenerCorrelativasCarrera(int CarreraId)
         {
-            var query = $"select M.Nombre as 'Para cursar', MC.Nombre as 'Necesita' from dbo.Materias M " +
+            var query = $"select CONCAT(M.MateriasCodigoBloque, ' - ', M.Nombre) as 'Para cursar', " +
+                $"CONCAT(MC.MateriasCodigoBloque, ' - ', MC.Nombre) as 'Necesita' " +
+                $"from dbo.Materias M " +
                 $"inner join dbo.Correlativas C on C.MateriaId = M.MateriaId " +
                 $"inner join dbo.Materias MC on MC.MateriaId = C.MateriaCorrelativaId " +
                 $"inner join AniosCarreras AC on M.AnioCarreraId = AC.AnioCarreraId " +
                 $"where AC.CarreraId = {CarreraId} " +
                 $"order by AC.AnioCarreraId asc, M.Nombre asc";
+
             return this.Conexion.ObtenerRegistros(query);
         }
     }
