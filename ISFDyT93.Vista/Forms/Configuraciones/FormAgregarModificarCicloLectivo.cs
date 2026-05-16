@@ -7,6 +7,7 @@ using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Vista.Forms.Personal;
 
 namespace ISFDyT93.Vista.Forms.Configuraciones
 {
@@ -124,11 +125,28 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 txtCantidadSemana.Enabled = false;
                 txtAnioLectivo.Enabled = false;
 
-                grbFinalesMarzo.Enabled = false;
-                grbFinalesJulio.Enabled = false;
-                grbFinalesDiciembre.Enabled = false;
+                grbFinalesMarzo.Enabled = true;
+                grbFinalesJulio.Enabled = true;
+                grbFinalesDiciembre.Enabled = true;
                 grbInscripcionSuperiores.Visible = true;
-                grbInscripcionSuperiores.Enabled = false;
+                grbInscripcionSuperiores.Enabled = true;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarFinalJulio.Visible = false;
+                BtnAgregarFinalDiciembre.Visible = false;
+                BtnAgregarCursoSuperioresMarzo .Visible = false;
+                btnAceptar.Visible = false;
+
+                // datatimepicker bloqueados
+
+                dtpFechaInscripcionSuperioresInicio.Enabled = false;
+                dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                dtpFechaJunioInicio.Enabled = false;
+                dtpFechaJunioFinal.Enabled = false;
+                dtpFechaDiciembreInicio1.Enabled = false;
+                dtpFechaDiciembreFinal.Enabled = false;
+                dtpFechaMarzoInicio.Enabled = false;
+                dtpFechaMarzoFinal.Enabled = false;
+
 
                 if (CicloLectivoId.ToString()== "0" )
                     CicloLectivoId = (cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo());
@@ -607,6 +625,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 grbInscripcionSuperiores.Enabled = false;
                 dtpFechaInscripcionSuperioresInicio.Enabled = false;
                 dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                BtnAgregarFinalMarzo.Visible = true;
+                BtnAgregarFinalJulio.Visible = false;
+                BtnAgregarFinalDiciembre.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
             }
             else if (mesasMarzo == 1 && mesasJulio == 0 && mesasDiciembre == 0 && !superioresCargado)
             {
@@ -622,6 +644,12 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 grbInscripcionSuperiores.Enabled = true;
                 dtpFechaInscripcionSuperioresInicio.Enabled = true;
                 dtpFechaInscripcionSuperioresFinal.Enabled = true;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Enabled = true;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarFinalJulio.Visible = false;
+                BtnAgregarFinalDiciembre.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = true;
             }
             else if (mesasMarzo == 1 && mesasJulio == 0 && mesasDiciembre == 0 && superioresCargado)
             {
@@ -636,6 +664,14 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaInscripcionSuperioresInicio.Enabled = false;
                 dtpFechaInscripcionSuperioresFinal.Enabled = false;
                 grbInscripcionSuperiores.Enabled = false;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible= false;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarFinalJulio.Visible = true;
+                BtnAgregarFinalDiciembre.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
+
+
             }
             else if (mesasMarzo == 1 && mesasJulio == 1 && mesasDiciembre == 0)
             {
@@ -650,6 +686,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaInscripcionSuperioresInicio.Enabled = false;
                 grbInscripcionSuperiores.Enabled = false;
                 dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarFinalJulio.Visible = false;
+                BtnAgregarFinalDiciembre.Visible = true;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
             }
             else
             {
