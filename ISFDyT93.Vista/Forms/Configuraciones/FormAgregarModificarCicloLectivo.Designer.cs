@@ -66,8 +66,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.BtnAgregarFinalMarzo = new System.Windows.Forms.Button();
             this.grbFinalesJulio = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnAgregarFinalJulio = new System.Windows.Forms.Button();
             this.grbFinalesDiciembre = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnAgregarFinalDiciembre = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.grbInscripcionSuperiores = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,8 +78,6 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.lblFinFechaInscripcionSuperior = new System.Windows.Forms.Label();
             this.lblInicioFechaInscripcionSuperior = new System.Windows.Forms.Label();
             this.BtnAgregarCursoSuperioresMarzo = new System.Windows.Forms.Button();
-            this.BtnAgregarFinalJulio = new System.Windows.Forms.Button();
-            this.BtnAgregarFinalDiciembre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epvCicloLectivo)).BeginInit();
             this.grbDatosCicloLectivo.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -530,6 +530,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.BtnAgregarFinalMarzo.Text = "Agregar Mesas";
             this.BtnAgregarFinalMarzo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnAgregarFinalMarzo.UseVisualStyleBackColor = false;
+            this.BtnAgregarFinalMarzo.Click += new System.EventHandler(this.BtnAgregarFinalMarzo_Click);
             // 
             // grbFinalesJulio
             // 
@@ -569,6 +570,29 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel2.Size = new System.Drawing.Size(754, 83);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // BtnAgregarFinalJulio
+            // 
+            this.BtnAgregarFinalJulio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarFinalJulio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarFinalJulio.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarFinalJulio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarFinalJulio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarFinalJulio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarFinalJulio.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarFinalJulio.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarFinalJulio.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalJulio.Image")));
+            this.BtnAgregarFinalJulio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarFinalJulio.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarFinalJulio.Name = "BtnAgregarFinalJulio";
+            this.tableLayoutPanel2.SetRowSpan(this.BtnAgregarFinalJulio, 3);
+            this.BtnAgregarFinalJulio.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarFinalJulio.TabIndex = 143;
+            this.BtnAgregarFinalJulio.Text = "Agregar Mesas";
+            this.BtnAgregarFinalJulio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarFinalJulio.UseVisualStyleBackColor = false;
+            this.BtnAgregarFinalJulio.Click += new System.EventHandler(this.BtnAgregarFinalJulio_Click);
+            // 
             // grbFinalesDiciembre
             // 
             this.grbFinalesDiciembre.Controls.Add(this.tableLayoutPanel1);
@@ -605,6 +629,29 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(754, 83);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // BtnAgregarFinalDiciembre
+            // 
+            this.BtnAgregarFinalDiciembre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarFinalDiciembre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnAgregarFinalDiciembre.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
+            this.BtnAgregarFinalDiciembre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarFinalDiciembre.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.BtnAgregarFinalDiciembre.ForeColor = System.Drawing.Color.White;
+            this.BtnAgregarFinalDiciembre.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalDiciembre.Image")));
+            this.BtnAgregarFinalDiciembre.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregarFinalDiciembre.Location = new System.Drawing.Point(641, 12);
+            this.BtnAgregarFinalDiciembre.Name = "BtnAgregarFinalDiciembre";
+            this.tableLayoutPanel1.SetRowSpan(this.BtnAgregarFinalDiciembre, 3);
+            this.BtnAgregarFinalDiciembre.Size = new System.Drawing.Size(110, 65);
+            this.BtnAgregarFinalDiciembre.TabIndex = 144;
+            this.BtnAgregarFinalDiciembre.Text = "Agregar Mesas";
+            this.BtnAgregarFinalDiciembre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregarFinalDiciembre.UseVisualStyleBackColor = false;
+            this.BtnAgregarFinalDiciembre.Click += new System.EventHandler(this.BtnAgregarFinalDiciembre_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -727,50 +774,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.BtnAgregarCursoSuperioresMarzo.Text = "Agregar Cursos";
             this.BtnAgregarCursoSuperioresMarzo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnAgregarCursoSuperioresMarzo.UseVisualStyleBackColor = false;
-            // 
-            // BtnAgregarFinalJulio
-            // 
-            this.BtnAgregarFinalJulio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAgregarFinalJulio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.BtnAgregarFinalJulio.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.BtnAgregarFinalJulio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.BtnAgregarFinalJulio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
-            this.BtnAgregarFinalJulio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarFinalJulio.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BtnAgregarFinalJulio.ForeColor = System.Drawing.Color.White;
-            this.BtnAgregarFinalJulio.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalJulio.Image")));
-            this.BtnAgregarFinalJulio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAgregarFinalJulio.Location = new System.Drawing.Point(641, 12);
-            this.BtnAgregarFinalJulio.Name = "BtnAgregarFinalJulio";
-            this.tableLayoutPanel2.SetRowSpan(this.BtnAgregarFinalJulio, 3);
-            this.BtnAgregarFinalJulio.Size = new System.Drawing.Size(110, 65);
-            this.BtnAgregarFinalJulio.TabIndex = 143;
-            this.BtnAgregarFinalJulio.Text = "Agregar Mesas";
-            this.BtnAgregarFinalJulio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAgregarFinalJulio.UseVisualStyleBackColor = false;
-            // 
-            // BtnAgregarFinalDiciembre
-            // 
-            this.BtnAgregarFinalDiciembre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAgregarFinalDiciembre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.BtnAgregarFinalDiciembre.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
-            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
-            this.BtnAgregarFinalDiciembre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(26)))), ((int)(((byte)(198)))));
-            this.BtnAgregarFinalDiciembre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarFinalDiciembre.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.BtnAgregarFinalDiciembre.ForeColor = System.Drawing.Color.White;
-            this.BtnAgregarFinalDiciembre.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarFinalDiciembre.Image")));
-            this.BtnAgregarFinalDiciembre.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAgregarFinalDiciembre.Location = new System.Drawing.Point(641, 12);
-            this.BtnAgregarFinalDiciembre.Name = "BtnAgregarFinalDiciembre";
-            this.tableLayoutPanel1.SetRowSpan(this.BtnAgregarFinalDiciembre, 3);
-            this.BtnAgregarFinalDiciembre.Size = new System.Drawing.Size(110, 65);
-            this.BtnAgregarFinalDiciembre.TabIndex = 144;
-            this.BtnAgregarFinalDiciembre.Text = "Agregar Mesas";
-            this.BtnAgregarFinalDiciembre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAgregarFinalDiciembre.UseVisualStyleBackColor = false;
+            this.BtnAgregarCursoSuperioresMarzo.Click += new System.EventHandler(this.BtnAgregarCursoSuperioresMarzo_Click);
             // 
             // FormAgregarModificarCicloLectivo
             // 

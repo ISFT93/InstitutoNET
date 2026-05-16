@@ -139,6 +139,42 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>55</value>
   </metadata>
+  <data name="BtnAgregarFinalDiciembre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
+        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
+        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
+        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
+        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
+        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
+        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
+        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="BtnAgregarFinalJulio.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
+        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
+        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
+        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
+        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
+        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
+        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
+        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="BtnAgregarCursoSuperioresMarzo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
+        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
+        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
+        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
+        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
+        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
+        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
+        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="BtnAgregarFinalMarzo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
@@ -173,42 +209,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAehERLnsSEh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAA//8AAMADAAAAAAAAAQEAAIGBAACBAwAAwAMAAOGHAADhhwAA8Y8AAPGfAAD5HwAA+D8AAPw/
         AAD+fwAA//8AAA==
-</value>
-  </data>
-  <data name="BtnAgregarCursoSuperioresMarzo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
-        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
-        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
-        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
-        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
-        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
-        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
-        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="BtnAgregarFinalJulio.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
-        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
-        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
-        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
-        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
-        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
-        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
-        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="BtnAgregarFinalDiciembre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYJJREFUSEvd
-        lc1Kw0AUhQPiz4u48G+p6E4fQBBUFPRxxK0IfQBdCC70cQSptm4EbRc2MxNoZgTjuemU3Ka3nWTRTQ8c
-        KHfO/TK9M02j+VaWZctK2Usd22etbAv+8W5pbZ+wdkEZH68nE9sTgD7gLOA2sse+LSzsaMEodyuApho9
-        N9TrMZOllGtIgCqmjXmMLMz1SGqs4T+t00OPGxW+3goCVWYecls8eKPsuRAO2HUw0l3T6x/wOg791GML
-        4co98lDYrmOM3Rz0uh2+hs0+5FAuLLzx0FTH9lOpdJX6AN9GrVfKvOZQLhRNKSQ7DCfrHMqFYsJDmOu+
-        1r97NIqi7r4xlnXKJ4nd0irt8h5m8QFNHqLdUR3ADQKj9oXPa1QLwMnjIxo/5LRLIFqjXdeAy4csX9Pi
-        IaQqcLJ4TfHjWMLiezlMQBrX4CqG4XATrEWPHdVMXxVD4SHXQmMl4xyvPGay6JU709f1UDP7w+Git6K/
-        XffwC9z3ps93AJ9RxsfnUlH0Dzxu1YdN8BUnAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>
