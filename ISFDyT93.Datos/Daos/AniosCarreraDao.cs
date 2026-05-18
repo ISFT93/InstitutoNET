@@ -1,8 +1,10 @@
-﻿using System;
-using System.Data;
-using ISFDyT93.Datos.Core;
-using ISFDyT93.Entidades.Modelos;
+﻿using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Interfaces;
+using ISFDyT93.Entidades.Modelos;
+using System;
+using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -31,6 +33,24 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.EjecutarAccion(query);
         }
+
+        public int EliminarAniosDeUnaCarrera(int carreraId)
+        {
+            string query =
+                "BEGIN TRY" +
+                " BEGIN TRAN;" +
+                "  DELETE c FROM Correlativas AS c INNER JOIN Materias m ON c.MateriaId = m.MateriaId WHERE m.CarreraId = " + carreraId + ";" +
+                "  DELETE FROM Materias WHERE CarreraId = " + carreraId + ";" +
+                "  DELETE FROM AniosCarreras WHERE CarreraId = " + carreraId + ";" +
+                " COMMIT;" +
+                "END TRY" +
+                "  BEGIN CATCH" +
+                "  ROLLBACK;" +
+                "END CATCH;";
+
+            return this.Conexion.EjecutarAccion(query);
+        }
+
 
         public int ActualizarCargaHoria(int anioCarreraId)
         {
