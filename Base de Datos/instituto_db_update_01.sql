@@ -1,7 +1,7 @@
 
 --****************
 -- ACTUALIZACION DE FERNANDEZ FRANCO DANIEL
---29/04/2026
+--16/05/2026
 --EQUIPO 5
 --****************
 
@@ -126,3 +126,48 @@ CREATE INDEX I_Materias_MateriasCodigo
 ON Materias(MateriasCodigoBloque);
 
 
+--Modificacion SP para que muestre el codigo de bloque en pantalla
+--cuando es llamado desde el formulario que controla el asignado de correlatividades
+/****** Object:  StoredProcedure [dbo].[SP_ListaMaterias]    Script Date: 16/05/2026 19:04:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROC [dbo].[SP_ListaMaterias](
+@MateriaID as int,
+@CarreraID as int,
+@msj as varchar(50) output
+)
+AS
+BEGIN
+BEGIN TRY
+   -- Variable interna
+	Declare @AnioCarrera As int
+
+	create table #Temporal (
+	MateriaCorrelativaId int)
+
+	insert into #Temporal
+	select MateriaCorrelativaId from Correlativas
+	where MateriaId = @MateriaID
+
+
+	SELECT @AnioCarrera = AnioCarrera FROM Materias as Mat
+	INNER join AniosCarreras AS Ani on Mat.AnioCarreraId = Ani.AnioCarreraId
+	WHERE Mat.MateriaId = @MateriaID
+
+	select Mat.MateriaId, CONCAT(Mat.MateriasCodigoBloque, ' - ', Mat.Nombre) AS Materia from Materias as Mat
+	INNER join AniosCarreras AS Ani on Mat.AnioCarreraId = Ani.AnioCarreraId INNER JOIN Carreras as C
+	ON Ani.CarreraId = C.CarreraId
+	WHERE Ani.AnioCarrera < @AnioCarrera AND Ani.CarreraId = @CarreraID AND
+	Mat.MateriaId NOT IN (select MateriaCorrelativaId FROM #Temporal)
+	ORDER BY Ani.AnioCarrera, Mat.Nombre
+
+	drop table #Temporal
+	SET @msj = 'La lista se genero correctamente.'
+END TRY
+
+BEGIN CATCH
+	SET @msj = 'Ocurrio un Error: ' + ERROR_MESSAGE() + ' en la linea ' + CONVERT(nvarchar(255), ERROR_LINE()) + '.'
+END CATCH
+END
