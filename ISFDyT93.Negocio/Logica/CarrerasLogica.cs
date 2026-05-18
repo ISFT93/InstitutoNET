@@ -63,8 +63,7 @@ namespace ISFDyT93.Negocio.Logica
 
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
-            bool resultado = false;
-            int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
+            bool resultado = false;          
 
 
             try
@@ -74,11 +73,13 @@ namespace ISFDyT93.Negocio.Logica
                 string archiResolucion = modelo.Resolucion;
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
+                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
 
                 if (accion == TipoAccion.Agregar)
                 {
                     modelo.Activo = true;
                     modelo.CarreraEstadoId = 3;
+                    modelo.CarrerasCodigoBloque = carrerasCodigoBloque.ToString("D2");
 
                     if (!string.IsNullOrEmpty(modelo.PlanEstudio))
                     {
@@ -154,14 +155,14 @@ namespace ISFDyT93.Negocio.Logica
 
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
+                        //REVISAR
                         if (!modelo.PoseeMaterias)
                         {
-                            aniosCarreraDao.EliminarAnios(modelo.CarreraId);
-
+                            aniosCarreraDao.EliminarAniosDeUnaCarrera(modelo.CarreraId);
 
                             for (int anio = 1; anio <= modelo.Duracion; anio++)
                             {
-                                string codigoFormateado = carrerasCodigoBloque.ToString("D2") + anio.ToString();
+                                string codigoFormateado = modelo.CarrerasCodigoBloque + anio.ToString();
                                 aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId, codigoFormateado);
                             }
                         }

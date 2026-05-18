@@ -35,6 +35,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     nudAnioFin.Enabled = false;
                     break;
                 case TipoAccion.Modificar:
+                    this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
+                    if (this.Modelo.JefeCatedra == null)                    
+                        this.Modelo.JefeCatedra = ""; //Le asigna un valor vacio para que no falle al hacer update, ya que JefeCatedra no permite valores nulos en la BD
+                    nudAnioFin.Enabled = false;
+                    nudAnioInicio.Value = this.Modelo.AnioInicio;
+                    this.MapToForm<CarrerasModelo>(Modelo);
                     break;
                 case TipoAccion.Ver:
                     ComprobarCarreraId();
@@ -122,10 +128,25 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 Contenedor.AbrirFormulario<FormCarreras>();
                 return;             
             }
-            if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
+            else if (this.Accion == TipoAccion.Agregar)
             {
-                Notificar(TipoNotificacion.Success, "Carrera guardada correctamente");
-                Contenedor.AbrirFormulario<FormCarreras>();
+                if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
+                {
+                    Notificar(TipoNotificacion.Success, "Carrera guardada correctamente");
+                    Contenedor.AbrirFormulario<FormCarreras>();
+                }
+            }
+            else if (this.Accion == TipoAccion.Modificar)
+            {
+                carrera.CarreraId = this.Modelo.CarreraId;
+                carrera.CarrerasCodigoBloque = this.Modelo.CarrerasCodigoBloque;
+                carrera.CarreraEstadoId = this.Modelo.CarreraEstadoId;
+
+                if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))    
+                {
+                    Notificar(TipoNotificacion.Success, "Carrera modificada correctamente");
+                    Contenedor.AbrirFormulario<FormCarreras>();
+                }
             }
             else
             {
