@@ -70,12 +70,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             // La lógica de negocio nos da la lista ya filtrada
             lstMaterias.DataSource = equivalenciasLogica.ObtenerMateriasDisponiblesParaEquivalencia(CarreraId, carreraDestinoId);
-            lstMaterias.DisplayMember = "Nombre";
+            lstMaterias.DisplayMember = "CodigoNombre";
             lstMaterias.ValueMember = "MateriaId";
 
             // Materias de la carrera destino
             lstEquivalentes.DataSource = equivalenciasLogica.ObtenerMaterias(carreraDestinoId);
-            lstEquivalentes.DisplayMember = "Nombre";
+            lstEquivalentes.DisplayMember = "CodigoNombre";
             lstEquivalentes.ValueMember = "MateriaId";
 
             // Grilla de equivalencias ya creadas
