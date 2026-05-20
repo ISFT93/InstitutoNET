@@ -31,10 +31,9 @@
             this.panelCabecera = new System.Windows.Forms.Panel();
             this.chkLibros = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvLibros = new System.Windows.Forms.DataGridView();
+            this.flpContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCabecera.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCabecera
@@ -44,7 +43,7 @@
             this.panelCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecera.Location = new System.Drawing.Point(0, 0);
             this.panelCabecera.Name = "panelCabecera";
-            this.panelCabecera.Size = new System.Drawing.Size(842, 50);
+            this.panelCabecera.Size = new System.Drawing.Size(1283, 50);
             this.panelCabecera.TabIndex = 2;
             this.panelCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCabecera_Paint);
             // 
@@ -63,27 +62,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dgvLibros);
+            this.panel1.Controls.Add(this.flpContenedor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(842, 381);
+            this.panel1.Size = new System.Drawing.Size(1283, 592);
             this.panel1.TabIndex = 3;
             // 
-            // dgvLibros
+            // flpContenedor
             // 
-            this.dgvLibros.AllowUserToAddRows = false;
-            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLibros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLibros.Location = new System.Drawing.Point(0, 0);
-            this.dgvLibros.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvLibros.Name = "dgvLibros";
-            this.dgvLibros.ReadOnly = true;
-            this.dgvLibros.RowHeadersVisible = false;
-            this.dgvLibros.Size = new System.Drawing.Size(842, 381);
-            this.dgvLibros.TabIndex = 4;
+            this.flpContenedor.AutoScroll = true;
+            this.flpContenedor.BackColor = System.Drawing.Color.White;
+            this.flpContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpContenedor.Location = new System.Drawing.Point(0, 0);
+            this.flpContenedor.Name = "flpContenedor";
+            this.flpContenedor.Size = new System.Drawing.Size(1283, 592);
+            this.flpContenedor.TabIndex = 2;
             // 
             // uscLibroActas
             // 
@@ -92,12 +87,11 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelCabecera);
             this.Name = "uscLibroActas";
-            this.Size = new System.Drawing.Size(842, 431);
+            this.Size = new System.Drawing.Size(1283, 642);
             this.Load += new System.EventHandler(this.uscLibroActas_Load);
             this.panelCabecera.ResumeLayout(false);
             this.panelCabecera.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -107,6 +101,6 @@
         private System.Windows.Forms.Panel panelCabecera;
         private System.Windows.Forms.CheckBox chkLibros;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvLibros;
+        private System.Windows.Forms.FlowLayoutPanel flpContenedor;
     }
 }
