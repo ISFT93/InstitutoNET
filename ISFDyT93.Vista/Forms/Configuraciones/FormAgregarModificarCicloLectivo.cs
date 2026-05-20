@@ -303,8 +303,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             {
                 (dtpFechaInicio,                      "Fecha Inicio",                      anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
                 (dtpFechaCierre,                      "Fecha Cierre",                      anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
-                (dtpFechaInscripcionInicio,           "Fecha Inscripción Inicio",          anio - 1, $"el año de la fecha de la inscripción al ciclo lectivo debe ser {anio - 1}"),
-                (dtpFechaInscripcionFinal,            "Fecha Inscripción Final",           anio - 1, $"el año de la fecha de la inscripción al ciclo lectivo debe ser {anio - 1}"),
+                (dtpFechaInscripcionInicio,           "Fecha Pre-Inscripción Inicio",          anio - 1, $"el año de la fecha para la pre-inscripción al ciclo lectivo debe ser {anio - 1}"),
+                (dtpFechaInscripcionFinal,            "Fecha Pre-Inscripción Final",           anio - 1, $"el año de la fecha para la pre-inscripción al ciclo lectivo debe ser {anio - 1}"),
                 (dtpFechaMarzoInicio,                 "Finales Marzo - Inicio",            anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
                 (dtpFechaMarzoFinal,                  "Finales Marzo - Final",             anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
                 (dtpFechaJunioInicio,                 "Finales Julio - Inicio",            anio,     $"el año de la fecha no coincide con el ciclo lectivo {anio}"),
@@ -400,27 +400,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     }
                 }
 
-                if (this.Accion == TipoAccion.Modificar)
-                {
-                    dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
-                    {
-
-
-                        if (cargarFinal)
-                        {
-                            var resultMesas = this.mesasFinalesLogica.CargarMesasFinales(this.CicloLectivoId, turnoId);
-                            if (resultMesas > 0)
-                                Notificar(TipoNotificacion.Success, $"Mesas finales generadas con éxito para {tagTurno}, {CicloLectivoId}.", Tiempo: 3000);
-                            else
-                                Notificar(TipoNotificacion.Error, $"Ya hay mesas para {tagTurno}, {CicloLectivoId}", Tiempo: 3000);
-                        }
-
-                        // Primero actualiza el estado de los grupos, después carga las fechas
-                        ExistenMesasFinales(Convert.ToInt32(txtAnioLectivo.Text));
-                        CargarDatos(Convert.ToInt32(txtAnioLectivo.Text));
-                    }
-                }
+                
             }
             else
             {
@@ -522,6 +502,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
         private void BtnAgregarCursoSuperioresMarzo_Click(object sender, EventArgs e)
         {
+            if (!ValidarAnioFechas()) return;
+
             var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
             DialogResult dr;
 
@@ -540,6 +522,14 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                             Notificar(TipoNotificacion.Information, "Ingrese las fechas de Inscripción a Cursos Superiores");
                             return;
                         }
+                        // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
+                        if (dtpFechaInscripcionSuperioresInicio.Value.Month < 2 || dtpFechaInscripcionSuperioresFinal.Value.Month > 4)
+                        {
+                            DialogResult confirm = MessageBox.Show(
+                                "Las fechas ingresadas no corresponden al período de Cursos superiores Marzo.\n¿Desea continuar de todas formas?",
+                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (confirm == DialogResult.No) return;
+                        }
                         cicloLectivosLogica.AgregarFechaInscripcionSuperiores(CicloLectivo);
                     }
                     CargaFinal();
@@ -552,6 +542,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
         private void BtnAgregarFinalMarzo_Click(object sender, EventArgs e)
         {
+            if (!ValidarAnioFechas()) return;
+
             var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
             DialogResult dr;
             if (this.Accion == TipoAccion.Modificar)
@@ -584,6 +576,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
         private void BtnAgregarFinalJulio_Click(object sender, EventArgs e)
         {
+            if (!ValidarAnioFechas()) return;
+
             var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
             DialogResult dr;
             if (this.Accion == TipoAccion.Modificar)
@@ -618,6 +612,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
         private void BtnAgregarFinalDiciembre_Click(object sender, EventArgs e)
         {
+            if (!ValidarAnioFechas()) return;
+
             var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
             DialogResult dr;
             if (this.Accion == TipoAccion.Modificar)
