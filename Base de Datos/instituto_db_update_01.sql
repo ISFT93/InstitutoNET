@@ -102,6 +102,12 @@ GO
 UPDATE Materias SET CarreraId = 3006 WHERE AnioCarreraId IN(4011,4012,4013);
 GO
 
+--Foreign Key para mantener integridad referencial entre Carreras y Materias
+ALTER TABLE Materias
+ADD CONSTRAINT FK_Materias_Carreras
+FOREIGN KEY (CarreraId) REFERENCES Carreras(CarreraId);
+
+GO
 
 ;WITH Codigos AS (
 	SELECT
