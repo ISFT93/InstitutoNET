@@ -122,14 +122,27 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                         dtpFechaCierre.Enabled = false;
                         dtpFechaInscripcionInicio.Enabled = false;
                         dtpFechaInscripcionFinal.Enabled = false;
+                        dtpFechaMarzoInicio.Enabled = false;
+                        dtpFechaMarzoFinal.Enabled = false;
+                        dtpFechaJunioInicio.Enabled = false;
+                        dtpFechaJunioFinal.Enabled = false;
+                        dtpFechaDiciembreInicio1.Enabled = false;
+                        dtpFechaDiciembreFinal.Enabled = false;
+                        dtpFechaInscripcionSuperioresInicio.Enabled = false;
+                        dtpFechaInscripcionSuperioresFinal.Enabled = false;
                         txtCantidadSemana.Enabled = false;
                         txtAnioLectivo.Enabled = false;
 
-                grbFinalesMarzo.Enabled = false;
-                grbFinalesJulio.Enabled = false;
-                grbFinalesDiciembre.Enabled = false;
-                grbInscripcionSuperiores.Visible = true;
-                grbInscripcionSuperiores.Enabled = false;
+                        grbFinalesMarzo.Enabled = true;
+                        grbFinalesJulio.Enabled = true;
+                        grbFinalesDiciembre.Enabled = true;
+                        grbInscripcionSuperiores.Enabled = true;
+
+                        BtnAgregarFinalMarzo.Visible = false;
+                        BtnAgregarFinalJulio.Visible = false;
+                        BtnAgregarFinalDiciembre.Visible = false;
+                        BtnAgregarCursoSuperioresMarzo.Visible = false;
+                        btnAceptar.Visible = false;
 
                         if (CicloLectivoId.ToString() == "0")
                             CicloLectivoId = (cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo());

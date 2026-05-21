@@ -352,7 +352,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // lblFechaDeCierre
             // 
-            this.lblFechaDeCierre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblFechaDeCierre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFechaDeCierre.AutoSize = true;
             this.lblFechaDeCierre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -512,7 +512,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // BtnAgregarFinalMarzo
             // 
-            this.BtnAgregarFinalMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.BtnAgregarFinalMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregarFinalMarzo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.BtnAgregarFinalMarzo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
@@ -573,7 +573,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // BtnAgregarFinalJulio
             // 
-            this.BtnAgregarFinalJulio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.BtnAgregarFinalJulio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregarFinalJulio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.BtnAgregarFinalJulio.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
@@ -633,7 +633,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // BtnAgregarFinalDiciembre
             // 
-            this.BtnAgregarFinalDiciembre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.BtnAgregarFinalDiciembre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregarFinalDiciembre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.BtnAgregarFinalDiciembre.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
@@ -756,7 +756,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             // 
             // BtnAgregarCursoSuperioresMarzo
             // 
-            this.BtnAgregarCursoSuperioresMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.BtnAgregarCursoSuperioresMarzo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregarCursoSuperioresMarzo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.BtnAgregarCursoSuperioresMarzo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
