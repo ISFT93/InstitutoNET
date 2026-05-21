@@ -84,7 +84,9 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaDiciembreFinal.Enabled = true;
                 dtpFechaMarzoInicio.Enabled = true;
                 dtpFechaMarzoFinal.Enabled = true;
-
+                btnFechaCierreCicloLectivo.Visible = false;
+                btnGeneraCicloLectivo.Visible = false;
+                grbDatosCicloLectivo.Size = new System.Drawing.Size(760, 265);
                 txtAnioLectivo.Text = this.CicloLectivoId.ToString();
                 CargarDatos(this.CicloLectivoId);
                 ExistenMesasFinales(this.CicloLectivoId);
@@ -106,6 +108,8 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 grbFinalesJulio.Visible = false;
                 grbFinalesDiciembre.Visible = false;
                 grbInscripcionSuperiores.Visible = false;
+                grbDatosCicloLectivo.Size = new System.Drawing.Size(743, 302);
+
 
                 ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
                 txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
