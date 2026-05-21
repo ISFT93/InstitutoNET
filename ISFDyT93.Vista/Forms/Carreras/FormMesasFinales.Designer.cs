@@ -96,9 +96,9 @@
             // 
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(3, 7);
+            this.lblCarrera.Location = new System.Drawing.Point(3, 4);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(184, 19);
+            this.lblCarrera.Size = new System.Drawing.Size(184, 24);
             this.lblCarrera.TabIndex = 0;
             this.lblCarrera.Text = "Carrera:";
             // 
@@ -109,7 +109,7 @@
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
+            this.cmbCarrera.Size = new System.Drawing.Size(184, 32);
             this.cmbCarrera.TabIndex = 1;
             this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -118,9 +118,9 @@
             // 
             this.lblAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(383, 7);
+            this.lblAnio.Location = new System.Drawing.Point(383, 4);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(184, 19);
+            this.lblAnio.Size = new System.Drawing.Size(184, 24);
             this.lblAnio.TabIndex = 2;
             this.lblAnio.Text = "Año:";
             // 
@@ -132,7 +132,7 @@
             this.cmbAnio.FormattingEnabled = true;
             this.cmbAnio.Location = new System.Drawing.Point(573, 3);
             this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(184, 27);
+            this.cmbAnio.Size = new System.Drawing.Size(184, 32);
             this.cmbAnio.TabIndex = 3;
             this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
             // 
@@ -140,9 +140,9 @@
             // 
             this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(3, 40);
+            this.lblCurso.Location = new System.Drawing.Point(3, 37);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(184, 19);
+            this.lblCurso.Size = new System.Drawing.Size(184, 24);
             this.lblCurso.TabIndex = 4;
             this.lblCurso.Text = "Curso:";
             // 
@@ -154,7 +154,7 @@
             this.cmbCurso.FormattingEnabled = true;
             this.cmbCurso.Location = new System.Drawing.Point(193, 36);
             this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(184, 27);
+            this.cmbCurso.Size = new System.Drawing.Size(184, 32);
             this.cmbCurso.TabIndex = 5;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
@@ -162,9 +162,9 @@
             // 
             this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(383, 40);
+            this.lblMateria.Location = new System.Drawing.Point(383, 37);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(184, 19);
+            this.lblMateria.Size = new System.Drawing.Size(184, 24);
             this.lblMateria.TabIndex = 6;
             this.lblMateria.Text = "Materia:";
             // 
@@ -176,7 +176,7 @@
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(573, 36);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
+            this.cmbMateria.Size = new System.Drawing.Size(184, 32);
             this.cmbMateria.TabIndex = 7;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
@@ -184,9 +184,9 @@
             // 
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(3, 73);
+            this.lblProfesor.Location = new System.Drawing.Point(3, 70);
             this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(184, 19);
+            this.lblProfesor.Size = new System.Drawing.Size(184, 24);
             this.lblProfesor.TabIndex = 8;
             this.lblProfesor.Text = "Profesor:";
             // 
@@ -197,7 +197,7 @@
             this.cmbProfesor.FormattingEnabled = true;
             this.cmbProfesor.Location = new System.Drawing.Point(193, 69);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
+            this.cmbProfesor.Size = new System.Drawing.Size(184, 32);
             this.cmbProfesor.TabIndex = 9;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
@@ -233,6 +233,7 @@
             // btn_ImprimirActa
             // 
             this.btn_ImprimirActa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btn_ImprimirActa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_ImprimirActa.FlatAppearance.BorderSize = 0;
             this.btn_ImprimirActa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ImprimirActa.ForeColor = System.Drawing.Color.White;
@@ -242,7 +243,7 @@
             this.btn_ImprimirActa.IconSize = 25;
             this.btn_ImprimirActa.Location = new System.Drawing.Point(3, 102);
             this.btn_ImprimirActa.Name = "btn_ImprimirActa";
-            this.btn_ImprimirActa.Size = new System.Drawing.Size(154, 35);
+            this.btn_ImprimirActa.Size = new System.Drawing.Size(184, 35);
             this.btn_ImprimirActa.TabIndex = 4;
             this.btn_ImprimirActa.Text = "Imprimir Acta";
             this.btn_ImprimirActa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -252,7 +253,7 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -347,9 +348,9 @@
             this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregarMesa.Location = new System.Drawing.Point(3, 3);
             this.btnAgregarMesa.Name = "btnAgregarMesa";
-            this.btnAgregarMesa.Size = new System.Drawing.Size(154, 34);
+            this.btnAgregarMesa.Size = new System.Drawing.Size(214, 34);
             this.btnAgregarMesa.TabIndex = 4;
-            this.btnAgregarMesa.Text = "    Mesa Especial    ";
+            this.btnAgregarMesa.Text = " Mesa Especial    ";
             this.btnAgregarMesa.UseVisualStyleBackColor = false;
             this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
             // 
@@ -358,9 +359,9 @@
             this.cmbAnioLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbAnioLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnioLectivo.FormattingEnabled = true;
-            this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
+            this.cmbAnioLectivo.Location = new System.Drawing.Point(223, 43);
             this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 27);
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(174, 32);
             this.cmbAnioLectivo.TabIndex = 5;
             this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
             // 
@@ -369,9 +370,9 @@
             this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(362, 43);
+            this.cmbTurno.Location = new System.Drawing.Point(403, 43);
             this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 27);
+            this.cmbTurno.Size = new System.Drawing.Size(174, 32);
             this.cmbTurno.TabIndex = 6;
             this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
             // 
@@ -379,9 +380,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 10);
+            this.label1.Location = new System.Drawing.Point(223, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 19);
+            this.label1.Size = new System.Drawing.Size(174, 24);
             this.label1.TabIndex = 7;
             this.label1.Text = "Año:";
             // 
@@ -389,9 +390,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 10);
+            this.label2.Location = new System.Drawing.Point(403, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 19);
+            this.label2.Size = new System.Drawing.Size(174, 24);
             this.label2.TabIndex = 8;
             this.label2.Text = "Turno:";
             // 
@@ -400,9 +401,9 @@
             this.cmbLlamados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbLlamados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLlamados.FormattingEnabled = true;
-            this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
+            this.cmbLlamados.Location = new System.Drawing.Point(583, 43);
             this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 27);
+            this.cmbLlamados.Size = new System.Drawing.Size(174, 32);
             this.cmbLlamados.TabIndex = 9;
             this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
             // 
@@ -410,9 +411,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 10);
+            this.label3.Location = new System.Drawing.Point(583, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 19);
+            this.label3.Size = new System.Drawing.Size(174, 24);
             this.label3.TabIndex = 10;
             this.label3.Text = "Llamado:";
             // 
@@ -430,16 +431,15 @@
             this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporteMesas.Location = new System.Drawing.Point(3, 43);
             this.btnReporteMesas.Name = "btnReporteMesas";
-            this.btnReporteMesas.Size = new System.Drawing.Size(154, 34);
+            this.btnReporteMesas.Size = new System.Drawing.Size(214, 34);
             this.btnReporteMesas.TabIndex = 11;
             this.btnReporteMesas.Text = "Imprimir Mesas";
-            this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReporteMesas.UseVisualStyleBackColor = false;
             this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
             // 
             // FormMesasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
