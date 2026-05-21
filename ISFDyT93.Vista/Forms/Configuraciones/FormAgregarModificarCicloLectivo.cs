@@ -138,7 +138,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                         CargarDatos(Convert.ToInt32(txtAnioLectivo.Text));
 
                     }
-        }
+            }
         public void DateTimePickerEnBlanco()
         {
             this.SetControlConfig(control =>
@@ -687,38 +687,28 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 turnoId = 1;
                 cargarFinal = true;
                 tagTurno = "Marzo";
-                dtpFechaJunioInicio.Enabled = false;
-                dtpFechaJunioFinal.Enabled = false;
-                dtpFechaDiciembreInicio1.Enabled = false;
-                dtpFechaDiciembreFinal.Enabled = false;
+                grbFinalesMarzo.Enabled = true;
                 grbInscripcionSuperiores.Enabled = false;
-                dtpFechaInscripcionSuperioresInicio.Enabled = false;
-                dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                grbFinalesJulio.Enabled = false;
+                grbFinalesDiciembre.Enabled = false;
                 BtnAgregarFinalMarzo.Visible = true;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
                 BtnAgregarFinalJulio.Visible = false;
                 BtnAgregarFinalDiciembre.Visible = false;
-                BtnAgregarCursoSuperioresMarzo.Visible = false;
             }
             else if (mesasMarzo == 1 && mesasJulio == 0 && mesasDiciembre == 0 && !superioresCargado)
             {
                 // Marzo cargado, Superiores no — solo Superiores habilitado
                 turnoId = 0;
                 cargarFinal = false;
-                dtpFechaMarzoInicio.Enabled = false;
-                dtpFechaMarzoFinal.Enabled = false;
-                dtpFechaJunioInicio.Enabled = false;
-                dtpFechaJunioFinal.Enabled = false;
-                dtpFechaDiciembreInicio1.Enabled = false;
-                dtpFechaDiciembreFinal.Enabled = false;
+                grbFinalesMarzo.Enabled = false;
                 grbInscripcionSuperiores.Enabled = true;
-                dtpFechaInscripcionSuperioresInicio.Enabled = true;
-                dtpFechaInscripcionSuperioresFinal.Enabled = true;
+                grbFinalesJulio.Enabled = false;
+                grbFinalesDiciembre.Enabled = false;
                 BtnAgregarFinalMarzo.Visible = false;
-                BtnAgregarCursoSuperioresMarzo.Enabled = true;
-                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = true;
                 BtnAgregarFinalJulio.Visible = false;
                 BtnAgregarFinalDiciembre.Visible = false;
-                BtnAgregarCursoSuperioresMarzo.Visible = true;
             }
             else if (mesasMarzo == 1 && mesasJulio == 0 && mesasDiciembre == 0 && superioresCargado)
             {
@@ -726,19 +716,14 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 turnoId = 2;
                 cargarFinal = true;
                 tagTurno = "Julio";
-                dtpFechaMarzoInicio.Enabled = false;
-                dtpFechaMarzoFinal.Enabled = false;
-                dtpFechaDiciembreInicio1.Enabled = false;
-                dtpFechaDiciembreFinal.Enabled = false;
-                dtpFechaInscripcionSuperioresInicio.Enabled = false;
-                dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                grbFinalesMarzo.Enabled = false;
                 grbInscripcionSuperiores.Enabled = false;
+                grbFinalesJulio.Enabled = true;
+                grbFinalesDiciembre.Enabled = false;
                 BtnAgregarFinalMarzo.Visible = false;
-                BtnAgregarCursoSuperioresMarzo.Visible= false;
-                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
                 BtnAgregarFinalJulio.Visible = true;
                 BtnAgregarFinalDiciembre.Visible = false;
-                BtnAgregarCursoSuperioresMarzo.Visible = false;
 
 
             }
@@ -748,30 +733,26 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 turnoId = 3;
                 cargarFinal = true;
                 tagTurno = "Diciembre";
-                dtpFechaMarzoInicio.Enabled = false;
-                dtpFechaMarzoFinal.Enabled = false;
-                dtpFechaJunioInicio.Enabled = false;
-                dtpFechaJunioFinal.Enabled = false;
-                dtpFechaInscripcionSuperioresInicio.Enabled = false;
+                grbFinalesMarzo.Enabled = false;
                 grbInscripcionSuperiores.Enabled = false;
-                dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                grbFinalesJulio.Enabled = false;
+                grbFinalesDiciembre.Enabled = true;
                 BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
                 BtnAgregarFinalJulio.Visible = false;
                 BtnAgregarFinalDiciembre.Visible = true;
-                BtnAgregarCursoSuperioresMarzo.Visible = false;
             }
             else
             {
                 // Todo cargado
-                dtpFechaMarzoInicio.Enabled = false;
-                dtpFechaMarzoFinal.Enabled = false;
-                dtpFechaJunioInicio.Enabled = false;
-                dtpFechaJunioFinal.Enabled = false;
-                dtpFechaDiciembreInicio1.Enabled = false;
-                dtpFechaDiciembreFinal.Enabled = false;
-                dtpFechaInscripcionSuperioresInicio.Enabled = false;
-                dtpFechaInscripcionSuperioresFinal.Enabled = false;
+                grbFinalesMarzo.Enabled = false;
                 grbInscripcionSuperiores.Enabled = false;
+                grbFinalesJulio.Enabled = false;
+                grbFinalesDiciembre.Enabled = false;
+                BtnAgregarFinalMarzo.Visible = false;
+                BtnAgregarCursoSuperioresMarzo.Visible = false;
+                BtnAgregarFinalJulio.Visible = false;
+                BtnAgregarFinalDiciembre.Visible = false;
                 btnAceptar.Enabled = true;
                 cargarFinal = false;
             }
