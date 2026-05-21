@@ -85,7 +85,9 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaDiciembreFinal.Enabled = true;
                 dtpFechaMarzoInicio.Enabled = true;
                 dtpFechaMarzoFinal.Enabled = true;
-
+                btnFechaCierreCicloLectivo.Visible = false;
+                btnGeneraCicloLectivo.Visible = false;
+                grbDatosCicloLectivo.Size = new System.Drawing.Size(760, 265);
                 txtAnioLectivo.Text = this.CicloLectivoId.ToString();
                 CargarDatos(this.CicloLectivoId);
                 ExistenMesasFinales(this.CicloLectivoId);
