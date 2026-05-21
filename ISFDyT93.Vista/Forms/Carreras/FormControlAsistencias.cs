@@ -9,13 +9,14 @@ using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Datos.Daos;
 using System.Diagnostics;
 using Microsoft.ReportingServices.Diagnostics.Internal;
+using System.Runtime.CompilerServices;
 
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
     public partial class FormControlAsistencias : FormBase
     {
-
+        
         #region Propiedades Publicas
         public int CursadaId { get; set; }
         #endregion
@@ -46,7 +47,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.MapToForm<CursadasModelo>(this.Cursada);
             this.Contenedor.SetTitulo("Control Asistencias/Evaluaciones");
 
-
+            
             var dr = controlAsistenciasLogica.CargarProfesor();
             txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
 

@@ -45,7 +45,7 @@
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.btnLimpiarFiltros = new System.Windows.Forms.Button();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btn_ImprimirActa = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMesasFinales = new System.Windows.Forms.DataGridView();
             this.btnAgregarMesa = new FontAwesome.Sharp.IconButton();
@@ -80,7 +80,7 @@
             this.tableLayoutPanel0.Controls.Add(this.cmbProfesor, 1, 2);
             this.tableLayoutPanel0.Controls.Add(this.btnFiltrar, 2, 2);
             this.tableLayoutPanel0.Controls.Add(this.btnLimpiarFiltros, 3, 2);
-            this.tableLayoutPanel0.Controls.Add(this.iconButton1, 0, 3);
+            this.tableLayoutPanel0.Controls.Add(this.btn_ImprimirActa, 0, 3);
             this.tableLayoutPanel0.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel0.Location = new System.Drawing.Point(20, 10);
             this.tableLayoutPanel0.Name = "tableLayoutPanel0";
@@ -230,23 +230,24 @@
             this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
             // 
-            // iconButton1
+            // btn_ImprimirActa
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 25;
-            this.iconButton1.Location = new System.Drawing.Point(3, 102);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(154, 35);
-            this.iconButton1.TabIndex = 4;
-            this.iconButton1.Text = "Imprimir Acta";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btn_ImprimirActa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btn_ImprimirActa.FlatAppearance.BorderSize = 0;
+            this.btn_ImprimirActa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ImprimirActa.ForeColor = System.Drawing.Color.White;
+            this.btn_ImprimirActa.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btn_ImprimirActa.IconColor = System.Drawing.Color.White;
+            this.btn_ImprimirActa.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_ImprimirActa.IconSize = 25;
+            this.btn_ImprimirActa.Location = new System.Drawing.Point(3, 102);
+            this.btn_ImprimirActa.Name = "btn_ImprimirActa";
+            this.btn_ImprimirActa.Size = new System.Drawing.Size(154, 35);
+            this.btn_ImprimirActa.TabIndex = 4;
+            this.btn_ImprimirActa.Text = "Imprimir Acta";
+            this.btn_ImprimirActa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_ImprimirActa.UseVisualStyleBackColor = false;
+            this.btn_ImprimirActa.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -481,6 +482,6 @@
         private System.Windows.Forms.ComboBox cmbLlamados;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton btnReporteMesas;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btn_ImprimirActa;
     }
 }

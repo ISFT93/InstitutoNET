@@ -450,6 +450,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
             _enCambioCombos = false;
         }
 
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Contenedor.AbrirFormulario<FormModificacionActa>();
+            this.Contenedor.SetTitulo("Acta de mesas de exàmen");
+            this.Contenedor.SetVolver(() =>
+            {
+                this.Contenedor.AbrirFormulario<FormMesasFinales>();
+            });
+
+        }
+        //Boton imprimir acta de mesa de examen, abre el formulario de actas de examen, se setea el titulo del contenedor y se abre el formulario
+
         private void ResetCadenaCarrera()
         {
             cmbAnio.DataSource = null;
