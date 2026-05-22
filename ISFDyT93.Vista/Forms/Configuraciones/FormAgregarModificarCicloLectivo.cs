@@ -82,7 +82,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 dtpFechaInscripcionInicio.Enabled = false;
                 dtpFechaInscripcionFinal.Enabled = false;
                 btnAceptar.Visible = false;
-
+                
                 // Habilitamos todos los dtp por defecto, ExistenMesasFinales los deshabilita según corresponda
                 dtpFechaInscripcionSuperioresInicio.Enabled = true;
                 dtpFechaInscripcionSuperioresFinal.Enabled = true;
@@ -523,9 +523,13 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     txtCantidadSemana.Text = (dias / 7).ToString();
                 }
             }
+            
             btnFechaCierreCicloLectivo.Enabled = DateTime.Today >= dtpFechaCierre.Value.Date;
 
         }
+
+
+
 
         private void BtnAgregarCursoSuperioresMarzo_Click(object sender, EventArgs e)
         {
@@ -708,6 +712,34 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 MessageBoxIcon.Question);
 
             if (dr == DialogResult.No) return;
+            if (!ValidarAnioFechas()) return;
+            var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
+            //DialogResult dr;
+
+            if (CicloLectivo.Errores.Count == 0)
+            {
+                if (this.Accion == TipoAccion.Agregar)
+                {
+                   // dr = MessageBox.Show("Generación de Cursos Lectivos" + txtAnioLectivo.Text, "Ciclo Lectivo", MessageBoxButtons.YesNo);
+                   // if (dr == DialogResult.Yes)
+                    //{
+                        cicloLectivosLogica.AgregarCicloLectivo(CicloLectivo);
+                        Notificar(TipoNotificacion.Success, "Ciclo lectivo agregado con exito");
+                        txtAnioLectivo.Text = "";
+                        txtCantidadSemana.Text = "";
+                        DateTimePickerEnBlanco();
+                        ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
+                        txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
+
+                    //}
+                }
+
+
+            }
+            else
+            {
+                this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
+            }
 
             Notificar(
                 TipoNotificacion.Information,
