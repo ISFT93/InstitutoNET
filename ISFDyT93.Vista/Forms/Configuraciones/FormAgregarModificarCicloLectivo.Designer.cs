@@ -80,6 +80,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.lblFinFechaInscripcionSuperior = new System.Windows.Forms.Label();
             this.lblInicioFechaInscripcionSuperior = new System.Windows.Forms.Label();
             this.BtnAgregarCursoSuperioresMarzo = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.epvCicloLectivo)).BeginInit();
             this.grbDatosCicloLectivo.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -444,6 +445,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 7);
             this.tableLayoutPanel4.Controls.Add(this.btnFechaCierreCicloLectivo, 3, 4);
             this.tableLayoutPanel4.Controls.Add(this.lblFechaDeApertura, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblFechaDeCierre, 3, 2);
@@ -821,6 +823,19 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             this.BtnAgregarCursoSuperioresMarzo.UseVisualStyleBackColor = false;
             this.BtnAgregarCursoSuperioresMarzo.Click += new System.EventHandler(this.BtnAgregarCursoSuperioresMarzo_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.label1, 2);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 242);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(369, 19);
+            this.label1.TabIndex = 132;
+            this.label1.Text = "Fecha de Preinscripción anual";
+            // 
             // FormAgregarModificarCicloLectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -910,5 +925,6 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         private System.Windows.Forms.Button BtnAgregarCursoSuperioresMarzo;
         private System.Windows.Forms.Button btnFechaCierreCicloLectivo;
         private System.Windows.Forms.Button btnGeneraCicloLectivo;
+        private System.Windows.Forms.Label label1;
     }
 }

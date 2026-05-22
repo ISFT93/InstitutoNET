@@ -116,7 +116,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     grbFinalesJulio.Visible = false;
                     grbFinalesDiciembre.Visible = false;
                     grbInscripcionSuperiores.Visible = false;
-
+                    btnAceptar.Visible = false;
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
                     txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
                     DateTimePickerEnBlanco();
@@ -741,10 +741,10 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
             }
 
-            Notificar(
-                TipoNotificacion.Information,
-                "Funcionalidad pendiente: generar cursos controlando que estén activos.",
-                Tiempo: 3000);
+            //Notificar(
+            //    TipoNotificacion.Information,
+            //    "Funcionalidad pendiente: generar cursos controlando que estén activos.",
+            //    Tiempo: 3000);
 
         }
 
