@@ -117,6 +117,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     grbInscripcionSuperiores.Visible = false;
                     btnAceptar.Visible = false;
                 btnFechaCierreCicloLectivo.Enabled = false;
+                    btnGeneraCicloLectivo.Enabled = false;
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
                     txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
                     DateTimePickerEnBlanco();
@@ -464,6 +465,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         {
             if (dtpFechaInicio.Value != dtpFechaInicio.MinDate)
                 dtpFechaInicio.CustomFormat = "dd/MM/yyyy";
+            ActualizarEstadoBotonGenerar();
         }
 
 
@@ -472,13 +474,14 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
         {
             if (dtpFechaInscripcionInicio.Value != dtpFechaInscripcionInicio.MinDate)
                 dtpFechaInscripcionInicio.CustomFormat = "dd/MM/yyyy";
-
+            ActualizarEstadoBotonGenerar();
         }
 
         private void dtpFechaInscripcionFinal_ValueChanged(object sender, EventArgs e)
         {
             if (dtpFechaInscripcionFinal.Value != dtpFechaInscripcionFinal.MinDate)
                 dtpFechaInscripcionFinal.CustomFormat = "dd/MM/yyyy";
+            ActualizarEstadoBotonGenerar();
         }
 
 
@@ -525,7 +528,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             }
             
             btnFechaCierreCicloLectivo.Enabled = DateTime.Today >= dtpFechaCierre.Value.Date;
-
+            ActualizarEstadoBotonGenerar();
         }
 
 
@@ -746,6 +749,20 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
             //    "Funcionalidad pendiente: generar cursos controlando que estén activos.",
             //    Tiempo: 3000);
 
+        }
+
+        private void ActualizarEstadoBotonGenerar()
+        {
+            if (this.Accion != TipoAccion.Agregar) return;
+
+            bool todasCompletas =
+                dtpFechaInscripcionInicio.CustomFormat == "dd/MM/yyyy" &&
+                dtpFechaInscripcionFinal.CustomFormat  == "dd/MM/yyyy" &&
+                dtpFechaInicio.CustomFormat            == "dd/MM/yyyy" &&
+                dtpFechaCierre.CustomFormat            == "dd/MM/yyyy" &&
+                int.TryParse(txtCantidadSemana.Text, out int sem) && sem > 0;
+
+            btnGeneraCicloLectivo.Enabled = todasCompletas;
         }
 
         private void txtAnioLectivo_KeyPress(object sender, KeyPressEventArgs e)
