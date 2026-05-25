@@ -535,177 +535,87 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
 
         private void BtnAgregarCursoSuperioresMarzo_Click(object sender, EventArgs e)
-        {
-            if (!ValidarAnioFechas()) return;
-
-            var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
-            DialogResult dr;
-
-
-            if (CicloLectivo.Errores.Count == 0)
-            {
-
-                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-
-                    if (turnoId == 0)
-                    {
-                        // Verifica que los campos de Superiores tengan fecha cargada
-                        if (dtpFechaInscripcionSuperioresInicio.CustomFormat == " " ||
-                            dtpFechaInscripcionSuperioresFinal.CustomFormat == " ")
-                        {
-                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Inscripción a Cursos Superiores");
-                            return;
-                        }
-                        // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
-                        if (dtpFechaInscripcionSuperioresInicio.Value.Month < 2 || dtpFechaInscripcionSuperioresFinal.Value.Month > 4)
-                        {
-                            DialogResult confirm = MessageBox.Show(
-                                "Las fechas ingresadas no corresponden al período de Cursos superiores Marzo.\n¿Desea continuar de todas formas?",
-                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (confirm == DialogResult.No) return;
-                        }
-                        cicloLectivosLogica.AgregarFechaInscripcionSuperiores(CicloLectivo);
-                    }
-                    CargaFinal();
-                }
-
-
-            }
-            else
-            {
-                this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
-            }
-
-        }
+            => ProcesarTurno(0,
+                             dtpFechaInscripcionSuperioresInicio,
+                             dtpFechaInscripcionSuperioresFinal,
+                             "Inscripción a Cursos Superiores",
+                             2,
+                             4,
+                             cl => cicloLectivosLogica.AgregarFechaInscripcionSuperiores(cl));
 
         private void BtnAgregarFinalMarzo_Click(object sender, EventArgs e)
-        {
-            if (!ValidarAnioFechas()) return;
-
-            var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
-            DialogResult dr;
-
-            if (CicloLectivo.Errores.Count == 0)
-            {
-
-                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    if (turnoId == 1)
-                    {
-                        // Verifica que los campos de Marzo tengan fecha cargada
-                        if (dtpFechaMarzoInicio.CustomFormat == " " || dtpFechaMarzoFinal.CustomFormat == " ")
-                        {
-                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Marzo");
-                            return;
-                        }
-                        // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
-                        if (dtpFechaMarzoInicio.Value.Month < 2 || dtpFechaMarzoInicio.Value.Month > 4)
-                        {
-                            DialogResult confirm = MessageBox.Show(
-                                "Las fechas ingresadas no corresponden al período de Finales Marzo.\n¿Desea continuar de todas formas?",
-                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (confirm == DialogResult.No) return;
-                        }
-                        cicloLectivosLogica.AgregarFechaFinalesMarzo(CicloLectivo);
-                    }
-                    CargaFinal();
-                }
-
-            }
-            else
-            {
-                this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
-            }
-        }
+            => ProcesarTurno(1,
+                             dtpFechaMarzoInicio,
+                             dtpFechaMarzoFinal,
+                             "Finales Marzo",
+                             2,
+                             4,
+                             cl => cicloLectivosLogica.AgregarFechaFinalesMarzo(cl));
 
         private void BtnAgregarFinalJulio_Click(object sender, EventArgs e)
-        {
-            if (!ValidarAnioFechas()) return;
-
-            var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
-            DialogResult dr;
-
-            if (CicloLectivo.Errores.Count == 0)
-            {
-
-                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    if (turnoId == 2)
-                    {
-                        // Verifica que los campos de Julio tengan fecha cargada
-                        if (dtpFechaJunioInicio.CustomFormat == " " || dtpFechaJunioFinal.CustomFormat == " ")
-                        {
-                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Julio");
-                            return;
-                        }
-                        // Valida que las fechas correspondan al mes esperado (jun, jul, ago)
-                        if (dtpFechaJunioInicio.Value.Month < 6 || dtpFechaJunioInicio.Value.Month > 8)
-                        {
-                            DialogResult confirm = MessageBox.Show(
-                                "Las fechas ingresadas no corresponden al período de Finales Julio.\n¿Desea continuar de todas formas?",
-                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (confirm == DialogResult.No) return;
-                        }
-                        cicloLectivosLogica.AgregarFechaFinalesJulio(CicloLectivo);
-                    }
-                    CargaFinal();
-                }
-
-            }
-            else
-            {
-                this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
-            }
-
-
-        }
+            => ProcesarTurno(2,
+                             dtpFechaJunioInicio,
+                             dtpFechaJunioFinal,
+                             "Finales Julio",
+                             6,
+                             8,
+                             cl => cicloLectivosLogica.AgregarFechaFinalesJulio(cl));
 
         private void BtnAgregarFinalDiciembre_Click(object sender, EventArgs e)
+            => ProcesarTurno(3,
+                dtpFechaDiciembreInicio1,
+                dtpFechaDiciembreFinal,
+                             "Finales Diciembre",
+                             11,
+                             12,
+                             cl =>
+                             {
+                                 cl.FechaDiciembreInicio = dtpFechaDiciembreInicio1.Value;
+                                 cicloLectivosLogica.AgregarFechaFinalesDiciembre(cl);
+                             });
+
+        private void ProcesarTurno(int turnoId,
+                                   DateTimePicker dtpInicio,
+                                   DateTimePicker dtpFinal,
+                                   string nombre,
+                                   int mesMinimo,
+                                   int mesMaximo,
+                                   Action<CicloLectivoModelo> guardarFecha)
         {
             if (!ValidarAnioFechas()) return;
 
-            var CicloLectivo = this.MapToModel<CicloLectivoModelo>();
-            DialogResult dr;
+            var cicloLectivo = this.MapToModel<CicloLectivoModelo>();
 
-            if (CicloLectivo.Errores.Count == 0)
+            if (cicloLectivo.Errores.Count == 0)
             {
 
-                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
+                var dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?",
+                                         "Inscripción a finales", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    if (turnoId == 3)
+                    if (this.turnoId == turnoId)
                     {
-                        // Verifica que los campos de Diciembre tengan fecha cargada
-                        if (dtpFechaDiciembreInicio1.CustomFormat == " " || dtpFechaDiciembreFinal.CustomFormat == " ")
+                        if (dtpInicio.CustomFormat == " " || dtpFinal.CustomFormat == " ")
                         {
-                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Diciembre");
+                            Notificar(TipoNotificacion.Information, $"Ingrese las fechas de {nombre}");
                             return;
                         }
-                        // Valida que las fechas correspondan al mes esperado (nov, dic)
-                        if (dtpFechaDiciembreInicio1.Value.Month < 11 || dtpFechaDiciembreInicio1.Value.Month > 12)
+                        if (dtpInicio.Value.Month < mesMinimo || dtpInicio.Value.Month > mesMaximo)
                         {
-                            DialogResult confirm = MessageBox.Show(
-                                "Las fechas ingresadas no corresponden al período de Finales Diciembre.\n¿Desea continuar de todas formas?",
+                            var confirm = MessageBox.Show(
+                                $"Las fechas ingresadas no corresponden al período de {nombre}.\n¿Desea continuar de todas formas?",
                                 "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (confirm == DialogResult.No) return;
                         }
-                        // Se asigna FechaDiciembreInicio solo cuando realmente se va a guardar Diciembre
-                        CicloLectivo.FechaDiciembreInicio = dtpFechaDiciembreInicio1.Value;
-                        cicloLectivosLogica.AgregarFechaFinalesDiciembre(CicloLectivo);
+                        guardarFecha(cicloLectivo);
                     }
                     CargaFinal();
                 }
-
             }
             else
             {
-                this.MostrarErrores(epvCicloLectivo, CicloLectivo.Errores);
+                this.MostrarErrores(epvCicloLectivo, cicloLectivo.Errores);
             }
-
         }
 
         private void CargaFinal()
