@@ -116,7 +116,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     grbFinalesDiciembre.Visible = false;
                     grbInscripcionSuperiores.Visible = false;
                     btnAceptar.Visible = false;
-                btnFechaCierreCicloLectivo.Enabled = false;
+                    btnFechaCierreCicloLectivo.Visible = false;
                     btnGeneraCicloLectivo.Enabled = false;
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
                     txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
