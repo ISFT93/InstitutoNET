@@ -26,22 +26,22 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio(condicion: "checkFechaInscripcionInicio")]
         [MayorQue("FechaInscripcionInicio")]
         public DateTime? FechaInscripcionFinal { get; set; }
-        [Obligatorio("Modificando")]
+        [Obligatorio(condicion:"Modificando")]
         public DateTime? FechaMarzoInicio { get; set; }
         [Obligatorio(condicion: "checkFechaMarzoInicio")]
         [MayorQue("FechaMarzoInicio")]
         public DateTime? FechaMarzoFinal { get; set; }
-        [Obligatorio("Modificando")]
+        [Obligatorio(condicion:"Modificando")]
         public DateTime? FechaJunioInicio { get; set; }
         [Obligatorio(condicion: "checkFechaJunioInicio")]
         [MayorQue("FechaJunioInicio")]
         public DateTime? FechaJunioFinal { get; set; }
-        [Obligatorio("Modificando")]
+        [Obligatorio(condicion:"Modificando")]
         public DateTime? FechaDiciembreInicio { get; set; }
         [Obligatorio(condicion: "checkFechaDiciembreInicio")]
         [MayorQue("FechaDiciembreInicio")]
         public DateTime? FechaDiciembreFinal { get; set; }
-        [Obligatorio("Modificando")]
+        [Obligatorio(condicion: "Modificando")]
         public DateTime? FechaEspecialInicio { get; set; }
         [Obligatorio(condicion: "checkFechaEspecialInicio")]
         [MayorQue("FechaEspecialInicio")]
