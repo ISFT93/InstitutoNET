@@ -544,34 +544,33 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             if (CicloLectivo.Errores.Count == 0)
             {
-                if (this.Accion == TipoAccion.Modificar)
-                {
-                    dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
-                    {
 
-                        if (turnoId == 0)
+                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+
+                    if (turnoId == 0)
+                    {
+                        // Verifica que los campos de Superiores tengan fecha cargada
+                        if (dtpFechaInscripcionSuperioresInicio.CustomFormat == " " ||
+                            dtpFechaInscripcionSuperioresFinal.CustomFormat == " ")
                         {
-                            // Verifica que los campos de Superiores tengan fecha cargada
-                            if (dtpFechaInscripcionSuperioresInicio.CustomFormat == " " ||
-                                dtpFechaInscripcionSuperioresFinal.CustomFormat == " ")
-                            {
-                                Notificar(TipoNotificacion.Information, "Ingrese las fechas de Inscripción a Cursos Superiores");
-                                return;
-                            }
-                            // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
-                            if (dtpFechaInscripcionSuperioresInicio.Value.Month < 2 || dtpFechaInscripcionSuperioresFinal.Value.Month > 4)
-                            {
-                                DialogResult confirm = MessageBox.Show(
-                                    "Las fechas ingresadas no corresponden al período de Cursos superiores Marzo.\n¿Desea continuar de todas formas?",
-                                    "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                                if (confirm == DialogResult.No) return;
-                            }
-                            cicloLectivosLogica.AgregarFechaInscripcionSuperiores(CicloLectivo);
+                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Inscripción a Cursos Superiores");
+                            return;
                         }
-                        CargaFinal();
+                        // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
+                        if (dtpFechaInscripcionSuperioresInicio.Value.Month < 2 || dtpFechaInscripcionSuperioresFinal.Value.Month > 4)
+                        {
+                            DialogResult confirm = MessageBox.Show(
+                                "Las fechas ingresadas no corresponden al período de Cursos superiores Marzo.\n¿Desea continuar de todas formas?",
+                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (confirm == DialogResult.No) return;
+                        }
+                        cicloLectivosLogica.AgregarFechaInscripcionSuperiores(CicloLectivo);
                     }
+                    CargaFinal();
                 }
+
 
             }
             else
@@ -590,32 +589,31 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             if (CicloLectivo.Errores.Count == 0)
             {
-                if (this.Accion == TipoAccion.Modificar)
+
+                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (turnoId == 1)
                     {
-                        if (turnoId == 1)
+                        // Verifica que los campos de Marzo tengan fecha cargada
+                        if (dtpFechaMarzoInicio.CustomFormat == " " || dtpFechaMarzoFinal.CustomFormat == " ")
                         {
-                            // Verifica que los campos de Marzo tengan fecha cargada
-                            if (dtpFechaMarzoInicio.CustomFormat == " " || dtpFechaMarzoFinal.CustomFormat == " ")
-                            {
-                                Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Marzo");
-                                return;
-                            }
-                            // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
-                            if (dtpFechaMarzoInicio.Value.Month < 2 || dtpFechaMarzoInicio.Value.Month > 4)
-                            {
-                                DialogResult confirm = MessageBox.Show(
-                                    "Las fechas ingresadas no corresponden al período de Finales Marzo.\n¿Desea continuar de todas formas?",
-                                    "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                                if (confirm == DialogResult.No) return;
-                            }
-                            cicloLectivosLogica.AgregarFechaFinalesMarzo(CicloLectivo);
+                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Marzo");
+                            return;
                         }
-                        CargaFinal();
+                        // Valida que las fechas correspondan al mes esperado (feb, mar, abril)
+                        if (dtpFechaMarzoInicio.Value.Month < 2 || dtpFechaMarzoInicio.Value.Month > 4)
+                        {
+                            DialogResult confirm = MessageBox.Show(
+                                "Las fechas ingresadas no corresponden al período de Finales Marzo.\n¿Desea continuar de todas formas?",
+                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (confirm == DialogResult.No) return;
+                        }
+                        cicloLectivosLogica.AgregarFechaFinalesMarzo(CicloLectivo);
                     }
+                    CargaFinal();
                 }
+
             }
             else
             {
@@ -632,32 +630,31 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             if (CicloLectivo.Errores.Count == 0)
             {
-                if (this.Accion == TipoAccion.Modificar)
+
+                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (turnoId == 2)
                     {
-                        if (turnoId == 2)
+                        // Verifica que los campos de Julio tengan fecha cargada
+                        if (dtpFechaJunioInicio.CustomFormat == " " || dtpFechaJunioFinal.CustomFormat == " ")
                         {
-                            // Verifica que los campos de Julio tengan fecha cargada
-                            if (dtpFechaJunioInicio.CustomFormat == " " || dtpFechaJunioFinal.CustomFormat == " ")
-                            {
-                                Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Julio");
-                                return;
-                            }
-                            // Valida que las fechas correspondan al mes esperado (jun, jul, ago)
-                            if (dtpFechaJunioInicio.Value.Month < 6 || dtpFechaJunioInicio.Value.Month > 8)
-                            {
-                                DialogResult confirm = MessageBox.Show(
-                                    "Las fechas ingresadas no corresponden al período de Finales Julio.\n¿Desea continuar de todas formas?",
-                                    "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                                if (confirm == DialogResult.No) return;
-                            }
-                            cicloLectivosLogica.AgregarFechaFinalesJulio(CicloLectivo);
+                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Julio");
+                            return;
                         }
-                        CargaFinal();
+                        // Valida que las fechas correspondan al mes esperado (jun, jul, ago)
+                        if (dtpFechaJunioInicio.Value.Month < 6 || dtpFechaJunioInicio.Value.Month > 8)
+                        {
+                            DialogResult confirm = MessageBox.Show(
+                                "Las fechas ingresadas no corresponden al período de Finales Julio.\n¿Desea continuar de todas formas?",
+                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (confirm == DialogResult.No) return;
+                        }
+                        cicloLectivosLogica.AgregarFechaFinalesJulio(CicloLectivo);
                     }
+                    CargaFinal();
                 }
+
             }
             else
             {
@@ -676,34 +673,33 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             if (CicloLectivo.Errores.Count == 0)
             {
-                if (this.Accion == TipoAccion.Modificar)
+
+                dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?", "Inscripción a finales", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (turnoId == 3)
                     {
-                        if (turnoId == 3)
+                        // Verifica que los campos de Diciembre tengan fecha cargada
+                        if (dtpFechaDiciembreInicio1.CustomFormat == " " || dtpFechaDiciembreFinal.CustomFormat == " ")
                         {
-                            // Verifica que los campos de Diciembre tengan fecha cargada
-                            if (dtpFechaDiciembreInicio1.CustomFormat == " " || dtpFechaDiciembreFinal.CustomFormat == " ")
-                            {
-                                Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Diciembre");
-                                return;
-                            }
-                            // Valida que las fechas correspondan al mes esperado (nov, dic)
-                            if (dtpFechaDiciembreInicio1.Value.Month < 11 || dtpFechaDiciembreInicio1.Value.Month > 12)
-                            {
-                                DialogResult confirm = MessageBox.Show(
-                                    "Las fechas ingresadas no corresponden al período de Finales Diciembre.\n¿Desea continuar de todas formas?",
-                                    "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                                if (confirm == DialogResult.No) return;
-                            }
-                            // Se asigna FechaDiciembreInicio solo cuando realmente se va a guardar Diciembre
-                            CicloLectivo.FechaDiciembreInicio = dtpFechaDiciembreInicio1.Value;
-                            cicloLectivosLogica.AgregarFechaFinalesDiciembre(CicloLectivo);
+                            Notificar(TipoNotificacion.Information, "Ingrese las fechas de Finales Diciembre");
+                            return;
                         }
-                        CargaFinal();
+                        // Valida que las fechas correspondan al mes esperado (nov, dic)
+                        if (dtpFechaDiciembreInicio1.Value.Month < 11 || dtpFechaDiciembreInicio1.Value.Month > 12)
+                        {
+                            DialogResult confirm = MessageBox.Show(
+                                "Las fechas ingresadas no corresponden al período de Finales Diciembre.\n¿Desea continuar de todas formas?",
+                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (confirm == DialogResult.No) return;
+                        }
+                        // Se asigna FechaDiciembreInicio solo cuando realmente se va a guardar Diciembre
+                        CicloLectivo.FechaDiciembreInicio = dtpFechaDiciembreInicio1.Value;
+                        cicloLectivosLogica.AgregarFechaFinalesDiciembre(CicloLectivo);
                     }
+                    CargaFinal();
                 }
+
             }
             else
             {
