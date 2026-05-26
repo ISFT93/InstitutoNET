@@ -586,36 +586,33 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
             var cicloLectivo = this.MapToModel<CicloLectivoModelo>();
 
-            if (cicloLectivo.Errores.Count == 0)
-            {
-
-                var dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?",
-                                         "Inscripción a finales", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    if (this.turnoId == turnoId)
-                    {
-                        if (dtpInicio.CustomFormat == " " || dtpFinal.CustomFormat == " ")
-                        {
-                            Notificar(TipoNotificacion.Information, $"Ingrese las fechas de {nombre}");
-                            return;
-                        }
-                        if (dtpInicio.Value.Month < mesMinimo || dtpInicio.Value.Month > mesMaximo)
-                        {
-                            var confirm = MessageBox.Show(
-                                $"Las fechas ingresadas no corresponden al período de {nombre}.\n¿Desea continuar de todas formas?",
-                                "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (confirm == DialogResult.No) return;
-                        }
-                        guardarFecha(cicloLectivo);
-                    }
-                    CargaFinal();
-                }
-            }
-            else
+            if (cicloLectivo.Errores.Count > 0)
             {
                 this.MostrarErrores(epvCicloLectivo, cicloLectivo.Errores);
+                return;
             }
+
+            var dr = MessageBox.Show("¿Desea cargar las fechas de inscripción a finales?",
+                                     "Inscripción a finales", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes) return;
+
+            if (this.turnoId != turnoId) return;
+
+            if (dtpInicio.CustomFormat == " " || dtpFinal.CustomFormat == " ")
+            {
+                Notificar(TipoNotificacion.Information, $"Ingrese las fechas de {nombre}");
+                return;
+            }
+            if (dtpInicio.Value.Month < mesMinimo || dtpInicio.Value.Month > mesMaximo)
+            {
+                var confirm = MessageBox.Show(
+                    $"Las fechas ingresadas no corresponden al período de {nombre}.\n¿Desea continuar de todas formas?",
+                    "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirm == DialogResult.No) return;
+            }
+            guardarFecha(cicloLectivo);
+            CargaFinal();
+
         }
 
         private void CargaFinal()
