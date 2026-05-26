@@ -603,7 +603,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                 Notificar(TipoNotificacion.Information, $"Ingrese las fechas de {nombre}");
                 return;
             }
-            if (dtpInicio.Value.Month < mesMinimo || dtpInicio.Value.Month > mesMaximo)
+            if (dtpInicio.Value.Month < mesMinimo || dtpInicio.Value.Month > mesMaximo || dtpFinal.Value.Month < mesMinimo || dtpFinal.Value.Month > mesMaximo)
             {
                 var confirm = MessageBox.Show(
                     $"Las fechas ingresadas no corresponden al período de {nombre}.\n¿Desea continuar de todas formas?",
