@@ -29,5 +29,10 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.cursadasDao.ObtenerDatosCursadaByCursadaAlumnoCarreraId(CursadaAlumnoCarreraId);
         }
+
+        public int? ObtenerCursadaIdPorFiltros(int cursoId, int materiaId, int anioLectivo)
+        {
+            return this.cursadasDao.ObtenerCursadaIdPorFiltros(cursoId, materiaId, anioLectivo);
+        }
     }
 }

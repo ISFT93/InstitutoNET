@@ -41,7 +41,7 @@
             this.panelCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecera.Location = new System.Drawing.Point(0, 0);
             this.panelCabecera.Name = "panelCabecera";
-            this.panelCabecera.Size = new System.Drawing.Size(842, 50);
+            this.panelCabecera.Size = new System.Drawing.Size(1283, 50);
             this.panelCabecera.TabIndex = 0;
             this.panelCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCabecera_Paint);
             // 
@@ -65,17 +65,18 @@
             this.flpContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpContenedor.Location = new System.Drawing.Point(0, 50);
             this.flpContenedor.Name = "flpContenedor";
-            this.flpContenedor.Size = new System.Drawing.Size(842, 566);
+            this.flpContenedor.Size = new System.Drawing.Size(1283, 566);
             this.flpContenedor.TabIndex = 1;
+            this.flpContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContenedor_Paint);
             // 
-            // uscMostrarTabla
+            // uscMostrarCargos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flpContenedor);
             this.Controls.Add(this.panelCabecera);
-            this.Name = "uscMostrarTabla";
-            this.Size = new System.Drawing.Size(842, 616);
+            this.Name = "uscMostrarCargos";
+            this.Size = new System.Drawing.Size(1283, 616);
             this.Load += new System.EventHandler(this.uscMostrarTabla_Load);
             this.panelCabecera.ResumeLayout(false);
             this.panelCabecera.PerformLayout();

@@ -26,14 +26,6 @@
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>DSHistorialAsistenciasAlumno</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\el gringo\Desktop\IS93\PRACT.PROF\instituto\Diseño\Core\DataSource\DSHistorialAsistenciasAlumno.xsd</rd:SchemaPath>
-        <rd:TableName>Historial Alumno</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod />
-        <rd:TableAdapterName />
-      </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <ReportSections>

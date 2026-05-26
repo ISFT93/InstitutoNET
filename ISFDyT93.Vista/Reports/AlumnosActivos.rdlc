@@ -32,7 +32,6 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSInstituto</rd:DataSetName>
-        <rd:SchemaPath>F:\Visual Studio\instituto\Diseño\Core\DataSource\DSInstituto.xsd</rd:SchemaPath>
         <rd:TableName>Alumnos</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

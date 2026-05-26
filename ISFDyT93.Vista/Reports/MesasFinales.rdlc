@@ -50,14 +50,6 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>DSInstituto</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\lauta\Documents\Visual Studio 2022\Projects\instituto\ISFDyT93.Vista\Core\DataSource\DSInstituto.xsd</rd:SchemaPath>
-        <rd:TableName>MesasFinales</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>MesasFinalesTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <ReportSections>
