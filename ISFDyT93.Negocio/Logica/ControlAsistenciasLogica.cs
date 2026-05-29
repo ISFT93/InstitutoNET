@@ -36,6 +36,20 @@ namespace ISFDyT93.Negocio.Logica
             return dt;
         }
 
+        public DataTable ObtenerResumenAsistenciasAlumnos(AsistenciasModelo modelo)
+        {
+            DataTable dt = new DataTable();
+            dt = this.controlAsistenciasDao.ObtenerResumenAsistenciasAlumnos(modelo);
+            return dt;
+        }
+
+        public DataTable ObtenerResumenCursada(AsistenciasModelo modelo)
+        {
+            DataTable dt = new DataTable();
+            dt = this.controlAsistenciasDao.ObtenerResumenCursada(modelo);
+            return dt;
+        }
+
         public DataRow CargarProfesor()
         {
             return this.controlAsistenciasDao.CargarProfesor();
