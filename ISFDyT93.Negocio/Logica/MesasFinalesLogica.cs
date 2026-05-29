@@ -126,5 +126,10 @@ namespace ISFDyT93.Negocio.Logica
 
             return dr.CopyToDataTable();
         }
+
+        public DataTable ObtenerAlumnosPorMateria(int materiaId, int cicloLectivoId)
+        {
+            return this.mesasFinalesDao.ObtenerAlumnosPorMateria(materiaId, cicloLectivoId);
+        }
     }
 }

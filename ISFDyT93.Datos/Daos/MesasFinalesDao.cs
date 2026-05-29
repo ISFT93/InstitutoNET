@@ -159,5 +159,19 @@ namespace ISFDyT93.Datos.Daos
             var query = "select * from Llamados";
             return this.Conexion.ObtenerRegistros(query);
         }
+
+        public DataTable ObtenerAlumnosPorMateria(int materiaId, int cicloLectivoId)
+        {
+            var query = "SELECT a.AlumnoId, UPPER(a.Apellido) AS Apellido, a.Nombre, a.NumeroDocumento, a.Email, a.Telefono " +
+                "FROM Materias ma " +
+                "INNER JOIN CursoMaterias cm ON ma.MateriaId = cm.MateriaId " +
+                "INNER JOIN Cursadas cu ON cu.CursoMateriaId = cm.CursoMateriaId " +
+                "INNER JOIN CursadaAlumnoCarreras cac ON cac.CursadaId = cu.CursadaId " +
+                "INNER JOIN AlumnosCarreras ac ON cac.AlumnoCarreraId = ac.AlumnoCarreraId " +
+                "INNER JOIN Alumnos a ON a.AlumnoId = ac.AlumnoId " +
+                $"WHERE ma.MateriaId = {materiaId} AND cu.AnioLectivo = {cicloLectivoId} AND cac.Activo = 1 " +
+                "ORDER BY a.Apellido, a.Nombre";
+            return this.Conexion.ObtenerRegistros(query);
+        }
     }
 }

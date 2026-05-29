@@ -24,5 +24,6 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId);
         DataTable ExistenFechasFinales(int anioLectivo);
         DataTable ObtenerLlamados();
+        DataTable ObtenerAlumnosPorMateria(int materiaId, int cicloLectivoId);
     }
 }

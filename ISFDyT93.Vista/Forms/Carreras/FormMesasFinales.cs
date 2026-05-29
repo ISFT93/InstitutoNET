@@ -452,15 +452,77 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Contenedor.AbrirFormulario<FormModificacionActa>();
-            this.Contenedor.SetTitulo("Acta de mesas de exàmen");
+            int mesaFinalId = 0;
+            int materiaId = 0;
+            string nombreMateria = "";
+            string nombreProfesor = "";
+            string nombreVocal = "";
+            DateTime fechaMesa = DateTime.MinValue;
+
+            if (dgvMesasFinales.SelectedRows.Count > 0)
+            {
+                var row = dgvMesasFinales.SelectedRows[0];
+                mesaFinalId = (int)row.Cells["MesaFinalId"].Value;
+                nombreMateria = row.Cells["Materia"].Value?.ToString() ?? "";
+                nombreProfesor = row.Cells["Titular"].Value?.ToString() ?? "";
+                nombreVocal = row.Cells["Vocal"].Value?.ToString() ?? "";
+                if (row.Cells["Fecha"].Value != null && row.Cells["Fecha"].Value != DBNull.Value)
+                    fechaMesa = Convert.ToDateTime(row.Cells["Fecha"].Value);
+            }
+            else if (cmbMateria.SelectedValue != null && int.TryParse(cmbMateria.SelectedValue.ToString(), out int midFiltro))
+            {
+                materiaId = midFiltro;
+                nombreMateria = cmbMateria.Text;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una materia de la grilla o aplicar un filtro de materia.", "Atenci\u00f3n", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (mesaFinalId > 0)
+            {
+                var dtMateria = mesasFinalesLogica.ObtenerMateriaFinal(mesaFinalId);
+                if (dtMateria.Rows.Count > 0)
+                {
+                    materiaId = (int)dtMateria.Rows[0]["MateriaId"];
+                    if (string.IsNullOrEmpty(nombreMateria))
+                        nombreMateria = dtMateria.Rows[0]["Nombre"].ToString();
+                }
+            }
+
+            if (materiaId <= 0)
+            {
+                MessageBox.Show("No se pudo determinar la materia seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int carreraSeleccionada = this.CarreraId;
+            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
+                carreraSeleccionada = cid;
+
+            string anioCurso = cmbAnio.Text;
+
+            this.Contenedor.AbrirFormulario<FormModificacionActa>(form =>
+            {
+                form.MesaFinalId = mesaFinalId;
+                form.MateriaId = materiaId;
+                form.NombreMateria = nombreMateria;
+                form.CarreraId = carreraSeleccionada;
+                form.NombreCarrera = this.NombreCarrera;
+                form.AnioCurso = anioCurso;
+                form.CicloLectivoId = anioLectivoId;
+                form.FechaMesa = fechaMesa;
+                form.NombreProfesor = nombreProfesor;
+                form.NombreVocal = nombreVocal;
+            });
+
+            this.Contenedor.SetTitulo("Acta de mesas de ex\u00e1men");
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormMesasFinales>();
             });
-
         }
-        //Boton imprimir acta de mesa de examen, abre el formulario de actas de examen, se setea el titulo del contenedor y se abre el formulario
 
         private void ResetCadenaCarrera()
         {
