@@ -61,7 +61,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             }
             // **Mensaje de confirmación antes de guardar**
             DialogResult confirmacion = MessageBox.Show(
-                "¿Está seguro de que desea guardar los datos?",
+                $"¿Está seguro de que desea guardar los siguientes datos?\nCargo: {txtNombre.Text}\nCarga horaria:{cargaHoraria}\nAsignación: {cmbTipoAsignacion.Text}\nAplicación: {cmbTipoAplicacion.Text}",
                 "Confirmación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -86,7 +86,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.DialogResult = DialogResult.OK;   //agreguen esto
             this.Close(); //agrueguen esto
 
-            DialogResult resultado = MessageBox.Show("Cargo agregado correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult resultado = MessageBox.Show($"Cargo {txtNombre.Text} agregado correctamente.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (resultado == DialogResult.OK)
             {
                 //cierra todo el formulario cuando se le da a "ok" en el cartelito despues de introducir un dato

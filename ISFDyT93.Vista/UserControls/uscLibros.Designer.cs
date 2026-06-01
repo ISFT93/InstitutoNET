@@ -1,6 +1,6 @@
 ﻿namespace ISFDyT93.Vista.UserControls
 {
-    partial class uscCargos
+    partial class uscLibros
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -29,22 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscCargos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscLibros));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.picMover = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.dgvLibros = new System.Windows.Forms.DataGridView();
             this.picAgregar = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.agregarCargos = new System.Windows.Forms.ToolStripMenuItem();
+            this.opcionAgregarNuevoLibro = new System.Windows.Forms.ToolStripMenuItem();
+            this.opcionActualizarLibro = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
+            this.pnlContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).BeginInit();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -60,9 +66,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 100);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(718, 437);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // picMover
             // 
@@ -79,33 +84,63 @@
             // 
             // lblTitulo
             // 
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitulo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(25, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(209, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(668, 30);
             this.lblTitulo.TabIndex = 6;
-            this.lblTitulo.Text = "Cargos Disponibles";
+            this.lblTitulo.Text = "Libros de actas";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // pnlContenedor
             // 
+            this.pnlContenedor.AutoScroll = true;
+            this.pnlContenedor.BackColor = System.Drawing.Color.Gray;
+            this.pnlContenedor.Controls.Add(this.dgvLibros);
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenedor.Location = new System.Drawing.Point(22, 30);
             this.pnlContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(215, 60);
+            this.pnlContenedor.Size = new System.Drawing.Size(674, 397);
             this.pnlContenedor.TabIndex = 7;
-            this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
+            // 
+            // dgvLibros
+            // 
+            this.dgvLibros.AllowUserToAddRows = false;
+            this.dgvLibros.AllowUserToResizeRows = false;
+            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLibros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLibros.Location = new System.Drawing.Point(0, 0);
+            this.dgvLibros.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvLibros.MultiSelect = false;
+            this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.ReadOnly = true;
+            this.dgvLibros.RowHeadersVisible = false;
+            this.dgvLibros.RowTemplate.DividerHeight = 1;
+            this.dgvLibros.RowTemplate.Height = 30;
+            this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLibros.Size = new System.Drawing.Size(674, 397);
+            this.dgvLibros.TabIndex = 5;
             // 
             // picAgregar
             // 
             this.picAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAgregar.Image = ((System.Drawing.Image)(resources.GetObject("picAgregar.Image")));
-            this.picAgregar.Location = new System.Drawing.Point(237, 0);
+            this.picAgregar.Location = new System.Drawing.Point(696, 0);
             this.picAgregar.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.picAgregar.Name = "picAgregar";
             this.picAgregar.Size = new System.Drawing.Size(19, 30);
@@ -113,37 +148,49 @@
             this.picAgregar.TabIndex = 8;
             this.picAgregar.TabStop = false;
             this.picAgregar.Visible = false;
-            this.picAgregar.Click += new System.EventHandler(this.picAgregar_Click);
             // 
             // menu
             // 
             this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarCargos});
+            this.opcionAgregarNuevoLibro,
+            this.opcionActualizarLibro});
             this.menu.Name = "contextMenuStrip1";
-            this.menu.Size = new System.Drawing.Size(189, 56);
+            this.menu.Size = new System.Drawing.Size(227, 64);
             // 
-            // agregarCargos
+            // opcionAgregarNuevoLibro
             // 
-            this.agregarCargos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.agregarCargos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agregarCargos.ForeColor = System.Drawing.Color.White;
-            this.agregarCargos.Image = ((System.Drawing.Image)(resources.GetObject("agregarCargos.Image")));
-            this.agregarCargos.Name = "agregarCargos";
-            this.agregarCargos.Size = new System.Drawing.Size(188, 30);
-            this.agregarCargos.Text = "Agregar Cargo";
+            this.opcionAgregarNuevoLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.opcionAgregarNuevoLibro.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opcionAgregarNuevoLibro.ForeColor = System.Drawing.Color.White;
+            this.opcionAgregarNuevoLibro.Image = ((System.Drawing.Image)(resources.GetObject("opcionAgregarNuevoLibro.Image")));
+            this.opcionAgregarNuevoLibro.Name = "opcionAgregarNuevoLibro";
+            this.opcionAgregarNuevoLibro.Size = new System.Drawing.Size(226, 30);
+            this.opcionAgregarNuevoLibro.Text = "Agregar nuevo libro";
             // 
-            // uscCargos
+            // opcionActualizarLibro
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.opcionActualizarLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.opcionActualizarLibro.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opcionActualizarLibro.ForeColor = System.Drawing.Color.White;
+            this.opcionActualizarLibro.Image = global::ISFDyT93.Vista.Properties.Resources.edit_solid;
+            this.opcionActualizarLibro.Name = "opcionActualizarLibro";
+            this.opcionActualizarLibro.Size = new System.Drawing.Size(226, 30);
+            this.opcionActualizarLibro.Text = "Actualizar libro";
+            // 
+            // uscLibros
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "uscCargos";
-            this.Size = new System.Drawing.Size(259, 100);
-            this.Load += new System.EventHandler(this.uscCargos_Load);
+            this.Name = "uscLibros";
+            this.Size = new System.Drawing.Size(718, 437);
+            this.Load += new System.EventHandler(this.uscLibros_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();
+            this.pnlContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).EndInit();
             this.menu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -157,7 +204,9 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlContenedor;
         private System.Windows.Forms.PictureBox picAgregar;
+        private System.Windows.Forms.DataGridView dgvLibros;
         private System.Windows.Forms.ContextMenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem agregarCargos;
+        private System.Windows.Forms.ToolStripMenuItem opcionAgregarNuevoLibro;
+        private System.Windows.Forms.ToolStripMenuItem opcionActualizarLibro;
     }
 }

@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="cmsPyA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnGuardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAATFJREFUSEvtlMFNAzEQRbeECBrgCic40QRCuXDgAukA0UFqoAEkxJ0CkKAESiDi
+        hkCiAmTeH88ucbLrrJ1rnvS1nvF8f2dXSrOjmBDCBJ2j2QhduW0cGHT4CyrhE+35EXkYvDRLCI9IN3y3
+        av3mcyQ+/PmNjvyYYRiSWcy8flNhm0vQOlYf7tFdXIYFyocwUBzgdRvyZQNDMNAbALrpsp6QsADBuu0N
+        f3g2VwN0WI65GYF14u1Fm3Hmf4i1XkevfMSgrgsYizzRWhlA7xb9oF904+0OeZAoD6A+je2EA982qLcK
+        uI7thNWZrQL2Y7tDr+rQtw3q+gBB7wS9omc09XaHPEjUBWxCnmjNB0zjjN1UhhI9ILH26xIYaP8eapB3
+        4kcNw9AF6rtlTmdo8+E7UprmDwvvM+EPWI7oAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

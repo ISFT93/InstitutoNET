@@ -102,15 +102,35 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId)
+        public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0)
         {
-            var query = "select Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, FinEst.Descripcion as 'Estado' " +
+            var query = "select distinct Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, FinEst.Descripcion as 'Estado' " +
                 "from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId " +
                 "inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId " +
                 "inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId " +
                 "inner join FinalEstados FinEst on Fi.FinalEstadoId = FinEst.FinalEstadoId " +
                 "left join Personal Pe on Fi.PresidenteId = Pe.PersonalId " +
-                $"left join Personal Voc on Fi.VocalId = Voc.PersonalId where Fi.CarreraId = {carreraId} and Fi.CicloLectivoId = {anioLectivoId} and Fi.TurnoId = {turnoId} and Fi.LlamadoId = {llamadoId}";
+                "left join Personal Voc on Fi.VocalId = Voc.PersonalId " +
+                "left join CursoMaterias cm on Ma.MateriaId = cm.MateriaId " +
+                "where 1=1 ";
+
+            if (carreraId > 0)
+                query += $" and Fi.CarreraId = {carreraId}";
+            if (anioLectivoId > 0)
+                query += $" and Fi.CicloLectivoId = {anioLectivoId}";
+            if (turnoId > 0)
+                query += $" and Fi.TurnoId = {turnoId}";
+            if (llamadoId > 0)
+                query += $" and Fi.LlamadoId = {llamadoId}";
+            if (anioCarreraId > 0)
+                query += $" and Ma.AnioCarreraId = {anioCarreraId}";
+            if (cursoId > 0)
+                query += $" and cm.CursoId = {cursoId}";
+            if (materiaId > 0)
+                query += $" and Fi.MateriaId = {materiaId}";
+            if (profesorId > 0)
+                query += $" and Fi.PresidenteId = {profesorId}";
+
             return this.Conexion.ObtenerRegistros(query);
         }
 

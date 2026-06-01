@@ -8,6 +8,7 @@ using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Datos.Daos;
 using System.Diagnostics;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 
 
 namespace ISFDyT93.Vista.Forms.Carreras
@@ -49,7 +50,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var dr = controlAsistenciasLogica.CargarProfesor();
             txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
 
-            this.RellenarGrilla();
+            //this.RellenarGrilla();
+       
+           
             ///
             cmbCarrera.DataSource = null;
             cmbCarrera.Items.Clear();
@@ -75,7 +78,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbAnio.Enabled = false;
             cmbCurso.Enabled = false;
             cmbMateria.Enabled = false;
-            cmbCicloLectivo.Enabled = false;
+           
 
         }
 
@@ -485,9 +488,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbMateria.SelectedIndex = -1;
             cmbMateria.Enabled = false;
 
-            cmbCicloLectivo.DataSource = null;
-            cmbCicloLectivo.SelectedIndex = -1;
-            cmbCicloLectivo.Enabled = false;
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
 
             if (cmbAnio.SelectedValue == null) return;
 
@@ -523,7 +526,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbCicloLectivo.DataSource = dt;
             cmbCicloLectivo.ValueMember = "AnioLectivo";
             cmbCicloLectivo.DisplayMember = "AnioLectivo";
-            cmbCicloLectivo.SelectedIndex = -1;
         }
 
         private void cmbCicloLectivo_DropDown(object sender, EventArgs e)
@@ -531,6 +533,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (ciclosLectivosCargados) return;
             CargarCiclosLectivos();
             ciclosLectivosCargados = true;
+
+            
         }
 
         private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
@@ -539,9 +543,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbMateria.SelectedIndex = -1;
             cmbMateria.Enabled = false;
 
-            cmbCicloLectivo.DataSource = null;
-            cmbCicloLectivo.SelectedIndex = -1;
-            cmbCicloLectivo.Enabled = false;
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
 
             if (cmbCurso.SelectedValue == null) return;
 
@@ -563,11 +567,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             cmbCicloLectivo.Enabled = true;
         }
-
-        private void btnAplicarFiltros_Click(object sender, EventArgs e)
-        {
-            this.RellenarGrilla();
-        }
+        //
+        //private void btnAplicarFiltros_Click(object sender, EventArgs e)
+        //{
+        //    this.RellenarGrilla();
+        //}
 
         private ServiciosDao _serviciosDao = new ServiciosDao();
 
@@ -630,9 +634,88 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbMateria.SelectedIndex = -1;
             cmbMateria.Enabled = false;
 
-            cmbCicloLectivo.DataSource = null;
-            cmbCicloLectivo.SelectedIndex = -1;
-            cmbCicloLectivo.Enabled = false;
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
         }
+
+        private void btnFiltrarAsistencias_Click(object sender, EventArgs e)
+        {
+            this.RellenarGrilla();
+        }
+
+        private void btnFiltrarEvaluaciones_Click(object sender, EventArgs e)
+        {
+            this.LimpiarGrilla();
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            this.LimpiarFiltros();
+            this.LimpiarGrilla();
+        }
+
+        private void LimpiarGrilla()
+        {
+            
+            dgvAsistencias.DataSource = null;
+            dgvAsistencias.Rows.Clear();
+            dgvAsistencias.ClearSelection();
+
+            this.LimpiarControlesInformativos();
+        }
+
+        private void LimpiarFiltros()
+        {
+            _enCambioCombos = true;
+
+            cmbCarrera.DataSource = null;
+            cmbCarrera.Items.Clear();
+            cmbCarrera.Text = string.Empty;
+            cmbCarrera.SelectedIndex = -1;
+
+            cmbProfesor.DataSource = null;
+            cmbProfesor.Items.Clear();
+            cmbProfesor.Text = string.Empty;
+            cmbProfesor.SelectedIndex = -1;
+
+            cmbAnio.DataSource = null;
+            cmbAnio.Items.Clear();
+            cmbAnio.Text = string.Empty;
+            cmbAnio.SelectedIndex = -1;
+            cmbAnio.Enabled = false;
+
+            cmbCurso.DataSource = null;
+            cmbCurso.Items.Clear();
+            cmbCurso.Text = string.Empty;
+            cmbCurso.SelectedIndex = -1;
+            cmbCurso.Enabled = false;
+
+            cmbMateria.DataSource = null;
+            cmbMateria.Items.Clear();
+            cmbMateria.Text = string.Empty;
+            cmbMateria.SelectedIndex = -1;
+            cmbMateria.Enabled = false;
+
+            //cmbCicloLectivo.DataSource = null;
+            //cmbCicloLectivo.Items.Clear();
+            //cmbCicloLectivo.Text = string.Empty;
+            //cmbCicloLectivo.SelectedIndex = -1;
+            //cmbCicloLectivo.Enabled = false;
+
+            carrerasCargadas = false;
+            profesoresCargados = false;
+            ciclosLectivosCargados = false;
+
+            _enCambioCombos = false;
+        }
+
+        private void FormControlAsistencias_Shown(object sender, EventArgs e)
+        {
+            CargarCiclosLectivos();
+
+            cmbCicloLectivo.SelectedIndex = 0;
+        }
+
     }
 }

@@ -193,7 +193,7 @@ namespace ISFDyT93.Vista.Forms
         private void btnMesasFinales_Click(object sender, EventArgs e)
         {
             this.ActivarBoton(sender, ThemeColor.GetColor());
-            AbrirFormulario<FormControlMesasFinales>();
+            AbrirFormulario<FormMesasFinales>();
         }
     }
 }
