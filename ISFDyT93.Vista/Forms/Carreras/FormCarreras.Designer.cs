@@ -114,17 +114,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelativas.Text = "Ver Correlativas";
             this.tsmVerCorrelativas.Click += new System.EventHandler(this.tsmVerCorrelativas_Click);
             // 
-            // tsmVerFinales
-            // 
-            this.tsmVerFinales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmVerFinales.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tsmVerFinales.ForeColor = System.Drawing.Color.White;
-            this.tsmVerFinales.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
-            this.tsmVerFinales.Name = "tsmVerFinales";
-            this.tsmVerFinales.Size = new System.Drawing.Size(246, 30);
-            this.tsmVerFinales.Text = "Ver Mesas Finales";
-            this.tsmVerFinales.Click += new System.EventHandler(this.tsmVerFinales_Click);
-            // 
             // tsmVerEquivalencias
             // 
             this.tsmVerEquivalencias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
