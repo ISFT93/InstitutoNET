@@ -12,13 +12,14 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerMaterias(int anioCarreraId, bool activo = true)
         {
-            string query = "SELECT Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria AS [Carga Horaria], Esp.Descripcion AS [Descripción], Mat.EspacioId,  COUNT(Cor.MateriaId) As Correlativas " +
+            string query = "SELECT Mat.MateriasCodigoBloque AS [Código], Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, " +
+                "Mat.CargaHoraria AS [Carga Horaria], Esp.Descripcion AS [Descripción], Mat.EspacioId,  COUNT(Cor.MateriaId) As Correlativas " +
                 "FROM Materias as Mat " +
                 "INNER JOIN Espacios as Esp ON Esp.EspacioId = Mat.EspacioId " +
                 "LEFT JOIN Correlativas as Cor ON Cor.MateriaId = Mat.MateriaId " +
                 $"WHERE AnioCarreraId = {anioCarreraId} AND Activo = {(activo ? "1" : "0")} " +
-                "GROUP BY Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId " +
-                "ORDER BY Mat.EspacioId";
+                "GROUP BY Mat.MateriasCodigoBloque, Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId " +
+                "ORDER BY Mat.MateriasCodigoBloque";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -182,6 +183,54 @@ namespace ISFDyT93.Datos.Daos
                 $"WHERE c.AnioLectivo = {AnioLectivo} and cm.CursoId = {CursoId}";
 
             return this.Conexion.ObtenerRegistros(query);
+        }
+
+
+        public string CreaMateriaCodigoBloque(int anioCarreraId)
+        {
+            string query1 = "SELECT AniosCarrerasCodigoBloque FROM AniosCarreras WHERE AnioCarreraId = " + anioCarreraId;
+            var row = this.Conexion.ObtenerRegistro(query1);
+            string codAnioCarrera = row["AniosCarrerasCodigoBloque"].ToString();
+
+            string query2 = "SELECT COUNT(*) AS Resultado FROM Materias WHERE AnioCarreraId = " + anioCarreraId;
+            var row2 = this.Conexion.ObtenerRegistro(query2);
+            int res = Convert.ToInt32(row2["Resultado"]) + 1;
+
+            return codAnioCarrera + res.ToString("D2");
+        }
+
+
+        public void RenumerarCodigoBloque(int anioCarreraId)
+        {
+            //Obtiene la parte del codigo de bloque que pertenece a anioscarreras.
+            string query1 = "SELECT AniosCarrerasCodigoBloque FROM AniosCarreras WHERE AnioCarreraId = " + anioCarreraId;
+            var row = this.Conexion.ObtenerRegistro(query1);
+            string codAnioCarrera = row["AniosCarrerasCodigoBloque"].ToString();
+
+            //Renumera los codigo de bloque para la materias que en su codigo de bloque
+            //comienze por los mismo digitos que el codigo de bloque de anioscarreras.
+            string query2 = $@";WITH Codigos AS (
+                            SELECT
+                                AC.AnioCarreraId,
+                                M.CarreraId,
+                                M.MateriaId,                             
+                            '{codAnioCarrera}'+
+                            FORMAT(
+                            ROW_NUMBER() OVER(
+                                PARTITION BY AC.CarreraId, AC.AnioCarreraId
+                                ORDER BY M.MateriaId
+                                        ), '00'
+                                    ) AS MateriasCodigoBloque
+                                FROM AniosCarreras AC
+                                INNER JOIN Materias M ON AC.AnioCarreraId = M.AnioCarreraId
+                            )
+                            UPDATE M
+                            SET M.MateriasCodigoBloque = C.MateriasCodigoBloque
+                            FROM Materias M
+                            INNER JOIN Codigos C ON M.MateriaId = C.MateriaId
+                            WHERE M.MateriasCodigoBloque LIKE '{codAnioCarrera}%';";
+
+            Conexion.EjecutarAccion(query2);
         }
     }
 }

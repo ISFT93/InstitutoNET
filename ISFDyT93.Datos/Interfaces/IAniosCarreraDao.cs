@@ -11,7 +11,7 @@ namespace ISFDyT93.Datos.Interfaces
     public interface IAniosCarreraDao
     {
         DataTable ObtenerAniosCarrera(int carreraId);
-        int AgregarAnio(int anioCarrera, int carreraId);
+        int AgregarAnio(int anioCarrera, int carreraId, string aniosCarrerasCodigoBloque);
         int EliminarAnios(int anioCarreraId);
         int ActualizarCargaHoria(int anioCarreraId);
         DataTable ObtenerAnios(int alumnoId);

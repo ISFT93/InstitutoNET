@@ -1,8 +1,10 @@
-﻿using System;
-using System.Data;
-using ISFDyT93.Datos.Core;
-using ISFDyT93.Entidades.Modelos;
+﻿using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Interfaces;
+using ISFDyT93.Entidades.Modelos;
+using System;
+using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -10,13 +12,17 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerAniosCarrera(int carreraId)
         {
-            string query = "SELECT AnioCarreraId,AnioCarrera AS [Año],CantidadMaterias AS [Cantidad de Materias],CargaHorariaCompleta AS [Carga Horaria Completa] FROM AniosCarreras WHERE CarreraId = " + carreraId;
+            string query = "SELECT AniosCarrerasCodigoBloque AS [Código], " +
+                "AnioCarreraId, " +
+                "CantidadMaterias AS [Cantidad de Materias]," +
+                "CargaHorariaCompleta AS [Carga Horaria Completa] " +
+                "FROM AniosCarreras WHERE CarreraId = " + carreraId;
 
             return this.Conexion.ObtenerRegistros(query);
         }
-        public int AgregarAnio(int anioCarrera, int carreraId)
+        public int AgregarAnio(int anioCarrera, int carreraId, string aniosCarrerasCodigoBloque)
         {
-            string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId) VALUES(" + anioCarrera + "," + carreraId + ")";
+            string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId, AniosCarrerasCodigoBloque) VALUES(" + anioCarrera + "," + carreraId + ",'" + aniosCarrerasCodigoBloque + "')";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -28,13 +34,34 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.EjecutarAccion(query);
         }
 
-        public int ActualizarCargaHoria(int anioCarreraId)
+        public int EliminarAniosDeUnaCarrera(int carreraId)
         {
-            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId =" + anioCarreraId + ")," +
-            "CargaHorariaCompleta = (SELECT SUM(CargaHoraria) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") WHERE AnioCarreraId = " + anioCarreraId;
+            string query =
+                "BEGIN TRY" +
+                " BEGIN TRAN;" +
+                "  DELETE c FROM Correlativas AS c INNER JOIN Materias m ON c.MateriaId = m.MateriaId WHERE m.CarreraId = " + carreraId + ";" +
+                "  DELETE FROM Materias WHERE CarreraId = " + carreraId + ";" +
+                "  DELETE FROM AniosCarreras WHERE CarreraId = " + carreraId + ";" +
+                " COMMIT;" +
+                "END TRY" +
+                "  BEGIN CATCH" +
+                "  ROLLBACK;" +
+                "END CATCH;";
 
             return this.Conexion.EjecutarAccion(query);
         }
+
+
+        public int ActualizarCargaHoria(int anioCarreraId)
+        {
+            //Se ingresa 0 en lugar de NULL en la CargaHoraria
+            string query = "UPDATE AniosCarreras SET CantidadMaterias = (SELECT COUNT(MateriaId) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ")," +
+               "CargaHorariaCompleta = (SELECT ISNULL(SUM(CargaHoraria),0) FROM Materias WHERE AnioCarreraId = " + anioCarreraId + ") " +
+               "WHERE AnioCarreraId = " + anioCarreraId;
+
+            return this.Conexion.EjecutarAccion(query);
+        }
+
         public DataTable ObtenerAnios(int alumnoId)
         {
             string query = "SELECT AC.AnioCarreraId, AC.AnioCarrera FROM AniosCarreras AC " +
@@ -62,6 +89,14 @@ namespace ISFDyT93.Datos.Daos
             }
         }
 
+        public int ObtenerIdCarrera(int AnioCarreraId)
+        {
+            string query = "SELECT CarreraId from AniosCarreras where AnioCarreraId=" + AnioCarreraId;
+            var row = this.Conexion.ObtenerRegistro(query);
+            return Convert.ToInt32(row["CarreraId"]);
+
+        }
+
         public DataRow ObtenerCarrera(int AnioCarreraId)
         {
             string query = "SELECT CarreraId from AniosCarreras where AnioCarreraId=" + AnioCarreraId;
@@ -84,6 +119,8 @@ namespace ISFDyT93.Datos.Daos
             }
             return 0;
         }
+
+
 
 
     }

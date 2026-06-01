@@ -13,6 +13,7 @@ namespace ISFDyT93.Entidades.Modelos
         public int CantidadMaterias { get; set; }
         public int CargaHorariaCompleta { get; set; }
         public int CarreraId { get; set; }
+        public string AniosCarrerasCodigoBloque { get; set; }
 
         // Propuedades Extras
 
@@ -20,5 +21,6 @@ namespace ISFDyT93.Entidades.Modelos
         public string NombreCarrera { get; set; }
         [Ignorar]
         public int CarreraEstadoId { get; set; }
+
     }
 }

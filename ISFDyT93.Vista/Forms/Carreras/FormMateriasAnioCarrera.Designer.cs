@@ -55,7 +55,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelatividades,
             this.tsmEliminarMateria});
             this.cmsMaterias.Name = "cmsMaterias";
-            this.cmsMaterias.Size = new System.Drawing.Size(227, 124);
+            this.cmsMaterias.Size = new System.Drawing.Size(268, 124);
             // 
             // tsmAgregarMateria
             // 
@@ -64,7 +64,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAgregarMateria.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarMateria.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarMateria.Image")));
             this.tsmAgregarMateria.Name = "tsmAgregarMateria";
-            this.tsmAgregarMateria.Size = new System.Drawing.Size(226, 30);
+            this.tsmAgregarMateria.Size = new System.Drawing.Size(267, 30);
             this.tsmAgregarMateria.Text = "Agregar";
             this.tsmAgregarMateria.Click += new System.EventHandler(this.tsmAgregarMateria_Click);
             // 
@@ -75,7 +75,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarMateria.ForeColor = System.Drawing.Color.White;
             this.tsmModificarMateria.Image = ((System.Drawing.Image)(resources.GetObject("tsmModificarMateria.Image")));
             this.tsmModificarMateria.Name = "tsmModificarMateria";
-            this.tsmModificarMateria.Size = new System.Drawing.Size(226, 30);
+            this.tsmModificarMateria.Size = new System.Drawing.Size(267, 30);
             this.tsmModificarMateria.Text = "Modificar";
             this.tsmModificarMateria.Click += new System.EventHandler(this.tsmModificarMateria_Click);
             // 
@@ -86,7 +86,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelatividades.ForeColor = System.Drawing.Color.White;
             this.tsmVerCorrelatividades.Image = ((System.Drawing.Image)(resources.GetObject("tsmVerCorrelatividades.Image")));
             this.tsmVerCorrelatividades.Name = "tsmVerCorrelatividades";
-            this.tsmVerCorrelatividades.Size = new System.Drawing.Size(226, 30);
+            this.tsmVerCorrelatividades.Size = new System.Drawing.Size(267, 30);
             this.tsmVerCorrelatividades.Text = "Ver Correlatividades";
             this.tsmVerCorrelatividades.Click += new System.EventHandler(this.tsmVerCorrelatividades_Click);
             // 
@@ -97,7 +97,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmEliminarMateria.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarMateria.Image = ((System.Drawing.Image)(resources.GetObject("tsmEliminarMateria.Image")));
             this.tsmEliminarMateria.Name = "tsmEliminarMateria";
-            this.tsmEliminarMateria.Size = new System.Drawing.Size(226, 30);
+            this.tsmEliminarMateria.Size = new System.Drawing.Size(267, 30);
             this.tsmEliminarMateria.Text = "Eliminar";
             this.tsmEliminarMateria.Click += new System.EventHandler(this.tsmEliminarMateria_Click);
             // 
@@ -130,7 +130,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvMatAnioCarrera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMatAnioCarrera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMatAnioCarrera.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -146,7 +146,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvMatAnioCarrera.Name = "dgvMatAnioCarrera";
             this.dgvMatAnioCarrera.ReadOnly = true;
             this.dgvMatAnioCarrera.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
@@ -156,6 +156,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvMatAnioCarrera.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMatAnioCarrera.RowHeadersVisible = false;
             this.dgvMatAnioCarrera.RowHeadersWidth = 62;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
@@ -170,7 +171,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // FormMateriasAnioCarrera
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 426);
