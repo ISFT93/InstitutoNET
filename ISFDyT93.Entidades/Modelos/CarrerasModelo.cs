@@ -35,7 +35,7 @@ namespace ISFDyT93.Entidades.Modelos
         public string Correlatividades { get; set; }
         public string ImagenDescriptiva { get; set; }
 
-        [Expediente] // 5801-3.279.866/03
+        //[Expediente] // 5801-3.279.866/03
         public string NumeroExpediente { get; set; }
 
         [Obligatorio]

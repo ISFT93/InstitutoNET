@@ -143,7 +143,7 @@ namespace ISFDyT93.Datos.Daos
         //Crea codigo de bloque para Carreras
         public int GeneraCarrerasCodigoBloque()
         {
-            string query = "SELECT TOP 1 CarrerasCodigoBloque FROM Carreras ORDER BY CarrerasCodigoBloque DESC";
+            string query = "SELECT ISNULL((SELECT TOP 1 CarrerasCodigoBloque FROM Carreras ORDER BY CarrerasCodigoBloque DESC), 0) AS CarrerasCodigoBloque";
             var row = this.Conexion.ObtenerRegistro(query);
             int codigo = Convert.ToInt32(row["CarrerasCodigoBloque"]);
             codigo++;
