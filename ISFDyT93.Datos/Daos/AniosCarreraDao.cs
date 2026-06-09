@@ -120,6 +120,12 @@ namespace ISFDyT93.Datos.Daos
             return 0;
         }
 
+        public AniosCarrerasModelo ObtenerAnioCarreraId( int cursoId)
+        {
+            string query = $"SELECT  ac.CarreraId FROM Cursos c INNER JOIN AniosCarreras ac ON ac.AnioCarreraId = c.AnioCarreraId WHERE CursoId={cursoId}";
+
+            return this.MapToModel<AniosCarrerasModelo>(this.Conexion.ObtenerRegistro(query));
+        }
 
 
 

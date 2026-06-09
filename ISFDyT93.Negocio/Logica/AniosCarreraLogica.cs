@@ -63,5 +63,10 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.aniosDao.ObtenerIdCarrera(anioCarreraId);
         }
+
+        public AniosCarrerasModelo ObtenerAnioCarreraId(int cursoId)
+        {
+            return this.aniosDao.ObtenerAnioCarreraId(cursoId);
+        }
     }
 }
