@@ -23,6 +23,7 @@ namespace ISFDyT93.Entidades.Modelos
         public int Modulos { get; set; }
         public bool Activo { get; set; }
         public string MateriasCodigoBloque { get; set; }
+        public string FinalPromocion { get; set; }
 
         // Propiedades Extras        
         public int CarreraId { get; set; }

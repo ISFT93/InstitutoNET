@@ -1,4 +1,4 @@
-﻿using ISFDyT93.Entidades.Core.Attributes.Validaciones;
+using ISFDyT93.Entidades.Core.Attributes.Validaciones;
 using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Negocio.Logica;
@@ -136,6 +136,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbEspacioId.ValueMember = "EspacioId";
             cmbEspacioId.DisplayMember = "Descripcion";
 
+            //Carga de combobox cmbFinalPromocion
+            cmbFinalPromocion.Items.Add("F");
+            cmbFinalPromocion.Items.Add("P");
+            cmbFinalPromocion.SelectedItem = "F";
+            
             this.Contenedor.SetVolver(() =>
             {
                 Contenedor.AbrirFormulario<FormMateriasAnioCarrera>(form =>
