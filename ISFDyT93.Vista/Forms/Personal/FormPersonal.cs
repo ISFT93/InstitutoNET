@@ -33,48 +33,6 @@ namespace ISFDyT93.Vista.Forms.Personal
             dgvPersonal.Columns["PersonalEstadoId"].Visible = false;
             PropiedadesTabla();
         }
-
-        public void PersonalEstados()
-        {
-            if (dgvPersonal.Rows.Count > 0)
-            {
-                for (int i = 0; i < dgvPersonal.Rows.Count; i++)
-                {
-                    if (dgvPersonal.Rows[i].Cells["PersonalEstadoId"].Value.ToString() == "1")
-                        dgvPersonal.Rows[i].Cells["PersonalEstadoId"].Style.ForeColor = Color.Green;
-                    else if (dgvPersonal.Rows[i].Cells["PersonalEstadoId"].Value.ToString() == "2")
-                        dgvPersonal.Rows[i].Cells["PersonalEstadoId"].Style.ForeColor = Color.Yellow;
-                    else
-                        dgvPersonal.Rows[i].Cells["PersonalEstadoId"].Style.ForeColor = Color.Red;
-                }
-            } 
-        }
-
-        public void CambiarColorEstado()
-        {
-            if (dgvPersonal.Rows.Count > 0)
-            {
-                for (int i = 0; i < dgvPersonal.Rows.Count; i++)
-                {
-                    switch (dgvPersonal.Rows[i].Cells["Estado"].Value.ToString())
-                    {
-                        case "Borrador":
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.ForeColor = Color.Red;
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
-                            break;
-                        case "Desactivada":
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.ForeColor = Color.Yellow;
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Yellow;
-                            break;
-                        case "Activa":
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.ForeColor = Color.Green;
-                            dgvPersonal.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Green;
-                            break;
-                    }
-                }
-            }
-        }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.RecargarGrilla(txtFiltro.Text);
@@ -88,8 +46,6 @@ namespace ISFDyT93.Vista.Forms.Personal
             dgvPersonal.DataSource = personalLogica.ObtenerListaPersonal(tipo, filtro, estado);
 
             dgvPersonal.Columns["PersonalId"].Visible = false;
-            PersonalEstados();
-            CambiarColorEstado();
         }
 
         private void dgvPersonal_MouseUp(object sender, MouseEventArgs e)
@@ -255,6 +211,39 @@ namespace ISFDyT93.Vista.Forms.Personal
         private void tmerCambioColor_Tick(object sender, EventArgs e)
         {
             
+        }
+
+        private void dgvPersonal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvPersonal.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            {
+                string estado = e.Value.ToString();
+
+                Color foreColor = Color.Black; // Color por defecto
+                Color backColor = Color.White; // Fondo por defecto
+
+                switch (estado)
+                {
+                    case "Activo/a":
+                        foreColor = Color.Green;
+                        break;
+
+                    case "Inactivo/a":
+                        foreColor = Color.FromArgb(230, 250, 0);
+                        break;
+
+                    case "Borrador":
+                        foreColor = Color.Red;
+                        break;
+                }
+
+                e.CellStyle.BackColor = backColor;
+                e.CellStyle.ForeColor = foreColor;
+
+                // Esto mantiene los colores aunque la celda esté seleccionada
+                e.CellStyle.SelectionBackColor = Color.LightGray;
+                e.CellStyle.SelectionForeColor = foreColor;
+            }
         }
     }
 }

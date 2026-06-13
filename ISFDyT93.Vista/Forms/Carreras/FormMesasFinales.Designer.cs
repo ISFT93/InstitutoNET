@@ -93,9 +93,9 @@
             // 
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(3, 12);
+            this.lblCarrera.Location = new System.Drawing.Point(3, 13);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(184, 24);
+            this.lblCarrera.Size = new System.Drawing.Size(184, 19);
             this.lblCarrera.TabIndex = 0;
             this.lblCarrera.Text = "Carrera:";
             // 
@@ -106,7 +106,7 @@
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(184, 32);
+            this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
             this.cmbCarrera.TabIndex = 1;
             this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -115,9 +115,9 @@
             // 
             this.lblAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(383, 12);
+            this.lblAnio.Location = new System.Drawing.Point(383, 13);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(184, 24);
+            this.lblAnio.Size = new System.Drawing.Size(184, 19);
             this.lblAnio.TabIndex = 2;
             this.lblAnio.Text = "Año:";
             // 
@@ -129,7 +129,7 @@
             this.cmbAnio.FormattingEnabled = true;
             this.cmbAnio.Location = new System.Drawing.Point(573, 3);
             this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(184, 32);
+            this.cmbAnio.Size = new System.Drawing.Size(184, 27);
             this.cmbAnio.TabIndex = 3;
             this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
             // 
@@ -137,9 +137,9 @@
             // 
             this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(3, 58);
+            this.lblCurso.Location = new System.Drawing.Point(3, 59);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(184, 24);
+            this.lblCurso.Size = new System.Drawing.Size(184, 19);
             this.lblCurso.TabIndex = 4;
             this.lblCurso.Text = "Curso:";
             // 
@@ -151,7 +151,7 @@
             this.cmbCurso.FormattingEnabled = true;
             this.cmbCurso.Location = new System.Drawing.Point(193, 49);
             this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(184, 32);
+            this.cmbCurso.Size = new System.Drawing.Size(184, 27);
             this.cmbCurso.TabIndex = 5;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
@@ -159,9 +159,9 @@
             // 
             this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(383, 58);
+            this.lblMateria.Location = new System.Drawing.Point(383, 59);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(184, 24);
+            this.lblMateria.Size = new System.Drawing.Size(184, 19);
             this.lblMateria.TabIndex = 6;
             this.lblMateria.Text = "Materia:";
             // 
@@ -173,7 +173,7 @@
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(573, 49);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 32);
+            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
             this.cmbMateria.TabIndex = 7;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
@@ -181,9 +181,9 @@
             // 
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(3, 104);
+            this.lblProfesor.Location = new System.Drawing.Point(3, 106);
             this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(184, 24);
+            this.lblProfesor.Size = new System.Drawing.Size(184, 19);
             this.lblProfesor.TabIndex = 8;
             this.lblProfesor.Text = "Profesor:";
             // 
@@ -194,7 +194,7 @@
             this.cmbProfesor.FormattingEnabled = true;
             this.cmbProfesor.Location = new System.Drawing.Point(193, 95);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(184, 32);
+            this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
             this.cmbProfesor.TabIndex = 9;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
@@ -311,6 +311,7 @@
             this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
             this.dgvMesasFinales.TabIndex = 3;
             this.dgvMesasFinales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMesasFinales_CellDoubleClick);
+            this.dgvMesasFinales.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMesasFinales_CellFormatting);
             // 
             // btnAgregarMesa
             // 
@@ -338,7 +339,7 @@
             this.cmbAnioLectivo.FormattingEnabled = true;
             this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
             this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 32);
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 27);
             this.cmbAnioLectivo.TabIndex = 5;
             this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
             // 
@@ -349,7 +350,7 @@
             this.cmbTurno.FormattingEnabled = true;
             this.cmbTurno.Location = new System.Drawing.Point(362, 43);
             this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 32);
+            this.cmbTurno.Size = new System.Drawing.Size(193, 27);
             this.cmbTurno.TabIndex = 6;
             this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
             // 
@@ -357,9 +358,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 8);
+            this.label1.Location = new System.Drawing.Point(163, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 24);
+            this.label1.Size = new System.Drawing.Size(193, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Año:";
             // 
@@ -367,9 +368,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 8);
+            this.label2.Location = new System.Drawing.Point(362, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 24);
+            this.label2.Size = new System.Drawing.Size(193, 19);
             this.label2.TabIndex = 8;
             this.label2.Text = "Turno:";
             // 
@@ -380,7 +381,7 @@
             this.cmbLlamados.FormattingEnabled = true;
             this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
             this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 32);
+            this.cmbLlamados.Size = new System.Drawing.Size(196, 27);
             this.cmbLlamados.TabIndex = 9;
             this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
             // 
@@ -388,9 +389,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 8);
+            this.label3.Location = new System.Drawing.Point(561, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 24);
+            this.label3.Size = new System.Drawing.Size(196, 19);
             this.label3.TabIndex = 10;
             this.label3.Text = "Llamado:";
             // 
@@ -416,7 +417,7 @@
             // 
             // FormMesasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);

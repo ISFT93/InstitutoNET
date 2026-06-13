@@ -68,7 +68,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmActivar,
             this.tsmDarAlta});
             this.cmsCarreras.Name = "contextMenuStrip1";
-            this.cmsCarreras.Size = new System.Drawing.Size(209, 296);
+            this.cmsCarreras.Size = new System.Drawing.Size(208, 244);
             // 
             // tsmAgregarCarrera
             // 
@@ -77,7 +77,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAgregarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarCarrera.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarCarrera.Image")));
             this.tsmAgregarCarrera.Name = "tsmAgregarCarrera";
-            this.tsmAgregarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmAgregarCarrera.Size = new System.Drawing.Size(207, 30);
             this.tsmAgregarCarrera.Text = "Agregar ";
             this.tsmAgregarCarrera.Click += new System.EventHandler(this.tsmAgregarCarreras_Click);
             // 
@@ -88,7 +88,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmModificarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.edit_solid;
             this.tsmModificarCarrera.Name = "tsmModificarCarrera";
-            this.tsmModificarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmModificarCarrera.Size = new System.Drawing.Size(207, 30);
             this.tsmModificarCarrera.Text = "Modificar";
             this.tsmModificarCarrera.Click += new System.EventHandler(this.tsmModificarCarrera_Click);
             // 
@@ -99,7 +99,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerAnios.ForeColor = System.Drawing.Color.White;
             this.tsmVerAnios.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerAnios.Name = "tsmVerAnios";
-            this.tsmVerAnios.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerAnios.Size = new System.Drawing.Size(207, 30);
             this.tsmVerAnios.Text = "Ver Años";
             this.tsmVerAnios.Click += new System.EventHandler(this.tsmVerAnios_Click);
             // 
@@ -110,7 +110,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelativas.ForeColor = System.Drawing.Color.White;
             this.tsmVerCorrelativas.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCorrelativas.Name = "tsmVerCorrelativas";
-            this.tsmVerCorrelativas.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerCorrelativas.Size = new System.Drawing.Size(207, 30);
             this.tsmVerCorrelativas.Text = "Ver Correlativas";
             this.tsmVerCorrelativas.Click += new System.EventHandler(this.tsmVerCorrelativas_Click);
             // 
@@ -121,7 +121,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerEquivalencias.ForeColor = System.Drawing.Color.White;
             this.tsmVerEquivalencias.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerEquivalencias.Name = "tsmVerEquivalencias";
-            this.tsmVerEquivalencias.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerEquivalencias.Size = new System.Drawing.Size(207, 30);
             this.tsmVerEquivalencias.Text = "Ver Equivalencias";
             this.tsmVerEquivalencias.Click += new System.EventHandler(this.tsmVerEquivalencias_Click);
             // 
@@ -132,7 +132,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmEliminarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.trash_alt_solid;
             this.tsmEliminarCarrera.Name = "tsmEliminarCarrera";
-            this.tsmEliminarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmEliminarCarrera.Size = new System.Drawing.Size(207, 30);
             this.tsmEliminarCarrera.Text = "Eliminar";
             this.tsmEliminarCarrera.Click += new System.EventHandler(this.tsmEliminarCarrera_Click);
             // 
@@ -143,7 +143,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmActivar.ForeColor = System.Drawing.Color.White;
             this.tsmActivar.Image = global::ISFDyT93.Vista.Properties.Resources.check_circle_solid;
             this.tsmActivar.Name = "tsmActivar";
-            this.tsmActivar.Size = new System.Drawing.Size(208, 30);
+            this.tsmActivar.Size = new System.Drawing.Size(207, 30);
             this.tsmActivar.Text = "Activar";
             this.tsmActivar.Click += new System.EventHandler(this.tsmActivar_Click);
             // 
@@ -154,7 +154,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmDarAlta.ForeColor = System.Drawing.Color.White;
             this.tsmDarAlta.Image = global::ISFDyT93.Vista.Properties.Resources.calendar_alt_solid;
             this.tsmDarAlta.Name = "tsmDarAlta";
-            this.tsmDarAlta.Size = new System.Drawing.Size(208, 30);
+            this.tsmDarAlta.Size = new System.Drawing.Size(207, 30);
             this.tsmDarAlta.Text = "Dar de Alta";
             this.tsmDarAlta.Click += new System.EventHandler(this.tsmDarAlta_Click);
             // 
@@ -214,6 +214,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCarreras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarreras.Size = new System.Drawing.Size(777, 436);
             this.dgvCarreras.TabIndex = 0;
+            this.dgvCarreras.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCarreras_CellFormatting);
             this.dgvCarreras.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvCarreras_MouseUp);
             // 
             // rbActivos
@@ -260,6 +261,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 69);
             this.tableLayoutPanel1.TabIndex = 53;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // rbBorrador
             // 

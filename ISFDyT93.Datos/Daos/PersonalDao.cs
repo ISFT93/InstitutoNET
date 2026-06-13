@@ -1,10 +1,12 @@
 ﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Entidades.Modelos;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using ISFDyT93.Datos.Interfaces;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -12,8 +14,7 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerListaPersonal(int estado)
         {
-            string query = "SELECT PersonalId, NumeroDocumento AS [Documento], Nombre, Apellido, FechaAlta, FechaBaja, pe.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p " +
-                "INNER JOIN PersonalEstados pe on pe.PersonalEstadoId = p.PersonalEstadoId";
+            string query = "SELECT PersonalId, NumeroDocumento AS[Documento], Nombre, Apellido, FechaAlta, FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p INNER JOIN Estados e on e.EstadoId = p.PersonalEstadoId";
 
             if (estado != 0)
             {
@@ -24,8 +25,7 @@ namespace ISFDyT93.Datos.Daos
         }
         public DataTable ObtenerListaPersonal(TipoFiltroProfesor tipo, string filtro, int estado)
         {
-            string query = "SELECT PersonalId, NumeroDocumento AS [Documento], Nombre, Apellido, FechaAlta, FechaBaja, pe.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p " +
-                "INNER JOIN PersonalEstados pe on pe.PersonalEstadoId = p.PersonalEstadoId";
+            string query = "SELECT PersonalId, NumeroDocumento AS[Documento], Nombre, Apellido, FechaAlta, FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p INNER JOIN Estados e on e.EstadoId = p.PersonalEstadoId";
 
             string where = "";
 
