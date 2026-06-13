@@ -41,6 +41,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.lblCantidadModulos = new System.Windows.Forms.Label();
+            this.lblFinalPromocion = new System.Windows.Forms.Label();
+            this.cmbFinalPromocion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.epvMaterias)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +52,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(3, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(87, 20);
+            this.lblNombre.Size = new System.Drawing.Size(72, 19);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -63,7 +65,7 @@
             this.txtNombre.Location = new System.Drawing.Point(3, 23);
             this.txtNombre.MaxLength = 200;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(382, 32);
+            this.txtNombre.Size = new System.Drawing.Size(382, 27);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
@@ -74,7 +76,7 @@
             this.txtCargaHoraria.Location = new System.Drawing.Point(3, 93);
             this.txtCargaHoraria.MaxLength = 5;
             this.txtCargaHoraria.Name = "txtCargaHoraria";
-            this.txtCargaHoraria.Size = new System.Drawing.Size(382, 32);
+            this.txtCargaHoraria.Size = new System.Drawing.Size(382, 27);
             this.txtCargaHoraria.TabIndex = 2;
             this.txtCargaHoraria.TextChanged += new System.EventHandler(this.txtCargaHoraria_TextChanged);
             // 
@@ -83,7 +85,7 @@
             this.lblCargaHoraria.AutoSize = true;
             this.lblCargaHoraria.Location = new System.Drawing.Point(3, 70);
             this.lblCargaHoraria.Name = "lblCargaHoraria";
-            this.lblCargaHoraria.Size = new System.Drawing.Size(138, 20);
+            this.lblCargaHoraria.Size = new System.Drawing.Size(111, 19);
             this.lblCargaHoraria.TabIndex = 9;
             this.lblCargaHoraria.Text = "Carga horaria:";
             // 
@@ -94,7 +96,7 @@
             this.lblEspacio.AutoSize = true;
             this.lblEspacio.Location = new System.Drawing.Point(391, 0);
             this.lblEspacio.Name = "lblEspacio";
-            this.lblEspacio.Size = new System.Drawing.Size(84, 20);
+            this.lblEspacio.Size = new System.Drawing.Size(68, 20);
             this.lblEspacio.TabIndex = 11;
             this.lblEspacio.Text = "Espacio:";
             // 
@@ -106,7 +108,7 @@
             this.cmbEspacioId.FormattingEnabled = true;
             this.cmbEspacioId.Location = new System.Drawing.Point(391, 23);
             this.cmbEspacioId.Name = "cmbEspacioId";
-            this.cmbEspacioId.Size = new System.Drawing.Size(383, 32);
+            this.cmbEspacioId.Size = new System.Drawing.Size(383, 27);
             this.cmbEspacioId.TabIndex = 1;
             // 
             // epvMaterias
@@ -121,7 +123,7 @@
             this.txtModulos.Enabled = false;
             this.txtModulos.Location = new System.Drawing.Point(391, 93);
             this.txtModulos.Name = "txtModulos";
-            this.txtModulos.Size = new System.Drawing.Size(383, 32);
+            this.txtModulos.Size = new System.Drawing.Size(383, 27);
             this.txtModulos.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -129,7 +131,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblFinalPromocion, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblCantidadModulos, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblCargaHoraria, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtModulos, 1, 3);
@@ -138,10 +140,14 @@
             this.tableLayoutPanel1.Controls.Add(this.lblNombre, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblEspacio, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbEspacioId, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cmbFinalPromocion, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -178,13 +184,33 @@
             this.lblCantidadModulos.AutoSize = true;
             this.lblCantidadModulos.Location = new System.Drawing.Point(391, 70);
             this.lblCantidadModulos.Name = "lblCantidadModulos";
-            this.lblCantidadModulos.Size = new System.Drawing.Size(203, 20);
+            this.lblCantidadModulos.Size = new System.Drawing.Size(163, 20);
             this.lblCantidadModulos.TabIndex = 37;
             this.lblCantidadModulos.Text = "Cantidad de Módulos:";
             // 
+            // lblFinalPromocion
+            // 
+            this.lblFinalPromocion.AutoSize = true;
+            this.lblFinalPromocion.Location = new System.Drawing.Point(3, 140);
+            this.lblFinalPromocion.Name = "lblFinalPromocion";
+            this.lblFinalPromocion.Size = new System.Drawing.Size(134, 19);
+            this.lblFinalPromocion.TabIndex = 38;
+            this.lblFinalPromocion.Text = "Final / Promoción";
+            // 
+            // cmbFinalPromocion
+            // 
+            this.cmbFinalPromocion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFinalPromocion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFinalPromocion.FormattingEnabled = true;
+            this.cmbFinalPromocion.Location = new System.Drawing.Point(3, 163);
+            this.cmbFinalPromocion.Name = "cmbFinalPromocion";
+            this.cmbFinalPromocion.Size = new System.Drawing.Size(382, 27);
+            this.cmbFinalPromocion.TabIndex = 39;
+            // 
             // FormAgregarModificarMateria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 449);
@@ -212,5 +238,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label lblCantidadModulos;
+        private System.Windows.Forms.Label lblFinalPromocion;
+        private System.Windows.Forms.ComboBox cmbFinalPromocion;
     }
 }
