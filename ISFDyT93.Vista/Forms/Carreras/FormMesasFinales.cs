@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Logica;
@@ -266,6 +267,38 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 CargarLlamados(false);
                 cmbLlamados.Enabled = true;
+            }
+        }
+        private void dgvMesasFinales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvMesasFinales.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            {
+                string estado = e.Value.ToString();
+
+                Color foreColor = Color.Black; // Color por defecto
+                Color backColor = Color.White; // Fondo por defecto
+
+                switch (estado)
+                {
+                    case "Activo/a":
+                        foreColor = Color.Green;
+                        break;
+
+                    case "Inactivo/a":
+                        foreColor = Color.FromArgb(230, 250, 0);
+                        break;
+
+                    case "Borrador":
+                        foreColor = Color.Red;
+                        break;
+                }
+
+                e.CellStyle.BackColor = backColor;
+                e.CellStyle.ForeColor = foreColor;
+
+                // Esto mantiene los colores aunque la celda esté seleccionada
+                e.CellStyle.SelectionBackColor = Color.LightGray;
+                e.CellStyle.SelectionForeColor = foreColor;
             }
         }
 

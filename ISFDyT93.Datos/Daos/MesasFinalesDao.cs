@@ -42,13 +42,10 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesas(int CarreraId)
         {
-            var query = "select Fi.MesaFinalId, Fi.Fecha, Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Ma.Nombre as 'Materia', concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, FinEst.Descripcion as 'Estado' " +
-                "from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId " +
-                "inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId " +
-                "inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId " +
-                "inner join FinalEstados FinEst on Fi.FinalEstadoId = FinEst.FinalEstadoId " +
-                "left join Personal Pe on Fi.PresidenteId = Pe.PersonalId " +
-                $"left join Personal Voc on Fi.VocalId = Voc.PersonalId where Fi.CarreraId = {CarreraId}";
+            var query = "select Fi.MesaFinalId, Fi.Fecha, Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Ma.Nombre as 'Materia', concat(Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat(Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado'" +
+                        " m MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId" +
+                        " inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId inner join Estados Est on Fi.FinalEstadoId = Est.EstadoId left" +
+                        $"join Personal Pe on Fi.PresidenteId = Pe.PersonalId left join Personal Voc on Fi.VocalId = Voc.PersonalId where Fi.CarreraId = {CarreraId}";
             return this.Conexion.ObtenerRegistros(query);
         }
 
@@ -104,15 +101,15 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0)
         {
-            var query = "select distinct Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, FinEst.Descripcion as 'Estado' " +
-                "from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId " +
-                "inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId " +
-                "inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId " +
-                "inner join FinalEstados FinEst on Fi.FinalEstadoId = FinEst.FinalEstadoId " +
-                "left join Personal Pe on Fi.PresidenteId = Pe.PersonalId " +
-                "left join Personal Voc on Fi.VocalId = Voc.PersonalId " +
-                "left join CursoMaterias cm on Ma.MateriaId = cm.MateriaId " +
-                "where 1=1 ";
+            var query = "select distinct Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat(Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat(Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado'" +
+                " from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId" +
+                " inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId" +
+                " inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId" +
+                " inner join Estados Est on Fi.FinalEstadoId = Est.EstadoId" +
+                " left join Personal Pe on Fi.PresidenteId = Pe.PersonalId" +
+                " left join Personal Voc on Fi.VocalId = Voc.PersonalId" +
+                " left join CursoMaterias cm on Ma.MateriaId = cm.MateriaId" +
+                " where 1 = 1";
 
             if (carreraId > 0)
                 query += $" and Fi.CarreraId = {carreraId}";
@@ -136,11 +133,11 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId)
         {
-            var query = "select Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, FinEst.Descripcion as 'Estado' " +
+            var query = "select Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado' " +
                 "from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId " +
                 "inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId " +
                 "inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId " +
-                "inner join FinalEstados FinEst on Fi.FinalEstadoId = FinEst.FinalEstadoId " +
+                "inner join Estados Est on Fi.FinalEstadoId = Est.EstadoId " +
                 "left join Personal Pe on Fi.PresidenteId = Pe.PersonalId " +
                 $"left join Personal Voc on Fi.VocalId = Voc.PersonalId where Fi.CarreraId = {carreraId} and Fi.CicloLectivoId = {anioLectivoId} and Fi.TurnoId = {turnoId} and Fi.LlamadoId = {llamadoId} and Fi.FinalEstadoId = 1";
             return this.Conexion.ObtenerRegistros(query);

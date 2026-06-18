@@ -46,7 +46,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasActivas();
 
-                CarreraEstados();
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
@@ -58,7 +57,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (rbInactivos.Checked == true)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
-                CarreraEstados();
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     //Ocultar columna de la grilla CarreraId CarreraEstadoId
@@ -70,7 +68,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (rbBorrador.Checked == true)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
-                CarreraEstados();
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     //Ocultar columna de la grilla CarreraId CarreraEstadoId
@@ -140,6 +137,21 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     }
                 }
             }
+        }
+
+        public void Refrescar()
+        {
+            rbActivos.Visible = true;
+            rbInactivos.Visible = true;
+            dgvCarreras.ContextMenuStrip = cmsCarreras;
+            this.dgvCarreras.DataSource = this.carrerasLogica.ObtenerCarreras();
+
+            //Ocultar columna de la grilla CarreraId CarreraEstadoId
+            dgvCarreras.Columns["CarreraId"].Visible = false;
+            dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+            dgvCarreras.Columns["Año De Fin"].Visible = false;
+            dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
+            dgvCarreras.Columns["Año De Inicio"].Visible = false;
         }
 
         private void FormCarreras_Load(object sender, EventArgs e)
@@ -422,9 +434,45 @@ namespace ISFDyT93.Vista.Forms.Carreras
             Ticks++;
             if (Ticks == 2)
                 tmrRetrasoForm.Stop();
-            CarreraEstados();
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvCarreras_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvCarreras.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            {
+                string estado = e.Value.ToString();
+
+                Color foreColor = Color.Black; // Color por defecto
+                Color backColor = Color.White; // Fondo por defecto
+
+                switch (estado)
+                {
+                    case "Activo/a":
+                        foreColor = Color.Green;
+                        break;
+
+                    case "Inactivo/a":
+                        foreColor = Color.FromArgb(230,250,0);
+                        break;
+
+                    case "Borrador":
+                        foreColor = Color.Red;
+                        break;
+                }
+
+                e.CellStyle.BackColor = backColor;
+                e.CellStyle.ForeColor = foreColor;
+
+                // Esto mantiene los colores aunque la celda esté seleccionada
+                e.CellStyle.SelectionBackColor = Color.LightGray;
+                e.CellStyle.SelectionForeColor = foreColor;
+            }
+        }
         private void dgvCarreras_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
             CarreraEstados();
