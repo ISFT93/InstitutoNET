@@ -24,6 +24,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private CarrerasLogica carrerasLogica { get; set; }
         private AniosCarreraLogica aniosCarreraLogica { get; set; }
         private CorrelativasLogica correlativasLogica { get; set; }
+        private MesasFinalesLogica mesasFinalesLogica { get; set; }
         #endregion
         private int Ticks;
         public FormCarreras()
@@ -37,8 +38,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
 
         //Metodos para actualizar grilla
-        private void CargarGrillaActivoInactivo()
+        private void CargaGrilla()
         {
+            dgvCarreras.ContextMenuStrip = cmsCarreras;
 
             if (rbActivos.Checked == true)
             {
@@ -46,7 +48,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
+                    //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
@@ -74,7 +76,67 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
             }
+            else
+            if (rbTodos.Checked == true)
+            {
+                dgvCarreras.DataSource = this.carrerasLogica.ObtenerTodasLasCarreras();
+                CarreraEstados();
+                if (dgvCarreras.Rows.Count > 0)
+                {
+                    dgvCarreras.Columns["CarreraId"].Visible = false;
+                    dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+                    dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
+                    dgvCarreras.Columns["Año de Inicio"].Visible = false;
+                    dgvCarreras.Columns["Año de Fin"].Visible = false;
+                }
+            }
 
+        }
+
+        private void CambiarColor()
+        {
+            if (dgvCarreras.Rows.Count > 0)
+            {
+                for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+                {
+                    switch (dgvCarreras.Rows[i].Cells["Estado"].Value.ToString())
+                    {
+                        case "Bloqueado":
+                            dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Red;
+                            dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
+                            break;
+                    }
+                }
+            }
+
+        }
+
+        public void CarreraEstados()
+        {
+            if (dgvCarreras.Rows.Count > 0)
+            {
+
+                for (int i = 0; i < dgvCarreras.Rows.Count; i++)
+                {
+                    var estado = dgvCarreras.Rows[i].Cells["Estado"].Value.ToString();
+
+                    if (estado == "Activa")
+                    {
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Green;
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Green;
+                    }
+                    else if (estado == "Inactiva")
+                    {
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Yellow;
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Red;
+                        dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Red;
+                    }
+                }
+            }
         }
 
         public void Refrescar()
@@ -95,7 +157,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void FormCarreras_Load(object sender, EventArgs e)
         {
             this.Contenedor.SetTitulo("Carreras");
-            CargarGrillaActivoInactivo();
+            CargaGrilla();
 
         }
 
@@ -117,7 +179,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 {
                     carrerasLogica.AltaCarreraActivo(CarreraId);
                     Notificar(TipoNotificacion.Success, "Carrera dada de alta con exito");
-                    Refrescar();
+                    CargaGrilla();
                 }
             }
             else
@@ -130,7 +192,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 }
 
-                Refrescar();
+                CargaGrilla();
             }
         }
 
@@ -232,12 +294,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 }
                 else
                 {
+                    //Oculta opciones cuando se hace click en un espacio vacio del datagridview
                     tsmDarAlta.Visible = false;
                     tsmModificarCarrera.Visible = false;
                     tsmEliminarCarrera.Visible = false;
                     tsmVerCorrelativas.Visible = false;
                     tsmVerEquivalencias.Visible = false;
                     tsmActivar.Visible = false;
+                    tsmVerAnios.Visible = false;
+
+
 
                     //Si hay una carrera en borrador no se podra agregar otra
                     bool agregar = true;
@@ -306,28 +372,38 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (resultado == DialogResult.Yes)
                 {
-                    carrerasLogica.EliminarCarrera(CarreraId);
-                    Refrescar();
+                    try
+                    {
+                        carrerasLogica.EliminarCarrera(CarreraId);
+                        CargaGrilla();
+
+                        Notificar(TipoNotificacion.Success, "Carrera eliminada\n correctamente");
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
                 }
             }
         }
         private void rbTodos_CheckedChanged(object sender, EventArgs e)
         {
-            Refrescar();
+            CargaGrilla();
         }
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
-            CargarGrillaActivoInactivo();
+            CargaGrilla();
         }
         private void rbInactivos_CheckedChanged(object sender, EventArgs e)
         {
-            CargarGrillaActivoInactivo();
+            CargaGrilla();
         }
         private void tsmDarAlta_Click(object sender, EventArgs e)
         {
             carrerasLogica.AltaCarreraActivo(CarreraId);
             Notificar(TipoNotificacion.Success, "Carrera dada de alta con exito");
-            Refrescar();
+            CargaGrilla();
             rbActivos.Checked = true;
         }
 
@@ -350,7 +426,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void rbBorrador_CheckedChanged(object sender, EventArgs e)
         {
-            CargarGrillaActivoInactivo();
+            CargaGrilla();
         }
 
         private void tmrRetrasoForm_Tick(object sender, EventArgs e)
@@ -397,6 +473,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 e.CellStyle.SelectionForeColor = foreColor;
             }
         }
+        private void dgvCarreras_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            CarreraEstados();
+        }
+
     }
 }
 

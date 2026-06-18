@@ -248,6 +248,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 dgvMesasFinales.Columns["Turno"].Visible = false;
             if (dgvMesasFinales.Columns["Llamado"] != null)
                 dgvMesasFinales.Columns["Llamado"].Visible = false;
+
+            if (dgvMesasFinales.Rows.Count > 0)
+            {
+                btnReporteMesas.Enabled = true;
+                btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(39, 39, 58);
+            }
         }
 
         private void ControlLlamados()
@@ -337,7 +343,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             this.CarreraId = carreraId;
             this.NombreCarrera = cmbCarrera.Text;
-
             CargarAniosPorCarrera(carreraId);
             cmbAnio.Enabled = true;
 

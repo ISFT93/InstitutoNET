@@ -25,6 +25,11 @@ namespace ISFDyT93.Negocio.Logica
             this.correlativasDao = new CorrelativasDao();
             this.materiasDao = new MateriasDao();
         }
+
+        public DataTable ObtenerTodasLasCarreras()
+        {
+            return this.carrerasDao.ObtenerTodasLasCarreras(true);
+        }
         public DataTable ObtenerCarreras()
         {
             return this.carrerasDao.ObtenerCarreras(true);
@@ -58,7 +63,8 @@ namespace ISFDyT93.Negocio.Logica
 
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
-            bool resultado = false;
+            bool resultado = false;          
+
 
             try
             {
@@ -67,11 +73,13 @@ namespace ISFDyT93.Negocio.Logica
                 string archiResolucion = modelo.Resolucion;
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
+                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
 
                 if (accion == TipoAccion.Agregar)
                 {
                     modelo.Activo = true;
                     modelo.CarreraEstadoId = 3;
+                    modelo.CarrerasCodigoBloque = carrerasCodigoBloque.ToString("D2");
 
                     if (!string.IsNullOrEmpty(modelo.PlanEstudio))
                     {
@@ -111,9 +119,11 @@ namespace ISFDyT93.Negocio.Logica
 
                         int carreraId = carrerasDao.ObtenerUltimoCarreraId();
 
+
                         for (int anio = 1; anio <= modelo.Duracion; anio++)
                         {
-                            aniosCarreraDao.AgregarAnio(anio, carreraId);
+                            string codigoFormateado = carrerasCodigoBloque.ToString("D2") + anio.ToString();
+                            aniosCarreraDao.AgregarAnio(anio, carreraId, codigoFormateado);
                         }
 
                         resultado = true;
@@ -145,13 +155,15 @@ namespace ISFDyT93.Negocio.Logica
 
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
+                        //REVISAR
                         if (!modelo.PoseeMaterias)
                         {
-                            aniosCarreraDao.EliminarAnios(modelo.CarreraId);
+                            aniosCarreraDao.EliminarAniosDeUnaCarrera(modelo.CarreraId);
 
                             for (int anio = 1; anio <= modelo.Duracion; anio++)
                             {
-                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId);
+                                string codigoFormateado = modelo.CarrerasCodigoBloque + anio.ToString();
+                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId, codigoFormateado);
                             }
                         }
 
