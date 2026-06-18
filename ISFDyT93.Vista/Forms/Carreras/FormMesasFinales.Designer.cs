@@ -311,6 +311,7 @@
             this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
             this.dgvMesasFinales.TabIndex = 3;
             this.dgvMesasFinales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMesasFinales_CellDoubleClick);
+            this.dgvMesasFinales.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMesasFinales_CellFormatting);
             // 
             // btnAgregarMesa
             // 

@@ -61,6 +61,11 @@ namespace ISFDyT93.Vista.Core
                     var picker = control as DateTimePicker;
                     picker.Value = DateTime.Now;
                 }
+                else if(control.GetType() == typeof(ComboBox))
+                {
+                    var comboBox = control as ComboBox;
+                    comboBox.SelectedIndex = 0;
+                }
             }
         }
 

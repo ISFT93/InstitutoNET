@@ -20,6 +20,13 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
+        public DataTable ConsultarCursosCodigoBloque(int AnioCarreraId, int carreraid, int estado)
+        {
+            string query = "select Cursos.CursoId,AniosCarreras.AniosCarrerasCodigoBloque + Cursos.NombreCurso as 'NombreCurso', cursos.AnioCarreraId, Cursos.Activo, Cursos.AdmiteCurso from Cursos inner join AniosCarreras on Cursos.AnioCarreraId = AniosCarreras.AnioCarreraId where Cursos.AnioCarreraId = " + AnioCarreraId + " and AniosCarreras.CarreraId = " + carreraid + " and Cursos.Activo = " + estado + " and Cursos.CursoId > 18 order by Cursos.CursoId asc";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
         public DataTable ConsultarCursosPrimerAnio(int AlumnoId)
         {
             string query = "SELECT Cursos.* FROM AlumnosCarreras AlumCar" +

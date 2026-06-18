@@ -23,10 +23,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private CicloLectivosLogica cicloLectivosLogica { get; set; }
         private MateriasLogica materiasLogica { get; set; }
         private CursosLogica cursosLogica { get; set; }
+        private AniosCarreraLogica aniologica { get; set; }
 
         private CursosModelo Curso { get; set; }
 
         private int CursadaId { get; set; }
+        private AniosCarrerasModelo aniocarrera { get; set; }
 
         #endregion
         public FormCursoMaterias()
@@ -36,6 +38,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.materiasLogica = new MateriasLogica();
 
             this.cursosLogica = new CursosLogica();
+
+            this.aniologica = new AniosCarreraLogica();
 
             InitializeComponent();
         }
@@ -56,13 +60,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void CargarPropiedadesFormPrincipal()
         {
             this.Curso = this.cursosLogica.ObtenerCurso(this.CursoId);
-
+            this.aniocarrera = this.aniologica.ObtenerAnioCarreraId(this.CursoId);
             this.Contenedor.SetTitulo($"CURSO {this.Curso.AnioCarrera} - {this.Curso.NombreCurso}");
 
             this.Contenedor.SetVolver(() =>
                Contenedor.AbrirFormulario<FormCursos>(form =>
                {
                    form.AnioCarreraId = this.Curso.AnioCarreraId;
+                   form.carreraId = this.aniocarrera.CarreraId;
                }));
         }
 

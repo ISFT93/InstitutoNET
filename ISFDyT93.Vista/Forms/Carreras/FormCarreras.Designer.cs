@@ -68,7 +68,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmActivar,
             this.tsmDarAlta});
             this.cmsCarreras.Name = "contextMenuStrip1";
-            this.cmsCarreras.Size = new System.Drawing.Size(209, 296);
+            this.cmsCarreras.Size = new System.Drawing.Size(247, 274);
             // 
             // tsmAgregarCarrera
             // 
@@ -77,7 +77,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAgregarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarCarrera.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarCarrera.Image")));
             this.tsmAgregarCarrera.Name = "tsmAgregarCarrera";
-            this.tsmAgregarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmAgregarCarrera.Size = new System.Drawing.Size(246, 30);
             this.tsmAgregarCarrera.Text = "Agregar ";
             this.tsmAgregarCarrera.Click += new System.EventHandler(this.tsmAgregarCarreras_Click);
             // 
@@ -88,7 +88,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmModificarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmModificarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.edit_solid;
             this.tsmModificarCarrera.Name = "tsmModificarCarrera";
-            this.tsmModificarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmModificarCarrera.Size = new System.Drawing.Size(246, 30);
             this.tsmModificarCarrera.Text = "Modificar";
             this.tsmModificarCarrera.Click += new System.EventHandler(this.tsmModificarCarrera_Click);
             // 
@@ -99,7 +99,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerAnios.ForeColor = System.Drawing.Color.White;
             this.tsmVerAnios.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerAnios.Name = "tsmVerAnios";
-            this.tsmVerAnios.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerAnios.Size = new System.Drawing.Size(246, 30);
             this.tsmVerAnios.Text = "Ver Años";
             this.tsmVerAnios.Click += new System.EventHandler(this.tsmVerAnios_Click);
             // 
@@ -110,7 +110,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelativas.ForeColor = System.Drawing.Color.White;
             this.tsmVerCorrelativas.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCorrelativas.Name = "tsmVerCorrelativas";
-            this.tsmVerCorrelativas.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerCorrelativas.Size = new System.Drawing.Size(246, 30);
             this.tsmVerCorrelativas.Text = "Ver Correlativas";
             this.tsmVerCorrelativas.Click += new System.EventHandler(this.tsmVerCorrelativas_Click);
             // 
@@ -121,7 +121,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerEquivalencias.ForeColor = System.Drawing.Color.White;
             this.tsmVerEquivalencias.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerEquivalencias.Name = "tsmVerEquivalencias";
-            this.tsmVerEquivalencias.Size = new System.Drawing.Size(208, 30);
+            this.tsmVerEquivalencias.Size = new System.Drawing.Size(246, 30);
             this.tsmVerEquivalencias.Text = "Ver Equivalencias";
             this.tsmVerEquivalencias.Click += new System.EventHandler(this.tsmVerEquivalencias_Click);
             // 
@@ -132,7 +132,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmEliminarCarrera.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarCarrera.Image = global::ISFDyT93.Vista.Properties.Resources.trash_alt_solid;
             this.tsmEliminarCarrera.Name = "tsmEliminarCarrera";
-            this.tsmEliminarCarrera.Size = new System.Drawing.Size(208, 30);
+            this.tsmEliminarCarrera.Size = new System.Drawing.Size(246, 30);
             this.tsmEliminarCarrera.Text = "Eliminar";
             this.tsmEliminarCarrera.Click += new System.EventHandler(this.tsmEliminarCarrera_Click);
             // 
@@ -143,7 +143,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmActivar.ForeColor = System.Drawing.Color.White;
             this.tsmActivar.Image = global::ISFDyT93.Vista.Properties.Resources.check_circle_solid;
             this.tsmActivar.Name = "tsmActivar";
-            this.tsmActivar.Size = new System.Drawing.Size(208, 30);
+            this.tsmActivar.Size = new System.Drawing.Size(246, 30);
             this.tsmActivar.Text = "Activar";
             this.tsmActivar.Click += new System.EventHandler(this.tsmActivar_Click);
             // 
@@ -154,7 +154,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmDarAlta.ForeColor = System.Drawing.Color.White;
             this.tsmDarAlta.Image = global::ISFDyT93.Vista.Properties.Resources.calendar_alt_solid;
             this.tsmDarAlta.Name = "tsmDarAlta";
-            this.tsmDarAlta.Size = new System.Drawing.Size(208, 30);
+            this.tsmDarAlta.Size = new System.Drawing.Size(246, 30);
             this.tsmDarAlta.Text = "Dar de Alta";
             this.tsmDarAlta.Click += new System.EventHandler(this.tsmDarAlta_Click);
             // 
@@ -194,7 +194,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCarreras.Name = "dgvCarreras";
             this.dgvCarreras.ReadOnly = true;
             this.dgvCarreras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
@@ -214,6 +214,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCarreras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarreras.Size = new System.Drawing.Size(777, 436);
             this.dgvCarreras.TabIndex = 0;
+            this.dgvCarreras.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCarreras_CellFormatting_1);
             this.dgvCarreras.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvCarreras_MouseUp);
             // 
             // rbActivos
@@ -221,9 +222,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(3, 23);
+            this.rbActivos.Location = new System.Drawing.Point(3, 20);
             this.rbActivos.Name = "rbActivos";
-            this.rbActivos.Size = new System.Drawing.Size(188, 23);
+            this.rbActivos.Size = new System.Drawing.Size(188, 28);
             this.rbActivos.TabIndex = 52;
             this.rbActivos.TabStop = true;
             this.rbActivos.Text = "Activos";
@@ -234,9 +235,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(391, 23);
+            this.rbInactivos.Location = new System.Drawing.Point(391, 20);
             this.rbInactivos.Name = "rbInactivos";
-            this.rbInactivos.Size = new System.Drawing.Size(188, 23);
+            this.rbInactivos.Size = new System.Drawing.Size(188, 28);
             this.rbInactivos.TabIndex = 51;
             this.rbInactivos.Text = "Inactivos";
             this.rbInactivos.UseVisualStyleBackColor = true;
@@ -260,14 +261,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 69);
             this.tableLayoutPanel1.TabIndex = 53;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // rbBorrador
             // 
             this.rbBorrador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbBorrador.AutoSize = true;
-            this.rbBorrador.Location = new System.Drawing.Point(197, 23);
+            this.rbBorrador.Location = new System.Drawing.Point(197, 20);
             this.rbBorrador.Name = "rbBorrador";
-            this.rbBorrador.Size = new System.Drawing.Size(188, 23);
+            this.rbBorrador.Size = new System.Drawing.Size(188, 28);
             this.rbBorrador.TabIndex = 54;
             this.rbBorrador.Text = "Borrador";
             this.rbBorrador.UseVisualStyleBackColor = true;
@@ -277,9 +279,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.rbTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbTodos.AutoSize = true;
-            this.rbTodos.Location = new System.Drawing.Point(585, 23);
+            this.rbTodos.Location = new System.Drawing.Point(585, 20);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(189, 23);
+            this.rbTodos.Size = new System.Drawing.Size(189, 28);
             this.rbTodos.TabIndex = 53;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
@@ -291,7 +293,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // FormCarreras
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 545);

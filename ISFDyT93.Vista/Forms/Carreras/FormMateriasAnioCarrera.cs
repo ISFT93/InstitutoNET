@@ -49,7 +49,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 tsmVerCorrelatividades.Visible = false;
             }
 
-            this.Contenedor.SetTitulo($"Materias de {this.anioCarrera.AnioCarrera} año de {anioCarrera.NombreCarrera}")
+            this.Contenedor.SetTitulo($" {this.anioCarrera.AnioCarrera} año de {anioCarrera.NombreCarrera}")
                 .SetVolver(() =>
                 {
                     this.Contenedor.AbrirFormulario<FormAniosCarreras>((form) =>
@@ -106,22 +106,34 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
 
+
         private void tsmEliminarMateria_Click(object sender, EventArgs e)
         {
-            //CellContentClick cuando se selecciona en el menu Eliminar
-            DialogResult resultado = MessageBox.Show("¿Desea eliminar la Materia seleccionada?",
-            "Eliminar Materia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
+            try
             {
-                materiasLogica.EliminarMateria(this.MateriaId, this.AnioCarreraId);
+                //CellContentClick cuando se selecciona en el menu Eliminar
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar la Materia seleccionada?",
+                "Eliminar Materia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId);
-                //Ocultar columna de la grilla
-                dgvMatAnioCarrera.Columns["MateriaId"].Visible = false;
+                if (resultado == DialogResult.Yes)
+                {
+                    materiasLogica.EliminarMateria(this.MateriaId, this.AnioCarreraId);
+
+                    //Renumera los codigos de bloque luego de que se elimina una materia
+                    materiasLogica.RenumerarCodigoBloque(this.AnioCarreraId);
+
+                    dgvMatAnioCarrera.DataSource = this.materiasLogica.ObtenerMaterias(this.AnioCarreraId);
+                    //Ocultar columna de la grilla
+                    dgvMatAnioCarrera.Columns["MateriaId"].Visible = false;
+                }
+
+                CalcularHoras();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No se puede proceder con la eliminación, la materia está asociada como correlativa.", "Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
 
-            CalcularHoras();
         }
 
         private void CalcularHoras()
@@ -172,7 +184,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     {
                         tsmAgregarMateria.Visible = false;
                         tsmEliminarMateria.Visible = false;
-                        tsmModificarMateria.Text = "Ver materias";
+                        tsmModificarMateria.Visible = false;
                     }
                     else if (anioCarrera.CarreraEstadoId == (int)CarreraEstado.Borrador)
                     {
