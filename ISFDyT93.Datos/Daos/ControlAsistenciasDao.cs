@@ -157,5 +157,107 @@ namespace ISFDyT93.Datos.Daos
             string query = "select Fecha AS [Fechas], iif(Asistencia = 'P', 'Presente', 'Ausente') AS [Asistencia] from Asistencias where CursadaAlumnoCarreraId = " + Modelo.CursadaAlumnoCarreraId;
             return this.Conexion.ObtenerRegistros(query);
         }
+
+        public DataTable ObtenerResumenAsistenciasAlumnos(AsistenciasModelo Modelo)
+        {
+            string query =
+                "SELECT " +
+                "Ca.CursadaId, " +
+                "ROW_NUMBER() OVER (ORDER BY Al.Apellido, Al.Nombre) AS [Nro], " +
+                "CONCAT(Al.Apellido, ', ', Al.Nombre) AS [Apellidos y Nombres], " +
+                "Al.NumeroDocumento AS [DNI], " +
+                "Ca.Estado AS [Condicion], " +
+                "Ca.HorasCursadas AS [H/Cursadas], " +
+                "Ca.UltimoPresentismo AS [Ult/Presentismo], " +
+                "CAST(Ca.PorcentajeAsistencia AS DECIMAL(5,2)) AS [% Asistencia] " +
+                "FROM AlumnosCarreras AC " +
+                "INNER JOIN Alumnos Al ON Al.AlumnoId = AC.AlumnoId " +
+                "INNER JOIN CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId " +
+                "INNER JOIN Cursadas cu ON Ca.CursadaId = cu.CursadaId " +
+                "INNER JOIN CursoMaterias cm ON cu.CursoMateriaId = cm.CursoMateriaId " +
+                "INNER JOIN Cursos c ON cm.CursoId = c.CursoId " +
+                "INNER JOIN AniosCarreras acr ON c.AnioCarreraId = acr.AnioCarreraId " +
+                "INNER JOIN Materias m ON cm.MateriaId = m.MateriaId " +
+                "LEFT JOIN Servicios s ON s.CursoMateriaId = cm.CursoMateriaId AND s.Activo = 1 " +
+                "LEFT JOIN Personal p ON s.PersonalId = p.PersonalId " +
+                "WHERE 1=1 ";
+
+            bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0 || Modelo.PersonalId > 0;
+
+            if (!hayFiltros && Modelo.CursadaId > 0)
+            {
+                query += " AND Ca.CursadaId = " + Modelo.CursadaId;
+            }
+            else
+            {
+                if (Modelo.CarreraId > 0)
+                    query += " AND acr.CarreraId = " + Modelo.CarreraId;
+                if (Modelo.AnioCarreraId > 0)
+                    query += " AND acr.AnioCarreraId = " + Modelo.AnioCarreraId;
+                if (Modelo.CursoId > 0)
+                    query += " AND c.CursoId = " + Modelo.CursoId;
+                if (Modelo.MateriaId > 0)
+                    query += " AND m.MateriaId = " + Modelo.MateriaId;
+                if (Modelo.AnioLectivo > 0)
+                    query += " AND cu.AnioLectivo = " + Modelo.AnioLectivo;
+                if (Modelo.PersonalId > 0)
+                    query += " AND EXISTS (SELECT 1 FROM Servicios sv WHERE sv.CursoMateriaId = cm.CursoMateriaId AND sv.PersonalId = " + Modelo.PersonalId + ")";
+            }
+
+            query += " ORDER BY Al.Apellido, Al.Nombre";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
+        public DataTable ObtenerResumenCursada(AsistenciasModelo Modelo)
+        {
+            string query =
+                "SELECT " +
+                "cu.CursadaId, " +
+                "m.Nombre AS [Materia], " +
+                "COUNT(*) AS [Cant/Alumnos], " +
+                "cu.CantidadAlumnosRecursantes AS [Cant/Recursantes],"+
+                "cu.CantidadAlumnosDesertores AS [Cant/Desertores],"+
+                "cu.HoraCatedra AS [H/Catedras], " +
+                "cu.FechaAsistencia AS [Fech/Asistencia], " +
+                "CAST(cu.PorcentajeAsistencia AS DECIMAL(5,2)) AS [Porcentaje] " +
+                "FROM AlumnosCarreras AC " +
+                "INNER JOIN Alumnos Al ON Al.AlumnoId = AC.AlumnoId " +
+                "INNER JOIN CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId " +
+                "INNER JOIN Cursadas cu ON Ca.CursadaId = cu.CursadaId " +
+                "INNER JOIN CursoMaterias cm ON cu.CursoMateriaId = cm.CursoMateriaId " +
+                "INNER JOIN Cursos c ON cm.CursoId = c.CursoId " +
+                "INNER JOIN AniosCarreras acr ON c.AnioCarreraId = acr.AnioCarreraId " +
+                "INNER JOIN Materias m ON cm.MateriaId = m.MateriaId " +
+                "LEFT JOIN Servicios s ON s.CursoMateriaId = cm.CursoMateriaId AND s.Activo = 1 " +
+                "LEFT JOIN Personal p ON s.PersonalId = p.PersonalId " +
+                "WHERE 1=1 ";
+
+            bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0 || Modelo.PersonalId > 0;
+
+            if (!hayFiltros && Modelo.CursadaId > 0)
+            {
+                query += " AND Ca.CursadaId = " + Modelo.CursadaId;
+            }
+            else
+            {
+                if (Modelo.CarreraId > 0)
+                    query += " AND acr.CarreraId = " + Modelo.CarreraId;
+                if (Modelo.AnioCarreraId > 0)
+                    query += " AND acr.AnioCarreraId = " + Modelo.AnioCarreraId;
+                if (Modelo.CursoId > 0)
+                    query += " AND c.CursoId = " + Modelo.CursoId;
+                if (Modelo.MateriaId > 0)
+                    query += " AND m.MateriaId = " + Modelo.MateriaId;
+                if (Modelo.AnioLectivo > 0)
+                    query += " AND cu.AnioLectivo = " + Modelo.AnioLectivo;
+                if (Modelo.PersonalId > 0)
+                    query += " AND EXISTS (SELECT 1 FROM Servicios sv WHERE sv.CursoMateriaId = cm.CursoMateriaId AND sv.PersonalId = " + Modelo.PersonalId + ")";
+            }
+
+            query += " GROUP BY cu.CursadaId, m.Nombre, cu.HoraCatedra, cu.CantidadAlumnosRecursantes, cu.CantidadAlumnosDesertores, cu.FechaAsistencia, cu.PorcentajeAsistencia";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
     }
 }
