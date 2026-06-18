@@ -58,17 +58,17 @@ namespace ISFDyT93.Negocio.Logica
 
             return 0;
         }
-        //public int AgregarMaterias(MateriasModelo modelo)
-        //{
-        //    int estado = this.materiasDao.AgregarMaterias(modelo);
+        public int AgregarMaterias(MateriasModelo modelo)
+        {
+            int estado = this.materiasDao.AgregarMaterias(modelo);
 
-        //    if (estado > 0)
-        //    {
-        //        this.aniosCarreraDao.ActualizarCargaHoria(modelo.AnioCarreraId);
-        //    }
+            if (estado > 0)
+            {
+                this.aniosCarreraDao.ActualizarCargaHoria(modelo.AnioCarreraId);
+            }
 
-        //    return estado;
-        //}
+            return estado;
+        }
 
         // Modificado
         public int AgregarMateria(MateriasModelo modelo, int anioCarreraId)
@@ -183,6 +183,17 @@ namespace ISFDyT93.Negocio.Logica
 
             return materias.Rows.Cast<DataRow>().Select(r => r.Field<string>("Nombre")).ToArray();
         }
+
+        public string CreaMateriaCodigoBloque(int anioCarreraId)
+        {
+            return this.materiasDao.CreaMateriaCodigoBloque(anioCarreraId);
+        }
+
+        public void RenumerarCodigoBloque(int anioCarreraId)
+        {
+            this.materiasDao.RenumerarCodigoBloque(anioCarreraId);
+        }
+
     }
 
 }

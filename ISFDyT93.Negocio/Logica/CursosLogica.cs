@@ -23,6 +23,11 @@ namespace ISFDyT93.Negocio.Logica
             return cursosDao.ConsultarCursos(anioCarreraId);
         }
 
+        public DataTable ConsultarCursosCodigoBloque(int anioCarreraId, int carreraid, int estado)
+        {
+            return cursosDao.ConsultarCursosCodigoBloque(anioCarreraId, carreraid, estado);
+        }
+
         public bool ConsultarCursosInactivo(int AnioCarreraId)
         {
             return cursosDao.ConsultarCursosInactivo(AnioCarreraId);

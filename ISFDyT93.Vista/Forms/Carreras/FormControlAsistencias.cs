@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Entidades.Modelos;
@@ -28,6 +30,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
         CursadasModelo Cursada { get; set; }
 
         int fila = 0;
+        DataTable _dtResumenAlumnos;
+        DataTable _dtResumenCursada;
+        bool _enVistaDetalle = false;
 
         #endregion
 
@@ -41,6 +46,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void ControlAsistencias_Load(object sender, EventArgs e)
         {
+            dgvAsistencias.CellDoubleClick += dgvAsistencias_CellDoubleClick;
+
             this.PropiedadesFormPrincipal();
             this.Cursada = this.cursadasLogica.ObtenerCursada(this.CursadaId);
             this.MapToForm<CursadasModelo>(this.Cursada);
@@ -82,7 +89,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         }
 
-        private void RellenarGrilla()
+        private AsistenciasModelo BuildModelo()
         {
             var modelo = new AsistenciasModelo
             {
@@ -90,7 +97,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 CursadaId = this.CursadaId
             };
 
-            // Leer filtros de los combos
             int filtro;
             if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out filtro))
                 modelo.CarreraId = filtro;
@@ -105,23 +111,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out filtro))
                 modelo.PersonalId = filtro;
 
-            dgvAsistencias.DataSource = controlAsistenciasLogica.CargarAsistenciasAnteriores(modelo);
-            dgvAsistencias.Columns["AlumnoId"].Visible = false;
-            dgvAsistencias.Columns["CursadaId"].Visible = false;
-            dgvAsistencias.Columns["AlumnoCarreraId"].Visible = false;
-            dgvAsistencias.Columns["CursadaAlumnoCarreraId"].Visible = false;
+            return modelo;
+        }
 
-            if (dgvAsistencias.Columns["Materia"] != null)
-            {
-                dgvAsistencias.Columns["Materia"].Visible = true;
-                dgvAsistencias.Columns["Materia"].DisplayIndex = 1;
-            }
-            if (dgvAsistencias.Columns["Profesor"] != null)
-            {
-                dgvAsistencias.Columns["Profesor"].Visible = true;
-                dgvAsistencias.Columns["Profesor"].DisplayIndex = 2;
-            }
+        private void RellenarGrilla()
+        {
+            var modelo = BuildModelo();
 
+            _dtResumenAlumnos = controlAsistenciasLogica.ObtenerResumenAsistenciasAlumnos(modelo);
+            _dtResumenCursada = controlAsistenciasLogica.ObtenerResumenCursada(modelo);
+            _enVistaDetalle = false;
+            MostrarResumenCursada();
 
             this.CalcularPorcentajeActual();
             this.ActualizarDatosInformativos();
@@ -215,6 +215,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void CalcularPorcentajeActual()
         {
+            if (dgvAsistencias.Columns["Asistencia"] is null) return;
+
             int alumnos = 0;
 
             for (int i = 0; i < dgvAsistencias.Rows.Count; i++)
@@ -641,6 +643,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnFiltrarAsistencias_Click(object sender, EventArgs e)
         {
+            if(cmbCarrera.SelectedValue == null )
+            {
+                Notificar(TipoNotificacion.Warning, "Seleccione al menos un filtro para aplicar");
+                return;
+            }
             this.RellenarGrilla();
         }
 
@@ -715,6 +722,98 @@ namespace ISFDyT93.Vista.Forms.Carreras
             CargarCiclosLectivos();
 
             cmbCicloLectivo.SelectedIndex = 0;
+        }
+
+        private void MostrarResumenCursada()
+        {
+            dgvAsistencias.DataSource = _dtResumenCursada;
+
+            if (dgvAsistencias.Columns["CursadaId"] != null)
+            {
+                dgvAsistencias.Columns["CursadaId"].Visible = true;
+                dgvAsistencias.Columns["CursadaId"].HeaderText = "Numero";
+            }
+
+            foreach (DataGridViewRow row in dgvAsistencias.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.FromArgb(235, 228, 252);
+                row.DefaultCellStyle.ForeColor = Color.FromArgb(27, 1, 124);
+                row.DefaultCellStyle.Font = new Font(dgvAsistencias.Font, FontStyle.Bold);
+                row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(27, 1, 124);
+                row.DefaultCellStyle.SelectionForeColor = Color.White;
+            }
+
+            _enVistaDetalle = false;
+        }
+
+
+        private void dgvAsistencias_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (_enVistaDetalle)
+            {
+                MostrarResumenCursada();
+                return;
+            }
+
+            if (_dtResumenAlumnos is null || _dtResumenCursada is null) return;
+
+            var celdaCursada = dgvAsistencias.Rows[e.RowIndex].Cells["CursadaId"];
+            if (celdaCursada is null || celdaCursada.Value is null) return;
+
+            int cursadaId = Convert.ToInt32(celdaCursada.Value);
+
+            var filasAlumnos = _dtResumenAlumnos.AsEnumerable()
+                .Where(r => r.Field<int>("CursadaId") == cursadaId)
+                .ToList();
+
+            if (filasAlumnos.Count == 0) return;
+
+            var dtDetalle = filasAlumnos.CopyToDataTable();
+            dtDetalle.Columns.Add("__EsResumen__", typeof(bool));
+            foreach (DataRow row in dtDetalle.Rows)
+                row["__EsResumen__"] = false;
+
+            var resumen = _dtResumenCursada.AsEnumerable()
+                .FirstOrDefault(r => r.Field<int>("CursadaId") == cursadaId);
+
+            if (resumen != null)
+            {
+                var header = dtDetalle.NewRow();
+                header["CursadaId"] = cursadaId;
+                header["Nro"] = 0L;
+                header["Apellidos y Nombres"] = resumen["Materia"].ToString();
+                header["DNI"] = $"{resumen["Cant/Alumnos"]} alumnos";
+                header["Condicion"] = $"Rec: {resumen["Cant/Recursantes"]}  Des: {resumen["Cant/Desertores"]}";
+                header["H/Cursadas"] = resumen["H/Catedras"];
+                header["Ult/Presentismo"] = resumen.IsNull("Fech/Asistencia") ? DBNull.Value : resumen["Fech/Asistencia"];
+                header["% Asistencia"] = resumen["Porcentaje"];
+                header["__EsResumen__"] = true;
+                dtDetalle.Rows.InsertAt(header, 0);
+            }
+
+            dgvAsistencias.DataSource = dtDetalle;
+
+            if (dgvAsistencias.Columns["CursadaId"] != null)
+                dgvAsistencias.Columns["CursadaId"].Visible = false;
+            if (dgvAsistencias.Columns["__EsResumen__"] != null)
+                dgvAsistencias.Columns["__EsResumen__"].Visible = false;
+            if (dgvAsistencias.Columns["Nro"] != null)
+                dgvAsistencias.Columns["Nro"].Visible = false;
+
+            
+            if (dgvAsistencias.Rows.Count > 0)
+            {
+                var filaHeader = dgvAsistencias.Rows[0];
+                filaHeader.DefaultCellStyle.BackColor = Color.FromArgb(27, 1, 124);
+                filaHeader.DefaultCellStyle.ForeColor = Color.White;
+                filaHeader.DefaultCellStyle.Font = new Font(dgvAsistencias.Font, FontStyle.Bold);
+                filaHeader.DefaultCellStyle.SelectionBackColor = Color.FromArgb(50, 20, 160);
+                filaHeader.DefaultCellStyle.SelectionForeColor = Color.White;
+            }
+
+            _enVistaDetalle = true;
         }
 
     }

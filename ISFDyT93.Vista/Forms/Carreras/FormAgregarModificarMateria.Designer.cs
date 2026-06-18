@@ -41,6 +41,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.lblCantidadModulos = new System.Windows.Forms.Label();
+            this.lblFinalPromocion = new System.Windows.Forms.Label();
+            this.cmbFinalPromocion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.epvMaterias)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +67,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(382, 27);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtCargaHoraria
             // 
@@ -128,7 +131,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblFinalPromocion, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblCantidadModulos, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblCargaHoraria, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtModulos, 1, 3);
@@ -137,10 +140,14 @@
             this.tableLayoutPanel1.Controls.Add(this.lblNombre, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblEspacio, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbEspacioId, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cmbFinalPromocion, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -156,7 +163,7 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -180,6 +187,26 @@
             this.lblCantidadModulos.Size = new System.Drawing.Size(163, 20);
             this.lblCantidadModulos.TabIndex = 37;
             this.lblCantidadModulos.Text = "Cantidad de Módulos:";
+            // 
+            // lblFinalPromocion
+            // 
+            this.lblFinalPromocion.AutoSize = true;
+            this.lblFinalPromocion.Location = new System.Drawing.Point(3, 140);
+            this.lblFinalPromocion.Name = "lblFinalPromocion";
+            this.lblFinalPromocion.Size = new System.Drawing.Size(134, 19);
+            this.lblFinalPromocion.TabIndex = 38;
+            this.lblFinalPromocion.Text = "Final / Promoción";
+            // 
+            // cmbFinalPromocion
+            // 
+            this.cmbFinalPromocion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFinalPromocion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFinalPromocion.FormattingEnabled = true;
+            this.cmbFinalPromocion.Location = new System.Drawing.Point(3, 163);
+            this.cmbFinalPromocion.Name = "cmbFinalPromocion";
+            this.cmbFinalPromocion.Size = new System.Drawing.Size(382, 27);
+            this.cmbFinalPromocion.TabIndex = 39;
             // 
             // FormAgregarModificarMateria
             // 
@@ -211,5 +238,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label lblCantidadModulos;
+        private System.Windows.Forms.Label lblFinalPromocion;
+        private System.Windows.Forms.ComboBox cmbFinalPromocion;
     }
 }

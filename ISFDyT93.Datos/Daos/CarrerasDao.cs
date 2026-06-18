@@ -8,33 +8,57 @@ namespace ISFDyT93.Datos.Daos
 {
     public class CarrerasDao : DaoBase , ICarrerasDao
     {
+        public DataTable ObtenerTodasLasCarreras(bool Activo = true)
+        {
+            //Todas las carreras(Activas,Inactivas,Borrador).
+            string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], " +
+                "C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
+                "Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], " +
+                "C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
+              " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId";
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
         public DataTable ObtenerCarreras(bool Activo = true)
         {
             //Query para seleccionar todos resgistros de Carreras
-            string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
+            string query = "SELECT C.CarrerasCodigoBloqueAS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
               " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId WHERE C.CarreraEstadoId = 1" +
               " ORDER BY C.Nombre ASC;";
+
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasInactivas(bool Activo = false)
         {
-            //Query para seleccionar todos resgistros de Carreras
-            string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
+            //Obtiene info de Carreras en estado Inactivas
+            string query = "SELECT CarrerasCodigoBloque AS [Código], C.CarreraId, " +
+                "C.Nombre, C.DescripcionCorta AS [Descripción], " +
+                "C.NumeroExpediente AS [Numero de Expediente], " +
+                "C.CarreraEstadoId , CE.Descripcion AS Estado " +
+                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasBorrador(bool Activo = false)
         {
-            //Query para seleccionar todos resgistros de Carreras
-            string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , C.CantidadHoras as [Carga Horaria Completa], CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
+            //Obtiene info de Carreras en estado Borrador
+            string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, " +
+                "C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], " +
+                "C.CarreraEstadoId , C.CantidadHoras as [Carga Horaria Completa], " +
+                "CE.Descripcion AS Estado " +
+                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasActivas(bool Activo = true)
         {
-            //Query para seleccionar todos resgistros de Carrera
-            string query = "SELECT C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.CarreraEstadoId , CE.Descripcion AS Estado FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
+            //Obtiene info de Carreras en estado Activas
+            string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, " +
+                "C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], " +
+                "C.CarreraEstadoId , CE.Descripcion AS Estado " +
+                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
 
             return this.Conexion.ObtenerRegistros(query);
         }
+
         public CarrerasModelo ObtenerCarrera(int id)
         { /* Si activo es true escribe 1 si no 0 */
             string query = "SELECT * FROM Carreras WHERE CarreraId = " + id;
@@ -114,6 +138,16 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "UPDATE Carreras SET CantidadHoras = " + cantidadHoras + " WHERE CarreraId = " + CarreraId + "";
             this.Conexion.EjecutarAccion(query);
+        }
+
+        //Crea codigo de bloque para Carreras
+        public int GeneraCarrerasCodigoBloque()
+        {
+            string query = "SELECT ISNULL((SELECT TOP 1 CarrerasCodigoBloque FROM Carreras ORDER BY CarrerasCodigoBloque DESC), 0) AS CarrerasCodigoBloque";
+            var row = this.Conexion.ObtenerRegistro(query);
+            int codigo = Convert.ToInt32(row["CarrerasCodigoBloque"]);
+            codigo++;
+            return codigo;
         }
     }
 }

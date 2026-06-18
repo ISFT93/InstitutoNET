@@ -20,7 +20,8 @@ namespace ISFDyT93.Datos.Daos
         }
         public DataTable ObtenerMaterias(int CarreraId)
         {
-            var query = $"select M.MateriaId, M.Nombre from Materias M " +
+            var query = $"select M.MateriaId, M.Nombre, M.MateriasCodigoBloque + ' - ' + M.Nombre AS CodigoNombre " +
+                $"from Materias M " +
                 $"inner join AniosCarreras AC on M.AnioCarreraId = AC.AnioCarreraId " +
                 $"inner join Carreras C on AC.CarreraId = C.CarreraId " +
                 $"where C.CarreraId = {CarreraId}";
@@ -30,13 +31,14 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerEquivalencias(int CarreraId, int CarreraEquivalenciaId)
         {
             var query = $"select E.EquivalenciaId, E.MateriaId, E.MateriaEquivalenciaId, " +
-                $"concat(C.DescripcionCorta, ' - ', M.Nombre) as [Materia], concat(Ca.DescripcionCorta, ' - ', Mat.Nombre) as [Equivalencia] " +
+                $"concat(M.MateriasCodigoBloque, ' - ', C.DescripcionCorta, ' - ', M.Nombre) as [Materia], concat(Mat.MateriasCodigoBloque, ' - ', Ca.DescripcionCorta, ' - ', Mat.Nombre) as [Equivalencia] " +
                 $"from Materias M inner join Equivalencias E on E.MateriaId = M.MateriaId " +
                 $"inner join Materias Mat on E.MateriaEquivalenciaId = Mat.MateriaId " +
                 $"inner join Carreras C on C.CarreraId = E.CarreraId " +
                 $"inner join Carreras Ca on Ca.CarreraId = E.CarreraEquivalenciaId " +
                 $"where E.CarreraId = {CarreraId} and E.CarreraEquivalenciaId = {CarreraEquivalenciaId} " +
                 $"or E.CarreraId = {CarreraEquivalenciaId} and E.CarreraEquivalenciaId = {CarreraId}";
+
             return this.Conexion.ObtenerRegistros(query);
         }
 
