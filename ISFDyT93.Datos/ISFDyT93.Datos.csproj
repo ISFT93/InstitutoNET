@@ -47,25 +47,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Cache.cs" />
+    <Compile Include="Core\Conexion.cs" />
+    <Compile Include="Core\DaoBase.cs" />
+    <Compile Include="Core\Settings.cs" />
     <Compile Include="Daos\AlumnosDao.cs" />
     <Compile Include="Daos\AniosCarreraDao.cs" />
     <Compile Include="Daos\CargosDao.cs" />
     <Compile Include="Daos\ControlAsistenciasDao.cs" />
-    <Compile Include="Core\Settings.cs" />
     <Compile Include="Daos\CursadasDao.cs" />
     <Compile Include="Daos\MesasFinalesDao.cs" />
     <Compile Include="Daos\ParametrosDao.cs" />
     <Compile Include="Daos\EquivalenciasDao.cs" />
     <Compile Include="Daos\EvaluacionesDao.cs" />
     <Compile Include="Daos\CiclosLectivosDao.cs" />
-    <Compile Include="Core\DaoBase.cs" />
     <Compile Include="Daos\CorrelativasDao.cs" />
     <Compile Include="Daos\CursosDao.cs" />
     <Compile Include="Daos\HorariosDao.cs" />
     <Compile Include="Daos\InscripcionAlumnoDao.cs" />
     <Compile Include="Daos\LicenciaServicioDao.cs" />
     <Compile Include="Daos\CarrerasDao.cs" />
-    <Compile Include="Core\Conexion.cs" />
     <Compile Include="Daos\MateriasDao.cs" />
     <Compile Include="Daos\PersonalDao.cs" />
     <Compile Include="Interfaces\IAlumnosDao.cs" />
