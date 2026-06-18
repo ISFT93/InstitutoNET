@@ -27,11 +27,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmVerCursos_Click(object sender, EventArgs e)
         {
+
             if (AnioCarreraId > 0)
             {
                 Contenedor.AbrirFormulario<FormCursos>(form =>
                 {
                     form.AnioCarreraId = this.AnioCarreraId;
+                    form.carreraId = this.CarreraId;
                 });
             }
         }

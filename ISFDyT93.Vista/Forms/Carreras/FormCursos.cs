@@ -15,6 +15,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
     {
         #region Propiedades Públicas
         public int AnioCarreraId { get; set; }
+        public int carreraId { get; set; }
         #endregion
 
         #region Propiedades Privadas
@@ -212,12 +213,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (this.rbActivos.Checked)
             {
-                dgvCursos.DataSource = this.cursosLogica.ConsultarCursos(this.AnioCarreraId);
-                
+                //dgvCursos.DataSource = this.cursosLogica.ConsultarCursos(this.AnioCarreraId);
+                dgvCursos.DataSource = this.cursosLogica.ConsultarCursosCodigoBloque(this.AnioCarreraId, this.carreraId, 1);
+
             }
             else
             {
-                dgvCursos.DataSource = this.cursosLogica.CursosInactivos(this.AnioCarreraId);
+                //dgvCursos.DataSource = this.cursosLogica.CursosInactivos(this.AnioCarreraId);
+                dgvCursos.DataSource = this.cursosLogica.ConsultarCursosCodigoBloque(this.AnioCarreraId, this.carreraId, 0);
             }
 
             // Ordenar la grilla
