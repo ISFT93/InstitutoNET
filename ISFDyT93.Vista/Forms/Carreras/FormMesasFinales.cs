@@ -1,14 +1,15 @@
-﻿using System;
+﻿using ISFDyT93.Datos.Daos;
+using ISFDyT93.Negocio.Core.Enums;
+using ISFDyT93.Negocio.Interfaces;
+using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista;
+using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Forms.Common;
+using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using ISFDyT93.Vista.Core;
-using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Negocio.Core.Enums;
-using ISFDyT93.Vista.Forms.Common;
-using ISFDyT93.Vista;
-using ISFDyT93.Datos.Daos;
-using System.Diagnostics;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -132,20 +133,34 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void CargarTurnos()
         {
-            cmbTurno.DataSource = mesasFinalesLogica.ObtenerTurnos(true);
+            DataTable dt= mesasFinalesLogica.ObtenerTurnos(true);
+            if(dt.Rows.Count>0)
+            {  
+            cmbTurno.DataSource = dt;
             cmbTurno.DisplayMember = "Descripcion";
             cmbTurno.ValueMember = "TurnoId";
             if (TurnoId != 0)
                 cmbTurno.SelectedValue = this.TurnoId;
             turnoId = (int)cmbTurno.SelectedValue;
+            }
         }
 
         private void CargarLlamados(bool fechaUnica)
         {
-            cmbLlamados.DataSource = mesasFinalesLogica.ObtenerLlamados(fechaUnica);
-            cmbLlamados.DisplayMember = "Descripcion";
-            cmbLlamados.ValueMember = "LlamadoId";
-
+            DataTable dt=new DataTable();
+            try
+            { 
+             dt = mesasFinalesLogica.ObtenerLlamados(fechaUnica);
+            }
+            catch (Exception ex)
+             {
+              }
+            if (dt.Rows.Count > 0)
+            {
+                cmbLlamados.DataSource = dt;
+                cmbLlamados.DisplayMember = "Descripcion";
+                cmbLlamados.ValueMember = "LlamadoId";
+            }
             if (LlamadoId != 0)
             {
                 cmbLlamados.SelectedValue = this.LlamadoId;
@@ -153,17 +168,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 this.LlamadoId = 0;
             }
 
-            llamadoId = (int)cmbLlamados.SelectedValue;
+            if (cmbLlamados.Items.Count > 0)
+                llamadoId = (int)cmbLlamados.SelectedValue;
         }
 
         private void CargarAniosLectivos()
         {
-            cmbAnioLectivo.DataSource = mesasFinalesLogica.ObtenerAniosLectivos();
-            cmbAnioLectivo.DisplayMember = "CicloLectivoId";
-            cmbAnioLectivo.ValueMember = "CicloLectivoId";
-            if (AnioLectivoId != 0)
-                cmbLlamados.SelectedValue = this.AnioLectivoId;
-            anioLectivoId = (int)cmbAnioLectivo.SelectedValue;
+            DataTable dt = mesasFinalesLogica.ObtenerAniosLectivos();
+            if (dt.Rows.Count > 0)
+            {
+                cmbAnioLectivo.DataSource = dt;
+                cmbAnioLectivo.DisplayMember = "CicloLectivoId";
+                cmbAnioLectivo.ValueMember = "CicloLectivoId";
+                if (AnioLectivoId != 0)
+                    cmbLlamados.SelectedValue = this.AnioLectivoId;
+                anioLectivoId = (int)cmbAnioLectivo.SelectedValue;
+            }
         }
 
         private void cmbAnioLectivo_SelectionChangeCommitted(object sender, EventArgs e)
