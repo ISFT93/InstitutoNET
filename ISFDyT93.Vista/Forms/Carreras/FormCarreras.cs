@@ -236,7 +236,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         tsmEliminarCarrera.Visible = true;
                         tsmVerAnios.Visible = true;
                         tsmVerCorrelativas.Visible = true;
-                        tsmVerEquivalencias.Visible = true;
+                        tsmVerEquivalencias.Visible = false;
                         tsmDarAlta.Visible = false;
                         tsmActivar.Visible = true;
                     }
