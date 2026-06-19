@@ -2,7 +2,7 @@
 -- ACTUALIZACIÓN DE FERNANDEZ FRANCO DANIEL
 --19/06/2026
 --EQUIPO 5
---****************
+--****************   v  
 USE instituto_db;
 
 GO
