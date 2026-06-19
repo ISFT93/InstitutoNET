@@ -149,5 +149,15 @@ namespace ISFDyT93.Datos.Daos
             codigo++;
             return codigo;
         }
+
+        public int CantidadCorrelativasCarrera(int CarreraId)
+        {
+            string query = "SELECT CantidadCorrelativas FROM Carreras WHERE CarreraId = " + CarreraId + "";
+            var row = this.Conexion.ObtenerRegistro(query);
+            int cantCorrelativas = Convert.ToInt32(row["CantidadCorrelativas"]);
+
+            return cantCorrelativas;
+        }
+
     }
 }

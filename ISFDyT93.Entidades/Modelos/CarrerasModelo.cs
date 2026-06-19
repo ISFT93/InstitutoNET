@@ -52,5 +52,9 @@ namespace ISFDyT93.Entidades.Modelos
         public bool PoseeMaterias { get; set; }
 
         public string CarrerasCodigoBloque { get; set; }
+
+        [Obligatorio]
+        [SoloNumeros(minimo: 0, maximo: 99)]
+        public int CantidadCorrelativas { get; set; }
     }
 }

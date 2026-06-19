@@ -96,6 +96,7 @@
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\ReportTable.cs" />
+    <Compile Include="Core\SeleccionRB.cs" />
     <Compile Include="Core\ThemeColor.cs" />
     <Compile Include="Forms\Carreras\FormAgregarFechasFinales.cs">
       <SubType>Form</SubType>

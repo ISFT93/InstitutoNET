@@ -126,5 +126,21 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
+
+        public int ObtenerCantidadCorrelativas(int CarreraId)
+        {
+            var query = $"select COUNT(*) as 'CantidadDeCorrelativas' " +
+                $"from dbo.Materias M " +
+                $"inner join dbo.Correlativas C on C.MateriaId = M.MateriaId " +
+                $"inner join dbo.Materias MC on MC.MateriaId = C.MateriaCorrelativaId " +
+                $"inner join AniosCarreras AC on M.AnioCarreraId = AC.AnioCarreraId " +
+                $"where AC.CarreraId = {CarreraId} ";
+
+            var row = this.Conexion.ObtenerRegistro(query);
+
+            return Convert.ToInt32(row["CantidadDeCorrelativas"]);            
+        }
+
+
     }
 }

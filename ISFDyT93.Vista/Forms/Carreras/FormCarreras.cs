@@ -158,7 +158,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.Contenedor.SetTitulo("Carreras");
             CargaGrilla();
-
+            SeleccionRadioButton();
         }
 
         private void tsmActivar_Click(object sender, EventArgs e)
@@ -208,6 +208,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     this.CarreraId = Convert.ToInt32(dgvCarreras["CarreraId", info.RowIndex].Value.ToString());
                     var estado = Convert.ToInt32(dgvCarreras.Rows[info.RowIndex].Cells["CarreraEstadoId"].Value);
                     var cargaHoraria = aniosCarreraLogica.ObtenerCargaHoraria(this.CarreraId).ToString();
+                    var cantidadDeCorrelativas = correlativasLogica.ObtenerCantidadCorrelativas(this.CarreraId).ToString();
 
                     dgvCarreras.Rows[info.RowIndex].Selected = true;
 
@@ -236,7 +237,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         tsmEliminarCarrera.Visible = true;
                         tsmVerAnios.Visible = true;
                         tsmVerCorrelativas.Visible = true;
-                        tsmVerEquivalencias.Visible = true;
+                        tsmVerEquivalencias.Visible = false;
                         tsmDarAlta.Visible = false;
                         tsmActivar.Visible = true;
                     }
@@ -268,7 +269,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                     //Controla si coinciden las cantidades de horas cargadas y las calculadas para poder activar la carrera
                     bool Activar = true;
-                    if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString())
+
+                    if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString() && cantidadDeCorrelativas == carrerasLogica.CantidadCorrelativasCarrera(CarreraId).ToString())
                     {
                         //Controla que no haya años vacios 
                         var anios = aniosCarreraLogica.ObtenerAniosCarrera(CarreraId);
@@ -390,14 +392,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void rbTodos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Todos";
         }
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Activos";
         }
         private void rbInactivos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Inactivos";
         }
         private void tsmDarAlta_Click(object sender, EventArgs e)
         {
@@ -427,6 +432,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void rbBorrador_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Borrador";
         }
 
         private void tmrRetrasoForm_Tick(object sender, EventArgs e)
@@ -476,6 +482,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void dgvCarreras_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
             CarreraEstados();
+        }
+
+        public void SeleccionRadioButton()
+        {
+            if (SeleccionRB.radioSeleccionado == "Activos")
+                rbActivos.Checked = true;
+            else if (SeleccionRB.radioSeleccionado == "Borrador")            
+                rbBorrador.Checked = true;            
+            else if (SeleccionRB.radioSeleccionado == "Inactivos")            
+                rbInactivos.Checked = true;            
+            else            
+                rbTodos.Checked = true;            
         }
 
     }
