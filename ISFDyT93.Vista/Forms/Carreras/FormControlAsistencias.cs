@@ -55,7 +55,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
 
             var dr = controlAsistenciasLogica.CargarProfesor();
-            txtProfesor.Text = dr["Nombre"].ToString() + " " + dr["Apellido"].ToString();
+
+                txtProfesor.Text = dr["Nombre"].ToString();
+             if (!dr.IsNull("Apellido"))
+                txtProfesor.Text +=  " " + dr["Apellido"].ToString();
 
             //this.RellenarGrilla();
        
