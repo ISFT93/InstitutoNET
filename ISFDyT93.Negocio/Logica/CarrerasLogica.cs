@@ -268,5 +268,12 @@ namespace ISFDyT93.Negocio.Logica
         //        { "btnGuardar", true}
         //    };
         //}
+
+        public int CantidadCorrelativasCarrera(int CarreraId)
+        {
+            return this.carrerasDao.CantidadCorrelativasCarrera(CarreraId);
+        }
+
+
     }
 }

@@ -208,6 +208,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     this.CarreraId = Convert.ToInt32(dgvCarreras["CarreraId", info.RowIndex].Value.ToString());
                     var estado = Convert.ToInt32(dgvCarreras.Rows[info.RowIndex].Cells["CarreraEstadoId"].Value);
                     var cargaHoraria = aniosCarreraLogica.ObtenerCargaHoraria(this.CarreraId).ToString();
+                    var cantidadDeCorrelativas = correlativasLogica.ObtenerCantidadCorrelativas(this.CarreraId).ToString();
 
                     dgvCarreras.Rows[info.RowIndex].Selected = true;
 
@@ -268,7 +269,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                     //Controla si coinciden las cantidades de horas cargadas y las calculadas para poder activar la carrera
                     bool Activar = true;
-                    if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString())
+
+                    if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString() && cantidadDeCorrelativas == carrerasLogica.CantidadCorrelativasCarrera(CarreraId).ToString())
                     {
                         //Controla que no haya años vacios 
                         var anios = aniosCarreraLogica.ObtenerAniosCarrera(CarreraId);

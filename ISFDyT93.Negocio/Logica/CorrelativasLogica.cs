@@ -82,9 +82,9 @@ namespace ISFDyT93.Negocio.Logica
 
             correlativasDao.GuardarCorrelatividades(correlativas);
         }
-        public DataTable ObtenerCantidadCorrelativas(int CarreraId)
+        public int ObtenerCantidadCorrelativas(int CarreraId)
         {
-            return this.correlativasDao.ObtenerCantidadCorrelativas(CarreraId);
+             return this.correlativasDao.ObtenerCantidadCorrelativas(CarreraId);
         }
 
     }

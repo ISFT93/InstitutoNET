@@ -127,7 +127,7 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public DataTable ObtenerCantidadCorrelativas(int CarreraId)
+        public int ObtenerCantidadCorrelativas(int CarreraId)
         {
             var query = $"select COUNT(*) as 'CantidadDeCorrelativas' " +
                 $"from dbo.Materias M " +
@@ -136,7 +136,9 @@ namespace ISFDyT93.Datos.Daos
                 $"inner join AniosCarreras AC on M.AnioCarreraId = AC.AnioCarreraId " +
                 $"where AC.CarreraId = {CarreraId} ";
 
-            return this.Conexion.ObtenerRegistros(query);
+            var row = this.Conexion.ObtenerRegistro(query);
+
+            return Convert.ToInt32(row["CantidadDeCorrelativas"]);            
         }
 
 
