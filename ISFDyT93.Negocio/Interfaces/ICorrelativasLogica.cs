@@ -22,5 +22,6 @@ namespace ISFDyT93.Negocio.Interfaces
         DataTable ObtenerCorrelativasCarrera(int CarreraId);
         bool PuedeModificarCorrelativas(int carreraEstadoId);
         void AgregarTodasLasCorrelativas(int materiaId, DataTable tabla);
+        DataTable ObtenerCantidadCorrelativas(int CarreraId);
     }
 }
