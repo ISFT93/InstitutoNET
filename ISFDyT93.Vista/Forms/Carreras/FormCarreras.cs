@@ -158,7 +158,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.Contenedor.SetTitulo("Carreras");
             CargaGrilla();
-
+            SeleccionRadioButton();
         }
 
         private void tsmActivar_Click(object sender, EventArgs e)
@@ -392,14 +392,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void rbTodos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Todos";
         }
         private void rbActivos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Activos";
         }
         private void rbInactivos_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Inactivos";
         }
         private void tsmDarAlta_Click(object sender, EventArgs e)
         {
@@ -429,6 +432,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void rbBorrador_CheckedChanged(object sender, EventArgs e)
         {
             CargaGrilla();
+            SeleccionRB.radioSeleccionado = "Borrador";
         }
 
         private void tmrRetrasoForm_Tick(object sender, EventArgs e)
@@ -478,6 +482,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void dgvCarreras_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
             CarreraEstados();
+        }
+
+        public void SeleccionRadioButton()
+        {
+            if (SeleccionRB.radioSeleccionado == "Activos")
+                rbActivos.Checked = true;
+            else if (SeleccionRB.radioSeleccionado == "Borrador")            
+                rbBorrador.Checked = true;            
+            else if (SeleccionRB.radioSeleccionado == "Inactivos")            
+                rbInactivos.Checked = true;            
+            else            
+                rbTodos.Checked = true;            
         }
 
     }
