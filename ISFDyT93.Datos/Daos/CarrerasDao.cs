@@ -23,7 +23,7 @@ namespace ISFDyT93.Datos.Daos
         {
             //Query para seleccionar todos resgistros de Carreras
             string query = "SELECT C.CarrerasCodigoBloqueAS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
-              " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId WHERE C.CarreraEstadoId = 1" +
+              " INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId WHERE C.CarreraEstadoId = 1" +
               " ORDER BY C.Nombre ASC;";
 
             return this.Conexion.ObtenerRegistros(query);
@@ -35,7 +35,7 @@ namespace ISFDyT93.Datos.Daos
                 "C.Nombre, C.DescripcionCorta AS [Descripción], " +
                 "C.NumeroExpediente AS [Numero de Expediente], " +
                 "C.CarreraEstadoId , CE.Descripcion AS Estado " +
-                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
+                "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasBorrador(bool Activo = false)
@@ -45,7 +45,7 @@ namespace ISFDyT93.Datos.Daos
                 "C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], " +
                 "C.CarreraEstadoId , C.CantidadHoras as [Carga Horaria Completa], " +
                 "CE.Descripcion AS Estado " +
-                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
+                "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
             return this.Conexion.ObtenerRegistros(query);
         }
         public DataTable CarrerasActivas(bool Activo = true)
