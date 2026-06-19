@@ -15,7 +15,7 @@ namespace ISFDyT93.Datos.Daos
                 "C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
                 "Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], " +
                 "C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
-              " INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId";
+              " INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId";
             return this.Conexion.ObtenerRegistros(query);
         }
 
@@ -54,7 +54,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, " +
                 "C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], " +
                 "C.CarreraEstadoId , CE.Descripcion AS Estado " +
-                "FROM Carreras C INNER JOIN CarreraEstados CE on C.CarreraEstadoId = CE.CarreraEstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
+                "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");// FROM Carreras WHERE CarreraEstadoId = " + (Activo ? "1" : "1");
 
             return this.Conexion.ObtenerRegistros(query);
         }
