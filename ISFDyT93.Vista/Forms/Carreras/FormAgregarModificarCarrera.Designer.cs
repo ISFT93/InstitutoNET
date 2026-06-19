@@ -459,7 +459,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtCantidadCorrelativas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadCorrelativas.Location = new System.Drawing.Point(391, 386);
-            this.txtCantidadCorrelativas.MaxLength = 4;
+            this.txtCantidadCorrelativas.MaxLength = 2;
             this.txtCantidadCorrelativas.Name = "txtCantidadCorrelativas";
             this.txtCantidadCorrelativas.Size = new System.Drawing.Size(352, 27);
             this.txtCantidadCorrelativas.TabIndex = 57;
@@ -486,7 +486,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtCarreraReemplazar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCarreraReemplazar.Location = new System.Drawing.Point(391, 206);
-            this.txtCarreraReemplazar.MaxLength = 4;
+            this.txtCarreraReemplazar.MaxLength = 150;
             this.txtCarreraReemplazar.Name = "txtCarreraReemplazar";
             this.txtCarreraReemplazar.Size = new System.Drawing.Size(352, 27);
             this.txtCarreraReemplazar.TabIndex = 60;
