@@ -724,7 +724,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             CargarCiclosLectivos();
 
-            cmbCicloLectivo.SelectedIndex = 0;
+            //cmbCicloLectivo.SelectedIndex = 0;
         }
 
         private void MostrarResumenCursada()

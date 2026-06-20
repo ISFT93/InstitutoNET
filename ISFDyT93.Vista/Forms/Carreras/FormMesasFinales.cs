@@ -141,7 +141,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbTurno.ValueMember = "TurnoId";
             if (TurnoId != 0)
                 cmbTurno.SelectedValue = this.TurnoId;
-            turnoId = (int)cmbTurno.SelectedValue;
+            if (cmbTurno.SelectedValue != null && int.TryParse(cmbTurno.SelectedValue.ToString(), out int tid))
+                turnoId = tid;
             }
         }
 
@@ -169,7 +170,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
 
             if (cmbLlamados.Items.Count > 0)
-                llamadoId = (int)cmbLlamados.SelectedValue;
+            {
+                if (cmbLlamados.SelectedValue != null && int.TryParse(cmbLlamados.SelectedValue.ToString(), out int lid))
+                    llamadoId = lid;
+            }
         }
 
         private void CargarAniosLectivos()
@@ -181,8 +185,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 cmbAnioLectivo.DisplayMember = "CicloLectivoId";
                 cmbAnioLectivo.ValueMember = "CicloLectivoId";
                 if (AnioLectivoId != 0)
-                    cmbLlamados.SelectedValue = this.AnioLectivoId;
-                anioLectivoId = (int)cmbAnioLectivo.SelectedValue;
+                    cmbAnioLectivo.SelectedValue = this.AnioLectivoId;
+                if (cmbAnioLectivo.SelectedValue != null && int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int aid))
+                    anioLectivoId = aid;
             }
         }
 
@@ -278,7 +283,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void ControlLlamados()
         {
-            if ((int)cmbTurno.SelectedValue != 3)
+            if (cmbTurno.SelectedValue == null || !int.TryParse(cmbTurno.SelectedValue.ToString(), out int turnoSeleccionado))
+            {
+                cmbLlamados.DataSource = null;
+                cmbLlamados.Items.Clear();
+                cmbLlamados.Enabled = false;
+                llamadoId = 0;
+                return;
+            }
+
+            turnoId = turnoSeleccionado;
+
+            if (turnoSeleccionado != 3)
             {
                 CargarLlamados(true);
                 cmbLlamados.Enabled = false;
