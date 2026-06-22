@@ -75,20 +75,28 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
-
-            var carreras = carrerasLogica.ObtenerCarrerasConPrimeroActivo();
-            if (!(carreras != null && carreras.Rows.Count > 0))
-            {
-                MessageBox.Show("No se encontraron carreras con primer año activo.\nIngrese primero los cursos y vuelva a intentarlo",
-                                "Información",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                Contenedor.AbrirFormulario<FormAlumnos>();
-            }
+            var carreras = carrerasLogica.ObtenerTodasLasCarreras();
             cmbCarreraId.DataSource = null;
             cmbCarreraId.DataSource = carreras;
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
+            if (this.Accion == TipoAccion.Agregar)
+            {
+                carreras = carrerasLogica.ObtenerCarrerasConPrimeroActivo();
+                if (!(carreras != null && carreras.Rows.Count > 0))
+                {
+                    MessageBox.Show("No se encontraron carreras con primer año activo.\nIngrese primero los cursos y vuelva a intentarlo",
+                                    "Información",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    Contenedor.AbrirFormulario<FormAlumnos>();
+                }
+                cmbCarreraId.DataSource = null;
+                cmbCarreraId.DataSource = carreras;
+                cmbCarreraId.ValueMember = "CarreraId";
+                cmbCarreraId.DisplayMember = "Descripción";
+            }
+            
             if (this.AlumnoId > 0)
             {
                 this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
