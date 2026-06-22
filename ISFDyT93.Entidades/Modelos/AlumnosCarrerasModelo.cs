@@ -13,5 +13,7 @@ namespace ISFDyT93.Entidades.Modelos
         public DateTime? FechaAlta { get; set; }
         public DateTime? FechaBaja { get; set; }
         public bool Activo { get; set; }
+        public int CicloLectivoId { get; set; }
+        public int Inicializado { get; set; } = 0;
     }
 }

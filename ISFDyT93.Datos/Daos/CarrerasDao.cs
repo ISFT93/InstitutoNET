@@ -1,8 +1,9 @@
 ﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Data;
-using ISFDyT93.Datos.Interfaces;
+using System.Data.SqlClient;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -22,12 +23,46 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerCarreras(bool Activo = true)
         {
             //Query para seleccionar todos resgistros de Carreras
-            string query = "SELECT C.CarrerasCodigoBloqueAS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
+            string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Expediente], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
               " INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId WHERE C.CarreraEstadoId = 1" +
               " ORDER BY C.Nombre ASC;";
 
             return this.Conexion.ObtenerRegistros(query);
         }
+        public DataTable ObtenerCarrerasConPrimeroActivo(bool Activo = true)
+        {
+            //Query para seleccionar todos resgistros de Carreras
+            string query = @"SELECT
+                                C.CarrerasCodigoBloque AS [Código],
+                                C.CarreraId,
+                                C.Nombre,
+                                C.DescripcionCorta AS [Descripción],
+                                C.NumeroExpediente AS [Numero de Expediente],
+                                C.AnioInicio AS [Año de Inicio],
+                                IIF(C.AnioFin > 0, CONVERT(NVARCHAR(4), C.AnioFin), '') AS [Año de Fin],
+                                C.CantidadHoras AS [Carga Horaria Completa],
+                                C.CarreraEstadoId,
+                                CE.Descripcion AS Estado
+                            FROM Carreras C
+                            INNER JOIN Estados CE
+                                ON C.CarreraEstadoId = CE.EstadoId
+                            WHERE
+                                C.CarreraEstadoId = 1
+                                AND EXISTS (
+                                    SELECT 1
+                                    FROM AniosCarreras AC
+                                    INNER JOIN Cursos CU
+                                        ON CU.AnioCarreraId = AC.AnioCarreraId
+                                    WHERE
+                                        AC.CarreraId = C.CarreraId
+                                        AND AC.AnioCarrera = 1
+                                        AND CU.Activo = 1
+                                )
+                            ORDER BY C.Nombre ASC;";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
         public DataTable CarrerasInactivas(bool Activo = false)
         {
             //Obtiene info de Carreras en estado Inactivas
@@ -58,7 +93,19 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
+        public int TraeIdDeCarrera(string nombre)
+        {
+            string query = "SELECT CarreraId FROM Carreras WHERE Nombre = '" + nombre + "'";
+            var carrera = this.Conexion.ObtenerRegistro(query);
 
+            if (carrera != null)
+            {
+                return Convert.ToInt32(carrera["CarreraId"]);
+            }
+
+            return 0;
+
+        }
         public CarrerasModelo ObtenerCarrera(int id)
         { /* Si activo es true escribe 1 si no 0 */
             string query = "SELECT * FROM Carreras WHERE CarreraId = " + id;
@@ -72,18 +119,12 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistro(query);
         }
 
-        public int TraeIdDeCarrera(string nombre)
+        public int CarreraTienePrimerAnio(int id)
         {
-            string query = "SELECT CarreraId FROM Carreras WHERE Nombre = '" + nombre + "'";
-            var carrera = this.Conexion.ObtenerRegistro(query);
-
-            if (carrera != null)
-            {
-                return Convert.ToInt32(carrera["CarreraId"]);
-            }
-
-            return 0;
-
+            string query = @"SELECT CASE WHEN EXISTS (SELECT 1 FROM AniosCarreras WHERE CarreraId = "+id+ " AND AnioCarrera = 1) THEN 1 ELSE 0 END AS TienePrimerAnio";
+            var row = this.Conexion.ObtenerRegistro(query);
+            int existe = Convert.ToInt32(row["TienePrimerAnio"]);
+            return existe;
         }
 
         public int ObtenerUltimoCarreraId()

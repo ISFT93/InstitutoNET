@@ -16,7 +16,7 @@ namespace ISFDyT93.Negocio.Interfaces
         int AgregarFechaFinalesMarzo(CicloLectivoModelo modelo);
         int AgregarFechaFinalesJulio(CicloLectivoModelo modelo);
         int AgregarFechaFinalesDiciembre(CicloLectivoModelo modelo);
-        int IngresoCursadaPrimeroSP(int CicloLectivo);
+        int IngresoCursadaPrimeroSP(int CicloLectivo, int Carrera);
         DataTable ObtenerCargaGrillaCicloLectivo();
         int ObtenerAlumnoDePrimero(int aniolectivo);
         int ObtenerMaximoAnioCicloLectivo();

@@ -123,7 +123,19 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.alumnosDao.DarAltaAlumnos(alumnoId);
         }
-
+        public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)
+        {
+            return this.alumnosDao.ActualizarEstadoInicializado(alumnoId, nuevoEstado);
+        }
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado,int carrera, string filtro)
+        {
+            return this.alumnosDao.ObtenerAlumnosPorEstadoDocumentacion(estado,carrera,filtro);
+        }
+        public bool EnviarMailDocumentos(string email, string asunto, string mensaje)
+        {
+            MailService mailService = new MailService();
+            return mailService.SendMail(email, asunto, mensaje);
+        }
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo = null)
         {
             return this.alumnosDao.ObtenerTodosAlumnos(tipo, filtro, activo);

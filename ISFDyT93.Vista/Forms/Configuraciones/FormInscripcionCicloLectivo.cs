@@ -76,7 +76,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
 
         private void btnIngresoPrimerAño_Click(object sender, EventArgs e)
         {
-            this.cicloLectivosLogica.IngresoCursadaPrimeroSP(CicloLectivoId);
+            //this.cicloLectivosLogica.IngresoCursadaPrimeroSP(CicloLectivoId,);
             btnIngresoPrimerAño.Visible = false;
             Refrescar();
         }

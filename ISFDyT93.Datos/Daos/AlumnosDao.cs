@@ -284,5 +284,57 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT DISTINCT Provincia FROM Alumnos";
             return this.Conexion.ObtenerRegistros(query);
         }
+        public DataTable ObtenerAlumnosPorEstadoDocumentacion(int estado, int carrera, string filtro)
+        {
+            string query = @"SELECT A.AlumnoId,
+                    ac.AlumnoCarreraId,
+                    A.Apellido,
+                    A.Nombre,
+                    A.NumeroDocumento AS Documento,
+                    A.Email AS Correo,
+                    ac.Inicializado
+             FROM Alumnos A
+             LEFT JOIN AlumnosCarreras ac 
+                    ON ac.AlumnoId = A.AlumnoId 
+                    AND ac.Activo = 1
+             LEFT JOIN Carreras C 
+                    ON ac.CarreraId = C.CarreraId
+             WHERE 1 = 1 ";
+
+            // Filtra por estado de documentación
+            if (estado == 1)
+            {
+                query += " AND (ac.Inicializado = '0' OR ac.Inicializado = '1')";
+            }
+            else if (estado == 2)
+            {
+                query += " AND ac.Inicializado = '2'";
+            }
+
+            // Filtra por carrera
+            if (carrera != -1)
+            {
+                query += " AND ac.CarreraId = " + carrera;
+            }
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                query += @" AND (
+                A.Nombre LIKE '%" + filtro + @"%' 
+                OR A.Apellido LIKE '%" + filtro + @"%' 
+                OR A.NumeroDocumento LIKE '%" + filtro + @"%'
+            )";
+            }
+            query += "and a.Activo = 1 ORDER BY A.Apellido ASC";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+        public int ActualizarEstadoInicializado(int alumnoId, int nuevoEstado)
+        {
+            // Requerimiento 11A y 11B: Cambia el estado (0: Incompleto, 1: Enviado, 2: Validado)
+            string query = "UPDATE AlumnosCarreras SET Inicializado = " + nuevoEstado +
+                           " WHERE AlumnoId = " + alumnoId + " AND Activo = 1";
+
+            return this.Conexion.EjecutarAccion(query);
+        }
     }
 }

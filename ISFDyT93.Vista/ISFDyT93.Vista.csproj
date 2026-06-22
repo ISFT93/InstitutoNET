@@ -98,6 +98,12 @@
     <Compile Include="Core\ReportTable.cs" />
     <Compile Include="Core\SeleccionRB.cs" />
     <Compile Include="Core\ThemeColor.cs" />
+    <Compile Include="Forms\Alumnos\FormDocumentacionAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alumnos\FormDocumentacionAlumno.Designer.cs">
+      <DependentUpon>FormDocumentacionAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Carreras\FormAgregarFechasFinales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +394,9 @@
     <EmbeddedResource Include="Core\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alumnos\FormDocumentacionAlumno.resx">
+      <DependentUpon>FormDocumentacionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormAgregarFechasFinales.resx">
       <DependentUpon>FormAgregarFechasFinales.cs</DependentUpon>
     </EmbeddedResource>
@@ -547,6 +556,7 @@
     <EmbeddedResource Include="UserControls\uscPersonalGrid.resx">
       <DependentUpon>uscPersonalGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -557,9 +567,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISFDyT93.Datos\ISFDyT93.Datos.csproj">

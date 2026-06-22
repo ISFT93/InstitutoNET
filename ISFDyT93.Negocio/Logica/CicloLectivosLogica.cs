@@ -60,13 +60,13 @@ namespace ISFDyT93.Negocio.Logica
             return this.ciclolectivoDao.AgregarFechaFinalesDiciembre(modelo);
         }
 
-       
-        public int IngresoCursadaPrimeroSP(int CicloLectivo)
+
+        public int IngresoCursadaPrimeroSP(int CicloLectivo, int Carrera)
         {
-            return this.ciclolectivoDao.IngresoCursadaPrimeroSP(CicloLectivo);
+            return this.ciclolectivoDao.IngresoCursadaPrimeroSP(CicloLectivo, Carrera);
         }
 
-        
+
         public DataTable ObtenerCargaGrillaCicloLectivo()
         {
             return this.ciclolectivoDao.ObtenerCicloLectivo();
