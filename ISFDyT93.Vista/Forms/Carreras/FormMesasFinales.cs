@@ -316,11 +316,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 switch (estado)
                 {
-                    case "Activo/a":
+                    case "Activo":
                         foreColor = Color.Green;
                         break;
 
-                    case "Inactivo/a":
+                    case "Inactivo":
                         foreColor = Color.FromArgb(230, 250, 0);
                         break;
 
