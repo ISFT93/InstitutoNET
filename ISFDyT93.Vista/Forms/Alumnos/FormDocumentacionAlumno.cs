@@ -382,18 +382,30 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 this.Notificar(TipoNotificacion.Warning, "No se encontraron alumnos para cargar en los cursos.\nRevise los datos ingresados e inténtelo nuevamente.");
                 return;
             }
-            foreach (DataGridViewRow fila in dgvAlumnos.Rows)
+            var tipo = (TipoFiltroAlumno)cmbCarreraId.SelectedIndex;
+            var listAlumno = AlumnosLogica.ObtenerTodosAlumnos(tipo,"");
+            foreach (DataRow fila in listAlumno.Rows)
             {
-                //if (Convert.ToInt32(fila.Cells["Inicializado"].Value) == 0 && Convert.ToInt32(fila.Cells["Inicializado"].Value) == 1)
-                //{
-                //    int id = Convert.ToInt32(fila.Cells["AlumnoId"].Value);
-                //    AlumnosLogica.EliminarAlumno(id);
-                //}
+                if (fila["Inicializado"] == DBNull.Value)
+                    {
+                    int id = Convert.ToInt32(fila["AlumnoId"]);
+                    AlumnosLogica.ActualizarEstadoInicializado(id, 0);
+                    AlumnosLogica.EliminarAlumno(id);
+                    AlumnosLogica.BajaAlumnoCarrera(id);
+                    continue;
+                    }
+                if (fila["Inicializado"] != DBNull.Value && Convert.ToInt32(fila["Inicializado"]) != 3)
+                {
+                    int id = Convert.ToInt32(fila["AlumnoId"]);
+                    AlumnosLogica.ActualizarEstadoInicializado(id, 0);
+                    AlumnosLogica.EliminarAlumno(id);
+                    AlumnosLogica.BajaAlumnoCarrera(id);
+                }
             }
-            
+
             CicloLectivosLogica.IngresoCursadaPrimeroSP(CicloLectivosLogica.ObtenerCicloLectivoActual(), carreraId);
             this.Notificar(TipoNotificacion.Information, "Se han cargados los alumnos correctamente a los primeros años de la carrera" );
-
+            RecargarGrilla();
         }
     }
 }

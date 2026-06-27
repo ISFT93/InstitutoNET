@@ -373,7 +373,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                         //lo estoy dando de alta
                         alumnoCarrera.Activo = true;
                         alumnoCarrera.FechaAlta = DateTime.Now;
-                        alumnoCarrera.Activo = false;
                         alumnoCarrera.Inicializado = 0;
                         alumnosLogica.AgregarAlumnoCarrera(alumnoCarrera);
 
