@@ -270,6 +270,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     //Controla si coinciden las cantidades de horas cargadas y las calculadas para poder activar la carrera
                     bool Activar = true;
 
+                    //                                                                                                                                 && cantidadDeCorrelativas == carrerasLogica.CantidadCorrelativasCarrera(CarreraId).ToString()              
                     if (estado == (int)CarreraEstado.Borrador && cargaHoraria == dgvCarreras["Carga Horaria Completa", info.RowIndex].Value.ToString() && cantidadDeCorrelativas == carrerasLogica.CantidadCorrelativasCarrera(CarreraId).ToString())
                     {
                         //Controla que no haya años vacios 
