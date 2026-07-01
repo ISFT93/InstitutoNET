@@ -3,9 +3,10 @@
 -- ACTUALIZACION DE FERNANDEZ FRANCO DANIEL
 --16/05/2026
 --EQUIPO 5
+--si corrio la base nueva ya existen estos campos y va a fallar, no seria un problema
 --****************
 
-USE instituto_db;
+USE INSTITUTO_DB;
 
 GO
 
