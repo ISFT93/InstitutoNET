@@ -3,7 +3,7 @@
 --19/06/2026
 --EQUIPO 5
 --****************   v  
-USE instituto_db;
+USE INSTITUTO_DB;
 
 GO
 

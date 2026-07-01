@@ -1,4 +1,5 @@
-USE instituto_db
+--si la base es la nueva, ya existen esta columnas
+USE INSTITUTO_DB
 GO
 
 ALTER TABLE dbo.CicloLectivo

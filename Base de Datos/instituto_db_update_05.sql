@@ -1,4 +1,4 @@
-USE Instituto_db
+USE INSTITUTO_DB
 GO
 
 ALTER TABLE Cargos ADD CargaHoraria INT
