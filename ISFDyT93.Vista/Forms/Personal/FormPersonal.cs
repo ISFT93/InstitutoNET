@@ -224,11 +224,11 @@ namespace ISFDyT93.Vista.Forms.Personal
 
                 switch (estado)
                 {
-                    case "Activo/a":
+                    case "Activo":
                         foreColor = Color.Green;
                         break;
 
-                    case "Inactivo/a":
+                    case "Inactivo":
                         foreColor = Color.FromArgb(230, 250, 0);
                         break;
 
