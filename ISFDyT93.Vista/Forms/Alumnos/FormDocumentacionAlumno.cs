@@ -386,15 +386,18 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             var listAlumno = AlumnosLogica.ObtenerTodosAlumnos(tipo,"");
             foreach (DataRow fila in listAlumno.Rows)
             {
-                if (fila["Inicializado"] == DBNull.Value)
-                    {
-                    int id = Convert.ToInt32(fila["AlumnoId"]);
-                    AlumnosLogica.ActualizarEstadoInicializado(id, 0);
-                    AlumnosLogica.EliminarAlumno(id);
-                    AlumnosLogica.BajaAlumnoCarrera(id);
+                //if (fila["Inicializado"] == DBNull.Value)
+                //    {
+                //    int id = Convert.ToInt32(fila["AlumnoId"]);
+                //    AlumnosLogica.ActualizarEstadoInicializado(id, 0);
+                //    AlumnosLogica.EliminarAlumno(id);
+                //    AlumnosLogica.BajaAlumnoCarrera(id);
+                //    continue;
+                //    }
+                if (Convert.ToInt32(fila["Inicializado"]) == 3)
                     continue;
-                    }
-                if (fila["Inicializado"] != DBNull.Value && Convert.ToInt32(fila["Inicializado"]) != 3)
+
+                if (fila["Inicializado"] != DBNull.Value && Convert.ToInt32(fila["Inicializado"]) != 2)
                 {
                     int id = Convert.ToInt32(fila["AlumnoId"]);
                     AlumnosLogica.ActualizarEstadoInicializado(id, 0);
