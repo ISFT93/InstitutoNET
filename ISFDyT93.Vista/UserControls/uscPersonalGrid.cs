@@ -237,6 +237,8 @@ namespace ISFDyT93.Vista.UserControls
                 this.Controls.Add(checkBox);
                 checkBox.Dock = DockStyle.Fill;
                 checkBox.CheckAlign = ContentAlignment.MiddleCenter;
+                checkBox.Click += (s, e) => ((CheckBox)s).Checked = estado;
+                checkBox.CheckedChanged += (s, e) => ((CheckBox)s).Checked = estado;
             }
             private void GenerarComboBox(DataTable dataTable, string valor)
             {
@@ -256,6 +258,11 @@ namespace ISFDyT93.Vista.UserControls
             {
                 comboBox.SelectedValue = Valor;
             }            
+        }
+
+        private void flpContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }    
 }

@@ -120,12 +120,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 {
                     var estado = dgvCarreras.Rows[i].Cells["Estado"].Value.ToString();
 
-                    if (estado == "Activa")
+                    if (estado == "Activo")
                     {
                         dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Green;
                         dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Green;
                     }
-                    else if (estado == "Inactiva")
+                    else if (estado == "Inactivo")
                     {
                         dgvCarreras.Rows[i].Cells["Estado"].Style.ForeColor = Color.Yellow;
                         dgvCarreras.Rows[i].Cells["Estado"].Style.SelectionForeColor = Color.Yellow;
@@ -458,11 +458,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 switch (estado)
                 {
-                    case "Activo/a":
+                    case "Activo":
                         foreColor = Color.Green;
                         break;
 
-                    case "Inactivo/a":
+                    case "Inactivo":
                         foreColor = Color.FromArgb(230,250,0);
                         break;
 
