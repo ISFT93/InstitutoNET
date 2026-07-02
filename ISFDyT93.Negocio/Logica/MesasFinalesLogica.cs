@@ -94,14 +94,16 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataTable ObtenerTurnos(bool todos)
         {
+            DataTable turnos = this.mesasFinalesDao.ObtenerTurnos();
+
             if (!todos)
             {
-                DataRow[] dr = this.mesasFinalesDao.ObtenerTurnos().Select("TurnoId = 4");
-                return dr.CopyToDataTable();
+                DataRow[] dr = turnos.Select("TurnoId = 4");
+                return dr.Length > 0 ? dr.CopyToDataTable() : turnos.Clone();
             }
 
             else
-                return this.mesasFinalesDao.ObtenerTurnos();
+                return turnos;
 
         }
 
