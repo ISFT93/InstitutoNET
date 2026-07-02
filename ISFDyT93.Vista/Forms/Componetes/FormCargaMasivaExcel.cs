@@ -333,49 +333,49 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     System.StringComparer.OrdinalIgnoreCase
                 );
 
-            var titleCase = CultureInfo.CurrentCulture.TextInfo;
-            int agregados = 0;
-            int omitidos = 0;
+            var errores = new List<string>();
+            var filasValidas = new List<Tuple<DataRow, AlumnosModelo, int>>();
 
-            foreach (DataRow dr in dtExcel.Rows)
+            for (int i = 0; i < dtExcel.Rows.Count; i++)
             {
+                DataRow dr = dtExcel.Rows[i];
+                int numeroFila = i + 2;
                 string dni = GetColumnaValor(dr, nameof(AlumnosModelo.NumeroDocumento));
-                if (string.IsNullOrWhiteSpace(dni) || alumnosLogica.AlumnoExiste(dni))
+
+                if (alumnosLogica.AlumnoExiste(dni))
                 {
-                    omitidos++;
+                    errores.Add($"Fila {numeroFila}: el documento '{dni}' ya existe.");
                     continue;
                 }
 
                 string carreraNombre = GetColumnaValor(dr, _carrerasColumnName);
                 if (!carrerasPorNombre.TryGetValue(carreraNombre, out int carreraId))
                 {
-                    omitidos++;
+                    errores.Add($"Fila {numeroFila}: la carrera '{carreraNombre}' no existe.");
                     continue;
                 }
 
-                char sexo = NormalizarSexo(GetColumnaValor(dr, nameof(AlumnosModelo.Sexo)));
-                DateTime.TryParse(GetColumnaValor(dr, nameof(AlumnosModelo.FechaNacimiento)), out DateTime fechaNacimiento);
+                AlumnosModelo modelo = CrearModeloDesdeFila(dr, numeroFila, errores);
+                ValidarModelo(modelo, numeroFila, errores);
 
-                var modelo = new AlumnosModelo
-                {
-                    Apellido = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Apellido)).ToLower()),
-                    Nombre = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Nombre)).ToLower()),
-                    TipoDocumento = "Dni",
-                    NumeroDocumento = dni,
-                    EstadoCivil = GetColumnaValor(dr, nameof(AlumnosModelo.EstadoCivil)),
-                    Sexo = sexo,
-                    FechaNacimiento = fechaNacimiento,
-                    LocalidadNacimiento = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.LocalidadNacimiento)).ToLower()),
-                    Calle = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Calle)).ToLower()),
-                    Provincia = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Provincia)).ToLower()),
-                    Distrito = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Distrito)).ToLower()),
-                    Localidad = titleCase.ToTitleCase(GetColumnaValor(dr, nameof(AlumnosModelo.Localidad)).ToLower()),
-                    CodigoPostal = GetColumnaValor(dr, nameof(AlumnosModelo.CodigoPostal)),
-                    Celular = GetColumnaValor(dr, nameof(AlumnosModelo.Celular)),
-                    Email = GetColumnaValor(dr, nameof(AlumnosModelo.Email)),
-                    FotoUrl = GetColumnaValor(dr, nameof(AlumnosModelo.FotoUrl)),
-                    Activo = true,
-                };
+                filasValidas.Add(Tuple.Create(dr, modelo, carreraId));
+            }
+
+            if (errores.Count > 0)
+            {
+                MessageBox.Show(
+                    "No se puede realizar la carga masiva porque hay datos inválidos:\n\n" + string.Join("\n", errores.Take(20)) +
+                    (errores.Count > 20 ? $"\n\nY {errores.Count - 20} error(es) más." : ""),
+                    "Datos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int agregados = 0;
+            int omitidos = 0;
+
+            foreach (var fila in filasValidas)
+            {
+                AlumnosModelo modelo = fila.Item2;
 
                 int nuevoAlumnoId = alumnosLogica.AgregarAlumnoCargaMasiva(modelo);
                 if (nuevoAlumnoId <= 0)
@@ -387,7 +387,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 alumnosLogica.AgregarAlumnoCarrera(new AlumnosCarrerasModelo
                 {
                     AlumnoId = nuevoAlumnoId,
-                    CarreraId = carreraId,
+                    CarreraId = fila.Item3,
                     FechaAlta = DateTime.Now,
                     Activo = true,
                 });
@@ -414,6 +414,151 @@ namespace ISFDyT93.Vista.Forms.Componentes
         private string GetColumnaValor(DataRow dr, string columna)
         {
             return dtExcel.Columns.Contains(columna) ? dr[columna]?.ToString()?.Trim() ?? "" : "";
+        }
+
+        private AlumnosModelo CrearModeloDesdeFila(DataRow dr, int numeroFila, List<string> errores)
+        {
+            var modelo = new AlumnosModelo { Activo = true };
+            var titleCase = CultureInfo.CurrentCulture.TextInfo;
+
+            foreach (var propiedad in typeof(AlumnosModelo).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (!propiedad.CanWrite || !dtExcel.Columns.Contains(propiedad.Name))
+                    continue;
+
+                string valor = GetColumnaValor(dr, propiedad.Name);
+                if (!TryConvertirValor(valor, propiedad.PropertyType, out object valorConvertido))
+                {
+                    errores.Add($"Fila {numeroFila}, {propiedad.Name}: el valor '{valor}' no tiene un formato válido.");
+                    continue;
+                }
+
+                if (valorConvertido is string texto && !string.IsNullOrWhiteSpace(texto))
+                    valorConvertido = titleCase.ToTitleCase(texto.ToLower());
+
+                propiedad.SetValue(modelo, valorConvertido);
+            }
+
+            if (string.IsNullOrWhiteSpace(modelo.TipoDocumento))
+                modelo.TipoDocumento = "Dni";
+
+            modelo.Sexo = NormalizarSexo(GetColumnaValor(dr, nameof(AlumnosModelo.Sexo)));
+            return modelo;
+        }
+
+        private bool TryConvertirValor(string valor, Type tipo, out object valorConvertido)
+        {
+            valorConvertido = null;
+
+            if (tipo == typeof(string))
+            {
+                valorConvertido = valor;
+                return true;
+            }
+
+            if (tipo == typeof(char))
+            {
+                valorConvertido = NormalizarSexo(valor);
+                return true;
+            }
+
+            if (tipo == typeof(DateTime))
+            {
+                if (string.IsNullOrWhiteSpace(valor))
+                {
+                    valorConvertido = DateTime.MinValue;
+                    return true;
+                }
+
+                if (DateTime.TryParse(valor, out DateTime fecha))
+                {
+                    valorConvertido = fecha;
+                    return true;
+                }
+
+                return false;
+            }
+
+            if (tipo == typeof(bool))
+            {
+                if (string.IsNullOrWhiteSpace(valor))
+                {
+                    valorConvertido = false;
+                    return true;
+                }
+
+                valor = valor.Trim().ToLower();
+                valorConvertido = valor == "si" || valor == "sí" || valor == "s" || valor == "true" || valor == "1";
+                return true;
+            }
+
+            if (tipo == typeof(int))
+            {
+                if (string.IsNullOrWhiteSpace(valor))
+                {
+                    valorConvertido = 0;
+                    return true;
+                }
+
+                if (int.TryParse(valor, out int entero))
+                {
+                    valorConvertido = entero;
+                    return true;
+                }
+
+                return false;
+            }
+
+            if (tipo == typeof(decimal))
+            {
+                if (string.IsNullOrWhiteSpace(valor))
+                {
+                    valorConvertido = 0m;
+                    return true;
+                }
+
+                if (decimal.TryParse(valor, out decimal decimalValue))
+                {
+                    valorConvertido = decimalValue;
+                    return true;
+                }
+
+                return false;
+            }
+
+            valorConvertido = valor;
+            return true;
+        }
+
+        private void ValidarModelo(AlumnosModelo modelo, int numeroFila, List<string> errores)
+        {
+            foreach (var propiedad in typeof(AlumnosModelo).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                object value = propiedad.GetValue(modelo);
+
+                foreach (var atributo in propiedad.GetCustomAttributes(true))
+                {
+                    if (!(atributo is Validacion validacion))
+                        continue;
+
+                    bool valido;
+                    try
+                    {
+                        valido = validacion.Validar(value, modelo);
+                    }
+                    catch
+                    {
+                        valido = false;
+                    }
+
+                    if (!valido)
+                    {
+                        string mensaje = string.IsNullOrWhiteSpace(validacion.Mensaje) ? "valor inválido" : validacion.Mensaje;
+                        errores.Add($"Fila {numeroFila}, {propiedad.Name}: {mensaje}.");
+                        break;
+                    }
+                }
+            }
         }
 
         private char NormalizarSexo(string valor)

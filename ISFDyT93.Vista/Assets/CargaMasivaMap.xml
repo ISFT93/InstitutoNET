@@ -24,68 +24,68 @@
 	    <Coincidencia>TECNICATURA</Coincidencia>
 	</Carreras>
 
-	<apellido>
+	<Apellido>
 		<Coincidencia>Apellido</Coincidencia>
 		<Coincidencia>Apellidos</Coincidencia>
 	    <Coincidencia>APELLIDO</Coincidencia>
 	    <Coincidencia>APELLIDOS</Coincidencia>
 		<Coincidencia>apellido</Coincidencia>
 		<Coincidencia>apellidos</Coincidencia>
-	</apellido>
+	</Apellido>
 
-	<nombre>
+	<Nombre>
 		<Coincidencia>nombre</Coincidencia>
 		<Coincidencia>nombres</Coincidencia>
 	    <Coincidencia>NOMBRES</Coincidencia>
 	    <Coincidencia>NOMBRE</Coincidencia>
-	</nombre>
+	</Nombre>
 
 	<NumeroDocumento>
 		<Coincidencia>DNI</Coincidencia>
 		<Coincidencia>Documento</Coincidencia>
 	</NumeroDocumento>
 	
-	<sexo>
-		<Coindencia>Sexo</Coindencia>
+	<Sexo>
+		<Coincidencia>Sexo</Coincidencia>
 		<Coincidencia>sexo</Coincidencia>
 		<Coincidencia>SEXO</Coincidencia>
-	</sexo>
+	</Sexo>
 
-	<fechanac>
-		<Coindencia>Fecha de nacimiento</Coindencia>
+	<FechaNacimiento>
+		<Coincidencia>Fecha de nacimiento</Coincidencia>
 		<Coincidencia>fecha de nacimiento</Coincidencia>
 		<Coincidencia>fechanac</Coincidencia>
 		<Coincidencia>fechadenac</Coincidencia>
 		<Coincidencia>FECHA DE NACIMIENTO</Coincidencia>
-	</fechanac>
+	</FechaNacimiento>
 
-	<lugardenacimiento>
+	<LocalidadNacimiento>
 		<Coincidencia>lugar de nacimiento</Coincidencia>
 		<Coincidencia>LUGAR DE NACIMIENT0</Coincidencia>
 		<Coincidencia>Lugar de nacimiento</Coincidencia>
-	</lugardenacimiento>
+	</LocalidadNacimiento>
 
-	<estadoCivil>
+	<EstadoCivil>
 		<Coincidencia>estado civil</Coincidencia>
 		<Coincidencia>Estado Civil</Coincidencia>
 		<Coincidencia>ESTADO CIVIL</Coincidencia>
 		<Coincidencia>Estado civil</Coincidencia>
-	</estadoCivil>
+	</EstadoCivil>
 
-	<numeroCel>
+	<Celular>
 		<Coincidencia>tel</Coincidencia>
 		<Coincidencia>numero de telefono</Coincidencia>
 		<Coincidencia>numero de celular</Coincidencia>
-		<Coindiciencia>telefono</Coindiciencia>
+		<Coincidencia>telefono</Coincidencia>
 		<Coincidencia>celular</Coincidencia>
 	    <Coincidencia>TEL</Coincidencia>
 	    <Coincidencia>NUMERO DE TELEFONO</Coincidencia>
 	    <Coincidencia>NUMERO DE CELULAR</Coincidencia>
 	    <Coincidencia>TELEFONO</Coincidencia>
 	    <Coincidencia>CELULAR</Coincidencia>
-	</numeroCel>
+	</Celular>
 
-	<Direccion>
+	<Calle>
 		<Coincidencia>direccion</Coincidencia>
 		<Coincidencia>Direccion</Coincidencia>
 		<Coincidencia>DIRECCION</Coincidencia>
@@ -101,7 +101,7 @@
 		<Coincidencia>direccion domicilio</Coincidencia>
 		<Coincidencia>domicilio particular</Coincidencia>
 		<Coincidencia>address</Coincidencia>
-	</Direccion>
+	</Calle>
 
 	<Localidad>
 		<Coincidencia>localidad</Coincidencia>
@@ -116,7 +116,7 @@
 		<Coincidencia>city</Coincidencia>
 	</Localidad>
 
-	<Partido>
+	<Distrito>
 		<Coincidencia>partido</Coincidencia>
 		<Coincidencia>Partido</Coincidencia>
 		<Coincidencia>PARTIDO</Coincidencia>
@@ -127,7 +127,7 @@
 		<Coincidencia>Distrito</Coincidencia>
 		<Coincidencia>Partido municipio</Coincidencia>
 		<Coincidencia>Municipality</Coincidencia>
-	</Partido>
+	</Distrito>
 
 	<CodigoPostal>
 		<Coincidencia>codigo postal</Coincidencia>
