@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCarrera = new System.Windows.Forms.Label();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
@@ -43,8 +43,8 @@
             this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.lblProfesor = new System.Windows.Forms.Label();
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
-            this.btnFiltrar = new System.Windows.Forms.Button();
-            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
+            this.btnFiltrar = new FontAwesome.Sharp.IconButton();
+            this.btnLimpiarFiltros = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMesasFinales = new System.Windows.Forms.DataGridView();
             this.btnAgregarMesa = new FontAwesome.Sharp.IconButton();
@@ -201,24 +201,34 @@
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnFiltrar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrar.ForeColor = System.Drawing.Color.White;
+            this.btnFiltrar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnFiltrar.IconColor = System.Drawing.Color.White;
+            this.btnFiltrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFiltrar.IconSize = 40;
+            this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFiltrar.Location = new System.Drawing.Point(383, 95);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(184, 42);
             this.btnFiltrar.TabIndex = 10;
-            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = false;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // btnLimpiarFiltros
             // 
-            this.btnLimpiarFiltros.BackColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnLimpiarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLimpiarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpiarFiltros.IconColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiarFiltros.IconSize = 30;
+            this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimpiarFiltros.Location = new System.Drawing.Point(573, 95);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
             this.btnLimpiarFiltros.Size = new System.Drawing.Size(184, 42);
@@ -263,25 +273,25 @@
             this.dgvMesasFinales.BackgroundColor = System.Drawing.Color.White;
             this.dgvMesasFinales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvMesasFinales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvMesasFinales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMesasFinales, 4);
             this.dgvMesasFinales.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgvMesasFinales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMesasFinales.EnableHeadersVisualStyles = false;
             this.dgvMesasFinales.GridColor = System.Drawing.Color.White;
@@ -290,22 +300,22 @@
             this.dgvMesasFinales.Name = "dgvMesasFinales";
             this.dgvMesasFinales.ReadOnly = true;
             this.dgvMesasFinales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvMesasFinales.RowHeadersVisible = false;
             this.dgvMesasFinales.RowHeadersWidth = 62;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvMesasFinales.RowTemplate.Height = 28;
             this.dgvMesasFinales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
@@ -449,8 +459,8 @@
         private System.Windows.Forms.ComboBox cmbMateria;
         private System.Windows.Forms.Label lblProfesor;
         private System.Windows.Forms.ComboBox cmbProfesor;
-        private System.Windows.Forms.Button btnFiltrar;
-        private System.Windows.Forms.Button btnLimpiarFiltros;
+        private FontAwesome.Sharp.IconButton btnFiltrar;
+        private FontAwesome.Sharp.IconButton btnLimpiarFiltros;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.DataGridView dgvMesasFinales;
         private FontAwesome.Sharp.IconButton btnAgregarMesa;
