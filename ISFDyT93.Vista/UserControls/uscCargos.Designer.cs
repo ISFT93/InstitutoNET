@@ -37,6 +37,8 @@
             this.picAgregar = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarCargos = new System.Windows.Forms.ToolStripMenuItem();
+            this.habilitarCargo = new System.Windows.Forms.ToolStripMenuItem();
+            this.deshabilitarCargo = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).BeginInit();
@@ -63,6 +65,7 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseDown);
             // 
             // picMover
             // 
@@ -90,6 +93,7 @@
             this.lblTitulo.Text = "Cargos Disponibles";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
+            this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitulo_MouseDown);
             // 
             // pnlContenedor
             // 
@@ -100,6 +104,7 @@
             this.pnlContenedor.Size = new System.Drawing.Size(215, 60);
             this.pnlContenedor.TabIndex = 7;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
+            this.pnlContenedor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlContenedor_MouseDown);
             // 
             // picAgregar
             // 
@@ -119,9 +124,11 @@
             // 
             this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarCargos});
+            this.agregarCargos,
+            this.habilitarCargo,
+            this.deshabilitarCargo});
             this.menu.Name = "contextMenuStrip1";
-            this.menu.Size = new System.Drawing.Size(189, 56);
+            this.menu.Size = new System.Drawing.Size(189, 94);
             // 
             // agregarCargos
             // 
@@ -132,6 +139,28 @@
             this.agregarCargos.Name = "agregarCargos";
             this.agregarCargos.Size = new System.Drawing.Size(188, 30);
             this.agregarCargos.Text = "Agregar Cargo";
+            // 
+            // habilitarCargo
+            // 
+            this.habilitarCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.habilitarCargo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.habilitarCargo.ForeColor = System.Drawing.Color.White;
+            this.habilitarCargo.Image = ((System.Drawing.Image)(resources.GetObject("habilitarCargo.Image")));
+            this.habilitarCargo.Name = "habilitarCargo";
+            this.habilitarCargo.Size = new System.Drawing.Size(188, 30);
+            this.habilitarCargo.Text = "Habilitar";
+            this.habilitarCargo.Visible = false;
+            // 
+            // deshabilitarCargo
+            // 
+            this.deshabilitarCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.deshabilitarCargo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deshabilitarCargo.ForeColor = System.Drawing.Color.White;
+            this.deshabilitarCargo.Image = ((System.Drawing.Image)(resources.GetObject("deshabilitarCargo.Image")));
+            this.deshabilitarCargo.Name = "deshabilitarCargo";
+            this.deshabilitarCargo.Size = new System.Drawing.Size(188, 30);
+            this.deshabilitarCargo.Text = "Deshabilitar";
+            this.deshabilitarCargo.Visible = false;
             // 
             // uscCargos
             // 
@@ -159,5 +188,7 @@
         private System.Windows.Forms.PictureBox picAgregar;
         private System.Windows.Forms.ContextMenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem agregarCargos;
+        private System.Windows.Forms.ToolStripMenuItem habilitarCargo;
+        private System.Windows.Forms.ToolStripMenuItem deshabilitarCargo;
     }
 }

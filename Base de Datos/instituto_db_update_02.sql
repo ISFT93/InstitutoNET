@@ -2,8 +2,9 @@
 -- ACTUALIZACIÓN DE FERNANDEZ FRANCO DANIEL
 --01/06/2026
 --EQUIPO 5
+--si la base es la nueva, seguro ya existe
 --****************
-USE instituto_db;
+USE INSTITUTO_DB;
 
 GO
 
