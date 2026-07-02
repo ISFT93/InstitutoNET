@@ -3,6 +3,7 @@ using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms.Componetes;
+using ISFDyT93.Vista.Forms.Parametros;
 using ISFDyT93.Vista.Forms.Personal;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace ISFDyT93.Vista.UserControls
 
             CrearMenuContextual();
             AsignarMenuAControles(this);
+            OpcionDeshabilitar();
+            OpcionHabilitar();
         }
         CargosLogica cargosLogica = new CargosLogica();
         uscPersonalGrid usc;
@@ -36,11 +39,9 @@ namespace ISFDyT93.Vista.UserControls
             this.BackColor = ThemeColor.GetColor();
             CargarGrilla();
         }
-
         #region MenuContextual
         private void CrearMenuContextual() //////
         {
-            menu.Items.Add(agregarCargos);
             agregarCargos.Click += (s, e) =>
             {
                 using (FormAgregarCargos frmAgregarCargos = new FormAgregarCargos())
@@ -52,11 +53,53 @@ namespace ISFDyT93.Vista.UserControls
                     }
                 }
             };
+            deshabilitarCargo.Click += (s, e) =>
+            {
+                using (FormCargosEstado frmCargosEstado = new FormCargosEstado(false))
+                {
+                    frmCargosEstado.StartPosition = FormStartPosition.CenterParent;
+                    if (frmCargosEstado.ShowDialog() == DialogResult.OK)
+                        RecargarTabla();
+                }
+            };
+            habilitarCargo.Click += (s, e) =>
+            {
+                using (FormCargosEstado frmCargosEstado = new FormCargosEstado(true))
+                {
+                    frmCargosEstado.StartPosition = FormStartPosition.CenterParent;
+                    if (frmCargosEstado.ShowDialog() == DialogResult.OK)
+                        RecargarTabla();
+                }
+            };
+        }
+        private void OpcionDeshabilitar()
+        {
+            if (cargosLogica.CargosActivos() == true)
+                MostrarOpcion(deshabilitarCargo);
+            else
+                OcultarOpcion(deshabilitarCargo);
+        }
+        private void OpcionHabilitar()
+        {
+            if (cargosLogica.CargosInactivos() == true)
+                MostrarOpcion(habilitarCargo);
+            else
+                OcultarOpcion(habilitarCargo);
+        }
+        private void OcultarOpcion(ToolStripMenuItem item)
+        {
+            item.Visible = false;
+        }
+        private void MostrarOpcion(ToolStripMenuItem item)
+        {
+            item.Visible = true;
         }
         private void RecargarTabla()
         {
             pnlContenedor.Controls.Clear();
             CargarGrilla();
+            OpcionDeshabilitar();
+            OpcionHabilitar();
         }
         private void AsignarMenuAControles(Control control)
         {
@@ -83,7 +126,6 @@ namespace ISFDyT93.Vista.UserControls
                 usc.AgregarCelda(cargos.TipoAplicacion, cargo.TipoAplicacionId.ToString());
                 usc.AgregarCelda(cargo.Activo);
             }
-
             Dimensionar();
         }
         private void Dimensionar()
@@ -159,6 +201,18 @@ namespace ISFDyT93.Vista.UserControls
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tableLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void lblTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void pnlContenedor_MouseDown(object sender, MouseEventArgs e)
+        {
         }
     }
 }

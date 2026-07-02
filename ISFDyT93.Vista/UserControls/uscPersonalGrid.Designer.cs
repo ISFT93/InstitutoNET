@@ -40,6 +40,7 @@
             this.flpContenedor.Name = "flpContenedor";
             this.flpContenedor.Size = new System.Drawing.Size(117, 46);
             this.flpContenedor.TabIndex = 0;
+            this.flpContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContenedor_Paint);
             // 
             // tmrDelay
             // 
