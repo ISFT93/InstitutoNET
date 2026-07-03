@@ -217,7 +217,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.lblNombre, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtNombre, 1, 1);
@@ -296,7 +296,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(465, 149);
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(465, 146);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(406, 27);
             this.cmbEstadoCivil.TabIndex = 6;
@@ -332,7 +332,7 @@
             "DNI",
             "LE",
             "LC"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 89);
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(23, 86);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(406, 27);
             this.cmbTipoDocumento.TabIndex = 3;
@@ -383,7 +383,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cmbSexo, 3);
             this.cmbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Location = new System.Drawing.Point(23, 149);
+            this.cmbSexo.Location = new System.Drawing.Point(23, 146);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(406, 27);
             this.cmbSexo.TabIndex = 5;
@@ -674,7 +674,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.Controls.Add(this.lblTituloSec, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtMayorPromedio, 5, 14);
             this.tableLayoutPanel3.Controls.Add(this.pnlSiNoTS, 1, 1);
@@ -1066,7 +1066,7 @@
             "Terciario",
             "Universitario",
             "Postgrado"});
-            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 389);
+            this.cmbMayorTitulo.Location = new System.Drawing.Point(17, 386);
             this.cmbMayorTitulo.Name = "cmbMayorTitulo";
             this.cmbMayorTitulo.Size = new System.Drawing.Size(410, 27);
             this.cmbMayorTitulo.TabIndex = 32;
@@ -1096,7 +1096,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel4.Controls.Add(this.lblEnunciado, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txtMonto, 3, 8);
             this.tableLayoutPanel4.Controls.Add(this.chkFotocopiaTitulo, 1, 1);
@@ -1331,7 +1331,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel5.Controls.Add(this.lblPoseeObraSocial, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pnlEstadoDiscapacidad, 1, 8);
             this.tableLayoutPanel5.Controls.Add(this.pnlSiNoOS, 3, 0);
@@ -1866,7 +1866,7 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(755, 10);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(755, 13);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
             this.cmbCicloLectivo.Size = new System.Drawing.Size(146, 27);
             this.cmbCicloLectivo.TabIndex = 175;
@@ -1891,7 +1891,7 @@
             "Casado/a",
             "Divorciado/a",
             "Viudo/a"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(132, 10);
+            this.cmbCarreraId.Location = new System.Drawing.Point(132, 13);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(469, 27);
             this.cmbCarreraId.TabIndex = 0;
@@ -1921,7 +1921,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel6.Controls.Add(this.lblCalle, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.txtEmail, 5, 7);
             this.tableLayoutPanel6.Controls.Add(this.lblCelular, 5, 8);

@@ -30,11 +30,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnDescargar = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnDescargar = new FontAwesome.Sharp.IconButton();
             this.lblPorcentajeAlumnosI = new System.Windows.Forms.Label();
             this.lblTotalAlumnosI = new System.Windows.Forms.Label();
             this.dgvAsistencias = new System.Windows.Forms.DataGridView();
@@ -42,7 +42,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtNombreMateria = new System.Windows.Forms.TextBox();
             this.lblProfesor = new System.Windows.Forms.Label();
             this.lblMat = new System.Windows.Forms.Label();
-            this.btnAceptarAsistencia = new System.Windows.Forms.Button();
+            this.btnAceptarAsistencia = new FontAwesome.Sharp.IconButton();
             this.txtProfesor = new System.Windows.Forms.TextBox();
             this.txtPorcentajeAsistencia = new System.Windows.Forms.TextBox();
             this.txtHoraCatedra = new System.Windows.Forms.TextBox();
@@ -66,9 +66,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtPorcentajePresente = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
-            this.btnFiltrarEvaluaciones = new System.Windows.Forms.Button();
+            this.btnTemario = new FontAwesome.Sharp.IconButton();
+            this.btnLimpiarFiltros = new FontAwesome.Sharp.IconButton();
             this.cmbMateria = new System.Windows.Forms.ComboBox();
+            this.btnFiltrarEvaluaciones = new FontAwesome.Sharp.IconButton();
             this.cmbCurso = new System.Windows.Forms.ComboBox();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
             this.lblCicloLectivo = new System.Windows.Forms.Label();
@@ -80,7 +81,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbCicloLectivo = new System.Windows.Forms.ComboBox();
             this.cmbAnio = new System.Windows.Forms.ComboBox();
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
-            this.btnFiltrarAsistencias = new System.Windows.Forms.Button();
+            this.btnFiltrarAsistencias = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).BeginInit();
             this.cmsPyA.SuspendLayout();
@@ -97,10 +98,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.btnDescargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDescargar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDescargar.ForeColor = System.Drawing.Color.White;
-            this.btnDescargar.Location = new System.Drawing.Point(666, 120);
+            this.btnDescargar.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnDescargar.IconColor = System.Drawing.Color.Black;
+            this.btnDescargar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDescargar.Location = new System.Drawing.Point(360, 120);
             this.btnDescargar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDescargar.Name = "btnDescargar";
-            this.btnDescargar.Size = new System.Drawing.Size(323, 54);
+            this.btnDescargar.Size = new System.Drawing.Size(170, 54);
             this.btnDescargar.TabIndex = 71;
             this.btnDescargar.Text = "Descargar";
             this.btnDescargar.UseVisualStyleBackColor = false;
@@ -111,10 +115,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPorcentajeAlumnosI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPorcentajeAlumnosI.AutoSize = true;
             this.lblPorcentajeAlumnosI.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPorcentajeAlumnosI.Location = new System.Drawing.Point(4, 137);
+            this.lblPorcentajeAlumnosI.Location = new System.Drawing.Point(4, 128);
             this.lblPorcentajeAlumnosI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPorcentajeAlumnosI.Name = "lblPorcentajeAlumnosI";
-            this.lblPorcentajeAlumnosI.Size = new System.Drawing.Size(323, 19);
+            this.lblPorcentajeAlumnosI.Size = new System.Drawing.Size(170, 38);
             this.lblPorcentajeAlumnosI.TabIndex = 70;
             this.lblPorcentajeAlumnosI.Text = "Porcentaje de alumnos presentes:";
             // 
@@ -144,24 +148,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAsistencias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAsistencias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistencias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvAsistencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsistencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAsistencias.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAsistencias.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAsistencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAsistencias.EnableHeadersVisualStyles = false;
             this.dgvAsistencias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
@@ -170,26 +174,26 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvAsistencias.MultiSelect = false;
             this.dgvAsistencias.Name = "dgvAsistencias";
             this.dgvAsistencias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(16)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistencias.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(16)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistencias.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvAsistencias.RowHeadersVisible = false;
             this.dgvAsistencias.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvAsistencias.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvAsistencias.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvAsistencias.RowTemplate.Height = 28;
             this.dgvAsistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAsistencias.Size = new System.Drawing.Size(1314, 465);
+            this.dgvAsistencias.Size = new System.Drawing.Size(700, 465);
             this.dgvAsistencias.TabIndex = 68;
             this.dgvAsistencias.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAsistencias_MouseUp);
             // 
@@ -197,10 +201,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.dtpFechaAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFechaAsistencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaAsistencia.Location = new System.Drawing.Point(335, 74);
+            this.dtpFechaAsistencia.Location = new System.Drawing.Point(182, 74);
             this.dtpFechaAsistencia.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaAsistencia.Name = "dtpFechaAsistencia";
-            this.dtpFechaAsistencia.Size = new System.Drawing.Size(323, 27);
+            this.dtpFechaAsistencia.Size = new System.Drawing.Size(170, 27);
             this.dtpFechaAsistencia.TabIndex = 67;
             this.dtpFechaAsistencia.ValueChanged += new System.EventHandler(this.dtpFechaAsistencia_ValueChanged);
             // 
@@ -208,10 +212,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtNombreMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombreMateria.Enabled = false;
-            this.txtNombreMateria.Location = new System.Drawing.Point(335, 4);
+            this.txtNombreMateria.Location = new System.Drawing.Point(182, 4);
             this.txtNombreMateria.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreMateria.Name = "txtNombreMateria";
-            this.txtNombreMateria.Size = new System.Drawing.Size(323, 27);
+            this.txtNombreMateria.Size = new System.Drawing.Size(170, 27);
             this.txtNombreMateria.TabIndex = 60;
             // 
             // lblProfesor
@@ -219,10 +223,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
             this.lblProfesor.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblProfesor.Location = new System.Drawing.Point(666, 8);
+            this.lblProfesor.Location = new System.Drawing.Point(360, 8);
             this.lblProfesor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(323, 19);
+            this.lblProfesor.Size = new System.Drawing.Size(170, 19);
             this.lblProfesor.TabIndex = 64;
             this.lblProfesor.Text = "Profesor:";
             // 
@@ -234,7 +238,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblMat.Location = new System.Drawing.Point(4, 8);
             this.lblMat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMat.Name = "lblMat";
-            this.lblMat.Size = new System.Drawing.Size(323, 19);
+            this.lblMat.Size = new System.Drawing.Size(170, 19);
             this.lblMat.TabIndex = 65;
             this.lblMat.Text = "Materia:";
             // 
@@ -245,10 +249,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.btnAceptarAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptarAsistencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptarAsistencia.ForeColor = System.Drawing.Color.White;
-            this.btnAceptarAsistencia.Location = new System.Drawing.Point(997, 120);
+            this.btnAceptarAsistencia.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnAceptarAsistencia.IconColor = System.Drawing.Color.Black;
+            this.btnAceptarAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAceptarAsistencia.Location = new System.Drawing.Point(538, 120);
             this.btnAceptarAsistencia.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptarAsistencia.Name = "btnAceptarAsistencia";
-            this.btnAceptarAsistencia.Size = new System.Drawing.Size(325, 54);
+            this.btnAceptarAsistencia.Size = new System.Drawing.Size(170, 54);
             this.btnAceptarAsistencia.TabIndex = 63;
             this.btnAceptarAsistencia.Text = "Aceptar";
             this.btnAceptarAsistencia.UseVisualStyleBackColor = false;
@@ -258,50 +265,50 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProfesor.Enabled = false;
-            this.txtProfesor.Location = new System.Drawing.Point(997, 4);
+            this.txtProfesor.Location = new System.Drawing.Point(538, 4);
             this.txtProfesor.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfesor.Name = "txtProfesor";
-            this.txtProfesor.Size = new System.Drawing.Size(325, 27);
+            this.txtProfesor.Size = new System.Drawing.Size(170, 27);
             this.txtProfesor.TabIndex = 61;
             // 
             // txtPorcentajeAsistencia
             // 
             this.txtPorcentajeAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPorcentajeAsistencia.Enabled = false;
-            this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(335, 39);
+            this.txtPorcentajeAsistencia.Location = new System.Drawing.Point(182, 39);
             this.txtPorcentajeAsistencia.Margin = new System.Windows.Forms.Padding(4);
             this.txtPorcentajeAsistencia.Name = "txtPorcentajeAsistencia";
-            this.txtPorcentajeAsistencia.Size = new System.Drawing.Size(323, 27);
+            this.txtPorcentajeAsistencia.Size = new System.Drawing.Size(170, 27);
             this.txtPorcentajeAsistencia.TabIndex = 59;
             // 
             // txtHoraCatedra
             // 
             this.txtHoraCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHoraCatedra.Enabled = false;
-            this.txtHoraCatedra.Location = new System.Drawing.Point(335, 154);
+            this.txtHoraCatedra.Location = new System.Drawing.Point(182, 154);
             this.txtHoraCatedra.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoraCatedra.Name = "txtHoraCatedra";
-            this.txtHoraCatedra.Size = new System.Drawing.Size(323, 27);
+            this.txtHoraCatedra.Size = new System.Drawing.Size(170, 27);
             this.txtHoraCatedra.TabIndex = 62;
             // 
             // txtCantidadAlumnosRecursantes
             // 
             this.txtCantidadAlumnosRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnosRecursantes.Enabled = false;
-            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(997, 74);
+            this.txtCantidadAlumnosRecursantes.Location = new System.Drawing.Point(538, 74);
             this.txtCantidadAlumnosRecursantes.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadAlumnosRecursantes.Name = "txtCantidadAlumnosRecursantes";
-            this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(325, 27);
+            this.txtCantidadAlumnosRecursantes.Size = new System.Drawing.Size(170, 27);
             this.txtCantidadAlumnosRecursantes.TabIndex = 76;
             // 
             // txtCantidadAlumnosDesertores
             // 
             this.txtCantidadAlumnosDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnosDesertores.Enabled = false;
-            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(997, 109);
+            this.txtCantidadAlumnosDesertores.Location = new System.Drawing.Point(538, 109);
             this.txtCantidadAlumnosDesertores.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadAlumnosDesertores.Name = "txtCantidadAlumnosDesertores";
-            this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(325, 27);
+            this.txtCantidadAlumnosDesertores.Size = new System.Drawing.Size(170, 27);
             this.txtCantidadAlumnosDesertores.TabIndex = 77;
             // 
             // lblPorcentajeAsistencia
@@ -323,7 +330,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPocAsistencia.Location = new System.Drawing.Point(4, 43);
             this.lblPocAsistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPocAsistencia.Name = "lblPocAsistencia";
-            this.lblPocAsistencia.Size = new System.Drawing.Size(323, 19);
+            this.lblPocAsistencia.Size = new System.Drawing.Size(170, 19);
             this.lblPocAsistencia.TabIndex = 57;
             this.lblPocAsistencia.Text = "Porc. Asistencia:";
             // 
@@ -335,7 +342,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblFecha.Location = new System.Drawing.Point(4, 78);
             this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(323, 19);
+            this.lblFecha.Size = new System.Drawing.Size(170, 19);
             this.lblFecha.TabIndex = 56;
             this.lblFecha.Text = "Fecha:";
             // 
@@ -344,10 +351,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblModulos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModulos.AutoSize = true;
             this.lblModulos.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModulos.Location = new System.Drawing.Point(666, 43);
+            this.lblModulos.Location = new System.Drawing.Point(360, 43);
             this.lblModulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblModulos.Name = "lblModulos";
-            this.lblModulos.Size = new System.Drawing.Size(323, 19);
+            this.lblModulos.Size = new System.Drawing.Size(170, 19);
             this.lblModulos.TabIndex = 66;
             this.lblModulos.Text = "Módulos:";
             // 
@@ -356,10 +363,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantRecursantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantRecursantes.AutoSize = true;
             this.lblCantRecursantes.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantRecursantes.Location = new System.Drawing.Point(666, 78);
+            this.lblCantRecursantes.Location = new System.Drawing.Point(360, 78);
             this.lblCantRecursantes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantRecursantes.Name = "lblCantRecursantes";
-            this.lblCantRecursantes.Size = new System.Drawing.Size(323, 19);
+            this.lblCantRecursantes.Size = new System.Drawing.Size(170, 19);
             this.lblCantRecursantes.TabIndex = 70;
             this.lblCantRecursantes.Text = "Cant. Recursante:";
             // 
@@ -371,7 +378,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantAlumnos.Location = new System.Drawing.Point(4, 113);
             this.lblCantAlumnos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantAlumnos.Name = "lblCantAlumnos";
-            this.lblCantAlumnos.Size = new System.Drawing.Size(323, 19);
+            this.lblCantAlumnos.Size = new System.Drawing.Size(170, 19);
             this.lblCantAlumnos.TabIndex = 73;
             this.lblCantAlumnos.Text = "Cant. Alumnos:";
             // 
@@ -380,10 +387,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantDesertores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantDesertores.AutoSize = true;
             this.lblCantDesertores.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantDesertores.Location = new System.Drawing.Point(666, 113);
+            this.lblCantDesertores.Location = new System.Drawing.Point(360, 113);
             this.lblCantDesertores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantDesertores.Name = "lblCantDesertores";
-            this.lblCantDesertores.Size = new System.Drawing.Size(323, 19);
+            this.lblCantDesertores.Size = new System.Drawing.Size(170, 19);
             this.lblCantDesertores.TabIndex = 74;
             this.lblCantDesertores.Text = "Cant. Desertores:";
             // 
@@ -395,7 +402,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblHorasCátedra.Location = new System.Drawing.Point(4, 158);
             this.lblHorasCátedra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHorasCátedra.Name = "lblHorasCátedra";
-            this.lblHorasCátedra.Size = new System.Drawing.Size(323, 19);
+            this.lblHorasCátedra.Size = new System.Drawing.Size(170, 19);
             this.lblHorasCátedra.TabIndex = 75;
             this.lblHorasCátedra.Text = "Horas Cátedra:";
             // 
@@ -464,7 +471,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1326, 196);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(712, 196);
             this.tableLayoutPanel1.TabIndex = 72;
             this.tableLayoutPanel1.Visible = false;
             // 
@@ -472,9 +479,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtCantidadAlumnos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadAlumnos.Enabled = false;
-            this.txtCantidadAlumnos.Location = new System.Drawing.Point(334, 109);
+            this.txtCantidadAlumnos.Location = new System.Drawing.Point(181, 109);
             this.txtCantidadAlumnos.Name = "txtCantidadAlumnos";
-            this.txtCantidadAlumnos.Size = new System.Drawing.Size(325, 27);
+            this.txtCantidadAlumnos.Size = new System.Drawing.Size(172, 27);
             this.txtCantidadAlumnos.TabIndex = 72;
             // 
             // tableLayoutPanel2
@@ -496,16 +503,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1326, 196);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(712, 196);
             this.tableLayoutPanel2.TabIndex = 73;
             // 
             // txtPorcentajePresente
             // 
             this.txtPorcentajePresente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPorcentajePresente.Enabled = false;
-            this.txtPorcentajePresente.Location = new System.Drawing.Point(334, 133);
+            this.txtPorcentajePresente.Location = new System.Drawing.Point(181, 133);
             this.txtPorcentajePresente.Name = "txtPorcentajePresente";
-            this.txtPorcentajePresente.Size = new System.Drawing.Size(325, 27);
+            this.txtPorcentajePresente.Size = new System.Drawing.Size(172, 27);
             this.txtPorcentajePresente.TabIndex = 73;
             // 
             // tableLayoutPanel3
@@ -520,7 +527,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1326, 477);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(712, 477);
             this.tableLayoutPanel3.TabIndex = 74;
             // 
             // tableLayoutPanel0
@@ -531,9 +538,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel0.Controls.Add(this.btnLimpiarFiltros, 2, 3);
-            this.tableLayoutPanel0.Controls.Add(this.btnFiltrarEvaluaciones, 1, 3);
+            this.tableLayoutPanel0.Controls.Add(this.btnTemario, 2, 3);
+            this.tableLayoutPanel0.Controls.Add(this.btnLimpiarFiltros, 3, 3);
             this.tableLayoutPanel0.Controls.Add(this.cmbMateria, 3, 2);
+            this.tableLayoutPanel0.Controls.Add(this.btnFiltrarEvaluaciones, 1, 3);
             this.tableLayoutPanel0.Controls.Add(this.cmbCurso, 3, 1);
             this.tableLayoutPanel0.Controls.Add(this.cmbCarrera, 3, 0);
             this.tableLayoutPanel0.Controls.Add(this.lblCicloLectivo, 0, 0);
@@ -555,58 +563,85 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.58823F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayoutPanel0.Size = new System.Drawing.Size(1326, 189);
+            this.tableLayoutPanel0.Size = new System.Drawing.Size(712, 189);
             this.tableLayoutPanel0.TabIndex = 75;
+            // 
+            // btnTemario
+            // 
+            this.btnTemario.BackColor = System.Drawing.Color.White;
+            this.btnTemario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTemario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTemario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTemario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnTemario.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnTemario.IconColor = System.Drawing.Color.Black;
+            this.btnTemario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnTemario.Location = new System.Drawing.Point(359, 144);
+            this.btnTemario.Name = "btnTemario";
+            this.btnTemario.Size = new System.Drawing.Size(172, 42);
+            this.btnTemario.TabIndex = 82;
+            this.btnTemario.Text = "Temario";
+            this.btnTemario.UseVisualStyleBackColor = false;
             // 
             // btnLimpiarFiltros
             // 
-            this.btnLimpiarFiltros.BackColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLimpiarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
-            this.btnLimpiarFiltros.Location = new System.Drawing.Point(665, 144);
+            this.btnLimpiarFiltros.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpiarFiltros.IconColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiarFiltros.IconSize = 30;
+            this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(537, 144);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
-            this.btnLimpiarFiltros.Size = new System.Drawing.Size(325, 42);
-            this.btnLimpiarFiltros.TabIndex = 82;
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(172, 42);
+            this.btnLimpiarFiltros.TabIndex = 83;
             this.btnLimpiarFiltros.Text = "Limpiar Filtros";
             this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
-            // 
-            // btnFiltrarEvaluaciones
-            // 
-            this.btnFiltrarEvaluaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
-            this.btnFiltrarEvaluaciones.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFiltrarEvaluaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFiltrarEvaluaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFiltrarEvaluaciones.ForeColor = System.Drawing.Color.White;
-            this.btnFiltrarEvaluaciones.Location = new System.Drawing.Point(334, 144);
-            this.btnFiltrarEvaluaciones.Name = "btnFiltrarEvaluaciones";
-            this.btnFiltrarEvaluaciones.Size = new System.Drawing.Size(325, 42);
-            this.btnFiltrarEvaluaciones.TabIndex = 81;
-            this.btnFiltrarEvaluaciones.Text = "Evaluaciones";
-            this.btnFiltrarEvaluaciones.UseVisualStyleBackColor = false;
-            this.btnFiltrarEvaluaciones.Click += new System.EventHandler(this.btnFiltrarEvaluaciones_Click);
             // 
             // cmbMateria
             // 
             this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMateria.FormattingEnabled = true;
-            this.cmbMateria.Location = new System.Drawing.Point(996, 101);
+            this.cmbMateria.Location = new System.Drawing.Point(537, 101);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(327, 27);
+            this.cmbMateria.Size = new System.Drawing.Size(172, 27);
             this.cmbMateria.TabIndex = 79;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
+            // 
+            // btnFiltrarEvaluaciones
+            // 
+            this.btnFiltrarEvaluaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnFiltrarEvaluaciones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFiltrarEvaluaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFiltrarEvaluaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrarEvaluaciones.ForeColor = System.Drawing.Color.White;
+            this.btnFiltrarEvaluaciones.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnFiltrarEvaluaciones.IconColor = System.Drawing.Color.Black;
+            this.btnFiltrarEvaluaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFiltrarEvaluaciones.IconSize = 30;
+            this.btnFiltrarEvaluaciones.Location = new System.Drawing.Point(181, 144);
+            this.btnFiltrarEvaluaciones.Name = "btnFiltrarEvaluaciones";
+            this.btnFiltrarEvaluaciones.Size = new System.Drawing.Size(172, 42);
+            this.btnFiltrarEvaluaciones.TabIndex = 81;
+            this.btnFiltrarEvaluaciones.Text = "Evaluaciones";
+            this.btnFiltrarEvaluaciones.UseVisualStyleBackColor = false;
+            this.btnFiltrarEvaluaciones.Click += new System.EventHandler(this.btnFiltrarEvaluaciones_Click);
             // 
             // cmbCurso
             // 
             this.cmbCurso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurso.FormattingEnabled = true;
-            this.cmbCurso.Location = new System.Drawing.Point(996, 51);
+            this.cmbCurso.Location = new System.Drawing.Point(537, 51);
             this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(327, 27);
+            this.cmbCurso.Size = new System.Drawing.Size(172, 27);
             this.cmbCurso.TabIndex = 78;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
@@ -615,9 +650,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCarrera.FormattingEnabled = true;
-            this.cmbCarrera.Location = new System.Drawing.Point(996, 3);
+            this.cmbCarrera.Location = new System.Drawing.Point(537, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(327, 27);
+            this.cmbCarrera.Size = new System.Drawing.Size(172, 27);
             this.cmbCarrera.TabIndex = 77;
             this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -630,7 +665,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCicloLectivo.Location = new System.Drawing.Point(4, 14);
             this.lblCicloLectivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCicloLectivo.Name = "lblCicloLectivo";
-            this.lblCicloLectivo.Size = new System.Drawing.Size(323, 19);
+            this.lblCicloLectivo.Size = new System.Drawing.Size(170, 19);
             this.lblCicloLectivo.TabIndex = 69;
             this.lblCicloLectivo.Text = "Ciclo Lectivo:";
             // 
@@ -639,10 +674,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMateria.AutoSize = true;
             this.lblMateria.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMateria.Location = new System.Drawing.Point(666, 110);
+            this.lblMateria.Location = new System.Drawing.Point(360, 110);
             this.lblMateria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(323, 19);
+            this.lblMateria.Size = new System.Drawing.Size(170, 19);
             this.lblMateria.TabIndex = 68;
             this.lblMateria.Text = "Materia:";
             // 
@@ -651,10 +686,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
             this.lblCarrera.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCarrera.Location = new System.Drawing.Point(666, 14);
+            this.lblCarrera.Location = new System.Drawing.Point(360, 14);
             this.lblCarrera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(323, 19);
+            this.lblCarrera.Size = new System.Drawing.Size(170, 19);
             this.lblCarrera.TabIndex = 70;
             this.lblCarrera.Text = "Carrera:";
             // 
@@ -666,7 +701,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblAnio.Location = new System.Drawing.Point(4, 63);
             this.lblAnio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(323, 19);
+            this.lblAnio.Size = new System.Drawing.Size(170, 19);
             this.lblAnio.TabIndex = 71;
             this.lblAnio.Text = "Año:";
             // 
@@ -678,7 +713,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblProf.Location = new System.Drawing.Point(4, 110);
             this.lblProf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProf.Name = "lblProf";
-            this.lblProf.Size = new System.Drawing.Size(323, 19);
+            this.lblProf.Size = new System.Drawing.Size(170, 19);
             this.lblProf.TabIndex = 72;
             this.lblProf.Text = "Profesor:";
             // 
@@ -687,10 +722,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurso.AutoSize = true;
             this.lblCurso.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurso.Location = new System.Drawing.Point(666, 63);
+            this.lblCurso.Location = new System.Drawing.Point(360, 63);
             this.lblCurso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(323, 19);
+            this.lblCurso.Size = new System.Drawing.Size(170, 19);
             this.lblCurso.TabIndex = 73;
             this.lblCurso.Text = "Curso";
             // 
@@ -699,9 +734,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbCicloLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(334, 3);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(181, 3);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
-            this.cmbCicloLectivo.Size = new System.Drawing.Size(325, 27);
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(172, 27);
             this.cmbCicloLectivo.TabIndex = 74;
             this.cmbCicloLectivo.DropDown += new System.EventHandler(this.cmbCicloLectivo_DropDown);
             // 
@@ -710,9 +745,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbAnio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnio.FormattingEnabled = true;
-            this.cmbAnio.Location = new System.Drawing.Point(334, 51);
+            this.cmbAnio.Location = new System.Drawing.Point(181, 51);
             this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(325, 27);
+            this.cmbAnio.Size = new System.Drawing.Size(172, 27);
             this.cmbAnio.TabIndex = 75;
             this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
             // 
@@ -721,23 +756,26 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmbProfesor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesor.FormattingEnabled = true;
-            this.cmbProfesor.Location = new System.Drawing.Point(334, 101);
+            this.cmbProfesor.Location = new System.Drawing.Point(181, 101);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(325, 27);
+            this.cmbProfesor.Size = new System.Drawing.Size(172, 27);
             this.cmbProfesor.TabIndex = 76;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
             // 
             // btnFiltrarAsistencias
             // 
-            this.btnFiltrarAsistencias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
+            this.btnFiltrarAsistencias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnFiltrarAsistencias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFiltrarAsistencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFiltrarAsistencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrarAsistencias.ForeColor = System.Drawing.Color.White;
+            this.btnFiltrarAsistencias.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnFiltrarAsistencias.IconColor = System.Drawing.Color.Black;
+            this.btnFiltrarAsistencias.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFiltrarAsistencias.Location = new System.Drawing.Point(3, 144);
             this.btnFiltrarAsistencias.Name = "btnFiltrarAsistencias";
-            this.btnFiltrarAsistencias.Size = new System.Drawing.Size(325, 42);
+            this.btnFiltrarAsistencias.Size = new System.Drawing.Size(172, 42);
             this.btnFiltrarAsistencias.TabIndex = 80;
             this.btnFiltrarAsistencias.Text = "Asistencias";
             this.btnFiltrarAsistencias.UseVisualStyleBackColor = false;
@@ -748,7 +786,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(30, 218);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1326, 44);
+            this.panel1.Size = new System.Drawing.Size(712, 44);
             this.panel1.TabIndex = 76;
             // 
             // FormControlAsistencias
@@ -757,7 +795,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1403, 788);
+            this.ClientSize = new System.Drawing.Size(674, 788);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -786,7 +824,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         #endregion
 
-        private System.Windows.Forms.Button btnDescargar;
+        private FontAwesome.Sharp.IconButton btnDescargar;
         private System.Windows.Forms.Label lblPorcentajeAlumnosI;
         private System.Windows.Forms.Label lblTotalAlumnosI;
         public System.Windows.Forms.DataGridView dgvAsistencias;
@@ -794,7 +832,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.TextBox txtNombreMateria;
         private System.Windows.Forms.Label lblProfesor;
         private System.Windows.Forms.Label lblMat;
-        private System.Windows.Forms.Button btnAceptarAsistencia;
+        private FontAwesome.Sharp.IconButton btnAceptarAsistencia;
         private System.Windows.Forms.TextBox txtProfesor;
         private System.Windows.Forms.TextBox txtPorcentajeAsistencia;
         private System.Windows.Forms.TextBox txtHoraCatedra;
@@ -830,9 +868,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.ComboBox cmbCicloLectivo;
         private System.Windows.Forms.ComboBox cmbAnio;
         private System.Windows.Forms.ComboBox cmbProfesor;
-        private System.Windows.Forms.Button btnFiltrarAsistencias;
+        private FontAwesome.Sharp.IconButton btnFiltrarAsistencias;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnLimpiarFiltros;
-        private System.Windows.Forms.Button btnFiltrarEvaluaciones;
+        private FontAwesome.Sharp.IconButton btnTemario;
+        private FontAwesome.Sharp.IconButton btnFiltrarEvaluaciones;
+        private FontAwesome.Sharp.IconButton btnLimpiarFiltros;
     }
 }
