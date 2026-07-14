@@ -26,7 +26,7 @@ namespace ISFDyT93.Vista.UserControls
 
             MenuContextual();
         }
-
+        LibroActasLogica libroActasLogica = new LibroActasLogica();
         private void lblTitulo_Click(object sender, EventArgs e)
         {
 
@@ -40,9 +40,7 @@ namespace ISFDyT93.Vista.UserControls
 
         private void CargarDGV(DataGridView dgv)
         {
-            string query = "SELECT la.TipoLibroId, la.CarreraID, tl.Descripcion, la.LibroNumero, c.DescripcionCorta, la.FolioNumero, la.FolioMaximo, la.FechaAlta, la.FechaBaja, la.Activo FROM TipoLibros tl INNER JOIN LibroActas la ON tl.TipoLibroId = la.TipoLibroId INNER JOIN Carreras c ON c.CarreraId = la.CarreraID ORDER BY Activo DESC, LibroNumero DESC";
-            Conexion conexion = new Conexion();
-            DataTable dt = conexion.ObtenerRegistros(query);
+            DataTable dt = libroActasLogica.ObtenerLibros();
 
             dgv.DataSource = dt;
             dgv.Columns["TipoLibroId"].Visible = false;
@@ -56,43 +54,29 @@ namespace ISFDyT93.Vista.UserControls
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     CargarDGV(dgvLibros);
+                    if (libroActasLogica.ActualizacionPosible() == true)
+                        opcionActualizarLibro.Visible = true;
+                    else
+                        opcionActualizarLibro.Visible = false;
+
+                    if (libroActasLogica.RelacionNuevaPosible() == true)
+                        opcionAgregarNuevoLibro.Visible = true;
+                    else
+                        opcionAgregarNuevoLibro.Visible = false;
                 }
             }
         }
-        private bool RelacionNuevaPosible()
-        {
-            string query = "\r\nSELECT t.TipoLibroID FROM TipoLibros t WHERE EXISTS (SELECT 1 FROM Carreras c WHERE NOT EXISTS (SELECT 1 FROM LibroActas l WHERE l.TipoLibroID = t.TipoLibroID AND l.CarreraID = c.CarreraID))";
-            Conexion conexion = new Conexion();
-            DataTable registros = conexion.ObtenerRegistros(query);
-
-            if (registros.Rows.Count > 0)
-                return true;
-            else
-                return false;
-        }
-
-        private bool ActualizacionPosible()
-        {
-            string query = "SELECT l.TipoLibroID, l.CarreraID, l.LibroNumero, l.Activo FROM LibroActas l INNER JOIN (SELECT TipoLibroID, CarreraID, MAX(LibroNumero) AS UltimoLibroNumero FROM LibroActas GROUP BY TipoLibroID, CarreraID) ultimos ON l.TipoLibroID = ultimos.TipoLibroID AND l.CarreraID = ultimos.CarreraID AND l.LibroNumero = ultimos.UltimoLibroNumero WHERE Activo = 0";
-            Conexion conexion = new Conexion();
-            DataTable registros = conexion.ObtenerRegistros(query);
-
-            if (registros.Rows.Count > 0)
-                return true;
-            else
-                return false;
-
-        }
+        
         private void MenuContextual()
         {
             dgvLibros.ContextMenuStrip = menu;
 
-            if (ActualizacionPosible() == true)
+            if (libroActasLogica.ActualizacionPosible() == true)
                 opcionActualizarLibro.Visible = true;
             else
                 opcionActualizarLibro.Visible = false;
 
-            if (RelacionNuevaPosible() == true)
+            if (libroActasLogica.RelacionNuevaPosible() == true)
                 opcionAgregarNuevoLibro.Visible = true;
             else
                 opcionAgregarNuevoLibro.Visible = false;

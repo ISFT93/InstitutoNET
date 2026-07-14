@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscLibros));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.picMover = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(718, 437);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 437);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // picMover
@@ -91,7 +92,7 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(25, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(668, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(750, 30);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Libros de actas";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,23 +107,31 @@
             this.pnlContenedor.Location = new System.Drawing.Point(22, 30);
             this.pnlContenedor.Margin = new System.Windows.Forms.Padding(0);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(674, 397);
+            this.pnlContenedor.Size = new System.Drawing.Size(756, 397);
             this.pnlContenedor.TabIndex = 7;
             // 
             // dgvLibros
             // 
             this.dgvLibros.AllowUserToAddRows = false;
             this.dgvLibros.AllowUserToResizeRows = false;
-            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLibros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLibros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLibros.Location = new System.Drawing.Point(0, 0);
             this.dgvLibros.Margin = new System.Windows.Forms.Padding(0);
@@ -133,14 +142,14 @@
             this.dgvLibros.RowTemplate.DividerHeight = 1;
             this.dgvLibros.RowTemplate.Height = 30;
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLibros.Size = new System.Drawing.Size(674, 397);
+            this.dgvLibros.Size = new System.Drawing.Size(756, 397);
             this.dgvLibros.TabIndex = 5;
             // 
             // picAgregar
             // 
             this.picAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAgregar.Image = ((System.Drawing.Image)(resources.GetObject("picAgregar.Image")));
-            this.picAgregar.Location = new System.Drawing.Point(696, 0);
+            this.picAgregar.Location = new System.Drawing.Point(778, 0);
             this.picAgregar.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.picAgregar.Name = "picAgregar";
             this.picAgregar.Size = new System.Drawing.Size(19, 30);
@@ -167,6 +176,7 @@
             this.opcionAgregarNuevoLibro.Name = "opcionAgregarNuevoLibro";
             this.opcionAgregarNuevoLibro.Size = new System.Drawing.Size(226, 30);
             this.opcionAgregarNuevoLibro.Text = "Agregar nuevo libro";
+            this.opcionAgregarNuevoLibro.Visible = false;
             // 
             // opcionActualizarLibro
             // 
@@ -177,6 +187,7 @@
             this.opcionActualizarLibro.Name = "opcionActualizarLibro";
             this.opcionActualizarLibro.Size = new System.Drawing.Size(226, 30);
             this.opcionActualizarLibro.Text = "Actualizar libro";
+            this.opcionActualizarLibro.Visible = false;
             // 
             // uscLibros
             // 
@@ -185,7 +196,7 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "uscLibros";
-            this.Size = new System.Drawing.Size(718, 437);
+            this.Size = new System.Drawing.Size(800, 437);
             this.Load += new System.EventHandler(this.uscLibros_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();

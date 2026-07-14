@@ -98,6 +98,18 @@
     <Compile Include="Core\ReportTable.cs" />
     <Compile Include="Core\SeleccionRB.cs" />
     <Compile Include="Core\ThemeColor.cs" />
+    <Compile Include="Forms\Parametros\FormAgregarCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarCargos.Designer.cs">
+      <DependentUpon>FormAgregarCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormCargosEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormCargosEstado.Designer.cs">
+      <DependentUpon>FormCargosEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Alumnos\FormDocumentacionAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,12 +193,6 @@
     </Compile>
     <Compile Include="Forms\Configuraciones\FormInscripcionCicloLectivo.Designer.cs">
       <DependentUpon>FormInscripcionCicloLectivo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Personal\FormAgregarCargos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Personal\FormAgregarCargos.Designer.cs">
-      <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Personal\FormAgregarDocumentacion.cs">
       <SubType>Form</SubType>
@@ -308,10 +314,10 @@
     <Compile Include="Forms\Personal\FormAgregarModificarPersonal.Designer.cs">
       <DependentUpon>FormAgregarModificarPersonal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Personal\FormCargarNumLibro.cs">
+    <Compile Include="Forms\Parametros\FormCargarNumLibro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Personal\FormCargarNumLibro.Designer.cs">
+    <Compile Include="Forms\Parametros\FormCargarNumLibro.Designer.cs">
       <DependentUpon>FormCargarNumLibro.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Personal\FormPersonal.cs">
@@ -394,6 +400,12 @@
     <EmbeddedResource Include="Core\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
+      <DependentUpon>FormAgregarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormCargosEstado.resx">
+      <DependentUpon>FormCargosEstado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alumnos\FormDocumentacionAlumno.resx">
       <DependentUpon>FormDocumentacionAlumno.cs</DependentUpon>
     </EmbeddedResource>
@@ -435,9 +447,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuraciones\FormParametros.resx">
       <DependentUpon>FormParametros.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Personal\FormAgregarCargos.resx">
-      <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personal\FormAgregarDocumentacion.resx">
       <DependentUpon>FormAgregarDocumentacion.cs</DependentUpon>
@@ -502,7 +511,7 @@
     <EmbeddedResource Include="Forms\Personal\FormAgregarModificarPersonal.resx">
       <DependentUpon>FormAgregarModificarPersonal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Personal\FormCargarNumLibro.resx">
+    <EmbeddedResource Include="Forms\Parametros\FormCargarNumLibro.resx">
       <DependentUpon>FormCargarNumLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personal\FormPersonal.resx">
