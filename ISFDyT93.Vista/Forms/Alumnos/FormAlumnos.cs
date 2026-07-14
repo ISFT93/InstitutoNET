@@ -98,28 +98,29 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 DataGridView.HitTestInfo info = dgvAlumnos.HitTest(e.X, e.Y);
 
                 tsmAgregarAlumno.Visible = ((CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0));
+                tsmActualizarDocumentacion.Visible = false;
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
-                    
 
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
-                    if(!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
+                    if (!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
                         this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
+                    tsmDarAlta.Visible = !activo;
 
                     tsmAgregarAlumno.Visible = false;
 
-                    tsmDarAlta.Visible = !activo;
+                    //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+
+                    tsmActualizarDocumentacion.Visible = true;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
-                    tsmCargaMasiva.Visible = false;
-
                     if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
                         tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
                     else
@@ -134,7 +135,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
                     tsmDarAlta.Visible = false;
-                    tsmCargaMasiva.Visible = true;
+                    tsmActualizarDocumentacion.Visible = true;
                 }
             }
         }
@@ -142,14 +143,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         #region ControlMenuStrip
         private void tsmAgregarAlumno_Click(object sender, EventArgs e)
         {
-
+            
             bool OK = AlumnosInscLogica.obtenerFechaIncripcion();
             if (OK)
             {
                 Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                 {
                     form.Accion = TipoAccion.Agregar;
-                    //form.AlumnoId = AlumnoId;
                 });
             }
             else
@@ -160,7 +160,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                     {
                         form.Accion = TipoAccion.Agregar;
-                        //form.AlumnoId = AlumnoId;
+                        form.AlumnoId = AlumnoId;
                     });
                 }
             }
@@ -187,6 +187,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void tsmDarAlta_Click(object sender, EventArgs e)
         {
             this.AlumnosLogica.DarAltaAlumnos(AlumnoId);
+            AlumnosLogica.ActualizarEstadoInicializado(AlumnoId, 0);
             RecargarGrilla();
         }
         public void tsmCargaMasiva_Click(object sender, EventArgs e)
@@ -374,6 +375,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 form.AlumnoId = AlumnoId;
                 form.ApellidoNombre = ApellidoNombre;
             });
+        }
+        private void tsmActualizarDocumentacion_Click(object sender, EventArgs e)
+        {
+            Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
         }
         #endregion
 

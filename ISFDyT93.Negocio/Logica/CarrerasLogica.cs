@@ -34,6 +34,10 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.carrerasDao.ObtenerCarreras(true);
         }
+        public DataTable ObtenerCarrerasConPrimeroActivo()
+        {
+            return this.carrerasDao.ObtenerCarrerasConPrimeroActivo(true);
+        }
         public DataTable CarrerasInactivas()
         {
             return this.carrerasDao.CarrerasInactivas(false);
@@ -60,7 +64,11 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.carrerasDao.TraeIdDeCarrera(nombre);
         }
-
+        public int CarreraTienePrimerAnio(int id)
+        {
+            var resultado = this.carrerasDao.CarreraTienePrimerAnio(id);
+            return resultado;
+        }
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
             bool resultado = false;          

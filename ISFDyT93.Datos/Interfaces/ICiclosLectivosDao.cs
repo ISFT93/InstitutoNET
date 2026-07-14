@@ -12,12 +12,13 @@ namespace ISFDyT93.Datos.Interfaces
     {
         DataTable ObtenerCicloLectivo(bool actualizar = false);
         DataTable CargarInscripcionAlumnoSP(int CicloLectivo);
-        int IngresoCursadaPrimeroSP(int CicloLectivo);
+        int IngresoCursadaPrimeroSP(int CicloLectivo, int Carrera);
         int AgregarCicloLectivo(CicloLectivoModelo Modelo);
         int CargarCursadasSP(int anioLectivo);
         int AgregarFechaFinalesMarzo(CicloLectivoModelo modelo);
         int AgregarFechaFinalesJulio(CicloLectivoModelo modelo);
         int AgregarFechaFinalesDiciembre(CicloLectivoModelo modelo);
         int ObtenerAlumnoDePrimero(int CicloLectivo);
+
     }
 }

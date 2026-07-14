@@ -61,9 +61,12 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             cmbSexo.Items.Add("Otro");
             dtpFechaNacimiento.MaxDate = DateTime.Now.AddYears(-17);
 
-            cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
+            cmbCarreraId.DataSource = carrerasLogica.ObtenerCarrerasConPrimeroActivo();
+            
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
+
+
             cmbMayorTitulo.Text = "Ninguno";
 
             SetReadOnly(grbDocumentosEntregar,false);
@@ -72,7 +75,28 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             {
                 this.Contenedor.AbrirFormulario<FormAlumnos>();
             });
-
+            var carreras = carrerasLogica.ObtenerTodasLasCarreras();
+            cmbCarreraId.DataSource = null;
+            cmbCarreraId.DataSource = carreras;
+            cmbCarreraId.ValueMember = "CarreraId";
+            cmbCarreraId.DisplayMember = "Descripción";
+            if (this.Accion == TipoAccion.Agregar)
+            {
+                carreras = carrerasLogica.ObtenerCarrerasConPrimeroActivo();
+                if (!(carreras != null && carreras.Rows.Count > 0))
+                {
+                    MessageBox.Show("No se encontraron carreras con primer año activo.\nIngrese primero los cursos y vuelva a intentarlo",
+                                    "Información",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    Contenedor.AbrirFormulario<FormAlumnos>();
+                }
+                cmbCarreraId.DataSource = null;
+                cmbCarreraId.DataSource = carreras;
+                cmbCarreraId.ValueMember = "CarreraId";
+                cmbCarreraId.DisplayMember = "Descripción";
+            }
+            
             if (this.AlumnoId > 0)
             {
                 this.DatosAlumnos = alumnosLogica.ObtenerAlumno(this.AlumnoId);
@@ -104,7 +128,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 pnlSiNoCert.Enabled = false;
                 pnlEstadoDiscapacidad.Enabled = false;
                 grbDocumentosEntregar.Enabled = false;
-                cmbCicloLectivo.Visible = false;
+                CicloLectivoId.Visible = false;
                 lblAnioLectivo.Visible=false;
                 this.Contenedor.SetTitulo("Ver Alumno");
 
@@ -128,6 +152,57 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 cmbTipoDocumento.Enabled = false;
 
                 this.Contenedor.SetTitulo("Modificar Alumno");
+                ActualizarAutoComplete();
+            }
+            else if (this.Accion == TipoAccion.Documentacion)
+            {
+                this.Contenedor.SetVolver(() =>
+                {
+                    this.Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
+                });
+                txtNumeroDocumento.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                SetReadOnly(grbDocumentosEntregar, true);
+                SetReadOnly(grbDatosPersonales, false);
+                SetReadOnly(grbFormacion, false);
+                SetReadOnly(grbFichaSalud, false);
+                SetReadOnly(grbDireccion, false);
+                grbDireccion.Visible = false;
+                grbFichaSalud.Visible = false;
+                grbFormacion.Visible = false;
+                grbCarrera.Visible = false;
+
+                btnDocumentacionOk.Visible = true;
+
+
+                cmbCarreraId.Enabled = false;
+                cmbTipoDocumento.Enabled = false;
+                cmbEstadoCivil.Enabled = false;
+                cmbSexo.Enabled = false;
+                cmbMayorTitulo.Enabled = false;
+                tableLayoutPanel2.Controls.Remove(dtpFechaNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblFechaNacimiento);
+                tableLayoutPanel2.Controls.Remove(txtPaisNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblPaisNac);
+                tableLayoutPanel2.Controls.Remove(txtLocalidadNacimiento);
+                tableLayoutPanel2.Controls.Remove(lblLocNacimiento);
+                tableLayoutPanel2.Controls.Remove(cmbSexo);
+                tableLayoutPanel2.Controls.Remove(label12);
+                tableLayoutPanel2.Controls.Remove(cmbEstadoCivil);
+                tableLayoutPanel2.Controls.Remove(lblEstadoCivil);
+
+                tableLayoutPanel2.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[2].Height = 0;
+
+                tableLayoutPanel2.RowStyles[3].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[3].Height = 0;
+
+                tableLayoutPanel2.RowStyles[4].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.RowStyles[4].Height = 0;
+                tableLayoutPanel2.Height = 90;
+                grbDatosPersonales.Height = 120;
+
+                this.Contenedor.SetTitulo("Cargar Dcumentacion del Alumno");
                 ActualizarAutoComplete();
             }
             else
@@ -222,7 +297,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void chkAdeudaMaterias_CheckedChanged(object sender, EventArgs e)
         {
+            chkConstanciaTituloTramite.Checked = false;
+            chkFotocopiaTitulo.Checked = false;
             txtCantidadAdeudaMaterias.Enabled = this.chkConstanciaAdeudaMaterias.Checked;
+            if (chkConstanciaAdeudaMaterias.Checked != true)
+                txtCantidadAdeudaMaterias.Text = "00";
         }
 
         private void cmbCarreras_SelectionChangeCommitted(object sender, EventArgs e)
@@ -281,7 +360,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
             
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
-
+            alumnoCarrera.CicloLectivoId = int.Parse(CicloLectivoId.Text);
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)
             {
                 if (this.Accion == TipoAccion.Agregar)
@@ -294,7 +373,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                         //lo estoy dando de alta
                         alumnoCarrera.Activo = true;
                         alumnoCarrera.FechaAlta = DateTime.Now;
-
+                        alumnoCarrera.Inicializado = 0;
                         alumnosLogica.AgregarAlumnoCarrera(alumnoCarrera);
 
                         Notificar(TipoNotificacion.Success, "El alumno fue\nagregado con exito");
@@ -320,6 +399,15 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "El alumno fue\nmodificado con exito");
                 }
+                else if (this.Accion == TipoAccion.Documentacion)
+                {
+                    //Modifico la carrera
+                    alumnosLogica.ModificarAlumno(alumno);
+                    Notificar(TipoNotificacion.Success, "La documentacion fue\nmodificada con exito");
+
+                    Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
+                    return;
+                }
 
                 Contenedor.AbrirFormulario<FormAlumnos>();
             }
@@ -337,6 +425,36 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             return true;
 
         }
+        private void btnDocumentacionOk_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show(
+                "¿Está seguro de que desea guardar esta información de forma definitiva?\n\n" +
+                "Una vez confirmados los cambios, no podrán modificarse.",
+                "Confirmación",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information
+            );
+            if (result != DialogResult.OK)
+                return;
+            var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            alumnosLogica.ModificarAlumno(alumno);
+            alumnosLogica.ActualizarEstadoInicializado(this.AlumnoId, 2);
+            Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
+        }
+        private void chkConstanciaTituloTramite_CheckedChanged(object sender, EventArgs e)
+        {
+            chkFotocopiaTitulo.Checked = false;
+            chkConstanciaAdeudaMaterias.Checked = false;
+            txtCantidadAdeudaMaterias.Text = "00";
+        }
+
+        private void chkFotocopiaTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            chkConstanciaTituloTramite.Checked = false;
+            chkConstanciaAdeudaMaterias.Checked = false;
+            txtCantidadAdeudaMaterias.Text = "00";
+        }
         private void ActualizarAutoComplete()
         {
             txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());
@@ -351,7 +469,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void ObtenerAniosLectivosActivos()
         {
-            cmbCicloLectivo.DataSource = new CicloLectivosLogica().ObtenerAniosCiclosLectivosActivos();
+            CicloLectivoId.DataSource = new CicloLectivosLogica().ObtenerAniosCiclosLectivosActivos();
         }
 
         private void txtSoloNumero_KeyPress(object sender, KeyPressEventArgs e)

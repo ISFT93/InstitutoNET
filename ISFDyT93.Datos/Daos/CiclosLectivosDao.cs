@@ -35,15 +35,17 @@ namespace ISFDyT93.Datos.Daos
 
         }
 
-        public int IngresoCursadaPrimeroSP(int CicloLectivo)
+        public int IngresoCursadaPrimeroSP(int CicloLectivo, int carrera)
         {
             var parCicloLectivoId1 = new SqlParameter("AnioLectivoId", SqlDbType.Int);
             parCicloLectivoId1.Value = CicloLectivo.ToString();
-            var parametros1 = new SqlParameter[1] { parCicloLectivoId1 };
-            return this.Conexion.EjecutarStoreNumber("SP_IngresoCursadaPrimero", parametros1); 
+            var parCarreraId = new SqlParameter("CarreraId", SqlDbType.Int);
+            parCarreraId.Value = carrera;
+            var parametros1 = new SqlParameter[2] { parCicloLectivoId1, parCarreraId };
+            return this.Conexion.EjecutarStoreNumber("SP_IngresoCursadaPrimero", parametros1);
 
         }
-        
+
         public int AgregarCicloLectivo(CicloLectivoModelo Modelo)
         {
             string query = this.CreateInsertQuery<CicloLectivoModelo>(Modelo);
