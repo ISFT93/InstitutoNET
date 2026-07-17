@@ -227,9 +227,25 @@ namespace ISFDyT93.Vista.Forms.Personal
         }
         private void ActualizarMateriasDisponibles()
         {
+            cmbCursoMateriaId.DataSource = null;
+            cmbCursoMateriaId.Items.Clear();
+            cmbCursoMateriaId.SelectedIndex = -1;
+
+            int cursoId;
+            int anioCarreraId;
+            if (cmbCursoId.SelectedValue == null || cmbAnioId.SelectedValue == null)
+                return;
+
+            if (!int.TryParse(cmbCursoId.SelectedValue.ToString(), out cursoId))
+                return;
+
+            if (!int.TryParse(cmbAnioId.SelectedValue.ToString(), out anioCarreraId))
+                return;
+
             cmbCursoMateriaId.ValueMember = "CursoMateriaId";
             cmbCursoMateriaId.DisplayMember = "Nombre";
-            cmbCursoMateriaId.DataSource = this.ServiciosLogica.ObtenerMateriasLibres(TipoAsignacionId, CursoId, SituacionRevistaId);
+            cmbCursoMateriaId.DataSource = this.ServiciosLogica.ObtenerCursoMaterias(cursoId, anioCarreraId);
+            cmbCursoMateriaId.SelectedIndex = -1;
         }
         private void ActualizarModulo()
         {

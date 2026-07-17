@@ -82,6 +82,11 @@ namespace ISFDyT93.Negocio.Logica
             return this.serviciosDao.ObtenerMateriasLibres(tipoAsignacionId, CursoId, situacionRevistaId);
         }
 
+        public DataTable ObtenerCursoMaterias(int cursoId, int anioCarreraId)
+        {
+            return this.serviciosDao.ObtenerCursoMaterias(cursoId, anioCarreraId);
+        }
+
         public bool AgregarServicio(ServiciosModelo servicio, PersonalModelo personal, LibroActasModelo libroActa)
         {
             if (libroActa.LibroActaId > 0)
