@@ -3,6 +3,13 @@
 	<Email>
 		<Coincidencia>correo</Coincidencia>
 		<Coincidencia>correo electronico</Coincidencia>
+		<Coincidencia>correo electrónico</Coincidencia>
+		<Coincidencia>direccion de correo electronico</Coincidencia>
+		<Coincidencia>dirección de correo electrónico</Coincidencia>
+		<Coincidencia>direccion email</Coincidencia>
+		<Coincidencia>email personal</Coincidencia>
+		<Coincidencia>e-mail</Coincidencia>
+		<Coincidencia>e mail</Coincidencia>
 		<Coincidencia>email</Coincidencia>
 		<Coincidencia>mail</Coincidencia>
 		<Coincidencia>gmail</Coincidencia>
@@ -16,8 +23,16 @@
 	<Carreras>
 		<Coincidencia>Carreras</Coincidencia>
 		<Coincidencia>Carrera</Coincidencia>
+		<Coincidencia>carrera elegida</Coincidencia>
+		<Coincidencia>carrera seleccionada</Coincidencia>
+		<Coincidencia>carrera inscripcion</Coincidencia>
+		<Coincidencia>carrera de inscripcion</Coincidencia>
+		<Coincidencia>propuesta formativa</Coincidencia>
+		<Coincidencia>propuesta</Coincidencia>
 		<Coincidencia>Tecnicaturas</Coincidencia>
 		<Coincidencia>Tecnicatura</Coincidencia>
+		<Coincidencia>profesorado</Coincidencia>
+		<Coincidencia>trayecto</Coincidencia>
 	    <Coincidencia>CARRERAS</Coincidencia>
 	    <Coincidencia>CARRERA</Coincidencia>
 	    <Coincidencia>TECNICATURAS</Coincidencia>
@@ -27,6 +42,8 @@
 	<Apellido>
 		<Coincidencia>Apellido</Coincidencia>
 		<Coincidencia>Apellidos</Coincidencia>
+		<Coincidencia>primer apellido</Coincidencia>
+		<Coincidencia>apellido paterno</Coincidencia>
 	    <Coincidencia>APELLIDO</Coincidencia>
 	    <Coincidencia>APELLIDOS</Coincidencia>
 		<Coincidencia>apellido</Coincidencia>
@@ -36,6 +53,10 @@
 	<Nombre>
 		<Coincidencia>nombre</Coincidencia>
 		<Coincidencia>nombres</Coincidencia>
+		<Coincidencia>primer nombre</Coincidencia>
+		<Coincidencia>nombre completo</Coincidencia>
+		<Coincidencia>alumno</Coincidencia>
+		<Coincidencia>estudiante</Coincidencia>
 	    <Coincidencia>NOMBRES</Coincidencia>
 	    <Coincidencia>NOMBRE</Coincidencia>
 	</Nombre>
@@ -43,17 +64,49 @@
 	<NumeroDocumento>
 		<Coincidencia>DNI</Coincidencia>
 		<Coincidencia>Documento</Coincidencia>
+		<Coincidencia>numero documento</Coincidencia>
+		<Coincidencia>número documento</Coincidencia>
+		<Coincidencia>numero de documento</Coincidencia>
+		<Coincidencia>número de documento</Coincidencia>
+		<Coincidencia>nro documento</Coincidencia>
+		<Coincidencia>nro de documento</Coincidencia>
+		<Coincidencia>n documento</Coincidencia>
+		<Coincidencia>n° documento</Coincidencia>
+		<Coincidencia>nº documento</Coincidencia>
+		<Coincidencia>documento nacional de identidad</Coincidencia>
+		<Coincidencia>du</Coincidencia>
+		<Coincidencia>cuil</Coincidencia>
+		<Coincidencia>cuit</Coincidencia>
 	</NumeroDocumento>
+
+	<TipoDocumento>
+		<Coincidencia>tipo documento</Coincidencia>
+		<Coincidencia>tipo de documento</Coincidencia>
+		<Coincidencia>tipo doc</Coincidencia>
+		<Coincidencia>tipo dni</Coincidencia>
+	</TipoDocumento>
 	
 	<Sexo>
 		<Coincidencia>Sexo</Coincidencia>
 		<Coincidencia>sexo</Coincidencia>
 		<Coincidencia>SEXO</Coincidencia>
+		<Coincidencia>genero</Coincidencia>
+		<Coincidencia>género</Coincidencia>
+		<Coincidencia>identidad de genero</Coincidencia>
+		<Coincidencia>identidad de género</Coincidencia>
 	</Sexo>
 
 	<FechaNacimiento>
 		<Coincidencia>Fecha de nacimiento</Coincidencia>
 		<Coincidencia>fecha de nacimiento</Coincidencia>
+		<Coincidencia>nacimiento</Coincidencia>
+		<Coincidencia>fecha nac</Coincidencia>
+		<Coincidencia>fecha nacimiento</Coincidencia>
+		<Coincidencia>f nacimiento</Coincidencia>
+		<Coincidencia>f. nacimiento</Coincidencia>
+		<Coincidencia>fecha de nac</Coincidencia>
+		<Coincidencia>fec nac</Coincidencia>
+		<Coincidencia>fec. nac.</Coincidencia>
 		<Coincidencia>fechanac</Coincidencia>
 		<Coincidencia>fechadenac</Coincidencia>
 		<Coincidencia>FECHA DE NACIMIENTO</Coincidencia>
@@ -63,30 +116,72 @@
 		<Coincidencia>lugar de nacimiento</Coincidencia>
 		<Coincidencia>LUGAR DE NACIMIENT0</Coincidencia>
 		<Coincidencia>Lugar de nacimiento</Coincidencia>
+		<Coincidencia>localidad nacimiento</Coincidencia>
+		<Coincidencia>localidad de nacimiento</Coincidencia>
+		<Coincidencia>ciudad nacimiento</Coincidencia>
+		<Coincidencia>ciudad de nacimiento</Coincidencia>
+		<Coincidencia>nacido en</Coincidencia>
 	</LocalidadNacimiento>
+
+	<PaisNacimiento>
+		<Coincidencia>pais</Coincidencia>
+		<Coincidencia>país</Coincidencia>
+		<Coincidencia>pais nacimiento</Coincidencia>
+		<Coincidencia>país nacimiento</Coincidencia>
+		<Coincidencia>pais de nacimiento</Coincidencia>
+		<Coincidencia>país de nacimiento</Coincidencia>
+		<Coincidencia>nacionalidad</Coincidencia>
+	</PaisNacimiento>
 
 	<EstadoCivil>
 		<Coincidencia>estado civil</Coincidencia>
+		<Coincidencia>estado conyugal</Coincidencia>
+		<Coincidencia>situacion civil</Coincidencia>
+		<Coincidencia>situación civil</Coincidencia>
 		<Coincidencia>Estado Civil</Coincidencia>
 		<Coincidencia>ESTADO CIVIL</Coincidencia>
 		<Coincidencia>Estado civil</Coincidencia>
 	</EstadoCivil>
 
 	<Celular>
-		<Coincidencia>tel</Coincidencia>
 		<Coincidencia>numero de telefono</Coincidencia>
 		<Coincidencia>numero de celular</Coincidencia>
-		<Coincidencia>telefono</Coincidencia>
+		<Coincidencia>numero de telefono celular</Coincidencia>
+		<Coincidencia>número de teléfono</Coincidencia>
+		<Coincidencia>número de celular</Coincidencia>
+		<Coincidencia>número de teléfono celular</Coincidencia>
+		<Coincidencia>nro telefono</Coincidencia>
+		<Coincidencia>nro teléfono</Coincidencia>
+		<Coincidencia>nro celular</Coincidencia>
+		<Coincidencia>telefono celular</Coincidencia>
+		<Coincidencia>tel celular</Coincidencia>
+		<Coincidencia>movil</Coincidencia>
+		<Coincidencia>móvil</Coincidencia>
+		<Coincidencia>whatsapp</Coincidencia>
 		<Coincidencia>celular</Coincidencia>
-	    <Coincidencia>TEL</Coincidencia>
 	    <Coincidencia>NUMERO DE TELEFONO</Coincidencia>
 	    <Coincidencia>NUMERO DE CELULAR</Coincidencia>
-	    <Coincidencia>TELEFONO</Coincidencia>
 	    <Coincidencia>CELULAR</Coincidencia>
 	</Celular>
 
+	<Telefono>
+		<Coincidencia>telefono</Coincidencia>
+		<Coincidencia>tel</Coincidencia>
+		<Coincidencia>telefono fijo</Coincidencia>
+		<Coincidencia>tel fijo</Coincidencia>
+		<Coincidencia>telefono particular</Coincidencia>
+		<Coincidencia>telefono de linea</Coincidencia>
+		<Coincidencia>tel de linea</Coincidencia>
+		<Coincidencia>línea</Coincidencia>
+	</Telefono>
+
 	<Calle>
 		<Coincidencia>direccion</Coincidencia>
+		<Coincidencia>direccion completa</Coincidencia>
+		<Coincidencia>dirección completa</Coincidencia>
+		<Coincidencia>direccion particular</Coincidencia>
+		<Coincidencia>dirección particular</Coincidencia>
+		<Coincidencia>domicilio completo</Coincidencia>
 		<Coincidencia>Direccion</Coincidencia>
 		<Coincidencia>DIRECCION</Coincidencia>
 		<Coincidencia>DIRECCIÓN</Coincidencia>
@@ -96,6 +191,10 @@
 		<Coincidencia>Domicilio</Coincidencia>
 		<Coincidencia>DOMICILIO</Coincidencia>
 		<Coincidencia>calle</Coincidencia>
+		<Coincidencia>calle domicilio</Coincidencia>
+		<Coincidencia>calle y numero</Coincidencia>
+		<Coincidencia>calle y número</Coincidencia>
+		<Coincidencia>calle nro</Coincidencia>
 		<Coincidencia>CALLE</Coincidencia>
 		<Coincidencia>Calle</Coincidencia>
 		<Coincidencia>direccion domicilio</Coincidencia>
@@ -103,8 +202,36 @@
 		<Coincidencia>address</Coincidencia>
 	</Calle>
 
+	<Numero>
+		<Coincidencia>numero</Coincidencia>
+		<Coincidencia>número</Coincidencia>
+		<Coincidencia>numero calle</Coincidencia>
+		<Coincidencia>número calle</Coincidencia>
+		<Coincidencia>numero domicilio</Coincidencia>
+		<Coincidencia>nro</Coincidencia>
+		<Coincidencia>nro domicilio</Coincidencia>
+		<Coincidencia>altura</Coincidencia>
+		<Coincidencia>altura domicilio</Coincidencia>
+	</Numero>
+
+	<Piso>
+		<Coincidencia>piso</Coincidencia>
+		<Coincidencia>piso domicilio</Coincidencia>
+	</Piso>
+
+	<Departamento>
+		<Coincidencia>departamento</Coincidencia>
+		<Coincidencia>depto</Coincidencia>
+		<Coincidencia>dpto</Coincidencia>
+		<Coincidencia>unidad</Coincidencia>
+		<Coincidencia>unidad funcional</Coincidencia>
+	</Departamento>
+
 	<Localidad>
 		<Coincidencia>localidad</Coincidencia>
+		<Coincidencia>localidad domicilio</Coincidencia>
+		<Coincidencia>localidad actual</Coincidencia>
+		<Coincidencia>localidad residencia</Coincidencia>
 		<Coincidencia>Localidad</Coincidencia>
 		<Coincidencia>ciudad</Coincidencia>
 		<Coincidencia>Ciudad</Coincidencia>
@@ -118,6 +245,8 @@
 
 	<Distrito>
 		<Coincidencia>partido</Coincidencia>
+		<Coincidencia>partido domicilio</Coincidencia>
+		<Coincidencia>partido de residencia</Coincidencia>
 		<Coincidencia>Partido</Coincidencia>
 		<Coincidencia>PARTIDO</Coincidencia>
 		<Coincidencia>municipio</Coincidencia>
@@ -131,6 +260,8 @@
 
 	<CodigoPostal>
 		<Coincidencia>codigo postal</Coincidencia>
+		<Coincidencia>cod postal</Coincidencia>
+		<Coincidencia>cod. postal</Coincidencia>
 		<Coincidencia>Codigo Postal</Coincidencia>
 		<Coincidencia>CODIGO POSTAL</Coincidencia>
 		<Coincidencia>código postal</Coincidencia>
@@ -145,6 +276,8 @@
 
 	<Provincia>
 		<Coincidencia>provincia</Coincidencia>
+		<Coincidencia>provincia domicilio</Coincidencia>
+		<Coincidencia>provincia residencia</Coincidencia>
 		<Coincidencia>Provincia</Coincidencia>
 		<Coincidencia>PROVINCIA</Coincidencia>
 		<Coincidencia>estado</Coincidencia>
@@ -157,6 +290,159 @@
 		<Coincidencia>Province</Coincidencia>
 		<Coincidencia>State</Coincidencia>
 	</Provincia>
+
+	<TituloSecundario>
+		<Coincidencia>titulo secundario</Coincidencia>
+		<Coincidencia>título secundario</Coincidencia>
+		<Coincidencia>secundario completo</Coincidencia>
+		<Coincidencia>finalizo la secundaria</Coincidencia>
+		<Coincidencia>finalizó la secundaria</Coincidencia>
+		<Coincidencia>finalizo secundaria</Coincidencia>
+		<Coincidencia>finalizó secundaria</Coincidencia>
+		<Coincidencia>termino la secundaria</Coincidencia>
+		<Coincidencia>terminó la secundaria</Coincidencia>
+		<Coincidencia>secundaria finalizada</Coincidencia>
+		<Coincidencia>secundaria completa</Coincidencia>
+		<Coincidencia>posee titulo secundario</Coincidencia>
+		<Coincidencia>posee título secundario</Coincidencia>
+	</TituloSecundario>
+
+	<MateriasAdeuda>
+		<Coincidencia>materias adeuda</Coincidencia>
+		<Coincidencia>adeuda materias</Coincidencia>
+		<Coincidencia>cantidad materias adeuda</Coincidencia>
+		<Coincidencia>materias pendientes</Coincidencia>
+	</MateriasAdeuda>
+
+	<DescripcionMaterias>
+		<Coincidencia>descripcion materias</Coincidencia>
+		<Coincidencia>descripción materias</Coincidencia>
+		<Coincidencia>materias que adeuda</Coincidencia>
+		<Coincidencia>detalle materias adeuda</Coincidencia>
+	</DescripcionMaterias>
+
+	<Titulo>
+		<Coincidencia>titulo</Coincidencia>
+		<Coincidencia>título</Coincidencia>
+		<Coincidencia>titulo obtenido</Coincidencia>
+		<Coincidencia>título obtenido</Coincidencia>
+		<Coincidencia>titulo secundario obtenido</Coincidencia>
+	</Titulo>
+
+	<Orientacion>
+		<Coincidencia>orientacion</Coincidencia>
+		<Coincidencia>orientación</Coincidencia>
+		<Coincidencia>modalidad</Coincidencia>
+		<Coincidencia>especialidad</Coincidencia>
+	</Orientacion>
+
+	<OtorgadoPor>
+		<Coincidencia>otorgado por</Coincidencia>
+		<Coincidencia>institucion otorgante</Coincidencia>
+		<Coincidencia>institución otorgante</Coincidencia>
+		<Coincidencia>escuela secundaria</Coincidencia>
+		<Coincidencia>establecimiento secundario</Coincidencia>
+	</OtorgadoPor>
+
+	<AnioEgreso>
+		<Coincidencia>anio egreso</Coincidencia>
+		<Coincidencia>año egreso</Coincidencia>
+		<Coincidencia>año de egreso</Coincidencia>
+		<Coincidencia>egreso</Coincidencia>
+		<Coincidencia>fecha egreso</Coincidencia>
+	</AnioEgreso>
+
+	<Promedio>
+		<Coincidencia>promedio</Coincidencia>
+		<Coincidencia>promedio secundario</Coincidencia>
+		<Coincidencia>promedio general</Coincidencia>
+	</Promedio>
+
+	<ContactoEmergencia>
+		<Coincidencia>contacto emergencia</Coincidencia>
+		<Coincidencia>contacto de emergencia</Coincidencia>
+		<Coincidencia>en caso de emergencia llamar a</Coincidencia>
+		<Coincidencia>en caso de emergencia llamar a nombre parentesco telefono</Coincidencia>
+		<Coincidencia>caso de emergencia</Coincidencia>
+		<Coincidencia>emergencia llamar a</Coincidencia>
+		<Coincidencia>persona contacto</Coincidencia>
+		<Coincidencia>persona de contacto</Coincidencia>
+		<Coincidencia>familiar contacto</Coincidencia>
+	</ContactoEmergencia>
+
+	<TelefonoContacto>
+		<Coincidencia>telefono contacto</Coincidencia>
+		<Coincidencia>tel contacto</Coincidencia>
+		<Coincidencia>telefono emergencia</Coincidencia>
+		<Coincidencia>tel emergencia</Coincidencia>
+		<Coincidencia>telefono contacto emergencia</Coincidencia>
+	</TelefonoContacto>
+
+	<ObraSocialPrepaga>
+		<Coincidencia>obra social</Coincidencia>
+		<Coincidencia>prepaga</Coincidencia>
+		<Coincidencia>obra social prepaga</Coincidencia>
+		<Coincidencia>posee obra social</Coincidencia>
+	</ObraSocialPrepaga>
+
+	<DescripcionObraSocial>
+		<Coincidencia>nombre obra social</Coincidencia>
+		<Coincidencia>descripcion obra social</Coincidencia>
+		<Coincidencia>descripción obra social</Coincidencia>
+		<Coincidencia>cual obra social</Coincidencia>
+		<Coincidencia>cuál obra social</Coincidencia>
+	</DescripcionObraSocial>
+
+	<TratamientoMedico>
+		<Coincidencia>tratamiento medico</Coincidencia>
+		<Coincidencia>tratamiento médico</Coincidencia>
+		<Coincidencia>realiza tratamiento medico</Coincidencia>
+		<Coincidencia>realiza tratamiento médico</Coincidencia>
+	</TratamientoMedico>
+
+	<DescripcionTratamiento>
+		<Coincidencia>descripcion tratamiento</Coincidencia>
+		<Coincidencia>descripción tratamiento</Coincidencia>
+		<Coincidencia>detalle tratamiento</Coincidencia>
+		<Coincidencia>cual tratamiento</Coincidencia>
+		<Coincidencia>cuál tratamiento</Coincidencia>
+	</DescripcionTratamiento>
+
+	<Medicacion>
+		<Coincidencia>medicacion</Coincidencia>
+		<Coincidencia>medicación</Coincidencia>
+		<Coincidencia>toma medicacion</Coincidencia>
+		<Coincidencia>toma medicación</Coincidencia>
+	</Medicacion>
+
+	<DescripcionMedicacion>
+		<Coincidencia>descripcion medicacion</Coincidencia>
+		<Coincidencia>descripción medicación</Coincidencia>
+		<Coincidencia>detalle medicacion</Coincidencia>
+		<Coincidencia>detalle medicación</Coincidencia>
+		<Coincidencia>cual medicacion</Coincidencia>
+		<Coincidencia>cuál medicación</Coincidencia>
+	</DescripcionMedicacion>
+
+	<Discapacidad>
+		<Coincidencia>discapacidad</Coincidencia>
+		<Coincidencia>posee discapacidad</Coincidencia>
+		<Coincidencia>tiene discapacidad</Coincidencia>
+	</Discapacidad>
+
+	<DescripcionDiscapacidad>
+		<Coincidencia>descripcion discapacidad</Coincidencia>
+		<Coincidencia>descripción discapacidad</Coincidencia>
+		<Coincidencia>detalle discapacidad</Coincidencia>
+		<Coincidencia>tipo discapacidad</Coincidencia>
+	</DescripcionDiscapacidad>
+
+	<CertificadoDiscapacidad>
+		<Coincidencia>certificado discapacidad</Coincidencia>
+		<Coincidencia>certificado de discapacidad</Coincidencia>
+		<Coincidencia>cud</Coincidencia>
+		<Coincidencia>posee cud</Coincidencia>
+	</CertificadoDiscapacidad>
 
 
 </Alumnos>

@@ -17,6 +17,7 @@ using ISFDyT93.Vista.Forms.Alumnos;
 using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms.Componetes;
 using Syncfusion.XlsIO.Implementation;
+using System.Text.RegularExpressions;
 
 
 namespace ISFDyT93.Vista.Forms.Componentes
@@ -187,6 +188,11 @@ namespace ISFDyT93.Vista.Forms.Componentes
             carreraItem.Click += (s, args) => AplicarMapeo(colIndex, _carrerasColumnName);
             menu.Items.Add(carreraItem);
 
+            menu.Items.Add(new ToolStripSeparator());
+            var desvincularItem = new ToolStripMenuItem("Desvincular");
+            desvincularItem.Click += (s, args) => DesvincularMapeo(colIndex);
+            menu.Items.Add(desvincularItem);
+
             Rectangle rect = dgvCargaMasiva.GetCellDisplayRectangle(colIndex, -1, true);
             menu.Show(dgvCargaMasiva.PointToScreen(new Point(rect.Left, rect.Bottom)));
         }
@@ -207,8 +213,10 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
             if (dtExcel.Columns.Contains(propiedadSeleccionada))
             {
-                MessageBox.Show($"Ya hay una columna asignada como '{propiedadSeleccionada}'.", "Mapeo duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var columnaAnterior = dtExcel.Columns[propiedadSeleccionada];
+                int indiceAnterior = columnaAnterior.Ordinal;
+                columnaAnterior.ColumnName = CrearNombreColumnaSinMapear(nombreActual);
+                _columnasNoMapeadas.Add(indiceAnterior);
             }
 
             if (dtExcel.Columns.Contains(nombreActual))
@@ -217,6 +225,45 @@ namespace ISFDyT93.Vista.Forms.Componentes
             dgvCol.HeaderText = propiedadSeleccionada;
             _columnasNoMapeadas.Remove(colIndex);
             dgvCargaMasiva.InvalidateCell(colIndex, -1);
+        }
+
+        private void DesvincularMapeo(int colIndex)
+        {
+            var dgvCol = dgvCargaMasiva.Columns[colIndex];
+            if (dgvCol == null) return;
+
+            string nombreActual = dgvCol.HeaderText;
+            string nombreNuevo = CrearNombreColumnaSinMapear(nombreActual);
+
+            if (dtExcel.Columns.Contains(nombreActual))
+                dtExcel.Columns[nombreActual].ColumnName = nombreNuevo;
+
+            dgvCol.HeaderText = nombreNuevo;
+            _columnasNoMapeadas.Add(colIndex);
+
+            if (nombreActual == _carrerasColumnName)
+            {
+                _columnaCarreraIndex = -1;
+                _celdasCarreraInvalidas.Clear();
+            }
+
+            dgvCargaMasiva.Invalidate();
+        }
+
+        private string CrearNombreColumnaSinMapear(string nombreBase)
+        {
+            if (string.IsNullOrWhiteSpace(nombreBase))
+                nombreBase = "Columna";
+
+            string nombre = nombreBase;
+            int contador = 1;
+            while (dtExcel.Columns.Contains(nombre))
+            {
+                nombre = $"{nombreBase} ({contador})";
+                contador++;
+            }
+
+            return nombre;
         }
 
         public bool BuscarCoincidencia(string nombrePropiedad, string nombreExcel)
@@ -254,7 +301,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
         private void MostrarMenuCarrera(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || !_celdasCarreraInvalidas.Contains($"{e.RowIndex},{e.ColumnIndex}")) return;
+            if (e.RowIndex < 0 || e.ColumnIndex != _columnaCarreraIndex) return;
             if (_dtCarreras == null) return;
 
             var menu = new ContextMenuStrip();
@@ -269,6 +316,11 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 menu.Items.Add(item);
             }
 
+            menu.Items.Add(new ToolStripSeparator());
+            var desvincularItem = new ToolStripMenuItem("Desvincular");
+            desvincularItem.Click += (s, args) => DesvincularCarrera(rowIndex);
+            menu.Items.Add(desvincularItem);
+
             Rectangle rect = dgvCargaMasiva.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
             menu.Show(dgvCargaMasiva.PointToScreen(new Point(rect.Left, rect.Bottom)));
         }
@@ -276,9 +328,34 @@ namespace ISFDyT93.Vista.Forms.Componentes
         // Al seleccionar una carrera válida del menú, actualizar el valor de la celda y eliminarla del conjunto de celdas inválidas
         private void AplicarCarrera(int rowIndex, string nombreCarrera)
         {
-            dtExcel.Rows[rowIndex][_carrerasColumnName] = nombreCarrera;
-            _celdasCarreraInvalidas.Remove($"{rowIndex},{_columnaCarreraIndex}");
-            dgvCargaMasiva.InvalidateCell(_columnaCarreraIndex, rowIndex);
+            string valorOriginal = dtExcel.Rows[rowIndex][_carrerasColumnName]?.ToString()?.Trim() ?? "";
+
+            for (int row = 0; row < dtExcel.Rows.Count; row++)
+            {
+                string valorActual = dtExcel.Rows[row][_carrerasColumnName]?.ToString()?.Trim() ?? "";
+                if (!string.Equals(valorActual, valorOriginal, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                dtExcel.Rows[row][_carrerasColumnName] = nombreCarrera;
+                _celdasCarreraInvalidas.Remove($"{row},{_columnaCarreraIndex}");
+                dgvCargaMasiva.InvalidateCell(_columnaCarreraIndex, row);
+            }
+        }
+
+        private void DesvincularCarrera(int rowIndex)
+        {
+            string valorOriginal = dtExcel.Rows[rowIndex][_carrerasColumnName]?.ToString()?.Trim() ?? "";
+
+            for (int row = 0; row < dtExcel.Rows.Count; row++)
+            {
+                string valorActual = dtExcel.Rows[row][_carrerasColumnName]?.ToString()?.Trim() ?? "";
+                if (!string.Equals(valorActual, valorOriginal, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                dtExcel.Rows[row][_carrerasColumnName] = "";
+                _celdasCarreraInvalidas.Remove($"{row},{_columnaCarreraIndex}");
+                dgvCargaMasiva.InvalidateCell(_columnaCarreraIndex, row);
+            }
         }
 
         private void btnAceptarCargaMasiva_Click(object sender, EventArgs e)
@@ -434,7 +511,12 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 }
 
                 if (valorConvertido is string texto && !string.IsNullOrWhiteSpace(texto))
-                    valorConvertido = titleCase.ToTitleCase(texto.ToLower());
+                {
+                    if (propiedad.GetCustomAttributes<SoloNumeros>(false).Any())
+                        valorConvertido = NormalizarSoloNumeros(texto);
+                    else
+                        valorConvertido = titleCase.ToTitleCase(texto.ToLower());
+                }
 
                 propiedad.SetValue(modelo, valorConvertido);
             }
@@ -442,8 +524,41 @@ namespace ISFDyT93.Vista.Forms.Componentes
             if (string.IsNullOrWhiteSpace(modelo.TipoDocumento))
                 modelo.TipoDocumento = "Dni";
 
+            CompletarLocalidades(modelo);
             modelo.Sexo = NormalizarSexo(GetColumnaValor(dr, nameof(AlumnosModelo.Sexo)));
+            CompletarDefaultsCargaMasiva(modelo);
             return modelo;
+        }
+
+        private void CompletarLocalidades(AlumnosModelo modelo)
+        {
+            if ((!dtExcel.Columns.Contains(nameof(AlumnosModelo.LocalidadNacimiento))
+                || string.IsNullOrWhiteSpace(modelo.LocalidadNacimiento)
+                || modelo.LocalidadNacimiento.Length > 15)
+                && !string.IsNullOrWhiteSpace(modelo.Localidad))
+            {
+                modelo.LocalidadNacimiento = modelo.Localidad;
+            }
+
+            if (string.IsNullOrWhiteSpace(modelo.Localidad) && !string.IsNullOrWhiteSpace(modelo.LocalidadNacimiento))
+                modelo.Localidad = modelo.LocalidadNacimiento;
+        }
+
+        private string NormalizarSoloNumeros(string valor)
+        {
+            return Regex.Replace(valor, @"\D", "");
+        }
+
+        private void CompletarDefaultsCargaMasiva(AlumnosModelo modelo)
+        {
+            if (string.IsNullOrWhiteSpace(modelo.FotoUrl))
+                modelo.FotoUrl = "Sin foto";
+
+            if (string.IsNullOrWhiteSpace(modelo.MayorTitulo))
+                modelo.MayorTitulo = "Ninguno";
+
+            if (string.IsNullOrWhiteSpace(modelo.Orientacion))
+                modelo.Orientacion = "No especificado";
         }
 
         private bool TryConvertirValor(string valor, Type tipo, out object valorConvertido)
@@ -534,6 +649,9 @@ namespace ISFDyT93.Vista.Forms.Componentes
         {
             foreach (var propiedad in typeof(AlumnosModelo).GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
+                if (!dtExcel.Columns.Contains(propiedad.Name) && TieneObligatorioCondicional(propiedad))
+                    continue;
+
                 object value = propiedad.GetValue(modelo);
 
                 foreach (var atributo in propiedad.GetCustomAttributes(true))
@@ -559,6 +677,13 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     }
                 }
             }
+        }
+
+        private bool TieneObligatorioCondicional(PropertyInfo propiedad)
+        {
+            var condicionProp = typeof(Obligatorio).GetProperty("Condicion", BindingFlags.NonPublic | BindingFlags.Instance);
+            return propiedad.GetCustomAttributes<Obligatorio>(false)
+                .Any(attr => !string.IsNullOrEmpty(condicionProp?.GetValue(attr)?.ToString()));
         }
 
         private char NormalizarSexo(string valor)

@@ -22,6 +22,7 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable ObtenerAniosLectivos();
         DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0);
         DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId);
+        DataTable ObtenerMesaReporte(int mesaFinalId);
         DataTable ExistenFechasFinales(int anioLectivo);
         DataTable ObtenerLlamados();
     }

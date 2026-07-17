@@ -163,13 +163,16 @@ namespace ISFDyT93.Datos.Daos
             string query =
                 "SELECT " +
                 "Ca.CursadaId, " +
+                "Ca.CursadaAlumnoCarreraId, " +
                 "ROW_NUMBER() OVER (ORDER BY Al.Apellido, Al.Nombre) AS [Nro], " +
                 "CONCAT(Al.Apellido, ', ', Al.Nombre) AS [Apellidos y Nombres], " +
                 "Al.NumeroDocumento AS [DNI], " +
                 "Ca.Estado AS [Condicion], " +
+                "Ca.HorasCursadas AS [Modulos], " +
                 "Ca.HorasCursadas AS [H/Cursadas], " +
                 "Ca.UltimoPresentismo AS [Ult/Presentismo], " +
-                "CAST(Ca.PorcentajeAsistencia AS DECIMAL(5,2)) AS [% Asistencia] " +
+                "CAST(Ca.PorcentajeAsistencia AS DECIMAL(5,2)) AS [% Asistencia], " +
+                "A.Asistencia " +
                 "FROM AlumnosCarreras AC " +
                 "INNER JOIN Alumnos Al ON Al.AlumnoId = AC.AlumnoId " +
                 "INNER JOIN CursadaAlumnoCarreras Ca ON AC.AlumnoCarreraId = Ca.AlumnoCarreraId " +
@@ -180,6 +183,7 @@ namespace ISFDyT93.Datos.Daos
                 "INNER JOIN Materias m ON cm.MateriaId = m.MateriaId " +
                 "LEFT JOIN Servicios s ON s.CursoMateriaId = cm.CursoMateriaId AND s.Activo = 1 " +
                 "LEFT JOIN Personal p ON s.PersonalId = p.PersonalId " +
+                "LEFT JOIN Asistencias A ON Ca.CursadaAlumnoCarreraId = A.CursadaAlumnoCarreraId AND A.Fecha = '" + Modelo.FechaAsistenciaStr + "' " +
                 "WHERE 1=1 ";
 
             bool hayFiltros = Modelo.CarreraId > 0 || Modelo.AnioCarreraId > 0 || Modelo.CursoId > 0 || Modelo.MateriaId > 0 || Modelo.AnioLectivo > 0 || Modelo.PersonalId > 0;
