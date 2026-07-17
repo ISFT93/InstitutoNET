@@ -6,30 +6,41 @@
 --si corrio la base nueva ya existen estos campos y va a fallar, no seria un problema
 --****************
 
-USE INSTITUTO_DB;
+USE instituto_db;
 
 GO
 
 /*************************COLUMNAS ADICIONALES*************************************/
 
 --Creacion de una nueva columna para almacenar el codigo de bloque de la tabla Carreras
-ALTER TABLE Carreras
- ADD CarrerasCodigoBloque VARCHAR(20);
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Carreras') AND name = 'CarrerasCodigoBloque')
+BEGIN
+    ALTER TABLE Carreras ADD CarrerasCodigoBloque VARCHAR(20);
+END
 
 GO
+
 --Creacion de una nueva columna para almacenar el codigo de bloque de la tabla AniosCarreras
-ALTER TABLE AniosCarreras 
- ADD AniosCarrerasCodigoBloque VARCHAR(20);
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('AniosCarreras') AND name = 'AniosCarrerasCodigoBloque')
+BEGIN
+    ALTER TABLE AniosCarreras ADD AniosCarrerasCodigoBloque VARCHAR(20);
+END
 
 GO
+
 --Creacion de un campo CarreraId dentro de la tabla Materias.
-ALTER TABLE Materias
-ADD CarreraId INT;
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Materias') AND name = 'CarreraId')
+BEGIN
+    ALTER TABLE Materias ADD CarreraId INT;
+END
 
 GO
+
 --Creacion de una nueva columna para almacenar el codigo de bloque de la tabla Materias
-ALTER TABLE Materias
-ADD MateriasCodigoBloque VARCHAR(20);
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Materias') AND name = 'MateriasCodigoBloque')
+BEGIN
+    ALTER TABLE Materias ADD MateriasCodigoBloque VARCHAR(20);
+END
 
 GO
 
@@ -50,8 +61,11 @@ INNER JOIN Codigos C ON CA.CarreraId = C.CarreraId;
 GO
 
 --Indice del nuevo campo CarrerasCodigoBloque
-CREATE INDEX I_Carreras_C_CodigoBloque
-ON Carreras(CarrerasCodigoBloque);
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'I_Carreras_C_CodigoBloque' AND object_id = OBJECT_ID('Carreras'))
+BEGIN
+    CREATE INDEX I_Carreras_C_CodigoBloque
+    ON Carreras(CarrerasCodigoBloque);
+END
 
 GO
 
@@ -73,8 +87,11 @@ INNER JOIN Codigos C ON AC.AnioCarreraId = C.AnioCarreraId;
 GO
 
 --Indice para AniosCarrerasCodigoBloque
-CREATE INDEX I_AniosCarreras_AC_CodigoBloque
-ON AniosCarreras(AniosCarrerasCodigoBloque);
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'I_AniosCarreras_AC_CodigoBloque' AND object_id = OBJECT_ID('AniosCarreras'))
+BEGIN
+    CREATE INDEX I_AniosCarreras_AC_CodigoBloque
+    ON AniosCarreras(AniosCarrerasCodigoBloque);
+END
 
 
 GO
@@ -104,9 +121,12 @@ UPDATE Materias SET CarreraId = 3006 WHERE AnioCarreraId IN(4011,4012,4013);
 GO
 
 --Foreign Key para mantener integridad referencial entre Carreras y Materias
-ALTER TABLE Materias
-ADD CONSTRAINT FK_Materias_Carreras
-FOREIGN KEY (CarreraId) REFERENCES Carreras(CarreraId);
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE name = 'FK_Materias_Carreras' AND parent_object_id = OBJECT_ID('Materias'))
+BEGIN
+    ALTER TABLE Materias
+    ADD CONSTRAINT FK_Materias_Carreras
+    FOREIGN KEY (CarreraId) REFERENCES Carreras(CarreraId);
+END
 
 GO
 
@@ -129,8 +149,11 @@ INNER JOIN Codigos C ON M.MateriaId = C.MateriaId;
 GO
 
 --Indice para MateriasCodigoBloque
-CREATE INDEX I_Materias_MateriasCodigo
-ON Materias(MateriasCodigoBloque);
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'I_Materias_MateriasCodigo' AND object_id = OBJECT_ID('Materias'))
+BEGIN
+    CREATE INDEX I_Materias_MateriasCodigo
+    ON Materias(MateriasCodigoBloque);
+END
 
 
 --Modificacion SP para que muestre el codigo de bloque en pantalla

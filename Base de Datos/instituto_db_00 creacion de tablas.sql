@@ -1,5 +1,9 @@
+-- CREATE DATABASE IF NOT EXISTS instituto_db;
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'instituto_db') BEGIN
+	CREATE DATABASE instituto_db;
+END
 
-USE [instituto_db3]
+USE [instituto_db]
 GO
 /****** Object:  UserDefinedFunction [dbo].[funCicloLectivoActivo]    Script Date: 19/6/2026 17:21:14 ******/
 SET ANSI_NULLS ON

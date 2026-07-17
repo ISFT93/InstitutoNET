@@ -1,4 +1,4 @@
-USE INSTITUTO_DB
+USE instituto_db
 GO
 
 -- CREACION DE COLUMNA 'CargaHoraria'
