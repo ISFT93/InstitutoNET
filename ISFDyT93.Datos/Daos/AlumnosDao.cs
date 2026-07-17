@@ -53,7 +53,7 @@ namespace ISFDyT93.Datos.Daos
             string query = $@"INSERT INTO Alumnos ([Apellido], [Nombre], [TipoDocumento],[NumeroDocumento],
                     [EstadoCivil], [Sexo], [FechaNacimiento], [LocalidadNacimiento],[Calle],[Provincia],[Distrito],[Localidad],[CodigoPostal],[Celular],
                     [Email], [FotoUrl], [Activo])  VALUES ('{modelo.Apellido}','{modelo.Nombre}', '{modelo.TipoDocumento}', '{modelo.NumeroDocumento}',
-                    '{modelo.EstadoCivil}', '{modelo.Sexo}', '{modelo.FechaNacimiento}','{modelo.LocalidadNacimiento}','{modelo.Calle}',
+                    '{modelo.EstadoCivil}', '{modelo.Sexo}', '{modelo.FechaNacimiento:yyyy-MM-ddTHH:mm:ss}','{modelo.LocalidadNacimiento}','{modelo.Calle}',
                     '{modelo.Provincia}','{modelo.Distrito}', '{modelo.Localidad}', '{modelo.CodigoPostal}', '{modelo.Celular}',
                     '{modelo.Email}', '{modelo.FotoUrl}', '{activo}')";
 

@@ -17,12 +17,12 @@ namespace ISFDyT93.Entidades.Core.Attributes.Validaciones
 
         public bool InnerValidar(object value, ModeloBase modelo)
         {
-            if (string.IsNullOrEmpty(value.ToString()))
+            var stringValue = value?.ToString();
+
+            if (string.IsNullOrEmpty(stringValue))
             {
                 return true;
             }
-
-            var stringValue = value.ToString();
 
             // 5801-3.279.866/03
             int index = stringValue.IndexOf("-");

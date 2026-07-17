@@ -37,13 +37,15 @@ namespace ISFDyT93.Entidades.Core.Attributes.Validaciones
 
         public bool InnerValidar(object value, ModeloBase modelo)
         {
-            if (string.IsNullOrEmpty(value.ToString()))
+            var stringValue = value?.ToString();
+
+            if (string.IsNullOrEmpty(stringValue))
             {
                 return true;
             }
 
             bool validado = true;
-            foreach (char c in value.ToString())
+            foreach (char c in stringValue)
             {
                 if (!NUMEROS.Contains(c.ToString()))
                 {
@@ -53,7 +55,7 @@ namespace ISFDyT93.Entidades.Core.Attributes.Validaciones
 
             long salida;
 
-            if (!long.TryParse(value.ToString(), out salida))
+            if (!long.TryParse(stringValue, out salida))
             {
                 validado = false;
             }
