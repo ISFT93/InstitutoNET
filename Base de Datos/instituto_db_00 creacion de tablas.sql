@@ -3,6 +3,8 @@ IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'instituto_db') BEGIN
 	CREATE DATABASE instituto_db;
 END
 
+GO
+
 USE [instituto_db]
 GO
 /****** Object:  UserDefinedFunction [dbo].[funCicloLectivoActivo]    Script Date: 19/6/2026 17:21:14 ******/
