@@ -25,6 +25,7 @@ namespace ISFDyT93.Datos.Interfaces
         AlumnosCarrerasModelo TraerAlumnoCarrera(int AlumnoId);
         void EliminarAlumno(int AlumnoId);
         void BajaAlumnoCarrera(int AlumnoId);
+        void EliminarAlumnoCompleto(int AlumnoId);
         int TraerCarreraIdActiva(int AlumnoId);
         int UltimoId();
         DataRow AlumnoExiste(string DNI);

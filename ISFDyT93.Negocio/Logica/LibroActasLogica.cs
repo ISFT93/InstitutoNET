@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Daos;
 
+
 namespace ISFDyT93.Negocio.Logica
 {
     public class LibroActasLogica

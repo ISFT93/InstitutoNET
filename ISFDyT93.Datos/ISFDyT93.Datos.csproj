@@ -55,6 +55,7 @@
     <Compile Include="Daos\CargosDao.cs" />
     <Compile Include="Daos\ControlAsistenciasDao.cs" />
     <Compile Include="Daos\CursadasDao.cs" />
+    <Compile Include="Daos\LibroActasDao.cs" />
     <Compile Include="Daos\MailService.cs" />
     <Compile Include="Daos\MesasFinalesDao.cs" />
     <Compile Include="Daos\ParametrosDao.cs" />

@@ -216,7 +216,7 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(4, 12);
+            this.cmbCarreraId.Location = new System.Drawing.Point(4, 15);
             this.cmbCarreraId.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(351, 27);
