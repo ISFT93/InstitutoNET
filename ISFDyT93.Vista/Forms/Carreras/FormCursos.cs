@@ -134,7 +134,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void tsmAsignarCurso_Click(object sender, EventArgs e)
         {
 
-
+            // Verificar que exista un ciclo lectivo activo
+            if (!this.cicloLectivosLogica.CicloLectivoActivo())
+            {
+                MessageBox.Show(
+                    "Primero debe activar un Ciclo Lectivo antes de asignar un curso.",
+                    "Asignar Curso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
             DialogResult Resultado = MessageBox.Show("¿Desea asignar un nuevo curso?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (Resultado != DialogResult.Yes)
