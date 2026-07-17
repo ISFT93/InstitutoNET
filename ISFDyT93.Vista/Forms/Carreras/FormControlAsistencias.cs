@@ -172,10 +172,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     fila = info.RowIndex;
                     dgvAsistencias.Rows[info.RowIndex].Selected = true;
 
-                    var asistenciaValue = dgvAsistencias.Rows[info.RowIndex].Cells["Asistencia"].Value;
+                    bool esFilaResumen = dgvAsistencias.Columns["__EsResumen__"] != null
+                        && dgvAsistencias.Rows[info.RowIndex].Cells["__EsResumen__"].Value != null
+                        && Convert.ToBoolean(dgvAsistencias.Rows[info.RowIndex].Cells["__EsResumen__"].Value);
+                    bool puedeEditarAsistencia = _enVistaDetalle
+                        && !esFilaResumen
+                        && dgvAsistencias.Columns["Asistencia"] != null
+                        && dgvAsistencias.Columns[info.ColumnIndex].Name == "Asistencia";
+
+                    var asistenciaValue = puedeEditarAsistencia
+                        ? dgvAsistencias.Rows[info.RowIndex].Cells["Asistencia"].Value
+                        : null;
                     bool yaTieneAsistencia = asistenciaValue != null && !string.IsNullOrEmpty(asistenciaValue.ToString());
 
-                    if (dgvAsistencias.Columns[info.ColumnIndex].Name == "Asistencia")
+                    if (puedeEditarAsistencia)
                     {
                         tsmP.Visible = !yaTieneAsistencia;
                         tsmA.Visible = !yaTieneAsistencia;
@@ -246,6 +256,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private bool Validar()
         {
             bool resultado = true;
+
+            if (dgvAsistencias.Columns["Asistencia"] is null) return false;
 
             for (int i = 0; i < dgvAsistencias.Rows.Count; i++)
             {
@@ -800,6 +812,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             if (dgvAsistencias.Columns["CursadaId"] != null)
                 dgvAsistencias.Columns["CursadaId"].Visible = false;
+            if (dgvAsistencias.Columns["CursadaAlumnoCarreraId"] != null)
+                dgvAsistencias.Columns["CursadaAlumnoCarreraId"].Visible = false;
+            if (dgvAsistencias.Columns["Modulos"] != null)
+                dgvAsistencias.Columns["Modulos"].Visible = false;
             if (dgvAsistencias.Columns["__EsResumen__"] != null)
                 dgvAsistencias.Columns["__EsResumen__"].Visible = false;
             if (dgvAsistencias.Columns["Nro"] != null)
