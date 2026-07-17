@@ -133,13 +133,18 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             int countOk = 0;
             for (int i = 0; i <= dgvInscripcionAlumnos.Rows.Count - 1; i++)
             {
-                if (dgvInscripcionAlumnos.Rows[i].Cells["Estado"].Value != null || dgvInscripcionAlumnos.Rows[i].Cells["Cursada"].Value != null)
+                var cursadaAlumnoCarreraId = dgvInscripcionAlumnos.Rows[i].Cells["CursadaAlumnoCarreraId"].Value;
+                var cursada = dgvInscripcionAlumnos.Rows[i].Cells["Cursada"].Value;
+                var estado = dgvInscripcionAlumnos.Rows[i].Cells["Estado"].Value;
+
+                if (cursadaAlumnoCarreraId != null && cursadaAlumnoCarreraId != DBNull.Value &&
+                    ((cursada != null && cursada != DBNull.Value) || (estado != null && estado != DBNull.Value)))
                 {
                     var Modelo = new InscripcionMateriasModelo
                     {
-                        cursadaAlumnoId = Convert.ToInt32(dgvInscripcionAlumnos.Rows[i].Cells["CursadaAlumnoCarreraId"].Value),
-                        cursada = dgvInscripcionAlumnos.Rows[i].Cells["Cursada"].Value.ToString(),
-                        estado = dgvInscripcionAlumnos.Rows[i].Cells["Estado"].Value.ToString()
+                        cursadaAlumnoId = Convert.ToInt32(cursadaAlumnoCarreraId),
+                        cursada = cursada == null || cursada == DBNull.Value ? string.Empty : cursada.ToString(),
+                        estado = estado == null || estado == DBNull.Value ? string.Empty : estado.ToString()
                     };
 
                     count++;

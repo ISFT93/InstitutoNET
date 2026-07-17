@@ -17,8 +17,32 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerMateriasVigentes(int alumnoId, string anio)
         {
             string filtroAnio = "";
-            if (anio != "") filtroAnio = $"AND Anio= '{anio}'";
-            string query = $@" SELECT AnioLectivo AS [Ciclo Lectivo], Materia, Anio AS Año, Carrera, MateriaId, CursoId, Estado, AlumnoCarreraId FROM MateriasCarrerasVigentes WHERE (AlumnoId = {alumnoId} OR AlumnoId IS NULL) {filtroAnio} AND CarreraId IN ( SELECT CarreraId FROM AlumnosCarreras WHERE AlumnoId = {alumnoId} )";
+            if (anio != "") filtroAnio = $"AND CAST(AN.AnioCarrera AS varchar(10)) + CU.NombreCurso = '{anio}'";
+            string query = $@"
+                SELECT
+                    CL.AnioLectivo AS [Ciclo Lectivo],
+                    M.Nombre AS Materia,
+                    CAST(AN.AnioCarrera AS varchar(10)) + CU.NombreCurso AS Año,
+                    CA.DescripcionCorta AS Carrera,
+                    M.MateriaId,
+                    CU.CursoId,
+                    CAC.Estado,
+                    CAC.Cursada,
+                    CAC.CursadaAlumnoCarreraId,
+                    AC.AlumnoCarreraId
+                FROM Cursadas C
+                INNER JOIN CicloLectivo CL ON CL.AnioLectivo = C.AnioLectivo
+                INNER JOIN CursoMaterias CM ON CM.CursoMateriaId = C.CursoMateriaId
+                INNER JOIN Cursos CU ON CU.CursoId = CM.CursoId
+                INNER JOIN AniosCarreras AN ON AN.AnioCarreraId = CU.AnioCarreraId
+                INNER JOIN Carreras CA ON CA.CarreraId = AN.CarreraId
+                INNER JOIN Materias M ON M.MateriaId = CM.MateriaId
+                INNER JOIN AlumnosCarreras AC ON AC.CarreraId = CA.CarreraId AND AC.AlumnoId = {alumnoId}
+                LEFT JOIN CursadaAlumnoCarreras CAC ON CAC.CursadaId = C.CursadaId AND CAC.AlumnoCarreraId = AC.AlumnoCarreraId
+                WHERE M.Activo = 'True'
+                    AND CA.CarreraEstadoId = 1
+                    AND CL.Activo = 'True'
+                    {filtroAnio}";
 
             return this.Conexion.ObtenerRegistros(query);
         }
