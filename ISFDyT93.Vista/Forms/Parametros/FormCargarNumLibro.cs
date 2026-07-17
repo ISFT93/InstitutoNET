@@ -168,6 +168,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             if (libro == tomaPosicion)
             {
                 cbxCarrera.Enabled = false;
+                cbxCarrera.DataSource = null;
                 txtFolioMax.Enabled = true;
                 dtpFechaAlta.Enabled = true;
             }
