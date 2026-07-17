@@ -1,4 +1,18 @@
 
+DECLARE @SumaEstadoId INT;
+
+IF NOT EXISTS (SELECT * FROM Estados WHERE Descripcion = 'Activo') BEGIN
+SELECT @SumaEstadoId = ISNULL(MAX(EstadoID), 0) + 1 FROM Estados;
+INSERT INTO Estados (EstadoId, Descripcion) VALUES (@SumaEstadoId, 'Activo') END
+
+IF NOT EXISTS (SELECT * FROM Estados WHERE Descripcion = 'Inactivo') BEGIN
+SELECT @SumaEstadoId = ISNULL(MAX(EstadoID), 0) + 1 FROM Estados;
+INSERT INTO Estados (EstadoId, Descripcion) VALUES (@SumaEstadoId, 'Inactivo') END
+
+IF NOT EXISTS (SELECT * FROM Estados WHERE Descripcion = 'Borrador') BEGIN
+SELECT @SumaEstadoId = ISNULL(MAX(EstadoID), 0) + 1 FROM Estados;
+INSERT INTO Estados (EstadoId, Descripcion) VALUES (@SumaEstadoId, 'Borrador') END
+
 IF NOT EXISTS (
     SELECT 1
     FROM INFORMATION_SCHEMA.COLUMNS
