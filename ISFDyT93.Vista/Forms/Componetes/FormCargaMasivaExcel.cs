@@ -532,11 +532,16 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
         private void CompletarLocalidades(AlumnosModelo modelo)
         {
+            if ((!dtExcel.Columns.Contains(nameof(AlumnosModelo.LocalidadNacimiento))
+                || string.IsNullOrWhiteSpace(modelo.LocalidadNacimiento)
+                || modelo.LocalidadNacimiento.Length > 15)
+                && !string.IsNullOrWhiteSpace(modelo.Localidad))
+            {
+                modelo.LocalidadNacimiento = modelo.Localidad;
+            }
+
             if (string.IsNullOrWhiteSpace(modelo.Localidad) && !string.IsNullOrWhiteSpace(modelo.LocalidadNacimiento))
                 modelo.Localidad = modelo.LocalidadNacimiento;
-
-            if (string.IsNullOrWhiteSpace(modelo.LocalidadNacimiento) && !string.IsNullOrWhiteSpace(modelo.Localidad))
-                modelo.LocalidadNacimiento = modelo.Localidad;
         }
 
         private string NormalizarSoloNumeros(string valor)
