@@ -556,6 +556,9 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
             if (string.IsNullOrWhiteSpace(modelo.MayorTitulo))
                 modelo.MayorTitulo = "Ninguno";
+
+            if (string.IsNullOrWhiteSpace(modelo.Orientacion))
+                modelo.Orientacion = "No especificado";
         }
 
         private bool TryConvertirValor(string valor, Type tipo, out object valorConvertido)
