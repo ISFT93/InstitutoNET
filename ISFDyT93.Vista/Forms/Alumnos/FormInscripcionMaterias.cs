@@ -68,6 +68,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             if (dgvInscripcionAlumnos.Columns.Contains("CursoId"))
                 dgvInscripcionAlumnos.Columns["CursoId"].Visible = false;
+            if (dgvInscripcionAlumnos.Columns.Contains("CursadaId"))
+                dgvInscripcionAlumnos.Columns["CursadaId"].Visible = false;
             if (dgvInscripcionAlumnos.Columns.Contains("MateriaId"))
                 dgvInscripcionAlumnos.Columns["MateriaId"].Visible = false;
             if (dgvInscripcionAlumnos.Columns.Contains("Año"))
@@ -89,7 +91,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
             foreach (DataGridViewRow row in dgvInscripcionAlumnos.Rows)
             {
-                if (ltsMateriaIdCursoId.IndexOf(row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()) != -1)
+                var cursadaAlumnoCarreraId = row.Cells["CursadaAlumnoCarreraId"].Value;
+                if ((cursadaAlumnoCarreraId != null && cursadaAlumnoCarreraId != DBNull.Value) ||
+                    ltsMateriaIdCursoId.IndexOf(row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()) != -1)
                 {
                     row.Cells["Asignar"].Value = "Asignado";
                     row.Cells["Asignar"].Style.ForeColor = Color.Green;
@@ -136,6 +140,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 var cursadaAlumnoCarreraId = dgvInscripcionAlumnos.Rows[i].Cells["CursadaAlumnoCarreraId"].Value;
                 var cursada = dgvInscripcionAlumnos.Rows[i].Cells["Cursada"].Value;
                 var estado = dgvInscripcionAlumnos.Rows[i].Cells["Estado"].Value;
+                var asignar = dgvInscripcionAlumnos.Rows[i].Cells["Asignar"].Value;
 
                 if (cursadaAlumnoCarreraId != null && cursadaAlumnoCarreraId != DBNull.Value &&
                     ((cursada != null && cursada != DBNull.Value) || (estado != null && estado != DBNull.Value)))
@@ -149,6 +154,20 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     count++;
                     int result = InscripcionAlumnoLogica.actualizarEstadoCursada(Modelo);
+                    if (result == 1)
+                        countOk++;
+                }
+                else if ((cursadaAlumnoCarreraId == null || cursadaAlumnoCarreraId == DBNull.Value) && Convert.ToString(asignar) == "Asignado")
+                {
+                    var Modelo = new InscripcionMateriasModelo
+                    {
+                        alumnoCarreraId = Convert.ToInt32(dgvInscripcionAlumnos.Rows[i].Cells["AlumnoCarreraId"].Value),
+                        cursadaId = Convert.ToInt32(dgvInscripcionAlumnos.Rows[i].Cells["CursadaId"].Value),
+                        anioLectivo = Convert.ToInt32(dgvInscripcionAlumnos.Rows[i].Cells["Ciclo Lectivo"].Value)
+                    };
+
+                    count++;
+                    int result = InscripcionAlumnoLogica.AsignarMateria(Modelo);
                     if (result == 1)
                         countOk++;
                 }

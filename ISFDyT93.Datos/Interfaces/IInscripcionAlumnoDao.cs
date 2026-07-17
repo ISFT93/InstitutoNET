@@ -14,5 +14,6 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable ObtenerAniosVigentes(int alumnoId);
         DataRow obtenerFechaIncripcion();
         int actualizarEstadoCursada(InscripcionMateriasModelo Modelo);
+        int AsignarMateria(InscripcionMateriasModelo Modelo);
     }
 }

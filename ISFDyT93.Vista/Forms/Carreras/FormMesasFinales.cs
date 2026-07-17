@@ -4,6 +4,7 @@ using ISFDyT93.Negocio.Interfaces;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista;
 using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
 using ISFDyT93.Vista.Forms.Common;
 using System;
 using System.Data;
@@ -122,12 +123,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
                 carreraSeleccionada = cid;
 
+            if (carreraSeleccionada <= 0)
+            {
+                Notificar(TipoNotificacion.Warning, "Debe seleccionar una carrera para agregar una mesa especial");
+                return;
+            }
+
+            if (cmbAnioLectivo.SelectedValue == null || !int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int anioLectivoSeleccionado))
+            {
+                Notificar(TipoNotificacion.Warning, "Debe seleccionar un ciclo lectivo válido para agregar una mesa especial");
+                return;
+            }
+
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {
                 form.Accion = TipoAccion.Agregar;
                 form.CarreraId = carreraSeleccionada;
                 form.NombreCarrera = this.NombreCarrera;
-                form.AnioLectivoId = Convert.ToInt32(cmbAnioLectivo.SelectedValue);
+                form.AnioLectivoId = anioLectivoSeleccionado;
             });
         }
 
@@ -140,9 +153,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbTurno.DisplayMember = "Descripcion";
             cmbTurno.ValueMember = "TurnoId";
             if (TurnoId != 0)
+            {
                 cmbTurno.SelectedValue = this.TurnoId;
-            if (cmbTurno.SelectedValue != null && int.TryParse(cmbTurno.SelectedValue.ToString(), out int tid))
-                turnoId = tid;
+                if (cmbTurno.SelectedValue != null && int.TryParse(cmbTurno.SelectedValue.ToString(), out int tid))
+                    turnoId = tid;
+            }
+            else
+            {
+                cmbTurno.SelectedIndex = -1;
+                turnoId = 0;
+            }
             }
         }
 
@@ -165,14 +185,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (LlamadoId != 0)
             {
                 cmbLlamados.SelectedValue = this.LlamadoId;
-                cmbLlamados.Text = "Text";
                 this.LlamadoId = 0;
-            }
-
-            if (cmbLlamados.Items.Count > 0)
-            {
                 if (cmbLlamados.SelectedValue != null && int.TryParse(cmbLlamados.SelectedValue.ToString(), out int lid))
                     llamadoId = lid;
+            }
+            else
+            {
+                cmbLlamados.SelectedIndex = -1;
+                llamadoId = 0;
             }
         }
 
@@ -209,18 +229,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnReporteMesas_Click(object sender, EventArgs e)
         {
-            int carreraSeleccionada = this.CarreraId;
-            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
-                carreraSeleccionada = cid;
+            if (dgvMesasFinales.CurrentRow == null)
+            {
+                Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa para imprimir");
+                return;
+            }
 
-            var data = this.mesasFinalesLogica.ObtenerMesasReporte(carreraSeleccionada, anioLectivoId, turnoId, llamadoId);
+            int mesaFinalId = Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["MesaFinalId"].Value);
+            var data = this.mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
+            string carreraReporte = data.Rows.Count > 0 ? Convert.ToString(data.Rows[0]["Carrera"]) : string.Empty;
 
             this.Contenedor.SetTitulo("Imprimir Fechas Finales").AbrirFormulario<FormReporte>(form => {
                 form.SetReporte("ISFDyT93.Vista.Reports.MesasFinales.rdlc")
                 .AddDataSource(data, "DSMesasFinales")
-                .AddParameter("Carrera", this.NombreCarrera)
-                .AddParameter("Turno", cmbTurno.Text)
-                .AddParameter("Llamado", cmbLlamados.Text)
+                .AddParameter("Carrera", carreraReporte)
+                .AddParameter("Turno", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Turno"].Value))
+                .AddParameter("Llamado", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Llamado"].Value))
                 .AddParameter("AnioLectivo", cmbAnioLectivo.Text);
             });
         }
@@ -285,9 +309,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (cmbTurno.SelectedValue == null || !int.TryParse(cmbTurno.SelectedValue.ToString(), out int turnoSeleccionado))
             {
-                cmbLlamados.DataSource = null;
-                cmbLlamados.Items.Clear();
-                cmbLlamados.Enabled = false;
+                CargarLlamados(true);
+                cmbLlamados.SelectedIndex = -1;
+                cmbLlamados.Enabled = true;
                 llamadoId = 0;
                 return;
             }
@@ -510,8 +534,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             var dv = dt.DefaultView;
             dv.RowFilter = "CursoMateriaId IS NOT NULL";
 
-            cmbMateria.DataSource = dv.ToTable();
-            cmbMateria.ValueMember = "CursoMateriaId";
+            cmbMateria.DataSource = dv.ToTable(true, "MateriaId", "Servicio");
+            cmbMateria.ValueMember = "MateriaId";
             cmbMateria.DisplayMember = "Servicio";
             cmbMateria.SelectedIndex = -1;
             cmbMateria.Enabled = true;

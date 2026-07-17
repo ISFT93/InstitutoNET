@@ -82,6 +82,11 @@ namespace ISFDyT93.Negocio.Logica
             return this.mesasFinalesDao.ObtenerMesasReporte(carreraId, anioLectivoId, turnoId, llamadoId);
         }
 
+        public DataTable ObtenerMesaReporte(int mesaFinalId)
+        {
+            return this.mesasFinalesDao.ObtenerMesaReporte(mesaFinalId);
+        }
+
         public int CargarMesasFinales(int cicloLectivoId, int turnoId)
         {
             return this.mesasFinalesDao.CargarMesasFinales(cicloLectivoId, turnoId);

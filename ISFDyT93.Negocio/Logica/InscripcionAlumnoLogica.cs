@@ -33,5 +33,10 @@ namespace ISFDyT93.Negocio.Logica
             return inscripcionAlumnoDao.actualizarEstadoCursada(Modelo);
         }
 
+        public int AsignarMateria(InscripcionMateriasModelo Modelo)
+        {
+            return inscripcionAlumnoDao.AsignarMateria(Modelo);
+        }
+
     }
 }

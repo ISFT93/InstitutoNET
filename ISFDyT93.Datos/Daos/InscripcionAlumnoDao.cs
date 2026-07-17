@@ -26,6 +26,7 @@ namespace ISFDyT93.Datos.Daos
                     CA.DescripcionCorta AS Carrera,
                     M.MateriaId,
                     CU.CursoId,
+                    C.CursadaId,
                     CAC.Estado,
                     CAC.Cursada,
                     CAC.CursadaAlumnoCarreraId,
@@ -68,6 +69,17 @@ namespace ISFDyT93.Datos.Daos
         public int actualizarEstadoCursada(InscripcionMateriasModelo Modelo)
         {
             string query = "UPDATE CursadaAlumnoCarreras SET Estado = '" + Modelo.estado + "', Cursada = '" + Modelo.cursada + "' WHERE CursadaAlumnoCarreraId =" + Modelo.cursadaAlumnoId;
+            return Conexion.EjecutarAccion(query);
+        }
+
+        public int AsignarMateria(InscripcionMateriasModelo Modelo)
+        {
+            string query = $@"
+                INSERT INTO CursadaAlumnoCarreras
+                    (AlumnoCarreraId, CursadaId, AnioCicloLectivo, Estado, HorasCursadas, UltimoPresentismo, PorcentajeAsistencia, Cursada, Activo)
+                VALUES
+                    ({Modelo.alumnoCarreraId}, {Modelo.cursadaId}, {Modelo.anioLectivo}, 'CU', 0, NULL, 0, NULL, 1)";
+
             return Conexion.EjecutarAccion(query);
         }
     }
