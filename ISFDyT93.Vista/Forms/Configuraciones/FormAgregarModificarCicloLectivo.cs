@@ -119,7 +119,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     btnFechaCierreCicloLectivo.Visible = false;
                     btnGeneraCicloLectivo.Enabled = false;
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
-                    txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
+                    txtAnioLectivo.Text = ciclo == 1 ? DateTime.Now.Year.ToString() : ciclo.ToString();
                     DateTimePickerEnBlanco();
 
 
@@ -422,7 +422,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                         txtCantidadSemana.Text = "";
                         DateTimePickerEnBlanco();
                         ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
-                        txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
+                        txtAnioLectivo.Text = ciclo == 1 ? DateTime.Now.Year.ToString() : ciclo.ToString();
 
                     }
                 }
@@ -665,7 +665,7 @@ namespace ISFDyT93.Vista.Forms.Configuraciones
                     txtCantidadSemana.Text = "";
                     DateTimePickerEnBlanco();
                     ciclo = cicloLectivosLogica.ObtenerMaximoAnioCicloLectivo() + 1;
-                    txtAnioLectivo.Text = ciclo == 1 ? (DateTime.Now.Year + 1).ToString() : ciclo.ToString();
+                    txtAnioLectivo.Text = ciclo == 1 ? DateTime.Now.Year.ToString() : ciclo.ToString();
 
                     //}
                 }

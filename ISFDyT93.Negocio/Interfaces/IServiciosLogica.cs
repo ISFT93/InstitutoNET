@@ -16,6 +16,7 @@ namespace ISFDyT93.Negocio.Interfaces
         DataTable ObtenerSituacionRevista();
         DataTable ObtenerCargosAsignados(int CargoId, int personalId);
         DataTable ObtenerMateriasLibres(int tipoAsignacionId, int CursoId, int situacionRevistaId);
+        DataTable ObtenerCursoMaterias(int cursoId, int anioCarreraId);
         bool AgregarServicio(ServiciosModelo servicio, PersonalModelo personal, LibroActasModelo libroActa);
         void DesactivarServicio(int servicioId, int cantidadServicios);
         DataTable ObtenerCarreras(int tipoAsignacionId, int situacionRevistaId);

@@ -16,6 +16,7 @@ namespace ISFDyT93.Datos.Interfaces
         ServiciosModelo ObtenerServicio(int servicioId);
         DataTable ObtenerCargosAsignados(int cargoId, int personalId);
         DataTable ObtenerMateriasLibres(int tipoAsignacionId, int cursoId, int situacionRevistaId);
+        DataTable ObtenerCursoMaterias(int cursoId, int anioCarreraId);
         void ActualizarPersonalEstado(int personalEstadoId, int personalId);
         int AgregarServicio(ServiciosModelo modelo);
         int ActualizarServicio(ServiciosModelo modelo);

@@ -1,3 +1,4 @@
+USE instituto_db;
 
 DECLARE @SumaEstadoId INT;
 

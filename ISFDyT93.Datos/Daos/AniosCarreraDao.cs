@@ -14,6 +14,7 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "SELECT AniosCarrerasCodigoBloque AS [Código], " +
                 "AnioCarreraId, " +
+                "AnioCarrera AS [Año], " +
                 "CantidadMaterias AS [Cantidad de Materias]," +
                 "CargaHorariaCompleta AS [Carga Horaria Completa] " +
                 "FROM AniosCarreras WHERE CarreraId = " + carreraId;

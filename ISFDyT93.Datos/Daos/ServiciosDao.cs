@@ -84,6 +84,18 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.EjecutarStore("SP_CursoMateriasLibres", parametros);
         }
 
+        public DataTable ObtenerCursoMaterias(int cursoId, int anioCarreraId)
+        {
+            string query = "SELECT cm.CursoMateriaId, ma.Nombre " +
+                "FROM CursoMaterias cm " +
+                "INNER JOIN Materias ma ON ma.MateriaId = cm.MateriaId " +
+                $"WHERE cm.CursoId = {cursoId} AND ma.AnioCarreraId = {anioCarreraId} " +
+                "AND cm.Activo = 1 AND ma.Activo = 1 " +
+                "ORDER BY ma.Nombre";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
         public void ActualizarPersonalEstado(int personalEstadoId, int personalId)
         {
             string query = "UPDATE Personal SET PersonalEstadoId = " + personalEstadoId + " WHERE PersonalId = " + personalId;
