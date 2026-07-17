@@ -128,7 +128,14 @@ namespace ISFDyT93.Datos.Daos
             string query = "UPDATE AlumnosCarreras SET Activo = " + 0 + " WHERE AlumnoId = " + AlumnoId + "";
             this.Conexion.EjecutarAccion(query);
         }
+        public void EliminarAlumnoCompleto(int alumnoId)
+        {
+            string query1 = "DELETE FROM AlumnosCarreras WHERE AlumnoId = " + alumnoId;
+            this.Conexion.EjecutarAccion(query1);
 
+            string query2 = "DELETE FROM Alumnos WHERE AlumnoId = " + alumnoId;
+            this.Conexion.EjecutarAccion(query2);
+        }
         public int TraerCarreraIdActiva(int AlumnoId)
         {
             string query = "SELECT A.CarreraId FROM AlumnosCarreras as A INNER JOIN Carreras as C on A.CarreraId = C.CarreraId WHERE C.Activo = 1 and A.AlumnoId= " + AlumnoId + "";
