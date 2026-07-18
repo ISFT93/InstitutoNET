@@ -107,7 +107,10 @@ namespace ISFDyT93.Negocio.Logica
         {
             this.alumnosDao.BajaAlumnoCarrera(AlumnoId);
         }
-
+        public void EliminarAlumnoCompleto(int AlumnoId)
+        {
+            this.alumnosDao.EliminarAlumnoCompleto(AlumnoId);
+        }
         public bool AlumnoExiste(string DNI)
         {
             var resultado = this.alumnosDao.AlumnoExiste(DNI);

@@ -400,9 +400,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 if (fila["Inicializado"] != DBNull.Value && Convert.ToInt32(fila["Inicializado"]) != 2)
                 {
                     int id = Convert.ToInt32(fila["AlumnoId"]);
-                    AlumnosLogica.ActualizarEstadoInicializado(id, 0);
-                    AlumnosLogica.EliminarAlumno(id);
-                    AlumnosLogica.BajaAlumnoCarrera(id);
+                    AlumnosLogica.EliminarAlumnoCompleto(id);
                 }
             }
 
