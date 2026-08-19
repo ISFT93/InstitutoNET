@@ -18,10 +18,6 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerLibros()
         {
-            /* string query = "SELECT la.TipoLibroId, la.CarreraID, tl.Descripcion, la.LibroNumero, c.DescripcionCorta," +
-                            " la.FolioNumero, la.FolioMaximo, la.FechaAlta, la.FechaBaja, la.Activo FROM TipoLibros tl " +
-                            "LEFT JOIN LibroActas la ON tl.TipoLibroId = la.TipoLibroId " +
-                            "LEFT JOIN Carreras c ON c.CarreraId = la.CarreraID ORDER BY Activo DESC, LibroNumero DESC"; */
             string query = "SELECT la.TipoLibroId, la.CarreraID, tl.Descripcion, la.LibroNumero, c.DescripcionCorta, " +
                        "la.FolioNumero, la.FolioMaximo, la.FechaAlta, la.FechaBaja, la.Activo " +
                        "FROM TipoLibros tl " +
@@ -37,7 +33,10 @@ namespace ISFDyT93.Datos.Daos
         public bool RelacionNuevaPosible()
         {
             string query = "SELECT t.TipoLibroID FROM TipoLibros t WHERE t.Descripcion <> 'Libro de Toma de Posición' AND EXISTS " +
-                "(SELECT 1 FROM Carreras c WHERE NOT EXISTS (SELECT 1 FROM LibroActas l WHERE l.TipoLibroID = t.TipoLibroID AND l.CarreraID = c.CarreraID))";
+                "(SELECT 1 FROM Carreras c WHERE NOT EXISTS (SELECT 1 FROM LibroActas l WHERE l.TipoLibroID = t.TipoLibroID AND l.CarreraID = c.CarreraID)) " +
+                "UNION " +
+                "SELECT t.TipoLibroID FROM TipoLibros t WHERE t.Descripcion = 'Libro de Toma de Posición' AND NOT EXISTS " +
+                "(SELECT 1 FROM LibroActas l WHERE l.TipoLibroID = t.TipoLibroID)";
 
             Conexion conexion = new Conexion();
             DataTable registros = conexion.ObtenerRegistros(query);
