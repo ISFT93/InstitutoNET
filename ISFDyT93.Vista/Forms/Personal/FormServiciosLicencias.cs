@@ -122,7 +122,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
             cmbLicencias.ValueMember = "TipoLicenciaId";
             cmbLicencias.DisplayMember = "Descripcion";
-            cmbLicencias.DataSource = this.LicenciaLogica.ObtenerLicenciasTipo();
+            cmbLicencias.DataSource = this.LicenciaLogica.ObtenerLicenciasTipoActivas();
         }
         private void CargarGrilla()
         {
