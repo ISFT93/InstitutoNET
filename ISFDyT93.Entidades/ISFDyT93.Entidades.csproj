@@ -88,6 +88,7 @@
     <Compile Include="Modelos\PersonalModelo.cs" />
     <Compile Include="Modelos\ProfesoresModelo.cs" />
     <Compile Include="Modelos\ServiciosModelo.cs" />
+    <Compile Include="Modelos\TipoLicenciaModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

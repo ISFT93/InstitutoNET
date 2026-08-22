@@ -83,13 +83,16 @@ namespace ISFDyT93.Vista
         {
             if(chkTabla.Checked)
             {
-                foreach(var control in flpContenedor.Controls)
+                foreach (var control in flpContenedor.Controls)
                 {
                     //codigo antiguo:
                     //if (control.GetType() == typeof(uscCargos))
                     //((uscCargos)control).Guardar();
                     if (control.GetType() == typeof(uscMostrarCargos))
                         ((uscMostrarCargos)control).GuardarCargos();
+
+                    if (control.GetType() == typeof(uscLicenciasDisponibles))
+                        ((uscLicenciasDisponibles)control).GuardarLicencias();
                 }
             }
             else if (LtsParametros.Count > 0)
@@ -130,6 +133,8 @@ namespace ISFDyT93.Vista
                  flpContenedor.Controls.Add(mostrar);
                  uscLibroActas libro = new uscLibroActas();
                  flpContenedor.Controls.Add(libro);
+                uscLicenciasDisponibles licencia = new uscLicenciasDisponibles();
+                 flpContenedor.Controls.Add(licencia);
             }
             else
             {
@@ -144,13 +149,7 @@ namespace ISFDyT93.Vista
 
                 }
             }
-        }
 
-        
-
-        private void flpContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }      
     }
 }

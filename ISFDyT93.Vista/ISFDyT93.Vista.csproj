@@ -104,6 +104,12 @@
     <Compile Include="Forms\Parametros\FormAgregarCargos.Designer.cs">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormCagarLicencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormCagarLicencias.Designer.cs">
+      <DependentUpon>FormCagarLicencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormCargosEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="Forms\Configuraciones\FormInscripcionCicloLectivo.Designer.cs">
       <DependentUpon>FormInscripcionCicloLectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormLicenciaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormLicenciaEstado.Designer.cs">
+      <DependentUpon>FormLicenciaEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Personal\FormAgregarDocumentacion.cs">
       <SubType>Form</SubType>
@@ -397,11 +409,26 @@
     <Compile Include="UserControls\uscPersonalGrid.Designer.cs">
       <DependentUpon>uscPersonalGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscLicenciasDisponibles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscLicenciasDisponibles.Designer.cs">
+      <DependentUpon>uscLicenciasDisponibles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscTipoLicencia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscTipoLicencia.Designer.cs">
+      <DependentUpon>uscTipoLicencia.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Core\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormCagarLicencias.resx">
+      <DependentUpon>FormCagarLicencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormCargosEstado.resx">
       <DependentUpon>FormCargosEstado.cs</DependentUpon>
@@ -447,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuraciones\FormParametros.resx">
       <DependentUpon>FormParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormLicenciaEstado.resx">
+      <DependentUpon>FormLicenciaEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personal\FormAgregarDocumentacion.resx">
       <DependentUpon>FormAgregarDocumentacion.cs</DependentUpon>
@@ -564,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscPersonalGrid.resx">
       <DependentUpon>uscPersonalGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscLicenciasDisponibles.resx">
+      <DependentUpon>uscLicenciasDisponibles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
