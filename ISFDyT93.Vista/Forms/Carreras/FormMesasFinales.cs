@@ -10,6 +10,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace ISFDyT93.Vista.Forms.Carreras
@@ -67,6 +68,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 });
             }
 
+
+
             // Inicializar combos de filtros en vacío
             cmbCarrera.DataSource = null;
             cmbCarrera.Items.Clear();
@@ -98,7 +101,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbMateria.Enabled = false;
 
             // Si viene con CarreraId preseleccionado, cargarlo
-            if (this.CarreraId > 0)
+            if (this.CarreraId == 0)
             {
                 CargarCarreras();
                 cmbCarrera.SelectedValue = this.CarreraId;
@@ -115,8 +118,23 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // Grilla vacía al inicio
             dgvMesasFinales.DataSource = null;
             dgvMesasFinales.Rows.Clear();
+
+            cmbCarrera.SelectedValue = 1;
         }
 
+        LibroActasLogica libroActasLogica = new LibroActasLogica();
+        public int obtenerFolio(int idcarrera)
+        {
+            foreach (DataRow row in libroActasLogica.ObtenerLibros().Rows)
+            {
+                if (row["CarreraID"] != DBNull.Value &&
+                    Convert.ToInt32(row["CarreraID"]) == idcarrera)
+                {
+                    return Convert.ToInt32(row["FolioNumero"]);
+                }
+            }
+            return 0;
+        }
         private void btnAgregarMesa_Click(object sender, EventArgs e)
         {
             int carreraSeleccionada = this.CarreraId;
@@ -255,6 +273,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
                 carreraSeleccionada = cid;
 
+            
+            if (cmbTurno.SelectedValue == null)
+            {
+                this.Notificar(TipoNotificacion.Error, "debe de seleccionar un turno para poder agregar una nuevo mesa final");
+                return;
+            }
+            if ((int)cmbTurno.SelectedValue == 3)
+            {
+                if (cmbLlamados.SelectedValue == null)
+                {
+                    this.Notificar(TipoNotificacion.Error, "debe de seleccionar un llamado para poder agregar una nuevo mesa final");
+                    return;
+                }
+            }
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {
                 form.Accion = TipoAccion.Modificar;
@@ -264,7 +296,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 form.Fecha = DateTime.Now;
                 form.AnioLectivoId = (int)cmbAnioLectivo.SelectedValue;
                 form.TurnoId = (int)cmbTurno.SelectedValue;
-                form.LlamadoId = (int)cmbLlamados.SelectedValue;
+                if (cmbLlamados.SelectedValue != null)
+                    {
+                form.LlamadoId = (int)cmbLlamados.SelectedValue; }
             });
         }
 
@@ -560,7 +594,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+
+            int id = Convert.ToInt32(cmbCarrera.SelectedValue);
+            if(obtenerFolio(id) >= 170)
+            {
+            this.Contenedor.AbrirUserControlEmergente<FolioExamenControl>(control =>
+            {
+                control.CargarDatos(id);
+            }); 
+            }
+
             DGVRefresh();
+
         }
 
         private void btnLimpiarFiltros_Click(object sender, EventArgs e)

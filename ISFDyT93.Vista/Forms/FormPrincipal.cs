@@ -58,7 +58,38 @@ namespace ISFDyT93.Vista.Forms
             pnlDerecho.Tag = form;
             form.Show();
         }
+        public void AbrirUserControlEmergente<T>(Action<T> func = null)
+            where T : UserControl, new()
+        {
+            var control = new T();
 
+            var propiedadContenedor = typeof(T)
+                .GetProperty("Contenedor");
+
+            if (propiedadContenedor != null)
+            {
+                propiedadContenedor.SetValue(control, this);
+            }
+
+            func?.Invoke(control);
+
+            control.Dock = DockStyle.None;
+            control.Location = Point.Empty;
+
+            using (Form ventana = new Form())
+            {
+                ventana.FormBorderStyle = FormBorderStyle.None;
+                ventana.StartPosition = FormStartPosition.CenterParent;
+                ventana.ShowInTaskbar = false;
+
+                ventana.Controls.Add(control);
+
+                // Exactamente el tamaño diseñado
+                ventana.ClientSize = control.Size;
+
+                ventana.ShowDialog(this);
+            }
+        }
         public FormPrincipal SetTitulo(string Titulo)
         {
             this.lblTitulo.Text = Titulo;

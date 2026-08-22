@@ -98,6 +98,12 @@
     <Compile Include="Core\ReportTable.cs" />
     <Compile Include="Core\SeleccionRB.cs" />
     <Compile Include="Core\ThemeColor.cs" />
+    <Compile Include="Forms\Carreras\FolioExamenControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Carreras\FolioExamenControl.Designer.cs">
+      <DependentUpon>FolioExamenControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarCargos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,12 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucsLibroLicencia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucsLibroLicencia.Designer.cs">
+      <DependentUpon>ucsLibroLicencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -372,6 +384,12 @@
     </Compile>
     <Compile Include="UserControls\uscLibros.Designer.cs">
       <DependentUpon>uscLibros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscLicencia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscLicencia.Designer.cs">
+      <DependentUpon>uscLicencia.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscMostrarCargos.cs">
       <SubType>UserControl</SubType>
@@ -399,6 +417,9 @@
     </Compile>
     <EmbeddedResource Include="Core\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Carreras\FolioExamenControl.resx">
+      <DependentUpon>FolioExamenControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
@@ -546,6 +567,9 @@
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucsLibroLicencia.resx">
+      <DependentUpon>ucsLibroLicencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>

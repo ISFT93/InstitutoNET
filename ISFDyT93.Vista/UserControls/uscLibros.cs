@@ -43,10 +43,62 @@ namespace ISFDyT93.Vista.UserControls
             DataTable dt = libroActasLogica.ObtenerLibros();
 
             dgv.DataSource = dt;
+
             dgv.Columns["TipoLibroId"].Visible = false;
             dgv.Columns["CarreraID"].Visible = false;
-        }
 
+            // Evita registrar el evento varias veces
+            dgv.CellPainting -= Dgv_CellPainting;
+            dgv.CellPainting += Dgv_CellPainting;
+        }
+        private void Dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+
+            // Evitar encabezados
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            // Solo columna FolioNumero
+            if (dgv.Columns[e.ColumnIndex].Name == "FolioNumero")
+            {
+                object valor = dgv.Rows[e.RowIndex]
+                                  .Cells["FolioNumero"]
+                                  .Value;
+
+                if (valor != null &&
+                    valor != DBNull.Value &&
+                    int.TryParse(valor.ToString(), out int folio))
+                {
+                    if (folio > 170)
+                    {
+                        // Primero dibuja normalmente la celda
+                        e.Paint(
+                            e.CellBounds,
+                            DataGridViewPaintParts.All
+                        );
+
+                        // Borde rojo
+                        using (Pen lapiz = new Pen(Color.Red, 2))
+                        {
+                            Rectangle rectangulo = new Rectangle(
+                                e.CellBounds.X + 1,
+                                e.CellBounds.Y + 1,
+                                e.CellBounds.Width - 3,
+                                e.CellBounds.Height - 3
+                            );
+
+                            e.Graphics.DrawRectangle(
+                                lapiz,
+                                rectangulo
+                            );
+                        }
+
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
         private void AbrirNuevoLibro(bool nuevaRelacion)
         {
             using (FormCargarNumLibro frm = new FormCargarNumLibro(nuevaRelacion))
