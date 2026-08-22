@@ -19,8 +19,8 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable ObtenerLicenciasTipoActivas();
         int DeshabilitarTipoLicencia(string tipoLicenciaId);
         int HabilitarTipoLicencia(string tipoLicenciaId);
-        int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria);
-        int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria);
+        int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria);
+        int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria);
         int BajaLicencia(LicenciaServicioModelo modelo);
         int AltaLicencia(LicenciaServicioModelo modelo);
     }

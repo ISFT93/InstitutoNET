@@ -17,13 +17,13 @@ namespace ISFDyT93.Vista.Forms.Parametros
             InitializeComponent();
         }
 
-        public void CargarDatos(string codigo, string descripcion, int dias, bool fechaFinObligatoria)
+        public void CargarDatos(string codigo, string descripcion, int? dias, bool fechaFinObligatoria)
         {
             modificar = true;
             txtCodigo.Text = codigo;
             txtCodigo.ReadOnly = true;
             txtDescripcion.Text = descripcion;
-            txtDias.Text = dias.ToString();
+            txtDias.Text = dias.HasValue ? dias.Value.ToString() : string.Empty;
             chkFechaFinObligatoria.Checked = fechaFinObligatoria;
             lblTitulo.Text = "Modificar tipo de licencia";
         }
@@ -33,22 +33,34 @@ namespace ISFDyT93.Vista.Forms.Parametros
             string codigo = txtCodigo.Text.Trim();
             string descripcion = txtDescripcion.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(descripcion) || string.IsNullOrWhiteSpace(txtDias.Text))
+            if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(descripcion))
             {
                 MessageBox.Show("Complete todos los campos.");
                 return;
             }
 
-            int dias;
-            if (!int.TryParse(txtDias.Text, out dias) || dias < 0)
+            int diasIngresados;
+            int? dias = null;
+            if (!string.IsNullOrWhiteSpace(txtDias.Text))
             {
-                MessageBox.Show("La cantidad de días debe ser un número válido.");
+                if (!int.TryParse(txtDias.Text, out diasIngresados) || diasIngresados < 0)
+                {
+                    MessageBox.Show("La cantidad de días debe ser un número válido.");
+                    return;
+                }
+
+                dias = diasIngresados;
+            }
+
+            if (chkFechaFinObligatoria.Checked && !dias.HasValue)
+            {
+                MessageBox.Show("Debe ingresar la cantidad de días si la fecha fin es obligatoria.");
                 return;
             }
 
             string accion = modificar ? "modificar" : "guardar";
             DialogResult confirmacion = MessageBox.Show(
-                $"¿Está seguro de que desea {accion} los siguientes datos?\nCódigo: {codigo}\nDescripción: {descripcion}\nDías: {dias}\nFecha fin obligatoria: {(chkFechaFinObligatoria.Checked ? "Sí" : "No")}",
+                $"¿Está seguro de que desea {accion} los siguientes datos?\nCódigo: {codigo}\nDescripción: {descripcion}\nDías: {(dias.HasValue ? dias.Value.ToString() : "Sin definir")}\nFecha fin obligatoria: {(chkFechaFinObligatoria.Checked ? "Sí" : "No")}",
                 "Confirmación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);

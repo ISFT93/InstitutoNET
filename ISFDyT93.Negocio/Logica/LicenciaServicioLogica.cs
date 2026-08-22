@@ -78,12 +78,12 @@ namespace ISFDyT93.Negocio.Logica
             return this.LicenciaDao.HabilitarTipoLicencia(tipoLicenciaId);
         }
 
-        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria)
+        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
         {
             return this.LicenciaDao.AgregarTipoLicencia(tipoLicenciaId, descripcion, dias, fechaFinObligatoria);
         }
 
-        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria)
+        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
         {
             return this.LicenciaDao.ModificarTipoLicencia(tipoLicenciaId, descripcion, dias, fechaFinObligatoria);
         }

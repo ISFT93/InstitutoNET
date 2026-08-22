@@ -153,7 +153,7 @@ namespace ISFDyT93.Vista.UserControls
             string descripcion = dgvLicencias.CurrentRow.Cells["Descripcion"].Value.ToString();
             object diasValor = dgvLicencias.CurrentRow.Cells["Dias"].Value;
             object fechaFinValor = dgvLicencias.CurrentRow.Cells["FechaFinObligatoria"].Value;
-            int dias = diasValor == null || diasValor == System.DBNull.Value ? 0 : System.Convert.ToInt32(diasValor);
+            int? dias = diasValor == null || diasValor == System.DBNull.Value ? (int?)null : System.Convert.ToInt32(diasValor);
             bool fechaFinObligatoria = fechaFinValor != null && fechaFinValor != System.DBNull.Value && System.Convert.ToBoolean(fechaFinValor);
 
             using (FormAgregarTipoLicencia frmAgregarTipoLicencia = new FormAgregarTipoLicencia())

@@ -85,7 +85,7 @@ namespace ISFDyT93.Datos.Daos
             }
         }
 
-        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria)
+        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
         {
             string query = "INSERT INTO TipoLicencias (TipoLicenciaId, Descripcion, Dias, FechaFinObligatoria, Activo) VALUES (@TipoLicenciaId, @Descripcion, @Dias, @FechaFinObligatoria, 1)";
 
@@ -93,7 +93,7 @@ namespace ISFDyT93.Datos.Daos
             {
                 comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
                 comando.Parameters.AddWithValue("@Descripcion", descripcion);
-                comando.Parameters.AddWithValue("@Dias", dias);
+                comando.Parameters.AddWithValue("@Dias", dias.HasValue ? (object)dias.Value : DBNull.Value);
                 comando.Parameters.AddWithValue("@FechaFinObligatoria", fechaFinObligatoria);
 
                 try
@@ -108,7 +108,7 @@ namespace ISFDyT93.Datos.Daos
             }
         }
 
-        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria)
+        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
         {
             string query = "UPDATE TipoLicencias SET Descripcion = @Descripcion, Dias = @Dias, FechaFinObligatoria = @FechaFinObligatoria WHERE TipoLicenciaId = @TipoLicenciaId";
 
@@ -116,7 +116,7 @@ namespace ISFDyT93.Datos.Daos
             {
                 comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
                 comando.Parameters.AddWithValue("@Descripcion", descripcion);
-                comando.Parameters.AddWithValue("@Dias", dias);
+                comando.Parameters.AddWithValue("@Dias", dias.HasValue ? (object)dias.Value : DBNull.Value);
                 comando.Parameters.AddWithValue("@FechaFinObligatoria", fechaFinObligatoria);
 
                 try

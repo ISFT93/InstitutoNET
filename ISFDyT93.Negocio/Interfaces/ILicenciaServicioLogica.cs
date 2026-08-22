@@ -30,9 +30,9 @@ namespace ISFDyT93.Negocio.Interfaces
 
         int HabilitarTipoLicencia(string tipoLicenciaId);
 
-        int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria);
+        int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria);
 
-        int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int dias, bool fechaFinObligatoria);
+        int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria);
 
         int AltaLicencia(LicenciaServicioModelo modelo);
 
