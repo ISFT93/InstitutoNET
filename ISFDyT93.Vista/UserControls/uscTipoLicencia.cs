@@ -202,5 +202,10 @@ namespace ISFDyT93.Vista.UserControls
         private void tableLayoutPanel1_MouseDown(object sender, MouseEventArgs e) { }
         private void lblTitulo_MouseDown(object sender, MouseEventArgs e) { }
         private void pnlContenedor_MouseDown(object sender, MouseEventArgs e) { }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

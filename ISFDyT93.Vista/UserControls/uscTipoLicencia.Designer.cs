@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscTipoLicencia));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.picMover = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.picAgregar = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.agregarTipoLicencia = new System.Windows.Forms.ToolStripMenuItem();
             this.habilitarTipoLicencia = new System.Windows.Forms.ToolStripMenuItem();
             this.deshabilitarTipoLicencia = new System.Windows.Forms.ToolStripMenuItem();
+            this.picMover = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).BeginInit();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,7 +54,7 @@
             this.tableLayoutPanel1.Controls.Add(this.picMover, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTitulo, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlContenedor, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.picAgregar, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -64,18 +65,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // picMover
-            // 
-            this.picMover.Cursor = System.Windows.Forms.Cursors.Help;
-            this.picMover.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMover.Location = new System.Drawing.Point(3, 3);
-            this.picMover.Name = "picMover";
-            this.picMover.Size = new System.Drawing.Size(16, 24);
-            this.picMover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMover.TabIndex = 5;
-            this.picMover.TabStop = false;
-            this.picMover.Click += new System.EventHandler(this.picMover_Click);
             // 
             // lblTitulo
             // 
@@ -101,19 +90,6 @@
             this.pnlContenedor.TabIndex = 7;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
-            // picAgregar
-            // 
-            this.picAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAgregar.Location = new System.Drawing.Point(237, 0);
-            this.picAgregar.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.picAgregar.Name = "picAgregar";
-            this.picAgregar.Size = new System.Drawing.Size(19, 30);
-            this.picAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAgregar.TabIndex = 8;
-            this.picAgregar.TabStop = false;
-            this.picAgregar.Visible = false;
-            this.picAgregar.Click += new System.EventHandler(this.picAgregar_Click);
-            // 
             // menu
             // 
             this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -122,7 +98,7 @@
             this.habilitarTipoLicencia,
             this.deshabilitarTipoLicencia});
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(215, 94);
+            this.menu.Size = new System.Drawing.Size(194, 76);
             // 
             // agregarTipoLicencia
             // 
@@ -130,7 +106,7 @@
             this.agregarTipoLicencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agregarTipoLicencia.ForeColor = System.Drawing.Color.White;
             this.agregarTipoLicencia.Name = "agregarTipoLicencia";
-            this.agregarTipoLicencia.Size = new System.Drawing.Size(214, 30);
+            this.agregarTipoLicencia.Size = new System.Drawing.Size(193, 24);
             this.agregarTipoLicencia.Text = "Agregar Licencia";
             // 
             // habilitarTipoLicencia
@@ -139,7 +115,7 @@
             this.habilitarTipoLicencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.habilitarTipoLicencia.ForeColor = System.Drawing.Color.White;
             this.habilitarTipoLicencia.Name = "habilitarTipoLicencia";
-            this.habilitarTipoLicencia.Size = new System.Drawing.Size(214, 30);
+            this.habilitarTipoLicencia.Size = new System.Drawing.Size(193, 24);
             this.habilitarTipoLicencia.Text = "Habilitar";
             this.habilitarTipoLicencia.Visible = false;
             // 
@@ -149,9 +125,35 @@
             this.deshabilitarTipoLicencia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deshabilitarTipoLicencia.ForeColor = System.Drawing.Color.White;
             this.deshabilitarTipoLicencia.Name = "deshabilitarTipoLicencia";
-            this.deshabilitarTipoLicencia.Size = new System.Drawing.Size(214, 30);
+            this.deshabilitarTipoLicencia.Size = new System.Drawing.Size(193, 24);
             this.deshabilitarTipoLicencia.Text = "Deshabilitar";
             this.deshabilitarTipoLicencia.Visible = false;
+            // 
+            // picMover
+            // 
+            this.picMover.Cursor = System.Windows.Forms.Cursors.Help;
+            this.picMover.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picMover.Image = ((System.Drawing.Image)(resources.GetObject("picMover.Image")));
+            this.picMover.Location = new System.Drawing.Point(3, 3);
+            this.picMover.Name = "picMover";
+            this.picMover.Size = new System.Drawing.Size(16, 24);
+            this.picMover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMover.TabIndex = 5;
+            this.picMover.TabStop = false;
+            this.picMover.Click += new System.EventHandler(this.picMover_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(237, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(19, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // uscTipoLicencia
             // 
@@ -163,9 +165,9 @@
             this.Size = new System.Drawing.Size(259, 100);
             this.Load += new System.EventHandler(this.uscTipoLicencia_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).EndInit();
             this.menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,10 +178,10 @@
         private System.Windows.Forms.PictureBox picMover;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlContenedor;
-        private System.Windows.Forms.PictureBox picAgregar;
         private System.Windows.Forms.ContextMenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem agregarTipoLicencia;
         private System.Windows.Forms.ToolStripMenuItem habilitarTipoLicencia;
         private System.Windows.Forms.ToolStripMenuItem deshabilitarTipoLicencia;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

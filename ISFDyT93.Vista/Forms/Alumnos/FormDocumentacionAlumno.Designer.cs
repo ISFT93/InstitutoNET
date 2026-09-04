@@ -49,7 +49,6 @@
             this.btnCerra = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
-            this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -216,7 +215,7 @@
             "Carrera",
             "Año",
             "Curso"});
-            this.cmbCarreraId.Location = new System.Drawing.Point(4, 12);
+            this.cmbCarreraId.Location = new System.Drawing.Point(4, 15);
             this.cmbCarreraId.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCarreraId.Name = "cmbCarreraId";
             this.cmbCarreraId.Size = new System.Drawing.Size(351, 27);
@@ -265,9 +264,9 @@
             this.btnCerra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.tableLayoutPanel1.SetColumnSpan(this.btnCerra, 2);
             this.btnCerra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerra.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnCerra.ForeColor = System.Drawing.Color.White;
             this.btnCerra.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCerra.IconColor = System.Drawing.Color.DarkRed;
+            this.btnCerra.IconColor = System.Drawing.Color.White;
             this.btnCerra.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerra.IconSize = 32;
             this.btnCerra.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -275,7 +274,7 @@
             this.btnCerra.Name = "btnCerra";
             this.btnCerra.Size = new System.Drawing.Size(358, 45);
             this.btnCerra.TabIndex = 180;
-            this.btnCerra.Text = "CIERRE DE PREINSCRIPSION";
+            this.btnCerra.Text = "CIERRE DE PREINSCRIPCION";
             this.btnCerra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCerra.UseVisualStyleBackColor = false;
             this.btnCerra.Click += new System.EventHandler(this.btnCerra_Click);
@@ -353,20 +352,6 @@
             this.dgvAlumnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnos_CellContentClick);
             this.dgvAlumnos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnos_CellDoubleClick);
             this.dgvAlumnos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlumnos_CellFormatting);
-            // 
-            // uscPaginacion1
-            // 
-            this.uscPaginacion1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.uscPaginacion1.BackColor = System.Drawing.Color.Transparent;
-            this.uscPaginacion1.dataGridView = null;
-            this.uscPaginacion1.EntradaDatos = null;
-            this.uscPaginacion1.Location = new System.Drawing.Point(247, 4);
-            this.uscPaginacion1.Margin = new System.Windows.Forms.Padding(4);
-            this.uscPaginacion1.Name = "uscPaginacion1";
-            this.uscPaginacion1.Recargar = null;
-            this.uscPaginacion1.SalidaDatos = null;
-            this.uscPaginacion1.Size = new System.Drawing.Size(237, 62);
-            this.uscPaginacion1.TabIndex = 56;
             // 
             // FormDocumentacionAlumno
             // 

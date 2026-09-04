@@ -46,6 +46,7 @@
             this.lblLicencias.Size = new System.Drawing.Size(160, 20);
             this.lblLicencias.TabIndex = 0;
             this.lblLicencias.Text = "Inhabilitar Licencia";
+            this.lblLicencias.Click += new System.EventHandler(this.lblLicencias_Click);
             // 
             // cbxLicencias
             // 

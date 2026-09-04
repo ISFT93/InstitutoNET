@@ -94,10 +94,15 @@ namespace ISFDyT93.Vista.Forms.Parametros
                 cbxLicencias.DataSource = habilitadas;
             }
 
-            cbxLicencias.DisplayMember = "TipoLicenciaId";
+            cbxLicencias.DisplayMember = "Descripcion";
             cbxLicencias.ValueMember = "TipoLicenciaId";
         }
 
         private void panelTitulo_Paint(object sender, PaintEventArgs e) { }
+
+        private void lblLicencias_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

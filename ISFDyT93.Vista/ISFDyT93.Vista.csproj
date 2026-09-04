@@ -598,6 +598,9 @@
     <EmbeddedResource Include="UserControls\uscLicenciasDisponibles.resx">
       <DependentUpon>uscLicenciasDisponibles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscTipoLicencia.resx">
+      <DependentUpon>uscTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
