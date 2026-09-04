@@ -39,7 +39,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbCicloLectivo = new System.Windows.Forms.ComboBox();
             this.dgvCursoMaterias = new System.Windows.Forms.DataGridView();
-            this.Acciones = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.cmsCursoMaterias.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -53,7 +52,7 @@
             this.tsmVerAlumnos,
             this.tsmControlarAsistencia});
             this.cmsCursoMaterias.Name = "cmsAniosCarreras";
-            this.cmsCursoMaterias.Size = new System.Drawing.Size(203, 64);
+            this.cmsCursoMaterias.Size = new System.Drawing.Size(237, 64);
             // 
             // tsmVerAlumnos
             // 
@@ -62,7 +61,7 @@
             this.tsmVerAlumnos.ForeColor = System.Drawing.Color.White;
             this.tsmVerAlumnos.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerAlumnos.Name = "tsmVerAlumnos";
-            this.tsmVerAlumnos.Size = new System.Drawing.Size(202, 30);
+            this.tsmVerAlumnos.Size = new System.Drawing.Size(236, 30);
             this.tsmVerAlumnos.Text = "Ver Alumnos";
             this.tsmVerAlumnos.Click += new System.EventHandler(this.tsmVerAlumnos_Click);
             // 
@@ -73,7 +72,7 @@
             this.tsmControlarAsistencia.ForeColor = System.Drawing.Color.White;
             this.tsmControlarAsistencia.Image = global::ISFDyT93.Vista.Properties.Resources.list_alt_solid;
             this.tsmControlarAsistencia.Name = "tsmControlarAsistencia";
-            this.tsmControlarAsistencia.Size = new System.Drawing.Size(202, 30);
+            this.tsmControlarAsistencia.Size = new System.Drawing.Size(236, 30);
             this.tsmControlarAsistencia.Text = "Controlar Asistencia";
             this.tsmControlarAsistencia.Click += new System.EventHandler(this.tsmControlarAsistencia_Click);
             // 
@@ -99,11 +98,12 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(3, 33);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(3, 32);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
-            this.cmbCicloLectivo.Size = new System.Drawing.Size(754, 27);
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(754, 32);
             this.cmbCicloLectivo.Sorted = true;
             this.cmbCicloLectivo.TabIndex = 0;
+            this.cmbCicloLectivo.Visible = false;
             this.cmbCicloLectivo.SelectedIndexChanged += new System.EventHandler(this.cmbCicloLectivo_SelectedIndexChanged);
             // 
             // dgvCursoMaterias
@@ -125,8 +125,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCursoMaterias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCursoMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCursoMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Acciones});
             this.dgvCursoMaterias.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -167,26 +165,19 @@
             this.dgvCursoMaterias.TabIndex = 6;
             this.dgvCursoMaterias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCursoMaterias_CellContentClick);
             // 
-            // Acciones
-            // 
-            this.Acciones.FillWeight = 50F;
-            this.Acciones.HeaderText = "Acciones";
-            this.Acciones.MinimumWidth = 6;
-            this.Acciones.Name = "Acciones";
-            this.Acciones.ReadOnly = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 19);
+            this.label1.Size = new System.Drawing.Size(121, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Ciclo Lectivo";
+            this.label1.Visible = false;
             // 
             // FormCursoMaterias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -211,6 +202,5 @@
         private System.Windows.Forms.ComboBox cmbCicloLectivo;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView dgvCursoMaterias;
-        private System.Windows.Forms.DataGridViewButtonColumn Acciones;
     }
 }

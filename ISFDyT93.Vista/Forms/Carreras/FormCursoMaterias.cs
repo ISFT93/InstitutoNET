@@ -48,12 +48,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (cmbCicloLectivo.Items.Count > 0)
             {
-                dgvCursoMaterias.DataSource = materiasLogica.ObtenerMateriasByCursoAndAnioLectivo(Convert.ToInt32(this.cmbCicloLectivo.Text), CursoId);
+                dgvCursoMaterias.DataSource = materiasLogica.ObtenerMateriasByCursoAndAnioLectivo(Convert.ToInt32(2026), CursoId);
 
-                if (dgvCursoMaterias.Rows.Count > 0)
-                {
-                    dgvCursoMaterias.Columns["CursadaId"].Visible = false;
-                }
             }
         }
 
