@@ -367,12 +367,6 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucsLibroLicencia.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ucsLibroLicencia.Designer.cs">
-      <DependentUpon>ucsLibroLicencia.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -384,12 +378,6 @@
     </Compile>
     <Compile Include="UserControls\uscLibros.Designer.cs">
       <DependentUpon>uscLibros.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\uscLicencia.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\uscLicencia.Designer.cs">
-      <DependentUpon>uscLicencia.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscMostrarCargos.cs">
       <SubType>UserControl</SubType>
@@ -567,9 +555,6 @@
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucsLibroLicencia.resx">
-      <DependentUpon>ucsLibroLicencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>
