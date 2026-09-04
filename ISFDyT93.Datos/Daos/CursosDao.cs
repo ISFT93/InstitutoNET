@@ -22,7 +22,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ConsultarCursosCodigoBloque(int AnioCarreraId, int carreraid, int estado)
         {
-            string query = "select Cursos.CursoId,AniosCarreras.AniosCarrerasCodigoBloque + Cursos.NombreCurso as 'NombreCurso', cursos.AnioCarreraId, Cursos.Activo, Cursos.AdmiteCurso from Cursos inner join AniosCarreras on Cursos.AnioCarreraId = AniosCarreras.AnioCarreraId where Cursos.AnioCarreraId = " + AnioCarreraId + " and AniosCarreras.CarreraId = " + carreraid + " and Cursos.Activo = " + estado + " order by Cursos.CursoId asc";
+            string query = "select Cursos.CursoId,AniosCarreras.AniosCarrerasCodigoBloque + Cursos.NombreCurso as 'NombreCurso', cursos.AnioCarreraId, Cursos.Activo from Cursos inner join AniosCarreras on Cursos.AnioCarreraId = AniosCarreras.AnioCarreraId where Cursos.AnioCarreraId = " + AnioCarreraId + " and AniosCarreras.CarreraId = " + carreraid + " and Cursos.Activo = " + estado + " order by Cursos.CursoId asc";
 
             return this.Conexion.ObtenerRegistros(query);
         }
@@ -39,7 +39,7 @@ namespace ISFDyT93.Datos.Daos
         /*
         public int AgregarCurso(int AnioCarreraId,int CicloLectivo, string NombreCurso)
         {
-            string query = "INSERT INTO Cursos(AnioCarreraId,CicloLectivoId,NombreCurso,Activo, AdmiteCurso) VALUES(" + AnioCarreraId +","+CicloLectivo+",'"+ NombreCurso + "',"+ 1 +","+1+")";
+            string query = "INSERT INTO Cursos(AnioCarreraId,CicloLectivoId,NombreCurso,Activo) VALUES(" + AnioCarreraId +","+CicloLectivo+",'"+ NombreCurso + "',"+ 1 +")";
 
             return this.Conexion.EjecutarAccion(query);
         }*/
