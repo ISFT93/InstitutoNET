@@ -595,6 +595,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
 
+            DGVRefresh();
             int id = Convert.ToInt32(cmbCarrera.SelectedValue);
             if(obtenerFolio(id) >= 170)
             {
@@ -604,7 +605,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }); 
             }
 
-            DGVRefresh();
 
         }
 

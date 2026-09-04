@@ -62,23 +62,32 @@ namespace ISFDyT93.Vista.UserControls
             // Solo columna FolioNumero
             if (dgv.Columns[e.ColumnIndex].Name == "FolioNumero")
             {
-                object valor = dgv.Rows[e.RowIndex]
-                                  .Cells["FolioNumero"]
-                                  .Value;
+                object valorFolio = dgv.Rows[e.RowIndex]
+                                       .Cells["FolioNumero"]
+                                       .Value;
 
-                if (valor != null &&
-                    valor != DBNull.Value &&
-                    int.TryParse(valor.ToString(), out int folio))
+                object valorTipoLibro = dgv.Rows[e.RowIndex]
+                                           .Cells["TipoLibroId"]
+                                           .Value;
+
+                if (valorFolio != null &&
+                    valorFolio != DBNull.Value &&
+                    valorTipoLibro != null &&
+                    valorTipoLibro != DBNull.Value &&
+                    int.TryParse(valorFolio.ToString(), out int folio) &&
+                    int.TryParse(valorTipoLibro.ToString(), out int tipoLibroId))
                 {
-                    if (folio > 170)
+                    // Solamente Libro de Actas (TipoLibroId = 2)
+                    // y folio mayor a 170
+                    if (tipoLibroId == 2 && folio > 170)
                     {
-                        // Primero dibuja normalmente la celda
+                        // Dibujar normalmente la celda
                         e.Paint(
                             e.CellBounds,
                             DataGridViewPaintParts.All
                         );
 
-                        // Borde rojo
+                        // Dibujar borde rojo
                         using (Pen lapiz = new Pen(Color.Red, 2))
                         {
                             Rectangle rectangulo = new Rectangle(
