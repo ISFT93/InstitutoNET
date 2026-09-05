@@ -92,6 +92,7 @@
     <Compile Include="Logica\MesasFinalesLogica.cs" />
     <Compile Include="Logica\ParametrosLogica.cs" />
     <Compile Include="Logica\PersonalLogica.cs" />
+    <Compile Include="Logica\TipoLicenciaLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logica\ServiciosLogica.cs" />
     <Compile Include="Validaciones.cs" />

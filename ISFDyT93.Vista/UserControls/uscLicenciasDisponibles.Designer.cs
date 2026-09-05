@@ -1,6 +1,6 @@
 ﻿namespace ISFDyT93.Vista.UserControls
 {
-    partial class uscMostrarCargos
+    partial class uscLicenciasDisponibles
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelCabecera = new System.Windows.Forms.Panel();
-            this.chkCargos = new System.Windows.Forms.CheckBox();
+            this.chkLicencias = new System.Windows.Forms.CheckBox();
             this.flpContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCabecera.SuspendLayout();
             this.SuspendLayout();
@@ -37,7 +37,7 @@
             // panelCabecera
             // 
             this.panelCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelCabecera.Controls.Add(this.chkCargos);
+            this.panelCabecera.Controls.Add(this.chkLicencias);
             this.panelCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecera.Location = new System.Drawing.Point(0, 0);
             this.panelCabecera.Name = "panelCabecera";
@@ -45,18 +45,18 @@
             this.panelCabecera.TabIndex = 0;
             this.panelCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCabecera_Paint);
             // 
-            // chkCargos
+            // chkLicencias
             // 
-            this.chkCargos.AutoSize = true;
-            this.chkCargos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCargos.ForeColor = System.Drawing.Color.White;
-            this.chkCargos.Location = new System.Drawing.Point(13, 13);
-            this.chkCargos.Name = "chkCargos";
-            this.chkCargos.Size = new System.Drawing.Size(183, 24);
-            this.chkCargos.TabIndex = 0;
-            this.chkCargos.Text = "Cargos Disponibles";
-            this.chkCargos.UseVisualStyleBackColor = true;
-            this.chkCargos.CheckedChanged += new System.EventHandler(this.chkCargos_CheckedChanged);
+            this.chkLicencias.AutoSize = true;
+            this.chkLicencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLicencias.ForeColor = System.Drawing.Color.White;
+            this.chkLicencias.Location = new System.Drawing.Point(13, 13);
+            this.chkLicencias.Name = "chkLicencias";
+            this.chkLicencias.Size = new System.Drawing.Size(201, 24);
+            this.chkLicencias.TabIndex = 0;
+            this.chkLicencias.Text = "Licencias Disponibles";
+            this.chkLicencias.UseVisualStyleBackColor = true;
+            this.chkLicencias.CheckedChanged += new System.EventHandler(this.chkLicencias_CheckedChanged);
             // 
             // flpContenedor
             // 
@@ -69,7 +69,7 @@
             this.flpContenedor.TabIndex = 1;
             this.flpContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContenedor_Paint);
             // 
-            // uscMostrarCargos
+            // uscLicenciasDisponibles
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.WhiteSpace;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -77,7 +77,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.Controls.Add(this.flpContenedor);
             this.Controls.Add(this.panelCabecera);
-            this.Name = "uscMostrarCargos";
+            this.Name = "uscLicenciasDisponibles";
             this.Size = new System.Drawing.Size(1283, 616);
             this.Load += new System.EventHandler(this.uscMostrarTabla_Load);
             this.panelCabecera.ResumeLayout(false);
@@ -89,7 +89,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelCabecera;
-        private System.Windows.Forms.CheckBox chkCargos;
+        private System.Windows.Forms.CheckBox chkLicencias;
         private System.Windows.Forms.FlowLayoutPanel flpContenedor;
     }
 }
