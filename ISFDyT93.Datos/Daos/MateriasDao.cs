@@ -177,10 +177,10 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMateriasByCursoAndAnioLectivo(int AnioLectivo, int CursoId)
         {
-            string query = "SELECT concat( m.MateriasCodigoBloque,cr.NombreCurso) as 'Codigo Bloque', m.Nombre as 'Materia' , c.CantidadAlumnos as 'Cantidad de alumnos', c.CursadaId  " +
+            string query = "SELECT cm.codigobloque as 'Codigo Bloque', m.Nombre as 'Materia'" +
                 "FROM (Materias m INNER JOIN CursoMaterias cm ON m.MateriaId = cm.MateriaId)" +
-                "INNER JOIN Cursadas c ON cm.CursoMateriaId = c.CursoMateriaId inner join Cursos cr on cr.CursoId = cm.CursoId " +
-                $"WHERE c.AnioLectivo = {AnioLectivo} and cm.CursoId = {CursoId}";
+                "inner join Cursos cr on cr.CursoId = cm.CursoId " +
+                $"WHERE  cm.CursoId = {CursoId}";
 
             return this.Conexion.ObtenerRegistros(query);
         }
