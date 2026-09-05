@@ -63,6 +63,31 @@ namespace ISFDyT93.Negocio.Logica
             return this.LicenciaDao.ObtenerLicenciasTipo();
         }
 
+        public DataTable ObtenerLicenciasTipoActivas()
+        {
+            return this.LicenciaDao.ObtenerLicenciasTipoActivas();
+        }
+
+        public int DeshabilitarTipoLicencia(string tipoLicenciaId)
+        {
+            return this.LicenciaDao.DeshabilitarTipoLicencia(tipoLicenciaId);
+        }
+
+        public int HabilitarTipoLicencia(string tipoLicenciaId)
+        {
+            return this.LicenciaDao.HabilitarTipoLicencia(tipoLicenciaId);
+        }
+
+        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
+        {
+            return this.LicenciaDao.AgregarTipoLicencia(tipoLicenciaId, descripcion, dias, fechaFinObligatoria);
+        }
+
+        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
+        {
+            return this.LicenciaDao.ModificarTipoLicencia(tipoLicenciaId, descripcion, dias, fechaFinObligatoria);
+        }
+
         public int AltaLicencia(Entidades.Modelos.LicenciaServicioModelo modelo)
         {
             string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;

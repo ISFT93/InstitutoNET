@@ -43,6 +43,94 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
+        public DataTable ObtenerLicenciasTipoActivas()
+        {
+            string query = "SELECT * FROM TipoLicencias WHERE Activo = 1";
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
+        public int DeshabilitarTipoLicencia(string tipoLicenciaId)
+        {
+            using (var comando = new SqlCommand("UPDATE TipoLicencias SET Activo = 0 WHERE TipoLicenciaId = @TipoLicenciaId", this.Conexion.Conector))
+            {
+                comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
+
+                try
+                {
+                    this.Conexion.Conector.Open();
+                    return comando.ExecuteNonQuery();
+                }
+                finally
+                {
+                    this.Conexion.Conector.Close();
+                }
+            }
+        }
+
+        public int HabilitarTipoLicencia(string tipoLicenciaId)
+        {
+            using (var comando = new SqlCommand("UPDATE TipoLicencias SET Activo = 1 WHERE TipoLicenciaId = @TipoLicenciaId", this.Conexion.Conector))
+            {
+                comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
+
+                try
+                {
+                    this.Conexion.Conector.Open();
+                    return comando.ExecuteNonQuery();
+                }
+                finally
+                {
+                    this.Conexion.Conector.Close();
+                }
+            }
+        }
+
+        public int AgregarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
+        {
+            string query = "INSERT INTO TipoLicencias (TipoLicenciaId, Descripcion, Dias, FechaFinObligatoria, Activo) VALUES (@TipoLicenciaId, @Descripcion, @Dias, @FechaFinObligatoria, 1)";
+
+            using (var comando = new SqlCommand(query, this.Conexion.Conector))
+            {
+                comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
+                comando.Parameters.AddWithValue("@Descripcion", descripcion);
+                comando.Parameters.AddWithValue("@Dias", dias.HasValue ? (object)dias.Value : DBNull.Value);
+                comando.Parameters.AddWithValue("@FechaFinObligatoria", fechaFinObligatoria);
+
+                try
+                {
+                    this.Conexion.Conector.Open();
+                    return comando.ExecuteNonQuery();
+                }
+                finally
+                {
+                    this.Conexion.Conector.Close();
+                }
+            }
+        }
+
+        public int ModificarTipoLicencia(string tipoLicenciaId, string descripcion, int? dias, bool fechaFinObligatoria)
+        {
+            string query = "UPDATE TipoLicencias SET Descripcion = @Descripcion, Dias = @Dias, FechaFinObligatoria = @FechaFinObligatoria WHERE TipoLicenciaId = @TipoLicenciaId";
+
+            using (var comando = new SqlCommand(query, this.Conexion.Conector))
+            {
+                comando.Parameters.AddWithValue("@TipoLicenciaId", tipoLicenciaId);
+                comando.Parameters.AddWithValue("@Descripcion", descripcion);
+                comando.Parameters.AddWithValue("@Dias", dias.HasValue ? (object)dias.Value : DBNull.Value);
+                comando.Parameters.AddWithValue("@FechaFinObligatoria", fechaFinObligatoria);
+
+                try
+                {
+                    this.Conexion.Conector.Open();
+                    return comando.ExecuteNonQuery();
+                }
+                finally
+                {
+                    this.Conexion.Conector.Close();
+                }
+            }
+        }
+
         public int BajaLicencia(LicenciaServicioModelo modelo)
         {
             string query = "UPDATE Licencias SET FechaBaja = '" + modelo.fechaBajaSTR + "' WHERE LicenciaId = " + modelo.licenciaId;

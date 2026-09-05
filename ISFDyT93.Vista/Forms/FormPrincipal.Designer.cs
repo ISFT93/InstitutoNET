@@ -263,7 +263,7 @@
             this.tsmCiclosLectivos,
             this.Parametros});
             this.cmsOpciones.Name = "cmsOpciones";
-            this.cmsOpciones.Size = new System.Drawing.Size(160, 64);
+            this.cmsOpciones.Size = new System.Drawing.Size(189, 86);
             // 
             // tsmCiclosLectivos
             // 
@@ -275,7 +275,7 @@
             this.tsmCiclosLectivos.ForeColor = System.Drawing.Color.White;
             this.tsmCiclosLectivos.Image = global::ISFDyT93.Vista.Properties.Resources.calendar_alt_solid;
             this.tsmCiclosLectivos.Name = "tsmCiclosLectivos";
-            this.tsmCiclosLectivos.Size = new System.Drawing.Size(159, 30);
+            this.tsmCiclosLectivos.Size = new System.Drawing.Size(188, 30);
             this.tsmCiclosLectivos.Text = "Ciclo Lectivo";
             // 
             // tsmVerCiclos
@@ -305,7 +305,7 @@
             this.Parametros.ForeColor = System.Drawing.Color.White;
             this.Parametros.Image = ((System.Drawing.Image)(resources.GetObject("Parametros.Image")));
             this.Parametros.Name = "Parametros";
-            this.Parametros.Size = new System.Drawing.Size(159, 30);
+            this.Parametros.Size = new System.Drawing.Size(188, 30);
             this.Parametros.Text = "Parametros";
             this.Parametros.Click += new System.EventHandler(this.Parametros_Click);
             // 

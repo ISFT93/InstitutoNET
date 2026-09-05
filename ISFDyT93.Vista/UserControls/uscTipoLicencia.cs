@@ -39,7 +39,7 @@ namespace ISFDyT93.Vista.UserControls
         {
             agregarTipoLicencia.Click += (s, e) =>
             {
-                using (FormAgregarTipoLicencia frmAgregar = new FormAgregarTipoLicencia(true))
+                using (FormAgregarTipoLicencia frmAgregar = new FormAgregarTipoLicencia())
                 {
                     frmAgregar.StartPosition = FormStartPosition.CenterParent;
                     if (frmAgregar.ShowDialog() == DialogResult.OK)
