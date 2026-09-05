@@ -99,5 +99,10 @@ namespace ISFDyT93.Vista.Forms.Parametros
                 cbxCargos.ValueMember = "CargoId";
             }
         }
+
+        private void panelTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

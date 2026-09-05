@@ -70,6 +70,7 @@
     <Compile Include="Daos\CarrerasDao.cs" />
     <Compile Include="Daos\MateriasDao.cs" />
     <Compile Include="Daos\PersonalDao.cs" />
+    <Compile Include="Daos\TipoLicenciaDao.cs" />
     <Compile Include="Interfaces\IAlumnosDao.cs" />
     <Compile Include="Interfaces\IAniosCarreraDao.cs" />
     <Compile Include="Interfaces\ICargosDao.cs" />

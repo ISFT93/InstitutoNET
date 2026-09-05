@@ -258,7 +258,6 @@
             this.flpContenedor.Name = "flpContenedor";
             this.flpContenedor.Size = new System.Drawing.Size(728, 409);
             this.flpContenedor.TabIndex = 129;
-            this.flpContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.flpContenedor_Paint);
             // 
             // FormParametros
             // 

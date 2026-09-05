@@ -16,7 +16,7 @@ namespace ISFDyT93.Entidades.Modelos
 		public int CicloLectivoId { get; set; }
 		public int AnioCarreraId { get; set; }
 		public bool Activo { get; set; }
-		public bool AdmiteCurso { get; set; }
+	//	public bool AdmiteCurso { get; set; }
 
 		[Ignorar]
 		public int AnioCarrera { get; set; }

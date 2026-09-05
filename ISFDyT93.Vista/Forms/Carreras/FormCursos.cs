@@ -229,7 +229,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             dgvCursos.Columns["CursoId"].Visible = false;
             //dgvCursos.Columns["CicloLectivoId"].Visible = false;
             dgvCursos.Columns["AnioCarreraId"].Visible = false;
-            dgvCursos.Columns["AdmiteCurso"].Visible = false;
+           // dgvCursos.Columns["AdmiteCurso"].Visible = false;
         }
 
         private List<CursoItem> DevolverListaOrdenada()
