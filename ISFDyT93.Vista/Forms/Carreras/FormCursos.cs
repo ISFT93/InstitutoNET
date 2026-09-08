@@ -119,6 +119,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if(rbActivos.Checked)
             {
+                tsmAsignarCurso.Visible = true;
                 this.CargarGrilla();
             }
         }
@@ -127,6 +128,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (rbInactivos.Checked)
             {
+                tsmAsignarCurso.Visible = false;
                 this.CargarGrilla();
             }
         }
@@ -251,10 +253,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void tsmVerMaterias_Click(object sender, EventArgs e)
         {
-            Contenedor.AbrirFormulario<FormCursoMaterias>(form =>
+            if (this.CursoId > 0)
+            { 
+                Contenedor.AbrirFormulario<FormCursoMaterias>(form =>
+                {
+                    form.CursoId = this.CursoId;
+                });
+            }
+            else
             {
-                form.CursoId = this.CursoId;
-            });
+                Notificar(TipoNotificacion.Error, "Seleccione un curso");
+            }
         }
 
         private class CursoItem
