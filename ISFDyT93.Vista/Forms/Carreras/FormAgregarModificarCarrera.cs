@@ -36,7 +36,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     break;
                 case TipoAccion.Modificar:
                     this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
-                    if (this.Modelo.JefeCatedra == null)                    
+                    if (this.Modelo.JefeCatedra == null)
                         this.Modelo.JefeCatedra = ""; //Le asigna un valor vacio para que no falle al hacer update, ya que JefeCatedra no permite valores nulos en la BD
                     nudAnioFin.Enabled = false;
                     nudAnioInicio.Value = this.Modelo.AnioInicio;
@@ -61,7 +61,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             //    this.DeshabilitarControles();
             //    btnGuardar.Visible = false;
             //}
-           
+
             //if (this.Accion == TipoAccion.Desactivar)
             //{
             //    this.DeshabilitarControles();
@@ -106,51 +106,62 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 this.MostrarErrores(epvCarreras, carrera.Errores);
                 return;
             }
-            if (this.Accion == TipoAccion.Desactivar)
+
+            try
             {
-                //int AnioActual = Convert.ToInt32(DateTime.Today.Year);
-                //Si el form se abre desde la seleccion modificar en el menu
-                //Modificar a la base de datos
-                if (!CarrerasLogica.AnioValidoDesactivar(this.nudAnioFin.Value))
+                if (this.Accion == TipoAccion.Desactivar)
                 {
-                    Notificar(TipoNotificacion.Warning, "No se pudo desactivar\n" +
-                            "el año debe ser mayor o igual al año actual");
+                    if (!CarrerasLogica.AnioValidoDesactivar(this.nudAnioFin.Value))
+                    {
+                        Notificar(TipoNotificacion.Warning, "No se pudo desactivar\n" +
+                                "el año debe ser mayor o igual al año actual");
+                        return;
+                    }
+
+                    DialogResult result = MessageBox.Show("Esta por desactivar la carrera '" + txtDescripcionCorta.Text + "', ¿Esta seguro?", "Confirmar desactivacion", MessageBoxButtons.YesNo);
+                    if (DialogResult.Yes != result)
+                        return;
+
+                    CarrerasLogica.GuardarCarrera(carrera, TipoAccion.Modificar);
+                    Notificar(TipoNotificacion.Success, "Carrera desactivada");
+                    Contenedor.AbrirFormulario<FormCarreras>();
                     return;
                 }
-
-                DialogResult result = MessageBox.Show("Esta por desactivar la carrera '" + txtDescripcionCorta.Text + "', ¿Esta seguro?", "Confirmar desactivacion", MessageBoxButtons.YesNo);
-                if (DialogResult.Yes != result)
-                    return;
-
-
-                CarrerasLogica.GuardarCarrera(carrera, TipoAccion.Modificar);
-                Notificar(TipoNotificacion.Success, "Carrera desactivada");
-                Contenedor.AbrirFormulario<FormCarreras>();
-                return;             
-            }
-            else if (this.Accion == TipoAccion.Agregar)
-            {
-                if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
+                else if (this.Accion == TipoAccion.Agregar)
                 {
-                    Notificar(TipoNotificacion.Success, "Carrera guardada correctamente");
-                    Contenedor.AbrirFormulario<FormCarreras>();
+                    if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
+                    {
+                        Notificar(TipoNotificacion.Success, "Carrera guardada correctamente");
+                        Contenedor.AbrirFormulario<FormCarreras>();
+                    }
+                }
+                else if (this.Accion == TipoAccion.Modificar)
+                {
+                    carrera.CarreraId = this.Modelo.CarreraId;
+                    carrera.CarrerasCodigoBloque = this.Modelo.CarrerasCodigoBloque;
+                    carrera.CarreraEstadoId = this.Modelo.CarreraEstadoId;
+
+                    if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))
+                    {
+                        Notificar(TipoNotificacion.Success, "Carrera modificada correctamente");
+                        Contenedor.AbrirFormulario<FormCarreras>();
+                    }
+                }
+                else
+                {
+                    Notificar(TipoNotificacion.Error, "No se ha podido guardar la carrera");
                 }
             }
-            else if (this.Accion == TipoAccion.Modificar)
+            catch (Exception ex)
             {
-                carrera.CarreraId = this.Modelo.CarreraId;
-                carrera.CarrerasCodigoBloque = this.Modelo.CarrerasCodigoBloque;
-                carrera.CarreraEstadoId = this.Modelo.CarreraEstadoId;
+                string mensaje = ex.Message;
 
-                if (CarrerasLogica.GuardarCarrera(carrera, this.Accion))    
+                if (mensaje.Contains("UQ_NumeroExpediente") || mensaje.Contains("2627") || mensaje.Contains("2601"))
                 {
-                    Notificar(TipoNotificacion.Success, "Carrera modificada correctamente");
-                    Contenedor.AbrirFormulario<FormCarreras>();
+                    mensaje = "El numero de expediente ya existe";
                 }
-            }
-            else
-            {
-                Notificar(TipoNotificacion.Error, "No se ha podido guardar la carrera");
+
+                Notificar(TipoNotificacion.Warning, mensaje);
             }
         }
         public void Limpiar()
@@ -189,7 +200,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            GuardarCarrera();        
+            GuardarCarrera();
         }
 
 
@@ -217,7 +228,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnImagenDescriptiva_Click(object sender, EventArgs e)
         {
-            ofdCarreras.Filter = "Archivos PNG|*.png|Archivos JPG|*.jpg";
+            ofdCarreras.Filter = "Archivos PNG|.png|Archivos JPG|.jpg";
 
             if (ofdCarreras.ShowDialog() == DialogResult.OK)
             {

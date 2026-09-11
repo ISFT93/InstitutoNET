@@ -11,7 +11,7 @@ using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CarrerasLogica : LogicaBase , ICarrerasLogica
+    public class CarrerasLogica : LogicaBase, ICarrerasLogica
     {
         CarrerasDao carrerasDao;
         AniosCarreraDao aniosCarreraDao;
@@ -69,13 +69,39 @@ namespace ISFDyT93.Negocio.Logica
             var resultado = this.carrerasDao.CarreraTienePrimerAnio(id);
             return resultado;
         }
+
+        public bool ExisteNumeroExpediente(string numeroExpediente, int carreraIdActual)
+        {
+            DataTable dt = this.carrerasDao.ObtenerTodasLasCarreras(true);
+            if (dt == null || dt.Rows.Count == 0) return false;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                // Uso del alias exacto con espacios devuelto por la consulta SQL
+                string expDB = row["Numero de Expediente"]?.ToString();
+                int idDB = Convert.ToInt32(row["CarreraId"]);
+
+                if (expDB == numeroExpediente && idDB != carreraIdActual)
+                {
+                    return true; // Ya existe en otro registro
+                }
+            }
+            return false;
+        }
+
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
-            bool resultado = false;          
-
+            bool resultado = false;
 
             try
             {
+                // Validación previa antes de impactar en la base de datos
+                int idActual = (accion == TipoAccion.Modificar) ? modelo.CarreraId : 0;
+                if (ExisteNumeroExpediente(modelo.NumeroExpediente, idActual))
+                {
+                    throw new Exception("El numero de expediente ya existe");
+                }
+
                 string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
                 string archiPlanEstudio = modelo.PlanEstudio;
                 string archiResolucion = modelo.Resolucion;
@@ -196,7 +222,7 @@ namespace ISFDyT93.Negocio.Logica
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
             }
 
             return resultado;
@@ -265,23 +291,9 @@ namespace ISFDyT93.Negocio.Logica
             return AnioFin > AnioActual;
         }
 
-        //public Dictionary<string,bool> VerCarrerasActivas() 
-        //{
-        //    var opctionEnabDisab = new Dictionary<string, bool>()
-        //    {
-        //        { "nudAnioFin", true},
-        //        { "txtCantidadHoras", true},
-        //        { "PoseeMaterias", true},
-        //        { "txtDuracion", true},
-        //        { "btnGuardar", true}
-        //    };
-        //}
-
         public int CantidadCorrelativasCarrera(int CarreraId)
         {
             return this.carrerasDao.CantidadCorrelativasCarrera(CarreraId);
         }
-
-
     }
 }

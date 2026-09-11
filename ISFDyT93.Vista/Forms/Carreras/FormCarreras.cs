@@ -41,6 +41,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void CargaGrilla()
         {
             dgvCarreras.ContextMenuStrip = cmsCarreras;
+            dgvCarreras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Soluciona datos cortados o mal distribuidos
 
             if (rbActivos.Checked == true)
             {
@@ -48,36 +49,30 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else
-            if (rbInactivos.Checked == true)
+            else if (rbInactivos.Checked == true)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else
-            if (rbBorrador.Checked == true)
+            else if (rbBorrador.Checked == true)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                     dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
             }
-            else
-            if (rbTodos.Checked == true)
+            else if (rbTodos.Checked == true)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.ObtenerTodasLasCarreras();
                 CarreraEstados();
@@ -90,9 +85,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["Año de Fin"].Visible = false;
                 }
             }
-
         }
-
         private void CambiarColor()
         {
             if (dgvCarreras.Rows.Count > 0)
@@ -369,9 +362,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             else
             {
-                //CellContentClick cuando se selecciona en el menu Eliminar
                 DialogResult resultado = MessageBox.Show($"¿Desea {AccionARealizar} la Carrera '" + this.NombreCarrera + "'?",
-                  "Eliminar Carrera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "Eliminar Carrera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resultado == DialogResult.Yes)
                 {
@@ -382,10 +374,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                         Notificar(TipoNotificacion.Success, "Carrera eliminada\n correctamente");
                     }
-                    catch (Exception)
+                    catch (System.Data.SqlClient.SqlException ex)
                     {
-
-                        throw;
+                        // Control específico si ocurre un conflicto de unicidad o integridad referencial en SQL Server
+                        if (ex.Number == 2627 || ex.Number == 2601)
+                        {
+                            MessageBox.Show("Error: Ya existe un registro con el mismo número de expediente.",
+                                            "Duplicidad detectada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error en la base de datos: " + ex.Message,
+                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -464,7 +470,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         break;
 
                     case "Inactivo":
-                        foreColor = Color.FromArgb(230,250,0);
+                        foreColor = Color.FromArgb(230, 250, 0);
                         break;
 
                     case "Borrador":
@@ -489,14 +495,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (SeleccionRB.radioSeleccionado == "Activos")
                 rbActivos.Checked = true;
-            else if (SeleccionRB.radioSeleccionado == "Borrador")            
-                rbBorrador.Checked = true;            
-            else if (SeleccionRB.radioSeleccionado == "Inactivos")            
-                rbInactivos.Checked = true;            
-            else            
-                rbTodos.Checked = true;            
+            else if (SeleccionRB.radioSeleccionado == "Borrador")
+                rbBorrador.Checked = true;
+            else if (SeleccionRB.radioSeleccionado == "Inactivos")
+                rbInactivos.Checked = true;
+            else
+                rbTodos.Checked = true;
         }
 
     }
 }
+
 
