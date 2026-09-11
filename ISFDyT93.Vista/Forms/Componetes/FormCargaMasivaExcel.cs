@@ -43,6 +43,9 @@ namespace ISFDyT93.Vista.Forms.Componentes
         int _columnaCarreraIndex = -1;
         DataTable _dtCarreras;
 
+        string _rutaArchivoExcel;
+        bool _cargandoComboHojas;
+
         public FormCargaMasivaExcel()
         {
             InitializeComponent();
@@ -57,14 +60,70 @@ namespace ISFDyT93.Vista.Forms.Componentes
             archivoExcel.Filter = "Archivos Excel|*.xls;*.xlsx|Archivos .csv (*.csv)|*.csv";
             archivoExcel.InitialDirectory = "C://";
 
-            if (archivoExcel.ShowDialog() == DialogResult.OK)
+            if (archivoExcel.ShowDialog() != DialogResult.OK)
+                return;
+
+            _rutaArchivoExcel = archivoExcel.FileName;
+            CargarNombresHojas();
+        }
+
+        // Lee los nombres de las hojas del archivo y llena el combo; luego carga la primera hoja
+        private void CargarNombresHojas()
+        {
+            _cargandoComboHojas = true;
+            cboHojasExcel.Visible = false;
+            lblHojaExcel.Visible = false;
+            cboHojasExcel.Items.Clear();
+
+            try
             {
-                string rutaCvs = archivoExcel.FileName;
-                using (Stream inputStream = File.OpenRead(rutaCvs))
+                using (Stream inputStream = File.OpenRead(_rutaArchivoExcel))
                 using (ExcelEngine excelEngine = new ExcelEngine())
                 {
                     IWorkbook workbook = excelEngine.Excel.Workbooks.Open(inputStream);
-                    IWorksheet worksheet = workbook.Worksheets[0];
+
+                    for (int i = 0; i < workbook.Worksheets.Count; i++)
+                        cboHojasExcel.Items.Add(workbook.Worksheets[i].Name);
+
+                    if (cboHojasExcel.Items.Count > 0)
+                        cboHojasExcel.SelectedIndex = 0;
+                }
+
+                _cargandoComboHojas = false;
+
+                cboHojasExcel.Visible = cboHojasExcel.Items.Count > 0;
+                lblHojaExcel.Visible = cboHojasExcel.Visible;
+
+                if (cboHojasExcel.Items.Count > 0)
+                    CargarHojaExcel(0);
+            }
+            catch (Exception ex)
+            {
+                _cargandoComboHojas = false;
+                MessageBox.Show($"No se pudo abrir el archivo: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cboHojasExcel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_cargandoComboHojas) return;
+            CargarHojaExcel(cboHojasExcel.SelectedIndex);
+        }
+
+        private void CargarHojaExcel(int indiceHoja)
+        {
+            if (string.IsNullOrEmpty(_rutaArchivoExcel) || indiceHoja < 0) return;
+
+            try
+            {
+                using (Stream inputStream = File.OpenRead(_rutaArchivoExcel))
+                using (ExcelEngine excelEngine = new ExcelEngine())
+                {
+                    IWorkbook workbook = excelEngine.Excel.Workbooks.Open(inputStream);
+                    if (indiceHoja >= workbook.Worksheets.Count) return;
+
+                    IWorksheet worksheet = workbook.Worksheets[indiceHoja];
                     var usedRange = worksheet.UsedRange;
                     dtExcel = worksheet.ExportDataTable(usedRange, ExcelExportDataTableOptions.ColumnNames);
 
@@ -75,6 +134,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     foreach (var fila in filasVacias)
                         dtExcel.Rows.Remove(fila);
                 }
+
                 dgvCargaMasiva.DataSource = dtExcel;
 
                 // Deshabilitar sort para evitar que las filas se reordenen al editar valores
@@ -82,6 +142,11 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
 
                 ProcesarHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo cargar la hoja seleccionada: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,8 +163,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 {
                     if (BuscarCoincidencia(prop.Name, column.ColumnName))
                     {
-                        if (!dtExcel.Columns.Contains(prop.Name))
-                            column.ColumnName = prop.Name;
+                        RenombrarColumnaACanonical(column, prop.Name);
                         matched = true;
                         break;
                     }
@@ -117,8 +181,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             {
                 if (BuscarCoincidencia(_carrerasXMLColumnName, col.ColumnName))
                 {
-                    if (!dtExcel.Columns.Contains(_carrerasColumnName))
-                        col.ColumnName = _carrerasColumnName;
+                    RenombrarColumnaACanonical(col, _carrerasColumnName);
 
                     var dgvCol = dgvCargaMasiva.Columns[_carrerasColumnName];
                     if (dgvCol != null)
@@ -133,7 +196,22 @@ namespace ISFDyT93.Vista.Forms.Componentes
             if (_columnaCarreraIndex >= 0)
                 ValidarColumnasCarrera();
 
+            actualizarLabelCamposFaltantes();
             dgvCargaMasiva.Invalidate();
+        }
+
+        // Renombra la columna al nombre canónico de la propiedad (ej. "APELLIDO" -> "Apellido"),
+        // salvo que ya exista otra columna con ese nombre exacto (evita colisiones).
+        private void RenombrarColumnaACanonical(DataColumn column, string nombreCanonical)
+        {
+            if (column.ColumnName == nombreCanonical)
+                return;
+
+            bool existeExacta = dtExcel.Columns.Cast<DataColumn>()
+                .Any(c => string.Equals(c.ColumnName, nombreCanonical, StringComparison.Ordinal));
+
+            if (!existeExacta)
+                column.ColumnName = nombreCanonical;
         }
 
         private void PintarHeaderNoMapeado(object sender, DataGridViewCellPaintingEventArgs e)
@@ -207,6 +285,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
             {
                 // Mismo nombre, solo limpiar el estado rojo si estaba sin mapear
                 _columnasNoMapeadas.Remove(colIndex);
+                actualizarLabelCamposFaltantes();
                 dgvCargaMasiva.InvalidateCell(colIndex, -1);
                 return;
             }
@@ -224,6 +303,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
 
             dgvCol.HeaderText = propiedadSeleccionada;
             _columnasNoMapeadas.Remove(colIndex);
+            actualizarLabelCamposFaltantes();
             dgvCargaMasiva.InvalidateCell(colIndex, -1);
         }
 
@@ -247,6 +327,7 @@ namespace ISFDyT93.Vista.Forms.Componentes
                 _celdasCarreraInvalidas.Clear();
             }
 
+            actualizarLabelCamposFaltantes();
             dgvCargaMasiva.Invalidate();
         }
 
@@ -264,6 +345,75 @@ namespace ISFDyT93.Vista.Forms.Componentes
             }
 
             return nombre;
+        }
+
+        private static readonly HashSet<string> _camposAutoCompletados = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase)
+        {
+            "TipoDocumento"
+        };
+
+        private List<string> ObtenerCamposFaltantes()
+        {
+            if (dtExcel == null)
+                return new List<string>();
+
+            var columnasMapeadas = new HashSet<string>(
+                dtExcel.Columns.Cast<DataColumn>().Select(c => c.ColumnName),
+                System.StringComparer.OrdinalIgnoreCase);
+            var condicionProp = typeof(Obligatorio).GetProperty("Condicion", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            return typeof(AlumnosModelo)
+                .GetProperties()
+                .Where(p => p.GetCustomAttributes<Obligatorio>(false)
+                    .Any(attr => string.IsNullOrEmpty(condicionProp?.GetValue(attr)?.ToString())))
+                .Select(p => p.Name)
+                .Where(nombre => !columnasMapeadas.Contains(nombre) && !_camposAutoCompletados.Contains(nombre))
+                .ToList();
+        }
+
+        private void btnCrearCamposFaltantes_Click(object sender, EventArgs e)
+        {
+            if (dtExcel == null) return;
+
+            var camposFaltantes = ObtenerCamposFaltantes();
+            foreach (string campo in camposFaltantes)
+            {
+                var columna = new DataColumn(campo, typeof(string))
+                {
+                    DefaultValue = "No declarado"
+                };
+                dtExcel.Columns.Add(columna);
+
+                foreach (DataRow fila in dtExcel.Rows)
+                    fila[campo] = "No declarado";
+            }
+
+            foreach (DataGridViewColumn columna in dgvCargaMasiva.Columns)
+                columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            ProcesarHeaders();
+
+            if (camposFaltantes.Count > 0)
+            {
+                FormNotificacion.Mensaje(TipoNotificacion.Information,
+                    $"Se agregaron {camposFaltantes.Count} campo{(camposFaltantes.Count == 1 ? "" : "s")} faltante{(camposFaltantes.Count == 1 ? "" : "s")}. Puede editarlos en la grilla.");
+            }
+        }
+
+        private void actualizarLabelCamposFaltantes()
+        {
+            var camposFaltantes = ObtenerCamposFaltantes();
+            btnCrearCamposFaltantes.Visible = camposFaltantes.Any();
+
+            if (camposFaltantes.Any())
+            {
+                lblCamposFaltantes.Text = "Campos obligatorios que faltan mapear: " + string.Join(", ", camposFaltantes);
+                lblCamposFaltantes.Visible = true;
+            }
+            else
+            {
+                lblCamposFaltantes.Visible = false;
+            }
         }
 
         public bool BuscarCoincidencia(string nombrePropiedad, string nombreExcel)
@@ -375,19 +525,11 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     return;
             }
 
-            var columnasMapeadas = new HashSet<string>(dtExcel.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
-            var condicionProp = typeof(Obligatorio).GetProperty("Condicion", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            var camposFaltantes = typeof(AlumnosModelo)
-                .GetProperties()
-                .Where(p => p.GetCustomAttributes<Obligatorio>(false)
-                    .Any(attr => string.IsNullOrEmpty(condicionProp?.GetValue(attr)?.ToString())))
-                .Select(p => p.Name)
-                .Where(nombre => !columnasMapeadas.Contains(nombre))
-                .ToList();
+            var camposFaltantes = ObtenerCamposFaltantes();
 
             if (camposFaltantes.Count > 0)
             {
+                actualizarLabelCamposFaltantes();
                 MessageBox.Show(
                     $"Faltan los siguientes campos obligatorios para dar el alta:\n\n{string.Join("\n", camposFaltantes)}",
                     "Campos obligatorios faltantes", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -585,9 +727,18 @@ namespace ISFDyT93.Vista.Forms.Componentes
                     return true;
                 }
 
-                if (DateTime.TryParse(valor, out DateTime fecha))
+                DateTime fechaResultado;
+                if (DateTime.TryParse(valor, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaResultado) ||
+                    DateTime.TryParse(valor, CultureInfo.CurrentCulture, DateTimeStyles.None, out fechaResultado))
                 {
-                    valorConvertido = fecha;
+                    valorConvertido = fechaResultado;
+                    return true;
+                }
+
+                if (double.TryParse(valor, NumberStyles.Any, CultureInfo.InvariantCulture, out double serialExcel) &&
+                    serialExcel > 59 && serialExcel < 2958466)
+                {
+                    valorConvertido = DateTime.FromOADate(serialExcel);
                     return true;
                 }
 
