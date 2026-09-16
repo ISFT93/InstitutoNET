@@ -51,6 +51,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+
                 }
             }
             else
@@ -62,7 +63,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     //Ocultar columna de la grilla CarreraId CarreraEstadoId
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
+
+                    dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
+
             }
             else
             if (rbBorrador.Checked == true)
@@ -75,6 +79,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                     dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
+                dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
             }
             else
             if (rbTodos.Checked == true)
