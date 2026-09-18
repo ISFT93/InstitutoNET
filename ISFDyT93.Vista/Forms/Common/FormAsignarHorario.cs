@@ -210,7 +210,7 @@ namespace ISFDyT93.Vista.Forms.Common
         private void CargarCombos()
         {
             cmbCursos.ValueMember = "CursoId";
-            cmbCursos.DisplayMember = "NombreCurso";
+            cmbCursos.DisplayMember = "CodigoBloque";
             cmbCursos.DataSource = Cursos;
 
             cmbMaterias.ValueMember = "MateriaId";
@@ -221,6 +221,9 @@ namespace ISFDyT93.Vista.Forms.Common
         {
             Modulos = horariosLogica.ObtnerModulos();
             dgvAsignarHorario.RowTemplate.Height = 80;
+            if (Modulos == null || Modulos.Rows.Count == 0)
+                return;
+
             dgvAsignarHorario.Rows.Add(Modulos.Rows.Count);
             foreach (DataGridViewRow fila in dgvAsignarHorario.Rows)
             {
@@ -231,7 +234,10 @@ namespace ISFDyT93.Vista.Forms.Common
                 fila.Cells[0].Value = Modulos.Rows[fila.Index]["ModuloId"];
                 fila.Cells[1].Value = Modulos.Rows[fila.Index]["Descripcion"];
             }
-            dgvAsignarHorario.CurrentRow.Cells[1].Selected = false;
+            if (dgvAsignarHorario.CurrentRow != null)
+            {
+                dgvAsignarHorario.CurrentRow.Cells[1].Selected = false;
+            }
         }
         private void AsignarColoresMaterias()
         {
