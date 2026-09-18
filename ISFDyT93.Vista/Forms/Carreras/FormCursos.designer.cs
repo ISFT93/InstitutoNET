@@ -37,7 +37,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmsCursos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmAsignarCurso = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmModificarCurso = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmGestionarHorario = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCursoDarAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +55,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsCursos.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsCursos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAsignarCurso,
-            this.tsmModificarCurso,
+            this.tsmGestionarHorario,
             this.tsmEliminarCursos,
             this.tsmCursoDarAlta,
             this.tsmVerMaterias});
@@ -74,16 +74,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAsignarCurso.Text = "Asignar ";
             this.tsmAsignarCurso.Click += new System.EventHandler(this.tsmAsignarCurso_Click);
             // 
-            // tsmModificarCurso
+            // tsmGestionarHorario
             // 
-            this.tsmModificarCurso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmModificarCurso.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmModificarCurso.ForeColor = System.Drawing.Color.White;
-            this.tsmModificarCurso.Image = ((System.Drawing.Image)(resources.GetObject("tsmModificarCurso.Image")));
-            this.tsmModificarCurso.Name = "tsmModificarCurso";
-            this.tsmModificarCurso.Size = new System.Drawing.Size(156, 30);
-            this.tsmModificarCurso.Text = "Modificar ";
-            this.tsmModificarCurso.Click += new System.EventHandler(this.tsmModificarCurso_Click);
+            this.tsmGestionarHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmGestionarHorario.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmGestionarHorario.ForeColor = System.Drawing.Color.White;
+            this.tsmGestionarHorario.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
+            this.tsmGestionarHorario.Name = "tsmGestionarHorario";
+            this.tsmGestionarHorario.Size = new System.Drawing.Size(156, 30);
+            this.tsmGestionarHorario.Text = "Gestionar Horario";
+            this.tsmGestionarHorario.Click += new System.EventHandler(this.tsmGestionarHorario_Click);
             // 
             // tsmEliminarCursos
             // 
@@ -250,7 +250,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private System.Windows.Forms.ContextMenuStrip cmsCursos;
         private System.Windows.Forms.ToolStripMenuItem tsmAsignarCurso;
-        private System.Windows.Forms.ToolStripMenuItem tsmModificarCurso;
+        private System.Windows.Forms.ToolStripMenuItem tsmGestionarHorario;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarCursos;
         private System.Windows.Forms.ToolStripMenuItem tsmCursoDarAlta;
         private System.Windows.Forms.RadioButton rbActivos;
