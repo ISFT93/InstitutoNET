@@ -28,7 +28,8 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerServicioPersonal(int personalId, int activo)
         {
             string query = "SELECT se.ServicioId, ca.Descripcion as Cargo, sr.Descripcion as Situacion, " +
-                "IIF(se.CursoMateriaId IS NULL, IIF(se.CarreraId IS NOT NULL, car.DescripcionCorta, ''), CONCAT(ma.Nombre, ' - ', car.DescripcionCorta, ' ', ac.AnioCarrera, cu.NombreCurso)) AS 'Servicio', " +
+                "IIF(se.CursoMateriaId IS NULL, IIF(se.CarreraId IS NOT NULL, car.DescripcionCorta, ''), CONCAT(car.DescripcionCorta, ' - ', ma.Nombre, ' ', ac.AnioCarrera, cu.NombreCurso)) AS 'Servicio', " +
+                "se.Modulo, " +
                 "se.FechaAlta, " +
                 "se.FechaBaja, " +
                 "la.LibroNumero as Libro, " +

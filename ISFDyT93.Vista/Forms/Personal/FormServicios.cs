@@ -49,16 +49,24 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         public void AnchoColumnas()
         {
-            //cargo
-            dgvServicios.Columns["Cargo"].Width = 110;
-            //Situacion
-            dgvServicios.Columns["Situacion"].Width = 80;
-            //Folio
-            dgvServicios.Columns["Libro"].Width = 40;
-            //Libro
-            dgvServicios.Columns["Folio"].Width = 40;
-            //Activo
-            dgvServicios.Columns["Activo"].Width = 55;
+            // Cargo
+            dgvServicios.Columns["Cargo"].Width = 100;
+            // Situacion
+            dgvServicios.Columns["Situacion"].Width = 75;
+            // Módulo
+            dgvServicios.Columns["Modulo"].Width = 55;
+            dgvServicios.Columns["Modulo"].DisplayIndex = 3;
+            // Servicio
+            dgvServicios.Columns["Servicio"].Width = 220;
+            // FechaAlta
+            dgvServicios.Columns["FechaAlta"].Width = 85;
+            // FechaBaja
+            dgvServicios.Columns["FechaBaja"].Width = 85;
+            // Libro y Folio
+            dgvServicios.Columns["Libro"].Width = 35;
+            dgvServicios.Columns["Folio"].Width = 35;
+            // Activo
+            dgvServicios.Columns["Activo"].Width = 45;
         }
 
         public void Refrescar()

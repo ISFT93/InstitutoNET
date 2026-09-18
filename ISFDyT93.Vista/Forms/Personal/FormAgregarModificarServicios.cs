@@ -260,7 +260,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         }
         private void LibroFolio()
         {
-            this.LibroActa = this.ServiciosLogica.ObtenerUltimoLibro((int)TipoLibro.LibroMatriz);
+            this.LibroActa = this.ServiciosLogica.ObtenerUltimoLibro((int)TipoLibro.LibroTomaDePosicion);
 
             txtLibro.Text = this.LibroActa.LibroNumero.ToString();
             txtFolio.Text = this.LibroActa.FolioNumero.ToString();
