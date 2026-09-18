@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
+using ISFDyT93.Vista.Forms.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Vista.Core;
-using ISFDyT93.Vista.Core.Enums;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -25,6 +26,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private AniosCarrerasModelo anioCarrera { get; set; }
         private CicloLectivosLogica cicloLectivosLogica { get; set; }
+
 
         private int CursoId { get; set; }
         private string CursoAnio { get; set; }
@@ -77,7 +79,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     if (rbInactivos.Checked == true)
                     {
                         tsmAsignarCurso.Visible = false;
-                        tsmModificarCurso.Visible = false;
+                        tsmGestionarHorario.Visible = false;
                         tsmEliminarCursos.Visible = false;
                         tsmCursoDarAlta.Visible = true;
                     }
@@ -85,7 +87,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     {
                         tsmCursoDarAlta.Visible = false;
                         tsmAsignarCurso.Visible = true;
-                        tsmModificarCurso.Visible = true;
+                        tsmGestionarHorario.Visible = true;
                         tsmEliminarCursos.Visible = true;
                     }
                     cmsCursos.Show(dgvCursos, e.X - cmsCursos.Width / 2, e.Y);
@@ -97,7 +99,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 }
                 else
                 {
-                    tsmModificarCurso.Visible = false;
+                    tsmGestionarHorario.Visible = false;
                     tsmEliminarCursos.Visible = false;
                     tsmCursoDarAlta.Visible = false;
                     cmsCursos.Show(dgvCursos, e.X - cmsCursos.Width / 2, e.Y);
@@ -158,9 +160,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         }
 
-        private void tsmModificarCurso_Click(object sender, EventArgs e)
+        private void tsmGestionarHorario_Click(object sender, EventArgs e)
         {
-
+            Contenedor.AbrirFormulario<FormAsignarHorario>(form =>
+            {
+                form.AnioCarreraId = this.AnioCarreraId;
+            });
         }
 
         private void tsmEliminarCursos_Click(object sender, EventArgs e)
