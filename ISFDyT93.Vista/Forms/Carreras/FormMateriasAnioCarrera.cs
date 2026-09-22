@@ -159,12 +159,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     }
                 }
                 cargaHorariaTotal = formacionEspecifica + formacionBasica + formacionInstitucional;
-                lblDescripcion.Text = "Formacion basica: " + formacionBasica + "\nFormacion especifica: " + formacionEspecifica + "\nFormacion institucional: " + formacionInstitucional + "\nCarga horaria total: " + cargaHorariaTotal;
             }
-            else
-            {
-                lblDescripcion.Text = "Formacion basica: " + formacionBasica + "\nFormacion especifica: " + formacionEspecifica + "\nFormacion institucional: " + formacionInstitucional + "\nCarga horaria total: " + cargaHorariaTotal;
-            }
+            lblDescripcion.Text = "Formacion basica: " + formacionBasica  + "\nFormacion especifica: " + formacionEspecifica + "\nFormacion institucional: " + formacionInstitucional + "\nCarga horaria total: " + cargaHorariaTotal;
+
         }
 
         private void dgvMatAnioCarrera_MouseUp(object sender, MouseEventArgs e)

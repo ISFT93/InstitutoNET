@@ -105,6 +105,12 @@
     <Compile Include="Forms\Parametros\FormAgregarCargos.Designer.cs">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEspacio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEspacio.Designer.cs">
+      <DependentUpon>FormAgregarEspacio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarTipoLicencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,11 +374,23 @@
     <Compile Include="Core\Enums\TipoAsignacion.cs" />
     <Compile Include="Core\Enums\SituacionRevista.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\uscCargarFormacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscCargarFormacion.Designer.cs">
+      <DependentUpon>uscCargarFormacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\uscCargos.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscEspFormacionAcademica.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscEspFormacionAcademica.Designer.cs">
+      <DependentUpon>uscEspFormacionAcademica.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
@@ -391,6 +409,12 @@
     </Compile>
     <Compile Include="UserControls\uscLicencias.Designer.cs">
       <DependentUpon>uscLicencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscTablaEspacios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscTablaEspacios.Designer.cs">
+      <DependentUpon>uscTablaEspacios.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscTiposLicencias.cs">
       <SubType>UserControl</SubType>
@@ -439,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarEspacio.resx">
+      <DependentUpon>FormAgregarEspacio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarTipoLicencia.resx">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
@@ -587,8 +614,14 @@
     <EmbeddedResource Include="Reports\Personas.rdlc" />
     <EmbeddedResource Include="Reports\AlumnosActivos.rdlc" />
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
+    <EmbeddedResource Include="UserControls\uscCargarFormacion.resx">
+      <DependentUpon>uscCargarFormacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscEspFormacionAcademica.resx">
+      <DependentUpon>uscEspFormacionAcademica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>

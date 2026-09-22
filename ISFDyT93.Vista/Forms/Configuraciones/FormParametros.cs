@@ -135,6 +135,9 @@ namespace ISFDyT93.Vista
                  flpContenedor.Controls.Add(libro);
                  uscLicencias licencias = new uscLicencias();
                  flpContenedor.Controls.Add(licencias);
+                uscEspaciosFormacion espacios = new uscEspaciosFormacion();
+                flpContenedor.Controls.Add(espacios);
+
             }
             else
             {
