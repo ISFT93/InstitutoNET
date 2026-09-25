@@ -1,4 +1,6 @@
-﻿namespace ISFDyT93.Vista.Forms.Personal
+﻿using System.Windows.Forms;
+
+namespace ISFDyT93.Vista.Forms.Personal
 {
     partial class FormPersonal
     {
@@ -55,6 +57,7 @@
             this.tsmLicencias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDocumentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Colmodul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonal)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.cmsPersonal.SuspendLayout();
@@ -161,6 +164,8 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPersonal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Colmodul});
             this.dgvPersonal.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -198,6 +203,7 @@
             this.dgvPersonal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonal.Size = new System.Drawing.Size(777, 360);
             this.dgvPersonal.TabIndex = 54;
+            this.dgvPersonal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonal_CellContentClick);
             this.dgvPersonal.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPersonal_CellFormatting);
             this.dgvPersonal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvPersonal_MouseUp);
             // 
@@ -386,6 +392,13 @@
             this.tsmEliminar.Text = "Eliminar";
             this.tsmEliminar.Click += new System.EventHandler(this.tsmEliminar_Click);
             // 
+            // Colmodul
+            // 
+            this.Colmodul.DataPropertyName = "Modulo";
+            this.Colmodul.HeaderText = "Modulo";
+            this.Colmodul.Name = "Colmodul";
+            this.Colmodul.ReadOnly = true;
+            // 
             // FormPersonal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -427,5 +440,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDocumentacion;
         private System.Windows.Forms.ToolStripMenuItem tsmHorarios;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminar;
+        private DataGridViewTextBoxColumn Colmodul;
     }
 }

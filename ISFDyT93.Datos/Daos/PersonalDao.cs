@@ -2,6 +2,7 @@
 using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Entidades.Modelos;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -10,11 +11,14 @@ using System.Xml.Linq;
 
 namespace ISFDyT93.Datos.Daos
 {
-    public class PersonalDao : DaoBase , IPersonalDao
+    public class PersonalDao : DaoBase, IPersonalDao
     {
         public DataTable ObtenerListaPersonal(int estado)
         {
-            string query = "SELECT PersonalId, NumeroDocumento AS[Documento], Nombre, Apellido, FechaAlta, FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p INNER JOIN Estados e on e.EstadoId = p.PersonalEstadoId";
+            string query = "SELECT p.PersonalId, p.NumeroDocumento AS [Documento], p.Nombre, p.Apellido, p.FechaAlta, p.FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId, s.Modulo " +
+                           "FROM Personal p " +
+                           "INNER JOIN Estados e ON e.EstadoId = p.PersonalEstadoId " +
+                           "LEFT JOIN Servicios s ON s.PersonalId = p.PersonalId";
 
             if (estado != 0)
             {
@@ -25,23 +29,26 @@ namespace ISFDyT93.Datos.Daos
         }
         public DataTable ObtenerListaPersonal(TipoFiltroProfesor tipo, string filtro, int estado)
         {
-            string query = "SELECT PersonalId, NumeroDocumento AS[Documento], Nombre, Apellido, FechaAlta, FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId FROM Personal p INNER JOIN Estados e on e.EstadoId = p.PersonalEstadoId";
+            string query = "SELECT p.PersonalId, p.NumeroDocumento AS [Documento], p.Nombre, p.Apellido, p.FechaAlta, p.FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId, s.Modulo " +
+                    "FROM Personal p " +
+                    "INNER JOIN Estados e ON e.EstadoId = p.PersonalEstadoId " +
+                    "LEFT JOIN Servicios s ON s.PersonalId = p.PersonalId";
 
             string where = "";
 
             switch (tipo)
             {
                 case TipoFiltroProfesor.Todos:
-                    where = $" WHERE Nombre LIKE '%{filtro}%' OR NumeroDocumento LIKE '%{filtro}%' OR Apellido LIKE '%{filtro}%'";
+                    where = $" WHERE p.Nombre LIKE '%{filtro}%' OR p.NumeroDocumento LIKE '%{filtro}%' OR p.Apellido LIKE '%{filtro}%'";
                     break;
                 case TipoFiltroProfesor.NumeroDocumento:
-                    where = $" WHERE NumeroDocumento LIKE '%{filtro}%'";
+                    where = $" WHERE p.NumeroDocumento LIKE '%{filtro}%'";
                     break;
                 case TipoFiltroProfesor.Nombre:
-                    where = $" WHERE Nombre LIKE '%{filtro}%'";
+                    where = $" WHERE p.Nombre LIKE '%{filtro}%'";
                     break;
                 case TipoFiltroProfesor.Apellido:
-                    where = $" WHERE Apellido LIKE '%{filtro}%'";
+                    where = $" WHERE p.Apellido LIKE '%{filtro}%'";
                     break;
             }
 
@@ -118,9 +125,9 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerProfesorMaterias(int PersonalId)
         {
             string query = "SELECT PM.ProfesorMateriaId, M.Nombre AS Materia, AC.AnioCarrera AS Año, AC.AnioCarreraId, C.NombreCurso AS Curso, CA.Nombre AS Carrera, M.CargaHoraria FROM Materias as M " +
-                " INNER JOIN ProfesoresMaterias as PM ON M.MateriaId = PM.MateriaId INNER JOIN Cursos as C ON PM.CursoId = C.CursoId " +
-                " INNER JOIN AniosCarreras as AC ON C.AnioCarreraId = AC.AnioCarreraId " +
-                " INNER JOIN Carreras as CA ON AC.CarreraId = CA.CarreraId WHERE PM.PersonalId = " + PersonalId + " ORDER BY AC.AnioCarrera ASC";
+              " INNER JOIN ProfesoresMaterias as PM ON M.MateriaId = PM.MateriaId INNER JOIN Cursos as C ON PM.CursoId = C.CursoId " +
+              " INNER JOIN AniosCarreras as AC ON C.AnioCarreraId = AC.AnioCarreraId " +
+              " INNER JOIN Carreras as CA ON AC.CarreraId = CA.CarreraId WHERE PM.PersonalId = " + PersonalId + " ORDER BY AC.AnioCarrera ASC";
 
 
             return this.Conexion.ObtenerRegistros(query);
@@ -139,7 +146,7 @@ namespace ISFDyT93.Datos.Daos
         }
         public int ModificarDocumentacion(string Analitico, string Proyecto, int ProfesorMateriaId, int CiclosLectivoId)
         {
-            string query = "UPDATE  ProfesorMateriaCicloLectivo SET Analitico = '" + Analitico + "', Proyecto = '" + Proyecto + "' WHERE ProfesorMateriaId = " + ProfesorMateriaId + " AND CicloLectivoId = " + CiclosLectivoId + "";
+            string query = "UPDATE  ProfesorMateriaCicloLectivo SET Analitico = '" + Analitico + "', Proyecto = '" + Proyecto + "' WHERE ProfesorMateriaId = " + ProfesorMateriaId + " AND CicloLectivoId = " + CiclosLectivoId + "";
 
             return this.Conexion.EjecutarAccion(query);
         }
@@ -174,8 +181,8 @@ namespace ISFDyT93.Datos.Daos
             {
                 case TipoFiltroProfesor.Todos:
                     query += "Profesores.Apellido LIKE '%" + filtro + "%'" + " OR " +
-                        "Profesores.Nombre LIKE '%" + filtro + "%'" + " OR " +
-                        "Profesores.NumeroDocumento LIKE '%" + filtro + "%'";
+                      "Profesores.Nombre LIKE '%" + filtro + "%'" + " OR " +
+                      "Profesores.NumeroDocumento LIKE '%" + filtro + "%'";
                     break;
                 case TipoFiltroProfesor.NumeroDocumento:
                     query += "Profesores.NumeroDocumento LIKE '%" + filtro + "%'";
@@ -220,6 +227,22 @@ namespace ISFDyT93.Datos.Daos
             query += " ORDER BY Apellido, Nombre";
 
             return this.Conexion.ObtenerRegistros(query);
+        }
+
+
+        public int ObtenerTotalModulosProfesor(int personalId)
+        {
+            // Suma los módulos del profesor. Si no tiene ninguno, ISNULL devuelve 0.
+            string query = $"SELECT ISNULL(SUM(Modulo), 0) FROM Servicios WHERE PersonalId = {personalId}";
+
+            DataTable dt = this.Conexion.ObtenerRegistros(query);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0][0]);
+            }
+
+            return 0;
         }
 
 

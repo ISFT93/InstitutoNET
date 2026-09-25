@@ -89,6 +89,18 @@ namespace ISFDyT93.Negocio.Logica
 
         public bool AgregarServicio(ServiciosModelo servicio, PersonalModelo personal, LibroActasModelo libroActa)
         {
+            // ==========================================
+            // VALIDACIÓN DE MÓDULOS (Límite de 20 horas)
+            // ==========================================
+            PersonalDao personalDao = new PersonalDao();
+            int modulosActuales = personalDao.ObtenerTotalModulosProfesor(personal.PersonalId);
+
+            if ((modulosActuales + servicio.Modulo) > 20)
+            {
+                throw new Exception($"El profesor ya cuenta con {modulosActuales} módulos asignados. No se puede superar el límite permitido de 20 módulos.");
+            }
+            // ==========================================
+
             if (libroActa.LibroActaId > 0)
                 this.serviciosDao.ActualizarLibroActa(libroActa);
             else

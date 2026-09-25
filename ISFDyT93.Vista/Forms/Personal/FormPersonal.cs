@@ -244,6 +244,13 @@ namespace ISFDyT93.Vista.Forms.Personal
                 e.CellStyle.SelectionBackColor = Color.LightGray;
                 e.CellStyle.SelectionForeColor = foreColor;
             }
+
         }
+        private void dgvPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Método agregado para manejar el evento de la celda de la grilla
+        }
+
     }
+
 }
