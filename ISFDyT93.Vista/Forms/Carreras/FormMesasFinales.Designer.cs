@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCarrera = new System.Windows.Forms.Label();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
@@ -39,9 +39,8 @@
             this.cmbAnio = new System.Windows.Forms.ComboBox();
             this.lblCurso = new System.Windows.Forms.Label();
             this.cmbCurso = new System.Windows.Forms.ComboBox();
-            this.lblMateria = new System.Windows.Forms.Label();
-            this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.lblProfesor = new System.Windows.Forms.Label();
+            this.lblMateria = new System.Windows.Forms.Label();
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
             this.btnFiltrar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarFiltros = new FontAwesome.Sharp.IconButton();
@@ -55,6 +54,7 @@
             this.cmbLlamados = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnReporteMesas = new FontAwesome.Sharp.IconButton();
+            this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel0.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesasFinales)).BeginInit();
@@ -67,16 +67,16 @@
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel0.Controls.Add(this.cmbMateria, 1, 2);
             this.tableLayoutPanel0.Controls.Add(this.lblCarrera, 0, 0);
             this.tableLayoutPanel0.Controls.Add(this.cmbCarrera, 1, 0);
             this.tableLayoutPanel0.Controls.Add(this.lblAnio, 2, 0);
             this.tableLayoutPanel0.Controls.Add(this.cmbAnio, 3, 0);
             this.tableLayoutPanel0.Controls.Add(this.lblCurso, 0, 1);
             this.tableLayoutPanel0.Controls.Add(this.cmbCurso, 1, 1);
-            this.tableLayoutPanel0.Controls.Add(this.lblMateria, 2, 1);
-            this.tableLayoutPanel0.Controls.Add(this.cmbMateria, 3, 1);
-            this.tableLayoutPanel0.Controls.Add(this.lblProfesor, 0, 2);
-            this.tableLayoutPanel0.Controls.Add(this.cmbProfesor, 1, 2);
+            this.tableLayoutPanel0.Controls.Add(this.lblProfesor, 2, 1);
+            this.tableLayoutPanel0.Controls.Add(this.lblMateria, 0, 2);
+            this.tableLayoutPanel0.Controls.Add(this.cmbProfesor, 3, 1);
             this.tableLayoutPanel0.Controls.Add(this.btnFiltrar, 2, 2);
             this.tableLayoutPanel0.Controls.Add(this.btnLimpiarFiltros, 3, 2);
             this.tableLayoutPanel0.Dock = System.Windows.Forms.DockStyle.Top;
@@ -86,6 +86,7 @@
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel0.Size = new System.Drawing.Size(760, 140);
             this.tableLayoutPanel0.TabIndex = 0;
             // 
@@ -104,6 +105,8 @@
             this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCarrera.FormattingEnabled = true;
+            this.cmbCarrera.Items.AddRange(new object[] {
+            "Todos"});
             this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
             this.cmbCarrera.Name = "cmbCarrera";
             this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
@@ -155,44 +158,32 @@
             this.cmbCurso.TabIndex = 5;
             this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
-            // lblMateria
-            // 
-            this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(383, 59);
-            this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(184, 19);
-            this.lblMateria.TabIndex = 6;
-            this.lblMateria.Text = "Materia:";
-            // 
-            // cmbMateria
-            // 
-            this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMateria.Enabled = false;
-            this.cmbMateria.FormattingEnabled = true;
-            this.cmbMateria.Location = new System.Drawing.Point(573, 49);
-            this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
-            this.cmbMateria.TabIndex = 7;
-            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
-            // 
             // lblProfesor
             // 
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(3, 106);
+            this.lblProfesor.Location = new System.Drawing.Point(383, 59);
             this.lblProfesor.Name = "lblProfesor";
             this.lblProfesor.Size = new System.Drawing.Size(184, 19);
-            this.lblProfesor.TabIndex = 8;
+            this.lblProfesor.TabIndex = 6;
             this.lblProfesor.Text = "Profesor:";
+            // 
+            // lblMateria
+            // 
+            this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMateria.AutoSize = true;
+            this.lblMateria.Location = new System.Drawing.Point(3, 106);
+            this.lblMateria.Name = "lblMateria";
+            this.lblMateria.Size = new System.Drawing.Size(184, 19);
+            this.lblMateria.TabIndex = 8;
+            this.lblMateria.Text = "Materia:";
             // 
             // cmbProfesor
             // 
             this.cmbProfesor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesor.FormattingEnabled = true;
-            this.cmbProfesor.Location = new System.Drawing.Point(193, 95);
+            this.cmbProfesor.Location = new System.Drawing.Point(573, 49);
             this.cmbProfesor.Name = "cmbProfesor";
             this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
             this.cmbProfesor.TabIndex = 9;
@@ -273,25 +264,25 @@
             this.dgvMesasFinales.BackgroundColor = System.Drawing.Color.White;
             this.dgvMesasFinales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvMesasFinales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvMesasFinales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMesasFinales, 4);
             this.dgvMesasFinales.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvMesasFinales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMesasFinales.EnableHeadersVisualStyles = false;
             this.dgvMesasFinales.GridColor = System.Drawing.Color.White;
@@ -300,22 +291,22 @@
             this.dgvMesasFinales.Name = "dgvMesasFinales";
             this.dgvMesasFinales.ReadOnly = true;
             this.dgvMesasFinales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvMesasFinales.RowHeadersVisible = false;
             this.dgvMesasFinales.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvMesasFinales.RowTemplate.Height = 28;
             this.dgvMesasFinales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
@@ -338,7 +329,7 @@
             this.btnAgregarMesa.Name = "btnAgregarMesa";
             this.btnAgregarMesa.Size = new System.Drawing.Size(154, 34);
             this.btnAgregarMesa.TabIndex = 4;
-            this.btnAgregarMesa.Text = "    Mesa Especial    ";
+            this.btnAgregarMesa.Text = "     Agregar Mesa   ";
             this.btnAgregarMesa.UseVisualStyleBackColor = false;
             this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
             // 
@@ -426,6 +417,18 @@
             this.btnReporteMesas.UseVisualStyleBackColor = false;
             this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
             // 
+            // cmbMateria
+            // 
+            this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMateria.Enabled = false;
+            this.cmbMateria.FormattingEnabled = true;
+            this.cmbMateria.Location = new System.Drawing.Point(193, 95);
+            this.cmbMateria.Name = "cmbMateria";
+            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
+            this.cmbMateria.TabIndex = 12;
+            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
+            // 
             // FormMesasFinales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -455,9 +458,8 @@
         private System.Windows.Forms.ComboBox cmbAnio;
         private System.Windows.Forms.Label lblCurso;
         private System.Windows.Forms.ComboBox cmbCurso;
-        private System.Windows.Forms.Label lblMateria;
-        private System.Windows.Forms.ComboBox cmbMateria;
         private System.Windows.Forms.Label lblProfesor;
+        private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbProfesor;
         private FontAwesome.Sharp.IconButton btnFiltrar;
         private FontAwesome.Sharp.IconButton btnLimpiarFiltros;
@@ -471,5 +473,6 @@
         private System.Windows.Forms.ComboBox cmbLlamados;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton btnReporteMesas;
+        private System.Windows.Forms.ComboBox cmbMateria;
     }
 }

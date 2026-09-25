@@ -119,15 +119,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnAgregarMesa_Click(object sender, EventArgs e)
         {
-            int carreraSeleccionada = this.CarreraId;
-            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
-                carreraSeleccionada = cid;
+            //int carreraSeleccionada = this.CarreraId;
+            //if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
+            //    carreraSeleccionada = cid;
 
-            if (carreraSeleccionada <= 0)
-            {
-                Notificar(TipoNotificacion.Warning, "Debe seleccionar una carrera para agregar una mesa especial");
-                return;
-            }
+            //if (carreraSeleccionada <= 0)
+            //{
+            //    Notificar(TipoNotificacion.Warning, "Debe seleccionar una carrera para agregar una mesa especial");
+            //    return;
+            //}
 
             if (cmbAnioLectivo.SelectedValue == null || !int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int anioLectivoSeleccionado))
             {
@@ -138,7 +138,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {
                 form.Accion = TipoAccion.Agregar;
-                form.CarreraId = carreraSeleccionada;
+                form.CarreraId = 0;
                 form.NombreCarrera = this.NombreCarrera;
                 form.AnioLectivoId = anioLectivoSeleccionado;
             });
@@ -262,9 +262,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 form.NombreCarrera = this.NombreCarrera;
                 form.MesaFinalId = (int)dgvMesasFinales.Rows[e.RowIndex].Cells["MesaFinalId"].Value;
                 form.Fecha = DateTime.Now;
-                form.AnioLectivoId = (int)cmbAnioLectivo.SelectedValue;
-                form.TurnoId = (int)cmbTurno.SelectedValue;
-                form.LlamadoId = (int)cmbLlamados.SelectedValue;
+                //form.AnioLectivoId = (int)cmbAnioLectivo.SelectedValue;
+                //form.TurnoId = (int)cmbTurno.SelectedValue;
+                //form.LlamadoId = (int)cmbLlamados.SelectedValue;
             });
         }
 
