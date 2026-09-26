@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.lblCarrera = new System.Windows.Forms.Label();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
             this.lblAnio = new System.Windows.Forms.Label();
@@ -42,19 +43,18 @@
             this.lblProfesor = new System.Windows.Forms.Label();
             this.lblMateria = new System.Windows.Forms.Label();
             this.cmbProfesor = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbAnioLectivo = new System.Windows.Forms.ComboBox();
+            this.cmbTurno = new System.Windows.Forms.ComboBox();
+            this.cmbLlamados = new System.Windows.Forms.ComboBox();
+            this.btnReporteMesas = new FontAwesome.Sharp.IconButton();
+            this.btnAgregarMesa = new FontAwesome.Sharp.IconButton();
             this.btnFiltrar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarFiltros = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMesasFinales = new System.Windows.Forms.DataGridView();
-            this.btnAgregarMesa = new FontAwesome.Sharp.IconButton();
-            this.cmbAnioLectivo = new System.Windows.Forms.ComboBox();
-            this.cmbTurno = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbLlamados = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnReporteMesas = new FontAwesome.Sharp.IconButton();
-            this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel0.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesasFinales)).BeginInit();
@@ -67,34 +67,51 @@
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel0.Controls.Add(this.cmbMateria, 1, 2);
-            this.tableLayoutPanel0.Controls.Add(this.lblCarrera, 0, 0);
-            this.tableLayoutPanel0.Controls.Add(this.cmbCarrera, 1, 0);
-            this.tableLayoutPanel0.Controls.Add(this.lblAnio, 2, 0);
-            this.tableLayoutPanel0.Controls.Add(this.cmbAnio, 3, 0);
-            this.tableLayoutPanel0.Controls.Add(this.lblCurso, 0, 1);
-            this.tableLayoutPanel0.Controls.Add(this.cmbCurso, 1, 1);
-            this.tableLayoutPanel0.Controls.Add(this.lblProfesor, 2, 1);
-            this.tableLayoutPanel0.Controls.Add(this.lblMateria, 0, 2);
-            this.tableLayoutPanel0.Controls.Add(this.cmbProfesor, 3, 1);
-            this.tableLayoutPanel0.Controls.Add(this.btnFiltrar, 2, 2);
-            this.tableLayoutPanel0.Controls.Add(this.btnLimpiarFiltros, 3, 2);
+            this.tableLayoutPanel0.Controls.Add(this.cmbLlamados, 1, 3);
+            this.tableLayoutPanel0.Controls.Add(this.cmbTurno, 3, 3);
+            this.tableLayoutPanel0.Controls.Add(this.cmbAnioLectivo, 1, 0);
+            this.tableLayoutPanel0.Controls.Add(this.cmbMateria, 3, 2);
+            this.tableLayoutPanel0.Controls.Add(this.label2, 2, 3);
+            this.tableLayoutPanel0.Controls.Add(this.cmbCarrera, 3, 0);
+            this.tableLayoutPanel0.Controls.Add(this.cmbAnio, 1, 1);
+            this.tableLayoutPanel0.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel0.Controls.Add(this.cmbCurso, 3, 1);
+            this.tableLayoutPanel0.Controls.Add(this.cmbProfesor, 1, 2);
+            this.tableLayoutPanel0.Controls.Add(this.lblMateria, 2, 2);
+            this.tableLayoutPanel0.Controls.Add(this.lblProfesor, 0, 2);
+            this.tableLayoutPanel0.Controls.Add(this.lblCurso, 2, 1);
+            this.tableLayoutPanel0.Controls.Add(this.lblAnio, 0, 1);
+            this.tableLayoutPanel0.Controls.Add(this.lblCarrera, 2, 0);
+            this.tableLayoutPanel0.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel0.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel0.Location = new System.Drawing.Point(20, 10);
             this.tableLayoutPanel0.Name = "tableLayoutPanel0";
-            this.tableLayoutPanel0.RowCount = 3;
+            this.tableLayoutPanel0.RowCount = 4;
+            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.38095F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.23423F));
+            this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel0.Size = new System.Drawing.Size(760, 140);
+            this.tableLayoutPanel0.Size = new System.Drawing.Size(760, 143);
             this.tableLayoutPanel0.TabIndex = 0;
+            // 
+            // cmbMateria
+            // 
+            this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMateria.Enabled = false;
+            this.cmbMateria.FormattingEnabled = true;
+            this.cmbMateria.Location = new System.Drawing.Point(573, 74);
+            this.cmbMateria.Name = "cmbMateria";
+            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
+            this.cmbMateria.TabIndex = 12;
+            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
             // lblCarrera
             // 
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(3, 13);
+            this.lblCarrera.Location = new System.Drawing.Point(383, 8);
             this.lblCarrera.Name = "lblCarrera";
             this.lblCarrera.Size = new System.Drawing.Size(184, 19);
             this.lblCarrera.TabIndex = 0;
@@ -107,7 +124,7 @@
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Items.AddRange(new object[] {
             "Todos"});
-            this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
+            this.cmbCarrera.Location = new System.Drawing.Point(573, 3);
             this.cmbCarrera.Name = "cmbCarrera";
             this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
             this.cmbCarrera.TabIndex = 1;
@@ -118,7 +135,7 @@
             // 
             this.lblAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(383, 13);
+            this.lblAnio.Location = new System.Drawing.Point(3, 43);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(184, 19);
             this.lblAnio.TabIndex = 2;
@@ -130,7 +147,7 @@
             this.cmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnio.Enabled = false;
             this.cmbAnio.FormattingEnabled = true;
-            this.cmbAnio.Location = new System.Drawing.Point(573, 3);
+            this.cmbAnio.Location = new System.Drawing.Point(193, 38);
             this.cmbAnio.Name = "cmbAnio";
             this.cmbAnio.Size = new System.Drawing.Size(184, 27);
             this.cmbAnio.TabIndex = 3;
@@ -140,7 +157,7 @@
             // 
             this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(3, 59);
+            this.lblCurso.Location = new System.Drawing.Point(383, 43);
             this.lblCurso.Name = "lblCurso";
             this.lblCurso.Size = new System.Drawing.Size(184, 19);
             this.lblCurso.TabIndex = 4;
@@ -152,7 +169,7 @@
             this.cmbCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurso.Enabled = false;
             this.cmbCurso.FormattingEnabled = true;
-            this.cmbCurso.Location = new System.Drawing.Point(193, 49);
+            this.cmbCurso.Location = new System.Drawing.Point(573, 38);
             this.cmbCurso.Name = "cmbCurso";
             this.cmbCurso.Size = new System.Drawing.Size(184, 27);
             this.cmbCurso.TabIndex = 5;
@@ -162,7 +179,7 @@
             // 
             this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(383, 59);
+            this.lblProfesor.Location = new System.Drawing.Point(3, 80);
             this.lblProfesor.Name = "lblProfesor";
             this.lblProfesor.Size = new System.Drawing.Size(184, 19);
             this.lblProfesor.TabIndex = 6;
@@ -172,7 +189,7 @@
             // 
             this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(3, 106);
+            this.lblMateria.Location = new System.Drawing.Point(383, 80);
             this.lblMateria.Name = "lblMateria";
             this.lblMateria.Size = new System.Drawing.Size(184, 19);
             this.lblMateria.TabIndex = 8;
@@ -183,12 +200,113 @@
             this.cmbProfesor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfesor.FormattingEnabled = true;
-            this.cmbProfesor.Location = new System.Drawing.Point(573, 49);
+            this.cmbProfesor.Location = new System.Drawing.Point(193, 74);
             this.cmbProfesor.Name = "cmbProfesor";
             this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
             this.cmbProfesor.TabIndex = 9;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Ciclo lectivo:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(383, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Turno:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 19);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Llamado:";
+            // 
+            // cmbAnioLectivo
+            // 
+            this.cmbAnioLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbAnioLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAnioLectivo.FormattingEnabled = true;
+            this.cmbAnioLectivo.Location = new System.Drawing.Point(193, 3);
+            this.cmbAnioLectivo.Name = "cmbAnioLectivo";
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(184, 27);
+            this.cmbAnioLectivo.TabIndex = 13;
+            this.cmbAnioLectivo.SelectedIndexChanged += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
+            // 
+            // cmbTurno
+            // 
+            this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurno.FormattingEnabled = true;
+            this.cmbTurno.Location = new System.Drawing.Point(573, 111);
+            this.cmbTurno.Name = "cmbTurno";
+            this.cmbTurno.Size = new System.Drawing.Size(184, 27);
+            this.cmbTurno.TabIndex = 14;
+            // 
+            // cmbLlamados
+            // 
+            this.cmbLlamados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbLlamados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLlamados.FormattingEnabled = true;
+            this.cmbLlamados.Location = new System.Drawing.Point(193, 111);
+            this.cmbLlamados.Name = "cmbLlamados";
+            this.cmbLlamados.Size = new System.Drawing.Size(184, 27);
+            this.cmbLlamados.TabIndex = 15;
+            // 
+            // btnReporteMesas
+            // 
+            this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
+            this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReporteMesas.Enabled = false;
+            this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
+            this.btnReporteMesas.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnReporteMesas.IconColor = System.Drawing.Color.White;
+            this.btnReporteMesas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporteMesas.IconSize = 25;
+            this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporteMesas.Location = new System.Drawing.Point(3, 3);
+            this.btnReporteMesas.Name = "btnReporteMesas";
+            this.btnReporteMesas.Size = new System.Drawing.Size(183, 49);
+            this.btnReporteMesas.TabIndex = 17;
+            this.btnReporteMesas.Text = "Imprimir Mesas";
+            this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReporteMesas.UseVisualStyleBackColor = false;
+            this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
+            // 
+            // btnAgregarMesa
+            // 
+            this.btnAgregarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnAgregarMesa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAgregarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarMesa.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarMesa.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
+            this.btnAgregarMesa.IconColor = System.Drawing.Color.White;
+            this.btnAgregarMesa.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAgregarMesa.IconSize = 25;
+            this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarMesa.Location = new System.Drawing.Point(192, 3);
+            this.btnAgregarMesa.Name = "btnAgregarMesa";
+            this.btnAgregarMesa.Size = new System.Drawing.Size(184, 49);
+            this.btnAgregarMesa.TabIndex = 18;
+            this.btnAgregarMesa.Text = "     Agregar Mesa Especial  ";
+            this.btnAgregarMesa.UseVisualStyleBackColor = false;
+            this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
             // 
             // btnFiltrar
             // 
@@ -201,10 +319,10 @@
             this.btnFiltrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFiltrar.IconSize = 30;
             this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFiltrar.Location = new System.Drawing.Point(383, 95);
+            this.btnFiltrar.Location = new System.Drawing.Point(382, 3);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(184, 42);
-            this.btnFiltrar.TabIndex = 10;
+            this.btnFiltrar.Size = new System.Drawing.Size(183, 49);
+            this.btnFiltrar.TabIndex = 19;
             this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = false;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -220,10 +338,10 @@
             this.btnLimpiarFiltros.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarFiltros.IconSize = 30;
             this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpiarFiltros.Location = new System.Drawing.Point(573, 95);
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(571, 3);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
-            this.btnLimpiarFiltros.Size = new System.Drawing.Size(184, 42);
-            this.btnLimpiarFiltros.TabIndex = 11;
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(186, 49);
+            this.btnLimpiarFiltros.TabIndex = 20;
             this.btnLimpiarFiltros.Text = "Limpiar Filtros";
             this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
@@ -231,27 +349,22 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.27496F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.09982F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvMesasFinales, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnAgregarMesa, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbAnioLectivo, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cmbTurno, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbLlamados, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnReporteMesas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvMesasFinales, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnLimpiarFiltros, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnFiltrar, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnAgregarMesa, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnReporteMesas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 150);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 153);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 280);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 277);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // dgvMesasFinales
@@ -286,7 +399,7 @@
             this.dgvMesasFinales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMesasFinales.EnableHeadersVisualStyles = false;
             this.dgvMesasFinales.GridColor = System.Drawing.Color.White;
-            this.dgvMesasFinales.Location = new System.Drawing.Point(3, 83);
+            this.dgvMesasFinales.Location = new System.Drawing.Point(3, 58);
             this.dgvMesasFinales.MultiSelect = false;
             this.dgvMesasFinales.Name = "dgvMesasFinales";
             this.dgvMesasFinales.ReadOnly = true;
@@ -309,125 +422,8 @@
             this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvMesasFinales.RowTemplate.Height = 28;
             this.dgvMesasFinales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMesasFinales.Size = new System.Drawing.Size(754, 194);
-            this.dgvMesasFinales.TabIndex = 3;
-            this.dgvMesasFinales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMesasFinales_CellDoubleClick);
-            this.dgvMesasFinales.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMesasFinales_CellFormatting);
-            // 
-            // btnAgregarMesa
-            // 
-            this.btnAgregarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnAgregarMesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAgregarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarMesa.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarMesa.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
-            this.btnAgregarMesa.IconColor = System.Drawing.Color.White;
-            this.btnAgregarMesa.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAgregarMesa.IconSize = 25;
-            this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarMesa.Location = new System.Drawing.Point(3, 3);
-            this.btnAgregarMesa.Name = "btnAgregarMesa";
-            this.btnAgregarMesa.Size = new System.Drawing.Size(154, 34);
-            this.btnAgregarMesa.TabIndex = 4;
-            this.btnAgregarMesa.Text = "     Agregar Mesa   ";
-            this.btnAgregarMesa.UseVisualStyleBackColor = false;
-            this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
-            // 
-            // cmbAnioLectivo
-            // 
-            this.cmbAnioLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbAnioLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAnioLectivo.FormattingEnabled = true;
-            this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
-            this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 27);
-            this.cmbAnioLectivo.TabIndex = 5;
-            this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
-            // 
-            // cmbTurno
-            // 
-            this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(362, 43);
-            this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 27);
-            this.cmbTurno.TabIndex = 6;
-            this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 19);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Año:";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Turno:";
-            // 
-            // cmbLlamados
-            // 
-            this.cmbLlamados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbLlamados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLlamados.FormattingEnabled = true;
-            this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
-            this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 27);
-            this.cmbLlamados.TabIndex = 9;
-            this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 19);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Llamado:";
-            // 
-            // btnReporteMesas
-            // 
-            this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
-            this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReporteMesas.Enabled = false;
-            this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
-            this.btnReporteMesas.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnReporteMesas.IconColor = System.Drawing.Color.White;
-            this.btnReporteMesas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReporteMesas.IconSize = 25;
-            this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteMesas.Location = new System.Drawing.Point(3, 43);
-            this.btnReporteMesas.Name = "btnReporteMesas";
-            this.btnReporteMesas.Size = new System.Drawing.Size(154, 34);
-            this.btnReporteMesas.TabIndex = 11;
-            this.btnReporteMesas.Text = "Imprimir Mesas";
-            this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReporteMesas.UseVisualStyleBackColor = false;
-            this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
-            // 
-            // cmbMateria
-            // 
-            this.cmbMateria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMateria.Enabled = false;
-            this.cmbMateria.FormattingEnabled = true;
-            this.cmbMateria.Location = new System.Drawing.Point(193, 95);
-            this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
-            this.cmbMateria.TabIndex = 12;
-            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
+            this.dgvMesasFinales.Size = new System.Drawing.Size(754, 216);
+            this.dgvMesasFinales.TabIndex = 21;
             // 
             // FormMesasFinales
             // 
@@ -444,7 +440,6 @@
             this.tableLayoutPanel0.ResumeLayout(false);
             this.tableLayoutPanel0.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesasFinales)).EndInit();
             this.ResumeLayout(false);
 
@@ -461,18 +456,18 @@
         private System.Windows.Forms.Label lblProfesor;
         private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbProfesor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbMateria;
+        private System.Windows.Forms.ComboBox cmbTurno;
+        private System.Windows.Forms.ComboBox cmbAnioLectivo;
+        private System.Windows.Forms.ComboBox cmbLlamados;
+        private FontAwesome.Sharp.IconButton btnReporteMesas;
+        private FontAwesome.Sharp.IconButton btnAgregarMesa;
         private FontAwesome.Sharp.IconButton btnFiltrar;
         private FontAwesome.Sharp.IconButton btnLimpiarFiltros;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.DataGridView dgvMesasFinales;
-        private FontAwesome.Sharp.IconButton btnAgregarMesa;
-        private System.Windows.Forms.ComboBox cmbAnioLectivo;
-        private System.Windows.Forms.ComboBox cmbTurno;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbLlamados;
-        private System.Windows.Forms.Label label3;
-        private FontAwesome.Sharp.IconButton btnReporteMesas;
-        private System.Windows.Forms.ComboBox cmbMateria;
     }
 }
