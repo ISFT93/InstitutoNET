@@ -17,6 +17,8 @@ namespace ISFDyT93.Entidades.Modelos
         [Ignorar]
         public string Nombre { get; set; }
         [Ignorar]
+        public int Modulos { get; set; }
+        [Ignorar]
         public bool Asignado { get => ModuloId != null && DiaId != null; }
     }
 }
