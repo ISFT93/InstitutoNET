@@ -11,16 +11,28 @@ namespace ISFDyT93.Datos.Daos
     public class AniosCarreraDao : DaoBase , IAniosCarreraDao
     {
         public DataTable ObtenerAniosCarrera(int carreraId)
+
         {
+
             string query = "SELECT AniosCarrerasCodigoBloque AS [Código], " +
+
                 "AnioCarreraId, " +
+
                 "AnioCarrera AS [Año], " +
+
                 "CantidadMaterias AS [Cantidad de Materias]," +
+
                 "CargaHorariaCompleta AS [Carga Horaria Completa] " +
+
                 "FROM AniosCarreras WHERE CarreraId = " + carreraId;
 
+
+
             return this.Conexion.ObtenerRegistros(query);
+
         }
+
+
         public int AgregarAnio(int anioCarrera, int carreraId, string aniosCarrerasCodigoBloque)
         {
             string query = "INSERT INTO AniosCarreras (AnioCarrera, CarreraId, AniosCarrerasCodigoBloque) VALUES(" + anioCarrera + "," + carreraId + ",'" + aniosCarrerasCodigoBloque + "')";
