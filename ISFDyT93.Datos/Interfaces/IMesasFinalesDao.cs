@@ -11,7 +11,7 @@ namespace ISFDyT93.Datos.Interfaces
     {
         DataTable ObtenerProfesorTitular(int MateriaId);
         DataTable ObtenerVocales(int CarreraId, int PersonalId);
-        int AgregarMesa(int CarreraId, DateTime fecha, int Turno, int Llamado, int MateriaId, int PresidenteId, int VocalId, int AnioLectivo);
+        int AgregarMesa(int CarreraId, DateTime fecha, int Turno, int Llamado, int MateriaId, int PresidenteId, int AnioLectivo, int? VocalId = null);
         DataTable ObtenerMesas(int CarreraId);
         int ModificarMesas(DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId);
         int EliminarMesas(int mesaFinalId);

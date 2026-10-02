@@ -40,7 +40,7 @@ namespace ISFDyT93.Negocio.Logica
             return this.mesasFinalesDao.ObtenerVocales(carreraId, personalId);
         }
 
-        public int AgregarMesa(int carreraId, DateTime fecha, int turno, int llamado, int materiaId, int presidenteId, int vocalId, int anioLectivo)
+        public int AgregarMesa(int carreraId, DateTime fecha, int turno, int llamado, int materiaId, int presidenteId, int anioLectivo, int? vocalId = null)
         {
             //Actas = serviciosLogica.ObtenerUltimoLibro((int)TipoLibro.LibroActaExamenes);
             //if (Actas.LibroActaId > 0)
@@ -50,7 +50,7 @@ namespace ISFDyT93.Negocio.Logica
             //int libroId = Actas.LibroActaId;
             //int libroNumero = Actas.LibroNumero;
             //int folioNumero = Actas.FolioNumero;
-            return this.mesasFinalesDao.AgregarMesa(carreraId, fecha, turno, llamado, materiaId, presidenteId, vocalId, anioLectivo);
+            return this.mesasFinalesDao.AgregarMesa(carreraId, fecha, turno, llamado, materiaId, presidenteId, anioLectivo, vocalId);
         }
 
         public int ModificarMesa(DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId)

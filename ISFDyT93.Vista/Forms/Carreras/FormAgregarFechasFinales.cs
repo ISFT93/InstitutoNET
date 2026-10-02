@@ -28,6 +28,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         public int AnioLectivoId { get; set; }
         public int TurnoId { get; set; }
         public int LlamadoId { get; set; }
+        public int ProfesorId { get; set; }
         #endregion
 
         #region Privates
@@ -54,7 +55,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             //dtpFechaMesa.MinDate = DateTime.Today.AddDays(1);
             //dtpFechaMesa.Value = DateTime.Today.AddDays(1);
-
+            CargarAniosLectivos();
             CargarCarreras();
             if (this.Accion == TipoAccion.Agregar)
             {
@@ -87,6 +88,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 });
             });
         }
+        private void CargarAniosLectivos()
+        {
+            DataTable dt = mesasFinalesLogica.ObtenerAniosLectivos();
+            // Ciclo lectivo
+            AnioLectivoId = Convert.ToInt32(dt.Rows[0]["CicloLectivoId"]);
+        }
+
+
         private void CargarCarreras()
         {
             DataTable dt = _carrerasDao.CarrerasActivas();
@@ -133,13 +142,23 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void CargarProfesorTitular()
         {
-            if (cmbMateria.SelectedValue == null || !int.TryParse(cmbMateria.SelectedValue.ToString(), out int materiaId)) return;
+            if (cmbMateria.SelectedValue == null ||
+        !int.TryParse(cmbMateria.SelectedValue.ToString(), out int materiaId))
+                return;
 
-            //cmbPresidenteMesa.DataSource = mesasFinalesLogica.ObtenerProfesorTitular(materiaId);
-           // cmbPresidenteMesa.ValueMember = "PersonalId";
-            //cmbPresidenteMesa.DisplayMember = "Nombre";
-            //cmbPresidenteMesa.SelectedIndex = -1;
-            //cmbPresidenteMesa.Enabled = cmbPresidenteMesa.Items.Count > 0;
+            DataTable dt = mesasFinalesLogica.ObtenerProfesorTitular(materiaId);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int personalId = Convert.ToInt32(dt.Rows[0]["PersonalId"]);
+
+                // Si tenés una variable de clase:
+                ProfesorId = personalId;
+            }
+            else
+            {
+                ProfesorId = 0;
+            }
             ValidarCampos();
         }
         private void CargarVocales(int PersonalId)
@@ -183,7 +202,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             if (this.Accion == TipoAccion.Agregar)
             {
-                int res = mesasFinalesLogica.AgregarMesa(Convert.ToInt32(cmbCarrera.SelectedValue), fecha, 4, 3, Convert.ToInt32(cmbMateria.SelectedValue), 0, 0, this.AnioLectivoId);
+                if (ProfesorId == 0)
+                {
+                    Notificar(TipoNotificacion.Warning, "La materia no tiene un profesor asignado");
+                    return;
+                }
+                int res = mesasFinalesLogica.AgregarMesa(Convert.ToInt32(cmbCarrera.SelectedValue), fecha, 4, 3, Convert.ToInt32(cmbMateria.SelectedValue), ProfesorId, AnioLectivoId, null);
                 if (res > 0)
                 {
                     Notificar(TipoNotificacion.Success, "Mesa agregada correctamente");
@@ -301,6 +325,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarMaterias();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

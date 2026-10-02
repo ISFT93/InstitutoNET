@@ -129,18 +129,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
             //    return;
             //}
 
-            if (cmbAnioLectivo.SelectedValue == null || !int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int anioLectivoSeleccionado))
-            {
-                Notificar(TipoNotificacion.Warning, "Debe seleccionar un ciclo lectivo válido para agregar una mesa especial");
-                return;
-            }
+            //if (cmbAnioLectivo.SelectedValue == null || !int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int anioLectivoSeleccionado))
+            //{
+            //    Notificar(TipoNotificacion.Warning, "Debe seleccionar un ciclo lectivo válido para agregar una mesa especial");
+            //    return;
+            //}
 
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {
                 form.Accion = TipoAccion.Agregar;
                 form.CarreraId = 0;
                 form.NombreCarrera = this.NombreCarrera;
-                form.AnioLectivoId = anioLectivoSeleccionado;
+                //form.AnioLectivoId = anioLectivoSeleccionado;
             });
         }
 
@@ -199,26 +199,51 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void CargarAniosLectivos()
         {
             DataTable dt = mesasFinalesLogica.ObtenerAniosLectivos();
-            if (dt.Rows.Count > 0)
+
+            if (dt == null || dt.Rows.Count == 0)
             {
-                cmbAnioLectivo.DataSource = dt;
-                cmbAnioLectivo.DisplayMember = "CicloLectivoId";
-                cmbAnioLectivo.ValueMember = "CicloLectivoId";
-                if (AnioLectivoId != 0)
-                    cmbAnioLectivo.SelectedValue = this.AnioLectivoId;
-                if (cmbAnioLectivo.SelectedValue != null && int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int aid))
-                    anioLectivoId = aid;
+                cmbAnioLectivo.DataSource = null;
+                anioLectivoId = 0;
+                return;
+            }
+
+            // Primero configurar las columnas
+            cmbAnioLectivo.DisplayMember = "CicloLectivoId";
+            cmbAnioLectivo.ValueMember = "CicloLectivoId";
+
+            // DataSource al final
+            cmbAnioLectivo.DataSource = dt;
+
+            if (AnioLectivoId != 0)
+            {
+                cmbAnioLectivo.SelectedValue = AnioLectivoId;
+            }
+            else
+            {
+                cmbAnioLectivo.SelectedIndex = -1;
+            }
+
+            if (cmbAnioLectivo.SelectedValue != null &&
+                int.TryParse(
+                    cmbAnioLectivo.SelectedValue.ToString(),
+                    out int aid))
+            {
+                anioLectivoId = aid;
             }
         }
 
         private void cmbAnioLectivo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            anioLectivoId = (int)cmbAnioLectivo.SelectedValue;
+            if (cmbAnioLectivo.SelectedValue == null)
+                return;
+            anioLectivoId = Convert.ToInt32(cmbAnioLectivo.SelectedValue);
         }
 
         private void cmbLlamados_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            llamadoId = (int)cmbLlamados.SelectedValue;
+            if (cmbLlamados.SelectedValue == null)
+                return;
+            llamadoId = Convert.ToInt32(cmbLlamados.SelectedValue);
         }
 
         private void cmbTurno_SelectionChangeCommitted(object sender, EventArgs e)
@@ -275,6 +300,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             int filtroCursoId = 0;
             int filtroMateriaId = 0;
             int filtroProfesorId = 0;
+            int filtroLlamadoId = 0;
+            int filtroAnioLectivoId = 0;
+            int filtroTurnoId = 0;
 
             if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
                 filtroCarreraId = cid;
@@ -286,9 +314,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 filtroMateriaId = mid;
             if (cmbProfesor.SelectedValue != null && int.TryParse(cmbProfesor.SelectedValue.ToString(), out int pid))
                 filtroProfesorId = pid;
+            if (cmbLlamados.SelectedValue != null && int.TryParse(cmbLlamados.SelectedValue.ToString(), out int lid))
+                filtroLlamadoId = lid;
+            if (cmbAnioLectivo.SelectedValue != null && int.TryParse(cmbAnioLectivo.SelectedValue.ToString(), out int alid))
+                filtroAnioLectivoId = alid;
+            if (cmbTurno.SelectedValue != null && int.TryParse(cmbTurno.SelectedValue.ToString(), out int tid))
+                filtroTurnoId = tid;
 
             dgvMesasFinales.DataSource = mesasFinalesLogica.ObtenerMesasFiltro(
-                filtroCarreraId, anioLectivoId, turnoId, llamadoId,
+                filtroCarreraId, filtroAnioLectivoId, filtroTurnoId, filtroLlamadoId,
                 filtroAnioCarreraId, filtroCursoId, filtroMateriaId, filtroProfesorId);
 
             if (dgvMesasFinales.Columns["MesaFinalId"] != null)
@@ -369,7 +403,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             DataTable dt = _carrerasDao.CarrerasActivas();
             cmbCarrera.DataSource = dt;
             cmbCarrera.ValueMember = "CarreraId";
-            cmbCarrera.DisplayMember = "Nombre";
+            cmbCarrera.DisplayMember = "Descripción";
             cmbCarrera.SelectedIndex = -1;
         }
 
@@ -594,6 +628,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbMateria.Text = string.Empty;
             cmbMateria.SelectedIndex = -1;
             cmbMateria.Enabled = false;
+
+            cmbLlamados.DataSource = null;
+            cmbLlamados.Items.Clear();
+            cmbLlamados.Text = string.Empty;
+            cmbLlamados.SelectedIndex = -1;
+            cmbLlamados.Enabled = true;
+
+            cmbTurno.DataSource = null;
+            cmbTurno.Items.Clear();
+            cmbTurno.Text = string.Empty;
+            cmbTurno.SelectedIndex = -1;
+            cmbTurno.Enabled = true;
+
+
 
             carrerasCargadas = false;
             profesoresCargados = false;

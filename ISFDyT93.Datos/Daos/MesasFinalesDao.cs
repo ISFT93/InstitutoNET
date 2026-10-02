@@ -39,9 +39,12 @@ namespace ISFDyT93.Datos.Daos
             return this.Conexion.ObtenerRegistros(query);
         }
 
-        public int AgregarMesa(int CarreraId, DateTime fecha, int Turno, int Llamado, int MateriaId, int PresidenteId, int VocalId, int AnioLectivo)
+        public int AgregarMesa(int CarreraId, DateTime fecha, int Turno, int Llamado, int MateriaId, int PresidenteId, int AnioLectivo, int? VocalId = null)
         {
-            var query = $"insert into MesasFinales values ({CarreraId} ,'{fecha:yyyy-MM-dd}', {Turno}, {Llamado}, {MateriaId}, {PresidenteId}, {VocalId}, {AnioLectivo}, 1)";
+            string vocalSql = VocalId.HasValue
+        ? VocalId.Value.ToString()
+        : "NULL";
+            var query = $@" INSERT INTO MesasFinales ( CarreraId, TurnoId,LlamadoId, MateriaId, PresidenteId, CicloLectivoId, FinalEstadoId ) VALUES ( {CarreraId}, {Turno}, {Llamado}, {MateriaId}, {PresidenteId}, {AnioLectivo}, 1)";
             return this.Conexion.EjecutarAccion(query);
         }
 

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.cmbCarrera = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new FontAwesome.Sharp.IconButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.cmbTurno = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbCarrera = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,16 +65,28 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 315);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // label2
+            // cmbCarrera
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 176);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Materia";
+            this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCarrera.FormattingEnabled = true;
+            this.cmbCarrera.Location = new System.Drawing.Point(113, 3);
+            this.cmbCarrera.Name = "cmbCarrera";
+            this.cmbCarrera.Size = new System.Drawing.Size(644, 27);
+            this.cmbCarrera.TabIndex = 13;
+            this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 19);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Carrera";
             // 
             // cmbMateria
             // 
@@ -109,16 +121,6 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 19);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Turno";
-            // 
             // cmbTurno
             // 
             this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -130,26 +132,25 @@
             this.cmbTurno.Size = new System.Drawing.Size(644, 27);
             this.cmbTurno.TabIndex = 10;
             // 
-            // label1
+            // label5
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 19);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Carrera";
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 19);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Turno";
             // 
-            // cmbCarrera
+            // label2
             // 
-            this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCarrera.FormattingEnabled = true;
-            this.cmbCarrera.Location = new System.Drawing.Point(113, 3);
-            this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(644, 27);
-            this.cmbCarrera.TabIndex = 13;
-            this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 176);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Materia";
             // 
             // FormAgregarFechasFinales
             // 
