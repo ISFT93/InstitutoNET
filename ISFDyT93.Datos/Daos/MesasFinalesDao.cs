@@ -59,7 +59,7 @@ namespace ISFDyT93.Datos.Daos
 
         public int ModificarMesas(DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId)
         {
-            var query = $"update MesasFinales set Fecha = '{fecha:yyyy-MM-dd}', TurnoId = '{turno}', PresidenteId = {presidenteId}, VocalId = {vocalId}, FinalEstadoId = 1 where MesaFinalId = {mesaFinalId}";
+            var query = $"update MesasFinales set Fecha = '{fecha:yyyy-MM-dd}', TurnoId = '{turno}', VocalId = {vocalId}, FinalEstadoId = 1 where MesaFinalId = {mesaFinalId}";
             return this.Conexion.EjecutarAccion(query);
         }
 
@@ -109,7 +109,7 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0)
         {
-            var query = "select distinct Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat(Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat(Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado'" +
+            var query = "select distinct Fi.MesaFinalId, Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat(Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat(Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado', Fi.VocalId, Fi.CarreraId, Fi.CicloLectivoId,Fi.FinalEstadoId" +
                 " from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId" +
                 " inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId" +
                 " inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId" +

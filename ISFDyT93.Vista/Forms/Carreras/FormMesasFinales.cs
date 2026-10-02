@@ -101,7 +101,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (this.CarreraId > 0)
             {
                 CargarCarreras();
-                cmbCarrera.SelectedValue = this.CarreraId;
+                //cmbCarrera.SelectedValue = this.CarreraId;
             }
 
             CargarTurnos();
@@ -216,7 +216,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             if (AnioLectivoId != 0)
             {
-                cmbAnioLectivo.SelectedValue = AnioLectivoId;
+                //cmbAnioLectivo.SelectedValue = AnioLectivoId;
             }
             else
             {
@@ -259,7 +259,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa para imprimir");
                 return;
             }
-
+            if (Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["FinalEstadoId"].Value) == 3 || Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["FinalEstadoId"].Value) == 2)
+            {
+                Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa activa para imprimir");
+                return;
+            }
             int mesaFinalId = Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["MesaFinalId"].Value);
             var data = this.mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
             string carreraReporte = data.Rows.Count > 0 ? Convert.ToString(data.Rows[0]["Carrera"]) : string.Empty;
@@ -270,29 +274,62 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 .AddParameter("Carrera", carreraReporte)
                 .AddParameter("Turno", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Turno"].Value))
                 .AddParameter("Llamado", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Llamado"].Value))
-                .AddParameter("AnioLectivo", cmbAnioLectivo.Text);
+                .AddParameter("AnioLectivo", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["MesaFinalId"].Value));
             });
         }
 
         private void dgvMesasFinales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int carreraSeleccionada = this.CarreraId;
-            if (cmbCarrera.SelectedValue != null && int.TryParse(cmbCarrera.SelectedValue.ToString(), out int cid))
-                carreraSeleccionada = cid;
+
+            // Evita encabezados o índices inválidos
+            if (e.RowIndex < 0 || e.RowIndex >= dgvMesasFinales.Rows.Count)
+                return;
+
+            DataGridViewRow fila = dgvMesasFinales.Rows[e.RowIndex];
+
+            if (fila == null || fila.IsNewRow)
+                return;
 
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {
                 form.Accion = TipoAccion.Modificar;
-                form.CarreraId = carreraSeleccionada;
+
+                form.CarreraId = ObtenerIdCelda(fila, "CarreraId");
                 form.NombreCarrera = this.NombreCarrera;
-                form.MesaFinalId = (int)dgvMesasFinales.Rows[e.RowIndex].Cells["MesaFinalId"].Value;
+                form.MesaFinalId = ObtenerIdCelda(fila, "MesaFinalId");
+
+                // Si VocalId no existe o viene NULL → devuelve 0
+                form.VocalId = ObtenerIdCelda(fila, "VocalId");
+
                 form.Fecha = DateTime.Now;
-                //form.AnioLectivoId = (int)cmbAnioLectivo.SelectedValue;
-                //form.TurnoId = (int)cmbTurno.SelectedValue;
-                //form.LlamadoId = (int)cmbLlamados.SelectedValue;
             });
         }
+        private int ObtenerIdCelda(DataGridViewRow fila, string columna)
+        {
+            // No existe la fila
+            if (fila == null)
+                return 0;
 
+            // No está asociada a un DataGridView
+            if (fila.DataGridView == null)
+                return 0;
+
+            // No existe la columna
+            if (!fila.DataGridView.Columns.Contains(columna))
+                return 0;
+
+            object valor = fila.Cells[columna].Value;
+
+            // La celda no tiene valor
+            if (valor == null || valor == DBNull.Value)
+                return 0;
+
+            // Intenta convertirlo
+            if (int.TryParse(valor.ToString(), out int id))
+                return id;
+
+            return 0;
+        }
         private void DGVRefresh()
         {
             int filtroCarreraId = 0;
@@ -331,6 +368,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 dgvMesasFinales.Columns["Turno"].Visible = false;
             if (dgvMesasFinales.Columns["Llamado"] != null)
                 dgvMesasFinales.Columns["Llamado"].Visible = false;
+            if (dgvMesasFinales.Columns["CarreraId"] != null)
+                dgvMesasFinales.Columns["CarreraId"].Visible = false;
+            if (dgvMesasFinales.Columns["VocalId"] != null)
+                dgvMesasFinales.Columns["VocalId"].Visible = false; 
+            if (dgvMesasFinales.Columns["CicloLectivoId"] != null)
+                dgvMesasFinales.Columns["CicloLectivoId"].Visible = false;
+            if (dgvMesasFinales.Columns["FinalEstadoId"] != null)
+                dgvMesasFinales.Columns["FinalEstadoId"].Visible = false;
 
             if (dgvMesasFinales.Rows.Count > 0)
             {

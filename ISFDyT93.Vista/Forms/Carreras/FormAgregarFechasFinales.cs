@@ -29,6 +29,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         public int TurnoId { get; set; }
         public int LlamadoId { get; set; }
         public int ProfesorId { get; set; }
+        public int VocalId { get; set; }
         #endregion
 
         #region Privates
@@ -53,13 +54,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormAgregarMesas_Load(object sender, EventArgs e)
         {
-            //dtpFechaMesa.MinDate = DateTime.Today.AddDays(1);
-            //dtpFechaMesa.Value = DateTime.Today.AddDays(1);
+            dtpFechaMesa.MinDate = DateTime.Today.AddDays(1);
+            dtpFechaMesa.Value = DateTime.Today.AddDays(1);
             CargarAniosLectivos();
             CargarCarreras();
+            ConfigurarDatePicker(dtpFechaMesa);
+            ValidarCampos();
             if (this.Accion == TipoAccion.Agregar)
             {
                 CargarMaterias();
+                OcultarVocalYFecha();
                 CargarTurnoMateria(true);
                 cmbMateria.Enabled = true;
                 title = "Agregar fecha especial";
@@ -70,15 +74,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 cmbCarrera.SelectedValue = this.CarreraId;
                 CargarTurnoMateria(false);
                 CargarProfesorTitular();
-                CargarVocales(0);
+                CargarVocales(ProfesorId);
                 title = "Asignar fecha y vocal";
+                btnAgregar.Text = "Modificar";
+                cmbCarrera.Enabled = false;
+                cmbMateria.Enabled = false;
             }
 
             Contenedor.SetTitulo(title).SetVolver(() =>
             {
                 Contenedor.AbrirFormulario<FormMesasFinales>(form =>
                 {
-                    form.CarreraId = this.CarreraId;
+                    //form.CarreraId = this.CarreraId;
                     form.NombreCarrera = this.NombreCarrera;
                     form.AnioLectivoId = this.AnioLectivoId;
                     form.TurnoId = this.TurnoId;
@@ -152,7 +159,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 int personalId = Convert.ToInt32(dt.Rows[0]["PersonalId"]);
 
-                // Si tenés una variable de clase:
                 ProfesorId = personalId;
             }
             else
@@ -163,34 +169,87 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
         private void CargarVocales(int PersonalId)
         {
-            //cmbVocalMesa.DataSource = mesasFinalesLogica.ObtenerVocales(this.CarreraId, PersonalId);
-            //cmbVocalMesa.ValueMember = "PersonalId";
-            //cmbVocalMesa.DisplayMember = "Nombre";
-            //cmbVocalMesa.SelectedIndex = -1;
-            //cmbVocalMesa.Enabled = cmbVocalMesa.Items.Count > 0;
+            cmbVocalMesa.DataSource = mesasFinalesLogica.ObtenerVocales(this.CarreraId, PersonalId);
+            cmbVocalMesa.ValueMember = "PersonalId";
+            cmbVocalMesa.DisplayMember = "Nombre";
+            cmbVocalMesa.SelectedValue = VocalId;
+            cmbVocalMesa.Enabled = cmbVocalMesa.Items.Count > 0;
             ValidarCampos();
         }
 
         private void dtpFechaMesa_ValueChanged(object sender, EventArgs e)
         {
-            //dtpFechaMesa.CustomFormat = "dd/MM/yyyy";
-            ValidarCampos();
+            dtpFechaMesa.CustomFormat = "dd/MM/yyyy";
+        }
+        private void ConfigurarDatePicker(DateTimePicker datePicker)
+        {
+            DateTime hoy = DateTime.Today;
+
+            // Rango permitido
+            datePicker.MinDate = hoy;
+            datePicker.MaxDate = hoy.AddYears(1);
+
+            // Fecha inicial
+            datePicker.Value = hoy;
+
+            // Formato
+            datePicker.Format = DateTimePickerFormat.Custom;
+            datePicker.CustomFormat = "dddd, dd 'de' MMMM 'de' yyyy";
+
+            // Estilo
+            datePicker.Font = new Font("Segoe UI", 10F);
+            datePicker.CalendarFont = new Font("Segoe UI", 10F);
+
+            datePicker.CalendarMonthBackground = Color.White;
+            datePicker.CalendarForeColor = Color.Black;
+            datePicker.CalendarTitleBackColor = Color.FromArgb(36, 35, 58);
+            datePicker.CalendarTitleForeColor = Color.White;
+            datePicker.CalendarTrailingForeColor = Color.Gray;
+
+            // Mostrar calendario desplegable
+            datePicker.ShowUpDown = false;
         }
 
+        private void OcultarVocalYFecha()
+        {
+            // VOCAL
+            int filaVocal = tableLayoutPanel1.GetRow(lblVocal);
+
+            lblVocal.Visible = false;
+            cmbVocalMesa.Visible = false;
+
+            tableLayoutPanel1.RowStyles[filaVocal].SizeType = SizeType.Absolute;
+            tableLayoutPanel1.RowStyles[filaVocal].Height = 0;
+
+
+            // FECHA
+            int filaFecha = tableLayoutPanel1.GetRow(lblFecha);
+
+            lblFecha.Visible = false;
+            dtpFechaMesa.Visible = false;
+
+            tableLayoutPanel1.RowStyles[filaFecha].SizeType = SizeType.Absolute;
+            tableLayoutPanel1.RowStyles[filaFecha].Height = 0;
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            fecha = dtpFechaMesa.Value.Date;
             if (this.Accion == TipoAccion.Modificar)
             {
-                int res = mesasFinalesLogica.ModificarMesa(fecha, Convert.ToInt32(cmbTurno.SelectedValue), 0, 0, this.MesaFinalId);
+                if (Convert.ToInt32(cmbVocalMesa.SelectedValue) == 0)
+                {
+                    Notificar(TipoNotificacion.Warning, "Seleccione un vocal!");
+                    return;
+                }
+                int res = mesasFinalesLogica.ModificarMesa(fecha, Convert.ToInt32(cmbTurno.SelectedValue), 0, Convert.ToInt32(cmbVocalMesa.SelectedValue), this.MesaFinalId);
                 if (res > 0)
                 {
                     Notificar(TipoNotificacion.Success, "Mesa modificada correctamente");
                     Contenedor.AbrirFormulario<FormMesasFinales>(form =>
                     {
-                        form.CarreraId = this.CarreraId;
+                        //form.CarreraId = this.CarreraId;
                         form.NombreCarrera = this.NombreCarrera;
-                        form.AnioLectivoId = this.AnioLectivoId;
+                        //form.AnioLectivoId = this.AnioLectivoId;
                         form.TurnoId = this.TurnoId;
                         form.LlamadoId = this.LlamadoId;
                         if (this.LlamadoId == 3)
@@ -215,7 +274,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     {
                         form.CarreraId = this.CarreraId;
                         form.NombreCarrera = this.NombreCarrera;
-                        form.AnioLectivoId = this.AnioLectivoId;
+                        //form.AnioLectivoId = this.AnioLectivoId;
                         form.TurnoId = this.TurnoId;
                         form.LlamadoId = this.LlamadoId;
                         if (this.LlamadoId == 3)
@@ -229,26 +288,25 @@ namespace ISFDyT93.Vista.Forms.Carreras
         }
         private void ValidarCampos()
         {
-            bool carreraValida =
-                cmbCarrera.SelectedValue != null &&
-                int.TryParse(cmbCarrera.SelectedValue.ToString(), out int carreraId) &&
-                carreraId > 0;
+            bool carreraValida = TieneValorValido(cmbCarrera);
 
-            bool turnoValido =
-                cmbTurno.SelectedIndex >= 0;
+            bool turnoValido = TieneValorValido(cmbTurno);
 
             bool materiaValida =
                 cmbMateria.Enabled &&
-                cmbMateria.SelectedValue != null &&
-                int.TryParse(cmbMateria.SelectedValue.ToString(), out int materiaId) &&
-                materiaId > 0;
+                TieneValorValido(cmbMateria);
 
             btnAgregar.Enabled =
                 carreraValida &&
                 turnoValido &&
                 materiaValida;
         }
-
+        private bool TieneValorValido(ComboBox combo)
+        {
+            return combo.SelectedValue != null &&
+                   int.TryParse(combo.SelectedValue.ToString(), out int id) &&
+                   id > 0;
+        }
         private void CargarTurnoMateria(bool especial)
         {
             switch (this.Accion)
@@ -282,14 +340,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
 
-        private void cmbPresidenteMesa_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //if (cmbPresidenteMesa.SelectedValue != null && int.TryParse(cmbPresidenteMesa.SelectedValue.ToString(), out int personalId))
-                CargarVocales(0);
-
-            ValidarCampos();
-        }
-
         private void cmbVocalMesa_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ValidarCampos();
@@ -303,14 +353,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatosMateriaSeleccionada();
-        }
-
-        private void cmbPresidenteMesa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           // if (cmbPresidenteMesa.SelectedValue != null && int.TryParse(cmbPresidenteMesa.SelectedValue.ToString(), out int personalId))
-                //CargarVocales(personalId);
-
-            ValidarCampos();
         }
 
         private void CargarDatosMateriaSeleccionada()
