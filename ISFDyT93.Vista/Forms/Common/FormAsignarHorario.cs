@@ -83,10 +83,10 @@ namespace ISFDyT93.Vista.Forms.Common
 
             AsignarColoresMaterias();
 
-            cmbCursos_SelectedIndexChanged(cmbCursos, null);
-
             var listaCursoMateriasIds = HxCurso.ObtenerCursoMateriasIds();
             Cargos = personalLogica.ObtenerPersonalConCargos(listaCursoMateriasIds);
+
+            cmbCursos_SelectedIndexChanged(cmbCursos, null);
         }
         private void tsmEliminarHorario_Click(object sender, EventArgs e)
         {
@@ -98,6 +98,7 @@ namespace ISFDyT93.Vista.Forms.Common
 
                 MostrarHorarios();
                 btnGuardar.FlatAppearance.BorderColor = Color.Red;
+                ActualizarComboMaterias();
             }
         }
         private void dgvAsignarHorario_MouseUp(object sender, MouseEventArgs e)
@@ -149,6 +150,7 @@ namespace ISFDyT93.Vista.Forms.Common
                     MostrarHorarios();
                     btnGuardar.FlatAppearance.BorderColor = Color.Red;
                     contarModulos();
+                    ActualizarComboMaterias();
                 }
                 else Notificar(TipoNotificacion.Message, $"Ya se asignaron todos los\nmodulos de la materia: {cmbMaterias.Text}");
             }
@@ -160,6 +162,7 @@ namespace ISFDyT93.Vista.Forms.Common
                 LtsHorariosModelo = HxCurso.ObtenerHorarioCurso(Convert.ToInt32(cmbCursos.SelectedValue));
 
                 MostrarHorarios();
+                ActualizarComboMaterias();
             }
             else if (Cursos.Rows.Count > 0)
             {
@@ -200,6 +203,7 @@ namespace ISFDyT93.Vista.Forms.Common
 
                 MostrarHorarios();
                 btnGuardar.FlatAppearance.BorderColor = Color.Red;
+                ActualizarComboMaterias();
             }
         }
         #endregion
@@ -270,20 +274,38 @@ namespace ISFDyT93.Vista.Forms.Common
                 {
                     for (int i = 1; i < 6; i++)
                     {
-                        dr.Cells[i + 1].Style.BackColor = Color.White;
-                        dr.Cells[i + 1].Value = "";
+                        var celda = dr.Cells[i + 1];
+                        celda.Style.BackColor = Color.White;
+                        celda.Value = "";
+                        celda.ToolTipText = "";
 
                         var mod = LtsHorariosModelo.Where(x => x.DiaId == i && x.ModuloId == (int)dr.Cells["ModuloId"].Value).ToList();
                         if (mod.Count > 0)
                         {
-                            dr.Cells[i + 1].Value = mod[0].Nombre;
+                            celda.Value = mod[0].Nombre;
 
-                            dr.Cells[i + 1].Style.BackColor = ColorCelda[ColorCelda.FindIndex(x => x.id == mod[0].MateriaId)].color;
+                            int colorIndex = ColorCelda.FindIndex(x => x.id == mod[0].MateriaId);
+                            if (colorIndex >= 0)
+                                celda.Style.BackColor = ColorCelda[colorIndex].color;
+
+                            celda.ToolTipText = ObtenerDocentesMateria(mod[0].CursoMateriaId);
                         }
                     }
                 }
                 contarModulos();
             }
+        }
+        private string ObtenerDocentesMateria(int cursoMateriaId)
+        {
+            if (Cargos == null || !Cargos.Any())
+                return "Sin docente asignado";
+
+            var listaCargos = Cargos.Where(x => x.CursoMateriaId == cursoMateriaId).ToList();
+
+            if (!listaCargos.Any())
+                return "Sin docente asignado";
+
+            return string.Join("\n", listaCargos.Select(c => $"{c.Cargo}: {c.NombreCompleto}"));
         }
         private void contarModulos()
         {
@@ -307,21 +329,97 @@ namespace ISFDyT93.Vista.Forms.Common
                     Notificar(TipoNotificacion.Message, $"La Materia {materia} tiene los siguientes cargos:\n{cargosTomados}");
             }
         }
-        private void Guardar()
-        {
-            bmpCaptura = new Bitmap(this.Width, this.Height);
-            Graphics captura = Graphics.FromImage(bmpCaptura);
-            var posicion = this.PointToScreen(Point.Empty);
-            captura.CopyFromScreen(posicion.X, posicion.Y, 0, 0, this.Size);
 
-            SaveFileDialog guardar = new SaveFileDialog();
-            guardar.FileName = $"Horarios{DateTime.Now.ToString("ssmmHH")}.png";
-            if (guardar.ShowDialog() == DialogResult.OK)
+        //Metodo para crear la imagen a imprimir y guardarla en el equipo del usuario
+        //private void Guardar()
+        //{
+        //    bmpCaptura = new Bitmap(this.Width, this.Height);
+        //    Graphics captura = Graphics.FromImage(bmpCaptura);
+        //    var posicion = this.PointToScreen(Point.Empty);
+        //    captura.CopyFromScreen(posicion.X, posicion.Y, 0, 0, this.Size);
+
+        //    SaveFileDialog guardar = new SaveFileDialog();
+        //    guardar.FileName = $"Horarios{DateTime.Now.ToString("ssmmHH")}.png";
+        //    if (guardar.ShowDialog() == DialogResult.OK)
+        //    {
+        //        Bitmap image = new Bitmap(bmpCaptura);
+        //        image.Save(guardar.FileName, ImageFormat.Png);
+        //    }
+        //}
+
+        private DataTable ArmarDataTableHorarios(IList<HorariosModelo> horarios)
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("Materia", typeof(string));
+            dt.Columns.Add("DiaId", typeof(int));
+            dt.Columns.Add("DiaNombre", typeof(string));
+            dt.Columns.Add("ModuloId", typeof(int));
+            dt.Columns.Add("Descripcion", typeof(string));
+
+            var nombresDias = new Dictionary<int, string>
+    {
+        { 1, "Lunes" },
+        { 2, "Martes" },
+        { 3, "Miércoles" },
+        { 4, "Jueves" },
+        { 5, "Viernes" }
+    };
+
+            foreach (DataRow moduloRow in Modulos.Rows)
             {
-                Bitmap image = new Bitmap(bmpCaptura);
-                image.Save(guardar.FileName, ImageFormat.Png);
+                int moduloId = Convert.ToInt32(moduloRow["ModuloId"]);
+                string descripcion = Convert.ToString(moduloRow["Descripcion"]);
+
+                foreach (var dia in nombresDias)
+                {
+                    var horario = horarios.FirstOrDefault(x => x.Asignado && x.ModuloId == moduloId && x.DiaId == dia.Key);
+
+                    var fila = dt.NewRow();
+                    fila["Materia"] = horario != null ? horario.Nombre : string.Empty;
+                    fila["DiaId"] = dia.Key;
+                    fila["DiaNombre"] = dia.Value;
+                    fila["ModuloId"] = moduloId;
+                    fila["Descripcion"] = descripcion;
+                    dt.Rows.Add(fila);
+                }
             }
+
+            return dt;
         }
+        private void ActualizarComboMaterias()
+        {
+            if (LtsHorariosModelo == null)
+                return;
+
+            var materiaIdsConModulosLibres = LtsHorariosModelo
+                .Where(x => x.Asignado == false)
+                .Select(x => x.MateriaId)
+                .Distinct()
+                .ToList();
+
+            var materiasFiltradas = Materias.Clone(); // misma estructura, sin filas
+            foreach (DataRow dr in Materias.Rows)
+            {
+                if (materiaIdsConModulosLibres.Contains((int)dr["MateriaId"]))
+                    materiasFiltradas.ImportRow(dr);
+            }
+
+            var materiaIdPrevia = cmbMaterias.SelectedValue;
+
+            cmbMaterias.DataSource = materiasFiltradas;
+
+            // Si la materia que estaba seleccionada sigue en la lista filtrada, la vuelve a seleccionar
+            if (materiaIdPrevia != null && materiasFiltradas.AsEnumerable().Any(r => (int)r["MateriaId"] == (int)materiaIdPrevia))
+                cmbMaterias.SelectedValue = materiaIdPrevia;
+        }
+
+        //private string ObtenerDescripcionModulo(int moduloId)
+        //{
+        //    var fila = Modulos.AsEnumerable()
+        //        .FirstOrDefault(x => Convert.ToInt32(x["ModuloId"]) == moduloId);
+
+        //    return fila != null ? Convert.ToString(fila["Descripcion"]) : string.Empty;
+        //}
         #endregion
 
         bool Admin = true;
@@ -339,8 +437,23 @@ namespace ISFDyT93.Vista.Forms.Common
 
         private void picImprimir_Click(object sender, EventArgs e)
         {
-            Guardar();
+            if (LtsHorariosModelo == null || LtsHorariosModelo.Count == 0)
+            {
+                Notificar(TipoNotificacion.Warning, "No hay horarios para imprimir");
+                return;
+            }
+
+            var data = ArmarDataTableHorarios(LtsHorariosModelo);
+
+            this.Contenedor.SetTitulo("Imprimir Horarios").AbrirFormulario<FormReporte>(form => {
+                form.SetReporte("ISFDyT93.Vista.Reports.Horarios.rdlc")
+                .AddDataSource(data, "DSHorarios")
+                .AddParameter("Curso", cmbCursos.Text)
+                .AddParameter("Carrera", AnioCarrera.NombreCarrera)
+                .AddParameter("AnioLectivo", AnioCarrera.AnioCarrera.ToString());
+            });
         }
+
     }
 
     internal class HorarioPorCurso
