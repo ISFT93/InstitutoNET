@@ -59,7 +59,7 @@ namespace ISFDyT93.Datos.Daos
 
         public int ModificarMesas(DateTime fecha, int turno, int presidenteId, int vocalId, int mesaFinalId)
         {
-            var query = $"update MesasFinales set Fecha = '{fecha:yyyy-MM-dd}', TurnoId = '{turno}', VocalId = {vocalId}, FinalEstadoId = 1 where MesaFinalId = {mesaFinalId}";
+            var query = $"update MesasFinales set Fecha = '{fecha:yyyy-MM-dd}', TurnoId = '{turno}',PresidenteId ={presidenteId}, VocalId = {vocalId}, FinalEstadoId = 1 where MesaFinalId = {mesaFinalId}";
             return this.Conexion.EjecutarAccion(query);
         }
 

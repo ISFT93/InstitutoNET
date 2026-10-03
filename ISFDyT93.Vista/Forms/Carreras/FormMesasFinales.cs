@@ -686,7 +686,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbTurno.SelectedIndex = -1;
             cmbTurno.Enabled = true;
 
-
+            cmbAnioLectivo.Text = string.Empty;
+            cmbAnioLectivo.SelectedIndex = -1;
 
             carrerasCargadas = false;
             profesoresCargados = false;

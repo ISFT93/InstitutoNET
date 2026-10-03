@@ -63,7 +63,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (this.Accion == TipoAccion.Agregar)
             {
                 CargarMaterias();
-                OcultarVocalYFecha();
+                //OcultarVocalYFecha();
                 CargarTurnoMateria(true);
                 cmbMateria.Enabled = true;
                 title = "Agregar fecha especial";
@@ -149,6 +149,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void CargarProfesorTitular()
         {
+
             if (cmbMateria.SelectedValue == null ||
         !int.TryParse(cmbMateria.SelectedValue.ToString(), out int materiaId))
                 return;
@@ -165,6 +166,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 ProfesorId = 0;
             }
+            cmbPresidenteMesa.DataSource = dt;
+
+            cmbPresidenteMesa.ValueMember = "PersonalId";
+            cmbPresidenteMesa.DisplayMember = "Nombre";
+
+            if (ProfesorId == 0)
+            {
+                Notificar(TipoNotificacion.Error, "La materia no tiene un profesor asignado.\n Asigne un profesor para poder guardar los cambios");
+                btnAgregar.Enabled = false;
+                return;
+            } 
+            cmbPresidenteMesa.SelectedValue = 1;
             ValidarCampos();
         }
         private void CargarVocales(int PersonalId)
@@ -241,7 +254,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     Notificar(TipoNotificacion.Warning, "Seleccione un vocal!");
                     return;
                 }
-                int res = mesasFinalesLogica.ModificarMesa(fecha, Convert.ToInt32(cmbTurno.SelectedValue), 0, Convert.ToInt32(cmbVocalMesa.SelectedValue), this.MesaFinalId);
+                int res = mesasFinalesLogica.ModificarMesa(fecha, Convert.ToInt32(cmbTurno.SelectedValue), ProfesorId, Convert.ToInt32(cmbVocalMesa.SelectedValue), this.MesaFinalId);
                 if (res > 0)
                 {
                     Notificar(TipoNotificacion.Success, "Mesa modificada correctamente");
@@ -361,7 +374,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             CargarProfesorTitular();
             CargarVocales(0);
-            ValidarCampos();
+            //ValidarCampos();
         }
 
         private void cmbCarrera_SelectedIndexChanged(object sender, EventArgs e)
