@@ -13,9 +13,9 @@ namespace ISFDyT93.Datos.Daos
 {
     public class HorariosDao : DaoBase , IHorariosDao
     {
-        public DataTable ObtnerModulos()
+        public DataTable ObtnerModulos(int turnoCursadaId)
         {
-            var query = "SELECT * FROM Modulos";
+            var query = $"SELECT * FROM Modulos WHERE TurnoCursadaId = {turnoCursadaId}";
             return this.Conexion.ObtenerRegistros(query);
         }
 
