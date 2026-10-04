@@ -12,9 +12,9 @@ namespace ISFDyT93.Negocio.Logica
     {
         HorariosDao horariosDao = new HorariosDao();
 
-        public DataTable ObtnerModulos()
+        public DataTable ObtnerModulos(int TurnoCursadaId)
         {
-            return horariosDao.ObtnerModulos();
+            return horariosDao.ObtnerModulos(TurnoCursadaId);
         }
         public IList<HorariosModelo> ObtenerHorarios(int cursoId)
         {
