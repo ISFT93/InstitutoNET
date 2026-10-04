@@ -43,7 +43,8 @@ namespace ISFDyT93.Vista.Forms.Common
         AniosCarreraLogica aniosLogica = new AniosCarreraLogica();
         MateriasLogica materiasLogica = new MateriasLogica();
         HorarioPorCurso HxCurso = new HorarioPorCurso();
-        private Bitmap bmpCaptura;
+        TurnosLogica turnosLogica = new TurnosLogica();
+        //private Bitmap bmpCaptura;
         #endregion
 
         public FormAsignarHorario()
@@ -79,7 +80,7 @@ namespace ISFDyT93.Vista.Forms.Common
 
             CargarCombos();
 
-            CargarModulos();
+            CargarModulos(Convert.ToInt32(cmbTurnos.SelectedValue));
 
             AsignarColoresMaterias();
 
@@ -220,10 +221,16 @@ namespace ISFDyT93.Vista.Forms.Common
             cmbMaterias.ValueMember = "MateriaId";
             cmbMaterias.DisplayMember = "Nombre";
             cmbMaterias.DataSource = Materias;
+
+            cmbTurnos.ValueMember = "TurnoCursadaId";
+            cmbTurnos.DisplayMember = "Descripcion";
+            cmbTurnos.DataSource = turnosLogica.ObtenerTurnosCursada();
         }
-        private void CargarModulos()
+        private void CargarModulos(int turnoCursadaId)
         {
-            Modulos = horariosLogica.ObtnerModulos();
+            dgvAsignarHorario.Rows.Clear();
+
+            Modulos = horariosLogica.ObtnerModulos(turnoCursadaId);
             dgvAsignarHorario.RowTemplate.Height = 80;
             if (Modulos == null || Modulos.Rows.Count == 0)
                 return;
@@ -454,6 +461,14 @@ namespace ISFDyT93.Vista.Forms.Common
             });
         }
 
+        private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTurnos.SelectedValue == null)
+                return;
+
+            CargarModulos(Convert.ToInt32(cmbTurnos.SelectedValue));
+            MostrarHorarios();
+        }
     }
 
     internal class HorarioPorCurso
