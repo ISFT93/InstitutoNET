@@ -10,7 +10,7 @@ namespace ISFDyT93.Datos.Interfaces
 {
     public interface IHorariosDao
     {
-        DataTable ObtnerModulos();
+        DataTable ObtnerModulos(int turnoCursadaId);
         IList<HorariosModelo> ObtenerHorarios(int cursoId);
         int ActualizarHorarios(IList<HorariosModelo> ltsHorarios);
     }
