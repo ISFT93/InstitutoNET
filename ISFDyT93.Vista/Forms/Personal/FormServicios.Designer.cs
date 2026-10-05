@@ -57,7 +57,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmDesactivarServicio,
             this.tsmEvaluaciones});
             this.cmsServicios.Name = "contextMenuStrip1";
-            this.cmsServicios.Size = new System.Drawing.Size(189, 116);
+            this.cmsServicios.Size = new System.Drawing.Size(175, 94);
             // 
             // tsmAsignarServicio
             // 
@@ -66,7 +66,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmAsignarServicio.ForeColor = System.Drawing.Color.White;
             this.tsmAsignarServicio.Image = ((System.Drawing.Image)(resources.GetObject("tsmAsignarServicio.Image")));
             this.tsmAsignarServicio.Name = "tsmAsignarServicio";
-            this.tsmAsignarServicio.Size = new System.Drawing.Size(188, 30);
+            this.tsmAsignarServicio.Size = new System.Drawing.Size(174, 30);
             this.tsmAsignarServicio.Text = "Asignar";
             this.tsmAsignarServicio.Click += new System.EventHandler(this.tsmAsignar_Click);
             // 
@@ -77,7 +77,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmDesactivarServicio.ForeColor = System.Drawing.Color.White;
             this.tsmDesactivarServicio.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
             this.tsmDesactivarServicio.Name = "tsmDesactivarServicio";
-            this.tsmDesactivarServicio.Size = new System.Drawing.Size(188, 30);
+            this.tsmDesactivarServicio.Size = new System.Drawing.Size(174, 30);
             this.tsmDesactivarServicio.Text = "Desactivar";
             this.tsmDesactivarServicio.Click += new System.EventHandler(this.tsmDesactivarServicio_Click);
             // 
@@ -88,7 +88,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmEvaluaciones.ForeColor = System.Drawing.Color.White;
             this.tsmEvaluaciones.Image = global::ISFDyT93.Vista.Properties.Resources.list_alt_solid;
             this.tsmEvaluaciones.Name = "tsmEvaluaciones";
-            this.tsmEvaluaciones.Size = new System.Drawing.Size(188, 30);
+            this.tsmEvaluaciones.Size = new System.Drawing.Size(174, 30);
             this.tsmEvaluaciones.Text = "Evaluaciones";
             this.tsmEvaluaciones.Click += new System.EventHandler(this.tsmEvaluaciones_Click);
             // 
