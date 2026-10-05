@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IParametrosLogica.cs" />
     <Compile Include="Interfaces\IPersonalLogica.cs" />
     <Compile Include="Interfaces\IServiciosLogica.cs" />
+    <Compile Include="Interfaces\ITurnosLogica.cs" />
     <Compile Include="Interfaces\IValidaciones.cs" />
     <Compile Include="Logica\AlumnosLogica.cs" />
     <Compile Include="Logica\AniosCarreraLogica.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Logica\ParametrosLogica.cs" />
     <Compile Include="Logica\PersonalLogica.cs" />
     <Compile Include="Logica\TipoLicenciaLogica.cs" />
+    <Compile Include="Logica\TurnosLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logica\ServiciosLogica.cs" />
     <Compile Include="Validaciones.cs" />

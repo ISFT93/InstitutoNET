@@ -71,6 +71,7 @@
     <Compile Include="Daos\MateriasDao.cs" />
     <Compile Include="Daos\PersonalDao.cs" />
     <Compile Include="Daos\TipoLicenciaDao.cs" />
+    <Compile Include="Daos\TurnosDao.cs" />
     <Compile Include="Interfaces\IAlumnosDao.cs" />
     <Compile Include="Interfaces\IAniosCarreraDao.cs" />
     <Compile Include="Interfaces\ICargosDao.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Interfaces\IParametrosDao.cs" />
     <Compile Include="Interfaces\IPersonalDao.cs" />
     <Compile Include="Interfaces\IServiciosDao.cs" />
+    <Compile Include="Interfaces\ITurnos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Daos\ServiciosDao.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

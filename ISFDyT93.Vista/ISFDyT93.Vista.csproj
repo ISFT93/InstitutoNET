@@ -466,6 +466,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormCursoMaterias.resx">
       <DependentUpon>FormCursoMaterias.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormCursoMateriasAlumnos.resx">
       <DependentUpon>FormCursoMateriasAlumnos.cs</DependentUpon>
@@ -584,6 +585,7 @@
     </Compile>
     <EmbeddedResource Include="Reports\ControlAsistencias.rdlc" />
     <EmbeddedResource Include="Reports\HistorialAsistenciasAlumnos.rdlc" />
+    <EmbeddedResource Include="Reports\Horarios.rdlc" />
     <EmbeddedResource Include="Reports\Personas.rdlc" />
     <EmbeddedResource Include="Reports\AlumnosActivos.rdlc" />
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
