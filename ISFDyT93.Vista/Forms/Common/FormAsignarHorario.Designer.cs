@@ -31,16 +31,16 @@ namespace ISFDyT93.Vista.Forms.Common
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAsignarHorario));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmsHorarios = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmAgregarMateria = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmQuitarMateria = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,12 +56,14 @@ namespace ISFDyT93.Vista.Forms.Common
             this.Jueves = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Viernes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.picImprimir = new System.Windows.Forms.PictureBox();
             this.cmbMaterias = new System.Windows.Forms.ComboBox();
             this.lblMateria = new System.Windows.Forms.Label();
             this.lblModulos = new System.Windows.Forms.Label();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.btnAdmin = new System.Windows.Forms.Button();
+            this.cmbTurnos = new System.Windows.Forms.ComboBox();
+            this.btnGuardar = new FontAwesome.Sharp.IconButton();
+            this.picImprimir = new System.Windows.Forms.PictureBox();
+            this.lblTurnos = new System.Windows.Forms.Label();
             this.cmsHorarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsignarHorario)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -129,7 +131,7 @@ namespace ISFDyT93.Vista.Forms.Common
             this.lblCurso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCurso.Location = new System.Drawing.Point(3, 0);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(64, 30);
+            this.lblCurso.Size = new System.Drawing.Size(64, 34);
             this.lblCurso.TabIndex = 7;
             this.lblCurso.Text = "Curso:";
             this.lblCurso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,14 +145,14 @@ namespace ISFDyT93.Vista.Forms.Common
             this.dgvAsignarHorario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAsignarHorario.BackgroundColor = System.Drawing.Color.White;
             this.dgvAsignarHorario.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsignarHorario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle61.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle61.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsignarHorario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle61;
             this.dgvAsignarHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAsignarHorario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ModuloId,
@@ -161,41 +163,41 @@ namespace ISFDyT93.Vista.Forms.Common
             this.Jueves,
             this.Viernes});
             this.dgvAsignarHorario.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAsignarHorario.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle68.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle68.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle68.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle68.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAsignarHorario.DefaultCellStyle = dataGridViewCellStyle68;
             this.dgvAsignarHorario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAsignarHorario.EnableHeadersVisualStyles = false;
             this.dgvAsignarHorario.GridColor = System.Drawing.Color.Gray;
-            this.dgvAsignarHorario.Location = new System.Drawing.Point(20, 92);
+            this.dgvAsignarHorario.Location = new System.Drawing.Point(20, 93);
             this.dgvAsignarHorario.MultiSelect = false;
             this.dgvAsignarHorario.Name = "dgvAsignarHorario";
             this.dgvAsignarHorario.ReadOnly = true;
             this.dgvAsignarHorario.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsignarHorario.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle69.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle69.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle69.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsignarHorario.RowHeadersDefaultCellStyle = dataGridViewCellStyle69;
             this.dgvAsignarHorario.RowHeadersVisible = false;
             this.dgvAsignarHorario.RowHeadersWidth = 62;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvAsignarHorario.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle70.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle70.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle70.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle70.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle70.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvAsignarHorario.RowsDefaultCellStyle = dataGridViewCellStyle70;
             this.dgvAsignarHorario.RowTemplate.Height = 28;
             this.dgvAsignarHorario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAsignarHorario.Size = new System.Drawing.Size(732, 438);
+            this.dgvAsignarHorario.Size = new System.Drawing.Size(981, 437);
             this.dgvAsignarHorario.TabIndex = 58;
             this.dgvAsignarHorario.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAsignarHorario_MouseUp);
             // 
@@ -209,12 +211,12 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Modulo
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.Modulo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle62.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.White;
+            this.Modulo.DefaultCellStyle = dataGridViewCellStyle62;
             this.Modulo.HeaderText = "";
             this.Modulo.Name = "Modulo";
             this.Modulo.ReadOnly = true;
@@ -222,8 +224,8 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Lunes
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Lunes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Lunes.DefaultCellStyle = dataGridViewCellStyle63;
             this.Lunes.HeaderText = "Lunes";
             this.Lunes.Name = "Lunes";
             this.Lunes.ReadOnly = true;
@@ -231,8 +233,8 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Martes
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Martes.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Martes.DefaultCellStyle = dataGridViewCellStyle64;
             this.Martes.HeaderText = "Martes";
             this.Martes.Name = "Martes";
             this.Martes.ReadOnly = true;
@@ -240,8 +242,8 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Miercoles
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Miercoles.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Miercoles.DefaultCellStyle = dataGridViewCellStyle65;
             this.Miercoles.HeaderText = "Miércoles";
             this.Miercoles.Name = "Miercoles";
             this.Miercoles.ReadOnly = true;
@@ -249,8 +251,8 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Jueves
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Jueves.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Jueves.DefaultCellStyle = dataGridViewCellStyle66;
             this.Jueves.HeaderText = "Jueves";
             this.Jueves.Name = "Jueves";
             this.Jueves.ReadOnly = true;
@@ -258,8 +260,8 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // Viernes
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Viernes.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Viernes.DefaultCellStyle = dataGridViewCellStyle67;
             this.Viernes.HeaderText = "Viernes";
             this.Viernes.Name = "Viernes";
             this.Viernes.ReadOnly = true;
@@ -267,54 +269,44 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnCount = 8;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 335F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.picImprimir, 6, 2);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Controls.Add(this.lblCurso, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbCursos, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbMaterias, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblMateria, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblModulos, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAdmin, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cmbTurnos, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.picImprimir, 7, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblTurnos, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 72);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(981, 73);
             this.tableLayoutPanel1.TabIndex = 59;
-            // 
-            // picImprimir
-            // 
-            this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImprimir.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picImprimir.Image = ((System.Drawing.Image)(resources.GetObject("picImprimir.Image")));
-            this.picImprimir.Location = new System.Drawing.Point(689, 39);
-            this.picImprimir.Name = "picImprimir";
-            this.picImprimir.Size = new System.Drawing.Size(40, 24);
-            this.picImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picImprimir.TabIndex = 59;
-            this.picImprimir.TabStop = false;
-            this.picImprimir.Click += new System.EventHandler(this.picImprimir_Click);
             // 
             // cmbMaterias
             // 
             this.cmbMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMaterias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaterias.FormattingEnabled = true;
-            this.cmbMaterias.Location = new System.Drawing.Point(293, 3);
+            this.cmbMaterias.Location = new System.Drawing.Point(286, 3);
             this.cmbMaterias.Name = "cmbMaterias";
-            this.cmbMaterias.Size = new System.Drawing.Size(329, 27);
+            this.cmbMaterias.Size = new System.Drawing.Size(231, 27);
             this.cmbMaterias.TabIndex = 9;
             this.cmbMaterias.SelectedIndexChanged += new System.EventHandler(this.cmbMaterias_SelectedIndexChanged);
             // 
@@ -322,9 +314,9 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             this.lblMateria.AutoSize = true;
             this.lblMateria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMateria.Location = new System.Drawing.Point(211, 0);
+            this.lblMateria.Location = new System.Drawing.Point(199, 0);
             this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(76, 30);
+            this.lblMateria.Size = new System.Drawing.Size(81, 34);
             this.lblMateria.TabIndex = 8;
             this.lblMateria.Text = "Materia:";
             this.lblMateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -335,11 +327,38 @@ namespace ISFDyT93.Vista.Forms.Common
             this.lblModulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblModulos.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModulos.ForeColor = System.Drawing.Color.Gray;
-            this.lblModulos.Location = new System.Drawing.Point(293, 36);
+            this.lblModulos.Location = new System.Drawing.Point(286, 40);
             this.lblModulos.Name = "lblModulos";
-            this.lblModulos.Size = new System.Drawing.Size(329, 30);
+            this.lblModulos.Size = new System.Drawing.Size(231, 26);
             this.lblModulos.TabIndex = 57;
             this.lblModulos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdmin.FlatAppearance.BorderSize = 0;
+            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdmin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAdmin.Location = new System.Drawing.Point(70, 40);
+            this.btnAdmin.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(118, 26);
+            this.btnAdmin.TabIndex = 58;
+            this.btnAdmin.Text = "Admin On";
+            this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // cmbTurnos
+            // 
+            this.cmbTurnos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbTurnos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurnos.FormattingEnabled = true;
+            this.cmbTurnos.Location = new System.Drawing.Point(607, 3);
+            this.cmbTurnos.Name = "cmbTurnos";
+            this.cmbTurnos.Size = new System.Drawing.Size(131, 27);
+            this.cmbTurnos.TabIndex = 61;
+            this.cmbTurnos.SelectedIndexChanged += new System.EventHandler(this.cmbTurnos_SelectedIndexChanged);
             // 
             // btnGuardar
             // 
@@ -354,38 +373,46 @@ namespace ISFDyT93.Vista.Forms.Common
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 20;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGuardar.Location = new System.Drawing.Point(648, 0);
+            this.btnGuardar.Location = new System.Drawing.Point(744, 0);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(81, 30);
+            this.btnGuardar.Size = new System.Drawing.Size(81, 34);
             this.btnGuardar.TabIndex = 56;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnAdmin
+            // picImprimir
             // 
-            this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdmin.FlatAppearance.BorderSize = 0;
-            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAdmin.Location = new System.Drawing.Point(70, 36);
-            this.btnAdmin.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(118, 30);
-            this.btnAdmin.TabIndex = 58;
-            this.btnAdmin.Text = "Admin On";
-            this.btnAdmin.UseVisualStyleBackColor = false;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picImprimir.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picImprimir.Image = ((System.Drawing.Image)(resources.GetObject("picImprimir.Image")));
+            this.picImprimir.Location = new System.Drawing.Point(744, 43);
+            this.picImprimir.Name = "picImprimir";
+            this.picImprimir.Size = new System.Drawing.Size(40, 20);
+            this.picImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picImprimir.TabIndex = 59;
+            this.picImprimir.TabStop = false;
+            this.picImprimir.Click += new System.EventHandler(this.picImprimir_Click);
+            // 
+            // lblTurnos
+            // 
+            this.lblTurnos.AutoSize = true;
+            this.lblTurnos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTurnos.Location = new System.Drawing.Point(523, 0);
+            this.lblTurnos.Name = "lblTurnos";
+            this.lblTurnos.Size = new System.Drawing.Size(78, 34);
+            this.lblTurnos.TabIndex = 62;
+            this.lblTurnos.Text = "Turnos:";
+            this.lblTurnos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormAsignarHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(772, 550);
+            this.ClientSize = new System.Drawing.Size(1021, 550);
             this.Controls.Add(this.dgvAsignarHorario);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormAsignarHorario";
@@ -411,7 +438,6 @@ namespace ISFDyT93.Vista.Forms.Common
         private System.Windows.Forms.ToolStripMenuItem tsmAgregarMateria;
         private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbMaterias;
-        private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label lblModulos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuloId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modulo;
@@ -422,6 +448,9 @@ namespace ISFDyT93.Vista.Forms.Common
         private System.Windows.Forms.DataGridViewTextBoxColumn Viernes;
         private System.Windows.Forms.ToolStripMenuItem tsmQuitarTodo;
         private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.ComboBox cmbTurnos;
+        private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.PictureBox picImprimir;
+        private System.Windows.Forms.Label lblTurnos;
     }
 }
