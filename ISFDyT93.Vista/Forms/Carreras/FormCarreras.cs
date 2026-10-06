@@ -379,7 +379,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         // Control específico si ocurre un conflicto de unicidad o integridad referencial en SQL Server
                         if (ex.Number == 2627 || ex.Number == 2601)
                         {
-                            MessageBox.Show("Error: Ya existe un registro con el mismo número de expediente.",
+                            MessageBox.Show("Error: Ya existe un registro con el mismo número de Resolución.",
                                             "Duplicidad detectada", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else

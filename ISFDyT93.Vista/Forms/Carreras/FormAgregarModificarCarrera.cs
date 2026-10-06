@@ -1,10 +1,15 @@
-﻿using System;
-using System.Windows.Forms;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Negocio.Logica;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core.Enums;
+using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
+using System;
+using System.Data;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -25,8 +30,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         #region funciones
         private void MostrarCarreraExistentes()
         {
-
-
             switch (this.Accion)
             {
                 case TipoAccion.Agregar:
@@ -54,19 +57,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     this.nudAnioFin.Value = DateTime.Now.Year;
                     break;
             }
-
-            //if (this.Accion == TipoAccion.Ver)
-            //{
-            //    this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
-            //    this.DeshabilitarControles();
-            //    btnGuardar.Visible = false;
-            //}
-
-            //if (this.Accion == TipoAccion.Desactivar)
-            //{
-            //    this.DeshabilitarControles();
-            //    this.nudAnioFin.Value = DateTime.Now.Year;
-            //}
         }
 
         private void ComprobarCarreraId()
@@ -93,13 +83,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 txtDuracion.Enabled = !enableOpciones;
 
                 this.txtDuracion.Text = this.Modelo.Duracion.ToString();
-
             }
         }
 
         private void GuardarCarrera()
         {
             var carrera = this.MapToModel<CarrerasModelo>();
+
+            // Asignación explícita de los nuevos ComboBox al modelo para garantizar su guardado
+            if (carrera != null)
+            {
+                carrera.SectorActividad = cmbSectorActividad.SelectedItem?.ToString();
+                carrera.FamiliaProfesional = cmbFamiliaProfesional.SelectedItem?.ToString();
+                carrera.Variante = cmbVariante.SelectedItem?.ToString();
+                carrera.Modalidad = cmbModalidad.SelectedItem?.ToString();
+                carrera.RegimenDefecto = cmbRegimenDefecto.SelectedItem?.ToString();
+            }
 
             if (carrera.Errores.Count > 0)
             {
@@ -156,14 +155,25 @@ namespace ISFDyT93.Vista.Forms.Carreras
             {
                 string mensaje = ex.Message;
 
-                if (mensaje.Contains("UQ_NumeroExpediente") || mensaje.Contains("2627") || mensaje.Contains("2601"))
+                if (mensaje.Contains("UQ_NumeroResolucion") || mensaje.Contains("2627") || mensaje.Contains("2601") || mensaje.Contains("El numero de resolucion ya existe"))
                 {
-                    mensaje = "El numero de expediente ya existe";
+                    int idActual = (this.Accion == TipoAccion.Modificar) ? this.Modelo.CarreraId : 0;
+                    string nombreCarreraExistente = CarrerasLogica.ObtenerNombreCarreraPorResolucion(txtNumeroResolucion.Text.Trim(), idActual);
+
+                    if (!string.IsNullOrEmpty(nombreCarreraExistente))
+                    {
+                        mensaje = $"El número de Resolución: {txtNumeroResolucion.Text.Trim()} ya existe. Pertenece a la carrera: '{nombreCarreraExistente}'.";
+                    }
+                    else
+                    {
+                        mensaje = "El número de Resolución: " + txtNumeroResolucion.Text.Trim() + " ya existe.";
+                    }
                 }
 
                 Notificar(TipoNotificacion.Warning, mensaje);
             }
         }
+
         public void Limpiar()
         {
             txtNombre.Text = "";
@@ -173,7 +183,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             txtPlanEstudio.Text = "";
             txtResolucion.Text = "";
             txtImagenDescriptiva.Text = "";
-            txtNumeroExpediente.Text = "";
+            txtNumeroResolucion.Text = "";
             txtCantidadHoras.Text = "";
             txtDuracion.Text = "";
         }
@@ -194,16 +204,114 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 this.Contenedor.AbrirFormulario<FormCarreras>();
             });
 
+            CargarListasDesplegables(); // Inicialización de los nuevos ComboBox
             MostrarCarreraExistentes();
         }
 
+        private void CargarListasDesplegables()
+        {
+            try
+            {
+                ClasificacionCarrerasLogica clasificacionLogica = new ClasificacionCarrerasLogica();
+                DataTable dtClasificacion = clasificacionLogica.ObtenerClasificacion();
 
+                if (dtClasificacion == null) return;
+
+                // Filtramos solo los registros que estén activos
+                DataView dvActivos = new DataView(dtClasificacion);
+                dvActivos.RowFilter = "Activo = 1";
+
+                // 1. Sector de Actividad (Familias del grupo Sector de Actividad o equivalentes)
+                if (cmbSectorActividad != null)
+                {
+                    cmbSectorActividad.Items.Clear();
+                    DataView dvSector = new DataView(dtClasificacion);
+                    dvSector.RowFilter = "Activo = 1 AND Descripcion = 'Sector de Actividad'";
+                    foreach (DataRowView row in dvSector)
+                    {
+                        string valor = row["DescripcionCorta"]?.ToString();
+                        if (!string.IsNullOrEmpty(valor) && !cmbSectorActividad.Items.Contains(valor))
+                        {
+                            cmbSectorActividad.Items.Add(valor);
+                        }
+                    }
+                }
+
+                // 2. Familia Profesional
+                if (cmbFamiliaProfesional != null)
+                {
+                    cmbFamiliaProfesional.Items.Clear();
+                    DataView dvFamilia = new DataView(dtClasificacion);
+                    dvFamilia.RowFilter = "Activo = 1 AND (Descripcion = 'Familia Profesional' OR Descripcion = 'Sector de Actividad')";
+                    foreach (DataRowView row in dvFamilia)
+                    {
+                        string valor = row["DescripcionCorta"]?.ToString();
+                        if (!string.IsNullOrEmpty(valor) && !cmbFamiliaProfesional.Items.Contains(valor))
+                        {
+                            cmbFamiliaProfesional.Items.Add(valor);
+                        }
+                    }
+                }
+
+                // 3. Modalidad (Presencial, Virtual, Híbrido, etc. configurados)
+                if (cmbModalidad != null)
+                {
+                    cmbModalidad.Items.Clear();
+                    DataView dvModalidad = new DataView(dtClasificacion);
+                    dvModalidad.RowFilter = "Activo = 1 AND (Descripcion = 'Modalidad' OR DescripcionCorta IN ('Presencial', 'A distancia', 'Híbrido', 'Virtual'))";
+                    foreach (DataRowView row in dvModalidad)
+                    {
+                        string valor = row["DescripcionCorta"]?.ToString();
+                        if (!string.IsNullOrEmpty(valor) && !cmbModalidad.Items.Contains(valor))
+                        {
+                            cmbModalidad.Items.Add(valor);
+                        }
+                    }
+                }
+
+                // 4. Régimen por Defecto (Anual, Cuatrimestral, etc.)
+                if (cmbRegimenDefecto != null)
+                {
+                    cmbRegimenDefecto.Items.Clear();
+                    DataView dvRegimen = new DataView(dtClasificacion);
+                    dvRegimen.RowFilter = "Activo = 1 AND (Descripcion = 'Regimen' OR DescripcionCorta IN ('Anual', 'Cuatrimestral'))";
+                    foreach (DataRowView row in dvRegimen)
+                    {
+                        string valor = row["DescripcionCorta"]?.ToString();
+                        if (!string.IsNullOrEmpty(valor) && !cmbRegimenDefecto.Items.Contains(valor))
+                        {
+                            cmbRegimenDefecto.Items.Add(valor);
+                        }
+                    }
+                    if (cmbRegimenDefecto.Items.Count > 0)
+                        cmbRegimenDefecto.SelectedIndex = 0;
+                }
+
+                // 5. Variante
+                if (cmbVariante != null)
+                {
+                    cmbVariante.Items.Clear();
+                    DataView dvVariante = new DataView(dtClasificacion);
+                    dvVariante.RowFilter = "Activo = 1 AND Descripcion = 'Variante'";
+                    foreach (DataRowView row in dvVariante)
+                    {
+                        string valor = row["DescripcionCorta"]?.ToString();
+                        if (!string.IsNullOrEmpty(valor) && !cmbVariante.Items.Contains(valor))
+                        {
+                            cmbVariante.Items.Add(valor);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las listas desplegables dinámicas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             GuardarCarrera();
         }
-
-
 
         private void btnResolucion_Click(object sender, EventArgs e)
         {
@@ -224,7 +332,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 txtPlanEstudio.Text = ofdCarreras.FileName;
             }
         }
-
 
         private void btnImagenDescriptiva_Click(object sender, EventArgs e)
         {

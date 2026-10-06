@@ -70,23 +70,40 @@ namespace ISFDyT93.Negocio.Logica
             return resultado;
         }
 
-        public bool ExisteNumeroExpediente(string numeroExpediente, int carreraIdActual)
+        public bool ExisteNumeroResolucion(string numeroResolucion, int carreraIdActual)
         {
             DataTable dt = this.carrerasDao.ObtenerTodasLasCarreras(true);
             if (dt == null || dt.Rows.Count == 0) return false;
 
             foreach (DataRow row in dt.Rows)
             {
-                // Uso del alias exacto con espacios devuelto por la consulta SQL
-                string expDB = row["Numero de Expediente"]?.ToString();
+                string resDB = row["Numero de Resolucion"]?.ToString();
                 int idDB = Convert.ToInt32(row["CarreraId"]);
 
-                if (expDB == numeroExpediente && idDB != carreraIdActual)
+                if (resDB == numeroResolucion && idDB != carreraIdActual)
                 {
-                    return true; // Ya existe en otro registro
+                    return true;
                 }
             }
             return false;
+        }
+
+        public string ObtenerNombreCarreraPorResolucion(string numeroResolucion, int carreraIdActual)
+        {
+            DataTable dt = this.carrerasDao.ObtenerTodasLasCarreras(true);
+            if (dt == null || dt.Rows.Count == 0) return string.Empty;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string resDB = row["Numero de Resolucion"]?.ToString();
+                int idDB = Convert.ToInt32(row["CarreraId"]);
+
+                if (resDB == numeroResolucion && idDB != carreraIdActual)
+                {
+                    return row["Nombre"]?.ToString() ?? "otra carrera";
+                }
+            }
+            return string.Empty;
         }
 
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
@@ -97,9 +114,15 @@ namespace ISFDyT93.Negocio.Logica
             {
                 // Validación previa antes de impactar en la base de datos
                 int idActual = (accion == TipoAccion.Modificar) ? modelo.CarreraId : 0;
-                if (ExisteNumeroExpediente(modelo.NumeroExpediente, idActual))
+                if (ExisteNumeroResolucion(modelo.NumeroResolucion, idActual))
                 {
-                    throw new Exception("El numero de expediente ya existe");
+                    string nombreCarreraExistente = ObtenerNombreCarreraPorResolucion(modelo.NumeroResolucion, idActual);
+
+                    string mensajeError = !string.IsNullOrEmpty(nombreCarreraExistente)
+                        ? $"El número de resolución ya existe. Pertenece a la carrera: '{nombreCarreraExistente}'."
+                        : "El número de resolución ya existe";
+
+                    throw new Exception(mensajeError);
                 }
 
                 string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
@@ -107,7 +130,7 @@ namespace ISFDyT93.Negocio.Logica
                 string archiResolucion = modelo.Resolucion;
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
-                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
+                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque();
 
                 if (accion == TipoAccion.Agregar)
                 {
@@ -189,7 +212,6 @@ namespace ISFDyT93.Negocio.Logica
 
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
-                        //REVISAR
                         if (!modelo.PoseeMaterias)
                         {
                             aniosCarreraDao.EliminarAniosDeUnaCarrera(modelo.CarreraId);
@@ -237,13 +259,11 @@ namespace ISFDyT93.Negocio.Logica
                 System.IO.Directory.CreateDirectory(Carpeta);
             }
 
-            // Para modificar elimino el anterior archivo
             if (System.IO.File.Exists(path + archivoNuevo))
             {
                 System.IO.File.Delete(path + archivoNuevo);
             }
 
-            // Muevo el archivo a una ubicación interna del programa
             System.IO.File.Copy(archivoViejo, path + archivoNuevo);
         }
 
@@ -273,7 +293,6 @@ namespace ISFDyT93.Negocio.Logica
                 for (int i = 0; i < AniosCarreraId.Rows.Count; i++)
                 {
                     aniosCarreraDao.EliminarAnios(Convert.ToInt32(AniosCarreraId.Rows[i]["AnioCarreraId"]));
-
                 }
             }
 

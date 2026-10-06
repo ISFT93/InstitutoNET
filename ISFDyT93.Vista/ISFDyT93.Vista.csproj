@@ -111,6 +111,12 @@
     <Compile Include="Forms\Parametros\FormAgregarTipoLicencia.Designer.cs">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormCargarClasificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormCargarClasificacion.Designer.cs">
+      <DependentUpon>FormCargarClasificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormCargosEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,12 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscClasificacionCarreras.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscClasificacionCarreras.Designer.cs">
+      <DependentUpon>uscClasificacionCarreras.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -442,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarTipoLicencia.resx">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormCargarClasificacion.resx">
+      <DependentUpon>FormCargarClasificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormCargosEstado.resx">
       <DependentUpon>FormCargosEstado.cs</DependentUpon>
@@ -589,6 +604,9 @@
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscClasificacionCarreras.resx">
+      <DependentUpon>uscClasificacionCarreras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>
