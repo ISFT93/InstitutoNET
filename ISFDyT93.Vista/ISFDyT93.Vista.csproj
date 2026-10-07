@@ -339,6 +339,12 @@
     <Compile Include="Forms\Personal\FormPersonal.Designer.cs">
       <DependentUpon>FormPersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Personal\FormPersonalCargaMasivaExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Personal\FormPersonalCargaMasivaExcel.Designer.cs">
+      <DependentUpon>FormPersonalCargaMasivaExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Personal\FormProfesorMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -559,6 +565,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personal\FormPersonal.resx">
       <DependentUpon>FormPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Personal\FormPersonalCargaMasivaExcel.resx">
+      <DependentUpon>FormPersonalCargaMasivaExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personal\FormProfesorMaterias.resx">
       <DependentUpon>FormProfesorMaterias.cs</DependentUpon>
