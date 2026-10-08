@@ -11,7 +11,6 @@ namespace ISFDyT93.Entidades.Modelos
     {
         public int EspacioId { get; set; }
         public string Descripcion { get; set; }
-        public string Acumulador { get; set; }
         public bool SumaHoras { get; set; }
         public bool CalculaPorcentaje { get; set; }
         public bool Activo { get; set; }

@@ -23,7 +23,6 @@ namespace ISFDyT93.Vista.Forms.Parametros
         {
             this.espacioId = modelo.EspacioId;
             this.txtDescripcion.Text = modelo.Descripcion;
-            this.txtAcumulador.Text = modelo.Acumulador;
             this.chkSumaHoras.Checked = modelo.SumaHoras;
             this.chkCalculaPorcentaje.Checked = modelo.CalculaPorcentaje;
 
@@ -42,7 +41,6 @@ namespace ISFDyT93.Vista.Forms.Parametros
             var modelo = new EspacioModelo
             {
                 Descripcion = txtDescripcion.Text.Trim(),
-                Acumulador = string.IsNullOrWhiteSpace(txtAcumulador.Text) ? null : txtAcumulador.Text.Trim(),
                 SumaHoras = chkSumaHoras.Checked,
                 CalculaPorcentaje = chkCalculaPorcentaje.Checked
             };
@@ -87,5 +85,7 @@ namespace ISFDyT93.Vista.Forms.Parametros
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+
     }
 }

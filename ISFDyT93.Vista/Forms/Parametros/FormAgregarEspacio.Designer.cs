@@ -19,8 +19,6 @@
         {
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.lblAcumulador = new System.Windows.Forms.Label();
-            this.txtAcumulador = new System.Windows.Forms.TextBox();
             this.chkSumaHoras = new System.Windows.Forms.CheckBox();
             this.chkCalculaPorcentaje = new System.Windows.Forms.CheckBox();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -48,25 +46,6 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(364, 22);
             this.txtDescripcion.TabIndex = 2;
-            // 
-            // lblAcumulador
-            // 
-            this.lblAcumulador.AutoSize = true;
-            this.lblAcumulador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcumulador.Location = new System.Drawing.Point(25, 122);
-            this.lblAcumulador.Name = "lblAcumulador";
-            this.lblAcumulador.Size = new System.Drawing.Size(76, 15);
-            this.lblAcumulador.TabIndex = 3;
-            this.lblAcumulador.Text = "Acumulador:";
-            // 
-            // txtAcumulador
-            // 
-            this.txtAcumulador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcumulador.Location = new System.Drawing.Point(28, 140);
-            this.txtAcumulador.MaxLength = 100;
-            this.txtAcumulador.Name = "txtAcumulador";
-            this.txtAcumulador.Size = new System.Drawing.Size(364, 22);
-            this.txtAcumulador.TabIndex = 4;
             // 
             // chkSumaHoras
             // 
@@ -159,8 +138,6 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.chkCalculaPorcentaje);
             this.Controls.Add(this.chkSumaHoras);
-            this.Controls.Add(this.txtAcumulador);
-            this.Controls.Add(this.lblAcumulador);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.panelCabecera);
@@ -183,8 +160,6 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label lblAcumulador;
-        private System.Windows.Forms.TextBox txtAcumulador;
         private System.Windows.Forms.CheckBox chkSumaHoras;
         private System.Windows.Forms.CheckBox chkCalculaPorcentaje;
         private System.Windows.Forms.Button btnGuardar;

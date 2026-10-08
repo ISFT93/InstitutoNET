@@ -156,7 +156,6 @@ namespace ISFDyT93.Vista.UserControls
             {
                 EspacioId = Convert.ToInt32(dgvEspacios.CurrentRow.Cells["EspacioId"].Value),
                 Descripcion = dgvEspacios.CurrentRow.Cells["Descripcion"].Value.ToString(),
-                Acumulador = dgvEspacios.CurrentRow.Cells["Acumulador"].Value?.ToString(),
                 SumaHoras = Convert.ToBoolean(dgvEspacios.CurrentRow.Cells["SumaHoras"].Value),
                 CalculaPorcentaje = Convert.ToBoolean(dgvEspacios.CurrentRow.Cells["CalculaPorcentaje"].Value)
             };

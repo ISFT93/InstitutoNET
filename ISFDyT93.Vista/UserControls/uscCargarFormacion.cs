@@ -30,10 +30,9 @@ namespace ISFDyT93.Vista.UserControls
         {
             DataTable dt = espacioFormacion.ObtenerEspacios();
             dgvFormacion.DataSource = dt;
-            dgvFormacion.Columns["CalculaPorcentaje"].Visible = false;
-            dgvFormacion.Columns["SumaHoras"].Visible = false;
+            //dgvFormacion.Columns["CalculaPorcentaje"].Visible = false;
+            //dgvFormacion.Columns["SumaHoras"].Visible = false;
             dgvFormacion.Columns["EspacioID"].Visible = false;
-            dgvFormacion.Columns["Acumulador"].Visible = false;
         }
 
         private void ConfigurarMenuContextual()

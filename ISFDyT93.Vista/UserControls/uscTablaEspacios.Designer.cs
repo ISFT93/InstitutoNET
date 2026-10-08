@@ -38,7 +38,6 @@
             this.opcionDeshabilitar = new System.Windows.Forms.ToolStripMenuItem();
             this.EspacioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Acumulador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SumaHoras = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CalculaPorcentaje = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -64,7 +63,6 @@
             this.dgvEspacios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EspacioId,
             this.Descripcion,
-            this.Acumulador,
             this.SumaHoras,
             this.CalculaPorcentaje,
             this.Activo});
@@ -128,13 +126,6 @@
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
             // 
-            // Acumulador
-            // 
-            this.Acumulador.DataPropertyName = "Acumulador";
-            this.Acumulador.HeaderText = "Acumulador";
-            this.Acumulador.Name = "Acumulador";
-            this.Acumulador.ReadOnly = true;
-            // 
             // SumaHoras
             // 
             this.SumaHoras.DataPropertyName = "SumaHoras";
@@ -180,7 +171,6 @@
         private System.Windows.Forms.ToolStripMenuItem opcionDeshabilitar;
         private System.Windows.Forms.DataGridViewTextBoxColumn EspacioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Acumulador;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SumaHoras;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CalculaPorcentaje;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
