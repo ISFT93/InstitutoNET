@@ -15,15 +15,34 @@ namespace ISFDyT93.Datos.Daos
     {
         public DataTable ObtenerListaPersonal(int estado)
         {
-            string query = "SELECT p.PersonalId, p.NumeroDocumento AS [Documento], p.Nombre, p.Apellido, p.FechaAlta, p.FechaBaja, e.Descripcion AS Estado, p.PersonalEstadoId, s.Modulo " +
+            string query = "SELECT " +
+                           "    SUM(ISNULL(s.Modulo, 0)) AS Modulo, " +
+                           "    p.PersonalId, " +
+                           "    p.NumeroDocumento AS [Documento], " +
+                           "    p.Nombre, " +
+                           "    p.Apellido, " +
+                           "    p.FechaAlta, " +
+                           "    p.FechaBaja, " +
+                           "    e.Descripcion AS Estado, " +
+                           "    p.PersonalEstadoId " +
                            "FROM Personal p " +
                            "INNER JOIN Estados e ON e.EstadoId = p.PersonalEstadoId " +
-                           "LEFT JOIN Servicios s ON s.PersonalId = p.PersonalId";
+                           "LEFT JOIN Servicios s ON s.PersonalId = p.PersonalId"; // <-- Acá cambiamos INNER por LEFT
 
             if (estado != 0)
             {
                 query += $" WHERE p.PersonalEstadoId = {estado}";
             }
+
+            query += " GROUP BY " +
+                     "    p.PersonalId, " +
+                     "    p.NumeroDocumento, " +
+                     "    p.Nombre, " +
+                     "    p.Apellido, " +
+                     "    p.FechaAlta, " +
+                     "    p.FechaBaja, " +
+                     "    e.Descripcion, " +
+                     "    p.PersonalEstadoId";
 
             return this.Conexion.ObtenerRegistros(query);
         }

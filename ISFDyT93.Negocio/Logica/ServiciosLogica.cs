@@ -90,6 +90,19 @@ namespace ISFDyT93.Negocio.Logica
         public bool AgregarServicio(ServiciosModelo servicio, PersonalModelo personal, LibroActasModelo libroActa)
         {
             // ==========================================
+            // VALIDACIÓN DE MATERIA/CÁTEDRA OCUPADA
+            // ==========================================
+            if (servicio.CursoMateriaId.HasValue && servicio.CursoMateriaId.Value > 0)
+            {
+                bool yaAsignada = this.serviciosDao.MateriaYaAsignada(servicio.CursoMateriaId.Value);
+                if (yaAsignada)
+                {
+                    throw new Exception("Esta materia o cátedra ya se encuentra asignada a otro profesor.");
+                }
+            }
+            // ==========================================
+
+            // ==========================================
             // VALIDACIÓN DE MÓDULOS (Límite de 20 horas)
             // ==========================================
             PersonalDao personalDao = new PersonalDao();
@@ -175,6 +188,10 @@ namespace ISFDyT93.Negocio.Logica
                 return Convert.ToInt32(result);
 
             return -1;
+        }
+        public bool MateriaYaAsignada(int cursoMateriaId)
+        {
+            return this.serviciosDao.MateriaYaAsignada(cursoMateriaId);
         }
     }
 }

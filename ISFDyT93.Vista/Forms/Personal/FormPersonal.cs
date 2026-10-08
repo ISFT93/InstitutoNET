@@ -59,7 +59,7 @@ namespace ISFDyT93.Vista.Forms.Personal
                     dgvPersonal.Rows[info.RowIndex].Selected = true;
 
                     PersonalId = Convert.ToInt32(dgvPersonal["PersonalId", info.RowIndex].Value);
-                    Estado = (dgvPersonal["Estado", info.RowIndex].Value).ToString();
+                    Estado = (dgvPersonal["ColEstado", info.RowIndex].Value).ToString();
                     var estadoId = Convert.ToInt32(dgvPersonal["PersonalEstadoId", info.RowIndex].Value);
 
                     tsmAgregarPersonal.Visible = true;
@@ -215,7 +215,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         private void dgvPersonal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvPersonal.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            if (dgvPersonal.Columns[e.ColumnIndex].Name == "ColEstado" && e.Value != null)
             {
                 string estado = e.Value.ToString();
 

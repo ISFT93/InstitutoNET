@@ -57,7 +57,13 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmLicencias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDocumentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Colmodul = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonal)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.cmsPersonal.SuspendLayout();
@@ -89,7 +95,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             "Numero de Documento",
             "Nombre",
             "Apellido"});
-            this.cmbFiltro.Location = new System.Drawing.Point(129, 9);
+            this.cmbFiltro.Location = new System.Drawing.Point(129, 6);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(246, 27);
             this.cmbFiltro.TabIndex = 41;
@@ -165,7 +171,13 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.dgvPersonal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Colmodul});
+            this.Documento,
+            this.Nombre,
+            this.Apellido,
+            this.Colmodul,
+            this.FechaAlta,
+            this.FechaBaja,
+            this.ColEstado});
             this.dgvPersonal.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -392,12 +404,54 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tsmEliminar.Text = "Eliminar";
             this.tsmEliminar.Click += new System.EventHandler(this.tsmEliminar_Click);
             // 
+            // Documento
+            // 
+            this.Documento.DataPropertyName = "Documento";
+            this.Documento.HeaderText = "Documento";
+            this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
             // Colmodul
             // 
             this.Colmodul.DataPropertyName = "Modulo";
             this.Colmodul.HeaderText = "Modulo";
             this.Colmodul.Name = "Colmodul";
             this.Colmodul.ReadOnly = true;
+            // 
+            // FechaAlta
+            // 
+            this.FechaAlta.DataPropertyName = "FechaAlta";
+            this.FechaAlta.HeaderText = "FechaAlta";
+            this.FechaAlta.Name = "FechaAlta";
+            this.FechaAlta.ReadOnly = true;
+            // 
+            // FechaBaja
+            // 
+            this.FechaBaja.DataPropertyName = "FechaBaja";
+            this.FechaBaja.HeaderText = "FechaBaja";
+            this.FechaBaja.Name = "FechaBaja";
+            this.FechaBaja.ReadOnly = true;
+            // 
+            // ColEstado
+            // 
+            this.ColEstado.DataPropertyName = "Estado";
+            this.ColEstado.HeaderText = "Estado";
+            this.ColEstado.Name = "ColEstado";
+            this.ColEstado.ReadOnly = true;
             // 
             // FormPersonal
             // 
@@ -440,6 +494,12 @@ namespace ISFDyT93.Vista.Forms.Personal
         private System.Windows.Forms.ToolStripMenuItem tsmDocumentacion;
         private System.Windows.Forms.ToolStripMenuItem tsmHorarios;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminar;
+        private DataGridViewTextBoxColumn Documento;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Colmodul;
+        private DataGridViewTextBoxColumn FechaAlta;
+        private DataGridViewTextBoxColumn FechaBaja;
+        private DataGridViewTextBoxColumn ColEstado;
     }
 }

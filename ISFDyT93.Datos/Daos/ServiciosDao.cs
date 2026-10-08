@@ -92,6 +92,7 @@ namespace ISFDyT93.Datos.Daos
                 "INNER JOIN Materias ma ON ma.MateriaId = cm.MateriaId " +
                 $"WHERE cm.CursoId = {cursoId} AND ma.AnioCarreraId = {anioCarreraId} " +
                 "AND cm.Activo = 1 AND ma.Activo = 1 " +
+                "AND cm.CursoMateriaId NOT IN (SELECT CursoMateriaId FROM Servicios WHERE Activo = 1 AND CursoMateriaId IS NOT NULL) " +
                 "ORDER BY ma.Nombre";
 
             return this.Conexion.ObtenerRegistros(query);
@@ -214,6 +215,15 @@ namespace ISFDyT93.Datos.Daos
                 $"WHERE se.personalId = {personalId} AND se.Activo = {activo}";
 
             return this.Conexion.ObtenerRegistros(query);
+        }
+        public bool MateriaYaAsignada(int cursoMateriaId)
+        {
+            // Usamos el nombre exacto de la columna en la BD: CursoMateriaId
+            string query = $"SELECT * FROM Servicios WHERE CursoMateriaId = {cursoMateriaId} AND Activo = 1";
+
+            DataTable dt = this.Conexion.ObtenerRegistros(query);
+
+            return dt != null && dt.Rows.Count > 0;
         }
     }
 }
