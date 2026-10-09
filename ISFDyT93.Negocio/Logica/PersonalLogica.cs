@@ -206,7 +206,6 @@ namespace ISFDyT93.Negocio.Logica
 
             return resultado != null;
         }
-
         public int AgregarDocumentacion(string Analitico, string Proyecto, int ProfesorMateriaId, int CiclosLectivoId)
         {
             int id = 1;
@@ -311,6 +310,11 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ObtenerNacionalidades()
         {
             return this.personalDao.ObtenerNacionalidades();
+        }
+
+        public bool ExisteDocumentoEnBD(string documento)
+        {
+            return this.personalDao.ExisteDocumentoEnBD(documento);
         }
     }
 }

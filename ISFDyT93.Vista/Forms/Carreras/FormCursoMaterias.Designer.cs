@@ -52,7 +52,7 @@
             this.tsmVerAlumnos,
             this.tsmControlarAsistencia});
             this.cmsCursoMaterias.Name = "cmsAniosCarreras";
-            this.cmsCursoMaterias.Size = new System.Drawing.Size(237, 64);
+            this.cmsCursoMaterias.Size = new System.Drawing.Size(203, 64);
             // 
             // tsmVerAlumnos
             // 
@@ -61,7 +61,7 @@
             this.tsmVerAlumnos.ForeColor = System.Drawing.Color.White;
             this.tsmVerAlumnos.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerAlumnos.Name = "tsmVerAlumnos";
-            this.tsmVerAlumnos.Size = new System.Drawing.Size(236, 30);
+            this.tsmVerAlumnos.Size = new System.Drawing.Size(202, 30);
             this.tsmVerAlumnos.Text = "Ver Alumnos";
             this.tsmVerAlumnos.Click += new System.EventHandler(this.tsmVerAlumnos_Click);
             // 
@@ -72,7 +72,7 @@
             this.tsmControlarAsistencia.ForeColor = System.Drawing.Color.White;
             this.tsmControlarAsistencia.Image = global::ISFDyT93.Vista.Properties.Resources.list_alt_solid;
             this.tsmControlarAsistencia.Name = "tsmControlarAsistencia";
-            this.tsmControlarAsistencia.Size = new System.Drawing.Size(236, 30);
+            this.tsmControlarAsistencia.Size = new System.Drawing.Size(202, 30);
             this.tsmControlarAsistencia.Text = "Controlar Asistencia";
             this.tsmControlarAsistencia.Click += new System.EventHandler(this.tsmControlarAsistencia_Click);
             // 
@@ -98,9 +98,9 @@
             this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(3, 32);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(3, 33);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
-            this.cmbCicloLectivo.Size = new System.Drawing.Size(754, 32);
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(754, 27);
             this.cmbCicloLectivo.Sorted = true;
             this.cmbCicloLectivo.TabIndex = 0;
             this.cmbCicloLectivo.Visible = false;
@@ -170,14 +170,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 23);
+            this.label1.Size = new System.Drawing.Size(97, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Ciclo Lectivo";
             this.label1.Visible = false;
             // 
             // FormCursoMaterias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);

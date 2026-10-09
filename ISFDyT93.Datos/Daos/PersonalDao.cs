@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -156,7 +157,6 @@ namespace ISFDyT93.Datos.Daos
             string query = "SELECT TOP 1 PersonalId FROM Personal WHERE NumeroDocumento = " + DNI;
             return this.Conexion.ObtenerRegistro(query);
         }
-
         public int AgregarDocumentacion(string Analitico, string Proyecto, int ProfesorMateriaId, int CiclosLectivoId)
         {
             string query = "INSERT INTO ProfesorMateriaCicloLectivo (Analitico, Proyecto, ProfesorMateriaId, CicloLectivoId) VALUES ( '" + Analitico + "','" + Proyecto + "'," + ProfesorMateriaId + "," + CiclosLectivoId + " )";
@@ -246,6 +246,18 @@ namespace ISFDyT93.Datos.Daos
             query += " ORDER BY Apellido, Nombre";
 
             return this.Conexion.ObtenerRegistros(query);
+        }
+        public bool ExisteDocumentoEnBD(string documento)
+        {
+            string query = $"SELECT COUNT(*) FROM Personal WHERE NumeroDocumento = '{documento}'";
+            DataTable dt = this.Conexion.ObtenerRegistros(query);
+
+            if (dt.Rows.Count > 0)
+            {
+                int count = Convert.ToInt32(dt.Rows[0][0]);
+                return count > 0;
+            }
+            return false;
         }
 
 
