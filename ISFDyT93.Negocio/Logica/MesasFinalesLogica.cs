@@ -84,7 +84,19 @@ namespace ISFDyT93.Negocio.Logica
 
         public DataTable ObtenerMesaReporte(int mesaFinalId)
         {
-            return this.mesasFinalesDao.ObtenerMesaReporte(mesaFinalId);
+            var datos = this.mesasFinalesDao.ObtenerMesaReporte(mesaFinalId);
+            if (datos.Rows.Count == 0)
+                throw new InvalidOperationException("La mesa seleccionada ya no existe.");
+            // Comparar el catálogo consultado, no un ID supuesto ni la grilla desactualizada.
+            if (!string.Equals(Convert.ToString(datos.Rows[0]["Estado"]).Trim(),
+                "Activa", StringComparison.OrdinalIgnoreCase))
+                throw new InvalidOperationException("Solo se pueden imprimir mesas en estado Activa.");
+            return datos;
+        }
+
+        public DataTable ObtenerAlumnosMesaReporte(int mesaFinalId)
+        {
+            return this.mesasFinalesDao.ObtenerAlumnosMesaReporte(mesaFinalId);
         }
 
         public int CargarMesasFinales(int cicloLectivoId, int turnoId)

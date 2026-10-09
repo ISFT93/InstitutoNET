@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel0 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbLlamados = new System.Windows.Forms.ComboBox();
             this.cmbTurno = new System.Windows.Forms.ComboBox();
@@ -50,12 +50,14 @@
             this.lblCarrera = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReporteMesas = new FontAwesome.Sharp.IconButton();
+            this.panelAccionesMesas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAgregarMesa = new FontAwesome.Sharp.IconButton();
             this.btnFiltrar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarFiltros = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvMesasFinales = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel0.SuspendLayout();
+            this.panelAccionesMesas.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesasFinales)).BeginInit();
             this.SuspendLayout();
@@ -271,7 +273,6 @@
             // btnReporteMesas
             // 
             this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
-            this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReporteMesas.Enabled = false;
             this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
@@ -282,17 +283,32 @@
             this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporteMesas.Location = new System.Drawing.Point(3, 3);
             this.btnReporteMesas.Name = "btnReporteMesas";
-            this.btnReporteMesas.Size = new System.Drawing.Size(183, 49);
+            this.btnReporteMesas.Size = new System.Drawing.Size(170, 44);
             this.btnReporteMesas.TabIndex = 17;
-            this.btnReporteMesas.Text = "Imprimir Mesas";
+            this.btnReporteMesas.Text = "Imprimir fechas";
             this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReporteMesas.UseVisualStyleBackColor = false;
             this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
             // 
+            // panelAccionesMesas
+            // 
+            this.panelAccionesMesas.AutoSize = true;
+            this.panelAccionesMesas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.SetColumnSpan(this.panelAccionesMesas, 4);
+            this.panelAccionesMesas.Controls.Add(this.btnReporteMesas);
+            this.panelAccionesMesas.Controls.Add(this.btnAgregarMesa);
+            this.panelAccionesMesas.Controls.Add(this.btnFiltrar);
+            this.panelAccionesMesas.Controls.Add(this.btnLimpiarFiltros);
+            this.panelAccionesMesas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAccionesMesas.Location = new System.Drawing.Point(0, 0);
+            this.panelAccionesMesas.Margin = new System.Windows.Forms.Padding(0);
+            this.panelAccionesMesas.Name = "panelAccionesMesas";
+            this.panelAccionesMesas.Size = new System.Drawing.Size(760, 50);
+            this.panelAccionesMesas.TabIndex = 22;
+            // 
             // btnAgregarMesa
             // 
             this.btnAgregarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnAgregarMesa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAgregarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarMesa.ForeColor = System.Drawing.Color.White;
             this.btnAgregarMesa.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
@@ -300,9 +316,9 @@
             this.btnAgregarMesa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregarMesa.IconSize = 25;
             this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarMesa.Location = new System.Drawing.Point(192, 3);
+            this.btnAgregarMesa.Location = new System.Drawing.Point(179, 3);
             this.btnAgregarMesa.Name = "btnAgregarMesa";
-            this.btnAgregarMesa.Size = new System.Drawing.Size(184, 49);
+            this.btnAgregarMesa.Size = new System.Drawing.Size(220, 44);
             this.btnAgregarMesa.TabIndex = 18;
             this.btnAgregarMesa.Text = "     Agregar Mesa Especial  ";
             this.btnAgregarMesa.UseVisualStyleBackColor = false;
@@ -311,7 +327,6 @@
             // btnFiltrar
             // 
             this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnFiltrar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrar.ForeColor = System.Drawing.Color.White;
             this.btnFiltrar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
@@ -319,9 +334,9 @@
             this.btnFiltrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFiltrar.IconSize = 30;
             this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFiltrar.Location = new System.Drawing.Point(382, 3);
+            this.btnFiltrar.Location = new System.Drawing.Point(405, 3);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(183, 49);
+            this.btnFiltrar.Size = new System.Drawing.Size(140, 44);
             this.btnFiltrar.TabIndex = 19;
             this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = false;
@@ -330,7 +345,6 @@
             // btnLimpiarFiltros
             // 
             this.btnLimpiarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnLimpiarFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLimpiarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.White;
             this.btnLimpiarFiltros.IconChar = FontAwesome.Sharp.IconChar.Eraser;
@@ -338,9 +352,9 @@
             this.btnLimpiarFiltros.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarFiltros.IconSize = 30;
             this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpiarFiltros.Location = new System.Drawing.Point(571, 3);
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(551, 3);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
-            this.btnLimpiarFiltros.Size = new System.Drawing.Size(186, 49);
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(170, 44);
             this.btnLimpiarFiltros.TabIndex = 20;
             this.btnLimpiarFiltros.Text = "Limpiar Filtros";
             this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
@@ -354,16 +368,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.09982F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.dgvMesasFinales, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnLimpiarFiltros, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnFiltrar, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnAgregarMesa, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnReporteMesas, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelAccionesMesas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 153);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 277);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -377,52 +388,52 @@
             this.dgvMesasFinales.BackgroundColor = System.Drawing.Color.White;
             this.dgvMesasFinales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvMesasFinales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMesasFinales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMesasFinales, 4);
             this.dgvMesasFinales.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMesasFinales.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMesasFinales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMesasFinales.EnableHeadersVisualStyles = false;
             this.dgvMesasFinales.GridColor = System.Drawing.Color.White;
-            this.dgvMesasFinales.Location = new System.Drawing.Point(3, 58);
+            this.dgvMesasFinales.Location = new System.Drawing.Point(3, 53);
             this.dgvMesasFinales.MultiSelect = false;
             this.dgvMesasFinales.Name = "dgvMesasFinales";
             this.dgvMesasFinales.ReadOnly = true;
             this.dgvMesasFinales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMesasFinales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMesasFinales.RowHeadersVisible = false;
             this.dgvMesasFinales.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMesasFinales.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMesasFinales.RowTemplate.Height = 28;
             this.dgvMesasFinales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMesasFinales.Size = new System.Drawing.Size(754, 216);
+            this.dgvMesasFinales.Size = new System.Drawing.Size(754, 221);
             this.dgvMesasFinales.TabIndex = 21;
             this.dgvMesasFinales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMesasFinales_CellDoubleClick);
             // 
@@ -440,7 +451,9 @@
             this.Load += new System.EventHandler(this.FormMesasFinales_Load);
             this.tableLayoutPanel0.ResumeLayout(false);
             this.tableLayoutPanel0.PerformLayout();
+            this.panelAccionesMesas.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMesasFinales)).EndInit();
             this.ResumeLayout(false);
 
@@ -465,6 +478,7 @@
         private System.Windows.Forms.ComboBox cmbAnioLectivo;
         private System.Windows.Forms.ComboBox cmbLlamados;
         private FontAwesome.Sharp.IconButton btnReporteMesas;
+        private System.Windows.Forms.FlowLayoutPanel panelAccionesMesas;
         private FontAwesome.Sharp.IconButton btnAgregarMesa;
         private FontAwesome.Sharp.IconButton btnFiltrar;
         private FontAwesome.Sharp.IconButton btnLimpiarFiltros;

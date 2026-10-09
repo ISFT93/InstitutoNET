@@ -19,6 +19,7 @@ namespace ISFDyT93.Negocio.Interfaces
         DataTable ObtenerMesasFiltro(int carreraId, int anioLectivoId, int turnoId, int llamadoId, int anioCarreraId = 0, int cursoId = 0, int materiaId = 0, int profesorId = 0);
         DataTable ObtenerMesasReporte(int carreraId, int anioLectivoId, int turnoId, int llamadoId);
         DataTable ObtenerMesaReporte(int mesaFinalId);
+        DataTable ObtenerAlumnosMesaReporte(int mesaFinalId);
         int CargarMesasFinales(int cicloLectivoId, int turnoId);
         DataTable ObtenerTurnoMesa(int mesaFinalId);
         DataTable ObtenerTurnos(bool todos);

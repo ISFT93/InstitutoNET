@@ -153,15 +153,60 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesaReporte(int mesaFinalId)
         {
-            var query = "select Fi.MesaFinalId, Ca.DescripcionCorta as 'Carrera', Ma.Nombre as 'Materia', Ll.Descripcion as 'Llamado', Tu.Descripcion as 'Turno', Fi.Fecha, concat (Pe.Nombre, ' ', Pe.Apellido) as 'Titular', concat (Voc.Nombre, ' ', Voc.Apellido) as Vocal, Est.Descripcion as 'Estado' " +
-                "from MesasFinales Fi inner join Materias Ma on Fi.MateriaId = Ma.MateriaId " +
-                "inner join Carreras Ca on Fi.CarreraId = Ca.CarreraId " +
-                "inner join Turnos Tu on Fi.TurnoId = Tu.TurnoId " +
-                "inner join Llamados Ll on Fi.LlamadoId = Ll.LlamadoId " +
-                "inner join Estados Est on Fi.FinalEstadoId = Est.EstadoId " +
-                "left join Personal Pe on Fi.PresidenteId = Pe.PersonalId " +
-                $"left join Personal Voc on Fi.VocalId = Voc.PersonalId where Fi.MesaFinalId = {mesaFinalId}";
-            return this.Conexion.ObtenerRegistros(query);
+            if (mesaFinalId <= 0) throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
+
+            // Esquema verificado en instituto_db: la mesa referencia MateriaId,
+            // FinalEstados y LibroActas. No tiene CursoMateriaId ni folio propio.
+            const string query = @"
+                SELECT Fi.MesaFinalId, Ca.Nombre AS Carrera, Ma.Nombre AS Materia,
+                       AC.AnioCarrera, CAST(NULL AS varchar(10)) AS Curso,
+                       Fi.CicloLectivoId, Ll.Descripcion AS Llamado, Tu.Descripcion AS Turno,
+                       Fi.Fecha, LTRIM(RTRIM(CONCAT(Pe.Nombre, ' ', Pe.Apellido))) AS Titular,
+                       LTRIM(RTRIM(CONCAT(Voc.Nombre, ' ', Voc.Apellido))) AS Vocal,
+                       Fi.FinalEstadoId, Est.Descripcion AS Estado,
+                       LA.LibroNumero AS LibroActa, CAST(NULL AS varchar(10)) AS FolioActa
+                FROM dbo.MesasFinales Fi
+                LEFT JOIN dbo.Materias Ma ON Fi.MateriaId = Ma.MateriaId
+                LEFT JOIN dbo.AniosCarreras AC ON Ma.AnioCarreraId = AC.AnioCarreraId
+                LEFT JOIN dbo.Carreras Ca ON Fi.CarreraId = Ca.CarreraId
+                LEFT JOIN dbo.Turnos Tu ON Fi.TurnoId = Tu.TurnoId
+                LEFT JOIN dbo.Llamados Ll ON Fi.LlamadoId = Ll.LlamadoId
+                LEFT JOIN dbo.FinalEstados Est ON Fi.FinalEstadoId = Est.FinalEstadoId
+                LEFT JOIN dbo.Personal Pe ON Fi.PresidenteId = Pe.PersonalId
+                LEFT JOIN dbo.Personal Voc ON Fi.VocalId = Voc.PersonalId
+                LEFT JOIN dbo.LibroActas LA ON Fi.LibroActaId = LA.LibroActaId
+                WHERE Fi.MesaFinalId = @MesaFinalId";
+
+            // Conexion.ObtenerRegistros no admite parámetros. Usar una conexión
+            // independiente permite liberar recursos incluso si SQL produce un error.
+            using (var conexion = new SqlConnection(this.Conexion.Conector.ConnectionString))
+            using (var comando = new SqlCommand(query, conexion))
+            using (var adapter = new SqlDataAdapter(comando))
+            {
+                comando.Parameters.Add("@MesaFinalId", SqlDbType.Int).Value = mesaFinalId;
+                var datos = new DataTable("DSMesaFinal");
+                adapter.Fill(datos);
+                return datos;
+            }
+
+        }
+
+        public DataTable ObtenerAlumnosMesaReporte(int mesaFinalId)
+        {
+            if (mesaFinalId <= 0) throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
+
+            // No existe una relación alumno-mesa en el esquema actual (2026-10-09).
+            // Las inscripciones a cursadas NO acreditan inscripción a esta mesa.
+            // Se expone el contrato del RDLC sin inventar una consulta ni registros.
+            var datos = new DataTable("DSAlumnosMesa");
+            datos.Columns.Add("AlumnoId", typeof(int));
+            foreach (var campo in new[] { "Libro", "Folio", "NumeroDocumento", "Apellido",
+                "Nombre", "Email", "Celular", "Condicion" })
+                datos.Columns.Add(campo, typeof(string));
+            datos.ExtendedProperties["AvisoInscripciones"] =
+                "Inscripciones no disponibles: falta la relación entre alumnos y mesas finales. " +
+                "No se puede determinar la nómina ni el total de inscriptos.";
+            return datos;
         }
 
         public DataTable ExistenFechasFinales(int anioLectivo)

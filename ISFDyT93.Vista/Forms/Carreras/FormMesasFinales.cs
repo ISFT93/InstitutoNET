@@ -254,28 +254,49 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void btnReporteMesas_Click(object sender, EventArgs e)
         {
-            if (dgvMesasFinales.CurrentRow == null)
+            AbrirReporteMesa(true);
+        }
+
+        private void AbrirReporteMesa(bool acta)
+        {
+            int mesaFinalId = ObtenerIdCelda(dgvMesasFinales.CurrentRow, "MesaFinalId");
+            if (mesaFinalId <= 0 || dgvMesasFinales.CurrentRow.IsNewRow)
             {
                 Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa para imprimir");
                 return;
             }
-            if (Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["FinalEstadoId"].Value) == 3 || Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["FinalEstadoId"].Value) == 2)
+            try
             {
-                Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa activa para imprimir");
-                return;
+                var datos = mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
+                var mesa = datos.Rows[0];
+                if (acta)
+                {
+                    var alumnos = mesasFinalesLogica.ObtenerAlumnosMesaReporte(mesaFinalId);
+                    string aviso = Convert.ToString(alumnos.ExtendedProperties["AvisoInscripciones"]);
+                    Contenedor.SetTitulo("Acta de mesa final").AbrirFormulario<FormReporte>(form =>
+                        form.SetReporte("ISFDyT93.Vista.Reports.ActaMesaFinal.rdlc")
+                            .SetTituloReporte($"Acta mesa {mesaFinalId} - {mesa["Materia"]} - {mesa["CicloLectivoId"]}")
+                            .AddDataSource(datos, "DSMesaFinal")
+                            .AddDataSource(alumnos, "DSAlumnosMesa")
+                            .AddParameter("AvisoInscripciones", aviso));
+                }
+                else
+                {
+                    // Se conserva el reporte de fechas de la mesa seleccionada.
+                    Contenedor.SetTitulo("Imprimir Fechas Finales").AbrirFormulario<FormReporte>(form =>
+                        form.SetReporte("ISFDyT93.Vista.Reports.MesasFinales.rdlc")
+                            .SetTituloReporte($"Fechas de mesa {mesaFinalId} - {mesa["CicloLectivoId"]}")
+                            .AddDataSource(datos, "DSMesasFinales")
+                            .AddParameter("Carrera", Convert.ToString(mesa["Carrera"]))
+                            .AddParameter("Turno", Convert.ToString(mesa["Turno"]))
+                            .AddParameter("Llamado", Convert.ToString(mesa["Llamado"]))
+                            .AddParameter("AnioLectivo", Convert.ToString(mesa["CicloLectivoId"])));
+                }
             }
-            int mesaFinalId = Convert.ToInt32(dgvMesasFinales.CurrentRow.Cells["MesaFinalId"].Value);
-            var data = this.mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
-            string carreraReporte = data.Rows.Count > 0 ? Convert.ToString(data.Rows[0]["Carrera"]) : string.Empty;
-
-            this.Contenedor.SetTitulo("Imprimir Fechas Finales").AbrirFormulario<FormReporte>(form => {
-                form.SetReporte("ISFDyT93.Vista.Reports.MesasFinales.rdlc")
-                .AddDataSource(data, "DSMesasFinales")
-                .AddParameter("Carrera", carreraReporte)
-                .AddParameter("Turno", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Turno"].Value))
-                .AddParameter("Llamado", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["Llamado"].Value))
-                .AddParameter("AnioLectivo", Convert.ToString(dgvMesasFinales.CurrentRow.Cells["MesaFinalId"].Value));
-            });
+            catch (Exception ex)
+            {
+                Notificar(TipoNotificacion.Warning, "No se pudo preparar el reporte. " + ex.Message);
+            }
         }
 
         private void dgvMesasFinales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -377,11 +398,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (dgvMesasFinales.Columns["FinalEstadoId"] != null)
                 dgvMesasFinales.Columns["FinalEstadoId"].Visible = false;
 
-            if (dgvMesasFinales.Rows.Count > 0)
-            {
-                btnReporteMesas.Enabled = true;
-                btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(39, 39, 58);
-            }
+            btnReporteMesas.Enabled = btnReporteMesas.Enabled = dgvMesasFinales.Rows.Count > 0;
+            btnReporteMesas.BackColor = btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(39, 39, 58);
         }
 
         private void ControlLlamados()

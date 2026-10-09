@@ -589,6 +589,7 @@
     <EmbeddedResource Include="Reports\Personas.rdlc" />
     <EmbeddedResource Include="Reports\AlumnosActivos.rdlc" />
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
+    <EmbeddedResource Include="Reports\ActaMesaFinal.rdlc" />
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </EmbeddedResource>
