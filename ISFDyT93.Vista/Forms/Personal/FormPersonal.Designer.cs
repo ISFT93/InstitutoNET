@@ -48,6 +48,7 @@
             this.tsmModificarPersonal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDarAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDarBaja = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCargaMasiva = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSeparador = new System.Windows.Forms.ToolStripSeparator();
             this.tsmVerLegajo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerServicios = new System.Windows.Forms.ToolStripMenuItem();
@@ -258,6 +259,7 @@
             this.tsmModificarPersonal,
             this.tsmDarAlta,
             this.tsmDarBaja,
+            this.tsmCargaMasiva,
             this.tsmSeparador,
             this.tsmVerLegajo,
             this.tsmVerServicios,
@@ -266,7 +268,7 @@
             this.tsmDocumentacion,
             this.tsmEliminar});
             this.cmsPersonal.Name = "contextMenuStrip1";
-            this.cmsPersonal.Size = new System.Drawing.Size(194, 316);
+            this.cmsPersonal.Size = new System.Drawing.Size(194, 346);
             // 
             // tsmAgregarPersonal
             // 
@@ -311,6 +313,17 @@
             this.tsmDarBaja.Size = new System.Drawing.Size(193, 30);
             this.tsmDarBaja.Text = "Dar de Baja";
             this.tsmDarBaja.Click += new System.EventHandler(this.tsmDarBaja_Click);
+            // 
+            // tsmCargaMasiva
+            // 
+            this.tsmCargaMasiva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmCargaMasiva.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmCargaMasiva.ForeColor = System.Drawing.Color.White;
+            this.tsmCargaMasiva.Image = global::ISFDyT93.Vista.Properties.Resources.upload_solid;
+            this.tsmCargaMasiva.Name = "tsmCargaMasiva";
+            this.tsmCargaMasiva.Size = new System.Drawing.Size(193, 30);
+            this.tsmCargaMasiva.Text = "Carga Masiva";
+            this.tsmCargaMasiva.Click += new System.EventHandler(this.tsmCargaMasiva_Click);
             // 
             // tsmSeparador
             // 
@@ -427,5 +440,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDocumentacion;
         private System.Windows.Forms.ToolStripMenuItem tsmHorarios;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminar;
+        private System.Windows.Forms.ToolStripMenuItem tsmCargaMasiva;
     }
 }
