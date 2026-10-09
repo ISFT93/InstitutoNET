@@ -153,8 +153,8 @@ namespace ISFDyT93.Vista
                     MessageBox.Show("Error al cargar los controles de tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                uscEspaciosFormacion espacios = new uscEspaciosFormacion();
-                flpContenedor.Controls.Add(espacios);
+                uscMostrarEspacio mostrarEspacios = new uscMostrarEspacio();
+                flpContenedor.Controls.Add(mostrarEspacios);
 
             }
             else
