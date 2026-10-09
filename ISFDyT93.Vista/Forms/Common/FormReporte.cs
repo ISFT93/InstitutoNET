@@ -222,7 +222,31 @@ namespace ISFDyT93.Vista.Forms.Common
                                 reporte.DataSources.Add(new ReportDataSource(tabla.DataBinding, tabla.DataSource));
                             if (parametros.Length > 0) reporte.SetParameters(parametros);
                             // Sin DeviceInfo que cambie dimensiones: se respeta el papel del RDLC.
-                            File.WriteAllBytes(archivo, reporte.Render("PDF"));
+
+
+                            try
+                            {
+                                byte[] pdf = rvwReportes.LocalReport.Render("PDF");
+
+                                File.WriteAllBytes(dialogo.FileName, pdf);
+
+                                MessageBox.Show(
+                                    "PDF exportado correctamente.",
+                                    "Exportación",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information
+                                );
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(
+                                    ex.ToString(),
+                                    "Error al exportar PDF",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
+                            }
+
                         }
                     });
                     if (!IsDisposed && !Disposing) lblEstado.Text = "PDF guardado";
