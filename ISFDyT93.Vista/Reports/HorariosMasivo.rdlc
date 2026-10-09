@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+	<AutoRefresh>0</AutoRefresh>
+
+	<DataSources>
+		<DataSource Name="MiDataSource">
+			<ConnectionProperties>
+				<DataProvider>System.Data.DataSet</DataProvider>
+				<ConnectString>/* Local Connection */</ConnectString>
+			</ConnectionProperties>
+			<rd:DataSourceID>6e2f1e67-d86b-456e-827c-9fb27a8e0f6b</rd:DataSourceID>
+		</DataSource>
+	</DataSources>
+
+	<DataSets>
+		<DataSet Name="DSImagenMasivo">
+			<Query>
+				<DataSourceName>MiDataSource</DataSourceName>
+				<CommandText>/* Local Query */</CommandText>
+			</Query>
+			<Fields>
+				<Field Name="ImagenCapturada">
+					<DataField>ImagenCapturada</DataField>
+					<rd:TypeName>System.Byte[]</rd:TypeName>
+				</Field>
+				<Field Name="CursoNombre">
+					<DataField>CursoNombre</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+			</Fields>
+		</DataSet>
+	</DataSets>
+
+	<Body>
+		<ReportItems>
+			<Tablix Name="TablixCursos">
+				<TablixBody>
+					<TablixColumns>
+						<TablixColumn>
+							<Width>27cm</Width>
+						</TablixColumn>
+					</TablixColumns>
+					<TablixRows>
+						<TablixRow>
+							<Height>16cm</Height>
+							<TablixCells>
+								<TablixCell>
+									<CellContents>
+										<Rectangle Name="ContenedorCurso">
+											<ReportItems>
+												<Textbox Name="TituloTxt">
+													<CanGrow>true</CanGrow>
+													<KeepTogether>true</KeepTogether>
+													<Paragraphs>
+														<Paragraph>
+															<TextRuns>
+																<TextRun>
+																	<Value>="Horarios - " &amp; Parameters!Carrera.Value &amp; " - " &amp; Fields!CursoNombre.Value</Value>
+																	<Style>
+																		<FontSize>16pt</FontSize>
+																		<FontWeight>Bold</FontWeight>
+																		<Color>White</Color>
+																	</Style>
+																</TextRun>
+															</TextRuns>
+														</Paragraph>
+													</Paragraphs>
+													<Top>0.5cm</Top>
+													<Left>0.5cm</Left>
+													<Height>1cm</Height>
+													<Width>26cm</Width>
+													<Style>
+														<BackgroundColor>#2a273b</BackgroundColor>
+														<PaddingLeft>5pt</PaddingLeft>
+														<PaddingTop>5pt</PaddingTop>
+													</Style>
+												</Textbox>
+
+												<Image Name="ImagenGrilla">
+													<Source>Database</Source>
+													<Value>=Fields!ImagenCapturada.Value</Value>
+													<MIMEType>image/png</MIMEType>
+													<Sizing>FitProportional</Sizing>
+													<Top>2cm</Top>
+													<Left>0.5cm</Left>
+													<Height>14cm</Height>
+													<Width>26cm</Width>
+												</Image>
+											</ReportItems>
+											<KeepTogether>true</KeepTogether>
+										</Rectangle>
+									</CellContents>
+								</TablixCell>
+							</TablixCells>
+						</TablixRow>
+					</TablixRows>
+				</TablixBody>
+				<TablixColumnHierarchy>
+					<TablixMembers>
+						<TablixMember />
+					</TablixMembers>
+				</TablixColumnHierarchy>
+				<TablixRowHierarchy>
+					<TablixMembers>
+						<TablixMember>
+							<Group Name="Details">
+								<PageBreak>
+									<BreakLocation>Between</BreakLocation>
+								</PageBreak>
+							</Group>
+						</TablixMember>
+					</TablixMembers>
+				</TablixRowHierarchy>
+				<DataSetName>DSImagenMasivo</DataSetName>
+				<Top>0cm</Top>
+				<Left>0cm</Left>
+				<Height>16cm</Height>
+				<Width>27cm</Width>
+			</Tablix>
+		</ReportItems>
+		<Height>17cm</Height>
+	</Body>
+
+	<Width>40cm</Width>
+	<Page>
+		<PageHeight>21cm</PageHeight>
+		<PageWidth>29.7cm</PageWidth>
+		<LeftMargin>0.5cm</LeftMargin>
+		<RightMargin>0.5cm</RightMargin>
+		<TopMargin>0.5cm</TopMargin>
+		<BottomMargin>0.5cm</BottomMargin>
+	</Page>
+
+	<ReportParameters>
+		<ReportParameter Name="Carrera">
+			<DataType>String</DataType>
+			<Nullable>true</Nullable>
+			<AllowBlank>true</AllowBlank>
+			<Prompt>Carrera</Prompt>
+		</ReportParameter>
+		<ReportParameter Name="AnioCarrera">
+			<DataType>String</DataType>
+			<Nullable>true</Nullable>
+			<AllowBlank>true</AllowBlank>
+			<Prompt>AnioCarrera</Prompt>
+		</ReportParameter>
+		<ReportParameter Name="FechaEmision">
+			<DataType>String</DataType>
+			<Nullable>true</Nullable>
+			<AllowBlank>true</AllowBlank>
+			<Prompt>FechaEmision</Prompt>
+		</ReportParameter>
+	</ReportParameters>
+</Report>

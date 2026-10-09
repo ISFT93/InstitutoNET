@@ -37,7 +37,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsAniosCarreras = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCursos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmVerHorarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCorrelativas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDesactivarAnio = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAniosCarrera = new System.Windows.Forms.DataGridView();
@@ -52,11 +51,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsAniosCarreras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmVerMaterias,
             this.tsmVerCursos,
-            this.tsmVerHorarios,
             this.tsmVerCorrelativas,
             this.tsmDesactivarAnio});
             this.cmsAniosCarreras.Name = "cmsAniosCarreras";
-            this.cmsAniosCarreras.Size = new System.Drawing.Size(179, 154);
+            this.cmsAniosCarreras.Size = new System.Drawing.Size(206, 124);
+            this.cmsAniosCarreras.Opening += new System.ComponentModel.CancelEventHandler(this.cmsAniosCarreras_Opening);
             // 
             // tsmVerMaterias
             // 
@@ -65,7 +64,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerMaterias.ForeColor = System.Drawing.Color.White;
             this.tsmVerMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.list_alt_solid;
             this.tsmVerMaterias.Name = "tsmVerMaterias";
-            this.tsmVerMaterias.Size = new System.Drawing.Size(178, 30);
+            this.tsmVerMaterias.Size = new System.Drawing.Size(205, 30);
             this.tsmVerMaterias.Text = "Ver Materias";
             this.tsmVerMaterias.Click += new System.EventHandler(this.tsmVerMaterias_Click);
             // 
@@ -77,20 +76,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCursos.ForeColor = System.Drawing.Color.White;
             this.tsmVerCursos.Image = global::ISFDyT93.Vista.Properties.Resources.plus_circle_solid;
             this.tsmVerCursos.Name = "tsmVerCursos";
-            this.tsmVerCursos.Size = new System.Drawing.Size(178, 30);
+            this.tsmVerCursos.Size = new System.Drawing.Size(205, 30);
             this.tsmVerCursos.Text = "Ver Cursos";
             this.tsmVerCursos.Click += new System.EventHandler(this.tsmVerCursos_Click);
-            // 
-            // tsmVerHorarios
-            // 
-            this.tsmVerHorarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmVerHorarios.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmVerHorarios.ForeColor = System.Drawing.Color.White;
-            this.tsmVerHorarios.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
-            this.tsmVerHorarios.Name = "tsmVerHorarios";
-            this.tsmVerHorarios.Size = new System.Drawing.Size(178, 30);
-            this.tsmVerHorarios.Text = "Ver Horarios";
-            this.tsmVerHorarios.Click += new System.EventHandler(this.tsmVerHorarios_Click);
             // 
             // tsmVerCorrelativas
             // 
@@ -99,7 +87,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerCorrelativas.ForeColor = System.Drawing.Color.White;
             this.tsmVerCorrelativas.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCorrelativas.Name = "tsmVerCorrelativas";
-            this.tsmVerCorrelativas.Size = new System.Drawing.Size(178, 30);
+            this.tsmVerCorrelativas.Size = new System.Drawing.Size(205, 30);
             this.tsmVerCorrelativas.Text = "Ver Correlativas";
             this.tsmVerCorrelativas.Click += new System.EventHandler(this.tsmVerCorrelativas_Click);
             // 
@@ -110,7 +98,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmDesactivarAnio.ForeColor = System.Drawing.Color.White;
             this.tsmDesactivarAnio.Image = global::ISFDyT93.Vista.Properties.Resources.eye_slash_solid;
             this.tsmDesactivarAnio.Name = "tsmDesactivarAnio";
-            this.tsmDesactivarAnio.Size = new System.Drawing.Size(178, 30);
+            this.tsmDesactivarAnio.Size = new System.Drawing.Size(205, 30);
             this.tsmDesactivarAnio.Text = "Desactivar";
             this.tsmDesactivarAnio.Click += new System.EventHandler(this.tsmDesactivarAnio_Click);
             // 
@@ -179,7 +167,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCargaHorariaTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCargaHorariaTotal.Location = new System.Drawing.Point(20, 420);
             this.lblCargaHorariaTotal.Name = "lblCargaHorariaTotal";
-            this.lblCargaHorariaTotal.Size = new System.Drawing.Size(0, 19);
+            this.lblCargaHorariaTotal.Size = new System.Drawing.Size(0, 24);
             this.lblCargaHorariaTotal.TabIndex = 2;
             // 
             // FormAniosCarreras
@@ -207,7 +195,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.ContextMenuStrip cmsAniosCarreras;
         private System.Windows.Forms.ToolStripMenuItem tsmVerMaterias;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCursos;
-        private System.Windows.Forms.ToolStripMenuItem tsmVerHorarios;
         public System.Windows.Forms.DataGridView dgvAniosCarrera;
         private System.Windows.Forms.Label lblCargaHorariaTotal;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCorrelativas;
