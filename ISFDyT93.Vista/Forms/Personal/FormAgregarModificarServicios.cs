@@ -91,20 +91,30 @@ namespace ISFDyT93.Vista.Forms.Personal
             {
                 modelo.PersonalId = this.PersonalId;
 
-                this.ServiciosLogica.AgregarServicio(modelo, this.Personal, this.LibroActa);
-                Notificar(TipoNotificacion.Success, "Servicio generado correctamente");
-
-                Contenedor.AbrirFormulario<FormServicios>(form =>
+                try
                 {
-                    form.PersonalId = this.PersonalId;
-                });
+                    // Pasamos el modelo, el personal y la propiedad privada LibroActa correctamente con mayúscula
+                    this.ServiciosLogica.AgregarServicio(modelo, this.Personal, this.LibroActa);
+
+                    // Si se guarda correctamente, mostramos la notificación de éxito y volvemos
+                    Notificar(TipoNotificacion.Success, "Servicio generado correctamente");
+
+                    Contenedor.AbrirFormulario<FormServicios>(form =>
+                    {
+                        form.PersonalId = this.PersonalId;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    // Esto atrapa el error si supera los 20 módulos y muestra la advertencia
+                    MessageBox.Show(ex.Message, "Límite de Módulos Excedido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
                 this.MostrarErrores(this.epvServicios, modelo.Errores);
             }
         }
-
         //Index Clanges de los ComboBox
         private void cmbCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -260,7 +270,7 @@ namespace ISFDyT93.Vista.Forms.Personal
         }
         private void LibroFolio()
         {
-            this.LibroActa = this.ServiciosLogica.ObtenerUltimoLibro((int)TipoLibro.LibroMatriz);
+            this.LibroActa = this.ServiciosLogica.ObtenerUltimoLibro((int)TipoLibro.LibroTomaDePosicion);
 
             txtLibro.Text = this.LibroActa.LibroNumero.ToString();
             txtFolio.Text = this.LibroActa.FolioNumero.ToString();

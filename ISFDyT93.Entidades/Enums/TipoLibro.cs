@@ -10,6 +10,7 @@ namespace ISFDyT93.Entidades.Enums
     {
         LibroMatriz = 1,
         LibroActaExamenes = 2,
-        LibroCertificadoAnalitico = 3
+        LibroCertificadoAnalitico = 3,
+        LibroTomaDePosicion = 3
     }
 }

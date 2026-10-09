@@ -53,6 +53,7 @@
     <Compile Include="Daos\AlumnosDao.cs" />
     <Compile Include="Daos\AniosCarreraDao.cs" />
     <Compile Include="Daos\CargosDao.cs" />
+    <Compile Include="Daos\ClasificacionCarrerasDao.cs" />
     <Compile Include="Daos\ControlAsistenciasDao.cs" />
     <Compile Include="Daos\CursadasDao.cs" />
     <Compile Include="Daos\EspaciosDao.cs" />
