@@ -135,6 +135,8 @@ namespace ISFDyT93.Vista
                  flpContenedor.Controls.Add(libro);
                  uscLicencias licencias = new uscLicencias();
                  flpContenedor.Controls.Add(licencias);
+                 uscMostrarEspacio mostrarEspacios = new uscMostrarEspacio();
+                 flpContenedor.Controls.Add(mostrarEspacios);
             }
             else
             {
@@ -146,7 +148,6 @@ namespace ISFDyT93.Vista
                         if (tipoParametro.IndexOf((TipoParametro)parametro.TipoId) != -1 && nombre.Contains(txtBuscar.Text.Trim().ToLower()))
                             flpContenedor.Controls.Add(new uscParametro(parametro));
                     }
-
                 }
             }
 

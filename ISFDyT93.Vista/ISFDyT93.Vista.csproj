@@ -105,6 +105,12 @@
     <Compile Include="Forms\Parametros\FormAgregarCargos.Designer.cs">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEspacios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEspacios.Designer.cs">
+      <DependentUpon>FormAgregarEspacios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarTipoLicencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,12 @@
     </Compile>
     <Compile Include="Forms\Configuraciones\FormInscripcionCicloLectivo.Designer.cs">
       <DependentUpon>FormInscripcionCicloLectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormEspaciosEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormEspaciosEstado.Designer.cs">
+      <DependentUpon>FormEspaciosEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Parametros\FormLicenciaEstado.cs">
       <SubType>Form</SubType>
@@ -374,6 +386,12 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscEspacios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscEspacios.Designer.cs">
+      <DependentUpon>uscEspacios.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -391,6 +409,12 @@
     </Compile>
     <Compile Include="UserControls\uscLicencias.Designer.cs">
       <DependentUpon>uscLicencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscMostrarEspacio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscMostrarEspacio.Designer.cs">
+      <DependentUpon>uscMostrarEspacio.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscTiposLicencias.cs">
       <SubType>UserControl</SubType>
@@ -440,6 +464,9 @@
     <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarEspacios.resx">
+      <DependentUpon>FormAgregarEspacios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarTipoLicencia.resx">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -487,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Configuraciones\FormParametros.resx">
       <DependentUpon>FormParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormEspaciosEstado.resx">
+      <DependentUpon>FormEspaciosEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormLicenciaEstado.resx">
       <DependentUpon>FormLicenciaEstado.cs</DependentUpon>
@@ -590,6 +620,9 @@
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscEspacios.resx">
+      <DependentUpon>uscEspacios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>
     </EmbeddedResource>
@@ -601,6 +634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscMostrarCargos.resx">
       <DependentUpon>uscMostrarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscMostrarEspacio.resx">
+      <DependentUpon>uscMostrarEspacio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscPaginacion.resx">
       <DependentUpon>uscPaginacion.cs</DependentUpon>
