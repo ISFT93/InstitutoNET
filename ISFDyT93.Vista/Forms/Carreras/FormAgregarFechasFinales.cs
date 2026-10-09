@@ -382,9 +382,5 @@ namespace ISFDyT93.Vista.Forms.Carreras
             CargarMaterias();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

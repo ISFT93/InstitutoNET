@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbPresidenteMesa = new System.Windows.Forms.ComboBox();
             this.cmbVocalMesa = new System.Windows.Forms.ComboBox();
             this.cmbCarrera = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,11 +38,10 @@
             this.cmbTurno = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblVocal = new System.Windows.Forms.Label();
             this.dtpFechaMesa = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
+            this.lblVocal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbPresidenteMesa = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,21 +68,31 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 13;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 563);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 486);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // cmbPresidenteMesa
+            // 
+            this.cmbPresidenteMesa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbPresidenteMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPresidenteMesa.Enabled = false;
+            this.cmbPresidenteMesa.FormattingEnabled = true;
+            this.cmbPresidenteMesa.Location = new System.Drawing.Point(113, 196);
+            this.cmbPresidenteMesa.Name = "cmbPresidenteMesa";
+            this.cmbPresidenteMesa.Size = new System.Drawing.Size(644, 27);
+            this.cmbPresidenteMesa.TabIndex = 19;
             // 
             // cmbVocalMesa
             // 
@@ -90,7 +100,7 @@
             this.cmbVocalMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVocalMesa.Enabled = false;
             this.cmbVocalMesa.FormattingEnabled = true;
-            this.cmbVocalMesa.Location = new System.Drawing.Point(113, 335);
+            this.cmbVocalMesa.Location = new System.Drawing.Point(113, 270);
             this.cmbVocalMesa.Name = "cmbVocalMesa";
             this.cmbVocalMesa.Size = new System.Drawing.Size(644, 27);
             this.cmbVocalMesa.TabIndex = 14;
@@ -122,7 +132,7 @@
             this.cmbMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMateria.Enabled = false;
             this.cmbMateria.FormattingEnabled = true;
-            this.cmbMateria.Location = new System.Drawing.Point(113, 171);
+            this.cmbMateria.Location = new System.Drawing.Point(113, 131);
             this.cmbMateria.Name = "cmbMateria";
             this.cmbMateria.Size = new System.Drawing.Size(644, 27);
             this.cmbMateria.TabIndex = 5;
@@ -140,7 +150,7 @@
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 40;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(634, 503);
+            this.btnAgregar.Location = new System.Drawing.Point(634, 421);
             this.btnAgregar.MaximumSize = new System.Drawing.Size(123, 56);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(123, 56);
@@ -156,7 +166,7 @@
             this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTurno.Enabled = false;
             this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(113, 84);
+            this.cmbTurno.Location = new System.Drawing.Point(113, 63);
             this.cmbTurno.Name = "cmbTurno";
             this.cmbTurno.Size = new System.Drawing.Size(644, 27);
             this.cmbTurno.TabIndex = 10;
@@ -165,7 +175,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 90);
+            this.label5.Location = new System.Drawing.Point(3, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 19);
             this.label5.TabIndex = 9;
@@ -175,26 +185,16 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 176);
+            this.label2.Location = new System.Drawing.Point(3, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Materia";
             // 
-            // lblVocal
-            // 
-            this.lblVocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVocal.AutoSize = true;
-            this.lblVocal.Location = new System.Drawing.Point(3, 340);
-            this.lblVocal.Name = "lblVocal";
-            this.lblVocal.Size = new System.Drawing.Size(104, 19);
-            this.lblVocal.TabIndex = 15;
-            this.lblVocal.Text = "Vocal";
-            // 
             // dtpFechaMesa
             // 
             this.dtpFechaMesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpFechaMesa.Location = new System.Drawing.Point(113, 422);
+            this.dtpFechaMesa.Location = new System.Drawing.Point(113, 336);
             this.dtpFechaMesa.Name = "dtpFechaMesa";
             this.dtpFechaMesa.Size = new System.Drawing.Size(644, 27);
             this.dtpFechaMesa.TabIndex = 16;
@@ -204,39 +204,38 @@
             // 
             this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(3, 426);
+            this.lblFecha.Location = new System.Drawing.Point(3, 339);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(104, 19);
             this.lblFecha.TabIndex = 17;
             this.lblFecha.Text = "Fecha";
             // 
+            // lblVocal
+            // 
+            this.lblVocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVocal.AutoSize = true;
+            this.lblVocal.Location = new System.Drawing.Point(3, 274);
+            this.lblVocal.Name = "lblVocal";
+            this.lblVocal.Size = new System.Drawing.Size(104, 19);
+            this.lblVocal.TabIndex = 15;
+            this.lblVocal.Text = "Vocal";
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 258);
+            this.label3.Location = new System.Drawing.Point(3, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 19);
             this.label3.TabIndex = 18;
             this.label3.Text = "Profesor";
-            // 
-            // cmbPresidenteMesa
-            // 
-            this.cmbPresidenteMesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbPresidenteMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPresidenteMesa.Enabled = false;
-            this.cmbPresidenteMesa.FormattingEnabled = true;
-            this.cmbPresidenteMesa.Location = new System.Drawing.Point(113, 255);
-            this.cmbPresidenteMesa.Name = "cmbPresidenteMesa";
-            this.cmbPresidenteMesa.Size = new System.Drawing.Size(644, 27);
-            this.cmbPresidenteMesa.TabIndex = 19;
             // 
             // FormAgregarFechasFinales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 603);
+            this.ClientSize = new System.Drawing.Size(800, 526);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormAgregarFechasFinales";
             this.Padding = new System.Windows.Forms.Padding(20);
