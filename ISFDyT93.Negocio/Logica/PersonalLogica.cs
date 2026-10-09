@@ -125,9 +125,23 @@ namespace ISFDyT93.Negocio.Logica
         {
             DataTable DTprofesores = new DataTable();
 
-            using (FileStream resultado = new FileStream("PDF/Profesor.pdf", FileMode.Create))
+            // 1. Obtenemos la ruta base de la aplicación
+            string path = Application.StartupPath;
+            string carpetaPdf = Path.Combine(path, "PDF");
+
+            // 2. Verificamos si la carpeta PDF existe en bin\Debug, si no, la creamos
+            if (!Directory.Exists(carpetaPdf))
             {
-                PdfReader pdfReader = new PdfReader("Legajo.pdf");
+                Directory.CreateDirectory(carpetaPdf);
+            }
+
+            string rutaArchivoSalida = Path.Combine(carpetaPdf, "Profesor.pdf");
+            string rutaPlantillaLegajo = Path.Combine(path, "Legajo.pdf"); // Asegurate de tener Legajo.pdf en la carpeta de salida o raíz
+
+            using (FileStream resultado = new FileStream(rutaArchivoSalida, FileMode.Create))
+            {
+                // Si tu plantilla Legajo.pdf está en la raíz de ejecución, usamos la ruta completa o relativa segura
+                PdfReader pdfReader = new PdfReader(rutaPlantillaLegajo);
                 PdfStamper pdfStamper = new PdfStamper(pdfReader, resultado);
                 pdfStamper.FormFlattening = true;
 
@@ -159,7 +173,7 @@ namespace ISFDyT93.Negocio.Logica
                         {
                             var push = campos.GetNewPushbuttonFromField("Foto");
 
-                            var imagen = iTextSharp.text.Image.GetInstance(Application.StartupPath + fila["Foto"].ToString());
+                            var imagen = iTextSharp.text.Image.GetInstance(path + fila["Foto"].ToString());
 
                             push.Layout = PushbuttonField.LAYOUT_ICON_ONLY;
                             push.ProportionalIcon = true;
@@ -174,14 +188,13 @@ namespace ISFDyT93.Negocio.Logica
                     }
                 }
 
-
                 pdfStamper.Close();
                 pdfReader.Close();
             }
 
-            Process.Start(@"PDF\Profesor.pdf");
+            // 3. Abrimos el archivo PDF generado usando su ruta completa
+            Process.Start(rutaArchivoSalida);
         }
-
         public DataTable ObtenerProfesorMaterias(int ProfesorId)
         {
             return this.personalDao.ObtenerProfesorMaterias(ProfesorId);
@@ -193,7 +206,6 @@ namespace ISFDyT93.Negocio.Logica
 
             return resultado != null;
         }
-
         public int AgregarDocumentacion(string Analitico, string Proyecto, int ProfesorMateriaId, int CiclosLectivoId)
         {
             int id = 1;
@@ -298,6 +310,11 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ObtenerNacionalidades()
         {
             return this.personalDao.ObtenerNacionalidades();
+        }
+
+        public bool ExisteDocumentoEnBD(string documento)
+        {
+            return this.personalDao.ExisteDocumentoEnBD(documento);
         }
     }
 }
