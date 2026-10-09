@@ -152,6 +152,19 @@ namespace ISFDyT93.Vista
                 {
                     MessageBox.Show("Error al cargar los controles de tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                //el codigo anterior, por si llegamos a necesitarlo, era este:
+                //uscCargos cargos = new uscCargos();
+                //flpContenedor.Controls.Add(cargos);
+
+                uscMostrarCargos mostrar = new uscMostrarCargos();
+                 flpContenedor.Controls.Add(mostrar);
+                 uscLibroActas libro = new uscLibroActas();
+                 flpContenedor.Controls.Add(libro);
+                 uscLicencias licencias = new uscLicencias();
+                 flpContenedor.Controls.Add(licencias);
+                uscEspaciosFormacion espacios = new uscEspaciosFormacion();
+                flpContenedor.Controls.Add(espacios);
+
             }
             else
             {
