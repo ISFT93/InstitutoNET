@@ -392,12 +392,6 @@
     <Compile Include="Core\Enums\TipoAsignacion.cs" />
     <Compile Include="Core\Enums\SituacionRevista.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="UserControls\uscCargarFormacion.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\uscCargarFormacion.Designer.cs">
-      <DependentUpon>uscCargarFormacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\uscCargos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -647,9 +641,6 @@
     <EmbeddedResource Include="Reports\Personas.rdlc" />
     <EmbeddedResource Include="Reports\AlumnosActivos.rdlc" />
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
-    <EmbeddedResource Include="UserControls\uscCargarFormacion.resx">
-      <DependentUpon>uscCargarFormacion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </EmbeddedResource>
