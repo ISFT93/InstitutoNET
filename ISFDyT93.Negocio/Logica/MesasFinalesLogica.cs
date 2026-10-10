@@ -89,7 +89,7 @@ namespace ISFDyT93.Negocio.Logica
                 throw new InvalidOperationException("La mesa seleccionada ya no existe.");
             // Comparar el catálogo consultado, no un ID supuesto ni la grilla desactualizada.
             if (!string.Equals(Convert.ToString(datos.Rows[0]["Estado"]).Trim(),
-                "Activa", StringComparison.OrdinalIgnoreCase))
+                "Activo", StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException("Solo se pueden imprimir mesas en estado Activa.");
             return datos;
         }

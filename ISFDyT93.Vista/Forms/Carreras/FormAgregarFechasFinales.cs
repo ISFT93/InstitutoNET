@@ -178,7 +178,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 return;
             } 
             cmbPresidenteMesa.SelectedValue = 1;
-            ValidarCampos();
+            //ValidarCampos();
         }
         private void CargarVocales(int PersonalId)
         {
@@ -187,7 +187,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbVocalMesa.DisplayMember = "Nombre";
             cmbVocalMesa.SelectedValue = VocalId;
             cmbVocalMesa.Enabled = cmbVocalMesa.Items.Count > 0;
-            ValidarCampos();
+            //ValidarCampos();
         }
 
         private void dtpFechaMesa_ValueChanged(object sender, EventArgs e)

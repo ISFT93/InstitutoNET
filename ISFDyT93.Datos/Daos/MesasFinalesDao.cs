@@ -171,14 +171,12 @@ namespace ISFDyT93.Datos.Daos
                 LEFT JOIN dbo.Carreras Ca ON Fi.CarreraId = Ca.CarreraId
                 LEFT JOIN dbo.Turnos Tu ON Fi.TurnoId = Tu.TurnoId
                 LEFT JOIN dbo.Llamados Ll ON Fi.LlamadoId = Ll.LlamadoId
-                LEFT JOIN dbo.FinalEstados Est ON Fi.FinalEstadoId = Est.FinalEstadoId
+                LEFT JOIN dbo.Estados Est ON Fi.FinalEstadoId = Est.EstadoId
                 LEFT JOIN dbo.Personal Pe ON Fi.PresidenteId = Pe.PersonalId
                 LEFT JOIN dbo.Personal Voc ON Fi.VocalId = Voc.PersonalId
                 LEFT JOIN dbo.LibroActas LA ON Fi.LibroActaId = LA.LibroActaId
                 WHERE Fi.MesaFinalId = @MesaFinalId";
 
-            // Conexion.ObtenerRegistros no admite parámetros. Usar una conexión
-            // independiente permite liberar recursos incluso si SQL produce un error.
             using (var conexion = new SqlConnection(this.Conexion.Conector.ConnectionString))
             using (var comando = new SqlCommand(query, conexion))
             using (var adapter = new SqlDataAdapter(comando))
