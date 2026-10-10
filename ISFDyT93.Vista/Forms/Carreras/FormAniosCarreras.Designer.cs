@@ -82,14 +82,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // tsmVerHorarios
             // 
-            this.tsmVerHorarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmVerHorarios.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmVerHorarios.ForeColor = System.Drawing.Color.White;
-            this.tsmVerHorarios.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
-            this.tsmVerHorarios.Name = "tsmVerHorarios";
-            this.tsmVerHorarios.Size = new System.Drawing.Size(205, 30);
-            this.tsmVerHorarios.Text = "Ver Horarios";
-            this.tsmVerHorarios.Click += new System.EventHandler(this.tsmVerHorarios_Click);
+            //this.tsmVerHorarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            //this.tsmVerHorarios.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.tsmVerHorarios.ForeColor = System.Drawing.Color.White;
+            //this.tsmVerHorarios.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
+            //this.tsmVerHorarios.Name = "tsmVerHorarios";
+            //this.tsmVerHorarios.Size = new System.Drawing.Size(205, 30);
+            //this.tsmVerHorarios.Text = "Ver Horarios";
+            //this.tsmVerHorarios.Click += new System.EventHandler(this.tsmVerHorarios_Click);
             // 
             // tsmVerCorrelativas
             // 

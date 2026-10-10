@@ -215,12 +215,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 {
                     acumuladoresPorEspacio[espacioMateria] = 0;
                 }
-                cargaHorariaTotal = formacionEspecifica + formacionBasica + formacionInstitucional;
+                //cargaHorariaTotal = formacionEspecifica + formacionBasica + formacionInstitucional;
 
                 acumuladoresPorEspacio[espacioMateria] += horas;
                 cargaHorariaTotal += horas;
             }
-            lblDescripcion.Text = "Formacion basica: " + formacionBasica  + "\nFormacion especifica: " + formacionEspecifica + "\nFormacion institucional: " + formacionInstitucional + "\nCarga horaria total: " + cargaHorariaTotal;
+            //lblDescripcion.Text = "Formacion basica: " + formacionBasica  + "\nFormacion especifica: " + formacionEspecifica + "\nFormacion institucional: " + formacionInstitucional + "\nCarga horaria total: " + cargaHorariaTotal;
 
 
             StringBuilder sb = new StringBuilder();

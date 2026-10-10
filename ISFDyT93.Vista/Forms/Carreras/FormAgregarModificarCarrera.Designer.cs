@@ -258,21 +258,21 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtNumeroResolucion.Name = "txtNumeroResolucion";
             this.txtNumeroResolucion.Size = new System.Drawing.Size(364, 23);
             this.txtNumeroResolucion.TabIndex = 3;
-            this.txtNumeroExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumeroExpediente.Location = new System.Drawing.Point(391, 84);
-            this.txtNumeroExpediente.MaxLength = 20;
-            this.txtNumeroExpediente.Name = "txtNumeroExpediente";
-            this.txtNumeroExpediente.Size = new System.Drawing.Size(352, 32);
-            this.txtNumeroExpediente.TabIndex = 3;
-            // 
-            // lblNumeroResolucion
-            // 
-            this.lblNumeroExpediente.AutoSize = true;
-            this.lblNumeroExpediente.Location = new System.Drawing.Point(391, 60);
-            this.lblNumeroExpediente.Name = "lblNumeroExpediente";
-            this.lblNumeroExpediente.Size = new System.Drawing.Size(168, 20);
-            this.lblNumeroExpediente.TabIndex = 25;
-            this.lblNumeroExpediente.Text = "N° de Resolución:";
+            //this.txtNumeroExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            //this.txtNumeroExpediente.Location = new System.Drawing.Point(391, 84);
+            //this.txtNumeroExpediente.MaxLength = 20;
+            //this.txtNumeroExpediente.Name = "txtNumeroExpediente";
+            //this.txtNumeroExpediente.Size = new System.Drawing.Size(352, 32);
+            //this.txtNumeroExpediente.TabIndex = 3;
+            //// 
+            //// lblNumeroResolucion
+            //// 
+            //this.lblNumeroExpediente.AutoSize = true;
+            //this.lblNumeroExpediente.Location = new System.Drawing.Point(391, 60);
+            //this.lblNumeroExpediente.Name = "lblNumeroExpediente";
+            //this.lblNumeroExpediente.Size = new System.Drawing.Size(168, 20);
+            //this.lblNumeroExpediente.TabIndex = 25;
+            //this.lblNumeroExpediente.Text = "N° de Resolución:";
             this.lblNumeroResolucion.AutoSize = true;
             this.lblNumeroResolucion.Location = new System.Drawing.Point(403, 41);
             this.lblNumeroResolucion.Name = "lblNumeroResolucion";
