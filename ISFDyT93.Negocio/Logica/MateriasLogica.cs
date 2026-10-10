@@ -194,6 +194,12 @@ namespace ISFDyT93.Negocio.Logica
             this.materiasDao.RenumerarCodigoBloque(anioCarreraId);
         }
 
+        public void ActualizarTotalesEspacio(string nombreEspacio, int sumaHoras, double porcentaje)
+        {
+            // Llama al DAO para que ejecute el UPDATE en SQL
+            this.materiasDao.ActualizarTotalesEspacio(nombreEspacio, sumaHoras, porcentaje);
+        }
+
     }
 
 }

@@ -17,7 +17,10 @@ namespace ISFDyT93.Datos.Interfaces
         DataRow MateriaAsignada(int id);
         int AgregarMaterias(MateriasModelo modelo);
         int ModificarMateria(MateriasModelo modelo);
-        DataTable ObtenerEspacios();
+        DataTable ObtenerEspacios(); // agregado para obtener los espacios de la tabla Espacios
+
+        // Declaración del método ActualizarTotalesEspacio
+        void ActualizarTotalesEspacio(string nombreEspacio, int sumaHoras, double porcentaje);
         MateriasModelo ObtenerMateria(int materiaId);
         DataTable ObtenerAsignarMateria(int alumnoId, int anioCarreraId);
         DataTable ObtenerMateriasAsignar(int alumnoId, int anioCarreraId);

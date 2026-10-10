@@ -104,9 +104,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // lblDescripcion
             // 
             this.lblDescripcion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblDescripcion.Location = new System.Drawing.Point(20, 320);
+            this.lblDescripcion.Location = new System.Drawing.Point(20, 254);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(777, 86);
+            this.lblDescripcion.Size = new System.Drawing.Size(777, 152);
             this.lblDescripcion.TabIndex = 33;
             this.lblDescripcion.Text = "-";
             // 
@@ -165,7 +165,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvMatAnioCarrera.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMatAnioCarrera.RowTemplate.Height = 28;
             this.dgvMatAnioCarrera.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMatAnioCarrera.Size = new System.Drawing.Size(777, 300);
+            this.dgvMatAnioCarrera.Size = new System.Drawing.Size(777, 234);
             this.dgvMatAnioCarrera.TabIndex = 34;
             this.dgvMatAnioCarrera.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvMatAnioCarrera_MouseUp);
             // 

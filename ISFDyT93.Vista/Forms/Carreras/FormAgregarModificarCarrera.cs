@@ -1,5 +1,6 @@
 ﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core.Enums;
+using ISFDyT93.Negocio.Interfaces;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
@@ -44,6 +45,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     nudAnioFin.Enabled = false;
                     nudAnioInicio.Value = this.Modelo.AnioInicio;
                     this.MapToForm<CarrerasModelo>(Modelo);
+                    // Asegura que al modificar se marque el régimen que la carrera ya tenía guardado en la BD
+                    cmbRegimen.SelectedValue = this.Modelo.RegimenId;
+
                     break;
                 case TipoAccion.Ver:
                     ComprobarCarreraId();
@@ -98,6 +102,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 carrera.Variante = cmbVariante.SelectedItem?.ToString();
                 carrera.Modalidad = cmbModalidad.SelectedItem?.ToString();
                 carrera.RegimenDefecto = cmbRegimenDefecto.SelectedItem?.ToString();
+            }
+
+            // Asignamos explícitamente el valor del régimen seleccionado en el ComboBox
+            if (cmbRegimen.SelectedValue != null && int.TryParse(cmbRegimen.SelectedValue.ToString(), out int regimenId))
+            {
+                carrera.RegimenId = regimenId;
             }
 
             if (carrera.Errores.Count > 0)
@@ -199,12 +209,18 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormAgregarModificarCarrera_Load(object sender, EventArgs e)
         {
+
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormCarreras>();
             });
 
             CargarListasDesplegables(); // Inicialización de los nuevos ComboBox
+            // Cargar las opciones del ComboBox de Régimen desde la BD
+            cmbRegimen.DataSource = CarrerasLogica.ObtenerRegimenes();
+            cmbRegimen.ValueMember = "RegimenId";   // ID que se guardará en la base de datos
+            cmbRegimen.DisplayMember = "Nombre";    // Texto que verá el usuario ("Anual", "Cuatrimestral", etc.)
+
             MostrarCarreraExistentes();
         }
 

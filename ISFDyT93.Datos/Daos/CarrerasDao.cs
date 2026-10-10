@@ -2,6 +2,7 @@
 using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,6 +10,12 @@ namespace ISFDyT93.Datos.Daos
 {
     public class CarrerasDao : DaoBase, ICarrerasDao
     {
+        public DataTable ObtenerRegimenes() // Agregado para obtener los regimenes de las carreras
+        {
+            // Consulta la tabla Regimenes devolviendo solo los registros activos
+            string query = "SELECT RegimenId, Nombre FROM Regimenes WHERE Activo = 1";
+            return this.Conexion.ObtenerRegistros(query);
+        }
         public DataTable ObtenerTodasLasCarreras(bool Activo = true)
         {
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], " +
@@ -156,7 +163,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "UPDATE Carreras SET CarreraEstadoId=" + modelo.CarreraEstadoId + " WHERE CarreraId= " + modelo.CarreraId;
             return this.Conexion.EjecutarAccion(query);
         }
-
+        
         public void EliminarCarrera(int CarreraId)
         {
             string query = "DELETE Carreras WHERE CarreraId =" + CarreraId;
