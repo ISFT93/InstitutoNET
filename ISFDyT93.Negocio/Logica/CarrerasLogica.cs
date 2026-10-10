@@ -11,7 +11,7 @@ using ISFDyT93.Negocio.Interfaces;
 
 namespace ISFDyT93.Negocio.Logica
 {
-    public class CarrerasLogica : LogicaBase , ICarrerasLogica
+    public class CarrerasLogica : LogicaBase, ICarrerasLogica
     {
         CarrerasDao carrerasDao;
         AniosCarreraDao aniosCarreraDao;
@@ -75,18 +75,68 @@ namespace ISFDyT93.Negocio.Logica
             var resultado = this.carrerasDao.CarreraTienePrimerAnio(id);
             return resultado;
         }
+
+        public bool ExisteNumeroResolucion(string numeroResolucion, int carreraIdActual)
+        {
+            DataTable dt = this.carrerasDao.ObtenerTodasLasCarreras(true);
+            if (dt == null || dt.Rows.Count == 0) return false;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string resDB = row["Numero de Resolucion"]?.ToString();
+                int idDB = Convert.ToInt32(row["CarreraId"]);
+
+                if (resDB == numeroResolucion && idDB != carreraIdActual)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public string ObtenerNombreCarreraPorResolucion(string numeroResolucion, int carreraIdActual)
+        {
+            DataTable dt = this.carrerasDao.ObtenerTodasLasCarreras(true);
+            if (dt == null || dt.Rows.Count == 0) return string.Empty;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string resDB = row["Numero de Resolucion"]?.ToString();
+                int idDB = Convert.ToInt32(row["CarreraId"]);
+
+                if (resDB == numeroResolucion && idDB != carreraIdActual)
+                {
+                    return row["Nombre"]?.ToString() ?? "otra carrera";
+                }
+            }
+            return string.Empty;
+        }
+
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
             bool resultado = false;
 
             try
             {
+                // Validación previa antes de impactar en la base de datos
+                int idActual = (accion == TipoAccion.Modificar) ? modelo.CarreraId : 0;
+                if (ExisteNumeroResolucion(modelo.NumeroResolucion, idActual))
+                {
+                    string nombreCarreraExistente = ObtenerNombreCarreraPorResolucion(modelo.NumeroResolucion, idActual);
+
+                    string mensajeError = !string.IsNullOrEmpty(nombreCarreraExistente)
+                        ? $"El número de resolución ya existe. Pertenece a la carrera: '{nombreCarreraExistente}'."
+                        : "El número de resolución ya existe";
+
+                    throw new Exception(mensajeError);
+                }
+
                 string time = "" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
                 string archiPlanEstudio = modelo.PlanEstudio;
                 string archiResolucion = modelo.Resolucion;
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
-                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); // Crea el siguiente valor para el codigo de bloque
+                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque();
 
                 if (accion == TipoAccion.Agregar)
                 {
@@ -167,6 +217,17 @@ namespace ISFDyT93.Negocio.Logica
                     // Se quitó el bloque que borraba y volvía a crear registros en AniosCarreras.
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
+                        if (!modelo.PoseeMaterias)
+                        {
+                            aniosCarreraDao.EliminarAniosDeUnaCarrera(modelo.CarreraId);
+
+                            for (int anio = 1; anio <= modelo.Duracion; anio++)
+                            {
+                                string codigoFormateado = modelo.CarrerasCodigoBloque + anio.ToString();
+                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId, codigoFormateado);
+                            }
+                        }
+
                         resultado = true;
                     }
                 }
@@ -188,7 +249,7 @@ namespace ISFDyT93.Negocio.Logica
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
             }
 
             return resultado;
@@ -203,13 +264,11 @@ namespace ISFDyT93.Negocio.Logica
                 System.IO.Directory.CreateDirectory(Carpeta);
             }
 
-            // Para modificar elimino el anterior archivo
             if (System.IO.File.Exists(path + archivoNuevo))
             {
                 System.IO.File.Delete(path + archivoNuevo);
             }
 
-            // Muevo el archivo a una ubicación interna del programa
             System.IO.File.Copy(archivoViejo, path + archivoNuevo);
         }
 
@@ -239,7 +298,6 @@ namespace ISFDyT93.Negocio.Logica
                 for (int i = 0; i < AniosCarreraId.Rows.Count; i++)
                 {
                     aniosCarreraDao.EliminarAnios(Convert.ToInt32(AniosCarreraId.Rows[i]["AnioCarreraId"]));
-
                 }
             }
 
@@ -257,23 +315,9 @@ namespace ISFDyT93.Negocio.Logica
             return AnioFin > AnioActual;
         }
 
-        //public Dictionary<string,bool> VerCarrerasActivas() 
-        //{
-        //    var opctionEnabDisab = new Dictionary<string, bool>()
-        //    {
-        //        { "nudAnioFin", true},
-        //        { "txtCantidadHoras", true},
-        //        { "PoseeMaterias", true},
-        //        { "txtDuracion", true},
-        //        { "btnGuardar", true}
-        //    };
-        //}
-
         public int CantidadCorrelativasCarrera(int CarreraId)
         {
             return this.carrerasDao.CantidadCorrelativasCarrera(CarreraId);
         }
-
-
     }
 }

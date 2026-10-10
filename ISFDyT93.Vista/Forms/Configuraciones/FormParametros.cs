@@ -36,6 +36,7 @@ namespace ISFDyT93.Vista
 
             CargarControles();
         }
+
         private void Check_Changed(object sender, EventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
@@ -70,6 +71,7 @@ namespace ISFDyT93.Vista
                 chkHora.Checked = false;
             }
         }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (!chkFecha.Checked && !chkTexto.Checked && !chkNumero.Checked && !chkHora.Checked && !chkTabla.Checked)
@@ -79,20 +81,22 @@ namespace ISFDyT93.Vista
             CargarTiposParametros();
             CargarControles();
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(chkTabla.Checked)
+            if (chkTabla.Checked)
             {
                 foreach (var control in flpContenedor.Controls)
                 {
-                    //codigo antiguo:
-                    //if (control.GetType() == typeof(uscCargos))
-                    //((uscCargos)control).Guardar();
                     if (control.GetType() == typeof(uscMostrarCargos))
                         ((uscMostrarCargos)control).GuardarCargos();
 
                     if (control.GetType() == typeof(uscLicenciasDisponibles))
                         ((uscLicenciasDisponibles)control).GuardarLicencias();
+
+                    // Integración del guardado para la Clasificación de Carreras
+                    //if (control.GetType() == typeof(uscClasificacionCarreras))
+                    //    ((uscClasificacionCarreras)control).GuardarClasificacion();
                 }
             }
             else if (LtsParametros.Count > 0)
@@ -103,6 +107,7 @@ namespace ISFDyT93.Vista
             }
         }
         #endregion
+
         private void CargarTiposParametros()
         {
             tipoParametro.Clear();
@@ -119,37 +124,56 @@ namespace ISFDyT93.Vista
                 if (chkHora.Checked) tipoParametro.Add(TipoParametro.Time);
             }
         }
+
         private void CargarControles()
         {
+            if (flpContenedor == null) return;
+
             flpContenedor.Controls.Clear();
 
-            if (tipoParametro.IndexOf(TipoParametro.Table) != -1)
+            if (tipoParametro != null && tipoParametro.IndexOf(TipoParametro.Table) != -1)
             {
-                //el codigo anterior, por si llegamos a necesitarlo, era este:
-                //uscCargos cargos = new uscCargos();
-                //flpContenedor.Controls.Add(cargos);
+                try
+                {
+                    uscMostrarCargos mostrar = new uscMostrarCargos();
+                    if (mostrar != null) flpContenedor.Controls.Add(mostrar);
 
-                uscMostrarCargos mostrar = new uscMostrarCargos();
-                 flpContenedor.Controls.Add(mostrar);
-                 uscLibroActas libro = new uscLibroActas();
-                 flpContenedor.Controls.Add(libro);
-                 uscLicencias licencias = new uscLicencias();
-                 flpContenedor.Controls.Add(licencias);
+                    uscLibroActas libro = new uscLibroActas();
+                    if (libro != null) flpContenedor.Controls.Add(libro);
+
+                    uscLicencias licencias = new uscLicencias();
+                    if (licencias != null) flpContenedor.Controls.Add(licencias);
+
+                    // Integración segura del control de Clasificación de Carreras
+                    uscClasificacionCarreras clasificacionCarreras = new uscClasificacionCarreras();
+                    if (clasificacionCarreras != null) flpContenedor.Controls.Add(clasificacionCarreras);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los controles de tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                uscEspaciosFormacion espacios = new uscEspaciosFormacion();
+                flpContenedor.Controls.Add(espacios);
+
             }
             else
             {
-                if (LtsParametros.Count > 0)
+                if (LtsParametros != null && LtsParametros.Count > 0)
                 {
                     foreach (ParametrosModelo parametro in LtsParametros)
                     {
-                        string nombre = parametro.Nombre.ToLower();
-                        if (tipoParametro.IndexOf((TipoParametro)parametro.TipoId) != -1 && nombre.Contains(txtBuscar.Text.Trim().ToLower()))
-                            flpContenedor.Controls.Add(new uscParametro(parametro));
+                        if (parametro != null && parametro.Nombre != null)
+                        {
+                            string nombre = parametro.Nombre.ToLower();
+                            if (tipoParametro != null && tipoParametro.IndexOf((TipoParametro)parametro.TipoId) != -1 && nombre.Contains(txtBuscar.Text.Trim().ToLower()))
+                            {
+                                flpContenedor.Controls.Add(new uscParametro(parametro));
+                            }
+                        }
                     }
-
                 }
             }
-
-        }      
+        }
     }
 }

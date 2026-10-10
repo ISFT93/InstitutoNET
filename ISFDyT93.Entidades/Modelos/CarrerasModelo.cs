@@ -35,8 +35,7 @@ namespace ISFDyT93.Entidades.Modelos
         public string Correlatividades { get; set; }
         public string ImagenDescriptiva { get; set; }
 
-        //[Expediente] // 5801-3.279.866/03
-        public string NumeroExpediente { get; set; }
+        public string NumeroResolucion { get; set; }
 
         [Obligatorio]
         [SoloNumeros(minimo: 0, maximo: 3000)]
@@ -56,6 +55,13 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio]
         [SoloNumeros(minimo: 0, maximo: 99)]
         public int CantidadCorrelativas { get; set; }
+
+        // Propiedades institucionales adaptadas a los nombres de los controles
+        public string SectorActividad { get; set; }
+        public string FamiliaProfesional { get; set; }
+        public string Variante { get; set; }
+        public string Modalidad { get; set; }
+        public string RegimenDefecto { get; set; }
 
         public int RegimenId { get; set; } // 1: Anual, 2: Cuatrimestral, 3: Otros
     }

@@ -37,7 +37,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsAniosCarreras = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCursos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmVerHorarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCorrelativas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDesactivarAnio = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAniosCarrera = new System.Windows.Forms.DataGridView();
@@ -52,11 +51,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsAniosCarreras.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmVerMaterias,
             this.tsmVerCursos,
-            this.tsmVerHorarios,
             this.tsmVerCorrelativas,
             this.tsmDesactivarAnio});
             this.cmsAniosCarreras.Name = "cmsAniosCarreras";
-            this.cmsAniosCarreras.Size = new System.Drawing.Size(206, 154);
+            this.cmsAniosCarreras.Size = new System.Drawing.Size(206, 124);
+            this.cmsAniosCarreras.Opening += new System.ComponentModel.CancelEventHandler(this.cmsAniosCarreras_Opening);
             // 
             // tsmVerMaterias
             // 
@@ -207,7 +206,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.ContextMenuStrip cmsAniosCarreras;
         private System.Windows.Forms.ToolStripMenuItem tsmVerMaterias;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCursos;
-        private System.Windows.Forms.ToolStripMenuItem tsmVerHorarios;
         public System.Windows.Forms.DataGridView dgvAniosCarrera;
         private System.Windows.Forms.Label lblCargaHorariaTotal;
         private System.Windows.Forms.ToolStripMenuItem tsmVerCorrelativas;

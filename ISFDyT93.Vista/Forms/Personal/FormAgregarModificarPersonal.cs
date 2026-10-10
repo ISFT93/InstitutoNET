@@ -103,6 +103,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             {
                 if (Accion == TipoAccion.Agregar)
                 {
+                    // Asignamos el estado Activo (ID = 1) por defecto al crear un nuevo personal
+                    personal.PersonalEstadoId = 1;
+
                     personalLogica.AgregarPersonal(personal);
                     Notificar(TipoNotificacion.Success, "Personal agregado correctamente");
                     Limpiar();

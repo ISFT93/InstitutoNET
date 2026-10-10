@@ -43,7 +43,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (e.Button == MouseButtons.Right)
             {
                 tsmVerCursos.Visible = true;
-                tsmVerHorarios.Visible = true;
+                //tsmVerHorarios.Visible = true;
                 tsmVerMaterias.Visible = true;
                 tsmVerCorrelativas.Visible = true;
                 tsmDesactivarAnio.Visible = false;
@@ -74,14 +74,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     if (this.Carrera.CarreraEstadoId == (int)CarreraEstado.Borrador)
                     {
                         tsmVerMaterias.Text = "Asignar Materias";
-                        tsmVerHorarios.Visible = false;
+                
                         tsmVerCursos.Visible = false;
                     }
                     if (this.Carrera.CarreraEstadoId == (int)CarreraEstado.Bloqueado && info.RowIndex == dgvAniosCarrera.RowCount - 1)
                     {
                         tsmVerMaterias.Visible = false;
                         tsmVerCorrelativas.Visible = false;
-                        tsmVerHorarios.Visible = false;
+                       
                         tsmVerCursos.Visible = false;
                         tsmDesactivarAnio.Visible = true;
                     }
@@ -89,7 +89,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 else
                 {
                     tsmVerCursos.Visible = false;
-                    tsmVerHorarios.Visible = false;
+                    
                     tsmVerMaterias.Visible = false;
                     tsmVerCorrelativas.Visible = false;
                     cmsAniosCarreras.Show(dgvAniosCarrera, e.X - cmsAniosCarreras.Width / 2, e.Y);
@@ -177,6 +177,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             AniosLogica.EliminarAnios(AnioCarreraId);
             this.RecargarGrilla();
+        }
+
+        private void cmsAniosCarreras_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

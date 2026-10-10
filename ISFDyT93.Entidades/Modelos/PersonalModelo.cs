@@ -2,6 +2,7 @@
 using ISFDyT93.Entidades.Core.Attributes;
 using ISFDyT93.Entidades.Core.Attributes.Validaciones;
 using System;
+using System.ComponentModel;
 
 namespace ISFDyT93.Entidades.Modelos
 {
@@ -19,13 +20,10 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio("El apellido es obligatorio")]
         [SoloLetrasEspacios]
         public string Apellido { get; set; }
-        [Obligatorio("La fecha de nacimiento es obligatoria")]
         public DateTime FechaNacimiento { get; set; }
-        [Obligatorio]
         public char Sexo { get; set; }
         [SoloLetrasNumerosEspacios]
         public string Direccion { get; set; }
-        [SoloNumeros]
         public string Piso { get; set; }
         [SoloLetras]
         public string Departamento { get; set; }
@@ -42,10 +40,8 @@ namespace ISFDyT93.Entidades.Modelos
         public string Email { get; set; }
         public string EstadoCivil { get; set; }
         public string Foto { get; set; }
-        [Obligatorio]
         [SoloLetrasEspacios]
         public string Titulo { get; set; }
-        [Obligatorio]
         public string TramoPedagogico { get; set; }
         public DateTime FechaAlta { get; set; }
         public DateTime? FechaBaja { get; set; }
