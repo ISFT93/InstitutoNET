@@ -9,6 +9,12 @@ namespace ISFDyT93.Datos.Daos
 {
     public class CarrerasDao : DaoBase , ICarrerasDao
     {
+        public DataTable ObtenerRegimenes() // Agregado para obtener los regimenes de las carreras
+        {
+            // Consulta la tabla Regimenes devolviendo solo los registros activos
+            string query = "SELECT RegimenId, Nombre FROM Regimenes WHERE Activo = 1";
+            return this.Conexion.ObtenerRegistros(query);
+        }
         public DataTable ObtenerTodasLasCarreras(bool Activo = true)
         {
             //Todas las carreras(Activas,Inactivas,Borrador).

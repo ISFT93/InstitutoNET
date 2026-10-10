@@ -50,6 +50,12 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.carrerasDao.CarrerasActivas(true);
         }
+
+        // Agregado para obtener los regimenes de las carreras
+        public DataTable ObtenerRegimenes()
+        {
+            return this.carrerasDao.ObtenerRegimenes();
+        }
         public bool CarrerasExiste(string Nombre)
         {
             var resultado = this.carrerasDao.CarreraExiste(Nombre);

@@ -30,5 +30,7 @@ namespace ISFDyT93.Entidades.Modelos
 
         [Ignorar]
         public int AnioCarrera { get; set; }
+
+        public int? RegimenId { get; set; } // 1: Anual, 2: Cuatrimestral (para cuando el régimen de la carrera sea "Otros")
     }
 }

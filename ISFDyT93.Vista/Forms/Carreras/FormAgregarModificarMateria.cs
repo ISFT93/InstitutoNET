@@ -26,6 +26,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private MateriasLogica materiasLogica { get; set; }
         private AniosCarreraLogica aniosLogica { get; set; }
         private AutoCompleteStringCollection NombreAutoComplete { get; set; }
+
+        // Guarda el último espacio elegido para recordarlo en la siguiente materia
+        private static int ultimoEspacioIdSeleccionado = 1; 
+
         #endregion
 
         #region Funciones
@@ -74,7 +78,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
         #endregion
-
+        
         public FormAgregarModificarMateria()
         {
             this.materiasLogica = new MateriasLogica();
@@ -85,7 +89,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void txtCargaHoraria_TextChanged(object sender, EventArgs e)
         {
-            if (txtCargaHoraria.Text == "" || txtCargaHoraria.Text == null)
+            //if (txtCargaHoraria.Text == "" || txtCargaHoraria.Text == null)
+            if (string.IsNullOrEmpty(txtCargaHoraria.Text)) // Se utiliza string.IsNullOrEmpty para verificar si el texto está vacío o nulo
             {
                 txtModulos.Text = 0.ToString();
             }
@@ -152,6 +157,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (this.Accion == TipoAccion.Agregar)
             {
                 this.Contenedor.SetTitulo($"Agregar Materia - {this.anioCarrera.AnioCarrera}° {this.anioCarrera.NombreCarrera}");
+                
+                // Selecciona por defecto el último espacio utilizado
+                cmbEspacioId.SelectedValue = ultimoEspacioIdSeleccionado;
+
                 this.ActualizarAutoComplete();
             }
 
@@ -191,6 +200,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     this.materia.CarreraId = aniosLogica.ObtenerIdCarrera(this.AnioCarreraId); //Obtiene el id de la carrera para insertarlo en la nueva columna de CarreraId de la tabla Materias
                     this.materia.MateriasCodigoBloque = materiasLogica.CreaMateriaCodigoBloque(this.AnioCarreraId);
 
+                    //Guardamos el último espacio seleccionado en la variable estática
+                    if (cmbEspacioId.SelectedValue != null)
+                    {
+                        ultimoEspacioIdSeleccionado = Convert.ToInt32(cmbEspacioId.SelectedValue);
+                    }
+
                     //Alta a la base de datos
                     int estado = materiasLogica.AgregarMaterias(this.materia);
 
@@ -200,6 +215,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         FormNotificacion.Mensaje(TipoNotificacion.Success, "Carga exitosa");
 
                         this.LimpiarControlles();
+
+                        // Reasignamos el último espacio guardado para que permanezca seleccionado
+                        cmbEspacioId.SelectedValue = ultimoEspacioIdSeleccionado;
 
                         this.txtNombre.AutoCompleteCustomSource.Add(this.materia.Nombre);
 

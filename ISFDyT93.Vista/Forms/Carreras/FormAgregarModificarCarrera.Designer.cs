@@ -57,14 +57,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblRégimen = new System.Windows.Forms.Label();
             this.btnPlanEstudio = new FontAwesome.Sharp.IconButton();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.btnResolucion = new FontAwesome.Sharp.IconButton();
             this.btnImagenDescriptiva = new FontAwesome.Sharp.IconButton();
             this.txtCantidadCorrelativas = new System.Windows.Forms.TextBox();
             this.lblCantidadCorrelativas = new System.Windows.Forms.Label();
             this.lblCarreraReemplazar = new System.Windows.Forms.Label();
             this.txtCarreraReemplazar = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new FontAwesome.Sharp.IconButton();
+            this.cmbRegimen = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnioInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnioFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epvCarreras)).BeginInit();
@@ -76,17 +78,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblTituloac.AutoSize = true;
             this.lblTituloac.Location = new System.Drawing.Point(3, 60);
             this.lblTituloac.Name = "lblTituloac";
-            this.lblTituloac.Size = new System.Drawing.Size(56, 19);
+            this.lblTituloac.Size = new System.Drawing.Size(68, 20);
             this.lblTituloac.TabIndex = 3;
             this.lblTituloac.Text = "Título:";
             // 
             // txtTitulo
             // 
             this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitulo.Location = new System.Drawing.Point(3, 86);
+            this.txtTitulo.Location = new System.Drawing.Point(3, 84);
             this.txtTitulo.MaxLength = 150;
             this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(352, 27);
+            this.txtTitulo.Size = new System.Drawing.Size(352, 32);
             this.txtTitulo.TabIndex = 2;
             // 
             // txtDescripcionCorta
@@ -104,7 +106,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Location = new System.Drawing.Point(391, 0);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(96, 19);
+            this.lblDescripcion.Size = new System.Drawing.Size(119, 20);
             this.lblDescripcion.TabIndex = 5;
             this.lblDescripcion.Text = "Descripción:";
             // 
@@ -112,10 +114,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtJefeCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJefeCatedra.Enabled = false;
-            this.txtJefeCatedra.Location = new System.Drawing.Point(3, 146);
+            this.txtJefeCatedra.Location = new System.Drawing.Point(3, 144);
             this.txtJefeCatedra.MaxLength = 100;
             this.txtJefeCatedra.Name = "txtJefeCatedra";
-            this.txtJefeCatedra.Size = new System.Drawing.Size(352, 27);
+            this.txtJefeCatedra.Size = new System.Drawing.Size(352, 32);
             this.txtJefeCatedra.TabIndex = 4;
             // 
             // lblJefeCatedra
@@ -123,7 +125,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblJefeCatedra.AutoSize = true;
             this.lblJefeCatedra.Location = new System.Drawing.Point(3, 120);
             this.lblJefeCatedra.Name = "lblJefeCatedra";
-            this.lblJefeCatedra.Size = new System.Drawing.Size(121, 19);
+            this.lblJefeCatedra.Size = new System.Drawing.Size(154, 20);
             this.lblJefeCatedra.TabIndex = 7;
             this.lblJefeCatedra.Text = "Jefe de cátedra:";
             // 
@@ -132,7 +134,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblAñoInicio.AutoSize = true;
             this.lblAñoInicio.Location = new System.Drawing.Point(3, 300);
             this.lblAñoInicio.Name = "lblAñoInicio";
-            this.lblAñoInicio.Size = new System.Drawing.Size(108, 19);
+            this.lblAñoInicio.Size = new System.Drawing.Size(131, 20);
             this.lblAñoInicio.TabIndex = 9;
             this.lblAñoInicio.Text = "Año de inicio:";
             // 
@@ -141,14 +143,14 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblAñoFin.AutoSize = true;
             this.lblAñoFin.Location = new System.Drawing.Point(3, 360);
             this.lblAñoFin.Name = "lblAñoFin";
-            this.lblAñoFin.Size = new System.Drawing.Size(89, 19);
+            this.lblAñoFin.Size = new System.Drawing.Size(107, 20);
             this.lblAñoFin.TabIndex = 11;
             this.lblAñoFin.Text = "Año de fin:";
             // 
             // nudAnioInicio
             // 
             this.nudAnioInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudAnioInicio.Location = new System.Drawing.Point(3, 326);
+            this.nudAnioInicio.Location = new System.Drawing.Point(3, 324);
             this.nudAnioInicio.Maximum = new decimal(new int[] {
             2999,
             0,
@@ -160,7 +162,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             0,
             0});
             this.nudAnioInicio.Name = "nudAnioInicio";
-            this.nudAnioInicio.Size = new System.Drawing.Size(352, 27);
+            this.nudAnioInicio.Size = new System.Drawing.Size(352, 32);
             this.nudAnioInicio.TabIndex = 11;
             this.nudAnioInicio.Value = new decimal(new int[] {
             1972,
@@ -171,7 +173,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // nudAnioFin
             // 
             this.nudAnioFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudAnioFin.Location = new System.Drawing.Point(3, 386);
+            this.nudAnioFin.Location = new System.Drawing.Point(3, 384);
             this.nudAnioFin.Maximum = new decimal(new int[] {
             2999,
             0,
@@ -179,17 +181,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             0});
             this.nudAnioFin.Name = "nudAnioFin";
             this.nudAnioFin.ReadOnly = true;
-            this.nudAnioFin.Size = new System.Drawing.Size(352, 27);
+            this.nudAnioFin.Size = new System.Drawing.Size(352, 32);
             this.nudAnioFin.TabIndex = 13;
             // 
             // txtResolucion
             // 
             this.txtResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResolucion.Enabled = false;
-            this.txtResolucion.Location = new System.Drawing.Point(3, 266);
+            this.txtResolucion.Location = new System.Drawing.Point(3, 264);
             this.txtResolucion.MaxLength = 250;
             this.txtResolucion.Name = "txtResolucion";
-            this.txtResolucion.Size = new System.Drawing.Size(352, 27);
+            this.txtResolucion.Size = new System.Drawing.Size(352, 32);
             this.txtResolucion.TabIndex = 8;
             // 
             // lblResolucion
@@ -197,7 +199,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblResolucion.AutoSize = true;
             this.lblResolucion.Location = new System.Drawing.Point(3, 240);
             this.lblResolucion.Name = "lblResolucion";
-            this.lblResolucion.Size = new System.Drawing.Size(91, 19);
+            this.lblResolucion.Size = new System.Drawing.Size(112, 20);
             this.lblResolucion.TabIndex = 19;
             this.lblResolucion.Text = "Resolución:";
             // 
@@ -205,10 +207,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtImagenDescriptiva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImagenDescriptiva.Enabled = false;
-            this.txtImagenDescriptiva.Location = new System.Drawing.Point(3, 206);
+            this.txtImagenDescriptiva.Location = new System.Drawing.Point(3, 204);
             this.txtImagenDescriptiva.MaxLength = 250;
             this.txtImagenDescriptiva.Name = "txtImagenDescriptiva";
-            this.txtImagenDescriptiva.Size = new System.Drawing.Size(352, 27);
+            this.txtImagenDescriptiva.Size = new System.Drawing.Size(352, 32);
             this.txtImagenDescriptiva.TabIndex = 6;
             // 
             // lblImagenDescriptiva
@@ -216,17 +218,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblImagenDescriptiva.AutoSize = true;
             this.lblImagenDescriptiva.Location = new System.Drawing.Point(3, 180);
             this.lblImagenDescriptiva.Name = "lblImagenDescriptiva";
-            this.lblImagenDescriptiva.Size = new System.Drawing.Size(149, 19);
+            this.lblImagenDescriptiva.Size = new System.Drawing.Size(187, 20);
             this.lblImagenDescriptiva.TabIndex = 23;
             this.lblImagenDescriptiva.Text = "Imagen descriptiva:";
             // 
             // txtNumeroExpediente
             // 
             this.txtNumeroExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumeroExpediente.Location = new System.Drawing.Point(391, 86);
+            this.txtNumeroExpediente.Location = new System.Drawing.Point(391, 84);
             this.txtNumeroExpediente.MaxLength = 20;
             this.txtNumeroExpediente.Name = "txtNumeroExpediente";
-            this.txtNumeroExpediente.Size = new System.Drawing.Size(352, 27);
+            this.txtNumeroExpediente.Size = new System.Drawing.Size(352, 32);
             this.txtNumeroExpediente.TabIndex = 3;
             // 
             // lblNumeroExpediente
@@ -234,17 +236,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblNumeroExpediente.AutoSize = true;
             this.lblNumeroExpediente.Location = new System.Drawing.Point(391, 60);
             this.lblNumeroExpediente.Name = "lblNumeroExpediente";
-            this.lblNumeroExpediente.Size = new System.Drawing.Size(137, 19);
+            this.lblNumeroExpediente.Size = new System.Drawing.Size(168, 20);
             this.lblNumeroExpediente.TabIndex = 25;
-            this.lblNumeroExpediente.Text = "N° de expediente:";
+            this.lblNumeroExpediente.Text = "N° de Resolución:";
             // 
             // txtDuracion
             // 
             this.txtDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDuracion.Location = new System.Drawing.Point(391, 266);
+            this.txtDuracion.Location = new System.Drawing.Point(391, 264);
             this.txtDuracion.MaxLength = 1;
             this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Size = new System.Drawing.Size(352, 27);
+            this.txtDuracion.Size = new System.Drawing.Size(352, 32);
             this.txtDuracion.TabIndex = 10;
             // 
             // lblDuracion
@@ -252,7 +254,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblDuracion.AutoSize = true;
             this.lblDuracion.Location = new System.Drawing.Point(391, 240);
             this.lblDuracion.Name = "lblDuracion";
-            this.lblDuracion.Size = new System.Drawing.Size(78, 19);
+            this.lblDuracion.Size = new System.Drawing.Size(96, 20);
             this.lblDuracion.TabIndex = 27;
             this.lblDuracion.Text = "Duración:";
             // 
@@ -260,10 +262,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.txtPlanEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlanEstudio.Enabled = false;
-            this.txtPlanEstudio.Location = new System.Drawing.Point(391, 146);
+            this.txtPlanEstudio.Location = new System.Drawing.Point(391, 144);
             this.txtPlanEstudio.MaxLength = 250;
             this.txtPlanEstudio.Name = "txtPlanEstudio";
-            this.txtPlanEstudio.Size = new System.Drawing.Size(352, 27);
+            this.txtPlanEstudio.Size = new System.Drawing.Size(352, 32);
             this.txtPlanEstudio.TabIndex = 5;
             // 
             // lblPlanEstudio
@@ -271,17 +273,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblPlanEstudio.AutoSize = true;
             this.lblPlanEstudio.Location = new System.Drawing.Point(391, 120);
             this.lblPlanEstudio.Name = "lblPlanEstudio";
-            this.lblPlanEstudio.Size = new System.Drawing.Size(123, 19);
+            this.lblPlanEstudio.Size = new System.Drawing.Size(154, 20);
             this.lblPlanEstudio.TabIndex = 38;
             this.lblPlanEstudio.Text = "Plan de estudio:";
             // 
             // txtCantidadHoras
             // 
             this.txtCantidadHoras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadHoras.Location = new System.Drawing.Point(391, 326);
+            this.txtCantidadHoras.Location = new System.Drawing.Point(391, 324);
             this.txtCantidadHoras.MaxLength = 4;
             this.txtCantidadHoras.Name = "txtCantidadHoras";
-            this.txtCantidadHoras.Size = new System.Drawing.Size(352, 27);
+            this.txtCantidadHoras.Size = new System.Drawing.Size(352, 32);
             this.txtCantidadHoras.TabIndex = 12;
             // 
             // lblCantidadHoras
@@ -289,7 +291,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantidadHoras.AutoSize = true;
             this.lblCantidadHoras.Location = new System.Drawing.Point(391, 300);
             this.lblCantidadHoras.Name = "lblCantidadHoras";
-            this.lblCantidadHoras.Size = new System.Drawing.Size(143, 19);
+            this.lblCantidadHoras.Size = new System.Drawing.Size(179, 20);
             this.lblCantidadHoras.TabIndex = 46;
             this.lblCantidadHoras.Text = "Cantidad de horas:";
             // 
@@ -301,10 +303,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // txtNombre
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Location = new System.Drawing.Point(3, 26);
+            this.txtNombre.Location = new System.Drawing.Point(3, 24);
             this.txtNombre.MaxLength = 150;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(352, 27);
+            this.txtNombre.Size = new System.Drawing.Size(352, 32);
             this.txtNombre.TabIndex = 0;
             // 
             // lblNombre
@@ -312,7 +314,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(3, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(72, 19);
+            this.lblNombre.Size = new System.Drawing.Size(87, 20);
             this.lblNombre.TabIndex = 49;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -323,6 +325,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.lblRégimen, 0, 14);
             this.tableLayoutPanel1.Controls.Add(this.btnPlanEstudio, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtImagenDescriptiva, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtResolucion, 0, 9);
@@ -344,7 +347,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Controls.Add(this.lblImagenDescriptiva, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtJefeCatedra, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblPlanEstudio, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 2, 14);
             this.tableLayoutPanel1.Controls.Add(this.btnResolucion, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.btnImagenDescriptiva, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtCantidadHoras, 2, 11);
@@ -355,10 +357,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Controls.Add(this.lblCantidadCorrelativas, 2, 12);
             this.tableLayoutPanel1.Controls.Add(this.lblCarreraReemplazar, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtCarreraReemplazar, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 2, 16);
+            this.tableLayoutPanel1.Controls.Add(this.cmbRegimen, 0, 15);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 15;
+            this.tableLayoutPanel1.RowCount = 17;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -373,9 +377,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 503);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 544);
             this.tableLayoutPanel1.TabIndex = 50;
+            // 
+            // lblRégimen
+            // 
+            this.lblRégimen.AutoSize = true;
+            this.lblRégimen.Location = new System.Drawing.Point(3, 420);
+            this.lblRégimen.Name = "lblRégimen";
+            this.lblRégimen.Size = new System.Drawing.Size(95, 24);
+            this.lblRégimen.TabIndex = 61;
+            this.lblRégimen.Text = "Régimen:";
             // 
             // btnPlanEstudio
             // 
@@ -395,27 +410,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.btnPlanEstudio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlanEstudio.UseVisualStyleBackColor = false;
             this.btnPlanEstudio.Click += new System.EventHandler(this.btnPlanEstudio_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnGuardar, 2);
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.White;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 32;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGuardar.Location = new System.Drawing.Point(605, 450);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(169, 50);
-            this.btnGuardar.TabIndex = 51;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnResolucion
             // 
@@ -458,10 +452,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // txtCantidadCorrelativas
             // 
             this.txtCantidadCorrelativas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadCorrelativas.Location = new System.Drawing.Point(391, 386);
+            this.txtCantidadCorrelativas.Location = new System.Drawing.Point(391, 384);
             this.txtCantidadCorrelativas.MaxLength = 2;
             this.txtCantidadCorrelativas.Name = "txtCantidadCorrelativas";
-            this.txtCantidadCorrelativas.Size = new System.Drawing.Size(352, 27);
+            this.txtCantidadCorrelativas.Size = new System.Drawing.Size(352, 32);
             this.txtCantidadCorrelativas.TabIndex = 57;
             // 
             // lblCantidadCorrelativas
@@ -469,7 +463,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantidadCorrelativas.AutoSize = true;
             this.lblCantidadCorrelativas.Location = new System.Drawing.Point(391, 360);
             this.lblCantidadCorrelativas.Name = "lblCantidadCorrelativas";
-            this.lblCantidadCorrelativas.Size = new System.Drawing.Size(184, 19);
+            this.lblCantidadCorrelativas.Size = new System.Drawing.Size(233, 20);
             this.lblCantidadCorrelativas.TabIndex = 58;
             this.lblCantidadCorrelativas.Text = "Cantidad de correlativas:";
             // 
@@ -478,24 +472,54 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCarreraReemplazar.AutoSize = true;
             this.lblCarreraReemplazar.Location = new System.Drawing.Point(391, 180);
             this.lblCarreraReemplazar.Name = "lblCarreraReemplazar";
-            this.lblCarreraReemplazar.Size = new System.Drawing.Size(163, 19);
+            this.lblCarreraReemplazar.Size = new System.Drawing.Size(206, 20);
             this.lblCarreraReemplazar.TabIndex = 59;
             this.lblCarreraReemplazar.Text = "Carrera a reemplazar:";
             // 
             // txtCarreraReemplazar
             // 
             this.txtCarreraReemplazar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCarreraReemplazar.Location = new System.Drawing.Point(391, 206);
+            this.txtCarreraReemplazar.Location = new System.Drawing.Point(391, 204);
             this.txtCarreraReemplazar.MaxLength = 150;
             this.txtCarreraReemplazar.Name = "txtCarreraReemplazar";
-            this.txtCarreraReemplazar.Size = new System.Drawing.Size(352, 27);
+            this.txtCarreraReemplazar.Size = new System.Drawing.Size(352, 32);
             this.txtCarreraReemplazar.TabIndex = 60;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGuardar, 2);
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardar.IconColor = System.Drawing.Color.White;
+            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardar.IconSize = 32;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnGuardar.Location = new System.Drawing.Point(605, 491);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(169, 50);
+            this.btnGuardar.TabIndex = 51;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // cmbRegimen
+            // 
+            this.cmbRegimen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbRegimen.FormattingEnabled = true;
+            this.cmbRegimen.Location = new System.Drawing.Point(3, 451);
+            this.cmbRegimen.Name = "cmbRegimen";
+            this.cmbRegimen.Size = new System.Drawing.Size(352, 32);
+            this.cmbRegimen.TabIndex = 62;
             // 
             // FormAgregarModificarCarrera
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(817, 543);
+            this.ClientSize = new System.Drawing.Size(817, 584);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormAgregarModificarCarrera";
             this.Padding = new System.Windows.Forms.Padding(20);
@@ -546,5 +570,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.Label lblCantidadCorrelativas;
         private System.Windows.Forms.Label lblCarreraReemplazar;
         public System.Windows.Forms.TextBox txtCarreraReemplazar;
+        private System.Windows.Forms.Label lblRégimen;
+        private System.Windows.Forms.ComboBox cmbRegimen;
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Windows.Forms;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Negocio.Logica;
+﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Core.Enums;
+using ISFDyT93.Negocio.Interfaces;
+using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
+using System;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Vista.Forms.Carreras
 {
@@ -178,10 +179,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormAgregarModificarCarrera_Load(object sender, EventArgs e)
         {
+
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormCarreras>();
             });
+
+            // Cargar las opciones del ComboBox de Régimen desde la BD
+            cmbRegimen.DataSource = CarrerasLogica.ObtenerRegimenes();
+            cmbRegimen.ValueMember = "RegimenId";   // ID que se guardará en la base de datos
+            cmbRegimen.DisplayMember = "Nombre";    // Texto que verá el usuario ("Anual", "Cuatrimestral", etc.)
 
             MostrarCarreraExistentes();
         }

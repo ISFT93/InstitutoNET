@@ -14,6 +14,7 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable CarrerasInactivas(bool Activo = false);
         DataTable CarrerasBorrador(bool Activo = false);
         DataTable CarrerasActivas(bool Activo = true);
+        DataTable ObtenerRegimenes(); // Agregado para obtener los regimenes de las carreras
         CarrerasModelo ObtenerCarrera(int id);
         DataRow CarreraExiste(string Nombre);
         int TraeIdDeCarrera(string nombre);
@@ -24,5 +25,7 @@ namespace ISFDyT93.Datos.Interfaces
         void EliminarCarrera(int CarreraId);
         void AltaCarreraActivo(int CarreraId);
         void ActualizarCargaHoraria(int CarreraId, int cantidadHoras);
+
+
     }
 }

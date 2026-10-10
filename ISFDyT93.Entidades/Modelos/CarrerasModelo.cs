@@ -56,5 +56,7 @@ namespace ISFDyT93.Entidades.Modelos
         [Obligatorio]
         [SoloNumeros(minimo: 0, maximo: 99)]
         public int CantidadCorrelativas { get; set; }
+
+        public int RegimenId { get; set; } // 1: Anual, 2: Cuatrimestral, 3: Otros
     }
 }
