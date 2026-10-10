@@ -77,8 +77,7 @@ namespace ISFDyT93.Negocio.Logica
         }
         public bool GuardarCarrera(CarrerasModelo modelo, TipoAccion accion)
         {
-            bool resultado = false;          
-
+            bool resultado = false;
 
             try
             {
@@ -87,7 +86,7 @@ namespace ISFDyT93.Negocio.Logica
                 string archiResolucion = modelo.Resolucion;
                 string archiCorrelatividades = modelo.Correlatividades;
                 string archiImagen = modelo.ImagenDescriptiva;
-                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); //Crea el siguiente valor para el codigo de bloque
+                int carrerasCodigoBloque = carrerasDao.GeneraCarrerasCodigoBloque(); // Crea el siguiente valor para el codigo de bloque
 
                 if (accion == TipoAccion.Agregar)
                 {
@@ -130,9 +129,7 @@ namespace ISFDyT93.Negocio.Logica
                         if (!string.IsNullOrEmpty(archiImagen))
                             GuardarArchivo(archiImagen, modelo.ImagenDescriptiva, @"\Imagen");
 
-
                         int carreraId = carrerasDao.ObtenerUltimoCarreraId();
-
 
                         for (int anio = 1; anio <= modelo.Duracion; anio++)
                         {
@@ -163,24 +160,13 @@ namespace ISFDyT93.Negocio.Logica
                     if (!string.IsNullOrEmpty(modelo.ImagenDescriptiva) && !modelo.ImagenDescriptiva.StartsWith(@"\Imagen"))
                     {
                         string extension = modelo.ImagenDescriptiva.Substring(modelo.ImagenDescriptiva.LastIndexOf("."));
-
                         modelo.ImagenDescriptiva = @"\Imagen\Imagen_" + time + extension;
                     }
 
+                    // Solo se actualiza la carrera en la BD.
+                    // Se quitó el bloque que borraba y volvía a crear registros en AniosCarreras.
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
-                        //REVISAR
-                        if (!modelo.PoseeMaterias)
-                        {
-                            aniosCarreraDao.EliminarAniosDeUnaCarrera(modelo.CarreraId);
-
-                            for (int anio = 1; anio <= modelo.Duracion; anio++)
-                            {
-                                string codigoFormateado = modelo.CarrerasCodigoBloque + anio.ToString();
-                                aniosCarreraDao.AgregarAnio(anio, modelo.CarreraId, codigoFormateado);
-                            }
-                        }
-
                         resultado = true;
                     }
                 }

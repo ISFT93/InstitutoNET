@@ -136,6 +136,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.Carrera = this.CarrerasLogica.ObtenerCarrera(CarreraId);
 
+            // Limpia la grilla para evitar duplicados o ceros arrastrados
+            dgvAniosCarrera.DataSource = null;
+
             dgvAniosCarrera.DataSource = AniosLogica.ObtenerAniosCarrera(CarreraId);
             dgvAniosCarrera.Columns["AnioCarreraId"].Visible = false;
 

@@ -229,6 +229,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     : 0;
 
                 sb.AppendLine($"{item.Key}: {item.Value} hs ({porcentaje}%)");
+                // Esta linea llama al método ActualizarTotalesEspacio de la clase MateriasLogica
+                // para actualizar los totales por espacio en la base de datos o en la lógica de negocio
+                this.materiasLogica.ActualizarTotalesEspacio(item.Key, item.Value, porcentaje);
             }
 
             sb.AppendLine($"\nCarga Horaria Total: {cargaHorariaTotal} hs");

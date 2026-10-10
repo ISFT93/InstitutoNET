@@ -2,6 +2,7 @@
 using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -167,7 +168,7 @@ namespace ISFDyT93.Datos.Daos
             string query = "UPDATE Carreras SET CarreraEstadoId=" + modelo.CarreraEstadoId + " WHERE CarreraId= " + modelo.CarreraId;
             return this.Conexion.EjecutarAccion(query);
         }
-
+        
         public void EliminarCarrera(int CarreraId)
         {
             // string query = "UPDATE Carreras SET Activo = " + 0 + "WHERE CarreraId = " + CarreraId + "";

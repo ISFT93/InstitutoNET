@@ -95,6 +95,18 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
+        // METODO PARA ACTUALIZAR LOS TOTALES DE HORAS Y PORCENTAJE EN LA TABLA ESPACIOS
+        public void ActualizarTotalesEspacio(string nombreEspacio, int sumaHoras, double porcentaje)
+        {
+            // Usamos el formato que maneja el motor de base de datos para decimales (punto en lugar de coma)
+            string porcentajeFormateado = porcentaje.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+            // Armamos la consulta usando interpolación, similar a como lo haces en otros métodos del DAO
+            string query = $"UPDATE Espacios SET SumaHoras = {sumaHoras}, CalculaPorcentaje = {porcentajeFormateado} WHERE Descripcion = '{nombreEspacio}'";
+
+            // Utilizamos el método heredado de DaoBase para ejecutar el UPDATE
+            this.Conexion.EjecutarAccion(query);
+        }
 
         public MateriasModelo ObtenerMateria(int materiaId)
         {  /*   Si activo es true escribe 1 si no 0 */

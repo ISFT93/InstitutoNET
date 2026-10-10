@@ -42,6 +42,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     nudAnioFin.Enabled = false;
                     nudAnioInicio.Value = this.Modelo.AnioInicio;
                     this.MapToForm<CarrerasModelo>(Modelo);
+                    // Asegura que al modificar se marque el régimen que la carrera ya tenía guardado en la BD
+                    cmbRegimen.SelectedValue = this.Modelo.RegimenId;
+
                     break;
                 case TipoAccion.Ver:
                     ComprobarCarreraId();
@@ -101,6 +104,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void GuardarCarrera()
         {
             var carrera = this.MapToModel<CarrerasModelo>();
+
+            // Asignamos explícitamente el valor del régimen seleccionado en el ComboBox
+            if (cmbRegimen.SelectedValue != null && int.TryParse(cmbRegimen.SelectedValue.ToString(), out int regimenId))
+            {
+                carrera.RegimenId = regimenId;
+            }
 
             if (carrera.Errores.Count > 0)
             {
