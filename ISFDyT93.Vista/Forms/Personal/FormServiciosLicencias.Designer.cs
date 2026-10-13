@@ -511,4 +511,6 @@ namespace ISFDyT93.Vista.Forms.Personal
         private System.Windows.Forms.ComboBox cmbCargo;
         private System.Windows.Forms.Label label6;
     }
+
+
 }

@@ -64,9 +64,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-        }
+        
 
         private void txtCertificado_TextChanged(object sender, EventArgs e)
         {
@@ -173,6 +171,10 @@ namespace ISFDyT93.Vista.Forms.Personal
             txtCertificado.Visible = estado;
             btnCertificado.Visible = estado;
             label5.Visible = estado;
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            // Método para satisfacer el enlace del diseñador
         }
     }
 }

@@ -41,46 +41,44 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void CargaGrilla()
         {
             dgvCarreras.ContextMenuStrip = cmsCarreras;
+            dgvCarreras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Soluciona datos cortados o mal distribuidos
 
-            if (rbActivos.Checked == true)
+            if (rbActivos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasActivas();
 
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId                    
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else
-            if (rbInactivos.Checked == true)
+            else if (rbInactivos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else
-            if (rbBorrador.Checked == true)
+            else if (rbBorrador.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
-                    //Ocultar columna de la grilla CarreraId CarreraEstadoId
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                     dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
             }
-            else
-            if (rbTodos.Checked == true)
+            else if (rbTodos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.ObtenerTodasLasCarreras();
                 CarreraEstados();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     dgvCarreras.Columns["CarreraId"].Visible = false;
@@ -91,8 +89,41 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 }
             }
 
+            // Ajustamos los anchos de las columnas al finalizar la carga
+            AjustarAnchoColumnas();
+
         }
 
+        // Método auxiliar exclusivo para ajustar el diseño visual de las columnas
+        private void AjustarAnchoColumnas()
+        {
+            dgvCarreras.SuspendLayout();
+
+            // Columnas secundarias: Ancho justo a sus contenidos
+            if (dgvCarreras.Columns.Contains("Código"))
+                dgvCarreras.Columns["Código"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgvCarreras.Columns.Contains("Numero de Expediente"))
+                dgvCarreras.Columns["Numero de Expediente"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgvCarreras.Columns.Contains("Estado"))
+                dgvCarreras.Columns["Estado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // Repartimos el espacio sobrante entre Nombre y Descripción
+            if (dgvCarreras.Columns.Contains("Nombre"))
+            {
+                dgvCarreras.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCarreras.Columns["Nombre"].FillWeight = 60; // Recibe el 60% del espacio sobrante
+            }
+
+            if (dgvCarreras.Columns.Contains("Descripción"))
+            {
+                dgvCarreras.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCarreras.Columns["Descripción"].FillWeight = 40; // Recibe el 40% del espacio sobrante
+            }
+
+            dgvCarreras.ResumeLayout();
+        }
         private void CambiarColor()
         {
             if (dgvCarreras.Rows.Count > 0)
@@ -369,9 +400,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             else
             {
-                //CellContentClick cuando se selecciona en el menu Eliminar
                 DialogResult resultado = MessageBox.Show($"¿Desea {AccionARealizar} la Carrera '" + this.NombreCarrera + "'?",
-                  "Eliminar Carrera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "Eliminar Carrera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resultado == DialogResult.Yes)
                 {
@@ -382,10 +412,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                         Notificar(TipoNotificacion.Success, "Carrera eliminada\n correctamente");
                     }
-                    catch (Exception)
+                    catch (System.Data.SqlClient.SqlException ex)
                     {
-
-                        throw;
+                        // Control específico si ocurre un conflicto de unicidad o integridad referencial en SQL Server
+                        if (ex.Number == 2627 || ex.Number == 2601)
+                        {
+                            MessageBox.Show("Error: Ya existe un registro con el mismo número de Resolución.",
+                                            "Duplicidad detectada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error en la base de datos: " + ex.Message,
+                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error inesperado: " + ex.Message,
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -464,7 +508,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         break;
 
                     case "Inactivo":
-                        foreColor = Color.FromArgb(230,250,0);
+                        foreColor = Color.FromArgb(230, 250, 0);
                         break;
 
                     case "Borrador":
@@ -489,14 +533,15 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (SeleccionRB.radioSeleccionado == "Activos")
                 rbActivos.Checked = true;
-            else if (SeleccionRB.radioSeleccionado == "Borrador")            
-                rbBorrador.Checked = true;            
-            else if (SeleccionRB.radioSeleccionado == "Inactivos")            
-                rbInactivos.Checked = true;            
-            else            
-                rbTodos.Checked = true;            
+            else if (SeleccionRB.radioSeleccionado == "Borrador")
+                rbBorrador.Checked = true;
+            else if (SeleccionRB.radioSeleccionado == "Inactivos")
+                rbInactivos.Checked = true;
+            else
+                rbTodos.Checked = true;
         }
 
     }
 }
+
 

@@ -366,7 +366,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.cmbTramoPedagogico, 2);
             this.cmbTramoPedagogico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTramoPedagogico.FormattingEnabled = true;
-            this.cmbTramoPedagogico.Location = new System.Drawing.Point(388, 32);
+            this.cmbTramoPedagogico.Location = new System.Drawing.Point(388, 35);
             this.cmbTramoPedagogico.Name = "cmbTramoPedagogico";
             this.cmbTramoPedagogico.Size = new System.Drawing.Size(380, 27);
             this.cmbTramoPedagogico.TabIndex = 15;
@@ -392,7 +392,7 @@
             "Casado/a",
             "Separado/a",
             "Viudo/a"});
-            this.cmbEstadoCivil.Location = new System.Drawing.Point(388, 149);
+            this.cmbEstadoCivil.Location = new System.Drawing.Point(388, 146);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
             this.cmbEstadoCivil.Size = new System.Drawing.Size(380, 27);
             this.cmbEstadoCivil.TabIndex = 5;
@@ -405,7 +405,7 @@
             this.cmbSexo.Items.AddRange(new object[] {
             "F",
             "M"});
-            this.cmbSexo.Location = new System.Drawing.Point(3, 149);
+            this.cmbSexo.Location = new System.Drawing.Point(3, 146);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(349, 27);
             this.cmbSexo.TabIndex = 4;

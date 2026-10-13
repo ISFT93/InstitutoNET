@@ -31,13 +31,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCursos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmsCursos = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmAsignarCurso = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmModificarCurso = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmGestionarHorario = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarCursos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCursoDarAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerMaterias = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,12 +55,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cmsCursos.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsCursos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAsignarCurso,
-            this.tsmModificarCurso,
+            this.tsmGestionarHorario,
             this.tsmEliminarCursos,
             this.tsmCursoDarAlta,
             this.tsmVerMaterias});
             this.cmsCursos.Name = "contextMenuStrip1";
-            this.cmsCursos.Size = new System.Drawing.Size(157, 154);
+            this.cmsCursos.Size = new System.Drawing.Size(219, 182);
             // 
             // tsmAsignarCurso
             // 
@@ -70,20 +70,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmAsignarCurso.Image = ((System.Drawing.Image)(resources.GetObject("tsmAsignarCurso.Image")));
             this.tsmAsignarCurso.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tsmAsignarCurso.Name = "tsmAsignarCurso";
-            this.tsmAsignarCurso.Size = new System.Drawing.Size(156, 30);
+            this.tsmAsignarCurso.Size = new System.Drawing.Size(218, 30);
             this.tsmAsignarCurso.Text = "Asignar ";
             this.tsmAsignarCurso.Click += new System.EventHandler(this.tsmAsignarCurso_Click);
             // 
-            // tsmModificarCurso
+            // tsmGestionarHorario
             // 
-            this.tsmModificarCurso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.tsmModificarCurso.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsmModificarCurso.ForeColor = System.Drawing.Color.White;
-            this.tsmModificarCurso.Image = ((System.Drawing.Image)(resources.GetObject("tsmModificarCurso.Image")));
-            this.tsmModificarCurso.Name = "tsmModificarCurso";
-            this.tsmModificarCurso.Size = new System.Drawing.Size(156, 30);
-            this.tsmModificarCurso.Text = "Modificar ";
-            this.tsmModificarCurso.Click += new System.EventHandler(this.tsmModificarCurso_Click);
+            this.tsmGestionarHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmGestionarHorario.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmGestionarHorario.ForeColor = System.Drawing.Color.White;
+            this.tsmGestionarHorario.Image = ((System.Drawing.Image)(resources.GetObject("tsmGestionarHorario.Image")));
+            this.tsmGestionarHorario.Name = "tsmGestionarHorario";
+            this.tsmGestionarHorario.Size = new System.Drawing.Size(218, 30);
+            this.tsmGestionarHorario.Text = "Gestionar horario";
+            this.tsmGestionarHorario.Click += new System.EventHandler(this.tsmGestionarHorario_Click);
             // 
             // tsmEliminarCursos
             // 
@@ -92,7 +92,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmEliminarCursos.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarCursos.Image = ((System.Drawing.Image)(resources.GetObject("tsmEliminarCursos.Image")));
             this.tsmEliminarCursos.Name = "tsmEliminarCursos";
-            this.tsmEliminarCursos.Size = new System.Drawing.Size(156, 30);
+            this.tsmEliminarCursos.Size = new System.Drawing.Size(215, 30);
             this.tsmEliminarCursos.Text = "Desactivar";
             this.tsmEliminarCursos.Click += new System.EventHandler(this.tsmEliminarCursos_Click);
             // 
@@ -104,7 +104,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmCursoDarAlta.Image = ((System.Drawing.Image)(resources.GetObject("tsmCursoDarAlta.Image")));
             this.tsmCursoDarAlta.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tsmCursoDarAlta.Name = "tsmCursoDarAlta";
-            this.tsmCursoDarAlta.Size = new System.Drawing.Size(156, 30);
+            this.tsmCursoDarAlta.Size = new System.Drawing.Size(215, 30);
             this.tsmCursoDarAlta.Text = "Dar de Alta";
             this.tsmCursoDarAlta.Click += new System.EventHandler(this.tsmCursoDarAlta_Click);
             // 
@@ -115,7 +115,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tsmVerMaterias.ForeColor = System.Drawing.Color.White;
             this.tsmVerMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerMaterias.Name = "tsmVerMaterias";
-            this.tsmVerMaterias.Size = new System.Drawing.Size(156, 30);
+            this.tsmVerMaterias.Size = new System.Drawing.Size(215, 30);
             this.tsmVerMaterias.Text = "Ver Materias";
             this.tsmVerMaterias.Click += new System.EventHandler(this.tsmVerMaterias_Click);
             // 
@@ -124,10 +124,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(4, 14);
+            this.rbActivos.Location = new System.Drawing.Point(4, 11);
             this.rbActivos.Margin = new System.Windows.Forms.Padding(4);
             this.rbActivos.Name = "rbActivos";
-            this.rbActivos.Size = new System.Drawing.Size(229, 23);
+            this.rbActivos.Size = new System.Drawing.Size(229, 28);
             this.rbActivos.TabIndex = 55;
             this.rbActivos.TabStop = true;
             this.rbActivos.Text = "Activos";
@@ -138,10 +138,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(241, 14);
+            this.rbInactivos.Location = new System.Drawing.Point(241, 11);
             this.rbInactivos.Margin = new System.Windows.Forms.Padding(4);
             this.rbInactivos.Name = "rbInactivos";
-            this.rbInactivos.Size = new System.Drawing.Size(229, 23);
+            this.rbInactivos.Size = new System.Drawing.Size(229, 28);
             this.rbInactivos.TabIndex = 54;
             this.rbInactivos.Text = "Inactivos";
             this.rbInactivos.UseVisualStyleBackColor = true;
@@ -176,24 +176,24 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCursos.BackgroundColor = System.Drawing.Color.White;
             this.dgvCursos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCursos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCursos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCursos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCursos.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCursos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCursos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCursos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCursos.EnableHeadersVisualStyles = false;
             this.dgvCursos.GridColor = System.Drawing.Color.White;
@@ -203,22 +203,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.dgvCursos.Name = "dgvCursos";
             this.dgvCursos.ReadOnly = true;
             this.dgvCursos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCursos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCursos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCursos.RowHeadersVisible = false;
             this.dgvCursos.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvCursos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvCursos.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCursos.RowTemplate.Height = 28;
             this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCursos.Size = new System.Drawing.Size(951, 552);
@@ -227,7 +227,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // FormCursos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(999, 688);
@@ -250,7 +250,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private System.Windows.Forms.ContextMenuStrip cmsCursos;
         private System.Windows.Forms.ToolStripMenuItem tsmAsignarCurso;
-        private System.Windows.Forms.ToolStripMenuItem tsmModificarCurso;
+        private System.Windows.Forms.ToolStripMenuItem tsmGestionarHorario;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarCursos;
         private System.Windows.Forms.ToolStripMenuItem tsmCursoDarAlta;
         private System.Windows.Forms.RadioButton rbActivos;

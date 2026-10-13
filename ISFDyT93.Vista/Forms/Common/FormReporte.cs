@@ -134,134 +134,21 @@ namespace ISFDyT93.Vista.Forms.Common
                 else
                     rvwReportes.RefreshReport();
             }
+
+            try
+            {
+                if (this.Parameters != null)
+                {
+                    rvwReportes.LocalReport.SetParameters(this.Parameters);
+                }
+            }
             catch (Exception ex)
             {
-                reporteListo = false;
-                lblEstado.Text = "No se pudo cargar el reporte";
-                MessageBox.Show(this, "No se pudo abrir el reporte. " + ex.Message,
-                    "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errorReal = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Detalle del error: " + errorReal, "Error de Reporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            ActualizarAcciones();
-            Contenedor.SetTitulo("Vista de impresión").SetVolver(() =>
-            {
-                Contenedor.AbrirFormulario<FormMesasFinales>(form =>{});
-            });
-        }
 
-        private string NombreReporte()
-        {
-            var partes = (Reporte ?? "Reporte.rdlc").Split('.');
-            return partes.Length > 1 ? partes[partes.Length - 2] : "Reporte";
-        }
-
-        private string NombreArchivo()
-        {
-            var nombre = TituloReporte ?? NombreReporte();
-            foreach (char invalido in Path.GetInvalidFileNameChars()) nombre = nombre.Replace(invalido, '_');
-            return nombre;
-        }
-
-        private void ActualizarAcciones()
-        {
-            if (IsDisposed || Disposing) return;
-            btnImprimir.Enabled = btnExportarPdf.Enabled = btnAjustarPagina.Enabled =
-                btnAjustarAncho.Enabled = reporteListo && !exportando;
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            try { rvwReportes.PrintDialog(); }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, "No se pudo iniciar la impresión. " + ex.Message,
-                    "Imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnAjustarPagina_Click(object sender, EventArgs e)
-        {
-            rvwReportes.ZoomMode = ZoomMode.FullPage;
-        }
-
-        private void btnAjustarAncho_Click(object sender, EventArgs e)
-        {
-            rvwReportes.ZoomMode = ZoomMode.PageWidth;
-        }
-
-        private async void btnExportarPdf_Click(object sender, EventArgs e)
-        {
-            using (var dialogo = new SaveFileDialog
-            {
-                Title = "Exportar reporte a PDF", Filter = "Documento PDF (*.pdf)|*.pdf",
-                DefaultExt = "pdf", AddExtension = true, OverwritePrompt = true,
-                FileName = NombreArchivo() + ".pdf", RestoreDirectory = true
-            })
-            {
-                if (dialogo.ShowDialog(this) != DialogResult.OK) return;
-                exportando = true;
-                ActualizarAcciones();
-                lblEstado.Text = "Exportando PDF…";
-                try
-                {
-                    // Snapshot en el hilo de UI. El worker posee su propio LocalReport:
-                    // nunca renderizar el informe del visor desde un hilo de fondo.
-                    var recurso = Reporte;
-                    var tablas = (Tables ?? new List<ReportTable>()).Select(t => new ReportTable
-                        { DataBinding = t.DataBinding, DataSource = t.DataSource.Copy() }).ToList();
-                    var parametros = rvwReportes.LocalReport.GetParameters().Select(p =>
-                        new ReportParameter(p.Name, p.Values.ToArray())).ToArray();
-                    var archivo = dialogo.FileName;
-                    await Task.Run(() =>
-                    {
-                        using (var reporte = new LocalReport())
-                        using (var definicion = typeof(FormReporte).Assembly.GetManifestResourceStream(recurso))
-                        {
-                            if (definicion == null) throw new InvalidOperationException("No se encontró el archivo RDLC.");
-                            reporte.LoadReportDefinition(definicion);
-                            foreach (var tabla in tablas)
-                                reporte.DataSources.Add(new ReportDataSource(tabla.DataBinding, tabla.DataSource));
-                            if (parametros.Length > 0) reporte.SetParameters(parametros);
-                            // Sin DeviceInfo que cambie dimensiones: se respeta el papel del RDLC.
-
-
-                            try
-                            {
-                                byte[] pdf = rvwReportes.LocalReport.Render("PDF");
-
-                                File.WriteAllBytes(dialogo.FileName, pdf);
-
-                                MessageBox.Show(
-                                    "PDF exportado correctamente.",
-                                    "Exportación",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information
-                                );
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(
-                                    ex.ToString(),
-                                    "Error al exportar PDF",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error
-                                );
-                            }
-
-                        }
-                    });
-                    if (!IsDisposed && !Disposing) lblEstado.Text = "PDF guardado";
-                }
-                catch (Exception ex)
-                {
-                    if (!IsDisposed && !Disposing)
-                    {
-                        lblEstado.Text = "No se pudo exportar";
-                        MessageBox.Show(this, "No se pudo guardar el PDF. " + ex.Message,
-                            "Exportar PDF", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                finally { exportando = false; ActualizarAcciones(); }
-            }
+            this.rvwReportes.RefreshReport();
         }
     }
 }
