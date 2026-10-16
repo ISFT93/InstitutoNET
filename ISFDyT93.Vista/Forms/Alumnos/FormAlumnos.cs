@@ -44,7 +44,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormAlumnos_Load(object sender, EventArgs e)
         {
-            uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
+            //uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
             this.Contenedor.SetTitulo("Alumnos");
             cmbFiltroAlum.SelectedIndex = 0; //por defecto busca todos
             RecargarGrilla();

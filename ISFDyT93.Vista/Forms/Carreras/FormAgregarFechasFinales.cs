@@ -355,7 +355,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void cmbVocalMesa_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            ValidarCampos();
+            //ValidarCampos();
+            if (((uint)cmbVocalMesa.SelectedIndex) >= 1) btnAgregar.Enabled = true;
         }
 
         private void cmbMateria_SelectionChangeCommitted(object sender, EventArgs e)
@@ -382,5 +383,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             CargarMaterias();
         }
 
+        private void cmbVocalMesa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((uint)cmbVocalMesa.SelectedIndex) >= 1) btnAgregar.Enabled = true;
+        }
     }
 }

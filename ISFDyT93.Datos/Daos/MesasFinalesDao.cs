@@ -155,8 +155,8 @@ namespace ISFDyT93.Datos.Daos
         {
             if (mesaFinalId <= 0) throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
 
-            // Esquema verificado en instituto_db: la mesa referencia MateriaId,
-            // FinalEstados y LibroActas. No tiene CursoMateriaId ni folio propio.
+            // El libro y el folio visibles en el acta provienen de LibroActas
+            // y MesasFinales, respectivamente; LibroActaId es solo la clave interna.
             const string query = @"
                 SELECT Fi.MesaFinalId, Ca.Nombre AS Carrera, Ma.Nombre AS Materia,
                        AC.AnioCarrera, CAST(NULL AS varchar(10)) AS Curso,
@@ -164,7 +164,7 @@ namespace ISFDyT93.Datos.Daos
                        Fi.Fecha, LTRIM(RTRIM(CONCAT(Pe.Nombre, ' ', Pe.Apellido))) AS Titular,
                        LTRIM(RTRIM(CONCAT(Voc.Nombre, ' ', Voc.Apellido))) AS Vocal,
                        Fi.FinalEstadoId, Est.Descripcion AS Estado,
-                       LA.LibroNumero AS LibroActa, CAST(NULL AS varchar(10)) AS FolioActa
+                       LA.LibroNumero AS LibroActa, Fi.NroFolio AS FolioActa
                 FROM dbo.MesasFinales Fi
                 LEFT JOIN dbo.Materias Ma ON Fi.MateriaId = Ma.MateriaId
                 LEFT JOIN dbo.AniosCarreras AC ON Ma.AnioCarreraId = AC.AnioCarreraId
@@ -189,21 +189,47 @@ namespace ISFDyT93.Datos.Daos
 
         }
 
+
         public DataTable ObtenerAlumnosMesaReporte(int mesaFinalId)
         {
-            if (mesaFinalId <= 0) throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
+            if (mesaFinalId <= 0)
+                throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
 
-            // No existe una relación alumno-mesa en el esquema actual (2026-10-09).
-            // Las inscripciones a cursadas NO acreditan inscripción a esta mesa.
-            // Se expone el contrato del RDLC sin inventar una consulta ni registros.
-            var datos = new DataTable("DSAlumnosMesa");
-            datos.Columns.Add("AlumnoId", typeof(int));
-            foreach (var campo in new[] { "Libro", "Folio", "NumeroDocumento", "Apellido",
-                "Nombre", "Email", "Celular", "Condicion" })
-                datos.Columns.Add(campo, typeof(string));
-            datos.ExtendedProperties["AvisoInscripciones"] =
-                "Inscripciones no disponibles: falta la relación entre alumnos y mesas finales. " +
-                "No se puede determinar la nómina ni el total de inscriptos.";
+            string query = @"
+                            SELECT
+                                a.AlumnoId,
+                                CAST(NULL AS NVARCHAR(50)) AS Libro,
+                                CAST(NULL AS NVARCHAR(50)) AS Folio,
+                                a.NumeroDocumento,
+                                a.Apellido,
+                                a.Nombre,
+                                a.Email,
+                                a.Celular,
+                                ma.Estado AS Condicion
+                            FROM dbo.MesaAlumno AS ma
+                            INNER JOIN dbo.MesasFinales AS mf
+                                ON ma.MesaFinalId = mf.MesaFinalId
+                            INNER JOIN dbo.CursadaAlumnoCarreras AS cac
+                                ON ma.CursadaAlumnoCarreraId = cac.CursadaAlumnoCarreraId
+                            INNER JOIN dbo.AlumnosCarreras AS ac
+                                ON cac.AlumnoCarreraId = ac.AlumnoCarreraId
+                            INNER JOIN dbo.Alumnos AS a
+                                ON ac.AlumnoId = a.AlumnoId
+                            WHERE ma.MesaFinalId = @MesaFinalId
+                            ORDER BY a.Apellido, a.Nombre;";
+
+            DataTable datos = new DataTable("DSAlumnosMesa");
+
+            using (SqlConnection conexion =
+                   new SqlConnection(this.Conexion.Conector.ConnectionString))
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comando))
+            {
+                comando.Parameters.Add("@MesaFinalId", SqlDbType.Int).Value = mesaFinalId;
+
+                adapter.Fill(datos);
+            }
+
             return datos;
         }
 

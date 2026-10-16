@@ -99,79 +99,36 @@
             // 
             // cmbLlamados
             // 
-            this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(3, 11);
-            this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(184, 24);
-            this.lblCarrera.TabIndex = 0;
-            this.lblCarrera.Text = "Carrera:";
+            this.cmbLlamados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbLlamados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLlamados.FormattingEnabled = true;
+            this.cmbLlamados.Location = new System.Drawing.Point(193, 111);
+            this.cmbLlamados.Name = "cmbLlamados";
+            this.cmbLlamados.Size = new System.Drawing.Size(184, 27);
+            this.cmbLlamados.TabIndex = 9;
+            this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
             // 
             // cmbTurno
             // 
-            this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCarrera.FormattingEnabled = true;
-            this.cmbCarrera.Location = new System.Drawing.Point(193, 3);
-            this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(184, 32);
-            this.cmbCarrera.TabIndex = 1;
-            this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
-            this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
+            this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurno.FormattingEnabled = true;
+            this.cmbTurno.Location = new System.Drawing.Point(573, 111);
+            this.cmbTurno.Name = "cmbTurno";
+            this.cmbTurno.Size = new System.Drawing.Size(184, 27);
+            this.cmbTurno.TabIndex = 6;
+            this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
             // 
             // cmbAnioLectivo
             // 
-            this.lblAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(383, 11);
-            this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(184, 24);
-            this.lblAnio.TabIndex = 2;
-            this.lblAnio.Text = "Año:";
-            // 
-            // cmbAnio
-            // 
-            this.cmbAnio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAnio.Enabled = false;
-            this.cmbAnio.FormattingEnabled = true;
-            this.cmbAnio.Location = new System.Drawing.Point(573, 3);
-            this.cmbAnio.Name = "cmbAnio";
-            this.cmbAnio.Size = new System.Drawing.Size(184, 32);
-            this.cmbAnio.TabIndex = 3;
-            this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
-            // 
-            // lblCurso
-            // 
-            this.lblCurso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(3, 57);
-            this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(184, 24);
-            this.lblCurso.TabIndex = 4;
-            this.lblCurso.Text = "Curso:";
-            // 
-            // cmbCurso
-            // 
-            this.cmbCurso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCurso.Enabled = false;
-            this.cmbCurso.FormattingEnabled = true;
-            this.cmbCurso.Location = new System.Drawing.Point(193, 49);
-            this.cmbCurso.Name = "cmbCurso";
-            this.cmbCurso.Size = new System.Drawing.Size(184, 32);
-            this.cmbCurso.TabIndex = 5;
-            this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
-            // 
-            // lblMateria
-            // 
-            this.lblMateria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(383, 57);
-            this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(184, 24);
-            this.lblMateria.TabIndex = 6;
-            this.lblMateria.Text = "Materia:";
+            this.cmbAnioLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbAnioLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAnioLectivo.FormattingEnabled = true;
+            this.cmbAnioLectivo.Location = new System.Drawing.Point(193, 3);
+            this.cmbAnioLectivo.Name = "cmbAnioLectivo";
+            this.cmbAnioLectivo.Size = new System.Drawing.Size(184, 27);
+            this.cmbAnioLectivo.TabIndex = 5;
+            this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
             // 
             // cmbMateria
             // 
@@ -181,19 +138,65 @@
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(573, 74);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(184, 32);
+            this.cmbMateria.Size = new System.Drawing.Size(184, 27);
             this.cmbMateria.TabIndex = 7;
             this.cmbMateria.SelectedIndexChanged += new System.EventHandler(this.cmbMateria_SelectedIndexChanged);
             // 
             // label2
             // 
-            this.lblProfesor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProfesor.AutoSize = true;
-            this.lblProfesor.Location = new System.Drawing.Point(3, 104);
-            this.lblProfesor.Name = "lblProfesor";
-            this.lblProfesor.Size = new System.Drawing.Size(184, 24);
-            this.lblProfesor.TabIndex = 8;
-            this.lblProfesor.Text = "Profesor:";
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(383, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Turno:";
+            // 
+            // cmbCarrera
+            // 
+            this.cmbCarrera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCarrera.FormattingEnabled = true;
+            this.cmbCarrera.Location = new System.Drawing.Point(573, 3);
+            this.cmbCarrera.Name = "cmbCarrera";
+            this.cmbCarrera.Size = new System.Drawing.Size(184, 27);
+            this.cmbCarrera.TabIndex = 1;
+            this.cmbCarrera.DropDown += new System.EventHandler(this.cmbCarrera_DropDown);
+            this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
+            // 
+            // cmbAnio
+            // 
+            this.cmbAnio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAnio.Enabled = false;
+            this.cmbAnio.FormattingEnabled = true;
+            this.cmbAnio.Location = new System.Drawing.Point(193, 38);
+            this.cmbAnio.Name = "cmbAnio";
+            this.cmbAnio.Size = new System.Drawing.Size(184, 27);
+            this.cmbAnio.TabIndex = 3;
+            this.cmbAnio.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 19);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Llamado:";
+            // 
+            // cmbCurso
+            // 
+            this.cmbCurso.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCurso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurso.Enabled = false;
+            this.cmbCurso.FormattingEnabled = true;
+            this.cmbCurso.Location = new System.Drawing.Point(573, 38);
+            this.cmbCurso.Name = "cmbCurso";
+            this.cmbCurso.Size = new System.Drawing.Size(184, 27);
+            this.cmbCurso.TabIndex = 5;
+            this.cmbCurso.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
             // 
             // cmbProfesor
             // 
@@ -202,7 +205,7 @@
             this.cmbProfesor.FormattingEnabled = true;
             this.cmbProfesor.Location = new System.Drawing.Point(193, 74);
             this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(184, 32);
+            this.cmbProfesor.Size = new System.Drawing.Size(184, 27);
             this.cmbProfesor.TabIndex = 9;
             this.cmbProfesor.DropDown += new System.EventHandler(this.cmbProfesor_DropDown);
             this.cmbProfesor.SelectedIndexChanged += new System.EventHandler(this.cmbProfesor_SelectedIndexChanged);
@@ -265,11 +268,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 19);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Ciclo lectivo:";
+            this.label1.Text = "Año:";
             // 
             // btnReporteMesas
             // 
             this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
+            this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReporteMesas.Enabled = false;
             this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
@@ -280,9 +284,9 @@
             this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporteMesas.Location = new System.Drawing.Point(3, 3);
             this.btnReporteMesas.Name = "btnReporteMesas";
-            this.btnReporteMesas.Size = new System.Drawing.Size(170, 44);
-            this.btnReporteMesas.TabIndex = 17;
-            this.btnReporteMesas.Text = "Imprimir fechas";
+            this.btnReporteMesas.Size = new System.Drawing.Size(154, 44);
+            this.btnReporteMesas.TabIndex = 11;
+            this.btnReporteMesas.Text = "Imprimir Mesas";
             this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReporteMesas.UseVisualStyleBackColor = false;
             this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
@@ -306,6 +310,7 @@
             // btnAgregarMesa
             // 
             this.btnAgregarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnAgregarMesa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAgregarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarMesa.ForeColor = System.Drawing.Color.White;
             this.btnAgregarMesa.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
@@ -313,11 +318,11 @@
             this.btnAgregarMesa.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregarMesa.IconSize = 25;
             this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarMesa.Location = new System.Drawing.Point(179, 3);
+            this.btnAgregarMesa.Location = new System.Drawing.Point(163, 3);
             this.btnAgregarMesa.Name = "btnAgregarMesa";
-            this.btnAgregarMesa.Size = new System.Drawing.Size(220, 44);
-            this.btnAgregarMesa.TabIndex = 18;
-            this.btnAgregarMesa.Text = "     Agregar Mesa Especial  ";
+            this.btnAgregarMesa.Size = new System.Drawing.Size(154, 44);
+            this.btnAgregarMesa.TabIndex = 4;
+            this.btnAgregarMesa.Text = "    Mesa Especial    ";
             this.btnAgregarMesa.UseVisualStyleBackColor = false;
             this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
             // 
@@ -331,7 +336,7 @@
             this.btnFiltrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFiltrar.IconSize = 30;
             this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFiltrar.Location = new System.Drawing.Point(405, 3);
+            this.btnFiltrar.Location = new System.Drawing.Point(323, 3);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(140, 44);
             this.btnFiltrar.TabIndex = 19;
@@ -349,7 +354,7 @@
             this.btnLimpiarFiltros.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarFiltros.IconSize = 30;
             this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpiarFiltros.Location = new System.Drawing.Point(551, 3);
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(469, 3);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
             this.btnLimpiarFiltros.Size = new System.Drawing.Size(170, 44);
             this.btnLimpiarFiltros.TabIndex = 20;
@@ -435,112 +440,9 @@
             this.dgvMesasFinales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMesasFinales_CellDoubleClick);
             this.dgvMesasFinales.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMesasFinales_CellFormatting);
             // 
-            // btnAgregarMesa
-            // 
-            this.btnAgregarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnAgregarMesa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAgregarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarMesa.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarMesa.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
-            this.btnAgregarMesa.IconColor = System.Drawing.Color.White;
-            this.btnAgregarMesa.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAgregarMesa.IconSize = 25;
-            this.btnAgregarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarMesa.Location = new System.Drawing.Point(3, 3);
-            this.btnAgregarMesa.Name = "btnAgregarMesa";
-            this.btnAgregarMesa.Size = new System.Drawing.Size(154, 34);
-            this.btnAgregarMesa.TabIndex = 4;
-            this.btnAgregarMesa.Text = "    Mesa Especial    ";
-            this.btnAgregarMesa.UseVisualStyleBackColor = false;
-            this.btnAgregarMesa.Click += new System.EventHandler(this.btnAgregarMesa_Click);
-            // 
-            // cmbAnioLectivo
-            // 
-            this.cmbAnioLectivo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbAnioLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAnioLectivo.FormattingEnabled = true;
-            this.cmbAnioLectivo.Location = new System.Drawing.Point(163, 43);
-            this.cmbAnioLectivo.Name = "cmbAnioLectivo";
-            this.cmbAnioLectivo.Size = new System.Drawing.Size(193, 32);
-            this.cmbAnioLectivo.TabIndex = 5;
-            this.cmbAnioLectivo.SelectionChangeCommitted += new System.EventHandler(this.cmbAnioLectivo_SelectionChangeCommitted);
-            // 
-            // cmbTurno
-            // 
-            this.cmbTurno.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(362, 43);
-            this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(193, 32);
-            this.cmbTurno.TabIndex = 6;
-            this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Año:";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 24);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Turno:";
-            // 
-            // cmbLlamados
-            // 
-            this.cmbLlamados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbLlamados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLlamados.FormattingEnabled = true;
-            this.cmbLlamados.Location = new System.Drawing.Point(561, 43);
-            this.cmbLlamados.Name = "cmbLlamados";
-            this.cmbLlamados.Size = new System.Drawing.Size(196, 32);
-            this.cmbLlamados.TabIndex = 9;
-            this.cmbLlamados.SelectionChangeCommitted += new System.EventHandler(this.cmbLlamados_SelectionChangeCommitted);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(561, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 24);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Llamado:";
-            // 
-            // btnReporteMesas
-            // 
-            this.btnReporteMesas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(99)))), ((int)(((byte)(118)))));
-            this.btnReporteMesas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReporteMesas.Enabled = false;
-            this.btnReporteMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporteMesas.ForeColor = System.Drawing.Color.White;
-            this.btnReporteMesas.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnReporteMesas.IconColor = System.Drawing.Color.White;
-            this.btnReporteMesas.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReporteMesas.IconSize = 25;
-            this.btnReporteMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteMesas.Location = new System.Drawing.Point(3, 43);
-            this.btnReporteMesas.Name = "btnReporteMesas";
-            this.btnReporteMesas.Size = new System.Drawing.Size(154, 34);
-            this.btnReporteMesas.TabIndex = 11;
-            this.btnReporteMesas.Text = "Imprimir Mesas";
-            this.btnReporteMesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReporteMesas.UseVisualStyleBackColor = false;
-            this.btnReporteMesas.Click += new System.EventHandler(this.btnReporteMesas_Click);
-            // 
             // FormMesasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);

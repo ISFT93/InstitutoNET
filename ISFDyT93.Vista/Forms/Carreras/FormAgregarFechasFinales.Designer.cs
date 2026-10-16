@@ -104,6 +104,7 @@
             this.cmbVocalMesa.Name = "cmbVocalMesa";
             this.cmbVocalMesa.Size = new System.Drawing.Size(644, 27);
             this.cmbVocalMesa.TabIndex = 14;
+            this.cmbVocalMesa.SelectedIndexChanged += new System.EventHandler(this.cmbVocalMesa_SelectedIndexChanged);
             // 
             // cmbCarrera
             // 
