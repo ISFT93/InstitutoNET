@@ -12,7 +12,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerTodasLasCarreras(bool Activo = true)
         {
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], " +
-                "C.NumeroResolucion AS [Numero de Resolucion], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
+                "C.NumeroExpediente AS [Numero de Resolucion], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
                 "Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], " +
                 "C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
               " INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId";
@@ -22,7 +22,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable ObtenerCarreras(bool Activo = true)
         {
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, C.DescripcionCorta AS [Descripción], " +
-                "C.NumeroResolucion AS [Numero de Resolucion], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
+                "C.NumeroExpediente AS [Numero de Resolucion], C.AnioInicio as [Año de Inicio], IIF(C.AnioFin > 0, " +
                 "Convert(nvarchar(4), C.AnioFin) , '') as [Año de Fin], C.CantidadHoras as [Carga Horaria Completa], " +
                 "C.CarreraEstadoId, CE.Descripcion AS Estado FROM Carreras C" +
               " INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId WHERE C.CarreraEstadoId = 1" +
@@ -38,7 +38,7 @@ namespace ISFDyT93.Datos.Daos
                                 C.CarreraId,
                                 C.Nombre,
                                 C.DescripcionCorta AS [Descripción],
-                                C.NumeroResolucion AS [Numero de Resolucion],
+                                C.NumeroExpediente AS [Numero de Resolucion],
                                 C.AnioInicio AS [Año de Inicio],
                                 IIF(C.AnioFin > 0, CONVERT(NVARCHAR(4), C.AnioFin), '') AS [Año de Fin],
                                 C.CantidadHoras AS [Carga Horaria Completa],
@@ -68,7 +68,7 @@ namespace ISFDyT93.Datos.Daos
         {
             string query = "SELECT CarrerasCodigoBloque AS [Código], C.CarreraId, " +
                 "C.Nombre, C.DescripcionCorta AS [Descripción], " +
-                "C.NumeroResolucion AS [Numero de Resolucion], " +
+                "C.NumeroExpediente AS [Numero de Resolucion], " +
                 "C.CarreraEstadoId , CE.Descripcion AS Estado " +
                 "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "2");
             return this.Conexion.ObtenerRegistros(query);
@@ -77,7 +77,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable CarrerasBorrador(bool Activo = false)
         {
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, " +
-                "C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroResolucion AS [Numero de Resolucion], " +
+                "C.Nombre, C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Resolucion], " +
                 "C.CarreraEstadoId , C.CantidadHoras as [Carga Horaria Completa], " +
                 "CE.Descripcion AS Estado " +
                 "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "3");
@@ -87,7 +87,7 @@ namespace ISFDyT93.Datos.Daos
         public DataTable CarrerasActivas(bool Activo = true)
         {
             string query = "SELECT C.CarrerasCodigoBloque AS [Código], C.CarreraId, C.Nombre, " +
-                "C.DescripcionCorta AS [Descripción], C.NumeroResolucion AS [Numero de Resolucion], " +
+                "C.DescripcionCorta AS [Descripción], C.NumeroExpediente AS [Numero de Resolucion], " +
                 "C.CarreraEstadoId , CE.Descripcion AS Estado " +
                 "FROM Carreras C INNER JOIN Estados CE on C.CarreraEstadoId = CE.EstadoId AND C.CarreraEstadoId = " + (Activo ? "1" : "1");
 
