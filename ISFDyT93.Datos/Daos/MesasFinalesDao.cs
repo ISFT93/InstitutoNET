@@ -153,40 +153,26 @@ namespace ISFDyT93.Datos.Daos
 
         public DataTable ObtenerMesaReporte(int mesaFinalId)
         {
-            if (mesaFinalId <= 0) throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
+            string query = $" SELECT Fi.MesaFinalId, Ca.Nombre AS Carrera, Ma.Nombre AS Materia, " +
+                       "AC.AnioCarrera, CAST(NULL AS varchar(10)) AS Curso, "+
+                       "Fi.CicloLectivoId, Ll.Descripcion AS Llamado, Tu.Descripcion AS Turno, "+
+                       "Fi.Fecha, LTRIM(RTRIM(CONCAT(Pe.Nombre, ' ', Pe.Apellido))) AS Titular, "+
+                       "LTRIM(RTRIM(CONCAT(Voc.Nombre, ' ', Voc.Apellido))) AS Vocal, "+
+                       "Fi.FinalEstadoId, Est.Descripcion AS Estado, "+
+                       "LA.LibroNumero AS LibroActa, Fi.NroFolio AS FolioActa "+
+                "FROM MesasFinales Fi "+
+                "LEFT JOIN Materias Ma ON Fi.MateriaId = Ma.MateriaId "+
+                "LEFT JOIN AniosCarreras AC ON Ma.AnioCarreraId = AC.AnioCarreraId "+
+                "LEFT JOIN Carreras Ca ON Fi.CarreraId = Ca.CarreraId "+
+                "LEFT JOIN Turnos Tu ON Fi.TurnoId = Tu.TurnoId "+
+                "LEFT JOIN Llamados Ll ON Fi.LlamadoId = Ll.LlamadoId " +
+                "LEFT JOIN Estados Est ON Fi.FinalEstadoId = Est.EstadoId " +
+                "LEFT JOIN Personal Pe ON Fi.PresidenteId = Pe.PersonalId " +
+                "LEFT JOIN Personal Voc ON Fi.VocalId = Voc.PersonalId " +
+                "LEFT JOIN LibroActas LA ON Fi.LibroActaId = LA.LibroActaId " +
+                $"WHERE Fi.MesaFinalId = { mesaFinalId }";
 
-            // El libro y el folio visibles en el acta provienen de LibroActas
-            // y MesasFinales, respectivamente; LibroActaId es solo la clave interna.
-            const string query = @"
-                SELECT Fi.MesaFinalId, Ca.Nombre AS Carrera, Ma.Nombre AS Materia,
-                       AC.AnioCarrera, CAST(NULL AS varchar(10)) AS Curso,
-                       Fi.CicloLectivoId, Ll.Descripcion AS Llamado, Tu.Descripcion AS Turno,
-                       Fi.Fecha, LTRIM(RTRIM(CONCAT(Pe.Nombre, ' ', Pe.Apellido))) AS Titular,
-                       LTRIM(RTRIM(CONCAT(Voc.Nombre, ' ', Voc.Apellido))) AS Vocal,
-                       Fi.FinalEstadoId, Est.Descripcion AS Estado,
-                       LA.LibroNumero AS LibroActa, Fi.NroFolio AS FolioActa
-                FROM dbo.MesasFinales Fi
-                LEFT JOIN dbo.Materias Ma ON Fi.MateriaId = Ma.MateriaId
-                LEFT JOIN dbo.AniosCarreras AC ON Ma.AnioCarreraId = AC.AnioCarreraId
-                LEFT JOIN dbo.Carreras Ca ON Fi.CarreraId = Ca.CarreraId
-                LEFT JOIN dbo.Turnos Tu ON Fi.TurnoId = Tu.TurnoId
-                LEFT JOIN dbo.Llamados Ll ON Fi.LlamadoId = Ll.LlamadoId
-                LEFT JOIN dbo.Estados Est ON Fi.FinalEstadoId = Est.EstadoId
-                LEFT JOIN dbo.Personal Pe ON Fi.PresidenteId = Pe.PersonalId
-                LEFT JOIN dbo.Personal Voc ON Fi.VocalId = Voc.PersonalId
-                LEFT JOIN dbo.LibroActas LA ON Fi.LibroActaId = LA.LibroActaId
-                WHERE Fi.MesaFinalId = @MesaFinalId";
-
-            using (var conexion = new SqlConnection(this.Conexion.Conector.ConnectionString))
-            using (var comando = new SqlCommand(query, conexion))
-            using (var adapter = new SqlDataAdapter(comando))
-            {
-                comando.Parameters.Add("@MesaFinalId", SqlDbType.Int).Value = mesaFinalId;
-                var datos = new DataTable("DSMesaFinal");
-                adapter.Fill(datos);
-                return datos;
-            }
-
+            return this.Conexion.ObtenerRegistros(query);
         }
 
 
@@ -195,42 +181,21 @@ namespace ISFDyT93.Datos.Daos
             if (mesaFinalId <= 0)
                 throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
 
-            string query = @"
-                            SELECT
-                                a.AlumnoId,
-                                CAST(NULL AS NVARCHAR(50)) AS Libro,
-                                CAST(NULL AS NVARCHAR(50)) AS Folio,
-                                a.NumeroDocumento,
-                                a.Apellido,
-                                a.Nombre,
-                                a.Email,
-                                a.Celular,
-                                ma.Estado AS Condicion
-                            FROM dbo.MesaAlumno AS ma
-                            INNER JOIN dbo.MesasFinales AS mf
-                                ON ma.MesaFinalId = mf.MesaFinalId
-                            INNER JOIN dbo.CursadaAlumnoCarreras AS cac
-                                ON ma.CursadaAlumnoCarreraId = cac.CursadaAlumnoCarreraId
-                            INNER JOIN dbo.AlumnosCarreras AS ac
-                                ON cac.AlumnoCarreraId = ac.AlumnoCarreraId
-                            INNER JOIN dbo.Alumnos AS a
-                                ON ac.AlumnoId = a.AlumnoId
-                            WHERE ma.MesaFinalId = @MesaFinalId
-                            ORDER BY a.Apellido, a.Nombre;";
+            string query = "SELECT a.AlumnoId, CAST(NULL AS NVARCHAR(50)) AS Libro, CAST(NULL AS NVARCHAR(50)) AS Folio, "+
+                            "a.NumeroDocumento, a.Apellido, a.Nombre, a.Email, a.Celular, ma.Estado AS Condicion " +
+                            "FROM dbo.MesaAlumno AS ma " +
+                            "INNER JOIN dbo.MesasFinales AS mf "+
+                            "ON ma.MesaFinalId = mf.MesaFinalId "+
+                            "INNER JOIN dbo.CursadaAlumnoCarreras AS cac "+
+                            "ON ma.CursadaAlumnoCarreraId = cac.CursadaAlumnoCarreraId "+
+                            "INNER JOIN dbo.AlumnosCarreras AS ac "+
+                            "ON cac.AlumnoCarreraId = ac.AlumnoCarreraId "+
+                            "INNER JOIN dbo.Alumnos AS a "+
+                            "ON ac.AlumnoId = a.AlumnoId "+
+                            $"WHERE ma.MesaFinalId = { mesaFinalId } "+
+                            "ORDER BY a.Apellido, a.Nombre ";
 
-            DataTable datos = new DataTable("DSAlumnosMesa");
-
-            using (SqlConnection conexion =
-                   new SqlConnection(this.Conexion.Conector.ConnectionString))
-            using (SqlCommand comando = new SqlCommand(query, conexion))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comando))
-            {
-                comando.Parameters.Add("@MesaFinalId", SqlDbType.Int).Value = mesaFinalId;
-
-                adapter.Fill(datos);
-            }
-
-            return datos;
+            return this.Conexion.ObtenerRegistros(query);
         }
 
         public DataTable ExistenFechasFinales(int anioLectivo)

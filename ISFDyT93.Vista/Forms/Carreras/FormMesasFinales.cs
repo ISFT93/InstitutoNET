@@ -267,11 +267,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
             try
             {
-                var datos = mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
+                var datos = new DataTable("DSMesaFinal");
+                datos = mesasFinalesLogica.ObtenerMesaReporte(mesaFinalId);
+
                 var mesa = datos.Rows[0];
                 if (acta)
                 {
-                    var alumnos = mesasFinalesLogica.ObtenerAlumnosMesaReporte(mesaFinalId);
+                    var alumnos = new DataTable("DSAlumnosMesa");
+
+                    alumnos = mesasFinalesLogica.ObtenerAlumnosMesaReporte(mesaFinalId);
+
                     string aviso = Convert.ToString(alumnos.ExtendedProperties["AvisoInscripciones"]);
                     Contenedor.SetTitulo("Acta de mesa final").AbrirFormulario<FormReporte>(form =>
                         form.SetReporte("ISFDyT93.Vista.Reports.ActaMesaFinal.rdlc")
