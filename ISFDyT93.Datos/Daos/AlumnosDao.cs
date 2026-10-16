@@ -176,7 +176,8 @@ namespace ISFDyT93.Datos.Daos
         }
         public void DarAltaAlumnos(int alumnoId)
         {
-            string query = "UPDATE Alumnos SET Activo = " + 1 + " WHERE AlumnoId = " + alumnoId;
+            string query = @" UPDATE Alumnos SET Activo = 1 WHERE AlumnoId = " + alumnoId + @";
+                            UPDATE AlumnosCarreras SET Activo = 1 WHERE AlumnoId = " + alumnoId + ";";
             this.Conexion.EjecutarAccion(query);
         }
 

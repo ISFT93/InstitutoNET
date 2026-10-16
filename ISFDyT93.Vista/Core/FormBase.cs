@@ -138,169 +138,159 @@ namespace ISFDyT93.Vista.Core
             }
         }
 
-        private T InnerMapToModel<T>(IList<Control> controls, PropertyInfo[] propiedades, T objeto, T anterior) where T : ModeloBase
+
+        private T InnerMapToModel<T>(
+            IList<Control> controls,
+            PropertyInfo[] propiedades,
+            T objeto,
+            T anterior) where T : ModeloBase
         {
+            // Guardamos los controles y sus valores para validarlos después.
+            var campos = new List<Tuple<Control, PropertyInfo, object, string>>();
+
+            // PRIMERA ETAPA: Leer y asignar todos los valores.
             foreach (Control control in controls)
             {
-                if (string.IsNullOrEmpty(control.Name))
-                    continue;
-                if (!control.Visible)
+                if (string.IsNullOrEmpty(control.Name) || !control.Visible)
                     continue;
 
-                var nombre = control.Tag != null ? control.Tag.ToString() : control.Name.Substring(3);
-                var propiedad = propiedades.Where(p => p.Name.Equals(nombre)).FirstOrDefault();
+                string nombre = control.Tag != null
+                    ? control.Tag.ToString()
+                    : control.Name.Length > 3 ? control.Name.Substring(3) : control.Name;
+
+                PropertyInfo propiedad = propiedades
+                    .FirstOrDefault(p => p.Name.Equals(nombre));
+
+                if (propiedad == null)
+                    continue;
 
                 object value = null;
 
-                if (control.GetType() == typeof(TextBox))
+                if (control is TextBox)
                 {
-                    var txtBox = control as TextBox;
-                    value = txtBox.Text;
+                    value = ((TextBox)control).Text;
                 }
-                else if (control.GetType() == typeof(MaskedTextBox))
+                else if (control is MaskedTextBox)
                 {
-                    var maskedtxtBox = control as MaskedTextBox;
-
-                    var mtb = control as MaskedTextBox;
-                    value = mtb.Text;
+                    value = ((MaskedTextBox)control).Text;
                 }
-                else if (control.GetType() == typeof(ComboBox))
+                else if (control is ComboBox)
                 {
-                    var cmbBox = control as ComboBox;
-                    value = cmbBox.SelectedValue ?? cmbBox.Text;
+                    ComboBox cmb = (ComboBox)control;
+                    value = cmb.SelectedValue ?? cmb.Text;
                 }
-                else if (control.GetType() == typeof(DateTimePicker))
+                else if (control is DateTimePicker)
                 {
-                    var dtpPiker = control as DateTimePicker;
+                    DateTimePicker dtp = (DateTimePicker)control;
 
-
-                    if (!dtpPiker.Text.Equals(" "))
-                    {
-
-                        value = dtpPiker.Value;
-                    }
-                }
-                else if (control.GetType() == typeof(NumericUpDown))
-                {
-                    var nudNumeric = control as NumericUpDown;
-                    value = nudNumeric.Value;
-                }
-                else if (control.GetType() == typeof(CheckBox))
-                {
-                    var chkBox = control as CheckBox;
-                    value = chkBox.Checked;
-                }
-                else if (control.GetType() == typeof(RadioButton))
-                {
-                    var rdbButton = control as RadioButton;
-
-                    if (rdbButton.Checked)
-                    {
-                        value = rdbButton.Name.EndsWith("Si");
-
-                        if (propiedad != null)
-                        {
-                            if (propiedad.PropertyType == typeof(string))
-                            {
-                                value = rdbButton.Text;
-                            }
-                        }
-                    }
+                    if (!dtp.Text.Equals(" "))
+                        value = dtp.Value;
                     else
-                    {
                         continue;
+                }
+                else if (control is NumericUpDown)
+                {
+                    value = ((NumericUpDown)control).Value;
+                }
+                else if (control is CheckBox)
+                {
+                    value = ((CheckBox)control).Checked;
+                }
+                else if (control is RadioButton)
+                {
+                    RadioButton radio = (RadioButton)control;
+
+                    if (!radio.Checked)
+                        continue;
+
+                    if (propiedad.PropertyType == typeof(string))
+                        value = radio.Text;
+                    else
+                        value = radio.Name.EndsWith("Si");
+                }
+                else
+                {
+                    continue;
+                }
+
+                // Convertir al tipo de la propiedad.
+                if (value != null)
+                {
+                    Type tipo = propiedad.PropertyType;
+                    Type tipoDestino = Nullable.GetUnderlyingType(tipo) ?? tipo;
+
+                    if (tipoDestino == typeof(string))
+                    {
+                        value = value.ToString();
+
+                        if (string.IsNullOrWhiteSpace((string)value))
+                            value = null;
+                    }
+                    else if (tipoDestino == typeof(char))
+                    {
+                        string texto = value.ToString();
+                        value = texto.Length > 0 ? texto[0] : (char)1;
+                    }
+                    else if (value.GetType() != tipoDestino)
+                    {
+                        try
+                        {
+                            value = Convert.ChangeType(value, tipoDestino);
+                        }
+                        catch
+                        {
+                            objeto.Errores.Add(new Error()
+                            {
+                                Control = control,
+                                Mensaje = "El valor ingresado no tiene un formato válido",
+                                Nombre = nombre
+                            });
+
+                            continue;
+                        }
                     }
                 }
 
-                if (propiedad != null)
+                // Asignar primero al modelo.
+                propiedad.SetValue(objeto, value, null);
+
+                campos.Add(Tuple.Create(control, propiedad, value, nombre));
+            }
+
+            // SEGUNDA ETAPA: Validar con todas las propiedades actualizadas.
+            foreach (var campo in campos)
+            {
+                Control control = campo.Item1;
+                PropertyInfo propiedad = campo.Item2;
+                object value = campo.Item3;
+                string nombre = campo.Item4;
+
+                object[] atributos = propiedad.GetCustomAttributes(true);
+
+                foreach (object atributo in atributos)
                 {
-                    var atributos = propiedad.GetCustomAttributes(true);
+                    Validacion validacion = atributo as Validacion;
 
-                    bool valido = true;
-                    string mensaje = "";
+                    if (validacion == null)
+                        continue;
 
-                    foreach (var atributo in atributos)
+                    if (!validacion.Validar(value, objeto))
                     {
-                        if (atributo is Validacion validacion)
+                        objeto.Errores.Add(new Error()
                         {
-                            valido = validacion.Validar(value, objeto);
-                            mensaje = validacion.Mensaje;
+                            Control = control,
+                            Mensaje = validacion.Mensaje,
+                            Nombre = nombre
+                        });
 
-                            if (!valido) { break; }
-                        }
-                    }
-
-                    if (valido)
-                    {
-                        if (value != null && value.GetType() != propiedad.PropertyType)
-                        {
-                            if (propiedad.PropertyType == typeof(Int64))
-                            {
-                                Int64.TryParse(value.ToString(), out long int64Value);
-                                value = int64Value;
-                            }
-                            else if (propiedad.PropertyType == typeof(Int32))
-                            {
-                                Int32.TryParse(value.ToString(), out int int32Value);
-                                value = int32Value;
-                            }
-                            else if (propiedad.PropertyType == typeof(Int16))
-                            {
-                                Int16.TryParse(value.ToString(), out short int16Value);
-                                value = int16Value;
-                            }
-                            else if (propiedad.PropertyType == typeof(Decimal))
-                            {
-                                Decimal.TryParse(value.ToString(), out decimal decimalValue);
-                                value = decimalValue;
-                            }
-                            else if (propiedad.PropertyType == typeof(Double))
-                            {
-                                Double.TryParse(value.ToString(), out double doubleValue);
-                                value = doubleValue;
-                            }
-                            else if (propiedad.PropertyType == typeof(Single))
-                            {
-                                Single.TryParse(value.ToString(), out float floatValue);
-                                value = floatValue;
-                            }
-                            else if (propiedad.PropertyType == typeof(Char))
-                            {
-                                string stringValue = value.ToString();
-
-                                if (!string.IsNullOrEmpty(stringValue))
-                                {
-                                    value = stringValue[0];
-                                }
-                                else
-                                {
-                                    value = (char)1;
-                                }
-                            }
-                            else if (propiedad.PropertyType == typeof(String))
-                            {
-                                if (string.IsNullOrEmpty(value as string))
-                                {
-                                    value = null;
-                                }
-                                else
-                                {
-                                    value = value.ToString();
-                                }
-                            }
-                        }
-
-                        propiedad.SetValue(objeto, value);
-                    }
-                    else
-                    {
-                        objeto.Errores.Add(new Error() { Control = control, Mensaje = mensaje, Nombre = nombre });
+                        break;
                     }
                 }
             }
 
             return objeto;
         }
+
 
         private void InnerMapToForm<T>(Control.ControlCollection controls, T datos, PropertyInfo[] propiedades)
         {
