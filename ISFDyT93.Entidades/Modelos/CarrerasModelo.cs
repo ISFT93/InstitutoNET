@@ -62,5 +62,7 @@ namespace ISFDyT93.Entidades.Modelos
         public string Variante { get; set; }
         public string Modalidad { get; set; }
         public string RegimenDefecto { get; set; }
+
+        public int RegimenId { get; set; } // 1: Anual, 2: Cuatrimestral, 3: Otros
     }
 }
