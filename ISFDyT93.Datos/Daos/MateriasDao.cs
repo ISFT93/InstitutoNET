@@ -17,7 +17,7 @@ namespace ISFDyT93.Datos.Daos
                 "FROM Materias as Mat " +
                 "INNER JOIN Espacios as Esp ON Esp.EspacioId = Mat.EspacioId " +
                 "LEFT JOIN Correlativas as Cor ON Cor.MateriaId = Mat.MateriaId " +
-                $"WHERE AnioCarreraId = {anioCarreraId} AND Activo = {(activo ? "1" : "0")} " +
+                $"WHERE AnioCarreraId = {anioCarreraId} AND esp.Activo = {(activo ? "1" : "0")} " +
                 "GROUP BY Mat.MateriasCodigoBloque, Mat.MateriaId, Mat.Nombre, Mat.AnioCarreraId, Mat.CargaHoraria, Esp.Descripcion, Mat.EspacioId, Mat.FinalPromocion " +
                 "ORDER BY Mat.MateriasCodigoBloque";
 

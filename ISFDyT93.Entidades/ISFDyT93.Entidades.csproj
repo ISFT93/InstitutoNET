@@ -78,6 +78,7 @@
     <Compile Include="Modelos\CursadasModelo.cs" />
     <Compile Include="Modelos\CursoMateriasModelo.cs" />
     <Compile Include="Modelos\CursosModelo.cs" />
+    <Compile Include="Modelos\EspacioFormacion.cs" />
     <Compile Include="Modelos\HorariosModelo.cs" />
     <Compile Include="Modelos\InscripcionMateriasModelo.cs" />
     <Compile Include="Modelos\LibroActasModelo.cs" />

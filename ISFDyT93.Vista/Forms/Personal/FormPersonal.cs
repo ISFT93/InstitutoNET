@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Negocio.Core.Enums;
+using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Forms.Common;
+using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Negocio.Core.Enums;
-using ISFDyT93.Entidades.Enums;
-using ISFDyT93.Vista.Forms.Common;
-using ISFDyT93.Vista.Core;
 
 namespace ISFDyT93.Vista.Forms.Personal
 {
@@ -59,7 +60,7 @@ namespace ISFDyT93.Vista.Forms.Personal
                     dgvPersonal.Rows[info.RowIndex].Selected = true;
 
                     PersonalId = Convert.ToInt32(dgvPersonal["PersonalId", info.RowIndex].Value);
-                    Estado = (dgvPersonal["Estado", info.RowIndex].Value).ToString();
+                    Estado = (dgvPersonal["ColEstado", info.RowIndex].Value).ToString();
                     var estadoId = Convert.ToInt32(dgvPersonal["PersonalEstadoId", info.RowIndex].Value);
 
                     tsmAgregarPersonal.Visible = true;
@@ -215,7 +216,7 @@ namespace ISFDyT93.Vista.Forms.Personal
 
         private void dgvPersonal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvPersonal.Columns[e.ColumnIndex].Name == "Estado" && e.Value != null)
+            if (dgvPersonal.Columns[e.ColumnIndex].Name == "ColEstado" && e.Value != null)
             {
                 string estado = e.Value.ToString();
 
@@ -245,5 +246,84 @@ namespace ISFDyT93.Vista.Forms.Personal
                 e.CellStyle.SelectionForeColor = foreColor;
             }
         }
+        /*private DialogResult SelectorDeArchivo()
+        {
+            using (Form tempForm = new Form())
+            {
+                Label label = new Label();
+
+                Button buttonExcel = new Button();
+                Button buttonCSV = new Button();
+                Button buttonCancel = new Button();
+
+                // Estilos
+                Color buttonColor = Color.FromArgb(27, 1, 124);
+
+                foreach (Button button in new[] { buttonExcel, buttonCSV, buttonCancel })
+                {
+                    button.BackColor = buttonColor;
+                    button.Font = new Font(
+                        "Tahoma",
+                        10.8F,
+                        FontStyle.Regular,
+                        GraphicsUnit.Point,
+                        ((byte)(0))
+                    );
+                    button.ForeColor = Color.White;
+                    button.FlatStyle = FlatStyle.Flat;
+                }
+
+                // Posiciones
+                label.SetBounds(9, 20, 372, 13);
+                buttonExcel.SetBounds(105, 72, 80, 25);
+                buttonCSV.SetBounds(190, 72, 80, 25);
+                buttonCancel.SetBounds(309, 72, 80, 25);
+
+                // Propiedades
+                label.AutoSize = true;
+
+                buttonExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                buttonCSV.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+                tempForm.Text = "Escoger el tipo de archivo para la carga masiva.";
+                label.Text = "Escoger el tipo de archivo:";
+
+                buttonExcel.Text = "Excel";
+                buttonCSV.Text = ".Csv";
+                buttonCancel.Text = "Cancelar";
+
+                buttonExcel.DialogResult = DialogResult.Yes;
+                buttonCSV.DialogResult = DialogResult.No;
+                buttonCancel.DialogResult = DialogResult.Cancel;
+
+                // Formulario
+                tempForm.ClientSize = new Size(396, 107);
+                tempForm.Controls.AddRange(new Control[] {label, buttonExcel, buttonCSV, buttonCancel});
+
+                tempForm.ClientSize = new Size(Math.Max(300, label.Right + 10), tempForm.ClientSize.Height);
+
+                tempForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                tempForm.StartPosition = FormStartPosition.CenterScreen;
+                tempForm.BackColor = Color.White;
+                tempForm.MinimizeBox = false;
+                tempForm.MaximizeBox = false;
+                tempForm.AcceptButton = buttonExcel;
+                tempForm.CancelButton = buttonCancel;
+
+                return tempForm.ShowDialog();
+            }
+        }*/
+        private void tsmCargaMasiva_Click(object sender, EventArgs e)
+        {
+            Contenedor.AbrirFormulario<FormPersonalCargaMasivaExcel>();
+            this.Close();
+        }
+        private void dgvPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Método agregado para manejar el evento de la celda de la grilla
+        }
+
     }
+
 }
