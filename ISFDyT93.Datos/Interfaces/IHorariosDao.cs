@@ -13,5 +13,7 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable ObtnerModulos();
         IList<HorariosModelo> ObtenerHorarios(int cursoId);
         int ActualizarHorarios(IList<HorariosModelo> ltsHorarios);
+
+        int InsertarModulo(string turno, string descripcion);
     }
 }

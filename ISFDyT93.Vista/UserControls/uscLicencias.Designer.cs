@@ -42,8 +42,9 @@ namespace ISFDyT93.Vista.UserControls
             this.panelCabecera.Controls.Add(this.chkLicencias);
             this.panelCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecera.Location = new System.Drawing.Point(0, 0);
+            this.panelCabecera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelCabecera.Name = "panelCabecera";
-            this.panelCabecera.Size = new System.Drawing.Size(1283, 50);
+            this.panelCabecera.Size = new System.Drawing.Size(1711, 62);
             this.panelCabecera.TabIndex = 2;
             // 
             // chkLicencias
@@ -51,9 +52,10 @@ namespace ISFDyT93.Vista.UserControls
             this.chkLicencias.AutoSize = true;
             this.chkLicencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLicencias.ForeColor = System.Drawing.Color.White;
-            this.chkLicencias.Location = new System.Drawing.Point(13, 13);
+            this.chkLicencias.Location = new System.Drawing.Point(17, 16);
+            this.chkLicencias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkLicencias.Name = "chkLicencias";
-            this.chkLicencias.Size = new System.Drawing.Size(193, 24);
+            this.chkLicencias.Size = new System.Drawing.Size(243, 29);
             this.chkLicencias.TabIndex = 0;
             this.chkLicencias.Text = "Licencias Disponibles";
             this.chkLicencias.UseVisualStyleBackColor = true;
@@ -63,10 +65,10 @@ namespace ISFDyT93.Vista.UserControls
             // 
             this.panel1.Controls.Add(this.flpContenedor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 50);
+            this.panel1.Location = new System.Drawing.Point(0, 62);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1283, 592);
+            this.panel1.Size = new System.Drawing.Size(1711, 728);
             this.panel1.TabIndex = 3;
             // 
             // flpContenedor
@@ -75,18 +77,20 @@ namespace ISFDyT93.Vista.UserControls
             this.flpContenedor.BackColor = System.Drawing.Color.White;
             this.flpContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpContenedor.Location = new System.Drawing.Point(0, 0);
+            this.flpContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpContenedor.Name = "flpContenedor";
-            this.flpContenedor.Size = new System.Drawing.Size(1283, 592);
+            this.flpContenedor.Size = new System.Drawing.Size(1711, 728);
             this.flpContenedor.TabIndex = 2;
             // 
             // uscLicencias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelCabecera);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "uscLicencias";
-            this.Size = new System.Drawing.Size(1283, 642);
+            this.Size = new System.Drawing.Size(1711, 790);
             this.Load += new System.EventHandler(this.uscLicencias_Load);
             this.panelCabecera.ResumeLayout(false);
             this.panelCabecera.PerformLayout();

@@ -135,6 +135,8 @@ namespace ISFDyT93.Vista
                  flpContenedor.Controls.Add(libro);
                  uscLicencias licencias = new uscLicencias();
                  flpContenedor.Controls.Add(licencias);
+                uscHorarios horarios = new uscHorarios();
+                flpContenedor.Controls.Add(horarios);
             }
             else
             {

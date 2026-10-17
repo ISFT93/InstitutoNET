@@ -17,8 +17,8 @@ using ISFDyT93.Datos;
 using Point = System.Drawing.Point;
 using ISFDyT93.Entidades.Enums;
 using System.IO;
-using System.Drawing;
-using System.Data;
+
+
 
 namespace ISFDyT93.Vista.Forms.Common
 {
@@ -68,9 +68,11 @@ namespace ISFDyT93.Vista.Forms.Common
         #region Eventos
         private void FormAsignarHorario_Load(object sender, EventArgs e)
         {
+            picImprimir.Image.Save(@"d:\Users\Mansilla\Desktop\Nueva carpeta\impresora.png", System.Drawing.Imaging.ImageFormat.Png);
             dgvAsignarHorario.ShowCellToolTips = true;
             this.AnioCarrera = aniosLogica.ObtenerAnioCarrera(AnioCarreraId);
             dgvAsignarHorario.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
             if (this.AnioCarrera != null)
                 this.Contenedor.SetTitulo($"Horarios - {AnioCarrera.AnioCarrera} Año - {AnioCarrera.NombreCarrera}");
 
@@ -86,15 +88,22 @@ namespace ISFDyT93.Vista.Forms.Common
             Cursos = cursosLogica.ConsultarCursos(AnioCarreraId);
             Materias = materiasLogica.ObtenerMaterias(AnioCarreraId);
 
-
             CargarHorarios();
-            CargarModulos();
             AsignarColoresMaterias();
 
             var listaCursoMateriasIds = HxCurso.ObtenerCursoMateriasIds();
             Cargos = personalLogica.ObtenerPersonalConCargos(listaCursoMateriasIds);
 
+           
+            cmbTurnos.SelectedIndexChanged -= cmbTurnos_SelectedIndexChanged;
+
+          
             CargarCombos();
+
+            cmbTurnos.SelectedIndex = -1;
+            dgvAsignarHorario.Rows.Clear();
+
+            cmbTurnos.SelectedIndexChanged += cmbTurnos_SelectedIndexChanged;
         }
         private void tsmEliminarHorario_Click(object sender, EventArgs e)
         {
@@ -298,6 +307,10 @@ namespace ISFDyT93.Vista.Forms.Common
              LtsHorariosModelo.Where(x => x.ModuloId == moduloId && x.DiaId == diaId).FirstOrDefault();
         private void CargarCombos()
         {
+            cmbTurnos.ValueMember = "Turno";
+            cmbTurnos.DisplayMember = "Turno";
+            cmbTurnos.DataSource = horariosLogica.ObtenerTurnosUnicos();
+
             cmbCursos.ValueMember = "CursoId";
             cmbCursos.DisplayMember = "CodigoBloque";
             cmbCursos.DataSource = Cursos;
@@ -310,8 +323,37 @@ namespace ISFDyT93.Vista.Forms.Common
         }
         private void CargarModulos()
         {
-            Modulos = horariosLogica.ObtnerModulos();
-            dgvAsignarHorario.Rows.Clear(); 
+            DataTable dtOriginal = horariosLogica.ObtnerModulos();
+
+            if (dtOriginal != null && dtOriginal.Rows.Count > 0)
+            {
+                var filasValidas = dtOriginal.AsEnumerable()
+                    .Where(r => {
+                        string desc = r.Field<string>("Descripcion");
+
+
+                        bool activo = false;
+                        var valActivo = r["Activo"];
+                        if (valActivo != DBNull.Value)
+                        {
+                            if (valActivo is bool b) activo = b;
+                            else if (int.TryParse(valActivo.ToString(), out int i)) activo = (i == 1);
+                        }
+
+                        return activo && !string.IsNullOrEmpty(desc) && desc.Trim().Length > 1;
+                    });
+
+                if (filasValidas.Any())
+                    Modulos = filasValidas.CopyToDataTable();
+                else
+                    Modulos = dtOriginal.Clone(); 
+            }
+            else
+            {
+                Modulos = dtOriginal;
+            }
+
+            dgvAsignarHorario.Rows.Clear();
             dgvAsignarHorario.RowTemplate.Height = 80;
 
             if (Modulos != null && Modulos.Rows.Count > 0)
@@ -605,7 +647,7 @@ namespace ISFDyT93.Vista.Forms.Common
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
+             
         }
 
         private void picImprimirCursos_Click(object sender, EventArgs e)
@@ -694,6 +736,80 @@ namespace ISFDyT93.Vista.Forms.Common
                     .AddParameter("FechaEmision", DateTime.Now.ToString("dd/MM/yyyy"));
               
             });
+        }
+
+        private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTurnos.SelectedValue != null)
+            {
+                string turnoSeleccionado = cmbTurnos.SelectedValue.ToString();
+
+                
+                CargarModulosPorTurno(turnoSeleccionado);
+
+              
+                if (cmbCursos.SelectedValue != null && int.TryParse(cmbCursos.SelectedValue.ToString(), out int cursoId))
+                {
+                    LtsHorariosModelo = HxCurso.ObtenerHorarioCurso(cursoId);
+                    MostrarHorarios();
+                }
+            }
+        }
+
+        private void CargarModulosPorTurno(string turno)
+        {
+            DataTable dtOriginal = horariosLogica.ObtenerModulosPorTurno(turno);
+
+            if (dtOriginal != null && dtOriginal.Rows.Count > 0)
+            {
+                var filasValidas = dtOriginal.AsEnumerable()
+                    .Where(r => {
+                        string desc = r.Field<string>("Descripcion");
+
+                        bool activo = false;
+                        var valActivo = r["Activo"];
+                        if (valActivo != DBNull.Value)
+                        {
+                            if (valActivo is bool b) activo = b;
+                            else if (int.TryParse(valActivo.ToString(), out int i)) activo = (i == 1);
+                        }
+
+                        return activo && !string.IsNullOrEmpty(desc) && desc.Trim().Length > 1;
+                    });
+
+                if (filasValidas.Any())
+                    Modulos = filasValidas.CopyToDataTable();
+                else
+                    Modulos = dtOriginal.Clone();
+            }
+            else
+            {
+                Modulos = dtOriginal;
+            }
+
+            dgvAsignarHorario.Rows.Clear();
+            dgvAsignarHorario.RowTemplate.Height = 80;
+
+            if (Modulos != null && Modulos.Rows.Count > 0)
+            {
+                dgvAsignarHorario.Rows.Add(Modulos.Rows.Count);
+
+                foreach (DataGridViewRow fila in dgvAsignarHorario.Rows)
+                {
+                    fila.Cells[1].Style.BackColor = ThemeColor.GetTheme().Secondary;
+                    fila.Cells[1].Style.ForeColor = Color.White;
+                    fila.Cells[1].Style.SelectionBackColor = ThemeColor.GetTheme().Secondary;
+                    fila.Cells[1].Style.SelectionForeColor = Color.White;
+
+                    fila.Cells[0].Value = Modulos.Rows[fila.Index]["ModuloId"];
+                    fila.Cells[1].Value = Modulos.Rows[fila.Index]["Descripcion"];
+                }
+
+                if (dgvAsignarHorario.CurrentRow != null)
+                {
+                    dgvAsignarHorario.CurrentRow.Cells[1].Selected = false;
+                }
+            }
         }
     }
 

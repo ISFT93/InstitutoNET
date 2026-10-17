@@ -57,6 +57,41 @@ namespace ISFDyT93.Datos.Daos
             return total;
         }
 
+        // Método para traer módulos filtrados
+        public DataTable ObtenerModulosPorTurno(string turno)
+        {
+            string query = $"SELECT * FROM Modulos WHERE Turno = '{turno}' ORDER BY ModuloId ASC";
+            return this.Conexion.ObtenerRegistros(query);
+        }
+        // Método para llenar el ComboBox de Turnos sin repetidos
+        public DataTable ObtenerTurnosDisponibles()
+        {
+            string query = "SELECT ModuloId, Turno, Descripcion, Activo FROM Modulos WHERE Turno IS NOT NULL AND Turno <> ''";
+            return this.Conexion.ObtenerRegistros(query);
+        }
 
+        public int InsertarTurnoNuevo(string turno)
+        {
+            string query = $"INSERT INTO Modulos (Turno, Descripcion, Activo) VALUES ('{turno}', '-', 1)";
+            return this.Conexion.EjecutarAccion(query);
+        }
+
+
+        public int InsertarModulo(string turno, string descripcion)
+        {
+
+            string queryLimpiarComodin = $"DELETE FROM Modulos WHERE Turno = '{turno}' AND (Descripcion = '-' OR Descripcion = 'Sin definir' OR Descripcion IS NULL)";
+            this.Conexion.EjecutarAccion(queryLimpiarComodin);
+
+
+            string queryInsertar = $"INSERT INTO Modulos (Turno, Descripcion, Activo) VALUES ('{turno}', '{descripcion}', 1)";
+            return this.Conexion.EjecutarAccion(queryInsertar);
+        }
+        public int ActualizarEstadoModulo(int moduloId, bool activo)
+        {
+            int valorActivo = activo ? 1 : 0;
+            string query = $"UPDATE Modulos SET Activo = {valorActivo} WHERE ModuloId = {moduloId}";
+            return this.Conexion.EjecutarAccion(query);
+        }
     }
 }
