@@ -11,6 +11,13 @@ namespace ISFDyT93.Negocio.Interfaces
     public interface IHorariosLogica
     {
         DataTable ObtnerModulos();
+        DataTable ObtenerModulosPorTurno(string turno);
+        DataTable ObtenerTurnosDisponibles();
+        DataTable ObtenerTurnosConDetalleOrdenados();
+        DataTable ObtenerTurnosUnicos();
+        bool ActualizarEstadoModulo(int moduloId, bool activo);
+        bool InsertarModulo(string turno, string descripcion);
+        bool InsertarTurno(string turno);
         IList<HorariosModelo> ObtenerHorarios(int cursoId);
         int ActualizarHorarios(IList<HorariosModelo> ltsHorarios);
     }

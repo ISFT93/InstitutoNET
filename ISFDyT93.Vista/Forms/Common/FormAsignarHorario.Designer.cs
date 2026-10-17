@@ -56,18 +56,20 @@ namespace ISFDyT93.Vista.Forms.Common
             this.Jueves = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Viernes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
-            this.picImprimir = new System.Windows.Forms.PictureBox();
-            this.cmbMaterias = new System.Windows.Forms.ComboBox();
-            this.lblMateria = new System.Windows.Forms.Label();
             this.btnAdmin = new System.Windows.Forms.Button();
-            this.picImprimirCursos = new System.Windows.Forms.PictureBox();
+            this.lblMateria = new System.Windows.Forms.Label();
+            this.cmbMaterias = new System.Windows.Forms.ComboBox();
             this.lblModulos = new System.Windows.Forms.Label();
+            this.picImprimirCursos = new System.Windows.Forms.PictureBox();
+            this.picImprimir = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbTurnos = new System.Windows.Forms.ComboBox();
+            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.cmsHorarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsignarHorario)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImprimir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImprimirCursos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImprimir)).BeginInit();
             this.SuspendLayout();
             // 
             // cmsHorarios
@@ -276,24 +278,26 @@ namespace ISFDyT93.Vista.Forms.Common
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 8;
+            this.tableLayoutPanel1.ColumnCount = 9;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 577F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.picImprimir, 6, 2);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.Controls.Add(this.lblCurso, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbCursos, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbMaterias, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblMateria, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAdmin, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.picImprimirCursos, 7, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblModulos, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblMateria, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cmbMaterias, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblModulos, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.picImprimirCursos, 8, 2);
+            this.tableLayoutPanel1.Controls.Add(this.picImprimir, 8, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbTurnos, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -305,64 +309,6 @@ namespace ISFDyT93.Vista.Forms.Common
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1125, 72);
             this.tableLayoutPanel1.TabIndex = 59;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.White;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 20;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGuardar.Location = new System.Drawing.Point(925, 0);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(117, 30);
-            this.btnGuardar.TabIndex = 56;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // picImprimir
-            // 
-            this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImprimir.Dock = System.Windows.Forms.DockStyle.Right;
-            this.picImprimir.Image = ((System.Drawing.Image)(resources.GetObject("picImprimir.Image")));
-            this.picImprimir.Location = new System.Drawing.Point(1016, 39);
-            this.picImprimir.Name = "picImprimir";
-            this.picImprimir.Size = new System.Drawing.Size(40, 24);
-            this.picImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picImprimir.TabIndex = 59;
-            this.picImprimir.TabStop = false;
-            this.picImprimir.Click += new System.EventHandler(this.picImprimir_Click);
-            // 
-            // cmbMaterias
-            // 
-            this.cmbMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbMaterias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMaterias.FormattingEnabled = true;
-            this.cmbMaterias.Location = new System.Drawing.Point(339, 3);
-            this.cmbMaterias.Name = "cmbMaterias";
-            this.cmbMaterias.Size = new System.Drawing.Size(571, 32);
-            this.cmbMaterias.TabIndex = 9;
-            this.cmbMaterias.SelectedIndexChanged += new System.EventHandler(this.cmbMaterias_SelectedIndexChanged);
-            // 
-            // lblMateria
-            // 
-            this.lblMateria.AutoSize = true;
-            this.lblMateria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMateria.Location = new System.Drawing.Point(211, 0);
-            this.lblMateria.Name = "lblMateria";
-            this.lblMateria.Size = new System.Drawing.Size(122, 30);
-            this.lblMateria.TabIndex = 8;
-            this.lblMateria.Text = "Materia:";
-            this.lblMateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAdmin
             // 
@@ -380,28 +326,109 @@ namespace ISFDyT93.Vista.Forms.Common
             this.btnAdmin.UseVisualStyleBackColor = false;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
-            // picImprimirCursos
+            // lblMateria
             // 
-            this.picImprimirCursos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImprimirCursos.Image = ((System.Drawing.Image)(resources.GetObject("picImprimirCursos.Image")));
-            this.picImprimirCursos.Location = new System.Drawing.Point(1062, 39);
-            this.picImprimirCursos.Name = "picImprimirCursos";
-            this.picImprimirCursos.Size = new System.Drawing.Size(56, 24);
-            this.picImprimirCursos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picImprimirCursos.TabIndex = 60;
-            this.picImprimirCursos.TabStop = false;
-            this.picImprimirCursos.Click += new System.EventHandler(this.picImprimirCursos_Click);
+            this.lblMateria.AutoSize = true;
+            this.lblMateria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMateria.Location = new System.Drawing.Point(199, 36);
+            this.lblMateria.Name = "lblMateria";
+            this.lblMateria.Size = new System.Drawing.Size(110, 30);
+            this.lblMateria.TabIndex = 8;
+            this.lblMateria.Text = "Materia:";
+            this.lblMateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbMaterias
+            // 
+            this.cmbMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbMaterias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMaterias.FormattingEnabled = true;
+            this.cmbMaterias.Location = new System.Drawing.Point(315, 39);
+            this.cmbMaterias.Name = "cmbMaterias";
+            this.cmbMaterias.Size = new System.Drawing.Size(514, 32);
+            this.cmbMaterias.TabIndex = 9;
+            this.cmbMaterias.SelectedIndexChanged += new System.EventHandler(this.cmbMaterias_SelectedIndexChanged);
             // 
             // lblModulos
             // 
             this.lblModulos.AutoSize = true;
             this.lblModulos.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModulos.ForeColor = System.Drawing.Color.Gray;
-            this.lblModulos.Location = new System.Drawing.Point(339, 36);
+            this.lblModulos.Location = new System.Drawing.Point(835, 36);
             this.lblModulos.Name = "lblModulos";
             this.lblModulos.Size = new System.Drawing.Size(0, 23);
-            this.lblModulos.TabIndex = 57;
+            this.lblModulos.TabIndex = 60;
             this.lblModulos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // picImprimirCursos
+            // 
+            this.picImprimirCursos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picImprimirCursos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picImprimirCursos.Image = ((System.Drawing.Image)(resources.GetObject("picImprimirCursos.Image")));
+            this.picImprimirCursos.Location = new System.Drawing.Point(1071, 39);
+            this.picImprimirCursos.Name = "picImprimirCursos";
+            this.picImprimirCursos.Size = new System.Drawing.Size(51, 24);
+            this.picImprimirCursos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picImprimirCursos.TabIndex = 60;
+            this.picImprimirCursos.TabStop = false;
+            this.picImprimirCursos.Click += new System.EventHandler(this.picImprimirCursos_Click);
+            // 
+            // picImprimir
+            // 
+            this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picImprimir.Image = ((System.Drawing.Image)(resources.GetObject("picImprimir.Image")));
+            this.picImprimir.Location = new System.Drawing.Point(1071, 3);
+            this.picImprimir.Name = "picImprimir";
+            this.picImprimir.Size = new System.Drawing.Size(51, 24);
+            this.picImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picImprimir.TabIndex = 59;
+            this.picImprimir.TabStop = false;
+            this.picImprimir.Click += new System.EventHandler(this.picImprimir_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(199, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 30);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "Turno:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbTurnos
+            // 
+            this.cmbTurnos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbTurnos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurnos.FormattingEnabled = true;
+            this.cmbTurnos.Location = new System.Drawing.Point(315, 3);
+            this.cmbTurnos.Name = "cmbTurnos";
+            this.cmbTurnos.Size = new System.Drawing.Size(514, 32);
+            this.cmbTurnos.TabIndex = 62;
+            this.cmbTurnos.SelectedIndexChanged += new System.EventHandler(this.cmbTurnos_SelectedIndexChanged);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardar.IconColor = System.Drawing.Color.White;
+            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardar.IconSize = 40;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnGuardar.Location = new System.Drawing.Point(20, 471);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(1125, 59);
+            this.btnGuardar.TabIndex = 56;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FormAsignarHorario
             // 
@@ -409,6 +436,7 @@ namespace ISFDyT93.Vista.Forms.Common
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1165, 550);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvAsignarHorario);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormAsignarHorario";
@@ -419,8 +447,8 @@ namespace ISFDyT93.Vista.Forms.Common
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsignarHorario)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImprimir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImprimirCursos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImprimir)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -435,7 +463,6 @@ namespace ISFDyT93.Vista.Forms.Common
         private System.Windows.Forms.ToolStripMenuItem tsmAgregarMateria;
         private System.Windows.Forms.Label lblMateria;
         private System.Windows.Forms.ComboBox cmbMaterias;
-        private System.Windows.Forms.Label lblModulos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuloId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lunes;
@@ -446,7 +473,10 @@ namespace ISFDyT93.Vista.Forms.Common
         private System.Windows.Forms.ToolStripMenuItem tsmQuitarTodo;
         private System.Windows.Forms.Button btnAdmin;
         private FontAwesome.Sharp.IconButton btnGuardar;
-        private System.Windows.Forms.PictureBox picImprimir;
+        private System.Windows.Forms.Label lblModulos;
         private System.Windows.Forms.PictureBox picImprimirCursos;
+        private System.Windows.Forms.PictureBox picImprimir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbTurnos;
     }
 }
