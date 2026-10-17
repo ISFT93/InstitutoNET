@@ -20,12 +20,14 @@ namespace ISFDyT93.Datos.Daos
 
         public IList<HorariosModelo> ObtenerHorarios(int cursoId)
         {
-            string query = "SELECT CursoMaterias.MateriaId, Materias.Nombre, HorarioId, DiaId, Horarios.ModuloId, Horarios.CursoMateriaId " +
-               "FROM Cursos " +
-               "LEFT JOIN CursoMaterias ON CursoMaterias.CursoId = Cursos.CursoId " +
-               "LEFT JOIN Horarios ON Horarios.CursoMateriaId = CursoMaterias.CursoMateriaId " +
-               "LEFT JOIN Materias ON Materias.MateriaId = CursoMaterias.MateriaId " +
-               $"WHERE Cursos.CursoId = {cursoId}";
+           
+            string query = "SELECT CursoMaterias.MateriaId, Materias.Nombre, ISNULL(Materias.Modulos, 0) AS Modulos, " +
+                           "HorarioId, DiaId, Horarios.ModuloId, CursoMaterias.CursoMateriaId " +
+                           "FROM Cursos " +
+                           "LEFT JOIN CursoMaterias ON CursoMaterias.CursoId = Cursos.CursoId " +
+                           "LEFT JOIN Horarios ON Horarios.CursoMateriaId = CursoMaterias.CursoMateriaId " +
+                           "LEFT JOIN Materias ON Materias.MateriaId = CursoMaterias.MateriaId " +
+                           $"WHERE Cursos.CursoId = {cursoId}";
 
             return MapToModel<HorariosModelo>(Conexion.ObtenerRegistros(query));
         }
@@ -33,16 +35,28 @@ namespace ISFDyT93.Datos.Daos
         public int ActualizarHorarios(IList<HorariosModelo> ltsHorarios)
         {
             int total = 0;
+
             foreach (HorariosModelo horario in ltsHorarios)
             {
-                string dia = (horario.DiaId == null ? "NULL" : horario.DiaId.ToString());
-                string modulo = (horario.ModuloId == null ? "NULL" : horario.ModuloId.ToString());
+                string dia = horario.DiaId == null ? "NULL" : horario.DiaId.ToString();
+                string modulo = horario.ModuloId == null ? "NULL" : horario.ModuloId.ToString();
 
-                string query = $"UPDATE Horarios SET DiaId= {dia}, ModuloId= {modulo} WHERE HorarioId= {horario.HorarioId}";
-                total += this.Conexion.EjecutarAccion(query);
+                if (horario.HorarioId > 0)
+                {
+                    string queryUpdate = $"UPDATE Horarios SET DiaId = {dia}, ModuloId = {modulo} WHERE HorarioId = {horario.HorarioId}";
+                    total += this.Conexion.EjecutarAccion(queryUpdate);
+                }
+                else if (horario.Asignado)
+                {
+                    string queryInsert = $"INSERT INTO Horarios (CursoMateriaId, DiaId, ModuloId) " +
+                                         $"VALUES ({horario.CursoMateriaId}, {dia}, {modulo})";
+                    total += this.Conexion.EjecutarAccion(queryInsert);
+                }
             }
 
             return total;
         }
+
+
     }
 }

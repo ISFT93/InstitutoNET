@@ -358,7 +358,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
 
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
-            
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
             alumnoCarrera.CicloLectivoId = int.Parse(CicloLectivoId.Text);
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)

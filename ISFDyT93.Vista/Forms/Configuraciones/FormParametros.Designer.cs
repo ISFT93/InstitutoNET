@@ -108,7 +108,7 @@
             // 
             this.txtBuscar.Location = new System.Drawing.Point(154, 3);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(187, 27);
+            this.txtBuscar.Size = new System.Drawing.Size(187, 32);
             this.txtBuscar.TabIndex = 128;
             // 
             // panel1
@@ -190,7 +190,7 @@
             this.chkFecha.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFecha.Location = new System.Drawing.Point(23, 8);
             this.chkFecha.Name = "chkFecha";
-            this.chkFecha.Size = new System.Drawing.Size(68, 23);
+            this.chkFecha.Size = new System.Drawing.Size(70, 23);
             this.chkFecha.TabIndex = 0;
             this.chkFecha.Text = "Fecha";
             this.chkFecha.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@
             this.chkNumero.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkNumero.Location = new System.Drawing.Point(213, 8);
             this.chkNumero.Name = "chkNumero";
-            this.chkNumero.Size = new System.Drawing.Size(85, 23);
+            this.chkNumero.Size = new System.Drawing.Size(90, 23);
             this.chkNumero.TabIndex = 2;
             this.chkNumero.Text = "Numero";
             this.chkNumero.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             this.chkHora.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkHora.Location = new System.Drawing.Point(329, 8);
             this.chkHora.Name = "chkHora";
-            this.chkHora.Size = new System.Drawing.Size(62, 23);
+            this.chkHora.Size = new System.Drawing.Size(69, 23);
             this.chkHora.TabIndex = 3;
             this.chkHora.Text = "Hora";
             this.chkHora.UseVisualStyleBackColor = true;
@@ -240,7 +240,7 @@
             this.chkTabla.AutoSize = true;
             this.chkTabla.Location = new System.Drawing.Point(424, 8);
             this.chkTabla.Name = "chkTabla";
-            this.chkTabla.Size = new System.Drawing.Size(67, 23);
+            this.chkTabla.Size = new System.Drawing.Size(82, 23);
             this.chkTabla.TabIndex = 4;
             this.chkTabla.Text = "Tabla";
             this.chkTabla.UseVisualStyleBackColor = true;

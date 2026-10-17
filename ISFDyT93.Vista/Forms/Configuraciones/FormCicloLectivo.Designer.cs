@@ -39,8 +39,6 @@
             this.tsmAgregarCicloLectivo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModificarCicloLectivo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerCicloLectivo = new System.Windows.Forms.ToolStripMenuItem();
-            //this.tsmInscripcionCicloLectivo = new System.Windows.Forms.ToolStripMenuItem();
-            //this.tsmCargaCursadas = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvCicloLectivo = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.errorCiclo)).BeginInit();
@@ -59,12 +57,9 @@
             this.cmsCicloLectivo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAgregarCicloLectivo,
             this.tsmModificarCicloLectivo,
-            this.tsmVerCicloLectivo,
-            //this.tsmInscripcionCicloLectivo,
-            //this.tsmCargaCursadas
-            });
+            this.tsmVerCicloLectivo});
             this.cmsCicloLectivo.Name = "contextMenuStrip1";
-            this.cmsCicloLectivo.Size = new System.Drawing.Size(255, 154);
+            this.cmsCicloLectivo.Size = new System.Drawing.Size(149, 94);
             // 
             // tsmAgregarCicloLectivo
             // 
@@ -73,7 +68,7 @@
             this.tsmAgregarCicloLectivo.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarCicloLectivo.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarCicloLectivo.Image")));
             this.tsmAgregarCicloLectivo.Name = "tsmAgregarCicloLectivo";
-            this.tsmAgregarCicloLectivo.Size = new System.Drawing.Size(254, 30);
+            this.tsmAgregarCicloLectivo.Size = new System.Drawing.Size(148, 30);
             this.tsmAgregarCicloLectivo.Text = "Agregar ";
             this.tsmAgregarCicloLectivo.Click += new System.EventHandler(this.tsmAgregarCicloLectivo_Click);
             // 
@@ -84,7 +79,7 @@
             this.tsmModificarCicloLectivo.ForeColor = System.Drawing.Color.White;
             this.tsmModificarCicloLectivo.Image = global::ISFDyT93.Vista.Properties.Resources.edit_solid;
             this.tsmModificarCicloLectivo.Name = "tsmModificarCicloLectivo";
-            this.tsmModificarCicloLectivo.Size = new System.Drawing.Size(254, 30);
+            this.tsmModificarCicloLectivo.Size = new System.Drawing.Size(148, 30);
             this.tsmModificarCicloLectivo.Text = "Modificar";
             this.tsmModificarCicloLectivo.Click += new System.EventHandler(this.tsmModificarCicloLectivo_Click);
             // 
@@ -95,33 +90,9 @@
             this.tsmVerCicloLectivo.ForeColor = System.Drawing.Color.White;
             this.tsmVerCicloLectivo.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCicloLectivo.Name = "tsmVerCicloLectivo";
-            this.tsmVerCicloLectivo.Size = new System.Drawing.Size(254, 30);
+            this.tsmVerCicloLectivo.Size = new System.Drawing.Size(148, 30);
             this.tsmVerCicloLectivo.Text = "Ver";
             this.tsmVerCicloLectivo.Click += new System.EventHandler(this.tsmVerCicloLectivo_Click);
-            // 
-            // tsmInscripcionCicloLectivo
-            // 
-            //this.tsmInscripcionCicloLectivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            //this.tsmInscripcionCicloLectivo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.tsmInscripcionCicloLectivo.ForeColor = System.Drawing.Color.White;
-            //this.tsmInscripcionCicloLectivo.Image = global::ISFDyT93.Vista.Properties.Resources.user_edit_solid;
-            //this.tsmInscripcionCicloLectivo.Name = "tsmInscripcionCicloLectivo";
-            //this.tsmInscripcionCicloLectivo.Size = new System.Drawing.Size(254, 30);
-            //this.tsmInscripcionCicloLectivo.Text = "Inscripcion Ciclo Lectivo";
-            //this.tsmInscripcionCicloLectivo.Visible = false;
-            //this.tsmInscripcionCicloLectivo.Click += new System.EventHandler(this.tsmInscripcionCicloLectivo_Click);
-            // 
-            // tsmCargaCursadas
-            // 
-            //this.tsmCargaCursadas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            //this.tsmCargaCursadas.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.tsmCargaCursadas.ForeColor = System.Drawing.Color.White;
-            //this.tsmCargaCursadas.Image = global::ISFDyT93.Vista.Properties.Resources.plus_square_solid;
-            //this.tsmCargaCursadas.Name = "tsmCargaCursadas";
-            //this.tsmCargaCursadas.Size = new System.Drawing.Size(254, 30);
-            //this.tsmCargaCursadas.Text = "Cargar Cursadas";
-            //this.tsmCargaCursadas.Visible = false;
-            //this.tsmCargaCursadas.Click += new System.EventHandler(this.tsmCargaCursadas_Click);
             // 
             // dgvCicloLectivo
             // 
