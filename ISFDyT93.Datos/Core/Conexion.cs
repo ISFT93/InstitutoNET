@@ -14,7 +14,7 @@ namespace ISFDyT93.Datos.Core
         public Conexion()
         {
             // Prioridad 1: Variable de entorno (según README.md)
-            string strConexion = System.Environment.GetEnvironmentVariable("INSTITUTO_DB_CONNECTION_STRING");
+            string strConexion = "";//System.Environment.GetEnvironmentVariable("INSTITUTO_DB_CONNECTION_STRING");
 
             // Prioridad 2: App.config (fallback)
             if (string.IsNullOrWhiteSpace(strConexion))

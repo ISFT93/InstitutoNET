@@ -45,11 +45,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormAlumnos_Load(object sender, EventArgs e)
         {
-            uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
+            //uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
             this.Contenedor.SetTitulo("Alumnos");
             cmbFiltroAlum.SelectedIndex = 0; //por defecto busca todos
             RecargarGrilla();
-            uscPaginacion1.BringToFront();
+            //uscPaginacion1.BringToFront();
             if (dgvAlumnos.Rows.Count == 0)
             {
                 dgvAlumnos.ContextMenuStrip = cmsAlumnos;
@@ -83,11 +83,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 AnioLectivoId = null;
 
             if (rbTodos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, null, CarreraId, AnioLectivoId);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
             else if (rbActivos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, true, CarreraId, AnioLectivoId);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'True'");
             else if (rbInactivos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, false, CarreraId, AnioLectivoId);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'False'");
 
             EstilosColumnasDGV();
         }
