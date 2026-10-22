@@ -61,7 +61,6 @@
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.cmsAlumnos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +71,7 @@
             this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 50);
             this.lblSelccFiltroAlum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelccFiltroAlum.Name = "lblSelccFiltroAlum";
-            this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 19);
+            this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 24);
             this.lblSelccFiltroAlum.TabIndex = 47;
             this.lblSelccFiltroAlum.Text = "Filtro:";
             // 
@@ -91,7 +90,7 @@
             this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 49);
             this.cmbFiltroAlum.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroAlum.Name = "cmbFiltroAlum";
-            this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 27);
+            this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 32);
             this.cmbFiltroAlum.TabIndex = 46;
             // 
             // txtFiltroAlumno
@@ -106,7 +105,7 @@
             this.txtFiltroAlumno.Location = new System.Drawing.Point(4, 84);
             this.txtFiltroAlumno.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroAlumno.Name = "txtFiltroAlumno";
-            this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 27);
+            this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 32);
             this.txtFiltroAlumno.TabIndex = 44;
             this.txtFiltroAlumno.TextChanged += new System.EventHandler(this.txtFiltroAlumno_TextChanged);
             // 
@@ -132,7 +131,7 @@
             this.tsmAgregarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmAgregarAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmAgregarAlumno.Image")));
             this.tsmAgregarAlumno.Name = "tsmAgregarAlumno";
-            this.tsmAgregarAlumno.Size = new System.Drawing.Size(248, 30);
+            this.tsmAgregarAlumno.Size = new System.Drawing.Size(283, 30);
             this.tsmAgregarAlumno.Text = "Agregar ";
             this.tsmAgregarAlumno.Click += new System.EventHandler(this.tsmAgregarAlumno_Click);
             // 
@@ -143,7 +142,7 @@
             this.tsmModificarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmModificarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.user_edit_solid;
             this.tsmModificarAlumno.Name = "tsmModificarAlumno";
-            this.tsmModificarAlumno.Size = new System.Drawing.Size(248, 30);
+            this.tsmModificarAlumno.Size = new System.Drawing.Size(283, 30);
             this.tsmModificarAlumno.Text = "Modificar";
             this.tsmModificarAlumno.Click += new System.EventHandler(this.tsmModificarAlumno_Click);
             // 
@@ -154,7 +153,7 @@
             this.tsmEliminarAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmEliminarAlumno.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
             this.tsmEliminarAlumno.Name = "tsmEliminarAlumno";
-            this.tsmEliminarAlumno.Size = new System.Drawing.Size(248, 30);
+            this.tsmEliminarAlumno.Size = new System.Drawing.Size(283, 30);
             this.tsmEliminarAlumno.Text = "Eliminar";
             this.tsmEliminarAlumno.Click += new System.EventHandler(this.tsmEliminarAlumno_Click);
             // 
@@ -165,7 +164,7 @@
             this.tsmVerAlumno.ForeColor = System.Drawing.Color.White;
             this.tsmVerAlumno.Image = ((System.Drawing.Image)(resources.GetObject("tsmVerAlumno.Image")));
             this.tsmVerAlumno.Name = "tsmVerAlumno";
-            this.tsmVerAlumno.Size = new System.Drawing.Size(248, 30);
+            this.tsmVerAlumno.Size = new System.Drawing.Size(283, 30);
             this.tsmVerAlumno.Text = "Ver Datos";
             this.tsmVerAlumno.Click += new System.EventHandler(this.tsmVerAlumno_Click);
             // 
@@ -176,7 +175,7 @@
             this.tsmAsignarMaterias.ForeColor = System.Drawing.Color.White;
             this.tsmAsignarMaterias.Image = global::ISFDyT93.Vista.Properties.Resources.arrow_alt_circle_right_solid;
             this.tsmAsignarMaterias.Name = "tsmAsignarMaterias";
-            this.tsmAsignarMaterias.Size = new System.Drawing.Size(248, 30);
+            this.tsmAsignarMaterias.Size = new System.Drawing.Size(283, 30);
             this.tsmAsignarMaterias.Text = "Asignar Materias";
             this.tsmAsignarMaterias.Click += new System.EventHandler(this.tsmAsignarMaterias_Click);
             // 
@@ -187,7 +186,7 @@
             this.tsmDarAlta.ForeColor = System.Drawing.Color.White;
             this.tsmDarAlta.Image = global::ISFDyT93.Vista.Properties.Resources.plus_square_solid;
             this.tsmDarAlta.Name = "tsmDarAlta";
-            this.tsmDarAlta.Size = new System.Drawing.Size(248, 30);
+            this.tsmDarAlta.Size = new System.Drawing.Size(283, 30);
             this.tsmDarAlta.Text = "Dar de Alta";
             this.tsmDarAlta.Visible = false;
             this.tsmDarAlta.Click += new System.EventHandler(this.tsmDarAlta_Click);
@@ -199,7 +198,7 @@
             this.tsmActualizarDocumentacion.ForeColor = System.Drawing.Color.White;
             this.tsmActualizarDocumentacion.Image = ((System.Drawing.Image)(resources.GetObject("tsmActualizarDocumentacion.Image")));
             this.tsmActualizarDocumentacion.Name = "tsmActualizarDocumentacion";
-            this.tsmActualizarDocumentacion.Size = new System.Drawing.Size(248, 30);
+            this.tsmActualizarDocumentacion.Size = new System.Drawing.Size(283, 30);
             this.tsmActualizarDocumentacion.Text = "Control de Documentacion";
             this.tsmActualizarDocumentacion.Click += new System.EventHandler(this.tsmActualizarDocumentacion_Click);
             // 
@@ -210,7 +209,7 @@
             this.tsmCargaMasiva.ForeColor = System.Drawing.Color.White;
             this.tsmCargaMasiva.Image = ((System.Drawing.Image)(resources.GetObject("tsmCargaMasiva.Image")));
             this.tsmCargaMasiva.Name = "tsmCargaMasiva";
-            this.tsmCargaMasiva.Size = new System.Drawing.Size(248, 30);
+            this.tsmCargaMasiva.Size = new System.Drawing.Size(283, 30);
             this.tsmCargaMasiva.Text = "Carga Masiva";
             this.tsmCargaMasiva.Click += new System.EventHandler(this.tsmCargaMasiva_Click);
             // 
@@ -220,7 +219,7 @@
             this.rbInactivos.AutoSize = true;
             this.rbInactivos.Location = new System.Drawing.Point(121, 128);
             this.rbInactivos.Name = "rbInactivos";
-            this.rbInactivos.Size = new System.Drawing.Size(112, 23);
+            this.rbInactivos.Size = new System.Drawing.Size(112, 28);
             this.rbInactivos.TabIndex = 49;
             this.rbInactivos.Text = "Inactivos";
             this.rbInactivos.UseVisualStyleBackColor = true;
@@ -233,7 +232,7 @@
             this.rbActivos.Checked = true;
             this.rbActivos.Location = new System.Drawing.Point(3, 128);
             this.rbActivos.Name = "rbActivos";
-            this.rbActivos.Size = new System.Drawing.Size(112, 23);
+            this.rbActivos.Size = new System.Drawing.Size(112, 28);
             this.rbActivos.TabIndex = 50;
             this.rbActivos.TabStop = true;
             this.rbActivos.Text = "Activos";
@@ -246,7 +245,7 @@
             this.rbTodos.AutoSize = true;
             this.rbTodos.Location = new System.Drawing.Point(239, 128);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(112, 23);
+            this.rbTodos.Size = new System.Drawing.Size(112, 28);
             this.rbTodos.TabIndex = 51;
             this.rbTodos.Text = "Todos";
             this.rbTodos.UseVisualStyleBackColor = true;
@@ -381,7 +380,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 245F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.uscPaginacion1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(20, 465);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -478,7 +476,6 @@
             this.cmsAlumnos.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).EndInit();
             this.ResumeLayout(false);
 

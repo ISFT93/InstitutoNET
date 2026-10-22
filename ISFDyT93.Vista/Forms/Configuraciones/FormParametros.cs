@@ -155,6 +155,8 @@ namespace ISFDyT93.Vista
 
                 uscEspaciosFormacion espacios = new uscEspaciosFormacion();
                 flpContenedor.Controls.Add(espacios);
+                uscHorarios horarios = new uscHorarios();
+                flpContenedor.Controls.Add(horarios);
 
             }
             else

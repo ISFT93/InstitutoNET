@@ -50,6 +50,12 @@ namespace ISFDyT93.Negocio.Logica
         {
             return this.carrerasDao.CarrerasActivas(true);
         }
+
+        // Agregado para obtener los regimenes de las carreras
+        public DataTable ObtenerRegimenes()
+        {
+            return this.carrerasDao.ObtenerRegimenes();
+        }
         public bool CarrerasExiste(string Nombre)
         {
             var resultado = this.carrerasDao.CarreraExiste(Nombre);
@@ -173,9 +179,7 @@ namespace ISFDyT93.Negocio.Logica
                         if (!string.IsNullOrEmpty(archiImagen))
                             GuardarArchivo(archiImagen, modelo.ImagenDescriptiva, @"\Imagen");
 
-
                         int carreraId = carrerasDao.ObtenerUltimoCarreraId();
-
 
                         for (int anio = 1; anio <= modelo.Duracion; anio++)
                         {
@@ -206,10 +210,11 @@ namespace ISFDyT93.Negocio.Logica
                     if (!string.IsNullOrEmpty(modelo.ImagenDescriptiva) && !modelo.ImagenDescriptiva.StartsWith(@"\Imagen"))
                     {
                         string extension = modelo.ImagenDescriptiva.Substring(modelo.ImagenDescriptiva.LastIndexOf("."));
-
                         modelo.ImagenDescriptiva = @"\Imagen\Imagen_" + time + extension;
                     }
 
+                    // Solo se actualiza la carrera en la BD.
+                    // Se quitó el bloque que borraba y volvía a crear registros en AniosCarreras.
                     if (this.carrerasDao.ModificarCarrera(modelo) > 0)
                     {
                         if (!modelo.PoseeMaterias)

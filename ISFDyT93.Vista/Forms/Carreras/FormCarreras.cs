@@ -43,7 +43,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             dgvCarreras.ContextMenuStrip = cmsCarreras;
             dgvCarreras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Soluciona datos cortados o mal distribuidos
 
-            if (rbActivos.Checked == true)
+            if (rbActivos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasActivas();
 
@@ -53,18 +53,20 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else if (rbInactivos.Checked == true)
+            else if (rbInactivos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasInactivas();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     dgvCarreras.Columns["CarreraId"].Visible = false;
                     dgvCarreras.Columns["CarreraEstadoId"].Visible = false;
                 }
             }
-            else if (rbBorrador.Checked == true)
+            else if (rbBorrador.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.CarrerasBorrador();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     dgvCarreras.Columns["CarreraId"].Visible = false;
@@ -72,10 +74,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["Carga Horaria Completa"].Visible = false;
                 }
             }
-            else if (rbTodos.Checked == true)
+            else if (rbTodos.Checked)
             {
                 dgvCarreras.DataSource = this.carrerasLogica.ObtenerTodasLasCarreras();
                 CarreraEstados();
+
                 if (dgvCarreras.Rows.Count > 0)
                 {
                     dgvCarreras.Columns["CarreraId"].Visible = false;
@@ -85,6 +88,41 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     dgvCarreras.Columns["Año de Fin"].Visible = false;
                 }
             }
+
+            // Ajustamos los anchos de las columnas al finalizar la carga
+            AjustarAnchoColumnas();
+
+        }
+
+        // Método auxiliar exclusivo para ajustar el diseño visual de las columnas
+        private void AjustarAnchoColumnas()
+        {
+            dgvCarreras.SuspendLayout();
+
+            // Columnas secundarias: Ancho justo a sus contenidos
+            if (dgvCarreras.Columns.Contains("Código"))
+                dgvCarreras.Columns["Código"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgvCarreras.Columns.Contains("Numero de Expediente"))
+                dgvCarreras.Columns["Numero de Expediente"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (dgvCarreras.Columns.Contains("Estado"))
+                dgvCarreras.Columns["Estado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // Repartimos el espacio sobrante entre Nombre y Descripción
+            if (dgvCarreras.Columns.Contains("Nombre"))
+            {
+                dgvCarreras.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCarreras.Columns["Nombre"].FillWeight = 60; // Recibe el 60% del espacio sobrante
+            }
+
+            if (dgvCarreras.Columns.Contains("Descripción"))
+            {
+                dgvCarreras.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCarreras.Columns["Descripción"].FillWeight = 40; // Recibe el 40% del espacio sobrante
+            }
+
+            dgvCarreras.ResumeLayout();
         }
         private void CambiarColor()
         {

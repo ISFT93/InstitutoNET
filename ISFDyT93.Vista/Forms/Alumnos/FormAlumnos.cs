@@ -16,9 +16,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 {
     public partial class FormAlumnos : FormBase
     {
-        #region Propiedades Privadas
+        #region Propiedades Privadas
 
-        private AlumnosLogica AlumnosLogica { get; set; }
+        private AlumnosLogica AlumnosLogica { get; set; }
         private InscripcionAlumnoLogica AlumnosInscLogica { get; set; }
         private CarrerasLogica CarreraLogica { get; set; }
         private CargaMasivaLogica CargaMasivaLogica { get; set; }
@@ -31,9 +31,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private int? AnioLectivoId { get; set; }
         FormCargaMasivaCsv FormCarMasivaCsv = new FormCargaMasivaCsv();
 
-        #endregion
+        #endregion
 
-        public FormAlumnos()
+        public FormAlumnos()
         {
             this.AlumnosLogica = new AlumnosLogica();
             this.AlumnosInscLogica = new InscripcionAlumnoLogica();
@@ -45,10 +45,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormAlumnos_Load(object sender, EventArgs e)
         {
-            uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
-            this.Contenedor.SetTitulo("Alumnos");
+            uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
+            this.Contenedor.SetTitulo("Alumnos");
             cmbFiltroAlum.SelectedIndex = 0; //por defecto busca todos
-            RecargarGrilla();
+            RecargarGrilla();
             uscPaginacion1.BringToFront();
             if (dgvAlumnos.Rows.Count == 0)
             {
@@ -135,15 +135,15 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                     tsmAgregarAlumno.Visible = false;
 
-                    //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+                    //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
 
-                    tsmActualizarDocumentacion.Visible = true;
+                    tsmActualizarDocumentacion.Visible = true;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
                     if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
                         tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
-                    else
+                    else
                         tsmAsignarMaterias.Visible = false;
 
                 }
@@ -160,10 +160,10 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
         }
 
-        #region ControlMenuStrip
-        private void tsmAgregarAlumno_Click(object sender, EventArgs e)
+        #region ControlMenuStrip
+        private void tsmAgregarAlumno_Click(object sender, EventArgs e)
         {
-            
+
             bool OK = AlumnosInscLogica.obtenerFechaIncripcion();
             if (OK)
             {
@@ -212,9 +212,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         public void tsmCargaMasiva_Click(object sender, EventArgs e)
         {
-            //color 27, 1, 124
-            //tahoma white
-            Form tempForm = new Form();
+            //color 27, 1, 124
+            //tahoma white
+            Form tempForm = new Form();
             Label label = new Label();
             Button buttonYes = new Button();
             buttonYes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
@@ -310,8 +310,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                                 NumeroDocumento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["DNI:"].ToString()),
                                 EstadoCivil = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Estado Civil:"].ToString()),
                                 Sexo = Sexo,
-                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
-                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
+                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
+                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
                                 Calle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Dirección:"].ToString()),
                                 Numero = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Número:"].ToString()),
                                 Provincia = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Provincia:"].ToString()),
@@ -354,8 +354,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                                 NumeroDocumento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["DNI:"].ToString()),
                                 EstadoCivil = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Estado Civil:"].ToString()),
                                 Sexo = Sexo,
-                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
-                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
+                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
+                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
                                 Calle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Dirección:"].ToString()),
                                 Numero = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Número:"].ToString()),
                                 Provincia = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Provincia:"].ToString()),
@@ -400,9 +400,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
         }
-        #endregion
+        #endregion
 
-        private void btnReporte_Click(object sender, EventArgs e)
+        private void btnReporte_Click(object sender, EventArgs e)
         {
             var datos = this.AlumnosLogica.ObtenerAlumnosPrueba();
 
@@ -421,7 +421,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             RecargarGrilla(txtFiltroAlumno.Text);
         }
         private void RadioButtons_CheckedChanged(object sender, EventArgs e) //Corregido para que no se ejecute mas de 1 vez
-        {
+        {
             if (((RadioButton)sender).Checked)
                 RecargarGrilla();
         }

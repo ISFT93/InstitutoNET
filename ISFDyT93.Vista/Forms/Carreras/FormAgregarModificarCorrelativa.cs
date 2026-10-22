@@ -71,8 +71,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
             if (puedeModificar)
             {
                 this.Contenedor.SetTitulo(
-                    $"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}"
-                );
+                     //$"Asignar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}"
+                     // Cambiar el título a "Gestionar materias correlativas" para reflejar mejor la acción
+                     // que se está realizando
+                     $"Gestionar materias correlativas a {this.materiaModelo.Nombre} - {DescripcionCarrera}"
+
+                    );
             }
             else
             {
@@ -99,6 +103,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             var DatosMateria = correlativasLogica.ObtenerCorreltividades(this.MateriaId, this.materiaModelo.CarreraId);
             var DatoCorrelativas = correlativasLogica.ObtenerMateriasCorrelativas(this.MateriaId);
+
+            // Ordenamos las materias de la lista izquierda por la columna del texto que se muestra ("Materia")
+            if (DatosMateria != null && DatosMateria.Rows.Count > 0)
+            {
+                // Como el texto de "Materia" empieza con el Código (ej: "04102 - Ingles I"),
+                // ordenar por "Materia ASC" las acomoda numéricamente de menor a mayor.
+                DatosMateria.DefaultView.Sort = "Materia ASC";
+                DatosMateria = DatosMateria.DefaultView.ToTable();
+            }
+
 
             lstCorrelativas.DataSource = DatoCorrelativas;
             lstCorrelativas.DisplayMember = "Materia";

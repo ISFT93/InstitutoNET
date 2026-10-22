@@ -67,7 +67,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblPersonalReemplazar.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblPersonalReemplazar.Location = new System.Drawing.Point(405, 60);
             this.lblPersonalReemplazar.Name = "lblPersonalReemplazar";
-            this.lblPersonalReemplazar.Size = new System.Drawing.Size(171, 19);
+            this.lblPersonalReemplazar.Size = new System.Drawing.Size(216, 20);
             this.lblPersonalReemplazar.TabIndex = 65;
             this.lblPersonalReemplazar.Text = "Personal a reemplazar:";
             this.lblPersonalReemplazar.Visible = false;
@@ -79,9 +79,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbPersonal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPersonal.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbPersonal.FormattingEnabled = true;
-            this.cmbPersonal.Location = new System.Drawing.Point(405, 86);
+            this.cmbPersonal.Location = new System.Drawing.Point(405, 84);
             this.cmbPersonal.Name = "cmbPersonal";
-            this.cmbPersonal.Size = new System.Drawing.Size(369, 27);
+            this.cmbPersonal.Size = new System.Drawing.Size(369, 32);
             this.cmbPersonal.TabIndex = 63;
             this.cmbPersonal.Visible = false;
             // 
@@ -92,9 +92,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbSituacionRevistaId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSituacionRevistaId.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbSituacionRevistaId.FormattingEnabled = true;
-            this.cmbSituacionRevistaId.Location = new System.Drawing.Point(3, 86);
+            this.cmbSituacionRevistaId.Location = new System.Drawing.Point(3, 84);
             this.cmbSituacionRevistaId.Name = "cmbSituacionRevistaId";
-            this.cmbSituacionRevistaId.Size = new System.Drawing.Size(366, 27);
+            this.cmbSituacionRevistaId.Size = new System.Drawing.Size(366, 32);
             this.cmbSituacionRevistaId.TabIndex = 64;
             this.cmbSituacionRevistaId.SelectedIndexChanged += new System.EventHandler(this.cmbSituacionRevista_SelectedIndexChanged);
             // 
@@ -104,7 +104,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblSituacion.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblSituacion.Location = new System.Drawing.Point(3, 60);
             this.lblSituacion.Name = "lblSituacion";
-            this.lblSituacion.Size = new System.Drawing.Size(152, 19);
+            this.lblSituacion.Size = new System.Drawing.Size(125, 20);
             this.lblSituacion.TabIndex = 62;
             this.lblSituacion.Text = "Situacion de revista:";
             // 
@@ -115,9 +115,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbCargoId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCargoId.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbCargoId.FormattingEnabled = true;
-            this.cmbCargoId.Location = new System.Drawing.Point(3, 26);
+            this.cmbCargoId.Location = new System.Drawing.Point(3, 24);
             this.cmbCargoId.Name = "cmbCargoId";
-            this.cmbCargoId.Size = new System.Drawing.Size(366, 27);
+            this.cmbCargoId.Size = new System.Drawing.Size(366, 32);
             this.cmbCargoId.TabIndex = 61;
             this.cmbCargoId.SelectedIndexChanged += new System.EventHandler(this.cmbCargo_SelectedIndexChanged);
             // 
@@ -127,7 +127,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblCargo.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblCargo.Location = new System.Drawing.Point(3, 0);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(122, 19);
+            this.lblCargo.Size = new System.Drawing.Size(150, 20);
             this.lblCargo.TabIndex = 60;
             this.lblCargo.Text = "Cargo Servicio: ";
             // 
@@ -137,7 +137,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblCarrera.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblCarrera.Location = new System.Drawing.Point(3, 120);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(61, 19);
+            this.lblCarrera.Size = new System.Drawing.Size(76, 20);
             this.lblCarrera.TabIndex = 62;
             this.lblCarrera.Text = "Carrera";
             this.lblCarrera.Visible = false;
@@ -149,9 +149,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbCarreraId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCarreraId.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbCarreraId.FormattingEnabled = true;
-            this.cmbCarreraId.Location = new System.Drawing.Point(3, 146);
+            this.cmbCarreraId.Location = new System.Drawing.Point(3, 144);
             this.cmbCarreraId.Name = "cmbCarreraId";
-            this.cmbCarreraId.Size = new System.Drawing.Size(366, 27);
+            this.cmbCarreraId.Size = new System.Drawing.Size(366, 32);
             this.cmbCarreraId.TabIndex = 64;
             this.cmbCarreraId.Visible = false;
             this.cmbCarreraId.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
@@ -162,7 +162,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblAnio.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblAnio.Location = new System.Drawing.Point(3, 180);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(38, 19);
+            this.lblAnio.Size = new System.Drawing.Size(44, 20);
             this.lblAnio.TabIndex = 62;
             this.lblAnio.Text = "Año";
             this.lblAnio.Visible = false;
@@ -173,9 +173,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbAnioId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnioId.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbAnioId.FormattingEnabled = true;
-            this.cmbAnioId.Location = new System.Drawing.Point(3, 206);
+            this.cmbAnioId.Location = new System.Drawing.Point(3, 204);
             this.cmbAnioId.Name = "cmbAnioId";
-            this.cmbAnioId.Size = new System.Drawing.Size(165, 27);
+            this.cmbAnioId.Size = new System.Drawing.Size(165, 32);
             this.cmbAnioId.TabIndex = 64;
             this.cmbAnioId.Visible = false;
             this.cmbAnioId.SelectedIndexChanged += new System.EventHandler(this.cmbAnio_SelectedIndexChanged);
@@ -186,7 +186,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblCurso.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblCurso.Location = new System.Drawing.Point(204, 180);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(50, 19);
+            this.lblCurso.Size = new System.Drawing.Size(60, 20);
             this.lblCurso.TabIndex = 62;
             this.lblCurso.Text = "Curso";
             this.lblCurso.Visible = false;
@@ -197,9 +197,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.cmbCursoId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCursoId.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmbCursoId.FormattingEnabled = true;
-            this.cmbCursoId.Location = new System.Drawing.Point(204, 206);
+            this.cmbCursoId.Location = new System.Drawing.Point(204, 204);
             this.cmbCursoId.Name = "cmbCursoId";
-            this.cmbCursoId.Size = new System.Drawing.Size(165, 27);
+            this.cmbCursoId.Size = new System.Drawing.Size(165, 32);
             this.cmbCursoId.TabIndex = 64;
             this.cmbCursoId.Visible = false;
             this.cmbCursoId.SelectedIndexChanged += new System.EventHandler(this.cmbCurso_SelectedIndexChanged);
@@ -210,9 +210,9 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.tlpContenedor.SetColumnSpan(this.cmbCursoMateriaId, 3);
             this.cmbCursoMateriaId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCursoMateriaId.FormattingEnabled = true;
-            this.cmbCursoMateriaId.Location = new System.Drawing.Point(3, 269);
+            this.cmbCursoMateriaId.Location = new System.Drawing.Point(3, 268);
             this.cmbCursoMateriaId.Name = "cmbCursoMateriaId";
-            this.cmbCursoMateriaId.Size = new System.Drawing.Size(366, 27);
+            this.cmbCursoMateriaId.Size = new System.Drawing.Size(366, 32);
             this.cmbCursoMateriaId.TabIndex = 70;
             this.cmbCursoMateriaId.Visible = false;
             this.cmbCursoMateriaId.SelectedIndexChanged += new System.EventHandler(this.cmbCursoMateriaId_SelectedIndexChanged);
@@ -222,7 +222,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblMateriasDisponibles.AutoSize = true;
             this.lblMateriasDisponibles.Location = new System.Drawing.Point(3, 240);
             this.lblMateriasDisponibles.Name = "lblMateriasDisponibles";
-            this.lblMateriasDisponibles.Size = new System.Drawing.Size(151, 19);
+            this.lblMateriasDisponibles.Size = new System.Drawing.Size(109, 20);
             this.lblMateriasDisponibles.TabIndex = 71;
             this.lblMateriasDisponibles.Text = "Materias disponibles";
             this.lblMateriasDisponibles.Visible = false;
@@ -234,7 +234,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lstCargosAsignados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstCargosAsignados.FormattingEnabled = true;
             this.lstCargosAsignados.HorizontalScrollbar = true;
-            this.lstCargosAsignados.ItemHeight = 19;
+            this.lstCargosAsignados.ItemHeight = 24;
             this.lstCargosAsignados.Location = new System.Drawing.Point(405, 143);
             this.lstCargosAsignados.Name = "lstCargosAsignados";
             this.tlpContenedor.SetRowSpan(this.lstCargosAsignados, 5);
@@ -248,7 +248,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblCargosAsignados.AutoSize = true;
             this.lblCargosAsignados.Location = new System.Drawing.Point(405, 120);
             this.lblCargosAsignados.Name = "lblCargosAsignados";
-            this.lblCargosAsignados.Size = new System.Drawing.Size(136, 19);
+            this.lblCargosAsignados.Size = new System.Drawing.Size(100, 20);
             this.lblCargosAsignados.TabIndex = 73;
             this.lblCargosAsignados.Text = "Cargos Asignados";
             this.lblCargosAsignados.Visible = false;
@@ -257,19 +257,19 @@ namespace ISFDyT93.Vista.Forms.Personal
             // 
             this.txtLibro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLibro.Enabled = false;
-            this.txtLibro.Location = new System.Drawing.Point(405, 26);
+            this.txtLibro.Location = new System.Drawing.Point(405, 24);
             this.txtLibro.Name = "txtLibro";
             this.txtLibro.ReadOnly = true;
-            this.txtLibro.Size = new System.Drawing.Size(165, 27);
+            this.txtLibro.Size = new System.Drawing.Size(165, 32);
             this.txtLibro.TabIndex = 74;
             // 
             // txtFolio
             // 
             this.txtFolio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolio.Enabled = false;
-            this.txtFolio.Location = new System.Drawing.Point(606, 26);
+            this.txtFolio.Location = new System.Drawing.Point(606, 24);
             this.txtFolio.Name = "txtFolio";
-            this.txtFolio.Size = new System.Drawing.Size(168, 27);
+            this.txtFolio.Size = new System.Drawing.Size(168, 32);
             this.txtFolio.TabIndex = 75;
             // 
             // lblLibro
@@ -277,7 +277,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblLibro.AutoSize = true;
             this.lblLibro.Location = new System.Drawing.Point(405, 0);
             this.lblLibro.Name = "lblLibro";
-            this.lblLibro.Size = new System.Drawing.Size(45, 19);
+            this.lblLibro.Size = new System.Drawing.Size(54, 20);
             this.lblLibro.TabIndex = 76;
             this.lblLibro.Text = "Libro";
             // 
@@ -286,7 +286,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblFolio.AutoSize = true;
             this.lblFolio.Location = new System.Drawing.Point(606, 0);
             this.lblFolio.Name = "lblFolio";
-            this.lblFolio.Size = new System.Drawing.Size(43, 19);
+            this.lblFolio.Size = new System.Drawing.Size(52, 20);
             this.lblFolio.TabIndex = 77;
             this.lblFolio.Text = "Folio";
             // 
@@ -349,7 +349,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 32;
@@ -367,7 +367,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.lblModulo.AutoSize = true;
             this.lblModulo.Location = new System.Drawing.Point(3, 300);
             this.lblModulo.Name = "lblModulo";
-            this.lblModulo.Size = new System.Drawing.Size(68, 19);
+            this.lblModulo.Size = new System.Drawing.Size(83, 20);
             this.lblModulo.TabIndex = 79;
             this.lblModulo.Text = "Modulos";
             // 
@@ -377,7 +377,7 @@ namespace ISFDyT93.Vista.Forms.Personal
             this.txtModulo.Location = new System.Drawing.Point(3, 323);
             this.txtModulo.Name = "txtModulo";
             this.txtModulo.ReadOnly = true;
-            this.txtModulo.Size = new System.Drawing.Size(366, 27);
+            this.txtModulo.Size = new System.Drawing.Size(366, 32);
             this.txtModulo.TabIndex = 80;
             // 
             // epvServicios

@@ -65,12 +65,20 @@ namespace ISFDyT93.Vista.Forms.Common
                     rvwReportes.LocalReport.DataSources.Add(new ReportDataSource(table.DataBinding, binding));
                 }
             }
-                        
-            if(this.Parameters != null)
+
+            try
             {
-                rvwReportes.LocalReport.SetParameters(this.Parameters);
-            }            
-            
+                if (this.Parameters != null)
+                {
+                    rvwReportes.LocalReport.SetParameters(this.Parameters);
+                }
+            }
+            catch (Exception ex)
+            {
+                string errorReal = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Detalle del error: " + errorReal, "Error de Reporte", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             this.rvwReportes.RefreshReport();
         }
     }

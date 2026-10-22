@@ -24,6 +24,7 @@ namespace ISFDyT93.Negocio.Interfaces
         DataTable ObtenerAnioCarreras(int CarreraId);
         DataTable ObtenerCursos(int AnioCarreraId);
         int ObtenerModuloMateria(int CursoMateriaId);
+        bool MateriaYaAsignada(int cursoMateriaId);
 
     }
 }
