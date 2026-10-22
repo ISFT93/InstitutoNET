@@ -27,7 +27,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private int AlumnoId { get; set; }
         private string ApellidoNombre { get; set; }
         private int AlumnoCarreraId { get; set; }
-
+        private int? CarreraId { get; set; }
+        private int? AnioLectivoId { get; set; }
         FormCargaMasivaCsv FormCarMasivaCsv = new FormCargaMasivaCsv();
 
         #endregion
@@ -55,6 +56,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 tsmEliminarAlumno.Visible = false;
                 tsmModificarAlumno.Visible = false;
             }
+
+            this.AlumnosLogica.ObtenerCarreraCorta(cmbFiltroCarrera);
+            this.AlumnosLogica.ObtenerCicloLectivo(cmbCicloLectivo);
         }
 
         private void RecargarGrilla(string filtro = "")
@@ -62,12 +66,28 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             dgvAlumnos.ClearSelection();
             var tipo = (TipoFiltroAlumno)cmbFiltroAlum.SelectedIndex;
 
+            if (int.TryParse(cmbFiltroCarrera.SelectedValue?.ToString(), out int carreraid))
+            {
+                if (carreraid != 0)
+                    CarreraId = carreraid;
+                else
+                    CarreraId = null;
+            }
+            else
+                CarreraId = null;
+
+            if (cmbCicloLectivo.SelectedIndex != 0)
+                if (int.TryParse(cmbCicloLectivo.SelectedValue?.ToString(), out int ciclolectivoid))
+                    AnioLectivoId = ciclolectivoid;
+            else
+                AnioLectivoId = null;
+
             if (rbTodos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, null, CarreraId, AnioLectivoId);
             else if (rbActivos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'True'");
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, true, CarreraId, AnioLectivoId);
             else if (rbInactivos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'False'");
+                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, false, CarreraId, AnioLectivoId);
 
             EstilosColumnasDGV();
         }
@@ -409,6 +429,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void FormAlumnos_Resize(object sender, EventArgs e)
         {
             uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
+        }
+
+        private void txtFiltroAlumno_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

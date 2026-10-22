@@ -30,6 +30,7 @@ namespace ISFDyT93.Negocio.Interfaces
         int ConsultarAlumnoCiclo(int AlumnoId);
         void DarAltaAlumnos(int alumnoId);
         DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo = null);
+        DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, bool? activo, int? carreraId, int? anioLectivoId);
         string[] ObtenerPaisNacimientoAlumnos();
         string[] ObtenerLocalidadAlumnos();
         string[] ObtenerDistritoAlumnos();

@@ -50,9 +50,14 @@
             this.rbActivos = new System.Windows.Forms.RadioButton();
             this.rbTodos = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbFiltroCarrera = new System.Windows.Forms.ComboBox();
+            this.lblCarrera = new System.Windows.Forms.Label();
+            this.lblCicloLectivo = new System.Windows.Forms.Label();
+            this.cmbCicloLectivo = new System.Windows.Forms.ComboBox();
             this.btnReporte = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.cmsAlumnos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,7 +68,7 @@
             // 
             this.lblSelccFiltroAlum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSelccFiltroAlum.AutoSize = true;
-            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 8);
+            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 50);
             this.lblSelccFiltroAlum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelccFiltroAlum.Name = "lblSelccFiltroAlum";
             this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 24);
@@ -81,11 +86,8 @@
             "Todos",
             "Numero de Documento",
             "Nombre",
-            "Apellido",
-            "Carrera",
-            "Año",
-            "Curso"});
-            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 8);
+            "Apellido"});
+            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 49);
             this.cmbFiltroAlum.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroAlum.Name = "cmbFiltroAlum";
             this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 32);
@@ -100,11 +102,12 @@
             this.tableLayoutPanel1.SetColumnSpan(this.txtFiltroAlumno, 3);
             this.txtFiltroAlumno.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltroAlumno.ForeColor = System.Drawing.Color.Black;
-            this.txtFiltroAlumno.Location = new System.Drawing.Point(4, 44);
+            this.txtFiltroAlumno.Location = new System.Drawing.Point(4, 84);
             this.txtFiltroAlumno.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltroAlumno.Name = "txtFiltroAlumno";
             this.txtFiltroAlumno.Size = new System.Drawing.Size(346, 32);
             this.txtFiltroAlumno.TabIndex = 44;
+            this.txtFiltroAlumno.TextChanged += new System.EventHandler(this.txtFiltroAlumno_TextChanged);
             // 
             // cmsAlumnos
             // 
@@ -119,7 +122,7 @@
             this.tsmActualizarDocumentacion,
             this.tsmCargaMasiva});
             this.cmsAlumnos.Name = "contextMenuStrip1";
-            this.cmsAlumnos.Size = new System.Drawing.Size(284, 244);
+            this.cmsAlumnos.Size = new System.Drawing.Size(249, 244);
             // 
             // tsmAgregarAlumno
             // 
@@ -214,7 +217,7 @@
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(121, 86);
+            this.rbInactivos.Location = new System.Drawing.Point(121, 128);
             this.rbInactivos.Name = "rbInactivos";
             this.rbInactivos.Size = new System.Drawing.Size(112, 28);
             this.rbInactivos.TabIndex = 49;
@@ -227,7 +230,7 @@
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(3, 86);
+            this.rbActivos.Location = new System.Drawing.Point(3, 128);
             this.rbActivos.Name = "rbActivos";
             this.rbActivos.Size = new System.Drawing.Size(112, 28);
             this.rbActivos.TabIndex = 50;
@@ -240,7 +243,7 @@
             // 
             this.rbTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbTodos.AutoSize = true;
-            this.rbTodos.Location = new System.Drawing.Point(239, 86);
+            this.rbTodos.Location = new System.Drawing.Point(239, 128);
             this.rbTodos.Name = "rbTodos";
             this.rbTodos.Size = new System.Drawing.Size(112, 28);
             this.rbTodos.TabIndex = 51;
@@ -257,14 +260,18 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0025F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0025F));
-            this.tableLayoutPanel1.Controls.Add(this.lblSelccFiltroAlum, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cmbFiltroAlum, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtFiltroAlumno, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.rbInactivos, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.rbActivos, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.rbTodos, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnReporte, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmbFiltroCarrera, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblCarrera, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblCicloLectivo, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCicloLectivo, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblSelccFiltroAlum, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmbFiltroAlum, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtFiltroAlumno, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.rbActivos, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.rbInactivos, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.rbTodos, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnReporte, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -274,8 +281,56 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 146);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(732, 184);
             this.tableLayoutPanel1.TabIndex = 53;
+            // 
+            // cmbFiltroCarrera
+            // 
+            this.cmbFiltroCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFiltroCarrera.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.SetColumnSpan(this.cmbFiltroCarrera, 2);
+            this.cmbFiltroCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroCarrera.FormattingEnabled = true;
+            this.cmbFiltroCarrera.Location = new System.Drawing.Point(122, 9);
+            this.cmbFiltroCarrera.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbFiltroCarrera.Name = "cmbFiltroCarrera";
+            this.cmbFiltroCarrera.Size = new System.Drawing.Size(228, 27);
+            this.cmbFiltroCarrera.TabIndex = 58;
+            // 
+            // lblCarrera
+            // 
+            this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCarrera.AutoSize = true;
+            this.lblCarrera.Location = new System.Drawing.Point(4, 10);
+            this.lblCarrera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCarrera.Name = "lblCarrera";
+            this.lblCarrera.Size = new System.Drawing.Size(110, 19);
+            this.lblCarrera.TabIndex = 57;
+            this.lblCarrera.Text = "Carrera:";
+            // 
+            // lblCicloLectivo
+            // 
+            this.lblCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCicloLectivo.AutoSize = true;
+            this.lblCicloLectivo.Location = new System.Drawing.Point(378, 10);
+            this.lblCicloLectivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCicloLectivo.Name = "lblCicloLectivo";
+            this.lblCicloLectivo.Size = new System.Drawing.Size(170, 19);
+            this.lblCicloLectivo.TabIndex = 59;
+            this.lblCicloLectivo.Text = "Ciclo Lectivo:";
+            // 
+            // cmbCicloLectivo
+            // 
+            this.cmbCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCicloLectivo.BackColor = System.Drawing.Color.White;
+            this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCicloLectivo.FormattingEnabled = true;
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(556, 9);
+            this.cmbCicloLectivo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCicloLectivo.Name = "cmbCicloLectivo";
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(172, 27);
+            this.cmbCicloLectivo.TabIndex = 60;
             // 
             // btnReporte
             // 
@@ -288,7 +343,7 @@
             this.btnReporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReporte.IconSize = 32;
             this.btnReporte.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnReporte.Location = new System.Drawing.Point(416, 67);
+            this.btnReporte.Location = new System.Drawing.Point(416, 107);
             this.btnReporte.Name = "btnReporte";
             this.tableLayoutPanel1.SetRowSpan(this.btnReporte, 2);
             this.btnReporte.Size = new System.Drawing.Size(133, 50);
@@ -309,7 +364,7 @@
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 32;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnBuscar.Location = new System.Drawing.Point(596, 67);
+            this.btnBuscar.Location = new System.Drawing.Point(596, 107);
             this.btnBuscar.Name = "btnBuscar";
             this.tableLayoutPanel1.SetRowSpan(this.btnBuscar, 2);
             this.btnBuscar.Size = new System.Drawing.Size(133, 50);
@@ -326,12 +381,25 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 245F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(20, 460);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(20, 465);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(732, 70);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(732, 65);
             this.tableLayoutPanel2.TabIndex = 59;
+            // 
+            // uscPaginacion1
+            // 
+            this.uscPaginacion1.BackColor = System.Drawing.Color.Transparent;
+            this.uscPaginacion1.dataGridView = null;
+            this.uscPaginacion1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uscPaginacion1.EntradaDatos = null;
+            this.uscPaginacion1.Location = new System.Drawing.Point(246, 3);
+            this.uscPaginacion1.Name = "uscPaginacion1";
+            this.uscPaginacion1.Recargar = null;
+            this.uscPaginacion1.SalidaDatos = null;
+            this.uscPaginacion1.Size = new System.Drawing.Size(239, 59);
+            this.uscPaginacion1.TabIndex = 56;
             // 
             // dgvAlumnos
             // 
@@ -364,7 +432,7 @@
             this.dgvAlumnos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAlumnos.EnableHeadersVisualStyles = false;
             this.dgvAlumnos.GridColor = System.Drawing.Color.White;
-            this.dgvAlumnos.Location = new System.Drawing.Point(20, 166);
+            this.dgvAlumnos.Location = new System.Drawing.Point(20, 204);
             this.dgvAlumnos.MultiSelect = false;
             this.dgvAlumnos.Name = "dgvAlumnos";
             this.dgvAlumnos.ReadOnly = true;
@@ -387,7 +455,7 @@
             this.dgvAlumnos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAlumnos.RowTemplate.Height = 28;
             this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlumnos.Size = new System.Drawing.Size(732, 294);
+            this.dgvAlumnos.Size = new System.Drawing.Size(732, 261);
             this.dgvAlumnos.TabIndex = 60;
             this.dgvAlumnos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvAlumnos_MouseUp);
             // 
@@ -431,9 +499,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private FontAwesome.Sharp.IconButton btnBuscar;
         private FontAwesome.Sharp.IconButton btnReporte;
-        private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public System.Windows.Forms.DataGridView dgvAlumnos;
         private System.Windows.Forms.ToolStripMenuItem tsmActualizarDocumentacion;
+        private System.Windows.Forms.ComboBox cmbFiltroCarrera;
+        private System.Windows.Forms.Label lblCarrera;
+        private System.Windows.Forms.Label lblCicloLectivo;
+        private System.Windows.Forms.ComboBox cmbCicloLectivo;
+        private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
     }
 }

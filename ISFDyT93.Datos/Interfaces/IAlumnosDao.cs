@@ -31,6 +31,7 @@ namespace ISFDyT93.Datos.Interfaces
         int ConsultarAlumnoCiclo(int AlumnoId);
         void DarAltaAlumnos(int alumnoId);
         DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo);
+        DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, bool? activo, int? carreraId, int? anioLectivoId);
         int CargarCursadasAlumnoSP(AlumnosCarrerasModelo Modelo);
         DataTable ObtenerPaisNacimientoAlumnos();
         DataTable ObtenerLocalidadAlumnos();
