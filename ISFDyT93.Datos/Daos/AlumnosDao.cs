@@ -1,10 +1,12 @@
-﻿using System;
-using System.Data;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Entidades.Enums;
-using System.Data.SqlClient;
-using ISFDyT93.Datos.Core;
+﻿using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Interfaces;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -249,7 +251,74 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
+        
+        public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, bool? activo, int? carreraId, int? anioLectivoId)
+        {
+            string query = "SELECT a.AlumnoId, a.Apellido, a.Nombre, a.NumeroDocumento AS Documento, a.FechaNacimiento AS Nacimiento, " +
+                           "c.DescripcionCorta AS Carrera, a.Activo FROM Alumnos a INNER JOIN AlumnosCarreras ac ON " +
+                           "a.AlumnoId = ac.AlumnoId INNER JOIN Carreras c ON ac.CarreraId = c.CarreraId WHERE ";
 
+            switch (tipo)
+            {
+                case TipoFiltroAlumno.Todos:
+                    query += $"(a.Apellido LIKE '%{filtro}%' OR a.Nombre LIKE '%{filtro}%' OR a.NumeroDocumento LIKE '%{filtro}%') ";
+                    break;
+
+                case TipoFiltroAlumno.NumeroDocumento:
+                    query += $"a.NumeroDocumento LIKE '%{filtro}%' ";
+                    break;
+
+                case TipoFiltroAlumno.Nombre:
+                    query += $"a.Nombre LIKE '%{filtro}%' ";
+                    break;
+
+                case TipoFiltroAlumno.Apellido:
+                    query += $"a.Apellido LIKE '%{filtro}%' ";
+                    break;
+            }
+
+            if (carreraId != null)
+                query += $"AND c.CarreraId = {carreraId} ";
+
+            if (anioLectivoId != null)
+                query += $"AND ac.CicloLectivoId = {anioLectivoId} ";
+
+            if (activo != null)
+            {
+                if (activo == true)
+                    query += "AND a.Activo = 1";
+                else if (activo == false)
+                    query += "AND a.Activo = 0";
+            }
+
+            query += " ORDER BY a.Apellido ASC";
+            return this.Conexion.ObtenerRegistros(query);
+        }
+
+        public void ObtenerCarreraCorta(ComboBox cmb)
+        {
+            string query = "SELECT CarreraId, DescripcionCorta FROM Carreras";
+            DataTable carreras = this.Conexion.ObtenerRegistros(query);
+
+            DataRow todas = carreras.NewRow();
+            todas["CarreraId"] = 0;
+            todas["DescripcionCorta"] = "Todas";
+            carreras.Rows.InsertAt(todas, 0);
+
+            cmb.DataSource = carreras;
+            cmb.ValueMember = "CarreraId";
+            cmb.DisplayMember = "DescripcionCorta";
+        }
+
+        public void ObtenerCicloLectivo(ComboBox cmb)
+        {
+            string query = "SELECT AnioLectivo FROM CicloLectivo DES";
+            DataTable anios = this.Conexion.ObtenerRegistros(query);
+
+            cmb.DataSource = anios;
+            cmb.ValueMember = "AnioLectivo";
+            cmb.DisplayMember = "AnioLectivo";
+        }
         public int CargarCursadasAlumnoSP(AlumnosCarrerasModelo Modelo)
         {
             int result = 0;

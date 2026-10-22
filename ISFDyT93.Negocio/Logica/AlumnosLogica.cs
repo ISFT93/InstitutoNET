@@ -6,6 +6,7 @@ using ISFDyT93.Negocio.Core;
 using System;
 using System.Linq;
 using ISFDyT93.Negocio.Interfaces;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Negocio.Logica
 {
@@ -139,6 +140,18 @@ namespace ISFDyT93.Negocio.Logica
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, string activo = null)
         {
             return this.alumnosDao.ObtenerTodosAlumnos(tipo, filtro, activo);
+        }
+        public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, bool? activo, int? CarreraId, int? AnioLectivoId)
+        {
+            return this.alumnosDao.ObtenerTodosAlumnos(tipo, filtro, activo, CarreraId, AnioLectivoId);
+        }
+        public void ObtenerCarreraCorta(ComboBox cmb)
+        {
+            this.alumnosDao.ObtenerCarreraCorta(cmb);
+        }
+        public void ObtenerCicloLectivo(ComboBox cmb)
+        {
+            this.alumnosDao.ObtenerCicloLectivo(cmb);
         }
         public string[] ObtenerPaisNacimientoAlumnos()
         {

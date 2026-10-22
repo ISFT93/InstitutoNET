@@ -113,6 +113,12 @@
     <Compile Include="Forms\Parametros\FormAgregarEspacio.Designer.cs">
       <DependentUpon>FormAgregarEspacio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarHorario.Designer.cs">
+      <DependentUpon>FormAgregarHorario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarTipoLicencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="Forms\Parametros\FormCargarClasificacion.Designer.cs">
       <DependentUpon>FormCargarClasificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Parametros\formAgregarTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\formAgregarTurno.Designer.cs">
+      <DependentUpon>formAgregarTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Parametros\FormCargosEstado.cs">
       <SubType>Form</SubType>
@@ -412,6 +424,12 @@
     <Compile Include="UserControls\uscEspFormacionAcademica.Designer.cs">
       <DependentUpon>uscEspFormacionAcademica.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscHorarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscHorarios.Designer.cs">
+      <DependentUpon>uscHorarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -435,6 +453,12 @@
     </Compile>
     <Compile Include="UserControls\uscTablaEspacios.Designer.cs">
       <DependentUpon>uscTablaEspacios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscTiposHorarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscTiposHorarios.Designer.cs">
+      <DependentUpon>uscTiposHorarios.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscTiposLicencias.cs">
       <SubType>UserControl</SubType>
@@ -487,11 +511,17 @@
     <EmbeddedResource Include="Forms\Parametros\FormAgregarEspacio.resx">
       <DependentUpon>FormAgregarEspacio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarHorario.resx">
+      <DependentUpon>FormAgregarHorario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarTipoLicencia.resx">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormCargarClasificacion.resx">
       <DependentUpon>FormCargarClasificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\formAgregarTurno.resx">
+      <DependentUpon>formAgregarTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormCargosEstado.resx">
       <DependentUpon>FormCargosEstado.cs</DependentUpon>
@@ -653,6 +683,9 @@
     <EmbeddedResource Include="UserControls\uscEspFormacionAcademica.resx">
       <DependentUpon>uscEspFormacionAcademica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscHorarios.resx">
+      <DependentUpon>uscHorarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>
     </EmbeddedResource>
@@ -679,6 +712,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscTipoLicencia.resx">
       <DependentUpon>uscTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscTiposHorarios.resx">
+      <DependentUpon>uscTiposHorarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscTiposLicencias.resx">
+      <DependentUpon>uscTiposLicencias.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
