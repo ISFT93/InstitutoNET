@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.picMover = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedor = new System.Windows.Forms.Panel();
             this.dgvTurnos = new System.Windows.Forms.DataGridView();
@@ -43,7 +42,6 @@
             this.opcionDeshabilitar = new System.Windows.Forms.ToolStripMenuItem();
             this.picAgregar = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
             this.pnlContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).BeginInit();
             this.menu.SuspendLayout();
@@ -57,7 +55,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Controls.Add(this.picMover, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTitulo, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlContenedor, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.picAgregar, 2, 0);
@@ -71,19 +68,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 538);
             this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // picMover
-            // 
-            this.picMover.Cursor = System.Windows.Forms.Cursors.Help;
-            this.picMover.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMover.Image = global::ISFDyT93.Vista.Properties.Resources.file_alt_solid;
-            this.picMover.Location = new System.Drawing.Point(4, 4);
-            this.picMover.Margin = new System.Windows.Forms.Padding(4);
-            this.picMover.Name = "picMover";
-            this.picMover.Size = new System.Drawing.Size(21, 29);
-            this.picMover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMover.TabIndex = 5;
-            this.picMover.TabStop = false;
             // 
             // lblTitulo
             // 
@@ -118,24 +102,24 @@
             this.dgvTurnos.AllowUserToDeleteRows = false;
             this.dgvTurnos.AllowUserToResizeRows = false;
             this.dgvTurnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTurnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTurnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTurnos.ContextMenuStrip = this.menu;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTurnos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTurnos.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTurnos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTurnos.Location = new System.Drawing.Point(0, 0);
             this.dgvTurnos.Margin = new System.Windows.Forms.Padding(0);
@@ -160,7 +144,7 @@
             this.opcionHabilitar,
             this.opcionDeshabilitar});
             this.menu.Name = "contextMenuStrip1";
-            this.menu.Size = new System.Drawing.Size(287, 152);
+            this.menu.Size = new System.Drawing.Size(287, 124);
             this.menu.Opening += new System.ComponentModel.CancelEventHandler(this.menu_Opening);
             // 
             // opcionAgregar
@@ -233,7 +217,6 @@
             this.Size = new System.Drawing.Size(1067, 538);
             this.Load += new System.EventHandler(this.uscTiposHorarios_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();
             this.pnlContenedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).EndInit();
             this.menu.ResumeLayout(false);
@@ -245,7 +228,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox picMover;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlContenedor;
         private System.Windows.Forms.DataGridView dgvTurnos;

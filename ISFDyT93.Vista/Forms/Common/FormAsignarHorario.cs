@@ -68,7 +68,14 @@ namespace ISFDyT93.Vista.Forms.Common
         #region Eventos
         private void FormAsignarHorario_Load(object sender, EventArgs e)
         {
-            picImprimir.Image.Save(@"d:\Users\Mansilla\Desktop\Nueva carpeta\impresora.png", System.Drawing.Imaging.ImageFormat.Png);
+            ToolTip toolTipImprimir = new ToolTip();
+
+            toolTipImprimir.SetToolTip(picImprimir, "Imprimir Curso seleccionado");
+            toolTipImprimir.SetToolTip(picImprimirCursos, "Imprimir TODOS los Cursos");
+
+            picImprimir.Enabled = false;
+            picImprimirCursos.Enabled = false;
+
             dgvAsignarHorario.ShowCellToolTips = true;
             this.AnioCarrera = aniosLogica.ObtenerAnioCarrera(AnioCarreraId);
             dgvAsignarHorario.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -307,9 +314,51 @@ namespace ISFDyT93.Vista.Forms.Common
              LtsHorariosModelo.Where(x => x.ModuloId == moduloId && x.DiaId == diaId).FirstOrDefault();
         private void CargarCombos()
         {
+            DataTable dtModulosTotales = horariosLogica.ObtnerModulos();
+            object dataSourceTurnos = null;
+
+            if (dtModulosTotales != null && dtModulosTotales.Rows.Count > 0)
+            {
+                var turnosFiltrados = dtModulosTotales.AsEnumerable()
+                    .Where(r => {
+                        string desc = r.Field<string>("Descripcion");
+                        string turno = r.Field<string>("Turno"); 
+                        if (string.IsNullOrWhiteSpace(desc) || desc.Trim() == "-" || string.IsNullOrWhiteSpace(turno))
+                            return false;
+
+                        bool activo = false;
+                        var valActivo = r["Activo"];
+                        if (valActivo != DBNull.Value)
+                        {
+                            if (valActivo is bool b) activo = b;
+                            else if (int.TryParse(valActivo.ToString(), out int i)) activo = (i == 1);
+                        }
+
+                        return activo && desc.Trim().Length > 1;
+                    })
+                    .Select(r => r.Field<string>("Turno").Trim()) 
+                    .Distinct()
+                    .OrderBy(t => t)
+                    .ToList();
+
+                DataTable dtTurnosValidos = new DataTable();
+                dtTurnosValidos.Columns.Add("Turno", typeof(string));
+
+                foreach (var turno in turnosFiltrados)
+                {
+                    dtTurnosValidos.Rows.Add(turno);
+                }
+
+                dataSourceTurnos = dtTurnosValidos;
+            }
+            else
+            {
+                dataSourceTurnos = horariosLogica.ObtenerTurnosUnicos();
+            }
+
             cmbTurnos.ValueMember = "Turno";
             cmbTurnos.DisplayMember = "Turno";
-            cmbTurnos.DataSource = horariosLogica.ObtenerTurnosUnicos();
+            cmbTurnos.DataSource = dataSourceTurnos;
 
             cmbCursos.ValueMember = "CursoId";
             cmbCursos.DisplayMember = "CodigoBloque";
@@ -331,6 +380,9 @@ namespace ISFDyT93.Vista.Forms.Common
                     .Where(r => {
                         string desc = r.Field<string>("Descripcion");
 
+                        // Filtramos si es nulo, vacío, espacios o '-'
+                        if (string.IsNullOrWhiteSpace(desc) || desc.Trim() == "-")
+                            return false;
 
                         bool activo = false;
                         var valActivo = r["Activo"];
@@ -340,13 +392,22 @@ namespace ISFDyT93.Vista.Forms.Common
                             else if (int.TryParse(valActivo.ToString(), out int i)) activo = (i == 1);
                         }
 
-                        return activo && !string.IsNullOrEmpty(desc) && desc.Trim().Length > 1;
+                        return activo && desc.Trim().Length > 1;
+                    })
+                    .OrderBy(r => {
+                        string desc = r.Field<string>("Descripcion") ?? "";
+                        string parteInicio = desc.Split('-')[0].Trim();
+                        if (TimeSpan.TryParse(parteInicio, out TimeSpan ts))
+                        {
+                            return ts.TotalMinutes;
+                        }
+                        return 0.0;
                     });
 
                 if (filasValidas.Any())
                     Modulos = filasValidas.CopyToDataTable();
                 else
-                    Modulos = dtOriginal.Clone(); 
+                    Modulos = dtOriginal.Clone();
             }
             else
             {
@@ -740,19 +801,25 @@ namespace ISFDyT93.Vista.Forms.Common
 
         private void cmbTurnos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTurnos.SelectedValue != null)
+            if (cmbTurnos.SelectedValue != null && cmbTurnos.SelectedIndex != -1)
             {
                 string turnoSeleccionado = cmbTurnos.SelectedValue.ToString();
 
-                
                 CargarModulosPorTurno(turnoSeleccionado);
 
-              
                 if (cmbCursos.SelectedValue != null && int.TryParse(cmbCursos.SelectedValue.ToString(), out int cursoId))
                 {
                     LtsHorariosModelo = HxCurso.ObtenerHorarioCurso(cursoId);
                     MostrarHorarios();
                 }
+
+                picImprimir.Enabled = true;
+                picImprimirCursos.Enabled = true;
+            }
+            else
+            {
+                picImprimir.Enabled = false;
+                picImprimirCursos.Enabled = false;
             }
         }
 
@@ -775,6 +842,16 @@ namespace ISFDyT93.Vista.Forms.Common
                         }
 
                         return activo && !string.IsNullOrEmpty(desc) && desc.Trim().Length > 1;
+                    })
+        
+                    .OrderBy(r => {
+                        string desc = r.Field<string>("Descripcion") ?? "";
+                        string parteInicio = desc.Split('-')[0].Trim();
+                        if (TimeSpan.TryParse(parteInicio, out TimeSpan ts))
+                        {
+                            return ts.TotalMinutes;
+                        }
+                        return 0.0;
                     });
 
                 if (filasValidas.Any())

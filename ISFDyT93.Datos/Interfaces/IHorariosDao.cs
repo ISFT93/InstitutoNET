@@ -15,5 +15,9 @@ namespace ISFDyT93.Datos.Interfaces
         int ActualizarHorarios(IList<HorariosModelo> ltsHorarios);
 
         int InsertarModulo(string turno, string descripcion);
+
+        int ActualizarEstadoPorTurno(string turno, bool activo);
+
+
     }
 }
