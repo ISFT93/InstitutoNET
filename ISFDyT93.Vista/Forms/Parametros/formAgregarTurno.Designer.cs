@@ -136,9 +136,9 @@
             this.label2.Location = new System.Drawing.Point(57, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.Size = new System.Drawing.Size(153, 20);
             this.label2.TabIndex = 200;
-            this.label2.Text = "Turnos Creados:";
+            this.label2.Text = "Turnos ya creados:";
             // 
             // cmbTurnosDisponibles
             // 

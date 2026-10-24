@@ -20,5 +20,7 @@ namespace ISFDyT93.Negocio.Interfaces
         bool InsertarTurno(string turno);
         IList<HorariosModelo> ObtenerHorarios(int cursoId);
         int ActualizarHorarios(IList<HorariosModelo> ltsHorarios);
+
+        bool ActualizarEstadoPorTurno(string turno, bool activo);
     }
 }

@@ -284,10 +284,10 @@ namespace ISFDyT93.Vista.Forms.Common
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.lblCurso, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbCursos, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAdmin, 1, 2);
@@ -364,9 +364,9 @@ namespace ISFDyT93.Vista.Forms.Common
             this.picImprimirCursos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picImprimirCursos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picImprimirCursos.Image = ((System.Drawing.Image)(resources.GetObject("picImprimirCursos.Image")));
-            this.picImprimirCursos.Location = new System.Drawing.Point(1071, 39);
+            this.picImprimirCursos.Location = new System.Drawing.Point(1028, 39);
             this.picImprimirCursos.Name = "picImprimirCursos";
-            this.picImprimirCursos.Size = new System.Drawing.Size(51, 24);
+            this.picImprimirCursos.Size = new System.Drawing.Size(94, 24);
             this.picImprimirCursos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImprimirCursos.TabIndex = 60;
             this.picImprimirCursos.TabStop = false;
@@ -377,9 +377,9 @@ namespace ISFDyT93.Vista.Forms.Common
             this.picImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picImprimir.Image = ((System.Drawing.Image)(resources.GetObject("picImprimir.Image")));
-            this.picImprimir.Location = new System.Drawing.Point(1071, 3);
+            this.picImprimir.Location = new System.Drawing.Point(1028, 3);
             this.picImprimir.Name = "picImprimir";
-            this.picImprimir.Size = new System.Drawing.Size(51, 24);
+            this.picImprimir.Size = new System.Drawing.Size(94, 24);
             this.picImprimir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImprimir.TabIndex = 59;
             this.picImprimir.TabStop = false;

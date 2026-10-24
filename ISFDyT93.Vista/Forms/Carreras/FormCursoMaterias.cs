@@ -1,6 +1,7 @@
 ﻿using ISFDyT93.Entidades.Modelos;
 using ISFDyT93.Negocio.Logica;
 using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,15 +57,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private void CargarPropiedadesFormPrincipal()
         {
             this.Curso = this.cursosLogica.ObtenerCurso(this.CursoId);
+
+            if (this.Curso == null)
+            {
+                Notificar(TipoNotificacion.Warning, "No se pudo obtener la información del curso seleccionado.");
+                return;
+            }
+
             this.aniocarrera = this.aniologica.ObtenerAnioCarreraId(this.CursoId);
             this.Contenedor.SetTitulo($"CURSO {this.Curso.AnioCarrera} - {this.Curso.NombreCurso}");
 
             this.Contenedor.SetVolver(() =>
-               Contenedor.AbrirFormulario<FormCursos>(form =>
-               {
-                   form.AnioCarreraId = this.Curso.AnioCarreraId;
-                   form.carreraId = this.aniocarrera.CarreraId;
-               }));
+                Contenedor.AbrirFormulario<FormCursos>(form =>
+                {
+                    form.AnioCarreraId = this.Curso.AnioCarreraId;
+                    form.carreraId = this.aniocarrera.CarreraId;
+                }));
         }
 
         private void CargarDatos()
@@ -90,8 +98,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (e.Button == MouseButtons.Right)
             {
-                tsmVerAlumnos.Visible = true;
-                tsmControlarAsistencia.Visible = true;
+                DataGridView.HitTestInfo info = dgvCursoMaterias.HitTest(e.X, e.Y);
+
+                if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
+                {
+                    dgvCursoMaterias.Rows[info.RowIndex].Cells[info.ColumnIndex].Selected = true;
+
+                    tsmVerAlumnos.Visible = true;
+                    tsmControlarAsistencia.Visible = true;
+
+                  
+                }
+                else
+                {
+                    tsmVerAlumnos.Visible = false;
+                    tsmControlarAsistencia.Visible = false;
+                }
             }
         }
 

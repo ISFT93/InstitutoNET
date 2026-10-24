@@ -93,5 +93,12 @@ namespace ISFDyT93.Datos.Daos
             string query = $"UPDATE Modulos SET Activo = {valorActivo} WHERE ModuloId = {moduloId}";
             return this.Conexion.EjecutarAccion(query);
         }
+
+        public int ActualizarEstadoPorTurno(string turno, bool activo)
+        {
+            int valorActivo = activo ? 1 : 0;
+            string query = $"UPDATE Modulos SET Activo = {valorActivo} WHERE Turno = '{turno}'";
+            return this.Conexion.EjecutarAccion(query);
+        }
     }
 }

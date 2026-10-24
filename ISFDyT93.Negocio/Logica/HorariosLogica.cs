@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -48,19 +49,20 @@ namespace ISFDyT93.Negocio.Logica
             DataTable dtOrdenado = new DataTable();
             dtOrdenado.Columns.Add("ModuloId", typeof(int));
             dtOrdenado.Columns.Add("Turno", typeof(string));
-            dtOrdenado.Columns.Add("horario", typeof(string)); 
+            dtOrdenado.Columns.Add("horario", typeof(string));
             dtOrdenado.Columns.Add("Activo", typeof(bool));
 
             var query = dtOriginal.AsEnumerable()
-                .OrderByDescending(r => r.Field<string>("Turno"))
-                .ThenBy(r => r.Field<string>("Descripcion")); 
+                .OrderByDescending(r => Convert.ToBoolean(r["Activo"])) 
+                .ThenBy(r => r.Field<string>("Turno"))                 
+                .ThenBy(r => r.Field<string>("Descripcion"));          
 
             foreach (var row in query)
             {
                 dtOrdenado.Rows.Add(
                     row["ModuloId"],
                     row["Turno"],
-                    row["Descripcion"], 
+                    row["Descripcion"],
                     row["Activo"]
                 );
             }
@@ -109,6 +111,11 @@ namespace ISFDyT93.Negocio.Logica
                 return false;
 
             int resultado = horariosDao.InsertarModulo(turno.Trim(), descripcion.Trim());
+            return resultado > 0;
+        }
+        public bool ActualizarEstadoPorTurno(string turno, bool activo)
+        {
+            int resultado = horariosDao.ActualizarEstadoPorTurno(turno, activo);
             return resultado > 0;
         }
     }

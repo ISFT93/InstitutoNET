@@ -17,10 +17,12 @@ namespace ISFDyT93.Vista.UserControls
     public partial class uscTiposHorarios : UserControl
     {
         private HorariosLogica horariosLogica = new HorariosLogica();
+
         public uscTiposHorarios()
         {
             InitializeComponent();
-            ConfigurarMenuContextual();
+            // Ya no llamamos a ConfigurarMenuContextual() para evitar que pise los estados
+            dgvTurnos.ContextMenuStrip = menu;
         }
 
         private void uscTiposHorarios_Load(object sender, EventArgs e)
@@ -28,9 +30,9 @@ namespace ISFDyT93.Vista.UserControls
             BackColor = ThemeColor.GetColor();
             CargarDGV();
         }
+
         private void CargarDGV()
         {
-
             DataTable dtTurnos = horariosLogica.ObtenerTurnosConDetalleOrdenados();
 
             dgvTurnos.DataSource = dtTurnos;
@@ -39,23 +41,12 @@ namespace ISFDyT93.Vista.UserControls
             {
                 dgvTurnos.Columns["horario"].HeaderText = "Horario";
             }
-        }
 
-        private void ConfigurarMenuContextual()
-        {
-            dgvTurnos.ContextMenuStrip = menu;
-            menu.Opening += (s, e) =>
+ 
+            if (dgvTurnos.Columns.Contains("ModuloId"))
             {
-
-                bool hayFilaSeleccionada = dgvTurnos.CurrentRow != null;
-
-                opcionAgregar.Visible = true;
-                opcionAgregarHorario.Visible = true;
-                opcionHabilitar.Visible = true;
-                opcionAgregarHorario.Visible = true;
-
-            };
-
+                dgvTurnos.Columns["ModuloId"].Visible = false;
+            }
         }
 
         private void dgvTurnos_MouseDown(object sender, MouseEventArgs e)
@@ -90,7 +81,6 @@ namespace ISFDyT93.Vista.UserControls
 
         private void opcionAgregar_Click(object sender, EventArgs e)
         {
-
             using (var form = new formAgregarTurno())
             {
                 if (form.ShowDialog() == DialogResult.OK)
@@ -102,12 +92,15 @@ namespace ISFDyT93.Vista.UserControls
 
         private void menu_Opening(object sender, CancelEventArgs e)
         {
-  
             if (dgvTurnos.CurrentRow == null || dgvTurnos.CurrentRow.Index < 0)
             {
-                e.Cancel = true; 
+                e.Cancel = true;
                 return;
             }
+
+            // Aseguramos que las opciones fijas de agregar siempre se muestren
+            opcionAgregar.Visible = true;
+            opcionAgregarHorario.Visible = true;
 
             var valorActivo = dgvTurnos.CurrentRow.Cells["Activo"].Value;
             bool activo = false;
@@ -128,6 +121,8 @@ namespace ISFDyT93.Vista.UserControls
                 }
             }
 
+            // Si está activo (true), mostramos "Deshabilitar" y ocultamos "Habilitar"
+            // Si está inactivo (false), mostramos "Habilitar" y ocultamos "Deshabilitar"
             opcionHabilitar.Visible = !activo;
             opcionDeshabilitar.Visible = activo;
         }
@@ -137,35 +132,39 @@ namespace ISFDyT93.Vista.UserControls
             CambiarEstadoModulo(true);
         }
 
-
         private void opcionDeshabilitar_Click(object sender, EventArgs e)
         {
             CambiarEstadoModulo(false);
         }
+
         private void CambiarEstadoModulo(bool nuevoEstado)
         {
             if (dgvTurnos.CurrentRow == null) return;
 
-            // Obtenemos el ModuloId de la fila seleccionada
-            int moduloId = Convert.ToInt32(dgvTurnos.CurrentRow.Cells["ModuloId"].Value);
+            string turnoSeleccionado = dgvTurnos.CurrentRow.Cells["Turno"].Value.ToString();
 
-            // Ejecutamos el cambio en la base de datos a través de la lógica
-            bool actualizado = horariosLogica.ActualizarEstadoModulo(moduloId, nuevoEstado);
+         
+            bool actualizado = horariosLogica.ActualizarEstadoPorTurno(turnoSeleccionado, nuevoEstado);
 
             if (actualizado)
             {
-                string mensaje = nuevoEstado ? "Módulo habilitado correctamente." : "Módulo deshabilitado correctamente.";
+                string mensaje = nuevoEstado
+                    ? $"Se habilitaron todos los módulos del turno '{turnoSeleccionado}'."
+                    : $"Se deshabilitaron todos los módulos del turno '{turnoSeleccionado}'.";
 
-                // Reemplazamos Notificar por MessageBox.Show
                 MessageBox.Show(mensaje, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Recargamos la grilla para reflejar el cambio al instante
                 CargarDGV();
             }
             else
             {
-                MessageBox.Show("Ocurrió un error al actualizar el estado del módulo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al actualizar el estado del turno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void picMover_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
