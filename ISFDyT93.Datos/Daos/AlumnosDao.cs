@@ -254,8 +254,8 @@ namespace ISFDyT93.Datos.Daos
         
         public DataTable ObtenerTodosAlumnos(TipoFiltroAlumno tipo, string filtro, bool? activo, int? carreraId, int? anioLectivoId)
         {
-            string query = "SELECT a.AlumnoId, a.Apellido, a.Nombre, a.NumeroDocumento AS Documento, a.FechaNacimiento AS Nacimiento, " +
-                           "c.DescripcionCorta AS Carrera, a.Activo FROM Alumnos a INNER JOIN AlumnosCarreras ac ON " +
+            string query = "SELECT a.AlumnoId, ac.AlumnoCarreraId, a.Apellido, a.Nombre, a.NumeroDocumento AS Documento, a.FechaNacimiento AS Nacimiento, " +
+                           "c.DescripcionCorta AS Carrera, a.Activo, ac.Inicializado FROM Alumnos a INNER JOIN AlumnosCarreras ac ON " +
                            "a.AlumnoId = ac.AlumnoId INNER JOIN Carreras c ON ac.CarreraId = c.CarreraId WHERE ";
 
             switch (tipo)
