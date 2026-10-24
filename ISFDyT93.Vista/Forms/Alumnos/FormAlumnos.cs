@@ -79,15 +79,15 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (cmbCicloLectivo.SelectedIndex != 0)
                 if (int.TryParse(cmbCicloLectivo.SelectedValue?.ToString(), out int ciclolectivoid))
                     AnioLectivoId = ciclolectivoid;
-            else
-                AnioLectivoId = null;
+                else
+                    AnioLectivoId = null;
 
             if (rbTodos.Checked == true)
-                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, null, CarreraId, AnioLectivoId);
             else if (rbActivos.Checked == true)
-                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'True'");
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, true, CarreraId, AnioLectivoId);
             else if (rbInactivos.Checked == true)
-                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, "'False'");
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro, false, CarreraId, AnioLectivoId);
 
             EstilosColumnasDGV();
         }
