@@ -7,6 +7,7 @@ using System.Data;
 using ISFDyT93.Datos.Core;
 using System.Reflection;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Security;
 using ISFDyT93.Datos.Interfaces;
 
@@ -182,7 +183,8 @@ namespace ISFDyT93.Datos.Daos
                 throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
 
             string query = "SELECT a.AlumnoId, CAST(NULL AS NVARCHAR(50)) AS Libro, CAST(NULL AS NVARCHAR(50)) AS Folio, "+
-                            "a.NumeroDocumento, a.Apellido, a.Nombre, a.Email, a.Celular, ma.Estado AS Condicion " +
+                            "a.NumeroDocumento, a.Apellido, a.Nombre, a.Email, a.Celular, " +
+                            "ma.Nota, ma.NotaDefinitiva, ma.NotaLetra, ma.Estado " +
                             "FROM dbo.MesaAlumno AS ma " +
                             "INNER JOIN dbo.MesasFinales AS mf "+
                             "ON ma.MesaFinalId = mf.MesaFinalId "+
@@ -195,7 +197,62 @@ namespace ISFDyT93.Datos.Daos
                             $"WHERE ma.MesaFinalId = { mesaFinalId } "+
                             "ORDER BY a.Apellido, a.Nombre ";
 
-            return this.Conexion.ObtenerRegistros(query);
+            DataTable alumnos = this.Conexion.ObtenerRegistros(query);
+            alumnos.Columns.Add("NotaPrimerNumero", typeof(string));
+            alumnos.Columns.Add("NotaPrimerLetra", typeof(string));
+            alumnos.Columns.Add("NotaFinalNumero", typeof(string));
+            alumnos.Columns.Add("NotaFinalLetra", typeof(string));
+            alumnos.Columns.Add("TotalAprobado", typeof(int));
+            alumnos.Columns.Add("TotalAplazado", typeof(int));
+            alumnos.Columns.Add("TotalAusente", typeof(int));
+
+            foreach (DataRow alumno in alumnos.Rows)
+            {
+                string letraRegistrada = Convert.ToString(alumno["NotaLetra"]).Trim();
+                bool estadoAusente = string.Equals(Convert.ToString(alumno["Estado"]).Trim(), "Ausente", StringComparison.OrdinalIgnoreCase);
+                bool ausente = estadoAusente
+                    || string.Equals(letraRegistrada, "Ausente", StringComparison.OrdinalIgnoreCase);
+                decimal? definitiva = alumno.IsNull("NotaDefinitiva") ? (decimal?)null : Convert.ToDecimal(alumno["NotaDefinitiva"]);
+                alumno["TotalAprobado"] = !estadoAusente && definitiva >= 4 ? 1 : 0;
+                alumno["TotalAplazado"] = !estadoAusente && definitiva <= 3 ? 1 : 0;
+                alumno["TotalAusente"] = estadoAusente ? 1 : 0;
+                if (ausente)
+                {
+                    foreach (string columna in new[] { "NotaPrimerNumero", "NotaPrimerLetra", "NotaFinalNumero", "NotaFinalLetra" })
+                        alumno[columna] = "Ausente";
+                    continue;
+                }
+
+                decimal? primera = alumno.IsNull("Nota") ? (decimal?)null : Convert.ToDecimal(alumno["Nota"]);
+                alumno["NotaPrimerNumero"] = FormatearNota(primera);
+                alumno["NotaPrimerLetra"] = primera.HasValue
+                    ? (string.IsNullOrEmpty(letraRegistrada) ? NotaEnLetras(primera.Value) : letraRegistrada)
+                    : string.Empty;
+                alumno["NotaFinalNumero"] = FormatearNota(definitiva);
+                alumno["NotaFinalLetra"] = definitiva.HasValue
+                    ? (definitiva == primera && !string.IsNullOrEmpty(letraRegistrada)
+                        ? letraRegistrada : NotaEnLetras(definitiva.Value))
+                    : string.Empty;
+            }
+
+            return alumnos;
+        }
+
+        private static string FormatearNota(decimal? nota)
+        {
+            return nota.HasValue ? nota.Value.ToString("0.##", CultureInfo.GetCultureInfo("es-AR")) : string.Empty;
+        }
+
+        private static string NotaEnLetras(decimal nota)
+        {
+            string[] nombres = { "Cero", "Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez" };
+            int parteEntera = (int)decimal.Truncate(nota);
+            if (parteEntera < 0 || parteEntera >= nombres.Length) return string.Empty;
+            string resultado = nombres[parteEntera];
+            string[] partes = nota.ToString("0.##", CultureInfo.InvariantCulture).Split('.');
+            if (partes.Length == 1) return resultado;
+            string[] digitos = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+            return resultado + " coma " + string.Join(" ", partes[1].Select(c => digitos[c - '0']));
         }
 
         public DataTable ExistenFechasFinales(int anioLectivo)

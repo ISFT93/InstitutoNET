@@ -257,10 +257,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
             AbrirReporteMesa(true);
         }
 
-        private void AbrirReporteMesa(bool acta)
+        private void AbrirReporteMesa(bool acta, DataGridViewRow filaSeleccionada = null)
         {
-            int mesaFinalId = ObtenerIdCelda(dgvMesasFinales.CurrentRow, "MesaFinalId");
-            if (mesaFinalId <= 0 || dgvMesasFinales.CurrentRow.IsNewRow)
+            DataGridViewRow fila = filaSeleccionada ?? dgvMesasFinales.CurrentRow;
+            int mesaFinalId = ObtenerIdCelda(fila, "MesaFinalId");
+            if (mesaFinalId <= 0 || fila.IsNewRow)
             {
                 Notificar(TipoNotificacion.Warning, "Debe seleccionar una mesa para imprimir");
                 return;
@@ -315,6 +316,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
             if (fila == null || fila.IsNewRow)
                 return;
+
+            if (ObtenerIdCelda(fila, "VocalId") > 0)
+            {
+                AbrirReporteMesa(true, fila);
+                return;
+            }
 
             Contenedor.AbrirFormulario<FormAgregarFechasFinales>(form =>
             {

@@ -755,6 +755,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagenes\CargaMasiva.png" />
+    <Content Include="Imagenes\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
