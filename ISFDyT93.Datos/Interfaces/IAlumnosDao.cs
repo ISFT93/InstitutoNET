@@ -23,6 +23,7 @@ namespace ISFDyT93.Datos.Interfaces
         AlumnosModelo ObtenerAlumno(int AlumnoId);
         AlumnosModelo ObtenerAlumnoCarrera(int AlumnoId);
         AlumnosCarrerasModelo TraerAlumnoCarrera(int AlumnoId);
+        DataRow ObtenerLibroYFolioAlumno(int AlumnoId);
         void EliminarAlumno(int AlumnoId);
         void BajaAlumnoCarrera(int AlumnoId);
         int TraerCarreraIdActiva(int AlumnoId);
