@@ -92,6 +92,11 @@ namespace ISFDyT93.Negocio.Logica
             return this.alumnosDao.TraerAlumnoCarrera(AlumnoId);
         }
 
+        public DataRow ObtenerLibroYFolioAlumno(int AlumnoId)
+        {
+            return this.alumnosDao.ObtenerLibroYFolioAlumno(AlumnoId);
+        }
+
         public int TraerCarreraIdActiva(int AlumnoId)
         {
             //AlumnosCarreraModelo result = new AlumnosCarreraModelo();
