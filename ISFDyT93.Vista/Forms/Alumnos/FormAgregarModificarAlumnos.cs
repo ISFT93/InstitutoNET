@@ -105,7 +105,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 this.MapToForm<AlumnosModelo>(DatosAlumnos);
                 this.MapToForm<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
             }
-
+            CargarLibroYFolio();
             if (this.Accion == TipoAccion.Ver)
             {
                 // Usamos un método recursivo para que funcione tanto con TextBox directos del GroupBox
@@ -470,7 +470,28 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         {
             CicloLectivoId.DataSource = new CicloLectivosLogica().ObtenerAniosCiclosLectivosActivos();
         }
+        private void CargarLibroYFolio()
+        {
+            string nroLibro = "-";
+            string nroFolio = "-";
 
+            if (this.AlumnoId > 0)
+            {
+                DataRow datosLibro = alumnosLogica.ObtenerLibroYFolioAlumno(this.AlumnoId);
+
+                if (datosLibro != null)
+                {
+                    if (datosLibro["LibroNumero"] != DBNull.Value)
+                        nroLibro = datosLibro["LibroNumero"].ToString();
+
+                    if (datosLibro["NroFolio"] != DBNull.Value)
+                        nroFolio = datosLibro["NroFolio"].ToString().Trim();
+                }
+            }
+
+            lblNroLibro.Text = $"Libro Nro: {nroLibro}";
+            lblNroFolio.Text = $"Folio Nro: {nroFolio}";
+        }
         private void txtSoloNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !validador.SoloNumeros(e.KeyChar.ToString()))
