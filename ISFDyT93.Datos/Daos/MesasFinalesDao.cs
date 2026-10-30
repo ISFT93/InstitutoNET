@@ -183,7 +183,7 @@ namespace ISFDyT93.Datos.Daos
                 throw new ArgumentOutOfRangeException(nameof(mesaFinalId));
 
             string query = "SELECT a.AlumnoId, CAST(NULL AS NVARCHAR(50)) AS Libro, CAST(NULL AS NVARCHAR(50)) AS Folio, "+
-                            "a.NumeroDocumento, a.Apellido, a.Nombre, a.Email, a.Celular, " +
+                            "a.NumeroDocumento, a.Apellido, a.Nombre, " +
                             "ma.Nota, ma.NotaDefinitiva, ma.NotaLetra, ma.Estado " +
                             "FROM dbo.MesaAlumno AS ma " +
                             "INNER JOIN dbo.MesasFinales AS mf "+
