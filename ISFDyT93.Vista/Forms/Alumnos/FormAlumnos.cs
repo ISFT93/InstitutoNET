@@ -119,6 +119,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
                 tsmAgregarAlumno.Visible = ((CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0));
                 tsmActualizarDocumentacion.Visible = false;
+                tsmVerAnalitico.Visible = false;
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
@@ -141,6 +142,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
+                    tsmVerAnalitico.Visible = true;
                     if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
                         tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
                     else
@@ -153,6 +155,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmModificarAlumno.Visible = false;
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
+                    tsmVerAnalitico.Visible = false;
                     tsmAsignarMaterias.Visible = false;
                     tsmDarAlta.Visible = false;
                     tsmActualizarDocumentacion.Visible = true;
@@ -385,6 +388,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
             {
                 form.Accion = TipoAccion.Ver;
+                form.AlumnoId = AlumnoId;
+            });
+        }
+        private void tsmVerAnalitico_Click(object sender, EventArgs e)
+        {
+            Contenedor.AbrirFormulario<FormVerAnalitico>(form =>
+            {
                 form.AlumnoId = AlumnoId;
             });
         }
