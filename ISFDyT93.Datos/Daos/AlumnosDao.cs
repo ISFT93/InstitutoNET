@@ -120,6 +120,16 @@ namespace ISFDyT93.Datos.Daos
             return MapToModel<AlumnosCarrerasModelo>(this.Conexion.ObtenerRegistro(query));
 
         }
+        public DataRow ObtenerLibroYFolioAlumno(int AlumnoId)
+        {
+            string query = "SELECT TOP 1 LA.LibroNumero, AC.NroFolio " +
+                           "FROM dbo.AlumnosCarreras AC " +
+                           "LEFT JOIN dbo.LibroActas LA ON LA.LibroActaId = AC.LibroActaId " +
+                           $"WHERE AC.AlumnoId = {AlumnoId} AND AC.Activo = 1 " +
+                           "ORDER BY AC.AlumnoCarreraId DESC";
+
+            return this.Conexion.ObtenerRegistro(query);
+        }
         public void EliminarAlumno(int AlumnoId)
         {
             string query = "UPDATE Alumnos SET Activo = " + 0 + "WHERE AlumnoId = " + AlumnoId + "";
@@ -406,5 +416,7 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.EjecutarAccion(query);
         }
+
+
     }
 }
