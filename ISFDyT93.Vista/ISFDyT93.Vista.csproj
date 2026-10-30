@@ -149,6 +149,12 @@
     <Compile Include="Forms\Alumnos\FormDocumentacionAlumno.Designer.cs">
       <DependentUpon>FormDocumentacionAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alumnos\FormVerAnalitico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alumnos\FormVerAnalitico.Designer.cs">
+      <DependentUpon>FormVerAnalitico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Carreras\FormAgregarFechasFinales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -528,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alumnos\FormDocumentacionAlumno.resx">
       <DependentUpon>FormDocumentacionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alumnos\FormVerAnalitico.resx">
+      <DependentUpon>FormVerAnalitico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Carreras\FormAgregarFechasFinales.resx">
       <DependentUpon>FormAgregarFechasFinales.cs</DependentUpon>
