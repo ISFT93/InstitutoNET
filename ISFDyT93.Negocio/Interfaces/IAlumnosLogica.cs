@@ -23,6 +23,7 @@ namespace ISFDyT93.Negocio.Interfaces
         int ModificarAlumno(AlumnosModelo modelo);
         AlumnosModelo ObtenerAlumno(int AlumnoId);
         AlumnosCarrerasModelo TraerAlumnoCarrera(int AlumnoId);
+        DataRow ObtenerLibroYFolioAlumno(int AlumnoId);
         int TraerCarreraIdActiva(int AlumnoId);
         void EliminarAlumno(int AlumnoId);
         void BajaAlumnoCarrera(int AlumnoId);
