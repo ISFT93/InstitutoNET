@@ -179,6 +179,7 @@
             this.tsmVerAnalitico.Name = "tsmVerAnalitico";
             this.tsmVerAnalitico.Size = new System.Drawing.Size(248, 30);
             this.tsmVerAnalitico.Text = "Ver Analitico";
+            this.tsmVerAnalitico.Click += new System.EventHandler(this.tsmVerAnalitico_Click);
             // 
             // tsmAsignarMaterias
             // 
