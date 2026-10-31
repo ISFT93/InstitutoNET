@@ -66,6 +66,7 @@
     <Compile Include="Enums\TipoFiltroProfesor.cs" />
     <Compile Include="Enums\TipoLibro.cs" />
     <Compile Include="Enums\TipoParametro.cs" />
+    <Compile Include="Modelos\AnaliticoItem.cs" />
     <Compile Include="Modelos\AlumnosCarrerasModelo.cs" />
     <Compile Include="Modelos\AlumnosModelo.cs" />
     <Compile Include="Modelos\AniosCarrerasModelo.cs" />
