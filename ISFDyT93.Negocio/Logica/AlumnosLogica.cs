@@ -1,5 +1,6 @@
 ﻿using ISFDyT93.Datos.Daos;
 using ISFDyT93.Entidades.Modelos;
+using System.Collections.Generic;
 using System.Data;
 using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Negocio.Core;
@@ -95,6 +96,88 @@ namespace ISFDyT93.Negocio.Logica
         public DataRow ObtenerLibroYFolioAlumno(int AlumnoId)
         {
             return this.alumnosDao.ObtenerLibroYFolioAlumno(AlumnoId);
+        }
+
+        public DataRow ObtenerDatosAnaliticoAlumno(int AlumnoId)
+        {
+            return this.alumnosDao.ObtenerDatosAnaliticoAlumno(AlumnoId);
+        }
+
+        public List<AnaliticoItem> ObtenerAnaliticoAlumno(int AlumnoCarreraId)
+        {
+            DataTable tabla = this.alumnosDao.ObtenerAnaliticoAlumno(AlumnoCarreraId);
+            var items = new List<AnaliticoItem>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                items.Add(new AnaliticoItem
+                {
+                    AnaliticoId = fila["AnaliticoId"] == DBNull.Value
+                        ? 0
+                        : Convert.ToInt32(fila["AnaliticoId"]),
+                    CursadaAlumnoCarreraId = fila["CursadaAlumnoCarreraId"] == DBNull.Value
+                        ? 0
+                        : Convert.ToInt32(fila["CursadaAlumnoCarreraId"]),
+                    AlumnoCarreraId = fila["AlumnoCarreraId"] == DBNull.Value
+                        ? 0
+                        : Convert.ToInt32(fila["AlumnoCarreraId"]),
+                    CodigoBloqueMateria = fila["CodigoBloqueMateria"] == DBNull.Value
+                        ? null
+                        : fila["CodigoBloqueMateria"].ToString(),
+                    AnioCicloLectivo = fila["AnioCicloLectivo"] == DBNull.Value
+                        ? 0
+                        : Convert.ToInt32(fila["AnioCicloLectivo"]),
+                    AnioCarrera = ObtenerNombreAnioCarrera(fila["AnioCarrera"]),
+                    Orden = fila["Orden"] == DBNull.Value ? 0 : Convert.ToInt32(fila["Orden"]),
+                    Materia = fila["Materia"] == DBNull.Value ? "" : fila["Materia"].ToString(),
+                    AnioCursada = fila["AnioCursada"] == DBNull.Value
+                        ? (int?)null
+                        : Convert.ToInt32(fila["AnioCursada"]),
+                    Nota = fila["Nota"] == DBNull.Value
+                        ? (decimal?)null
+                        : Convert.ToDecimal(fila["Nota"]),
+                    NotaLetras = fila["NotaLetras"] == DBNull.Value
+                        ? null
+                        : fila["NotaLetras"].ToString(),
+                    Condicion = fila["Condicion"] == DBNull.Value
+                        ? null
+                        : fila["Condicion"].ToString(),
+                    Libro = fila["Libro"] == DBNull.Value
+                        ? (int?)null
+                        : Convert.ToInt32(fila["Libro"]),
+                    Folio = fila["Folio"] == DBNull.Value
+                        ? (int?)null
+                        : Convert.ToInt32(fila["Folio"]),
+                    Fecha = fila["Fecha"] == DBNull.Value
+                        ? (DateTime?)null
+                        : Convert.ToDateTime(fila["Fecha"])
+                });
+            }
+
+            return items;
+        }
+
+        public int GuardarNotaEquivalencia(AnaliticoItem item)
+        {
+            return this.alumnosDao.GuardarNotaEquivalencia(item);
+        }
+
+        private string ObtenerNombreAnioCarrera(object valor)
+        {
+            if (valor == DBNull.Value)
+                return "SIN AÑO";
+
+            int anio = Convert.ToInt32(valor);
+
+            switch (anio)
+            {
+                case 1: return "PRIMER AÑO";
+                case 2: return "SEGUNDO AÑO";
+                case 3: return "TERCER AÑO";
+                case 4: return "CUARTO AÑO";
+                case 5: return "QUINTO AÑO";
+                default: return $"{anio}° AÑO";
+            }
         }
 
         public int TraerCarreraIdActiva(int AlumnoId)
