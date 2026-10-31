@@ -396,6 +396,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             Contenedor.AbrirFormulario<FormVerAnalitico>(form =>
             {
                 form.AlumnoId = AlumnoId;
+                form.AlumnoCarreraId = AlumnoCarreraId;
             });
         }
         private void tsmAsignarMaterias_Click(object sender, EventArgs e)
