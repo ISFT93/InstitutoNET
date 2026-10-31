@@ -5,6 +5,7 @@ using ISFDyT93.Entidades.Modelos;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -129,6 +130,201 @@ namespace ISFDyT93.Datos.Daos
                            "ORDER BY AC.AlumnoCarreraId DESC";
 
             return this.Conexion.ObtenerRegistro(query);
+        }
+        public DataRow ObtenerDatosAnaliticoAlumno(int AlumnoId)
+        {
+            string query = "SELECT TOP 1 A.Apellido, A.Nombre, A.NumeroDocumento, A.FechaNacimiento, A.LocalidadNacimiento, " +
+                           "LA.LibroNumero, AC.NroFolio, YEAR(AC.FechaAlta) AS AnioIngreso " +
+                           "FROM dbo.Alumnos A " +
+                           "LEFT JOIN dbo.AlumnosCarreras AC ON AC.AlumnoId = A.AlumnoId AND AC.Activo = 1 " +
+                           "LEFT JOIN dbo.LibroActas LA ON LA.LibroActaId = AC.LibroActaId " +
+                           $"WHERE A.AlumnoId = {AlumnoId} " +
+                           "ORDER BY AC.AlumnoCarreraId DESC";
+
+            return this.Conexion.ObtenerRegistro(query);
+        }
+        public DataTable ObtenerAnaliticoAlumno(int AlumnoCarreraId)
+        {
+            string query = $@"
+;WITH AlumnoCarrera AS
+(
+    SELECT AlumnoCarreraId, AlumnoId, CarreraId
+    FROM dbo.AlumnosCarreras
+    WHERE AlumnoCarreraId = {AlumnoCarreraId}
+),
+MateriasCarrera AS
+(
+    SELECT AL.AlumnoCarreraId,
+           M.MateriaId,
+           M.MateriasCodigoBloque,
+           M.Nombre AS Materia,
+           M.AnioCarreraId,
+           AC.AnioCarrera
+    FROM dbo.Materias M
+    INNER JOIN dbo.AniosCarreras AC ON AC.AnioCarreraId = M.AnioCarreraId
+    INNER JOIN AlumnoCarrera AL ON AL.CarreraId = AC.CarreraId
+    WHERE M.Activo = 1
+),
+CursadasAlumno AS
+(
+    SELECT CAC.CursadaAlumnoCarreraId,
+           CAC.AlumnoCarreraId,
+           CAC.AnioCicloLectivo,
+           CAC.Estado,
+           M.MateriaId,
+           ROW_NUMBER() OVER (
+               PARTITION BY M.MateriaId
+               ORDER BY CAC.AnioCicloLectivo DESC, CAC.CursadaAlumnoCarreraId DESC
+           ) AS rn
+    FROM dbo.CursadaAlumnoCarreras CAC
+    INNER JOIN dbo.Cursadas C ON C.CursadaId = CAC.CursadaId
+    INNER JOIN dbo.CursoMaterias CM ON CM.CursoMateriaId = C.CursoMateriaId
+    INNER JOIN dbo.Materias M ON M.MateriaId = CM.MateriaId
+    WHERE CAC.AlumnoCarreraId = {AlumnoCarreraId}
+      AND CAC.Activo = 1
+),
+Datos AS
+(
+    SELECT
+        MC.AlumnoCarreraId,
+        MC.MateriasCodigoBloque AS CodigoBloqueMateria,
+        MC.AnioCarrera,
+        MC.Materia,
+        CA.CursadaAlumnoCarreraId,
+        CA.AnioCicloLectivo,
+        CA.Estado,
+        A.AnaliticoId,
+        A.NroAnalitico,
+        COALESCE(A.NotaMesa, MA.Nota) AS Nota,
+        COALESCE(A.NotaLetra, MA.NotaLetra) AS NotaLetras,
+        CASE
+            WHEN A.AnaliticoId IS NOT NULL THEN A.EstadoCursada
+            WHEN CA.CursadaAlumnoCarreraId IS NULL THEN NULL
+            ELSE CASE RTRIM(CA.Estado)
+                     WHEN 'R' THEN 'REG'
+                     WHEN 'CU' THEN 'CURSANDO'
+                     ELSE RTRIM(CA.Estado)
+                 END
+        END AS Condicion,
+        COALESCE(A.NroLibro, LA.LibroNumero) AS Libro,
+        COALESCE(A.NroFolio, TRY_CONVERT(int, MF.NroFolio)) AS Folio,
+        COALESCE(A.FechaMesa, MA.Fecha) AS Fecha,
+        ROW_NUMBER() OVER (
+            PARTITION BY MC.AnioCarreraId
+            ORDER BY MC.Materia
+        ) AS OrdenCalculado
+    FROM MateriasCarrera MC
+    LEFT JOIN CursadasAlumno CA
+        ON CA.MateriaId = MC.MateriaId
+       AND CA.rn = 1
+    OUTER APPLY (
+        SELECT TOP 1 A2.*
+        FROM dbo.Analitico A2
+        WHERE A2.CursadaAlumnoCarreraId = CA.CursadaAlumnoCarreraId
+        ORDER BY A2.AnaliticoId DESC
+    ) A
+    OUTER APPLY (
+        SELECT TOP 1 MA2.*
+        FROM dbo.MesaAlumno MA2
+        WHERE MA2.CursadaAlumnoCarreraId = CA.CursadaAlumnoCarreraId
+        ORDER BY MA2.MesaAlumnoId DESC
+    ) MA
+    LEFT JOIN dbo.MesasFinales MF ON MF.MesaFinalId = MA.MesaFinalId
+    LEFT JOIN dbo.LibroActas LA ON LA.LibroActaId = MF.LibroActaId
+)
+SELECT
+    COALESCE(AnaliticoId, 0) AS AnaliticoId,
+    COALESCE(CursadaAlumnoCarreraId, 0) AS CursadaAlumnoCarreraId,
+    AlumnoCarreraId,
+    CodigoBloqueMateria,
+    COALESCE(NroAnalitico, OrdenCalculado) AS Orden,
+    AnioCarrera,
+    Materia,
+    AnioCicloLectivo AS AnioCursada,
+    AnioCicloLectivo,
+    Nota,
+    NotaLetras,
+    Condicion,
+    Libro,
+    Folio,
+    Fecha
+FROM Datos
+ORDER BY AnioCarrera, Orden";
+
+            return this.Conexion.ObtenerRegistros(query);
+        }
+        public int GuardarNotaEquivalencia(AnaliticoItem item)
+        {
+            if (item.CursadaAlumnoCarreraId <= 0 || item.AlumnoCarreraId <= 0)
+                return 0;
+
+            string nota = item.Nota.HasValue
+                ? item.Nota.Value.ToString(CultureInfo.InvariantCulture)
+                : "NULL";
+
+            string notaLetra = string.IsNullOrWhiteSpace(item.NotaLetras)
+                ? "NULL"
+                : "'" + item.NotaLetras.Replace("'", "''") + "'";
+
+            string condicion = string.IsNullOrWhiteSpace(item.Condicion)
+                ? "NULL"
+                : "'" + item.Condicion.Replace("'", "''") + "'";
+
+            string codigo = string.IsNullOrWhiteSpace(item.CodigoBloqueMateria)
+                ? "NULL"
+                : "'" + item.CodigoBloqueMateria.Replace("'", "''") + "'";
+
+            int anioCicloLectivo = item.AnioCicloLectivo > 0
+                ? item.AnioCicloLectivo
+                : (item.AnioCursada ?? DateTime.Now.Year);
+
+            string query;
+
+            if (item.AnaliticoId > 0)
+            {
+                query = $@"
+UPDATE dbo.Analitico
+SET NotaMesa = {nota},
+    NotaLetra = {notaLetra},
+    EstadoCursada = {condicion}
+WHERE AnaliticoId = {item.AnaliticoId}";
+
+                return this.Conexion.EjecutarAccion(query) > 0
+                    ? item.AnaliticoId
+                    : 0;
+            }
+
+            query = $@"
+INSERT INTO dbo.Analitico
+(
+    NroAnalitico,
+    CursadaAlumnoCarreraId,
+    AlumnoCarreraId,
+    CodigoBloqueMateria,
+    AnioCicloLectivo,
+    EstadoCursada,
+    NotaMesa,
+    NotaLetra
+)
+VALUES
+(
+    {item.Orden},
+    {item.CursadaAlumnoCarreraId},
+    {item.AlumnoCarreraId},
+    {codigo},
+    {anioCicloLectivo},
+    {condicion},
+    {nota},
+    {notaLetra}
+);
+
+SELECT CAST(SCOPE_IDENTITY() AS INT) AS AnaliticoId;";
+
+            DataRow fila = this.Conexion.ObtenerRegistro(query);
+
+            return fila == null || fila["AnaliticoId"] == DBNull.Value
+                ? 0
+                : Convert.ToInt32(fila["AnaliticoId"]);
         }
         public void EliminarAlumno(int AlumnoId)
         {
