@@ -24,6 +24,9 @@ namespace ISFDyT93.Negocio.Interfaces
         AlumnosModelo ObtenerAlumno(int AlumnoId);
         AlumnosCarrerasModelo TraerAlumnoCarrera(int AlumnoId);
         DataRow ObtenerLibroYFolioAlumno(int AlumnoId);
+        DataRow ObtenerDatosAnaliticoAlumno(int AlumnoId);
+        List<AnaliticoItem> ObtenerAnaliticoAlumno(int AlumnoCarreraId);
+        int GuardarNotaEquivalencia(AnaliticoItem item);
         int TraerCarreraIdActiva(int AlumnoId);
         void EliminarAlumno(int AlumnoId);
         void BajaAlumnoCarrera(int AlumnoId);
