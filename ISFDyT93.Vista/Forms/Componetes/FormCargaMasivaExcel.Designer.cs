@@ -45,6 +45,8 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.pnlOpcionesCarga = new System.Windows.Forms.Panel();
             this.pnlAccionesCarga = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCargaMasiva)).BeginInit();
+            this.pnlOpcionesCarga.SuspendLayout();
+            this.pnlAccionesCarga.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCargaMasiva
@@ -84,7 +86,6 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.dgvCargaMasiva.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCargaMasiva.MultiSelect = false;
             this.dgvCargaMasiva.Name = "dgvCargaMasiva";
-            this.dgvCargaMasiva.ReadOnly = false;
             this.dgvCargaMasiva.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvCargaMasiva.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -144,7 +145,6 @@ namespace ISFDyT93.Vista.Forms.Componentes
             // 
             // btnBuscarArchivoExcel
             // 
-            this.btnBuscarArchivoExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBuscarArchivoExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnBuscarArchivoExcel.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.btnBuscarArchivoExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
@@ -163,51 +163,47 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.btnBuscarArchivoExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscarArchivoExcel.UseVisualStyleBackColor = false;
             this.btnBuscarArchivoExcel.Click += new System.EventHandler(this.btnBuscarArchivoExcel_Click);
-            //
+            // 
             // cboHojasExcel
-            //
-            this.cboHojasExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            // 
             this.cboHojasExcel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHojasExcel.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHojasExcel.FormattingEnabled = true;
-            this.cboHojasExcel.Location = new System.Drawing.Point(55, 10);
+            this.cboHojasExcel.Location = new System.Drawing.Point(68, 10);
             this.cboHojasExcel.Name = "cboHojasExcel";
             this.cboHojasExcel.Size = new System.Drawing.Size(180, 30);
             this.cboHojasExcel.TabIndex = 54;
             this.cboHojasExcel.Visible = false;
             this.cboHojasExcel.SelectedIndexChanged += new System.EventHandler(this.cboHojasExcel_SelectedIndexChanged);
-            //
+            // 
             // lblHojaExcel
-            //
-            this.lblHojaExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            // 
             this.lblHojaExcel.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHojaExcel.Location = new System.Drawing.Point(10, 11);
             this.lblHojaExcel.Name = "lblHojaExcel";
-            this.lblHojaExcel.Size = new System.Drawing.Size(40, 28);
+            this.lblHojaExcel.Size = new System.Drawing.Size(52, 28);
             this.lblHojaExcel.TabIndex = 55;
             this.lblHojaExcel.Text = "Hoja";
             this.lblHojaExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblHojaExcel.Visible = false;
-            //
+            // 
             // lblCamposFaltantes
-            //
-            this.lblCamposFaltantes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.lblCamposFaltantes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCamposFaltantes.AutoSize = false;
             this.lblCamposFaltantes.BackColor = System.Drawing.Color.MistyRose;
             this.lblCamposFaltantes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.lblCamposFaltantes.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblCamposFaltantes.Location = new System.Drawing.Point(245, 2);
+            this.lblCamposFaltantes.Location = new System.Drawing.Point(263, 2);
             this.lblCamposFaltantes.Margin = new System.Windows.Forms.Padding(4);
             this.lblCamposFaltantes.Name = "lblCamposFaltantes";
-            this.lblCamposFaltantes.Size = new System.Drawing.Size(405, 48);
+            this.lblCamposFaltantes.Size = new System.Drawing.Size(387, 48);
             this.lblCamposFaltantes.TabIndex = 53;
-            this.lblCamposFaltantes.Text = "";
             this.lblCamposFaltantes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblCamposFaltantes.Visible = false;
-            //
+            // 
             // btnCrearCamposFaltantes
-            //
+            // 
             this.btnCrearCamposFaltantes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCrearCamposFaltantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnCrearCamposFaltantes.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
@@ -224,38 +220,36 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.btnCrearCamposFaltantes.UseVisualStyleBackColor = false;
             this.btnCrearCamposFaltantes.Visible = false;
             this.btnCrearCamposFaltantes.Click += new System.EventHandler(this.btnCrearCamposFaltantes_Click);
-            //
+            // 
             // pnlOpcionesCarga
-            //
-            this.pnlOpcionesCarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.pnlOpcionesCarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlOpcionesCarga.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pnlOpcionesCarga.Location = new System.Drawing.Point(12, 422);
-            this.pnlOpcionesCarga.Name = "pnlOpcionesCarga";
-            this.pnlOpcionesCarga.Size = new System.Drawing.Size(793, 52);
-            this.pnlOpcionesCarga.TabIndex = 57;
-            //
-            // pnlAccionesCarga
-            //
-            this.pnlAccionesCarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlAccionesCarga.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pnlAccionesCarga.Location = new System.Drawing.Point(12, 480);
-            this.pnlAccionesCarga.Name = "pnlAccionesCarga";
-            this.pnlAccionesCarga.Size = new System.Drawing.Size(793, 54);
-            this.pnlAccionesCarga.TabIndex = 58;
-            //
-            // FormCargaMasivaExcel
-            //
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(817, 545);
             this.pnlOpcionesCarga.Controls.Add(this.cboHojasExcel);
             this.pnlOpcionesCarga.Controls.Add(this.lblHojaExcel);
             this.pnlOpcionesCarga.Controls.Add(this.lblCamposFaltantes);
             this.pnlOpcionesCarga.Controls.Add(this.btnCrearCamposFaltantes);
+            this.pnlOpcionesCarga.Location = new System.Drawing.Point(12, 422);
+            this.pnlOpcionesCarga.Name = "pnlOpcionesCarga";
+            this.pnlOpcionesCarga.Size = new System.Drawing.Size(793, 52);
+            this.pnlOpcionesCarga.TabIndex = 57;
+            // 
+            // pnlAccionesCarga
+            // 
+            this.pnlAccionesCarga.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAccionesCarga.Controls.Add(this.btnBuscarArchivoExcel);
             this.pnlAccionesCarga.Controls.Add(this.btnAceptarCargaMasiva);
+            this.pnlAccionesCarga.Location = new System.Drawing.Point(12, 480);
+            this.pnlAccionesCarga.Name = "pnlAccionesCarga";
+            this.pnlAccionesCarga.Size = new System.Drawing.Size(793, 54);
+            this.pnlAccionesCarga.TabIndex = 58;
+            // 
+            // FormCargaMasivaExcel
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(817, 545);
             this.Controls.Add(this.pnlOpcionesCarga);
             this.Controls.Add(this.pnlAccionesCarga);
             this.Controls.Add(this.lblTituloCargaMasiva);
@@ -266,6 +260,8 @@ namespace ISFDyT93.Vista.Forms.Componentes
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "FormCargaMasiva";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCargaMasiva)).EndInit();
+            this.pnlOpcionesCarga.ResumeLayout(false);
+            this.pnlAccionesCarga.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -91,7 +91,7 @@
             this.cmbPresidenteMesa.FormattingEnabled = true;
             this.cmbPresidenteMesa.Location = new System.Drawing.Point(113, 196);
             this.cmbPresidenteMesa.Name = "cmbPresidenteMesa";
-            this.cmbPresidenteMesa.Size = new System.Drawing.Size(644, 27);
+            this.cmbPresidenteMesa.Size = new System.Drawing.Size(644, 32);
             this.cmbPresidenteMesa.TabIndex = 19;
             // 
             // cmbVocalMesa
@@ -102,7 +102,7 @@
             this.cmbVocalMesa.FormattingEnabled = true;
             this.cmbVocalMesa.Location = new System.Drawing.Point(113, 270);
             this.cmbVocalMesa.Name = "cmbVocalMesa";
-            this.cmbVocalMesa.Size = new System.Drawing.Size(644, 27);
+            this.cmbVocalMesa.Size = new System.Drawing.Size(644, 32);
             this.cmbVocalMesa.TabIndex = 14;
             this.cmbVocalMesa.SelectedIndexChanged += new System.EventHandler(this.cmbVocalMesa_SelectedIndexChanged);
             // 
@@ -113,7 +113,7 @@
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(113, 3);
             this.cmbCarrera.Name = "cmbCarrera";
-            this.cmbCarrera.Size = new System.Drawing.Size(644, 27);
+            this.cmbCarrera.Size = new System.Drawing.Size(644, 32);
             this.cmbCarrera.TabIndex = 13;
             this.cmbCarrera.SelectedIndexChanged += new System.EventHandler(this.cmbCarrera_SelectedIndexChanged);
             // 
@@ -121,9 +121,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Location = new System.Drawing.Point(3, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 19);
+            this.label1.Size = new System.Drawing.Size(104, 24);
             this.label1.TabIndex = 12;
             this.label1.Text = "Carrera";
             // 
@@ -135,7 +135,7 @@
             this.cmbMateria.FormattingEnabled = true;
             this.cmbMateria.Location = new System.Drawing.Point(113, 131);
             this.cmbMateria.Name = "cmbMateria";
-            this.cmbMateria.Size = new System.Drawing.Size(644, 27);
+            this.cmbMateria.Size = new System.Drawing.Size(644, 32);
             this.cmbMateria.TabIndex = 5;
             this.cmbMateria.SelectionChangeCommitted += new System.EventHandler(this.cmbMateria_SelectionChangeCommitted);
             // 
@@ -169,16 +169,16 @@
             this.cmbTurno.FormattingEnabled = true;
             this.cmbTurno.Location = new System.Drawing.Point(113, 63);
             this.cmbTurno.Name = "cmbTurno";
-            this.cmbTurno.Size = new System.Drawing.Size(644, 27);
+            this.cmbTurno.Size = new System.Drawing.Size(644, 32);
             this.cmbTurno.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 67);
+            this.label5.Location = new System.Drawing.Point(3, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 19);
+            this.label5.Size = new System.Drawing.Size(104, 24);
             this.label5.TabIndex = 9;
             this.label5.Text = "Turno";
             // 
@@ -186,9 +186,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 135);
+            this.label2.Location = new System.Drawing.Point(3, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 19);
+            this.label2.Size = new System.Drawing.Size(104, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Materia";
             // 
@@ -197,7 +197,7 @@
             this.dtpFechaMesa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaMesa.Location = new System.Drawing.Point(113, 336);
             this.dtpFechaMesa.Name = "dtpFechaMesa";
-            this.dtpFechaMesa.Size = new System.Drawing.Size(644, 27);
+            this.dtpFechaMesa.Size = new System.Drawing.Size(644, 32);
             this.dtpFechaMesa.TabIndex = 16;
             this.dtpFechaMesa.ValueChanged += new System.EventHandler(this.dtpFechaMesa_ValueChanged);
             // 
@@ -205,9 +205,9 @@
             // 
             this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(3, 339);
+            this.lblFecha.Location = new System.Drawing.Point(3, 337);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(104, 19);
+            this.lblFecha.Size = new System.Drawing.Size(104, 24);
             this.lblFecha.TabIndex = 17;
             this.lblFecha.Text = "Fecha";
             // 
@@ -215,9 +215,9 @@
             // 
             this.lblVocal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVocal.AutoSize = true;
-            this.lblVocal.Location = new System.Drawing.Point(3, 274);
+            this.lblVocal.Location = new System.Drawing.Point(3, 272);
             this.lblVocal.Name = "lblVocal";
-            this.lblVocal.Size = new System.Drawing.Size(104, 19);
+            this.lblVocal.Size = new System.Drawing.Size(104, 24);
             this.lblVocal.TabIndex = 15;
             this.lblVocal.Text = "Vocal";
             // 
@@ -225,15 +225,15 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 200);
+            this.label3.Location = new System.Drawing.Point(3, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 19);
+            this.label3.Size = new System.Drawing.Size(104, 24);
             this.label3.TabIndex = 18;
             this.label3.Text = "Profesor";
             // 
             // FormAgregarFechasFinales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 526);

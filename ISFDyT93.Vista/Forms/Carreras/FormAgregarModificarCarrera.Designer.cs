@@ -57,7 +57,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblRégimen = new System.Windows.Forms.Label();
             this.btnPlanEstudio = new FontAwesome.Sharp.IconButton();
             this.btnResolucion = new FontAwesome.Sharp.IconButton();
             this.btnImagenDescriptiva = new FontAwesome.Sharp.IconButton();
@@ -77,8 +76,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblCantidadCorrelativas = new System.Windows.Forms.Label();
             this.txtCantidadCorrelativas = new System.Windows.Forms.TextBox();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
-            this.cmbRegimen = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnioInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnioFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epvCarreras)).BeginInit();
@@ -96,7 +93,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtTitulo
             // 
-            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTitulo.Location = new System.Drawing.Point(3, 57);
             this.txtTitulo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -107,7 +104,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtDescripcionCorta
             // 
-            this.txtDescripcionCorta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescripcionCorta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescripcionCorta.Location = new System.Drawing.Point(403, 16);
             this.txtDescripcionCorta.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -128,7 +125,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtJefeCatedra
             // 
-            this.txtJefeCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtJefeCatedra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJefeCatedra.Enabled = false;
             this.txtJefeCatedra.Location = new System.Drawing.Point(3, 98);
@@ -167,7 +164,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // nudAnioInicio
             // 
-            this.nudAnioInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nudAnioInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nudAnioInicio.Location = new System.Drawing.Point(3, 362);
             this.nudAnioInicio.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -192,7 +189,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // nudAnioFin
             // 
-            this.nudAnioFin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nudAnioFin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nudAnioFin.Location = new System.Drawing.Point(3, 403);
             this.nudAnioFin.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -208,7 +205,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtResolucion
             // 
-            this.txtResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResolucion.Enabled = false;
             this.txtResolucion.Location = new System.Drawing.Point(3, 180);
@@ -229,7 +226,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtImagenDescriptiva
             // 
-            this.txtImagenDescriptiva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtImagenDescriptiva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImagenDescriptiva.Enabled = false;
             this.txtImagenDescriptiva.Location = new System.Drawing.Point(3, 139);
@@ -250,7 +247,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtNumeroResolucion
             // 
-            this.txtNumeroResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNumeroResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNumeroResolucion.Location = new System.Drawing.Point(403, 57);
             this.txtNumeroResolucion.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -258,21 +255,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtNumeroResolucion.Name = "txtNumeroResolucion";
             this.txtNumeroResolucion.Size = new System.Drawing.Size(364, 23);
             this.txtNumeroResolucion.TabIndex = 3;
-            //this.txtNumeroExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            //this.txtNumeroExpediente.Location = new System.Drawing.Point(391, 84);
-            //this.txtNumeroExpediente.MaxLength = 20;
-            //this.txtNumeroExpediente.Name = "txtNumeroExpediente";
-            //this.txtNumeroExpediente.Size = new System.Drawing.Size(352, 32);
-            //this.txtNumeroExpediente.TabIndex = 3;
-            //// 
-            //// lblNumeroResolucion
-            //// 
-            //this.lblNumeroExpediente.AutoSize = true;
-            //this.lblNumeroExpediente.Location = new System.Drawing.Point(391, 60);
-            //this.lblNumeroExpediente.Name = "lblNumeroExpediente";
-            //this.lblNumeroExpediente.Size = new System.Drawing.Size(168, 20);
-            //this.lblNumeroExpediente.TabIndex = 25;
-            //this.lblNumeroExpediente.Text = "N° de Resolución:";
+            // 
+            // lblNumeroResolucion
+            // 
             this.lblNumeroResolucion.AutoSize = true;
             this.lblNumeroResolucion.Location = new System.Drawing.Point(403, 41);
             this.lblNumeroResolucion.Name = "lblNumeroResolucion";
@@ -282,7 +267,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtDuracion
             // 
-            this.txtDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDuracion.Location = new System.Drawing.Point(403, 444);
             this.txtDuracion.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -302,7 +287,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtPlanEstudio
             // 
-            this.txtPlanEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPlanEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlanEstudio.Enabled = false;
             this.txtPlanEstudio.Location = new System.Drawing.Point(403, 98);
@@ -323,7 +308,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtCantidadHoras
             // 
-            this.txtCantidadHoras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCantidadHoras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadHoras.Location = new System.Drawing.Point(403, 362);
             this.txtCantidadHoras.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -348,7 +333,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtNombre
             // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Location = new System.Drawing.Point(3, 16);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -373,7 +358,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.lblRégimen, 0, 14);
             this.tableLayoutPanel1.Controls.Add(this.btnPlanEstudio, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtImagenDescriptiva, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtResolucion, 0, 9);
@@ -417,7 +401,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Controls.Add(this.lblDuracion, 2, 21);
             this.tableLayoutPanel1.Controls.Add(this.txtDuracion, 2, 22);
             this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 2, 23);
-            this.tableLayoutPanel1.Controls.Add(this.cmbRegimen, 0, 15);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
@@ -450,18 +433,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.tableLayoutPanel1.Size = new System.Drawing.Size(801, 529);
             this.tableLayoutPanel1.TabIndex = 50;
             // 
-            // lblRégimen
-            // 
-            this.lblRégimen.AutoSize = true;
-            this.lblRégimen.Location = new System.Drawing.Point(3, 420);
-            this.lblRégimen.Name = "lblRégimen";
-            this.lblRégimen.Size = new System.Drawing.Size(95, 24);
-            this.lblRégimen.TabIndex = 61;
-            this.lblRégimen.Text = "Régimen:";
-            // 
             // btnPlanEstudio
             // 
-            this.btnPlanEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnPlanEstudio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPlanEstudio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnPlanEstudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -480,7 +454,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // btnResolucion
             // 
-            this.btnResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnResolucion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResolucion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnResolucion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -499,7 +473,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // btnImagenDescriptiva
             // 
-            this.btnImagenDescriptiva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnImagenDescriptiva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImagenDescriptiva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.btnImagenDescriptiva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -527,7 +501,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtCarreraReemplazar
             // 
-            this.txtCarreraReemplazar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCarreraReemplazar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCarreraReemplazar.Enabled = false;
             this.txtCarreraReemplazar.Location = new System.Drawing.Point(403, 139);
@@ -542,7 +516,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblClasificacion.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.lblClasificacion, 4);
             this.lblClasificacion.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClasificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblClasificacion.ForeColor = System.Drawing.Color.Black;
             this.lblClasificacion.Location = new System.Drawing.Point(3, 205);
             this.lblClasificacion.Name = "lblClasificacion";
             this.lblClasificacion.Size = new System.Drawing.Size(85, 16);
@@ -557,17 +531,22 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.lblSectorActividad.Size = new System.Drawing.Size(121, 16);
             this.lblSectorActividad.TabIndex = 61;
             this.lblSectorActividad.Text = "Sector de actividad:";
+
             // 
             // cmbSectorActividad
             // 
-            this.cmbSectorActividad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbSectorActividad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbSectorActividad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSectorActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSectorActividad.FormattingEnabled = true;
+
             this.cmbSectorActividad.Location = new System.Drawing.Point(3, 239);
             this.cmbSectorActividad.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cmbSectorActividad.Name = "cmbSectorActividad";
             this.cmbSectorActividad.Size = new System.Drawing.Size(364, 24);
             this.cmbSectorActividad.TabIndex = 62;
+            this.cmbSectorActividad.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBoxClasificacion_DrawItem);
             // 
             // lblFamiliaProfesional
             // 
@@ -580,14 +559,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // cmbFamiliaProfesional
             // 
-            this.cmbFamiliaProfesional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbFamiliaProfesional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFamiliaProfesional.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFamiliaProfesional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFamiliaProfesional.FormattingEnabled = true;
             this.cmbFamiliaProfesional.Location = new System.Drawing.Point(403, 239);
             this.cmbFamiliaProfesional.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cmbFamiliaProfesional.Name = "cmbFamiliaProfesional";
             this.cmbFamiliaProfesional.Size = new System.Drawing.Size(364, 24);
             this.cmbFamiliaProfesional.TabIndex = 64;
+            this.cmbFamiliaProfesional.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBoxClasificacion_DrawItem);
             // 
             // lblVariante
             // 
@@ -600,14 +582,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // cmbVariante
             // 
-            this.cmbVariante.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbVariante.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbVariante.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbVariante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVariante.FormattingEnabled = true;
             this.cmbVariante.Location = new System.Drawing.Point(3, 280);
             this.cmbVariante.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cmbVariante.Name = "cmbVariante";
             this.cmbVariante.Size = new System.Drawing.Size(364, 24);
             this.cmbVariante.TabIndex = 66;
+            this.cmbVariante.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBoxClasificacion_DrawItem);
             // 
             // lblModalidad
             // 
@@ -620,14 +605,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // cmbModalidad
             // 
-            this.cmbModalidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbModalidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbModalidad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbModalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModalidad.FormattingEnabled = true;
             this.cmbModalidad.Location = new System.Drawing.Point(403, 280);
             this.cmbModalidad.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cmbModalidad.Name = "cmbModalidad";
             this.cmbModalidad.Size = new System.Drawing.Size(364, 24);
             this.cmbModalidad.TabIndex = 68;
+            this.cmbModalidad.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBoxClasificacion_DrawItem);
             // 
             // lblRegimen
             // 
@@ -640,20 +628,17 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // cmbRegimenDefecto
             // 
-            this.cmbRegimenDefecto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbRegimenDefecto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbRegimenDefecto.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRegimenDefecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRegimenDefecto.FormattingEnabled = true;
             this.cmbRegimenDefecto.Location = new System.Drawing.Point(3, 321);
             this.cmbRegimenDefecto.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cmbRegimenDefecto.Name = "cmbRegimenDefecto";
             this.cmbRegimenDefecto.Size = new System.Drawing.Size(364, 24);
             this.cmbRegimenDefecto.TabIndex = 70;
-            this.txtCantidadCorrelativas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCantidadCorrelativas.Location = new System.Drawing.Point(391, 384);
-            this.txtCantidadCorrelativas.MaxLength = 2;
-            this.txtCantidadCorrelativas.Name = "txtCantidadCorrelativas";
-            this.txtCantidadCorrelativas.Size = new System.Drawing.Size(352, 32);
-            this.txtCantidadCorrelativas.TabIndex = 57;
+            this.cmbRegimenDefecto.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ComboBoxClasificacion_DrawItem);
             // 
             // lblCantidadCorrelativas
             // 
@@ -666,7 +651,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             // 
             // txtCantidadCorrelativas
             // 
-            this.txtCantidadCorrelativas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCantidadCorrelativas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadCorrelativas.Location = new System.Drawing.Point(403, 403);
             this.txtCantidadCorrelativas.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -674,12 +659,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.txtCantidadCorrelativas.Name = "txtCantidadCorrelativas";
             this.txtCantidadCorrelativas.Size = new System.Drawing.Size(364, 23);
             this.txtCantidadCorrelativas.TabIndex = 57;
-            this.lblCarreraReemplazar.AutoSize = true;
-            this.lblCarreraReemplazar.Location = new System.Drawing.Point(391, 180);
-            this.lblCarreraReemplazar.Name = "lblCarreraReemplazar";
-            this.lblCarreraReemplazar.Size = new System.Drawing.Size(206, 20);
-            this.lblCarreraReemplazar.TabIndex = 59;
-            this.lblCarreraReemplazar.Text = "Carrera a reemplazar:";
             // 
             // btnGuardar
             // 
@@ -700,42 +679,6 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            this.txtCarreraReemplazar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCarreraReemplazar.Location = new System.Drawing.Point(391, 204);
-            this.txtCarreraReemplazar.MaxLength = 150;
-            this.txtCarreraReemplazar.Name = "txtCarreraReemplazar";
-            this.txtCarreraReemplazar.Size = new System.Drawing.Size(352, 32);
-            this.txtCarreraReemplazar.TabIndex = 60;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnGuardar, 2);
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.White;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 32;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGuardar.Location = new System.Drawing.Point(605, 491);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(169, 50);
-            this.btnGuardar.TabIndex = 51;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // cmbRegimen
-            // 
-            this.cmbRegimen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbRegimen.FormattingEnabled = true;
-            this.cmbRegimen.Location = new System.Drawing.Point(3, 451);
-            this.cmbRegimen.Name = "cmbRegimen";
-            this.cmbRegimen.Size = new System.Drawing.Size(352, 32);
-            this.cmbRegimen.TabIndex = 62;
             // 
             // FormAgregarModificarCarrera
             // 
@@ -805,7 +748,5 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private System.Windows.Forms.Label lblRegimen;
         public System.Windows.Forms.ComboBox cmbRegimenDefecto;
         private System.Windows.Forms.Label lblClasificacion;
-        private System.Windows.Forms.Label lblRégimen;
-        private System.Windows.Forms.ComboBox cmbRegimen;
     }
 }

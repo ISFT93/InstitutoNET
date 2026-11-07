@@ -39,8 +39,8 @@
             this.epvMaterias = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtModulos = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbRegimen = new System.Windows.Forms.ComboBox();
-            this.lblRégimen = new System.Windows.Forms.Label();
+            this.cmbRegimendefecto = new System.Windows.Forms.ComboBox();
+            this.lblRégimendefecto = new System.Windows.Forms.Label();
             this.lblFinalPromocion = new System.Windows.Forms.Label();
             this.lblCantidadModulos = new System.Windows.Forms.Label();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
@@ -60,7 +60,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
@@ -73,7 +73,7 @@
             // 
             // txtCargaHoraria
             // 
-            this.txtCargaHoraria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCargaHoraria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCargaHoraria.Location = new System.Drawing.Point(3, 93);
             this.txtCargaHoraria.MaxLength = 5;
@@ -93,7 +93,7 @@
             // 
             // lblEspacio
             // 
-            this.lblEspacio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblEspacio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblEspacio.AutoSize = true;
             this.lblEspacio.Location = new System.Drawing.Point(391, 0);
@@ -104,7 +104,7 @@
             // 
             // cmbEspacioId
             // 
-            this.cmbEspacioId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbEspacioId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbEspacioId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspacioId.FormattingEnabled = true;
@@ -120,7 +120,7 @@
             // 
             // txtModulos
             // 
-            this.txtModulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtModulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtModulos.Enabled = false;
             this.txtModulos.Location = new System.Drawing.Point(391, 93);
@@ -133,8 +133,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.cmbRegimen, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblRégimen, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cmbRegimendefecto, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblRégimendefecto, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblFinalPromocion, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblCantidadModulos, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblCargaHoraria, 0, 2);
@@ -160,24 +160,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 409);
             this.tableLayoutPanel1.TabIndex = 34;
             // 
-            // cmbRegimen
+            // cmbRegimendefecto
             // 
-            this.cmbRegimen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbRegimen.FormattingEnabled = true;
-            this.cmbRegimen.Location = new System.Drawing.Point(391, 169);
-            this.cmbRegimen.Name = "cmbRegimen";
-            this.cmbRegimen.Size = new System.Drawing.Size(383, 32);
-            this.cmbRegimen.TabIndex = 63;
-            this.cmbRegimen.SelectedIndexChanged += new System.EventHandler(this.cmbRegimen_SelectedIndexChanged);
+            this.cmbRegimendefecto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbRegimendefecto.FormattingEnabled = true;
+            this.cmbRegimendefecto.Location = new System.Drawing.Point(391, 169);
+            this.cmbRegimendefecto.Name = "cmbRegimendefecto";
+            this.cmbRegimendefecto.Size = new System.Drawing.Size(383, 32);
+            this.cmbRegimendefecto.TabIndex = 63;
+            this.cmbRegimendefecto.SelectedIndexChanged += new System.EventHandler(this.cmbRegimen_SelectedIndexChanged);
             // 
             // lblRégimen
             // 
-            this.lblRégimen.AutoSize = true;
-            this.lblRégimen.Location = new System.Drawing.Point(391, 140);
-            this.lblRégimen.Name = "lblRégimen";
-            this.lblRégimen.Size = new System.Drawing.Size(95, 24);
-            this.lblRégimen.TabIndex = 62;
-            this.lblRégimen.Text = "Régimen:";
+            this.lblRégimendefecto.AutoSize = true;
+            this.lblRégimendefecto.Location = new System.Drawing.Point(391, 140);
+            this.lblRégimendefecto.Name = "lblRégimendefecto";
+            this.lblRégimendefecto.Size = new System.Drawing.Size(95, 24);
+            this.lblRégimendefecto.TabIndex = 62;
+            this.lblRégimendefecto.Text = "Régimen:";
             // 
             // lblFinalPromocion
             // 
@@ -190,7 +190,7 @@
             // 
             // lblCantidadModulos
             // 
-            this.lblCantidadModulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblCantidadModulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCantidadModulos.AutoSize = true;
             this.lblCantidadModulos.Location = new System.Drawing.Point(391, 70);
@@ -222,7 +222,7 @@
             // 
             // cmbFinalPromocion
             // 
-            this.cmbFinalPromocion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbFinalPromocion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbFinalPromocion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFinalPromocion.FormattingEnabled = true;
@@ -263,7 +263,7 @@
         private System.Windows.Forms.Label lblCantidadModulos;
         private System.Windows.Forms.Label lblFinalPromocion;
         private System.Windows.Forms.ComboBox cmbFinalPromocion;
-        private System.Windows.Forms.Label lblRégimen;
-        private System.Windows.Forms.ComboBox cmbRegimen;
+        private System.Windows.Forms.Label lblRégimendefecto;
+        private System.Windows.Forms.ComboBox cmbRegimendefecto;
     }
 }

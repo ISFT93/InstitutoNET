@@ -118,7 +118,7 @@
             this.btnAsistencia.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnAsistencia.Size = new System.Drawing.Size(200, 60);
             this.btnAsistencia.TabIndex = 14;
-            this.btnAsistencia.Text = "Asistencia/Evaluaciones";
+            this.btnAsistencia.Text = "Avance Academico";
             this.btnAsistencia.UseVisualStyleBackColor = true;
             this.btnAsistencia.Click += new System.EventHandler(this.btnAsistencia_Click);
             // 
@@ -240,7 +240,7 @@
             this.lblProyecto.ForeColor = System.Drawing.Color.White;
             this.lblProyecto.Location = new System.Drawing.Point(40, 13);
             this.lblProyecto.Name = "lblProyecto";
-            this.lblProyecto.Size = new System.Drawing.Size(109, 23);
+            this.lblProyecto.Size = new System.Drawing.Size(138, 29);
             this.lblProyecto.TabIndex = 0;
             this.lblProyecto.Text = "ISFDyT 93";
             // 
@@ -263,7 +263,7 @@
             this.tsmCiclosLectivos,
             this.Parametros});
             this.cmsOpciones.Name = "cmsOpciones";
-            this.cmsOpciones.Size = new System.Drawing.Size(189, 86);
+            this.cmsOpciones.Size = new System.Drawing.Size(180, 64);
             // 
             // tsmCiclosLectivos
             // 
@@ -275,7 +275,7 @@
             this.tsmCiclosLectivos.ForeColor = System.Drawing.Color.White;
             this.tsmCiclosLectivos.Image = global::ISFDyT93.Vista.Properties.Resources.calendar_alt_solid;
             this.tsmCiclosLectivos.Name = "tsmCiclosLectivos";
-            this.tsmCiclosLectivos.Size = new System.Drawing.Size(188, 30);
+            this.tsmCiclosLectivos.Size = new System.Drawing.Size(179, 30);
             this.tsmCiclosLectivos.Text = "Ciclo Lectivo";
             // 
             // tsmVerCiclos
@@ -284,7 +284,7 @@
             this.tsmVerCiclos.ForeColor = System.Drawing.Color.White;
             this.tsmVerCiclos.Image = global::ISFDyT93.Vista.Properties.Resources.eye_solid;
             this.tsmVerCiclos.Name = "tsmVerCiclos";
-            this.tsmVerCiclos.Size = new System.Drawing.Size(139, 22);
+            this.tsmVerCiclos.Size = new System.Drawing.Size(168, 26);
             this.tsmVerCiclos.Text = "Ver Ciclos";
             this.tsmVerCiclos.Click += new System.EventHandler(this.tsmVerCiclos_Click);
             // 
@@ -294,7 +294,7 @@
             this.tsmPruebaSP.ForeColor = System.Drawing.Color.White;
             this.tsmPruebaSP.Image = global::ISFDyT93.Vista.Properties.Resources.plus_circle_solid;
             this.tsmPruebaSP.Name = "tsmPruebaSP";
-            this.tsmPruebaSP.Size = new System.Drawing.Size(139, 22);
+            this.tsmPruebaSP.Size = new System.Drawing.Size(168, 26);
             this.tsmPruebaSP.Text = "Prueba SP";
             this.tsmPruebaSP.Click += new System.EventHandler(this.tsmPruebaSP_Click);
             // 
@@ -305,7 +305,7 @@
             this.Parametros.ForeColor = System.Drawing.Color.White;
             this.Parametros.Image = ((System.Drawing.Image)(resources.GetObject("Parametros.Image")));
             this.Parametros.Name = "Parametros";
-            this.Parametros.Size = new System.Drawing.Size(188, 30);
+            this.Parametros.Size = new System.Drawing.Size(179, 30);
             this.Parametros.Text = "Parametros";
             this.Parametros.Click += new System.EventHandler(this.Parametros_Click);
             // 
@@ -330,7 +330,7 @@
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 600);
             this.Controls.Add(this.btnVolver);

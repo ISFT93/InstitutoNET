@@ -81,26 +81,41 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvInscripcionAlumnos.Columns.Contains("Ciclo Lectivo"))
                 dgvInscripcionAlumnos.Columns["Ciclo Lectivo"].FillWeight = 50;
 
+            // agregue columna Asignar si no existe, para evitar duplicados al recargar la grilla
+            // Cecilia
+            if (!dgvInscripcionAlumnos.Columns.Contains("Asignar"))
+            {
+                DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                column.Name = "Asignar";
+                column.HeaderText = "Asignar";
+                dgvInscripcionAlumnos.Columns.Add(column);
+            }
 
-            DataGridViewColumn column = new DataGridViewTextBoxColumn();
-            column.Name = "Asignar";
-            column.HeaderText = "Asignar";
-            dgvInscripcionAlumnos.Columns.Add(column);
-            if (dgvInscripcionAlumnos.Columns.Contains("Asignar"))
-                dgvInscripcionAlumnos.Columns["Asignar"].FillWeight = 50;
+            dgvInscripcionAlumnos.Columns["Asignar"].FillWeight = 50;
 
             foreach (DataGridViewRow row in dgvInscripcionAlumnos.Rows)
             {
+                if (row.IsNewRow) continue; // Evita evaluar la fila vacía del final
+
                 var cursadaAlumnoCarreraId = row.Cells["CursadaAlumnoCarreraId"].Value;
-                if ((cursadaAlumnoCarreraId != null && cursadaAlumnoCarreraId != DBNull.Value) ||
-                    ltsMateriaIdCursoId.IndexOf(row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()) != -1)
+
+                // Verifica si ya tiene un ID válido o si está en la lista de memoria
+                bool yaTieneId = cursadaAlumnoCarreraId != null &&
+                                cursadaAlumnoCarreraId != DBNull.Value &&
+                                !string.IsNullOrEmpty(cursadaAlumnoCarreraId.ToString()) &&
+                                cursadaAlumnoCarreraId.ToString() != "0";
+
+                bool estaEnListaMemoria = ltsMateriaIdCursoId.IndexOf(
+                    row.Cells["MateriaId"].Value.ToString() + row.Cells["CursoId"].Value.ToString()
+                ) != -1;
+
+                if (yaTieneId || estaEnListaMemoria)
                 {
                     row.Cells["Asignar"].Value = "Asignado";
                     row.Cells["Asignar"].Style.ForeColor = Color.Green;
                 }
             }
         }
-
         private void dgvInscripcionAlumnos_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

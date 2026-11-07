@@ -6,6 +6,7 @@ using ISFDyT93.Vista.Core;
 using ISFDyT93.Vista.Core.Enums;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Globalization;
@@ -45,21 +46,63 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     nudAnioFin.Enabled = false;
                     nudAnioInicio.Value = this.Modelo.AnioInicio;
                     this.MapToForm<CarrerasModelo>(Modelo);
-                    // Asegura que al modificar se marque el régimen que la carrera ya tenía guardado en la BD
-                    cmbRegimen.SelectedValue = this.Modelo.RegimenId;
 
+                    // Selecciona los valores correspondientes en los ComboBox
+                    SeleccionarValoresCombobox();
                     break;
                 case TipoAccion.Ver:
                     ComprobarCarreraId();
                     this.Contenedor.SetTitulo($"Carrera  {Modelo.DescripcionCorta}");
                     this.DeshabilitarControles();
+                    DeshabilitarComboBoxes();
                     btnGuardar.Visible = false;
                     break;
                 case TipoAccion.Desactivar:
                     ComprobarCarreraId();
                     this.DeshabilitarControles();
+                    DeshabilitarComboBoxes();
                     this.nudAnioFin.Value = DateTime.Now.Year;
                     break;
+            }
+        }
+
+        private void DeshabilitarComboBoxes()
+        {
+            cmbSectorActividad.Enabled = false;
+            cmbFamiliaProfesional.Enabled = false;
+            cmbVariante.Enabled = false;
+            cmbModalidad.Enabled = false;
+            cmbRegimenDefecto.Enabled = false;
+        }
+
+        private void SeleccionarValoresCombobox()
+        {
+            if (this.Modelo == null) return;
+
+            if (!string.IsNullOrWhiteSpace(this.Modelo.SectorActividad))
+            {
+                int idx = cmbSectorActividad.FindStringExact(this.Modelo.SectorActividad.Trim());
+                if (idx >= 0) cmbSectorActividad.SelectedIndex = idx;
+            }
+            if (!string.IsNullOrWhiteSpace(this.Modelo.FamiliaProfesional))
+            {
+                int idx = cmbFamiliaProfesional.FindStringExact(this.Modelo.FamiliaProfesional.Trim());
+                if (idx >= 0) cmbFamiliaProfesional.SelectedIndex = idx;
+            }
+            if (!string.IsNullOrWhiteSpace(this.Modelo.Variante))
+            {
+                int idx = cmbVariante.FindStringExact(this.Modelo.Variante.Trim());
+                if (idx >= 0) cmbVariante.SelectedIndex = idx;
+            }
+            if (!string.IsNullOrWhiteSpace(this.Modelo.Modalidad))
+            {
+                int idx = cmbModalidad.FindStringExact(this.Modelo.Modalidad.Trim());
+                if (idx >= 0) cmbModalidad.SelectedIndex = idx;
+            }
+            if (!string.IsNullOrWhiteSpace(this.Modelo.RegimenDefecto))
+            {
+                int idx = cmbRegimenDefecto.FindStringExact(this.Modelo.RegimenDefecto.Trim());
+                if (idx >= 0) cmbRegimenDefecto.SelectedIndex = idx;
             }
         }
 
@@ -70,6 +113,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 this.Modelo = CarrerasLogica.ObtenerCarrera(this.CarreraId);
 
                 this.MapToForm<CarrerasModelo>(Modelo);
+
+                SeleccionarValoresCombobox();
 
                 //Controlo que el campo duracion no se pueda modificar
                 var existe = MateriasLogica.MateriaAsignada(this.CarreraId);
@@ -102,12 +147,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 carrera.Variante = cmbVariante.SelectedItem?.ToString();
                 carrera.Modalidad = cmbModalidad.SelectedItem?.ToString();
                 carrera.RegimenDefecto = cmbRegimenDefecto.SelectedItem?.ToString();
-            }
-
-            // Asignamos explícitamente el valor del régimen seleccionado en el ComboBox
-            if (cmbRegimen.SelectedValue != null && int.TryParse(cmbRegimen.SelectedValue.ToString(), out int regimenId))
-            {
-                carrera.RegimenId = regimenId;
+                var regimenes = CarrerasLogica.ObtenerRegimenes();
+                var filaRegimen = regimenes.AsEnumerable().FirstOrDefault(r =>
+                    string.Equals(r["Nombre"].ToString(), carrera.RegimenDefecto, StringComparison.OrdinalIgnoreCase));
+                carrera.RegimenId = filaRegimen != null ? Convert.ToInt32(filaRegimen["RegimenId"]) : 1;
             }
 
             if (carrera.Errores.Count > 0)
@@ -209,18 +252,12 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
         private void FormAgregarModificarCarrera_Load(object sender, EventArgs e)
         {
-
             this.Contenedor.SetVolver(() =>
             {
                 this.Contenedor.AbrirFormulario<FormCarreras>();
             });
 
             CargarListasDesplegables(); // Inicialización de los nuevos ComboBox
-            // Cargar las opciones del ComboBox de Régimen desde la BD
-            cmbRegimen.DataSource = CarrerasLogica.ObtenerRegimenes();
-            cmbRegimen.ValueMember = "RegimenId";   // ID que se guardará en la base de datos
-            cmbRegimen.DisplayMember = "Nombre";    // Texto que verá el usuario ("Anual", "Cuatrimestral", etc.)
-
             MostrarCarreraExistentes();
         }
 
@@ -233,11 +270,10 @@ namespace ISFDyT93.Vista.Forms.Carreras
 
                 if (dtClasificacion == null) return;
 
-                // Filtramos solo los registros que estén activos
                 DataView dvActivos = new DataView(dtClasificacion);
                 dvActivos.RowFilter = "Activo = 1";
 
-                // 1. Sector de Actividad (Familias del grupo Sector de Actividad o equivalentes)
+                // 1. Sector de Actividad
                 if (cmbSectorActividad != null)
                 {
                     cmbSectorActividad.Items.Clear();
@@ -269,7 +305,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     }
                 }
 
-                // 3. Modalidad (Presencial, Virtual, Híbrido, etc. configurados)
+                // 3. Modalidad
                 if (cmbModalidad != null)
                 {
                     cmbModalidad.Items.Clear();
@@ -285,7 +321,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     }
                 }
 
-                // 4. Régimen por Defecto (Anual, Cuatrimestral, etc.)
+                // 4. Régimen por Defecto
                 if (cmbRegimenDefecto != null)
                 {
                     cmbRegimenDefecto.Items.Clear();
@@ -324,6 +360,35 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 MessageBox.Show("Error al cargar las listas desplegables dinámicas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Dibuja los ComboBox adaptándose si están deshabilitados o activos
+        private void ComboBoxClasificacion_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox cmb = (ComboBox)sender;
+            if (e.Index < 0) return;
+
+            bool esAreaEdicion = (e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit;
+            bool resaltarItemLista = !esAreaEdicion && (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            Color colorFondo = resaltarItemLista ? SystemColors.Highlight : Color.White;
+            Color colorTexto = resaltarItemLista ? SystemColors.HighlightText : Color.Black;
+
+            // Si el ComboBox está deshabilitado, aplicar colores de control protegido/deshabilitado
+            if (!cmb.Enabled)
+            {
+                colorFondo = SystemColors.Control;
+                colorTexto = SystemColors.GrayText;
+            }
+
+            using (SolidBrush pincel = new SolidBrush(colorFondo))
+            {
+                e.Graphics.FillRectangle(pincel, e.Bounds);
+            }
+
+            TextRenderer.DrawText(e.Graphics, cmb.GetItemText(cmb.Items[e.Index]), e.Font, e.Bounds,
+                colorTexto, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             GuardarCarrera();

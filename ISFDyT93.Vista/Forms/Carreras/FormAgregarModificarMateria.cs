@@ -30,7 +30,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
         private AutoCompleteStringCollection NombreAutoComplete { get; set; }
 
         // Guarda el último espacio elegido para recordarlo en la siguiente materia
-        private static int ultimoEspacioIdSeleccionado = 1; 
+        private static int ultimoEspacioIdSeleccionado = 1;
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
         }
         #endregion
-        
+
         public FormAgregarModificarMateria()
         {
             this.materiasLogica = new MateriasLogica();
@@ -143,9 +143,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
             cmbEspacioId.ValueMember = "EspacioId";
             cmbEspacioId.DisplayMember = "Descripcion";
 
-            cmbRegimen.DataSource = carrerasLogica.ObtenerRegimenes();
-            cmbRegimen.ValueMember = "RegimenId";
-            cmbRegimen.DisplayMember = "Nombre";
+            cmbRegimendefecto.DataSource = carrerasLogica.ObtenerRegimenes();
+            cmbRegimendefecto.ValueMember = "RegimenId";
+            cmbRegimendefecto.DisplayMember = "Nombre";
 
             // 2. Obtenemos la información de la carrera una sola vez (Buenas prácticas: evitar consultas duplicadas)
             int carreraId = aniosLogica.ObtenerIdCarrera(this.AnioCarreraId);
@@ -175,7 +175,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 // Por defecto en Alta, asigna el régimen heredado de la carrera
                 if (regimenCarreraId > 0)
                 {
-                    cmbRegimen.SelectedValue = regimenCarreraId;
+                    cmbRegimendefecto.SelectedValue = regimenCarreraId;
                 }
 
                 this.ActualizarAutoComplete();
@@ -190,11 +190,11 @@ namespace ISFDyT93.Vista.Forms.Carreras
                     // Si la materia tiene un régimen específico lo usa; caso contrario, usa el de la carrera
                     if (this.materia != null && this.materia.RegimenId > 0)
                     {
-                        cmbRegimen.SelectedValue = this.materia.RegimenId;
+                        cmbRegimendefecto.SelectedValue = this.materia.RegimenId;
                     }
                     else if (regimenCarreraId > 0)
                     {
-                        cmbRegimen.SelectedValue = regimenCarreraId;
+                        cmbRegimendefecto.SelectedValue = regimenCarreraId;
                     }
                 }
 
@@ -210,7 +210,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
             }
 
             // 5. Regla de negocio: El régimen siempre se muestra preseleccionado y bloqueado
-            cmbRegimen.Enabled = false;
+            cmbRegimendefecto.Enabled = false;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {

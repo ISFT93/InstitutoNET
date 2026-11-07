@@ -177,7 +177,8 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 btnAgregar.Enabled = false;
                 return;
             } 
-            cmbPresidenteMesa.SelectedValue = 1;
+            cmbPresidenteMesa.SelectedValue = ProfesorId;
+            btnAgregar.Enabled = true;
             //ValidarCampos();
         }
         private void CargarVocales(int PersonalId)

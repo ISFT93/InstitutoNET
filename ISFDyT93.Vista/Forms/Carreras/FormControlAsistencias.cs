@@ -1,16 +1,18 @@
-﻿using System;
+﻿using ISFDyT93.Datos.Daos;
+using ISFDyT93.Entidades.Modelos;
+using ISFDyT93.Negocio.Logica;
+using ISFDyT93.Vista.Core;
+using ISFDyT93.Vista.Core.Enums;
+using ISFDyT93.Vista.Forms.Common;
+using ISFDyT93.Vista.Forms.Componentes;
+using ISFDyT93.Vista.Forms.Componetes;
+using Microsoft.ReportingServices.Diagnostics.Internal;
+using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ISFDyT93.Negocio.Logica;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Vista.Forms.Common;
-using ISFDyT93.Vista.Core;
-using ISFDyT93.Vista.Core.Enums;
-using ISFDyT93.Datos.Daos;
-using System.Diagnostics;
-using Microsoft.ReportingServices.Diagnostics.Internal;
 
 
 namespace ISFDyT93.Vista.Forms.Carreras
@@ -42,6 +44,16 @@ namespace ISFDyT93.Vista.Forms.Carreras
             this.cursadasLogica = new CursadasLogica();
 
             InitializeComponent();
+
+            // Enlaza automáticamente la opción "Carga Masiva" del menú contextual
+            foreach (ToolStripItem item in cmsPyA.Items)
+            {
+                if (item.Text.Contains("Carga Masiva"))
+                {
+                    item.Click += new EventHandler(tsmCargaMasivaAsistencias_Click);
+                    break;
+                }
+            }
         }
 
         private void ControlAsistencias_Load(object sender, EventArgs e)
@@ -162,11 +174,13 @@ namespace ISFDyT93.Vista.Forms.Carreras
         {
             if (e.Button == MouseButtons.Right)
             {
+                // Ocultar por defecto las opciones individuales de asistencia
                 DataGridView.HitTestInfo info = dgvAsistencias.HitTest(e.X, e.Y);
-                tsmP.Visible = true;
-                tsmA.Visible = true;
-                tsmHistorialAsistenciasAlumnos.Visible = true;
+                tsmP.Visible = false;
+                tsmA.Visible = false;
+                tsmHistorialAsistenciasAlumnos.Visible = false;
 
+                // Solo evaluarlas si estamos en vista de detalle y sobre una celda válida
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
                     fila = info.RowIndex;
@@ -197,7 +211,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                         tsmA.Visible = false;
                         tsmHistorialAsistenciasAlumnos.Visible = true;
                     }
-
+                    // El menú contextual se muestra centrado sobre la celda seleccionada
                     cmsPyA.Show(dgvAsistencias, e.X - cmsPyA.Width / 2, e.Y);
                 }
             }
@@ -835,5 +849,65 @@ namespace ISFDyT93.Vista.Forms.Carreras
             _enVistaDetalle = true;
         }
 
+        // Metodo para manejar la carga masiva de asistencias desde un archivo Excel
+        // Cecilia
+        private void tsmCargaMasivaAsistencias_Click(object sender, EventArgs e)
+        {
+            // Validar que los filtros principales estén seleccionados antes de abrir
+            if (cmbCarrera.SelectedValue == null || cmbAnio.SelectedValue == null || cmbCurso.SelectedValue == null)
+            {
+                FormNotificacion.Mensaje(TipoNotificacion.Warning, "Por favor, seleccione Carrera, Año y Curso antes de realizar la carga masiva.");
+                return;
+            }
+
+            // Extraer los IDs de contexto de los ComboBox de la pantalla actual
+            int idCiclo = Convert.ToInt32(cmbCicloLectivo.SelectedValue ?? 0);
+            int idCurso = Convert.ToInt32(cmbCurso.SelectedValue ?? 0);
+            int idCarrera = Convert.ToInt32(cmbCarrera.SelectedValue ?? 0);
+            int anioCarreraId = Convert.ToInt32(cmbAnio.SelectedValue ?? 0);
+
+            // Este bloque de código obtiene el ID de la relación entre curso y materia (cursoMateriaId) si ambos están seleccionados.
+            // Esto es necesario para pasar la información correcta al formulario de carga masiva de asistencias.
+            int cursoMateriaId = 0;
+            if (cmbMateria.SelectedValue != null && int.TryParse(cmbMateria.SelectedValue.ToString(), out int materiaId))
+            {
+                if (materiaId > 0 && idCurso > 0)
+                {
+                    var cursadasDao = new CursadasDao();
+                    cursoMateriaId = cursadasDao.ObtenerCursoMateriaId(idCurso, materiaId);
+                }
+            }
+
+            // Abrir de forma directa tu formulario de Carga Masiva de Excel pasando el ID correcto
+            if (this.Contenedor != null)
+            {
+                this.Contenedor.AbrirFormulario<FormCargaMasivaAsistenciasExcel>(form =>
+                {
+                    form.CicloLectivo = idCiclo;
+                    form.CursoId = idCurso;
+                    form.CursoMateriaId = cursoMateriaId;
+                    form.CarreraId = idCarrera;
+                    form.AnioCarreraId = anioCarreraId;
+                    form.Contenedor = this.Contenedor;
+                });
+            }
+            else
+            {
+                var frmCarga = new FormCargaMasivaAsistenciasExcel
+                {
+                    CicloLectivo = idCiclo,
+                    CursoId = idCurso,
+                    CursoMateriaId = cursoMateriaId,
+                    CarreraId = idCarrera,
+                    AnioCarreraId = anioCarreraId,
+                    Contenedor = this.Contenedor
+                };
+
+                if (frmCarga.ShowDialog() == DialogResult.OK)
+                {
+                    this.RellenarGrilla();
+                }
+            }
+        }
     }
 }
