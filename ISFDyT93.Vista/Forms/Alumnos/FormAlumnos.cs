@@ -180,7 +180,6 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
                     {
                         form.Accion = TipoAccion.Agregar;
-                        form.AlumnoId = AlumnoId;
                     });
                 }
             }

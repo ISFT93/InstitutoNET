@@ -66,6 +66,7 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 //OcultarVocalYFecha();
                 CargarTurnoMateria(true);
                 cmbMateria.Enabled = true;
+                dtpFechaMesa.Enabled = false;
                 title = "Agregar fecha especial";
             }
 
@@ -177,7 +178,9 @@ namespace ISFDyT93.Vista.Forms.Carreras
                 btnAgregar.Enabled = false;
                 return;
             } 
-            cmbPresidenteMesa.SelectedValue = 1;
+            cmbPresidenteMesa.SelectedValue = ProfesorId;
+            
+            btnAgregar.Enabled = true;
             //ValidarCampos();
         }
         private void CargarVocales(int PersonalId)

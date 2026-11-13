@@ -45,12 +45,12 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormDocumentacionAlumno_Load(object sender, EventArgs e)
         {
-            uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion
+            //uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion
             cmbCarreraId.DataSource = carrerasLogica.ObtenerCarreras();
             cmbCarreraId.ValueMember = "CarreraId";
             cmbCarreraId.DisplayMember = "Descripción";
             cmbCarreraId.SelectedIndex = 0; //por defecto busca todos
-            uscPaginacion1.BringToFront();
+            dgvAlumnos.BringToFront();
 
             dtpFecha.Format = DateTimePickerFormat.Custom;
             dtpFecha.CustomFormat = "dd/MM/yyyy";
@@ -83,11 +83,11 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
 
             if (rbTodos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1, tipo, filtro);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(-1, tipo, filtro);
             else if (rbIncompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(1, tipo, filtro);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(1, tipo, filtro);
             else if (rbCompletos.Checked == true)
-                uscPaginacion1.EntradaDatos = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo, filtro);
+                dgvAlumnos.DataSource = AlumnosLogica.ObtenerAlumnosPorEstadoDocumentacion(2, tipo, filtro);
 
             EstilosColumnasDGV();
         }

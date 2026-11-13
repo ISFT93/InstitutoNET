@@ -354,10 +354,40 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             txtDescripcionTratamiento.Enabled = rdbTratamientoMedicoSi.Checked;
         }
 
+        private AlumnosModelo LeerAlumnoDelFormulario()
+        {
+            // El modelo usa cero para los campos numéricos que no aplican.
+            if (rdbTituloSecundarioSi.Checked)
+            {
+                CompletarCeroSiVacio(txtMateriasAdeuda);
+            }
+            else
+            {
+                CompletarCeroSiVacio(txtAnioEgreso);
+                CompletarCeroSiVacio(txtPromedio);
+            }
+
+            if (string.IsNullOrWhiteSpace(cmbMayorTitulo.Text) || cmbMayorTitulo.Text == "Ninguno")
+                CompletarCeroSiVacio(txtMayorPromedio);
+
+            if (!chkConstanciaAdeudaMaterias.Checked)
+                CompletarCeroSiVacio(txtCantidadAdeudaMaterias);
+
+            DatosAlumnos?.Errores.Clear();
+            epvAlumnos.Clear();
+            return this.MapToModel<AlumnosModelo>(DatosAlumnos);
+        }
+
+        private static void CompletarCeroSiVacio(TextBox campo)
+        {
+            if (string.IsNullOrWhiteSpace(campo.Text))
+                campo.Text = "0";
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
-            var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            var alumno = LeerAlumnoDelFormulario();
+            DatosAlumnosCarrera?.Errores.Clear();
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
             alumnoCarrera.CicloLectivoId = int.Parse(CicloLectivoId.Text);
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)
@@ -436,7 +466,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             );
             if (result != DialogResult.OK)
                 return;
-            var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
+            var alumno = LeerAlumnoDelFormulario();
             alumnosLogica.ModificarAlumno(alumno);
             alumnosLogica.ActualizarEstadoInicializado(this.AlumnoId, 2);
             Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
@@ -456,15 +486,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         }
         private void ActualizarAutoComplete()
         {
-            txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());
+            //txtPaisNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerPaisNacimientoAlumnos());
 
-            txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+            //txtLocalidadNacimiento.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
 
-            txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
+            
+            //txtLocalidad.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerLocalidadAlumnos());
 
-            txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());
+            //txtDistrito.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerDistritoAlumnos());
 
-            txtProvincia.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerProvinciaAlumnos());
+            //txtProvincia.AutoCompleteCustomSource.AddRange(alumnosLogica.ObtenerProvinciaAlumnos());
         }
         private void ObtenerAniosLectivosActivos()
         {
