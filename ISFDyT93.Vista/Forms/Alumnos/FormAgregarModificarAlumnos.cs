@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ISFDyT93.Vista.Core;
 using ISFDyT93.Negocio.Core.Enums;
 using ISFDyT93.Vista.Core.Enums;
+using Org.BouncyCastle.Asn1.Crmf;
 
 namespace ISFDyT93.Vista.Forms.Alumnos
 {
@@ -27,6 +28,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         AlumnosModelo DatosAlumnos = null;
         AlumnosCarrerasModelo DatosAlumnosCarrera = null;
         Negocio.Validaciones validador;
+
+        public bool EsAsignacionLibro { get; set; } = false;
+        public int AlumnoCarreraId { get; set; }
+        public int NuevoFolioCalculado { get; set; }
+        public int LibroActaId { get; set; }
+        public int FolioMaximoLibro { get; set; }
+        public int NumeroLibroActual { get; set; }
         #endregion
 
         public FormAgregarModificarAlumnos()
@@ -220,6 +228,81 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             txtTelefono.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtTelefonoContacto.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+            if (EsAsignacionLibro)
+            {
+
+                ProtegerCamposDatosPersonales();
+                if (txtFolio != null)
+                {
+                    txtFolio.Text = NuevoFolioCalculado.ToString();
+                    txtFolio.Enabled = false; // 
+                }
+
+                if (txtLibro != null)
+                {
+                    txtLibro.Text = NumeroLibroActual.ToString();
+                    txtLibro.Enabled = false;
+                }
+            }
+            else
+            {
+                txtLibro.Visible = false;
+                txtFolio.Visible = false;
+                lblLibro.Visible = false;
+                lblFolio.Visible = false;
+            }
+
+
+        }
+
+        private void ProtegerCamposDatosPersonales()
+        {
+            
+            //txtNombre.Enabled = false;
+            //txtApellido.Enabled = false;
+            //txtNumeroDocumento.Enabled = false;
+            //cmbTipoDocumento.Enabled = false;
+            //cmbSexo.Enabled = false;
+            //dtpFechaNacimiento.Enabled = false;
+            //cmbCarreraId.Enabled = false;
+
+            foreach(Control control in tableLayoutPanel1.Controls)
+            {
+                control.Enabled = false;
+            }
+
+            foreach (Control control in grbDatosPersonales.Controls)
+            {
+                control.Enabled = false;
+            }
+
+
+            foreach (Control control in grbDireccion.Controls)
+            {
+                control.Enabled = false;
+            }
+
+            foreach (Control control in grbFormacion.Controls)
+            {
+                control.Enabled = false;
+            }
+            foreach (Control control in grbDocumentosEntregar.Controls)
+            {
+                control.Enabled = false;
+            }
+
+            foreach (Control control in grbFichaSalud.Controls)
+            {
+                control.Enabled = false;
+            }
+
+
+
+
+            
+
+
         }
         public void SetReadOnly(Control parent, bool valor)
         {
@@ -357,19 +440,39 @@ namespace ISFDyT93.Vista.Forms.Alumnos
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
+            if (EsAsignacionLibro)
+            {
+                try
+                {
+                    LibroActasLogica libroLogica = new LibroActasLogica();
+
+                    //Actualiza el folio actual del libro (y lo desactiva si llega al máximo)
+                    libroLogica.ActualizarFolioLibro(LibroActaId, NuevoFolioCalculado, FolioMaximoLibro);
+
+                    //Guarda el LibroActaId y el NroFolio en la tabla AlumnosCarreras del alumno
+                    alumnosLogica.ActualizarLibroFolioAlumnoCarrera(AlumnoCarreraId, LibroActaId, NuevoFolioCalculado);
+
+                    Notificar(TipoNotificacion.Success, "El libro y folio fueron\nasignados con éxito");
+                    Contenedor.AbrirFormulario<FormAlumnos>();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error al actualizar el libro y el folio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                return; 
+            }
+
             var alumno = this.MapToModel<AlumnosModelo>(DatosAlumnos);
             var alumnoCarrera = this.MapToModel<AlumnosCarrerasModelo>(DatosAlumnosCarrera, grbCarrera.Controls);
             alumnoCarrera.CicloLectivoId = int.Parse(CicloLectivoId.Text);
+
             if (alumno.Errores.Count == 0 && alumnoCarrera.Errores.Count == 0)
             {
                 if (this.Accion == TipoAccion.Agregar)
                 {
-                    //Ademas de agregar trae el ultimo alumnoId
                     alumnoCarrera.AlumnoId = alumnosLogica.AgregarAlumno(alumno);
-                    //tabla intermedia
                     if (alumnoCarrera.AlumnoId > 0)
                     {
-                        //lo estoy dando de alta
                         alumnoCarrera.Activo = true;
                         alumnoCarrera.FechaAlta = DateTime.Now;
                         alumnoCarrera.Inicializado = 0;
@@ -380,27 +483,21 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 }
                 else if (this.Accion == TipoAccion.Modificar)
                 {
-                    //verificar si la carrera que selecciono es distinta a la que tenia
                     if (alumnoCarrera.CarreraId != (DatosAlumnosCarrera.CarreraId))
                     {
-                        //Inactivo el alumno para esa carrera
                         alumnosLogica.BajaAlumnoCarrera(alumno.AlumnoId);
                         alumnosLogica.AgregarAlumnoCarrera(alumnoCarrera);
                     }
                     else
                     {
-                        //Si la carrera no es distinta solo modifico
-                        //UPDATE
                         alumnosLogica.ModificarAlumnoCarrera(alumnoCarrera);
                     }
 
-                    //Modifico la carrera
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "El alumno fue\nmodificado con exito");
                 }
                 else if (this.Accion == TipoAccion.Documentacion)
                 {
-                    //Modifico la carrera
                     alumnosLogica.ModificarAlumno(alumno);
                     Notificar(TipoNotificacion.Success, "La documentacion fue\nmodificada con exito");
 
@@ -507,7 +604,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             
             if (!validador.AlumnoNuevo(txtNumeroDocumento.Text))
             {
-                MessageBox.Show("El numero de documento ya esta registrador");
+                MessageBox.Show("El numero de documento ya esta registrado");
                 txtNumeroDocumento.Focus();
             }
         }

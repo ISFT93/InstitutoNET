@@ -3,6 +3,7 @@ using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades.Enums;
 using ISFDyT93.Entidades.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -405,6 +406,15 @@ namespace ISFDyT93.Datos.Daos
                            " WHERE AlumnoId = " + alumnoId + " AND Activo = 1";
 
             return this.Conexion.EjecutarAccion(query);
+        }
+
+        public void ActualizarLibroFolioAlumnoCarrera(int alumnoCarreraId, int libroActaId, int nroFolio)
+        {
+            var conexion = new Conexion();
+
+            string query = $"UPDATE AlumnosCarreras SET LibroActaId = {libroActaId}, NroFolio = {nroFolio} WHERE AlumnoCarreraId = {alumnoCarreraId}";
+
+            conexion.EjecutarAccion(query);
         }
     }
 }

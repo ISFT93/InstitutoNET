@@ -43,6 +43,7 @@
             this.tsmEliminarAlumno = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVerAlumno = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAsignarMaterias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAsignarLibro = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDarAlta = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmActualizarDocumentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCargaMasiva = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,6 @@
             this.btnReporte = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.uscPaginacion1 = new CapaPresentacionAdmin.Controls.uscPaginacion();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.cmsAlumnos.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -68,7 +68,7 @@
             // 
             this.lblSelccFiltroAlum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSelccFiltroAlum.AutoSize = true;
-            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 50);
+            this.lblSelccFiltroAlum.Location = new System.Drawing.Point(4, 48);
             this.lblSelccFiltroAlum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelccFiltroAlum.Name = "lblSelccFiltroAlum";
             this.lblSelccFiltroAlum.Size = new System.Drawing.Size(110, 24);
@@ -87,7 +87,7 @@
             "Numero de Documento",
             "Nombre",
             "Apellido"});
-            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 49);
+            this.cmbFiltroAlum.Location = new System.Drawing.Point(122, 48);
             this.cmbFiltroAlum.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroAlum.Name = "cmbFiltroAlum";
             this.cmbFiltroAlum.Size = new System.Drawing.Size(228, 32);
@@ -118,11 +118,12 @@
             this.tsmEliminarAlumno,
             this.tsmVerAlumno,
             this.tsmAsignarMaterias,
+            this.tsmAsignarLibro,
             this.tsmDarAlta,
             this.tsmActualizarDocumentacion,
             this.tsmCargaMasiva});
             this.cmsAlumnos.Name = "contextMenuStrip1";
-            this.cmsAlumnos.Size = new System.Drawing.Size(249, 244);
+            this.cmsAlumnos.Size = new System.Drawing.Size(284, 274);
             // 
             // tsmAgregarAlumno
             // 
@@ -179,6 +180,17 @@
             this.tsmAsignarMaterias.Text = "Asignar Materias";
             this.tsmAsignarMaterias.Click += new System.EventHandler(this.tsmAsignarMaterias_Click);
             // 
+            // tsmAsignarLibro
+            // 
+            this.tsmAsignarLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.tsmAsignarLibro.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.tsmAsignarLibro.ForeColor = System.Drawing.Color.White;
+            this.tsmAsignarLibro.Image = global::ISFDyT93.Vista.Properties.Resources.arrow_alt_circle_right_solid;
+            this.tsmAsignarLibro.Name = "tsmAsignarLibro";
+            this.tsmAsignarLibro.Size = new System.Drawing.Size(283, 30);
+            this.tsmAsignarLibro.Text = "Asignar Libro/Folio";
+            this.tsmAsignarLibro.Click += new System.EventHandler(this.tsmAsignarLibro_Click_1);
+            // 
             // tsmDarAlta
             // 
             this.tsmDarAlta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
@@ -217,7 +229,7 @@
             // 
             this.rbInactivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInactivos.AutoSize = true;
-            this.rbInactivos.Location = new System.Drawing.Point(121, 128);
+            this.rbInactivos.Location = new System.Drawing.Point(121, 126);
             this.rbInactivos.Name = "rbInactivos";
             this.rbInactivos.Size = new System.Drawing.Size(112, 28);
             this.rbInactivos.TabIndex = 49;
@@ -230,7 +242,7 @@
             this.rbActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbActivos.AutoSize = true;
             this.rbActivos.Checked = true;
-            this.rbActivos.Location = new System.Drawing.Point(3, 128);
+            this.rbActivos.Location = new System.Drawing.Point(3, 126);
             this.rbActivos.Name = "rbActivos";
             this.rbActivos.Size = new System.Drawing.Size(112, 28);
             this.rbActivos.TabIndex = 50;
@@ -243,7 +255,7 @@
             // 
             this.rbTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rbTodos.AutoSize = true;
-            this.rbTodos.Location = new System.Drawing.Point(239, 128);
+            this.rbTodos.Location = new System.Drawing.Point(239, 126);
             this.rbTodos.Name = "rbTodos";
             this.rbTodos.Size = new System.Drawing.Size(112, 28);
             this.rbTodos.TabIndex = 51;
@@ -292,20 +304,20 @@
             this.tableLayoutPanel1.SetColumnSpan(this.cmbFiltroCarrera, 2);
             this.cmbFiltroCarrera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltroCarrera.FormattingEnabled = true;
-            this.cmbFiltroCarrera.Location = new System.Drawing.Point(122, 9);
+            this.cmbFiltroCarrera.Location = new System.Drawing.Point(122, 8);
             this.cmbFiltroCarrera.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFiltroCarrera.Name = "cmbFiltroCarrera";
-            this.cmbFiltroCarrera.Size = new System.Drawing.Size(228, 27);
+            this.cmbFiltroCarrera.Size = new System.Drawing.Size(228, 32);
             this.cmbFiltroCarrera.TabIndex = 58;
             // 
             // lblCarrera
             // 
             this.lblCarrera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCarrera.AutoSize = true;
-            this.lblCarrera.Location = new System.Drawing.Point(4, 10);
+            this.lblCarrera.Location = new System.Drawing.Point(4, 8);
             this.lblCarrera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(110, 19);
+            this.lblCarrera.Size = new System.Drawing.Size(110, 24);
             this.lblCarrera.TabIndex = 57;
             this.lblCarrera.Text = "Carrera:";
             // 
@@ -313,10 +325,10 @@
             // 
             this.lblCicloLectivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCicloLectivo.AutoSize = true;
-            this.lblCicloLectivo.Location = new System.Drawing.Point(378, 10);
+            this.lblCicloLectivo.Location = new System.Drawing.Point(378, 8);
             this.lblCicloLectivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCicloLectivo.Name = "lblCicloLectivo";
-            this.lblCicloLectivo.Size = new System.Drawing.Size(170, 19);
+            this.lblCicloLectivo.Size = new System.Drawing.Size(170, 24);
             this.lblCicloLectivo.TabIndex = 59;
             this.lblCicloLectivo.Text = "Ciclo Lectivo:";
             // 
@@ -326,10 +338,10 @@
             this.cmbCicloLectivo.BackColor = System.Drawing.Color.White;
             this.cmbCicloLectivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCicloLectivo.FormattingEnabled = true;
-            this.cmbCicloLectivo.Location = new System.Drawing.Point(556, 9);
+            this.cmbCicloLectivo.Location = new System.Drawing.Point(556, 8);
             this.cmbCicloLectivo.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCicloLectivo.Name = "cmbCicloLectivo";
-            this.cmbCicloLectivo.Size = new System.Drawing.Size(172, 27);
+            this.cmbCicloLectivo.Size = new System.Drawing.Size(172, 32);
             this.cmbCicloLectivo.TabIndex = 60;
             // 
             // btnReporte
@@ -387,19 +399,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(732, 65);
             this.tableLayoutPanel2.TabIndex = 59;
-            // 
-            // uscPaginacion1
-            // 
-            this.uscPaginacion1.BackColor = System.Drawing.Color.Transparent;
-            this.uscPaginacion1.dataGridView = null;
-            this.uscPaginacion1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uscPaginacion1.EntradaDatos = null;
-            this.uscPaginacion1.Location = new System.Drawing.Point(246, 3);
-            this.uscPaginacion1.Name = "uscPaginacion1";
-            this.uscPaginacion1.Recargar = null;
-            this.uscPaginacion1.SalidaDatos = null;
-            this.uscPaginacion1.Size = new System.Drawing.Size(239, 59);
-            this.uscPaginacion1.TabIndex = 56;
             // 
             // dgvAlumnos
             // 
@@ -507,5 +506,6 @@
         private System.Windows.Forms.Label lblCicloLectivo;
         private System.Windows.Forms.ComboBox cmbCicloLectivo;
         private CapaPresentacionAdmin.Controls.uscPaginacion uscPaginacion1;
+        private System.Windows.Forms.ToolStripMenuItem tsmAsignarLibro;
     }
 }
