@@ -1,19 +1,20 @@
-﻿using ISFDyT93.Datos.Core;
-using ISFDyT93.Entidades.Core.Attributes.Validaciones;
-using ISFDyT93.Entidades.Enums;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿    using ISFDyT93.Datos.Core;
+    using ISFDyT93.Entidades.Core.Attributes.Validaciones;
+    using ISFDyT93.Entidades.Enums;
+    using ISFDyT93.Entidades.Modelos;
+    using Microsoft.Win32;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
 
-namespace ISFDyT93.Datos.Daos
-{
+    namespace ISFDyT93.Datos.Daos
+    {
     public class LibroActasDao
     {
         public DataTable ObtenerLibros()
@@ -120,7 +121,7 @@ namespace ISFDyT93.Datos.Daos
             Conexion conexion = new Conexion();
             DataTable librosSinRelacionar = conexion.ObtenerRegistros(query);
 
-            cmb.DataSource= librosSinRelacionar;
+            cmb.DataSource = librosSinRelacionar;
             cmb.ValueMember = "TipoLibroID";
             cmb.DisplayMember = "Descripcion";
         }
@@ -146,11 +147,11 @@ namespace ISFDyT93.Datos.Daos
             {
                 SqlParameter[] parametros = new SqlParameter[]
                 {
-                new SqlParameter("@TipoLibroID", TipoLibroId),
-                new SqlParameter("@LibroNumero", nuevoNumeroLibro),
-                new SqlParameter("@CarreraID", CarreraId.HasValue ? CarreraId.Value : (object)DBNull.Value),
-                new SqlParameter("@FolioMaximo", FoliosMaximos),
-                new SqlParameter("@FechaAlta", FechaAlta)
+                    new SqlParameter("@TipoLibroID", TipoLibroId),
+                    new SqlParameter("@LibroNumero", nuevoNumeroLibro),
+                    new SqlParameter("@CarreraID", CarreraId.HasValue ? CarreraId.Value : (object)DBNull.Value),
+                    new SqlParameter("@FolioMaximo", FoliosMaximos),
+                    new SqlParameter("@FechaAlta", FechaAlta)
                 };
 
                 conexion.EjecutarStore("AgregarNumeroLibro", parametros);
@@ -160,5 +161,54 @@ namespace ISFDyT93.Datos.Daos
                 MessageBox.Show($"Hubo un error al momento de sumar el numero del libro: \n{ex}");
             }
         }
+
+        public LibroActasModelo ObtenerLibroMatrizPorAlumnoCarrera(int alumnoCarreraId)
+        {
+            string query = "SELECT TOP 1 la.LibroActaId, la.LibroNumero, la.FolioNumero, la.FolioMaximo, " +
+                           "la.FechaAlta, la.FechaBaja, la.Activo, la.TipoLibroId " +
+                           "FROM LibroActas la " +
+                           "INNER JOIN TipoLibros tl ON la.TipoLibroId = tl.TipoLibroId " +
+                           "INNER JOIN AlumnosCarreras ac ON la.CarreraID = ac.CarreraId " +
+                           $"WHERE ac.AlumnoCarreraId = {alumnoCarreraId} AND la.Activo = 1 AND tl.Descripcion = 'Libro de Matriz'";
+
+            Conexion conexion = new Conexion();
+            DataRow row = conexion.ObtenerRegistro(query);
+
+            if (row != null)
+            {
+                return new LibroActasModelo
+                {
+                    LibroActaId = Convert.ToInt32(row["LibroActaId"]),
+                    LibroNumero = Convert.ToInt32(row["LibroNumero"]),
+                    FolioNumero = Convert.ToInt32(row["FolioNumero"]),
+                    FolioMaximo = Convert.ToInt32(row["FolioMaximo"]),
+                    FechaAlta = Convert.ToDateTime(row["FechaAlta"]),
+                    FechaBaja = row["FechaBaja"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["FechaBaja"]),
+                    Activo = Convert.ToBoolean(row["Activo"]),
+                    TipoLibroId = Convert.ToInt32(row["TipoLibroId"])
+                };
+            }
+            return null;
+        }
+
+        public void ActualizarFolioLibro(int libroActaId, int nuevoFolio, int folioMaximo)
+        {
+            Conexion conexion = new Conexion();
+            string query;
+
+            if (nuevoFolio >= folioMaximo)
+            {
+                string fechaBajaFormateada = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                query = $"UPDATE LibroActas SET FolioNumero = {nuevoFolio}, Activo = 0, FechaBaja = '{fechaBajaFormateada}' WHERE LibroActaId = {libroActaId}";
+            }
+            else
+            {
+                query = $"UPDATE LibroActas SET FolioNumero = {nuevoFolio} WHERE LibroActaId = {libroActaId}";
+            }
+
+
+            conexion.EjecutarAccion(query);
+        }
+
     }
-}
+    }

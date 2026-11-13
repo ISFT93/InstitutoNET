@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Daos;
+using ISFDyT93.Entidades.Modelos;
 
 namespace ISFDyT93.Negocio.Logica
 {
@@ -24,5 +25,16 @@ namespace ISFDyT93.Negocio.Logica
         public void CarrerasSinRelacionar(ComboBox cmb, int tipoLibroId) => libroActasDao.CarrerasSinRelacionar(cmb, tipoLibroId);
         public void SumarNumeroLibro(int TipoLibroId, int? CarreraId, int FoliosMaximos, DateTime FechaAlta) => libroActasDao.SumarNumeroLibro(TipoLibroId, CarreraId, FoliosMaximos, FechaAlta);
 
+        private readonly LibroActasDao _libroActasDao = new LibroActasDao();
+
+        public LibroActasModelo ObtenerLibroMatrizPorAlumnoCarrera(int alumnoCarreraId)
+        {
+            return _libroActasDao.ObtenerLibroMatrizPorAlumnoCarrera(alumnoCarreraId);
+        }
+
+        public void ActualizarFolioLibro(int libroActaId, int nuevoFolio, int folioMaximo)
+        {
+            _libroActasDao.ActualizarFolioLibro(libroActaId, nuevoFolio, folioMaximo);
+        }
     }
 }

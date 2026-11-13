@@ -173,6 +173,9 @@ namespace ISFDyT93.Negocio.Logica
             var provincia = alumnosDao.ObtenerProvinciaAlumnos();
             return provincia.Rows.Cast<DataRow>().Select(r => r.Field<String>("Provincia")).ToArray();
         }
-
+        public void ActualizarLibroFolioAlumnoCarrera(int alumnoCarreraId, int libroActaId, int nroFolio)
+        {
+            this.alumnosDao.ActualizarLibroFolioAlumnoCarrera(alumnoCarreraId, libroActaId, nroFolio);
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace ISFDyT93.Entidades.Modelos
         public DateTime? FechaBaja { get; set; }
         public bool Activo { get; set; }
         public int TipoLibroId { get; set; }
+
     }
 }

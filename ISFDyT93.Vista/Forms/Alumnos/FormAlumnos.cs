@@ -16,45 +16,46 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 {
     public partial class FormAlumnos : FormBase
     {
-        #region Propiedades Privadas
+        #region Propiedades Privadas
 
-        private AlumnosLogica AlumnosLogica { get; set; }
+        private AlumnosLogica AlumnosLogica { get; set; }
         private InscripcionAlumnoLogica AlumnosInscLogica { get; set; }
         private CarrerasLogica CarreraLogica { get; set; }
         private CargaMasivaLogica CargaMasivaLogica { get; set; }
         private CicloLectivosLogica CicloLectivosLogica { get; set; }
+        private LibroActasLogica LibroActasLogica { get; set; } // 🔹 Corregido a tu clase existente
 
         private int AlumnoId { get; set; }
         private string ApellidoNombre { get; set; }
         private int AlumnoCarreraId { get; set; }
         private int? CarreraId { get; set; }
         private int? AnioLectivoId { get; set; }
-        FormCargaMasivaCsv FormCarMasivaCsv = new FormCargaMasivaCsv();
 
-        #endregion
+        #endregion
 
-        public FormAlumnos()
+        public FormAlumnos()
         {
             this.AlumnosLogica = new AlumnosLogica();
             this.AlumnosInscLogica = new InscripcionAlumnoLogica();
             this.CargaMasivaLogica = new CargaMasivaLogica();
             this.CicloLectivosLogica = new CicloLectivosLogica();
+            this.LibroActasLogica = new LibroActasLogica(); // 🔹 Inicialización correcta
 
             InitializeComponent();
         }
 
         private void FormAlumnos_Load(object sender, EventArgs e)
         {
-            //uscPaginacion1.dataGridView = dgvAlumnos; //pasa el datagridview a la paginacion            
-            this.Contenedor.SetTitulo("Alumnos");
-            cmbFiltroAlum.SelectedIndex = 0; //por defecto busca todos
-            RecargarGrilla();
-            //uscPaginacion1.BringToFront();
+            this.Contenedor.SetTitulo("Alumnos");
+            cmbFiltroAlum.SelectedIndex = 0; // por defecto busca todos
+            RecargarGrilla();
+
             if (dgvAlumnos.Rows.Count == 0)
             {
                 dgvAlumnos.ContextMenuStrip = cmsAlumnos;
                 tsmEliminarAlumno.Visible = false;
                 tsmModificarAlumno.Visible = false;
+                tsmAsignarLibro.Visible = false; // 🔹 Nombre correcto del control
             }
 
             this.AlumnosLogica.ObtenerCarreraCorta(cmbFiltroCarrera);
@@ -79,8 +80,8 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (cmbCicloLectivo.SelectedIndex != 0)
                 if (int.TryParse(cmbCicloLectivo.SelectedValue?.ToString(), out int ciclolectivoid))
                     AnioLectivoId = ciclolectivoid;
-            else
-                AnioLectivoId = null;
+                else
+                    AnioLectivoId = null;
 
             if (rbTodos.Checked == true)
                 dgvAlumnos.DataSource = AlumnosLogica.ObtenerTodosAlumnos(tipo, filtro);
@@ -91,6 +92,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
             EstilosColumnasDGV();
         }
+
         private void EstilosColumnasDGV()
         {
             if (dgvAlumnos.Columns.Contains("AlumnoId"))
@@ -111,41 +113,41 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             if (dgvAlumnos.Columns.Contains("Activo"))
                 dgvAlumnos.Columns["Activo"].FillWeight = 50;
         }
+
         private void dgvAlumnos_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 DataGridView.HitTestInfo info = dgvAlumnos.HitTest(e.X, e.Y);
 
-                tsmAgregarAlumno.Visible = ((CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0));
+                tsmAgregarAlumno.Visible = (CicloLectivosLogica.ObtenerAniosCiclosLectivosActivos().Length > 0);
                 tsmActualizarDocumentacion.Visible = false;
 
                 if (info.Type == DataGridViewHitTestType.Cell && info.RowIndex > -1)
                 {
-
                     dgvAlumnos.Rows[info.RowIndex].Selected = true;
                     cmsAlumnos.Show(dgvAlumnos, e.X - cmsAlumnos.Width / 2, e.Y);
                     this.AlumnoId = Convert.ToInt32(dgvAlumnos["AlumnoId", info.RowIndex].Value);
+
                     if (!string.IsNullOrEmpty(Convert.ToString(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value)))
                         this.AlumnoCarreraId = Convert.ToInt32(dgvAlumnos["AlumnoCarreraId", info.RowIndex].Value);
+
                     bool activo = Convert.ToBoolean(dgvAlumnos["Activo", info.RowIndex].Value);
                     ApellidoNombre = dgvAlumnos["Apellido", info.RowIndex].Value.ToString();
                     ApellidoNombre += " " + dgvAlumnos["Nombre", info.RowIndex].Value.ToString();
+
                     tsmDarAlta.Visible = !activo;
-
                     tsmAgregarAlumno.Visible = false;
-
-                    //if (string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-
-                    tsmActualizarDocumentacion.Visible = true;
+                    tsmActualizarDocumentacion.Visible = true;
                     tsmModificarAlumno.Visible = activo;
                     tsmEliminarAlumno.Visible = activo;
                     tsmVerAlumno.Visible = true;
-                    if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
-                        tsmAsignarMaterias.Visible = true; // ((Convert.ToBoolean(dgvAlumnos["Inicializado", info.RowIndex].Value)) && activo);
-                    else
-                        tsmAsignarMaterias.Visible = false;
+                    tsmAsignarLibro.Visible = activo; // 🔹 Nombre correcto del control
 
+                    if (!string.IsNullOrEmpty(Convert.ToString((dgvAlumnos["Inicializado", info.RowIndex].Value))))
+                        tsmAsignarMaterias.Visible = true;
+                    else
+                        tsmAsignarMaterias.Visible = false;
                 }
                 else
                 {
@@ -154,16 +156,16 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     tsmEliminarAlumno.Visible = false;
                     tsmVerAlumno.Visible = false;
                     tsmAsignarMaterias.Visible = false;
+                    tsmAsignarLibro.Visible = false; // 🔹 Nombre correcto del control
                     tsmDarAlta.Visible = false;
                     tsmActualizarDocumentacion.Visible = true;
                 }
             }
         }
 
-        #region ControlMenuStrip
-        private void tsmAgregarAlumno_Click(object sender, EventArgs e)
+        #region ControlMenuStrip
+        private void tsmAgregarAlumno_Click(object sender, EventArgs e)
         {
-
             bool OK = AlumnosInscLogica.obtenerFechaIncripcion();
             if (OK)
             {
@@ -174,7 +176,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
             }
             else
             {
-                DialogResult dg = MessageBox.Show("Fecha a inscripciones cerrada", "Fecha inscripción cerrada", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                DialogResult dg = MessageBox.Show("Fecha de inscripciones cerrada", "Fecha inscripción cerrada", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (dg == DialogResult.OK)
                 {
                     Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
@@ -185,6 +187,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 }
             }
         }
+
         private void tsmModificarAlumno_Click(object sender, EventArgs e)
         {
             Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
@@ -193,6 +196,13 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 form.AlumnoId = AlumnoId;
             });
         }
+
+
+        private void tsmAsignarLibro_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void tsmEliminarAlumno_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Desea eliminar el Alumno seleccionado?",
@@ -204,17 +214,17 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 RecargarGrilla();
             }
         }
+
         private void tsmDarAlta_Click(object sender, EventArgs e)
         {
             this.AlumnosLogica.DarAltaAlumnos(AlumnoId);
             AlumnosLogica.ActualizarEstadoInicializado(AlumnoId, 0);
             RecargarGrilla();
         }
+
         public void tsmCargaMasiva_Click(object sender, EventArgs e)
         {
-            //color 27, 1, 124
-            //tahoma white
-            Form tempForm = new Form();
+            Form tempForm = new Form();
             Label label = new Label();
             Button buttonYes = new Button();
             buttonYes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(1)))), ((int)(((byte)(124)))));
@@ -291,14 +301,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     {
                         while ((dtable.Rows.Count != ContxVuelta))
                         {
-                            if (dtable.Rows[ContxVuelta]["Sexo:"].ToString() == "Femenino")
-                            {
-                                Sexo = 'F';
-                            }
-                            else
-                            {
-                                Sexo = 'M';
-                            }
+                            Sexo = dtable.Rows[ContxVuelta]["Sexo:"].ToString() == "Femenino" ? 'F' : 'M';
                             var varcarrera = dtable.Rows[ContxVuelta]["Carrera:"].ToString();
                             var varcarreraexiste = CarreraLogica.CarrerasExiste(varcarrera);
 
@@ -310,10 +313,9 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                                 NumeroDocumento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["DNI:"].ToString()),
                                 EstadoCivil = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Estado Civil:"].ToString()),
                                 Sexo = Sexo,
-                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
-                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
+                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
                                 Calle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Dirección:"].ToString()),
-                                Numero = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Número:"].ToString()),
+                                Numero = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Número:"].ToString()),
                                 Provincia = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Provincia:"].ToString()),
                                 Distrito = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Partido:"].ToString()),
                                 Localidad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Localidad:"].ToString()),
@@ -335,14 +337,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                     {
                         while ((dtable.Rows.Count != ContxVuelta))
                         {
-                            if (dtable.Rows[ContxVuelta]["Sexo:"].ToString() == "Femenino")
-                            {
-                                Sexo = 'F';
-                            }
-                            else
-                            {
-                                Sexo = 'M';
-                            }
+                            Sexo = dtable.Rows[ContxVuelta]["Sexo:"].ToString() == "Femenino" ? 'F' : 'M';
                             var varcarrera = dtable.Rows[ContxVuelta]["Carrera:"].ToString();
                             var varcarreraexiste = CarreraLogica.CarrerasExiste(varcarrera);
 
@@ -354,8 +349,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                                 NumeroDocumento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["DNI:"].ToString()),
                                 EstadoCivil = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Estado Civil:"].ToString()),
                                 Sexo = Sexo,
-                                //FechaNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Fecha de Nacimiento:"].ToString()),
-                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
+                                LocalidadNacimiento = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Lugar de Nacimiento:"].ToString()),
                                 Calle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Dirección:"].ToString()),
                                 Numero = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Número:"].ToString()),
                                 Provincia = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtable.Rows[ContxVuelta]["Provincia:"].ToString()),
@@ -380,14 +374,17 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 }
             }
         }
+
         private void tsmVerAlumno_Click(object sender, EventArgs e)
         {
             Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
             {
-                form.Accion = TipoAccion.Ver;
+                form.Accion = TipoAccion.Modificar;
                 form.AlumnoId = AlumnoId;
+                form.AlumnoCarreraId = AlumnoCarreraId;
             });
         }
+
         private void tsmAsignarMaterias_Click(object sender, EventArgs e)
         {
             Contenedor.AbrirFormulario<FormInscripcionMaterias>(form =>
@@ -396,13 +393,14 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 form.ApellidoNombre = ApellidoNombre;
             });
         }
+
         private void tsmActualizarDocumentacion_Click(object sender, EventArgs e)
         {
             Contenedor.AbrirFormulario<FormDocumentacionAlumno>();
         }
-        #endregion
+        #endregion
 
-        private void btnReporte_Click(object sender, EventArgs e)
+        private void btnReporte_Click(object sender, EventArgs e)
         {
             var datos = this.AlumnosLogica.ObtenerAlumnosPrueba();
 
@@ -416,24 +414,80 @@ namespace ISFDyT93.Vista.Forms.Alumnos
                 .AddParameter("OcultarGrilla", "False");
             });
         }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             RecargarGrilla(txtFiltroAlumno.Text);
         }
-        private void RadioButtons_CheckedChanged(object sender, EventArgs e) //Corregido para que no se ejecute mas de 1 vez
-        {
+
+        private void RadioButtons_CheckedChanged(object sender, EventArgs e)
+        {
             if (((RadioButton)sender).Checked)
                 RecargarGrilla();
         }
 
         private void FormAlumnos_Resize(object sender, EventArgs e)
         {
-            uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
+            if (uscPaginacion1 != null)
+            {
+                uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
+            }
         }
 
         private void txtFiltroAlumno_TextChanged(object sender, EventArgs e)
         {
+        }
 
+        private void tsmAsignarLibro_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvAlumnos.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un alumno de la grilla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Obtener identificadores y estado desde la grilla
+                int alumnoCarreraId = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AlumnoCarreraId"].Value);
+                int alumnoId = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AlumnoId"].Value);
+                bool alumnoActivo = Convert.ToBoolean(dgvAlumnos.CurrentRow.Cells["Activo"].Value);
+
+                if (!alumnoActivo)
+                {
+                    MessageBox.Show("El alumno seleccionado se encuentra inactivo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Buscar el libro matriz activo mediante el alumnoCarreraId
+                LibroActasLogica libroLogica = new LibroActasLogica();
+                var libroActivo = libroLogica.ObtenerLibroMatrizPorAlumnoCarrera(alumnoCarreraId);
+
+                if (libroActivo == null)
+                {
+                    MessageBox.Show("No se encontró ningún Libro Matriz ACTIVO para la carrera de este alumno.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int nuevoFolio = libroActivo.FolioNumero + 1;
+
+                // Abrir el formulario de modificación pasando las propiedades de asignación de libro
+                Contenedor.AbrirFormulario<FormAgregarModificarAlumnos>(form =>
+                {
+                    form.Accion = TipoAccion.Modificar;
+                    form.AlumnoId = alumnoId;
+                    form.AlumnoCarreraId = alumnoCarreraId;
+                    form.EsAsignacionLibro = true;
+                    form.NuevoFolioCalculado = nuevoFolio;
+                    form.LibroActaId = libroActivo.LibroActaId;
+                    form.FolioMaximoLibro = libroActivo.FolioMaximo;
+                    form.NumeroLibroActual = libroActivo.LibroNumero;
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al procesar la asignación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
