@@ -41,7 +41,7 @@ namespace ISFDyT93.Vista.UserControls
 
         private void CrearMenuContextual()
         {
-            agregarEspacio.Click += (s, e) =>
+            agregarEspacios.Click += (s, e) =>
             {
                 using (FormAgregarEspacios frmAgregarEspacios = new FormAgregarEspacios())
                 {
@@ -54,7 +54,7 @@ namespace ISFDyT93.Vista.UserControls
                 }
             };
 
-            deshabilitarEspacio.Click += (s, e) =>
+            deshabilitarEspacios.Click += (s, e) =>
             {
                 using (FormEspaciosEstado frmEspaciosEstado = new FormEspaciosEstado(false))
                 {
@@ -65,7 +65,7 @@ namespace ISFDyT93.Vista.UserControls
                 }
             };
 
-            habilitarEspacio.Click += (s, e) =>
+            habilitarEspacios.Click += (s, e) =>
             {
                 using (FormEspaciosEstado frmEspaciosEstado = new FormEspaciosEstado(true))
                 {
@@ -80,17 +80,17 @@ namespace ISFDyT93.Vista.UserControls
         private void OpcionDeshabilitar()
         {
             if (espaciosLogica.EspaciosActivos() == true)
-                MostrarOpcion(deshabilitarEspacio);
+                MostrarOpcion(deshabilitarEspacios);
             else
-                OcultarOpcion(deshabilitarEspacio);
+                OcultarOpcion(deshabilitarEspacios);
         }
 
         private void OpcionHabilitar()
         {
             if (espaciosLogica.EspaciosInactivos() == true)
-                MostrarOpcion(habilitarEspacio);
+                MostrarOpcion(habilitarEspacios);
             else
-                OcultarOpcion(habilitarEspacio);
+                OcultarOpcion(habilitarEspacios);
         }
 
         private void OcultarOpcion(ToolStripMenuItem item)

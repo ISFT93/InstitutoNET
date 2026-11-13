@@ -408,7 +408,7 @@ namespace ISFDyT93.Vista.Forms.Alumnos
 
         private void FormAlumnos_Resize(object sender, EventArgs e)
         {
-            uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
+            //uscPaginacion1.Left = (dgvAlumnos.Width / 2) - (uscPaginacion1.Width / 2);
         }
     }
 }

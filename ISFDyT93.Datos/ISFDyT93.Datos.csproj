@@ -57,6 +57,7 @@
     <Compile Include="Daos\ControlAsistenciasDao.cs" />
     <Compile Include="Daos\CursadasDao.cs" />
     <Compile Include="Daos\EspaciosDao.cs" />
+    <Compile Include="Daos\EsquemaEvaluacionDao.cs" />
     <Compile Include="Daos\LibroActasDao.cs" />
     <Compile Include="Daos\MailService.cs" />
     <Compile Include="Daos\MesasFinalesDao.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Interfaces\IDaoBase.cs" />
     <Compile Include="Interfaces\IEquivalenciasDao.cs" />
     <Compile Include="Interfaces\IEspaciosDao.cs" />
+    <Compile Include="Interfaces\IEsquemaEvaluacionDao.cs" />
     <Compile Include="Interfaces\IEvaluacionesDao.cs" />
     <Compile Include="Interfaces\IHorariosDao.cs" />
     <Compile Include="Interfaces\IInscripcionAlumnoDao.cs" />

@@ -31,22 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uscEspacios));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.picMover = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.picAgregar = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.agregarEspacio = new System.Windows.Forms.ToolStripMenuItem();
-            this.habilitarEspacio = new System.Windows.Forms.ToolStripMenuItem();
-            this.deshabilitarEspacio = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarEspacios = new System.Windows.Forms.ToolStripMenuItem();
+            this.picMover = new System.Windows.Forms.PictureBox();
+            this.picAgregar = new System.Windows.Forms.PictureBox();
+            this.habilitarEspacios = new System.Windows.Forms.ToolStripMenuItem();
+            this.deshabilitarEspacios = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
+            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).BeginInit();
-            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Gray;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -63,22 +64,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(259, 100);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             this.tableLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel1_MouseDown);
-            // 
-            // picMover
-            // 
-            this.picMover.Cursor = System.Windows.Forms.Cursors.Help;
-            this.picMover.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMover.Image = ((System.Drawing.Image)(resources.GetObject("picMover.Image")));
-            this.picMover.Location = new System.Drawing.Point(3, 3);
-            this.picMover.Name = "picMover";
-            this.picMover.Size = new System.Drawing.Size(16, 24);
-            this.picMover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMover.TabIndex = 5;
-            this.picMover.TabStop = false;
-            this.picMover.Click += new System.EventHandler(this.picMover_Click);
             // 
             // lblTitulo
             // 
@@ -106,6 +94,38 @@
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             this.pnlContenedor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlContenedor_MouseDown);
             // 
+            // menu
+            // 
+            this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarEspacios,
+            this.habilitarEspacios,
+            this.deshabilitarEspacios});
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(200, 94);
+            // 
+            // agregarEspacios
+            // 
+            this.agregarEspacios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.agregarEspacios.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agregarEspacios.ForeColor = System.Drawing.Color.White;
+            this.agregarEspacios.Name = "agregarEspacios";
+            this.agregarEspacios.Size = new System.Drawing.Size(199, 30);
+            this.agregarEspacios.Text = "Agregar Espacio";
+            // 
+            // picMover
+            // 
+            this.picMover.Cursor = System.Windows.Forms.Cursors.Help;
+            this.picMover.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picMover.Image = ((System.Drawing.Image)(resources.GetObject("picMover.Image")));
+            this.picMover.Location = new System.Drawing.Point(3, 3);
+            this.picMover.Name = "picMover";
+            this.picMover.Size = new System.Drawing.Size(16, 24);
+            this.picMover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMover.TabIndex = 5;
+            this.picMover.TabStop = false;
+            this.picMover.Click += new System.EventHandler(this.picMover_Click);
+            // 
             // picAgregar
             // 
             this.picAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -119,46 +139,27 @@
             this.picAgregar.TabStop = false;
             this.picAgregar.Visible = false;
             // 
-            // menu
+            // habilitarEspacios
             // 
-            this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarEspacio,
-            this.habilitarEspacio,
-            this.deshabilitarEspacio});
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(200, 116);
+            this.habilitarEspacios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.habilitarEspacios.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.habilitarEspacios.ForeColor = System.Drawing.Color.White;
+            this.habilitarEspacios.Image = global::ISFDyT93.Vista.Properties.Resources.check_circle_solid;
+            this.habilitarEspacios.Name = "habilitarEspacios";
+            this.habilitarEspacios.Size = new System.Drawing.Size(199, 30);
+            this.habilitarEspacios.Text = "Habilitar";
+            this.habilitarEspacios.Visible = false;
             // 
-            // agregarEspacio
+            // deshabilitarEspacios
             // 
-            this.agregarEspacio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.agregarEspacio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agregarEspacio.ForeColor = System.Drawing.Color.White;
-            this.agregarEspacio.Name = "agregarEspacio";
-            this.agregarEspacio.Size = new System.Drawing.Size(199, 30);
-            this.agregarEspacio.Text = "Agregar Espacio";
-            // 
-            // habilitarEspacio
-            // 
-            this.habilitarEspacio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.habilitarEspacio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.habilitarEspacio.ForeColor = System.Drawing.Color.White;
-            this.habilitarEspacio.Image = global::ISFDyT93.Vista.Properties.Resources.check_circle_solid;
-            this.habilitarEspacio.Name = "habilitarEspacio";
-            this.habilitarEspacio.Size = new System.Drawing.Size(199, 30);
-            this.habilitarEspacio.Text = "Habilitar";
-            this.habilitarEspacio.Visible = false;
-            // 
-            // deshabilitarEspacio
-            // 
-            this.deshabilitarEspacio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.deshabilitarEspacio.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deshabilitarEspacio.ForeColor = System.Drawing.Color.White;
-            this.deshabilitarEspacio.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
-            this.deshabilitarEspacio.Name = "deshabilitarEspacio";
-            this.deshabilitarEspacio.Size = new System.Drawing.Size(199, 30);
-            this.deshabilitarEspacio.Text = "Deshabilitar";
-            this.deshabilitarEspacio.Visible = false;
+            this.deshabilitarEspacios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.deshabilitarEspacios.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deshabilitarEspacios.ForeColor = System.Drawing.Color.White;
+            this.deshabilitarEspacios.Image = global::ISFDyT93.Vista.Properties.Resources.minus_circle_solid;
+            this.deshabilitarEspacios.Name = "deshabilitarEspacios";
+            this.deshabilitarEspacios.Size = new System.Drawing.Size(199, 30);
+            this.deshabilitarEspacios.Text = "Deshabilitar";
+            this.deshabilitarEspacios.Visible = false;
             // 
             // uscEspacios
             // 
@@ -170,9 +171,9 @@
             this.Size = new System.Drawing.Size(259, 100);
             this.Load += new System.EventHandler(this.uscEspacios_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).EndInit();
-            this.menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -185,8 +186,8 @@
         private System.Windows.Forms.Panel pnlContenedor;
         private System.Windows.Forms.PictureBox picAgregar;
         private System.Windows.Forms.ContextMenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem agregarEspacio;
-        private System.Windows.Forms.ToolStripMenuItem habilitarEspacio;
-        private System.Windows.Forms.ToolStripMenuItem deshabilitarEspacio;
+        private System.Windows.Forms.ToolStripMenuItem agregarEspacios;
+        private System.Windows.Forms.ToolStripMenuItem habilitarEspacios;
+        private System.Windows.Forms.ToolStripMenuItem deshabilitarEspacios;
     }
 }

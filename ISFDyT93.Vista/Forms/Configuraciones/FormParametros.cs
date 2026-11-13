@@ -145,14 +145,15 @@ namespace ISFDyT93.Vista
                     if (licencias != null) flpContenedor.Controls.Add(licencias);
 
                     // Integración segura del control de Clasificación de Carreras
-                    uscClasificacionCarreras clasificacionCarreras = new uscClasificacionCarreras();
-                    if (clasificacionCarreras != null) flpContenedor.Controls.Add(clasificacionCarreras);
+                    //uscClasificacionCarreras clasificacionCarreras = new uscClasificacionCarreras();
+                    //if (clasificacionCarreras != null) flpContenedor.Controls.Add(clasificacionCarreras);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al cargar los controles de tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
+                uscMostrarEsquemaEvaluacion mostrarEsquemaEvaluacion = new uscMostrarEsquemaEvaluacion();
+                flpContenedor.Controls.Add(mostrarEsquemaEvaluacion);
                 uscMostrarEspacio mostrarEspacios = new uscMostrarEspacio();
                 flpContenedor.Controls.Add(mostrarEspacios);
 

@@ -113,6 +113,12 @@
     <Compile Include="Forms\Parametros\FormAgregarEspacios.Designer.cs">
       <DependentUpon>FormAgregarEspacios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEsquema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarEsquema.Designer.cs">
+      <DependentUpon>FormAgregarEsquema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarTipoLicencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,12 @@
     </Compile>
     <Compile Include="Forms\Parametros\FormEspaciosEstado.Designer.cs">
       <DependentUpon>FormEspaciosEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormEsquemaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormEsquemaEstado.Designer.cs">
+      <DependentUpon>FormEsquemaEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Parametros\FormLicenciaEstado.cs">
       <SubType>Form</SubType>
@@ -400,17 +412,17 @@
     <Compile Include="UserControls\uscCargos.Designer.cs">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\uscClasificacionCarreras.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\uscClasificacionCarreras.Designer.cs">
-      <DependentUpon>uscClasificacionCarreras.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\uscEspacios.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\uscEspacios.Designer.cs">
       <DependentUpon>uscEspacios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscEsquemaEvaluacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscEsquemaEvaluacion.Designer.cs">
+      <DependentUpon>uscEsquemaEvaluacion.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscLibroActas.cs">
       <SubType>UserControl</SubType>
@@ -435,6 +447,12 @@
     </Compile>
     <Compile Include="UserControls\uscMostrarEspacio.Designer.cs">
       <DependentUpon>uscMostrarEspacio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\uscMostrarEsquemaEvaluacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\uscMostrarEsquemaEvaluacion.Designer.cs">
+      <DependentUpon>uscMostrarEsquemaEvaluacion.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\uscTiposLicencias.cs">
       <SubType>UserControl</SubType>
@@ -486,6 +504,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarEspacios.resx">
       <DependentUpon>FormAgregarEspacios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarEsquema.resx">
+      <DependentUpon>FormAgregarEsquema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarTipoLicencia.resx">
       <DependentUpon>FormAgregarTipoLicencia.cs</DependentUpon>
@@ -540,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormEspaciosEstado.resx">
       <DependentUpon>FormEspaciosEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormEsquemaEstado.resx">
+      <DependentUpon>FormEsquemaEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormLicenciaEstado.resx">
       <DependentUpon>FormLicenciaEstado.cs</DependentUpon>
@@ -644,17 +668,14 @@
     <EmbeddedResource Include="Reports\AlumnosActivos.rdlc" />
     <EmbeddedResource Include="Reports\MesasFinales.rdlc" />
     <EmbeddedResource Include="Reports\ActaMesaFinal.rdlc" />
-    <EmbeddedResource Include="UserControls\uscCargarFormacion.resx">
-      <DependentUpon>uscCargarFormacion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscCargos.resx">
       <DependentUpon>uscCargos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\uscClasificacionCarreras.resx">
-      <DependentUpon>uscClasificacionCarreras.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscEspacios.resx">
       <DependentUpon>uscEspacios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscEsquemaEvaluacion.resx">
+      <DependentUpon>uscEsquemaEvaluacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscLibroActas.resx">
       <DependentUpon>uscLibroActas.cs</DependentUpon>
@@ -670,6 +691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscMostrarEspacio.resx">
       <DependentUpon>uscMostrarEspacio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\uscMostrarEsquemaEvaluacion.resx">
+      <DependentUpon>uscMostrarEsquemaEvaluacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\uscPaginacion.resx">
       <DependentUpon>uscPaginacion.cs</DependentUpon>

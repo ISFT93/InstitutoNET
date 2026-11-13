@@ -1,10 +1,11 @@
-﻿using System;
-using System.Data;
-using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Entidades.Enums;
-using System.Data.SqlClient;
-using ISFDyT93.Datos.Core;
+﻿using ISFDyT93.Datos.Core;
 using ISFDyT93.Datos.Interfaces;
+using ISFDyT93.Entidades.Enums;
+using ISFDyT93.Entidades.Modelos;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -266,11 +267,29 @@ namespace ISFDyT93.Datos.Daos
             return result;
         }
 
+        //public DataTable ObtenerPaisNacimientoAlumnos()
+        //{
+        //    string query = "SELECT DISTINCT PaisNacimiento FROM Alumnos";
+        //    return this.Conexion.ObtenerRegistros(query);
+        //}
         public DataTable ObtenerPaisNacimientoAlumnos()
         {
+            var reloj = System.Diagnostics.Stopwatch.StartNew();
+
             string query = "SELECT DISTINCT PaisNacimiento FROM Alumnos";
-            return this.Conexion.ObtenerRegistros(query);
+
+            DataTable resultado = this.Conexion.ObtenerRegistros(query);
+
+            reloj.Stop();
+
+            MessageBox.Show(
+                "Registros: " + resultado.Rows.Count +
+                "\nTiempo: " + reloj.ElapsedMilliseconds + " ms"
+            );
+
+            return resultado;
         }
+
         public DataTable ObtenerLocalidadAlumnos()
         {
             return this.Conexion.EjecutarStore("ListaLocalidades");

@@ -60,6 +60,7 @@
     <Compile Include="Interfaces\ICursosLogica.cs" />
     <Compile Include="Interfaces\IEquivalenciasLogica.cs" />
     <Compile Include="Interfaces\IEspaciosLogica.cs" />
+    <Compile Include="Interfaces\IEsquemaEvaluacionLogica.cs" />
     <Compile Include="Interfaces\IEvaluacionesLogica.cs" />
     <Compile Include="Interfaces\IHorariosLogica.cs" />
     <Compile Include="Interfaces\IInscripcionAlumnoLogica.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Logica\CursosLogica.cs" />
     <Compile Include="Logica\EquivalenciasLogica.cs" />
     <Compile Include="Logica\EspaciosLogica.cs" />
+    <Compile Include="Logica\EsquemaEvaluacionLogica.cs" />
     <Compile Include="Logica\EvaluacionesLogica.cs" />
     <Compile Include="Logica\HorariosLogica.cs" />
     <Compile Include="Logica\InscripcionAlumnoLogica.cs" />
