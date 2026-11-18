@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using ISFDyT93.Datos.Core;
+﻿using ISFDyT93.Datos.Core;
+using ISFDyT93.Datos.Interfaces;
 using ISFDyT93.Entidades;
 using ISFDyT93.Entidades.Core;
 using ISFDyT93.Entidades.Modelos;
-using ISFDyT93.Datos.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ISFDyT93.Datos.Daos
 {
@@ -47,7 +48,6 @@ namespace ISFDyT93.Datos.Daos
 
             return this.Conexion.ObtenerRegistros(query);
         }
-
         public DataTable ObtenerAniosVigentes(int alumnoId)
         {
             string query = "SELECT CAST(Anio AS VARCHAR) AS Anio FROM MateriasCarrerasVigentes " +
