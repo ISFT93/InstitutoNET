@@ -63,6 +63,7 @@
     <Compile Include="Daos\ParametrosDao.cs" />
     <Compile Include="Daos\EquivalenciasDao.cs" />
     <Compile Include="Daos\EvaluacionesDao.cs" />
+    <Compile Include="Daos\EsquemaEvaluacionDao.cs" />
     <Compile Include="Daos\CiclosLectivosDao.cs" />
     <Compile Include="Daos\CorrelativasDao.cs" />
     <Compile Include="Daos\CursosDao.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Interfaces\IEquivalenciasDao.cs" />
     <Compile Include="Interfaces\IEspacioFormacion.cs" />
     <Compile Include="Interfaces\IEvaluacionesDao.cs" />
+    <Compile Include="Interfaces\IEsquemaEvaluacionDao.cs" />
     <Compile Include="Interfaces\IHorariosDao.cs" />
     <Compile Include="Interfaces\IInscripcionAlumnoDao.cs" />
     <Compile Include="Interfaces\ILicenciaServicioDao.cs" />

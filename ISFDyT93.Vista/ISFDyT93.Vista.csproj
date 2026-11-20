@@ -173,6 +173,12 @@
     <Compile Include="Forms\Configuraciones\FormParametros.Designer.cs">
       <DependentUpon>FormParametros.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\uscMostrarEsquemaEvaluacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormConfiguracionEsquemaExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Home\FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
