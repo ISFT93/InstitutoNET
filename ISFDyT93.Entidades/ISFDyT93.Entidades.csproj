@@ -79,6 +79,7 @@
     <Compile Include="Modelos\CursoMateriasModelo.cs" />
     <Compile Include="Modelos\CursosModelo.cs" />
     <Compile Include="Modelos\EspacioFormacion.cs" />
+    <Compile Include="Modelos\EsquemaEvaluacionModelo.cs" />
     <Compile Include="Modelos\HorariosModelo.cs" />
     <Compile Include="Modelos\InscripcionMateriasModelo.cs" />
     <Compile Include="Modelos\LibroActasModelo.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Modelos\ProfesoresModelo.cs" />
     <Compile Include="Modelos\ServiciosModelo.cs" />
     <Compile Include="Modelos\TipoLicenciaModelo.cs" />
+    <Compile Include="Modelos\TipoExamenModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

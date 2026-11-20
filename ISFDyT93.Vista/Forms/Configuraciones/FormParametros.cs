@@ -157,6 +157,8 @@ namespace ISFDyT93.Vista
                 flpContenedor.Controls.Add(espacios);
                 uscHorarios horarios = new uscHorarios();
                 flpContenedor.Controls.Add(horarios);
+                flpContenedor.Controls.Add(new uscMostrarTiposExamen());
+                flpContenedor.Controls.Add(new uscMostrarEsquemaEvaluacion());
 
             }
             else
