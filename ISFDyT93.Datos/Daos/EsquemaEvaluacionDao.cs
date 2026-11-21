@@ -84,18 +84,27 @@ namespace ISFDyT93.Datos.Daos
         {
             string query =
                 $@"UPDATE Evaluacion.esquema_examen
-                   SET Activo = 0
-                   WHERE [cod-esq] = {CodEsq}";
+           SET Activo = 0
+           WHERE esquema = (
+               SELECT esquema
+               FROM Evaluacion.esquema_examen
+               WHERE [cod-esq] = {CodEsq}
+           )";
 
             this.Conexion.EjecutarAccion(query);
         }
+
 
         public void HabilitarEsquema(int CodEsq)
         {
             string query =
                 $@"UPDATE Evaluacion.esquema_examen
-                   SET Activo = 1
-                   WHERE [cod-esq] = {CodEsq}";
+           SET Activo = 1
+           WHERE esquema = (
+               SELECT esquema
+               FROM Evaluacion.esquema_examen
+               WHERE [cod-esq] = {CodEsq}
+           )";
 
             this.Conexion.EjecutarAccion(query);
         }
@@ -133,27 +142,101 @@ namespace ISFDyT93.Datos.Daos
             string descripcionPlanilla = modelo.ex_descripcion_planilla.Replace("'", "''");
             string tipoDato = modelo.ex_tipo_dat.Replace("'", "''");
 
-            string query =
-                $@"INSERT INTO Evaluacion.esquema_examen
-                   (
-                       indice,
-                       esquema,
-                       ex_descripc,
-                       ex_descripcion_planilla,
-                       ex_tipo_dat,
-                       ex_requeric,
-                       Activo
-                   )
-                   VALUES
-                   (
-                       {modelo.indice},
-                       '{esquema}',
-                       '{descripcion}',
-                       '{descripcionPlanilla}',
-                       '{tipoDato}',
-                       {(modelo.ex_requeric ? 1 : 0)},
-                       0
-                   )";
+            string query = $@"
+        SET XACT_ABORT ON;
+
+        BEGIN TRY
+            BEGIN TRANSACTION;
+
+            DECLARE @NombreEsquema nvarchar(max) = N'{esquema}';
+
+            IF EXISTS (
+                SELECT 1
+                FROM Evaluacion.esquema_examen WITH (TABLOCKX, HOLDLOCK)
+                WHERE LOWER(LTRIM(RTRIM(esquema))) = LOWER(@NombreEsquema)
+            )
+            BEGIN
+                THROW 50001, N'Ya existe un esquema con ese nombre.', 1;
+            END;
+
+            UPDATE Evaluacion.esquema_examen
+            SET Activo = 0
+            WHERE Activo = 1;
+
+            INSERT INTO Evaluacion.esquema_examen (
+                indice,
+                esquema,
+                ex_descripc,
+                ex_descripcion_planilla,
+                ex_tipo_dat,
+                ex_requeric,
+                Activo
+            )
+            VALUES (
+                {modelo.indice},
+                @NombreEsquema,
+                N'{descripcion}',
+                N'{descripcionPlanilla}',
+                N'{tipoDato}',
+                {(modelo.ex_requeric ? 1 : 0)},
+                1
+            );
+
+            COMMIT TRANSACTION;
+        END TRY
+        BEGIN CATCH
+            IF XACT_STATE() <> 0
+                ROLLBACK TRANSACTION;
+
+            THROW;
+        END CATCH;";
+
+            this.Conexion.EjecutarAccion(query);
+        }
+        public void AgregarDescripcion(
+    int codEsq, string descripcion, string planilla, string tipoDato)
+        {
+            descripcion = descripcion.Replace("'", "''");
+            planilla = planilla.Replace("'", "''");
+            tipoDato = tipoDato.Replace("'", "''");
+
+            string query = $@"
+        SET XACT_ABORT ON;
+        BEGIN TRANSACTION;
+
+        DECLARE @Esquema varchar(50), @Indice int, @Requerido bit;
+
+        SELECT @Esquema = esquema,
+               @Indice = indice,
+               @Requerido = ex_requeric
+        FROM Evaluacion.esquema_examen WITH (TABLOCKX, HOLDLOCK)
+        WHERE [cod-esq] = {codEsq} AND Activo = 1;
+
+        IF @Esquema IS NULL
+        BEGIN
+            THROW 50002, N'El esquema seleccionado ya no está activo.', 1;
+        END;
+
+        UPDATE Evaluacion.esquema_examen
+        SET ex_descripc = N'{descripcion}',
+            ex_descripcion_planilla = N'{planilla}',
+            ex_tipo_dat = N'{tipoDato}'
+        WHERE [cod-esq] = {codEsq}
+          AND ex_descripc = ''
+          AND ex_descripcion_planilla = ''
+          AND ex_tipo_dat = '';
+
+        IF @@ROWCOUNT = 0
+        BEGIN
+            INSERT INTO Evaluacion.esquema_examen
+                (indice, esquema, ex_descripc, ex_descripcion_planilla,
+                 ex_tipo_dat, ex_requeric, Activo)
+            VALUES
+                (@Indice, @Esquema, N'{descripcion}', N'{planilla}',
+                 N'{tipoDato}', @Requerido, 1);
+        END;
+
+        COMMIT TRANSACTION;";
 
             this.Conexion.EjecutarAccion(query);
         }

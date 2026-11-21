@@ -107,6 +107,12 @@
     <Compile Include="Forms\Parametros\FormAgregarCargos.Designer.cs">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarDescripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Parametros\FormAgregarDescripcion.Designer.cs">
+      <DependentUpon>FormAgregarDescripcion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Parametros\FormAgregarEspacios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarCargos.resx">
       <DependentUpon>FormAgregarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Parametros\FormAgregarDescripcion.resx">
+      <DependentUpon>FormAgregarDescripcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parametros\FormAgregarEspacios.resx">
       <DependentUpon>FormAgregarEspacios.cs</DependentUpon>

@@ -26,5 +26,7 @@ namespace ISFDyT93.Datos.Interfaces
         DataTable EsquemasDeshabilitados();
 
         void AgregarEsquema(EsquemaEvaluacionModelo esquema);
+        void AgregarDescripcion(
+            int codEsq, string descripcion, string planilla, string tipoDato);
     }
 }

@@ -76,5 +76,10 @@ namespace ISFDyT93.Negocio
 
             this.esquemaDao.AgregarEsquema(esquema);
         }
+        public void AgregarDescripcion(
+    int codEsq, string descripcion, string planilla, string tipoDato)
+        {
+            esquemaDao.AgregarDescripcion(codEsq, descripcion, planilla, tipoDato);
+        }
     }
 }

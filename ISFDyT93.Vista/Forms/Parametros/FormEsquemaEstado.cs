@@ -111,27 +111,11 @@ namespace ISFDyT93.Vista.Forms.Parametros
 
         private void CargarComboBox(bool habilitar)
         {
-            DataTable esquemas;
+            DataTable esquemas = habilitar
+                ? logica.EsquemasDeshabilitados()
+                : logica.EsquemasHabilitados();
 
-            if (habilitar == true)
-                esquemas = logica.EsquemasDeshabilitados();
-            else
-                esquemas = logica.EsquemasHabilitados();
-
-            // Mostrar datos para distinguir esquemas repetidos.
-            esquemas.Columns.Add(
-                "DescripcionCompleta", typeof(string));
-
-            foreach (DataRow fila in esquemas.Rows)
-            {
-                fila["DescripcionCompleta"] =
-                    fila["CodEsq"] + " - " +
-                    fila["esquema"] + " - " +
-                    fila["ex_descripc"] + " - " +
-                    fila["ex_descripcion_planilla"];
-            }
-
-            cbxEsquemas.DisplayMember = "DescripcionCompleta";
+            cbxEsquemas.DisplayMember = "esquema";
             cbxEsquemas.ValueMember = "CodEsq";
             cbxEsquemas.DataSource = esquemas;
 

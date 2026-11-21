@@ -98,6 +98,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnCambiar
             // 
@@ -118,6 +119,7 @@
             this.btnCambiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCambiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCambiar.UseVisualStyleBackColor = false;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
             // 
             // FormEsquemasEstado
             // 
@@ -132,6 +134,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEsquemasEstado";
             this.Text = "FormEsquemaEstado";
+            this.Load += new System.EventHandler(this.FormEsquemasEstado_Load);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             this.ResumeLayout(false);

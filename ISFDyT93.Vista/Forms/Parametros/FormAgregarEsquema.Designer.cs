@@ -242,6 +242,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgregarEsquema";
             this.Text = "FormAgregarEsquema";
+            this.Load += new System.EventHandler(this.FormAgregarEsquema_Load);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             this.ResumeLayout(false);

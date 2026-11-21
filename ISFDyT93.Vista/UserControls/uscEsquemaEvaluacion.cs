@@ -27,7 +27,8 @@ namespace ISFDyT93.Vista.UserControls
 
         EsquemaEvaluacionLogica esquemasLogica =
             new EsquemaEvaluacionLogica();
-
+        private readonly ToolStripMenuItem agregarDescripcion =
+    new ToolStripMenuItem("Agregar descripción");
         uscPersonalGrid usc;
 
         public IList<EsquemaEvaluacionModelo> esquemas;
@@ -46,6 +47,8 @@ namespace ISFDyT93.Vista.UserControls
 
         private void CrearMenuContextual()
         {
+            menu.Items.Insert(menu.Items.IndexOf(agregarEsquema) + 1, agregarDescripcion);
+            agregarDescripcion.Click += AgregarDescripcion_Click;
             agregarEsquema.Click += (s, e) =>
             {
                 using (FormAgregarEsquema frmAgregarEsquema = new FormAgregarEsquema())
@@ -88,10 +91,38 @@ namespace ISFDyT93.Vista.UserControls
 
         private void OpcionDeshabilitar()
         {
-            if (esquemasLogica.EsquemasActivos() == true)
+            bool hayActivo = esquemasLogica.EsquemasActivos();
+            agregarDescripcion.Enabled = hayActivo;
+
+            if (hayActivo)
                 MostrarOpcion(deshabilitarEsquema);
             else
                 OcultarOpcion(deshabilitarEsquema);
+        }
+
+        private void AgregarDescripcion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var activos = esquemasLogica.EsquemasHabilitados();
+                if (activos.Rows.Count == 0)
+                {
+                    agregarDescripcion.Enabled = false;
+                    MessageBox.Show(this, "Primero creá o habilitá un esquema.");
+                    return;
+                }
+
+                using (var formulario = new FormAgregarDescripcion(esquemasLogica, activos))
+                {
+                    if (formulario.ShowDialog(this) == DialogResult.OK)
+                        RecargarTabla();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Agregar descripción",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void OpcionHabilitar()
@@ -114,8 +145,21 @@ namespace ISFDyT93.Vista.UserControls
 
         private void RecargarTabla()
         {
-            pnlContenedor.Controls.Clear();
+            pnlContenedor.SuspendLayout();
+
+            while (pnlContenedor.Controls.Count > 0)
+            {
+                Control control = pnlContenedor.Controls[0];
+
+                pnlContenedor.Controls.Remove(control);
+                control.Dispose();
+            }
+
+            usc = null;
+
             CargarGrilla();
+
+            pnlContenedor.ResumeLayout(true);
 
             OpcionDeshabilitar();
             OpcionHabilitar();
@@ -135,7 +179,7 @@ namespace ISFDyT93.Vista.UserControls
 
         private void CargarGrilla()
         {
-            uscPersonalGrid.AnchoCelda = 200;
+            uscPersonalGrid.AnchoCelda = 150;
 
             usc = new uscPersonalGrid(new string[]
             {

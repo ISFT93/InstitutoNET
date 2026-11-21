@@ -39,6 +39,7 @@
             this.agregarEsquema = new System.Windows.Forms.ToolStripMenuItem();
             this.habilitarEsquema = new System.Windows.Forms.ToolStripMenuItem();
             this.deshabilitarEsquema = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarDescripcionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAgregar)).BeginInit();
@@ -125,10 +126,11 @@
             this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarEsquema,
+            this.agregarDescripcionToolStripMenuItem,
             this.habilitarEsquema,
             this.deshabilitarEsquema});
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(237, 116);
+            this.menu.Size = new System.Drawing.Size(237, 146);
             // 
             // agregarEsquema
             // 
@@ -159,6 +161,15 @@
             this.deshabilitarEsquema.Size = new System.Drawing.Size(236, 30);
             this.deshabilitarEsquema.Text = "Deshabilitar Esquema";
             // 
+            // agregarDescripcionToolStripMenuItem
+            // 
+            this.agregarDescripcionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.agregarDescripcionToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.agregarDescripcionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.agregarDescripcionToolStripMenuItem.Name = "agregarDescripcionToolStripMenuItem";
+            this.agregarDescripcionToolStripMenuItem.Size = new System.Drawing.Size(236, 30);
+            this.agregarDescripcionToolStripMenuItem.Text = "Agregar Descripcion";
+            // 
             // uscEsquemaEvaluacion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -187,5 +198,6 @@
         private System.Windows.Forms.ToolStripMenuItem agregarEsquema;
         private System.Windows.Forms.ToolStripMenuItem habilitarEsquema;
         private System.Windows.Forms.ToolStripMenuItem deshabilitarEsquema;
+        private System.Windows.Forms.ToolStripMenuItem agregarDescripcionToolStripMenuItem;
     }
 }
